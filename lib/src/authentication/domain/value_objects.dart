@@ -1,7 +1,5 @@
-import 'package:demo/domain/core/failures.dart';
-import 'package:demo/domain/core/value_objects.dart';
-import 'package:demo/domain/core/value_validators.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:kyons_flutter/src/core/domain/core.dart';
 
 class EmailAddress extends ValueObject<String> {
   @override

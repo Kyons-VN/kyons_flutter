@@ -5,13 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/home/view/home.dart';
+import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/settings/app/settings_controller.dart';
-import 'package:kyons_flutter/src/settings/view/settings_view.dart';
+import 'package:kyons_flutter/src/settings/data/settings_service.dart';
 
 Future<void> mainCommon(String env) async {
   //Call this first to make sure we can make other system level calls safely
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize the settings controller
+  final settingsProvider = SettingsProvider(SettingsService());
+  await settingsProvider.loadSettings();
 
   runApp(const ProviderScope(
     child: AppWidget(),
@@ -30,10 +34,11 @@ class AppWidget extends HookConsumerWidget {
     // The AnimatedBuilder Widget listens to the SettingsController for changes.
     // Whenever the user updates their settings, the MaterialApp is rebuilt.
     final settingsNotifierProvider = ref.watch(settingsProvider);
+    final appRouter = AppRouter(ref);
     return AnimatedBuilder(
       animation: settingsNotifierProvider,
       builder: (BuildContext context, Widget? child) {
-        return MaterialApp(
+        return MaterialApp.router(
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
@@ -66,25 +71,8 @@ class AppWidget extends HookConsumerWidget {
           theme: ThemeData(),
           darkTheme: ThemeData.dark(),
           themeMode: settingsNotifierProvider.themeMode,
-
-          // Define a function to handle named routes in order to support
-          // Flutter web url navigation and deep linking.
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return const SettingsView();
-                  // case SampleItemDetailsView.routeName:
-                  //   return const SampleItemDetailsView();
-                  // case SampleItemListView.routeName:
-                  default:
-                    return const HomePage();
-                }
-              },
-            );
-          },
+          routeInformationParser: appRouter.router.routeInformationParser,
+          routerDelegate: appRouter.router.routerDelegate,
         );
       },
     );

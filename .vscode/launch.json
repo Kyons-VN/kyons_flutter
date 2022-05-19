@@ -7,7 +7,8 @@
     {
       "name": "kyons_flutter",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
+      "program": "lib/main_dev.dart"
     },
     {
       "name": "kyons_flutter (profile mode)",
