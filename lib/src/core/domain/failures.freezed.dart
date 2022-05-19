@@ -1,0 +1,1173 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+
+part of 'failures.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$ValueFailure<T> {
+  T? get failedValue => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T? failedValue, String? reason) invalidEmail,
+    required TResult Function(T? failedValue, int? minLength, String? reason)
+        shortText,
+    required TResult Function(T? failedValue, String? reason) emptyValue,
+    required TResult Function(T? failedValue) multilines,
+    required TResult Function(T? failedValue, int? maxLength) longText,
+    required TResult Function(T? failedValue, int? maxLength) longList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortText<T> value) shortText,
+    required TResult Function(EmptyValue<T> value) emptyValue,
+    required TResult Function(Multilines<T> value) multilines,
+    required TResult Function(LongText<T> value) longText,
+    required TResult Function(LongList<T> value) longList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ValueFailureCopyWith<T, $Res> {
+  factory $ValueFailureCopyWith(
+          ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
+      _$ValueFailureCopyWithImpl<T, $Res>;
+  $Res call({T? failedValue});
+}
+
+/// @nodoc
+class _$ValueFailureCopyWithImpl<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  _$ValueFailureCopyWithImpl(this._value, this._then);
+
+  final ValueFailure<T> _value;
+  // ignore: unused_field
+  final $Res Function(ValueFailure<T>) _then;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(_value.copyWith(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$InvalidEmailCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$InvalidEmailCopyWith(
+          _$InvalidEmail<T> value, $Res Function(_$InvalidEmail<T>) then) =
+      __$$InvalidEmailCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T? failedValue, String? reason});
+}
+
+/// @nodoc
+class __$$InvalidEmailCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements _$$InvalidEmailCopyWith<T, $Res> {
+  __$$InvalidEmailCopyWithImpl(
+      _$InvalidEmail<T> _value, $Res Function(_$InvalidEmail<T>) _then)
+      : super(_value, (v) => _then(v as _$InvalidEmail<T>));
+
+  @override
+  _$InvalidEmail<T> get _value => super._value as _$InvalidEmail<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? reason = freezed,
+  }) {
+    return _then(_$InvalidEmail<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T?,
+      reason: reason == freezed
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvalidEmail<T> implements InvalidEmail<T> {
+  const _$InvalidEmail({this.failedValue, this.reason});
+
+  @override
+  final T? failedValue;
+  @override
+  final String? reason;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidEmail(failedValue: $failedValue, reason: $reason)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InvalidEmail<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.reason, reason));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(reason));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$InvalidEmailCopyWith<T, _$InvalidEmail<T>> get copyWith =>
+      __$$InvalidEmailCopyWithImpl<T, _$InvalidEmail<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T? failedValue, String? reason) invalidEmail,
+    required TResult Function(T? failedValue, int? minLength, String? reason)
+        shortText,
+    required TResult Function(T? failedValue, String? reason) emptyValue,
+    required TResult Function(T? failedValue) multilines,
+    required TResult Function(T? failedValue, int? maxLength) longText,
+    required TResult Function(T? failedValue, int? maxLength) longList,
+  }) {
+    return invalidEmail(failedValue, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+  }) {
+    return invalidEmail?.call(failedValue, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+    required TResult orElse(),
+  }) {
+    if (invalidEmail != null) {
+      return invalidEmail(failedValue, reason);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortText<T> value) shortText,
+    required TResult Function(EmptyValue<T> value) emptyValue,
+    required TResult Function(Multilines<T> value) multilines,
+    required TResult Function(LongText<T> value) longText,
+    required TResult Function(LongList<T> value) longList,
+  }) {
+    return invalidEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+  }) {
+    return invalidEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+    required TResult orElse(),
+  }) {
+    if (invalidEmail != null) {
+      return invalidEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidEmail<T> implements ValueFailure<T> {
+  const factory InvalidEmail({final T? failedValue, final String? reason}) =
+      _$InvalidEmail<T>;
+
+  @override
+  T? get failedValue => throw _privateConstructorUsedError;
+  String? get reason => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$InvalidEmailCopyWith<T, _$InvalidEmail<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ShortTextCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$ShortTextCopyWith(
+          _$ShortText<T> value, $Res Function(_$ShortText<T>) then) =
+      __$$ShortTextCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T? failedValue, int? minLength, String? reason});
+}
+
+/// @nodoc
+class __$$ShortTextCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements _$$ShortTextCopyWith<T, $Res> {
+  __$$ShortTextCopyWithImpl(
+      _$ShortText<T> _value, $Res Function(_$ShortText<T>) _then)
+      : super(_value, (v) => _then(v as _$ShortText<T>));
+
+  @override
+  _$ShortText<T> get _value => super._value as _$ShortText<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? minLength = freezed,
+    Object? reason = freezed,
+  }) {
+    return _then(_$ShortText<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T?,
+      minLength: minLength == freezed
+          ? _value.minLength
+          : minLength // ignore: cast_nullable_to_non_nullable
+              as int?,
+      reason: reason == freezed
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShortText<T> implements ShortText<T> {
+  const _$ShortText({this.failedValue, this.minLength, this.reason});
+
+  @override
+  final T? failedValue;
+  @override
+  final int? minLength;
+  @override
+  final String? reason;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.shortText(failedValue: $failedValue, minLength: $minLength, reason: $reason)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShortText<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.minLength, minLength) &&
+            const DeepCollectionEquality().equals(other.reason, reason));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(minLength),
+      const DeepCollectionEquality().hash(reason));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ShortTextCopyWith<T, _$ShortText<T>> get copyWith =>
+      __$$ShortTextCopyWithImpl<T, _$ShortText<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T? failedValue, String? reason) invalidEmail,
+    required TResult Function(T? failedValue, int? minLength, String? reason)
+        shortText,
+    required TResult Function(T? failedValue, String? reason) emptyValue,
+    required TResult Function(T? failedValue) multilines,
+    required TResult Function(T? failedValue, int? maxLength) longText,
+    required TResult Function(T? failedValue, int? maxLength) longList,
+  }) {
+    return shortText(failedValue, minLength, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+  }) {
+    return shortText?.call(failedValue, minLength, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+    required TResult orElse(),
+  }) {
+    if (shortText != null) {
+      return shortText(failedValue, minLength, reason);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortText<T> value) shortText,
+    required TResult Function(EmptyValue<T> value) emptyValue,
+    required TResult Function(Multilines<T> value) multilines,
+    required TResult Function(LongText<T> value) longText,
+    required TResult Function(LongList<T> value) longList,
+  }) {
+    return shortText(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+  }) {
+    return shortText?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+    required TResult orElse(),
+  }) {
+    if (shortText != null) {
+      return shortText(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShortText<T> implements ValueFailure<T> {
+  const factory ShortText(
+      {final T? failedValue,
+      final int? minLength,
+      final String? reason}) = _$ShortText<T>;
+
+  @override
+  T? get failedValue => throw _privateConstructorUsedError;
+  int? get minLength => throw _privateConstructorUsedError;
+  String? get reason => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$ShortTextCopyWith<T, _$ShortText<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EmptyValueCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$EmptyValueCopyWith(
+          _$EmptyValue<T> value, $Res Function(_$EmptyValue<T>) then) =
+      __$$EmptyValueCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T? failedValue, String? reason});
+}
+
+/// @nodoc
+class __$$EmptyValueCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements _$$EmptyValueCopyWith<T, $Res> {
+  __$$EmptyValueCopyWithImpl(
+      _$EmptyValue<T> _value, $Res Function(_$EmptyValue<T>) _then)
+      : super(_value, (v) => _then(v as _$EmptyValue<T>));
+
+  @override
+  _$EmptyValue<T> get _value => super._value as _$EmptyValue<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? reason = freezed,
+  }) {
+    return _then(_$EmptyValue<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T?,
+      reason: reason == freezed
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EmptyValue<T> implements EmptyValue<T> {
+  const _$EmptyValue({this.failedValue, this.reason});
+
+  @override
+  final T? failedValue;
+  @override
+  final String? reason;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.emptyValue(failedValue: $failedValue, reason: $reason)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EmptyValue<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.reason, reason));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(reason));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EmptyValueCopyWith<T, _$EmptyValue<T>> get copyWith =>
+      __$$EmptyValueCopyWithImpl<T, _$EmptyValue<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T? failedValue, String? reason) invalidEmail,
+    required TResult Function(T? failedValue, int? minLength, String? reason)
+        shortText,
+    required TResult Function(T? failedValue, String? reason) emptyValue,
+    required TResult Function(T? failedValue) multilines,
+    required TResult Function(T? failedValue, int? maxLength) longText,
+    required TResult Function(T? failedValue, int? maxLength) longList,
+  }) {
+    return emptyValue(failedValue, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+  }) {
+    return emptyValue?.call(failedValue, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+    required TResult orElse(),
+  }) {
+    if (emptyValue != null) {
+      return emptyValue(failedValue, reason);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortText<T> value) shortText,
+    required TResult Function(EmptyValue<T> value) emptyValue,
+    required TResult Function(Multilines<T> value) multilines,
+    required TResult Function(LongText<T> value) longText,
+    required TResult Function(LongList<T> value) longList,
+  }) {
+    return emptyValue(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+  }) {
+    return emptyValue?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+    required TResult orElse(),
+  }) {
+    if (emptyValue != null) {
+      return emptyValue(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EmptyValue<T> implements ValueFailure<T> {
+  const factory EmptyValue({final T? failedValue, final String? reason}) =
+      _$EmptyValue<T>;
+
+  @override
+  T? get failedValue => throw _privateConstructorUsedError;
+  String? get reason => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$EmptyValueCopyWith<T, _$EmptyValue<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MultilinesCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$MultilinesCopyWith(
+          _$Multilines<T> value, $Res Function(_$Multilines<T>) then) =
+      __$$MultilinesCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T? failedValue});
+}
+
+/// @nodoc
+class __$$MultilinesCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements _$$MultilinesCopyWith<T, $Res> {
+  __$$MultilinesCopyWithImpl(
+      _$Multilines<T> _value, $Res Function(_$Multilines<T>) _then)
+      : super(_value, (v) => _then(v as _$Multilines<T>));
+
+  @override
+  _$Multilines<T> get _value => super._value as _$Multilines<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(_$Multilines<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Multilines<T> implements Multilines<T> {
+  const _$Multilines({this.failedValue});
+
+  @override
+  final T? failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.multilines(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Multilines<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$MultilinesCopyWith<T, _$Multilines<T>> get copyWith =>
+      __$$MultilinesCopyWithImpl<T, _$Multilines<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T? failedValue, String? reason) invalidEmail,
+    required TResult Function(T? failedValue, int? minLength, String? reason)
+        shortText,
+    required TResult Function(T? failedValue, String? reason) emptyValue,
+    required TResult Function(T? failedValue) multilines,
+    required TResult Function(T? failedValue, int? maxLength) longText,
+    required TResult Function(T? failedValue, int? maxLength) longList,
+  }) {
+    return multilines(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+  }) {
+    return multilines?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+    required TResult orElse(),
+  }) {
+    if (multilines != null) {
+      return multilines(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortText<T> value) shortText,
+    required TResult Function(EmptyValue<T> value) emptyValue,
+    required TResult Function(Multilines<T> value) multilines,
+    required TResult Function(LongText<T> value) longText,
+    required TResult Function(LongList<T> value) longList,
+  }) {
+    return multilines(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+  }) {
+    return multilines?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+    required TResult orElse(),
+  }) {
+    if (multilines != null) {
+      return multilines(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Multilines<T> implements ValueFailure<T> {
+  const factory Multilines({final T? failedValue}) = _$Multilines<T>;
+
+  @override
+  T? get failedValue => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$MultilinesCopyWith<T, _$Multilines<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LongTextCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$LongTextCopyWith(
+          _$LongText<T> value, $Res Function(_$LongText<T>) then) =
+      __$$LongTextCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T? failedValue, int? maxLength});
+}
+
+/// @nodoc
+class __$$LongTextCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements _$$LongTextCopyWith<T, $Res> {
+  __$$LongTextCopyWithImpl(
+      _$LongText<T> _value, $Res Function(_$LongText<T>) _then)
+      : super(_value, (v) => _then(v as _$LongText<T>));
+
+  @override
+  _$LongText<T> get _value => super._value as _$LongText<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? maxLength = freezed,
+  }) {
+    return _then(_$LongText<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T?,
+      maxLength: maxLength == freezed
+          ? _value.maxLength
+          : maxLength // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LongText<T> implements LongText<T> {
+  const _$LongText({this.failedValue, this.maxLength});
+
+  @override
+  final T? failedValue;
+  @override
+  final int? maxLength;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.longText(failedValue: $failedValue, maxLength: $maxLength)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LongText<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.maxLength, maxLength));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(maxLength));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$LongTextCopyWith<T, _$LongText<T>> get copyWith =>
+      __$$LongTextCopyWithImpl<T, _$LongText<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T? failedValue, String? reason) invalidEmail,
+    required TResult Function(T? failedValue, int? minLength, String? reason)
+        shortText,
+    required TResult Function(T? failedValue, String? reason) emptyValue,
+    required TResult Function(T? failedValue) multilines,
+    required TResult Function(T? failedValue, int? maxLength) longText,
+    required TResult Function(T? failedValue, int? maxLength) longList,
+  }) {
+    return longText(failedValue, maxLength);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+  }) {
+    return longText?.call(failedValue, maxLength);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+    required TResult orElse(),
+  }) {
+    if (longText != null) {
+      return longText(failedValue, maxLength);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortText<T> value) shortText,
+    required TResult Function(EmptyValue<T> value) emptyValue,
+    required TResult Function(Multilines<T> value) multilines,
+    required TResult Function(LongText<T> value) longText,
+    required TResult Function(LongList<T> value) longList,
+  }) {
+    return longText(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+  }) {
+    return longText?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+    required TResult orElse(),
+  }) {
+    if (longText != null) {
+      return longText(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LongText<T> implements ValueFailure<T> {
+  const factory LongText({final T? failedValue, final int? maxLength}) =
+      _$LongText<T>;
+
+  @override
+  T? get failedValue => throw _privateConstructorUsedError;
+  int? get maxLength => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$LongTextCopyWith<T, _$LongText<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LongListCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$LongListCopyWith(
+          _$LongList<T> value, $Res Function(_$LongList<T>) then) =
+      __$$LongListCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T? failedValue, int? maxLength});
+}
+
+/// @nodoc
+class __$$LongListCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements _$$LongListCopyWith<T, $Res> {
+  __$$LongListCopyWithImpl(
+      _$LongList<T> _value, $Res Function(_$LongList<T>) _then)
+      : super(_value, (v) => _then(v as _$LongList<T>));
+
+  @override
+  _$LongList<T> get _value => super._value as _$LongList<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? maxLength = freezed,
+  }) {
+    return _then(_$LongList<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T?,
+      maxLength: maxLength == freezed
+          ? _value.maxLength
+          : maxLength // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LongList<T> implements LongList<T> {
+  const _$LongList({this.failedValue, this.maxLength});
+
+  @override
+  final T? failedValue;
+  @override
+  final int? maxLength;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.longList(failedValue: $failedValue, maxLength: $maxLength)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LongList<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.maxLength, maxLength));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(maxLength));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$LongListCopyWith<T, _$LongList<T>> get copyWith =>
+      __$$LongListCopyWithImpl<T, _$LongList<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T? failedValue, String? reason) invalidEmail,
+    required TResult Function(T? failedValue, int? minLength, String? reason)
+        shortText,
+    required TResult Function(T? failedValue, String? reason) emptyValue,
+    required TResult Function(T? failedValue) multilines,
+    required TResult Function(T? failedValue, int? maxLength) longText,
+    required TResult Function(T? failedValue, int? maxLength) longList,
+  }) {
+    return longList(failedValue, maxLength);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+  }) {
+    return longList?.call(failedValue, maxLength);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+    required TResult orElse(),
+  }) {
+    if (longList != null) {
+      return longList(failedValue, maxLength);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortText<T> value) shortText,
+    required TResult Function(EmptyValue<T> value) emptyValue,
+    required TResult Function(Multilines<T> value) multilines,
+    required TResult Function(LongText<T> value) longText,
+    required TResult Function(LongList<T> value) longList,
+  }) {
+    return longList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+  }) {
+    return longList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+    required TResult orElse(),
+  }) {
+    if (longList != null) {
+      return longList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LongList<T> implements ValueFailure<T> {
+  const factory LongList({final T? failedValue, final int? maxLength}) =
+      _$LongList<T>;
+
+  @override
+  T? get failedValue => throw _privateConstructorUsedError;
+  int? get maxLength => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$LongListCopyWith<T, _$LongList<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
