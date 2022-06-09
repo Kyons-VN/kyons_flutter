@@ -1,6 +1,39 @@
 {
-  "appTitle": "flutter_template",
-  "@appTitle": {
-    "description": "The title of the application"
-  }
+  "appTitle": "KYONS",
+  "loginSuccess": "Login Success",
+  "email": "Email",
+  "password": "Password",
+  "signIn": "Sign in",
+  "signOut": "Sign out",
+  "language": "Language",
+  "invalidThing": "Invalid {thing}",
+  "@invalidThing": {
+    "placeholders": {
+      "thing": {
+        "type": "String"
+      }
+    }
+  },
+  "settings": "Settings",
+  "themeMode": "Theme mode",
+  "themeModeSystem": "System",
+  "lightMode": "Light mode",
+  "dartMode": "Dark mode",
+  "vi": "Tiếng Việt",
+  "en": "English",
+  "thingWithStatus": "{thing} {status}",
+  "@thingWithStatus": {
+    "placeholders": {
+      "thing": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "success": "Success",
+  "fail": "Fail",
+  "back": "Back",
+  "choose_subject_and_program": "Choose subject and program"
 }

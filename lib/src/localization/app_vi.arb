@@ -1,0 +1,39 @@
+{
+  "appTitle": "KYONS",
+  "loginSuccess": "Đăng nhập thành công",
+  "email": "Email",
+  "password": "Mật khẩu",
+  "signIn": "Đăng nhập",
+  "signOut": "Đăng xuất",
+  "language": "Ngôn ngữ",
+  "invalidThing": "{thing} chưa đúng",
+  "@invalidThing": {
+    "placeholders": {
+      "thing": {
+        "type": "String"
+      }
+    }
+  },
+  "settings": "Cài đặt",
+  "themeMode": "Chế độ sáng tối",
+  "themeModeSystem": "Theo hệ thống",
+  "lightMode": "Nền sáng",
+  "dartMode": "Nền tối",
+  "vi": "Tiếng Việt",
+  "en": "English",
+  "thingWithStatus": "{thing} {status}",
+  "@thingWithStatus": {
+    "placeholders": {
+      "thing": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "success": "Thành công",
+  "fail": "Không thành công",
+  "back": "Trở về",
+  "choose_subject_and_program": "Bạn hãy chọn môn và chương trình học"
+}

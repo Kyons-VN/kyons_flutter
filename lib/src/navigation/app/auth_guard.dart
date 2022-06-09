@@ -1,18 +1,20 @@
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
-import 'package:kyons_flutter/src/navigation/app/router.dart';
+import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 
-String? guard(GoRouterState state, AuthState authState) {
+String? guard(GoRouterState state, WidgetRef ref) {
+  final authState = ref.watch(authNotifierProvider);
   final bool signedIn = authState.maybeMap(orElse: () => false, authenticated: (_) => true);
-  final bool signingIn = state.subloc == '/signin';
+  final bool signingIn = authState.maybeMap(orElse: () => false, loading: (_) => true);
 
-  // Go to /signin if the user is not signed in
+  // Go to sign-in if the user is not signed in
   if (!signedIn && !signingIn) {
-    return AppPath.signIn;
+    return AppPaths.signIn.path;
   }
-  // Go to /books if the user is signed in and tries to go to /signin.
+  // Go to home if the user is signed in and tries to go to /signin.
   else if (signedIn && signingIn) {
-    return AppPath.home;
+    return AppPaths.home.path;
   }
 
   // no redirect

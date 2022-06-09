@@ -25,4 +25,13 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
     @required T? failedValue,
     @required int? maxLength,
   }) = LongList<T>;
+  const factory ValueFailure.localStorage({
+    @required T? failedValue,
+    String? reason,
+  }) = LocalStorage<T>;
+}
+
+@freezed
+class ClientFailure<T> with _$ClientFailure<T> {
+  const factory ClientFailure.storage() = Storage;
 }

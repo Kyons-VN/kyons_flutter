@@ -26,6 +26,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(T? failedValue) multilines,
     required TResult Function(T? failedValue, int? maxLength) longText,
     required TResult Function(T? failedValue, int? maxLength) longList,
+    required TResult Function(T? failedValue, String? reason) localStorage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +48,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,6 +60,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(Multilines<T> value) multilines,
     required TResult Function(LongText<T> value) longText,
     required TResult Function(LongList<T> value) longList,
+    required TResult Function(LocalStorage<T> value) localStorage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +71,7 @@ mixin _$ValueFailure<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +82,7 @@ mixin _$ValueFailure<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -201,6 +207,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(T? failedValue) multilines,
     required TResult Function(T? failedValue, int? maxLength) longText,
     required TResult Function(T? failedValue, int? maxLength) longList,
+    required TResult Function(T? failedValue, String? reason) localStorage,
   }) {
     return invalidEmail(failedValue, reason);
   }
@@ -214,6 +221,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
   }) {
     return invalidEmail?.call(failedValue, reason);
   }
@@ -227,6 +235,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -244,6 +253,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(Multilines<T> value) multilines,
     required TResult Function(LongText<T> value) longText,
     required TResult Function(LongList<T> value) longList,
+    required TResult Function(LocalStorage<T> value) localStorage,
   }) {
     return invalidEmail(this);
   }
@@ -257,6 +267,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
   }) {
     return invalidEmail?.call(this);
   }
@@ -270,6 +281,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -386,6 +398,7 @@ class _$ShortText<T> implements ShortText<T> {
     required TResult Function(T? failedValue) multilines,
     required TResult Function(T? failedValue, int? maxLength) longText,
     required TResult Function(T? failedValue, int? maxLength) longList,
+    required TResult Function(T? failedValue, String? reason) localStorage,
   }) {
     return shortText(failedValue, minLength, reason);
   }
@@ -399,6 +412,7 @@ class _$ShortText<T> implements ShortText<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
   }) {
     return shortText?.call(failedValue, minLength, reason);
   }
@@ -412,6 +426,7 @@ class _$ShortText<T> implements ShortText<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
     required TResult orElse(),
   }) {
     if (shortText != null) {
@@ -429,6 +444,7 @@ class _$ShortText<T> implements ShortText<T> {
     required TResult Function(Multilines<T> value) multilines,
     required TResult Function(LongText<T> value) longText,
     required TResult Function(LongList<T> value) longList,
+    required TResult Function(LocalStorage<T> value) localStorage,
   }) {
     return shortText(this);
   }
@@ -442,6 +458,7 @@ class _$ShortText<T> implements ShortText<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
   }) {
     return shortText?.call(this);
   }
@@ -455,6 +472,7 @@ class _$ShortText<T> implements ShortText<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
     required TResult orElse(),
   }) {
     if (shortText != null) {
@@ -565,6 +583,7 @@ class _$EmptyValue<T> implements EmptyValue<T> {
     required TResult Function(T? failedValue) multilines,
     required TResult Function(T? failedValue, int? maxLength) longText,
     required TResult Function(T? failedValue, int? maxLength) longList,
+    required TResult Function(T? failedValue, String? reason) localStorage,
   }) {
     return emptyValue(failedValue, reason);
   }
@@ -578,6 +597,7 @@ class _$EmptyValue<T> implements EmptyValue<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
   }) {
     return emptyValue?.call(failedValue, reason);
   }
@@ -591,6 +611,7 @@ class _$EmptyValue<T> implements EmptyValue<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
     required TResult orElse(),
   }) {
     if (emptyValue != null) {
@@ -608,6 +629,7 @@ class _$EmptyValue<T> implements EmptyValue<T> {
     required TResult Function(Multilines<T> value) multilines,
     required TResult Function(LongText<T> value) longText,
     required TResult Function(LongList<T> value) longList,
+    required TResult Function(LocalStorage<T> value) localStorage,
   }) {
     return emptyValue(this);
   }
@@ -621,6 +643,7 @@ class _$EmptyValue<T> implements EmptyValue<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
   }) {
     return emptyValue?.call(this);
   }
@@ -634,6 +657,7 @@ class _$EmptyValue<T> implements EmptyValue<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
     required TResult orElse(),
   }) {
     if (emptyValue != null) {
@@ -731,6 +755,7 @@ class _$Multilines<T> implements Multilines<T> {
     required TResult Function(T? failedValue) multilines,
     required TResult Function(T? failedValue, int? maxLength) longText,
     required TResult Function(T? failedValue, int? maxLength) longList,
+    required TResult Function(T? failedValue, String? reason) localStorage,
   }) {
     return multilines(failedValue);
   }
@@ -744,6 +769,7 @@ class _$Multilines<T> implements Multilines<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
   }) {
     return multilines?.call(failedValue);
   }
@@ -757,6 +783,7 @@ class _$Multilines<T> implements Multilines<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
     required TResult orElse(),
   }) {
     if (multilines != null) {
@@ -774,6 +801,7 @@ class _$Multilines<T> implements Multilines<T> {
     required TResult Function(Multilines<T> value) multilines,
     required TResult Function(LongText<T> value) longText,
     required TResult Function(LongList<T> value) longList,
+    required TResult Function(LocalStorage<T> value) localStorage,
   }) {
     return multilines(this);
   }
@@ -787,6 +815,7 @@ class _$Multilines<T> implements Multilines<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
   }) {
     return multilines?.call(this);
   }
@@ -800,6 +829,7 @@ class _$Multilines<T> implements Multilines<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
     required TResult orElse(),
   }) {
     if (multilines != null) {
@@ -905,6 +935,7 @@ class _$LongText<T> implements LongText<T> {
     required TResult Function(T? failedValue) multilines,
     required TResult Function(T? failedValue, int? maxLength) longText,
     required TResult Function(T? failedValue, int? maxLength) longList,
+    required TResult Function(T? failedValue, String? reason) localStorage,
   }) {
     return longText(failedValue, maxLength);
   }
@@ -918,6 +949,7 @@ class _$LongText<T> implements LongText<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
   }) {
     return longText?.call(failedValue, maxLength);
   }
@@ -931,6 +963,7 @@ class _$LongText<T> implements LongText<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
     required TResult orElse(),
   }) {
     if (longText != null) {
@@ -948,6 +981,7 @@ class _$LongText<T> implements LongText<T> {
     required TResult Function(Multilines<T> value) multilines,
     required TResult Function(LongText<T> value) longText,
     required TResult Function(LongList<T> value) longList,
+    required TResult Function(LocalStorage<T> value) localStorage,
   }) {
     return longText(this);
   }
@@ -961,6 +995,7 @@ class _$LongText<T> implements LongText<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
   }) {
     return longText?.call(this);
   }
@@ -974,6 +1009,7 @@ class _$LongText<T> implements LongText<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
     required TResult orElse(),
   }) {
     if (longText != null) {
@@ -1081,6 +1117,7 @@ class _$LongList<T> implements LongList<T> {
     required TResult Function(T? failedValue) multilines,
     required TResult Function(T? failedValue, int? maxLength) longText,
     required TResult Function(T? failedValue, int? maxLength) longList,
+    required TResult Function(T? failedValue, String? reason) localStorage,
   }) {
     return longList(failedValue, maxLength);
   }
@@ -1094,6 +1131,7 @@ class _$LongList<T> implements LongList<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
   }) {
     return longList?.call(failedValue, maxLength);
   }
@@ -1107,6 +1145,7 @@ class _$LongList<T> implements LongList<T> {
     TResult Function(T? failedValue)? multilines,
     TResult Function(T? failedValue, int? maxLength)? longText,
     TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
     required TResult orElse(),
   }) {
     if (longList != null) {
@@ -1124,6 +1163,7 @@ class _$LongList<T> implements LongList<T> {
     required TResult Function(Multilines<T> value) multilines,
     required TResult Function(LongText<T> value) longText,
     required TResult Function(LongList<T> value) longList,
+    required TResult Function(LocalStorage<T> value) localStorage,
   }) {
     return longList(this);
   }
@@ -1137,6 +1177,7 @@ class _$LongList<T> implements LongList<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
   }) {
     return longList?.call(this);
   }
@@ -1150,6 +1191,7 @@ class _$LongList<T> implements LongList<T> {
     TResult Function(Multilines<T> value)? multilines,
     TResult Function(LongText<T> value)? longText,
     TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
     required TResult orElse(),
   }) {
     if (longList != null) {
@@ -1170,4 +1212,338 @@ abstract class LongList<T> implements ValueFailure<T> {
   @JsonKey(ignore: true)
   _$$LongListCopyWith<T, _$LongList<T>> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LocalStorageCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$LocalStorageCopyWith(
+          _$LocalStorage<T> value, $Res Function(_$LocalStorage<T>) then) =
+      __$$LocalStorageCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T? failedValue, String? reason});
+}
+
+/// @nodoc
+class __$$LocalStorageCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements _$$LocalStorageCopyWith<T, $Res> {
+  __$$LocalStorageCopyWithImpl(
+      _$LocalStorage<T> _value, $Res Function(_$LocalStorage<T>) _then)
+      : super(_value, (v) => _then(v as _$LocalStorage<T>));
+
+  @override
+  _$LocalStorage<T> get _value => super._value as _$LocalStorage<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? reason = freezed,
+  }) {
+    return _then(_$LocalStorage<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T?,
+      reason: reason == freezed
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LocalStorage<T> implements LocalStorage<T> {
+  const _$LocalStorage({this.failedValue, this.reason});
+
+  @override
+  final T? failedValue;
+  @override
+  final String? reason;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.localStorage(failedValue: $failedValue, reason: $reason)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LocalStorage<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.reason, reason));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(reason));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$LocalStorageCopyWith<T, _$LocalStorage<T>> get copyWith =>
+      __$$LocalStorageCopyWithImpl<T, _$LocalStorage<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T? failedValue, String? reason) invalidEmail,
+    required TResult Function(T? failedValue, int? minLength, String? reason)
+        shortText,
+    required TResult Function(T? failedValue, String? reason) emptyValue,
+    required TResult Function(T? failedValue) multilines,
+    required TResult Function(T? failedValue, int? maxLength) longText,
+    required TResult Function(T? failedValue, int? maxLength) longList,
+    required TResult Function(T? failedValue, String? reason) localStorage,
+  }) {
+    return localStorage(failedValue, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
+  }) {
+    return localStorage?.call(failedValue, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T? failedValue, String? reason)? invalidEmail,
+    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
+    TResult Function(T? failedValue, String? reason)? emptyValue,
+    TResult Function(T? failedValue)? multilines,
+    TResult Function(T? failedValue, int? maxLength)? longText,
+    TResult Function(T? failedValue, int? maxLength)? longList,
+    TResult Function(T? failedValue, String? reason)? localStorage,
+    required TResult orElse(),
+  }) {
+    if (localStorage != null) {
+      return localStorage(failedValue, reason);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortText<T> value) shortText,
+    required TResult Function(EmptyValue<T> value) emptyValue,
+    required TResult Function(Multilines<T> value) multilines,
+    required TResult Function(LongText<T> value) longText,
+    required TResult Function(LongList<T> value) longList,
+    required TResult Function(LocalStorage<T> value) localStorage,
+  }) {
+    return localStorage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
+  }) {
+    return localStorage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortText<T> value)? shortText,
+    TResult Function(EmptyValue<T> value)? emptyValue,
+    TResult Function(Multilines<T> value)? multilines,
+    TResult Function(LongText<T> value)? longText,
+    TResult Function(LongList<T> value)? longList,
+    TResult Function(LocalStorage<T> value)? localStorage,
+    required TResult orElse(),
+  }) {
+    if (localStorage != null) {
+      return localStorage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LocalStorage<T> implements ValueFailure<T> {
+  const factory LocalStorage({final T? failedValue, final String? reason}) =
+      _$LocalStorage<T>;
+
+  @override
+  T? get failedValue => throw _privateConstructorUsedError;
+  String? get reason => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$LocalStorageCopyWith<T, _$LocalStorage<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ClientFailure<T> {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() storage,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? storage,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? storage,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Storage<T> value) storage,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Storage<T> value)? storage,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Storage<T> value)? storage,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ClientFailureCopyWith<T, $Res> {
+  factory $ClientFailureCopyWith(
+          ClientFailure<T> value, $Res Function(ClientFailure<T>) then) =
+      _$ClientFailureCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class _$ClientFailureCopyWithImpl<T, $Res>
+    implements $ClientFailureCopyWith<T, $Res> {
+  _$ClientFailureCopyWithImpl(this._value, this._then);
+
+  final ClientFailure<T> _value;
+  // ignore: unused_field
+  final $Res Function(ClientFailure<T>) _then;
+}
+
+/// @nodoc
+abstract class _$$StorageCopyWith<T, $Res> {
+  factory _$$StorageCopyWith(
+          _$Storage<T> value, $Res Function(_$Storage<T>) then) =
+      __$$StorageCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$StorageCopyWithImpl<T, $Res>
+    extends _$ClientFailureCopyWithImpl<T, $Res>
+    implements _$$StorageCopyWith<T, $Res> {
+  __$$StorageCopyWithImpl(
+      _$Storage<T> _value, $Res Function(_$Storage<T>) _then)
+      : super(_value, (v) => _then(v as _$Storage<T>));
+
+  @override
+  _$Storage<T> get _value => super._value as _$Storage<T>;
+}
+
+/// @nodoc
+
+class _$Storage<T> implements Storage<T> {
+  const _$Storage();
+
+  @override
+  String toString() {
+    return 'ClientFailure<$T>.storage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Storage<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() storage,
+  }) {
+    return storage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? storage,
+  }) {
+    return storage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? storage,
+    required TResult orElse(),
+  }) {
+    if (storage != null) {
+      return storage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Storage<T> value) storage,
+  }) {
+    return storage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Storage<T> value)? storage,
+  }) {
+    return storage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Storage<T> value)? storage,
+    required TResult orElse(),
+  }) {
+    if (storage != null) {
+      return storage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Storage<T> implements ClientFailure<T> {
+  const factory Storage() = _$Storage<T>;
 }

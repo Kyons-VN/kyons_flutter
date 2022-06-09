@@ -2,8 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 
+const SERVER_API = 'https://api.tuhoconline.org';
+
 @LazySingleton()
 class Api {
+  Api._();
   final Dio api = Dio();
   String? accessToken;
 

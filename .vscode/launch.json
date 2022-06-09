@@ -5,16 +5,15 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "kyons_flutter",
+      "name": "main_dev.dart",
       "request": "launch",
       "type": "dart",
       "program": "lib/main_dev.dart"
     },
     {
-      "name": "kyons_flutter (profile mode)",
+      "name": "main.dart",
       "request": "launch",
-      "type": "dart",
-      "flutterMode": "profile"
+      "type": "dart"
     },
     {
       "name": "kyons_flutter (release mode)",
