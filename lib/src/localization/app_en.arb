@@ -35,5 +35,17 @@
   "success": "Success",
   "fail": "Fail",
   "back": "Back",
-  "choose_subject_and_program": "Choose subject and program"
+  "choose_subject_and_program": "Choose subject and program",
+  "choose_subject_and_program_headline": "Choose subject\nand program",
+  "select_thing": "Select {thing}",
+  "@select_thing": {
+    "placeholders": {
+      "thing": {
+        "type": "String"
+      }
+    }
+  },
+  "subject": "Subject",
+  "math": "Math",
+  "english": "English"
 }

@@ -1,4 +1,4 @@
-part of 'theme.dart';
+part of 'themes.dart';
 
 extension XTextTheme on TextTheme {
   TextStyle get heading1 => headlineMedium!.copyWith(

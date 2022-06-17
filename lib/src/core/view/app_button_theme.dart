@@ -1,4 +1,4 @@
-part of 'theme.dart';
+part of 'themes.dart';
 
 enum ButtonSize {
   small,

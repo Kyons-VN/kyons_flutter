@@ -59,13 +59,22 @@ Future<Option> saveRefreshToken(String refreshToken) async {
 Reader<IAuth, Future<Either<AuthFailure, Unit>>> signInEmailPassword(
     {required String emailAddress, required String password}) {
   return Reader(
-    (api) => _isValid(emailAddress).flatMapTask((email) => _signIn(EmailAddress(email), password, api)).run(),
+    (api) => _isValid(emailAddress)
+        .flatMap((_) => _isNotEmpty(password))
+        .flatMapTask((_) => _signIn(EmailAddress(emailAddress), password, api))
+        .run(),
   );
 }
 
 IOEither<AuthFailure, String> _isValid(String email) => IOEither.fromPredicate(
       email,
       (a) => EmailAddress(a).isValid(),
+      (_) => const AuthFailure.invalidEmailPassword(),
+    );
+
+IOEither<AuthFailure, String> _isNotEmpty(String password) => IOEither.fromPredicate(
+      password,
+      (a) => password.isNotEmpty,
       (_) => const AuthFailure.invalidEmailPassword(),
     );
 
@@ -104,7 +113,7 @@ class Auth implements IAuth {
     required EmailAddress emailAddress,
     required String password,
   }) async {
-    final response = api.post('$SERVER_API/auth/sign_in', data: {
+    final response = api.post('$serverApi/auth/sign_in', data: {
       'username': emailAddress.getValueOrError(),
       'password': password,
     });
@@ -138,7 +147,7 @@ class Auth implements IAuth {
     final token = await getToken();
     final email = await getEmail();
     // final intercepter = Api();
-    final response = api.get('$SERVER_API/auth/get_user',
+    final response = api.get('$serverApi/auth/get_user',
         queryParameters: {'email': email},
         options: Options(headers: {
           'Authorization': 'Bearer $token',

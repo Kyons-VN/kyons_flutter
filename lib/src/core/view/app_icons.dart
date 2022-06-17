@@ -1,4 +1,4 @@
-part of 'theme.dart';
+part of 'themes.dart';
 
 class AppIcons {
   AppIcons._();
@@ -86,7 +86,7 @@ class ElevatedIconButton extends StatelessWidget {
         width: 48.0,
         decoration: BoxDecoration(
           color: AppColors.orange,
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(AppSizesUnit.small8),
           boxShadow: [
             BoxShadow(
               color: AppColors.orange.withOpacity(0.2),

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 
-const SERVER_API = 'https://api.tuhoconline.org';
+const serverApi = 'https://api.tuhoconline.org';
 
 @LazySingleton()
 class Api {
@@ -30,6 +30,8 @@ class Api {
       return handler.next(error);
     }));
   }
+
+  factory Api.init() => Api._();
 
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
     final options = Options(

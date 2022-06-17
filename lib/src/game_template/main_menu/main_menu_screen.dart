@@ -24,6 +24,8 @@ class MainMenuScreen extends StatelessWidget {
     final gamesServicesController = context.watch<GamesServicesController?>();
     final settingsController = context.watch<SettingsController>();
     final audioController = context.watch<AudioController>();
+    settingsController.isInGame.value = true;
+    settingsController.loadStateFromPersistence();
 
     return Scaffold(
       backgroundColor: palette.backgroundMain,
@@ -91,7 +93,11 @@ class MainMenuScreen extends StatelessWidget {
             ),
             _gap,
             TextButton(
-              onPressed: () => context.go(AppPaths.home.path),
+              onPressed: () {
+                settingsController.isInGame.value = false;
+                settingsController.loadStateFromPersistence();
+                context.go(AppPaths.home.path);
+              },
               child: const Text('Back to main page'),
             ),
             _gap,

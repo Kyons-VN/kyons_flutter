@@ -10,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/boostrap/config_reader.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/core/view/theme.dart';
+import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/game_template/ads/ads_controller.dart';
 import 'package:kyons_flutter/src/game_template/crashlytics/crashlytics.dart';
 import 'package:kyons_flutter/src/game_template/game_main.dart';
@@ -164,6 +164,7 @@ class AppWidget extends HookConsumerWidget {
           // themeMode: settingsNotifierProvider.themeMode,
           routeInformationParser: AppRouter.router.routeInformationParser,
           routerDelegate: AppRouter.router.routerDelegate,
+          routeInformationProvider: AppRouter.router.routeInformationProvider,
         );
       },
     );

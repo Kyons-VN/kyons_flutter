@@ -51,7 +51,7 @@ class GameMain extends StatelessWidget {
             lazy: false,
             create: (context) => SettingsController(
               persistence: settingsPersistence,
-            )..loadStateFromPersistence(),
+            ),
           ),
           ProxyProvider2<SettingsController, ValueNotifier<AppLifecycleState>, AudioController>(
             // Ensures that the AudioController is created on startup,

@@ -20,10 +20,10 @@ class SettingsController {
   ValueNotifier<bool> soundsOn = ValueNotifier(false);
 
   ValueNotifier<bool> musicOn = ValueNotifier(false);
+  ValueNotifier<bool> isInGame = ValueNotifier(false);
 
   /// Creates a new instance of [SettingsController] backed by [persistence].
-  SettingsController({required SettingsPersistence persistence})
-      : _persistence = persistence;
+  SettingsController({required SettingsPersistence persistence}) : _persistence = persistence;
 
   /// Asynchronously loads values from the injected persistence store.
   Future<void> loadStateFromPersistence() async {
@@ -33,7 +33,7 @@ class SettingsController {
           // we start muted there.
           // On any other platform, we start unmuted.
           .getMuted(defaultValue: kIsWeb)
-          .then((value) => muted.value = value),
+          .then((value) => muted.value = value || !isInGame.value),
       _persistence.getSoundsOn().then((value) => soundsOn.value = value),
       _persistence.getMusicOn().then((value) => musicOn.value = value),
       _persistence.getPlayerName().then((value) => playerName.value = value),

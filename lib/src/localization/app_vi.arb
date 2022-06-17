@@ -35,5 +35,17 @@
   "success": "Thành công",
   "fail": "Không thành công",
   "back": "Trở về",
-  "choose_subject_and_program": "Bạn hãy chọn môn và chương trình học"
+  "choose_subject_and_program": "Bạn hãy chọn môn và chương trình học",
+  "choose_subject_and_program_headline": "Chọn môn\n& chương trình học",
+  "select_thing": "Chọn {thing}",
+  "@select_thing": {
+    "placeholders": {
+      "thing": {
+        "type": "String"
+      }
+    }
+  },
+  "subject": "Môn",
+  "math": "Toán",
+  "english": "Tiếng Anh"
 }

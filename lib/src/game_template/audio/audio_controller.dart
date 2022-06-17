@@ -53,11 +53,9 @@ class AudioController {
   AudioController({int polyphony = 2})
       : assert(polyphony >= 1),
         _musicPlayer = AudioPlayer(playerId: 'musicPlayer'),
-        _sfxPlayers = Iterable.generate(
-            polyphony,
-            (i) => AudioPlayer(
-                playerId: 'sfxPlayer#$i',
-                mode: PlayerMode.LOW_LATENCY)).toList(growable: false),
+        _sfxPlayers =
+            Iterable.generate(polyphony, (i) => AudioPlayer(playerId: 'sfxPlayer#$i', mode: PlayerMode.LOW_LATENCY))
+                .toList(growable: false),
         _playlist = Queue.of(List<Song>.of(songs)..shuffle()) {
     _musicCache = AudioCache(
       fixedPlayer: _musicPlayer,
@@ -74,8 +72,7 @@ class AudioController {
   /// Enables the [AudioController] to listen to [AppLifecycleState] events,
   /// and therefore do things like stopping playback when the game
   /// goes into the background.
-  void attachLifecycleNotifier(
-      ValueNotifier<AppLifecycleState> lifecycleNotifier) {
+  void attachLifecycleNotifier(ValueNotifier<AppLifecycleState> lifecycleNotifier) {
     _lifecycleNotifier?.removeListener(_handleAppLifecycle);
 
     lifecycleNotifier.addListener(_handleAppLifecycle);
@@ -127,8 +124,7 @@ class AudioController {
     // This assumes there is only a limited number of sound effects in the game.
     // If there are hundreds of long sound effect files, it's better
     // to be more selective when preloading.
-    await _sfxCache
-        .loadAll(SfxType.values.expand(soundTypeToFilename).toList());
+    await _sfxCache.loadAll(SfxType.values.expand(soundTypeToFilename).toList());
   }
 
   /// Plays a single sound effect, defined by [type].
@@ -144,8 +140,11 @@ class AudioController {
     }
     final soundsOn = _settings?.soundsOn.value ?? false;
     if (!soundsOn) {
-      _log.info(() =>
-          'Ignoring playing sound ($type) because sounds are turned off.');
+      _log.info(() => 'Ignoring playing sound ($type) because sounds are turned off.');
+      return;
+    }
+    final isInGame = _settings?.isInGame.value ?? false;
+    if (!isInGame) {
       return;
     }
 

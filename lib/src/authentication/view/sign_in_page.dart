@@ -6,7 +6,7 @@ import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/sign_in_provider.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/assets.dart';
-import 'package:kyons_flutter/src/core/view/theme.dart';
+import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 
@@ -97,7 +97,7 @@ class SignInForm extends HookConsumerWidget {
             },
             keyboardType: TextInputType.emailAddress,
           ),
-          AppSpacings.sizedBox16,
+          AppSizesUnit.sizedBox16,
           TextFormField(
             autovalidateMode: signInState.shouldShowErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,
             decoration: InputDecoration(
@@ -108,7 +108,7 @@ class SignInForm extends HookConsumerWidget {
             onChanged: signInNotifier.passwordChanged,
             validator: (_) => signInState.password.isEmpty ? t(context).invalidThing(t(context).password) : null,
           ),
-          AppSpacings.sizedBox24,
+          AppSizesUnit.sizedBox24,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

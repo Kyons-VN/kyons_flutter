@@ -9,8 +9,7 @@ import 'settings_persistence.dart';
 /// An implementation of [SettingsPersistence] that uses
 /// `package:shared_preferences`.
 class LocalStorageSettingsPersistence extends SettingsPersistence {
-  final Future<SharedPreferences> instanceFuture =
-      SharedPreferences.getInstance();
+  final Future<SharedPreferences> instanceFuture = SharedPreferences.getInstance();
 
   @override
   Future<bool> getMusicOn() async {
