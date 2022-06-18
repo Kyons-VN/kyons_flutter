@@ -65,6 +65,26 @@ class Knowledge implements IKnowledge {
         id: '2',
         name: 'Toán 10',
       ),
+      Subject(
+        id: '3',
+        name: 'Flutter',
+      ),
+      Subject(
+        id: '4',
+        name: 'Firebase',
+      ),
+      Subject(
+        id: '5',
+        name: 'Dart',
+      ),
+      Subject(
+        id: '6',
+        name: 'Rust',
+      ),
+      Subject(
+        id: '7',
+        name: 'Python',
+      ),
     ]);
   }
 }

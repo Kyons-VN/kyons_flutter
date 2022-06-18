@@ -1,0 +1,19 @@
+{
+  "name": "kyons_flutter",
+  "version": "1.0.0",
+  "description": "A new Flutter project.",
+  "scripts": {
+    "build-web": "flutter build web --base-href \"/m/\" --web-renderer canvaskit --target=\"lib/main_dev.dart\"",
+    "build-runner": "flutter pub run build_runner build --delete-conflicting-outputs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mibi2007/kyons_flutter.git"
+  },
+  "author": "Binh Huynh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mibi2007/kyons_flutter/issues"
+  },
+  "homepage": "https://github.com/mibi2007/kyons_flutter#readme"
+}

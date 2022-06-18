@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kyons_flutter/src/core/domain/knowledge.dart';
+import 'package:kyons_flutter/src/core/data/knowledge.dart';
 
 part 'knowledge_dto.freezed.dart';
 part 'knowledge_dto.g.dart';

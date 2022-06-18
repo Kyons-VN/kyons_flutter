@@ -78,18 +78,27 @@ ThemeData lightTheme() => ThemeData.light().copyWith(
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(AppColors.orange),
+        backgroundColor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.disabled)) {
+            return AppColors.blueGray200;
+          }
+          return AppColors.orange;
+        }),
         foregroundColor: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.pressed)) return AppColors.lightOrange3;
+          if (states.contains(MaterialState.disabled)) return AppColors.blueGray400;
           return AppColors.white;
         }),
         overlayColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.hovered)) return AppColors.lightOrange2;
-          if (states.contains(MaterialState.pressed)) return AppColors.orange;
-          return null;
+          if (states.contains(MaterialState.disabled)) {
+            return AppColors.blueGray200;
+          }
+          return AppColors.orange;
         }),
-        textStyle:
-            MaterialStateProperty.all(const TextStyle(fontWeight: FontWeight.w600, fontSize: AppFontSizes.button)),
+        textStyle: MaterialStateProperty.all(const TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: AppFontSizes.button,
+        )),
         shape:
             MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizesUnit.small5))),
         elevation: MaterialStateProperty.resolveWith((states) {
@@ -97,6 +106,10 @@ ThemeData lightTheme() => ThemeData.light().copyWith(
           return null;
         }),
         padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17, horizontal: 20)),
+        mouseCursor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.disabled)) return SystemMouseCursors.forbidden;
+          return SystemMouseCursors.click;
+        }),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
@@ -117,26 +130,42 @@ ThemeData lightTheme() => ThemeData.light().copyWith(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(AppColors.white),
         foregroundColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
-            return AppColors.blueGray300;
-          }
+          if (states.contains(MaterialState.disabled)) return AppColors.blueGray400;
           return AppColors.orange;
         }),
-        overlayColor: MaterialStateProperty.all(AppColors.white),
-        textStyle: MaterialStateProperty.all(const TextStyle(fontWeight: FontWeight.w600, fontSize: 30)),
+        overlayColor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.disabled)) return AppColors.blueGray300;
+          return AppColors.white;
+        }),
+        textStyle: MaterialStateProperty.resolveWith((states) {
+          return TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: AppFontSizes.button,
+            color: states.contains(MaterialState.disabled) ? AppColors.blueGray300 : AppColors.orange,
+          );
+        }),
         shape: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.hovered)) {
-            return RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(AppSizesUnit.small5),
-                side: const BorderSide(color: AppColors.orange));
-          }
           return RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppSizesUnit.small5),
-              side: const BorderSide(color: AppColors.blueGray300));
+            borderRadius: BorderRadius.circular(AppSizesUnit.small5),
+          );
+        }),
+        side: MaterialStateProperty.resolveWith((states) {
+          Color borderColor = AppColors.blueGray300;
+          if (states.contains(MaterialState.hovered)) {
+            borderColor = AppColors.orange;
+          }
+          return BorderSide(
+            color: borderColor,
+          );
         }),
         elevation: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.hovered)) return 1;
           return null;
+        }),
+        padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 17, horizontal: 20)),
+        mouseCursor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.disabled)) return SystemMouseCursors.forbidden;
+          return SystemMouseCursors.click;
         }),
       ),
     ),
