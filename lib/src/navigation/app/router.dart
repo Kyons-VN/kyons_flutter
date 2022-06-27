@@ -4,8 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/authentication/view/sign_in_page.dart';
 import 'package:kyons_flutter/src/design/view/design_page.dart';
-import 'package:kyons_flutter/src/diagnostic_test/view/diagnostic_test_decision_page.dart';
-import 'package:kyons_flutter/src/diagnostic_test/view/diagnostic_test_page.dart';
 import 'package:kyons_flutter/src/game_template/game_route.dart';
 import 'package:kyons_flutter/src/home/view/home_page.dart';
 import 'package:kyons_flutter/src/learning_path/view/learning_path_page.dart';
@@ -14,6 +12,7 @@ import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:kyons_flutter/src/settings/view/language_settings_page.dart';
 import 'package:kyons_flutter/src/settings/view/settings_page.dart';
 import 'package:kyons_flutter/src/settings/view/theme_settings_page.dart';
+import 'package:kyons_flutter/src/test_knowledge/view/diagnostic_test_page.dart';
 
 class AppRouter {
   AppRouter._();
@@ -79,11 +78,6 @@ class AppRouter {
           redirect: (state) => guard(state, ref),
         ),
         GoRoute(
-          path: AppPaths.diagnosticTestDecision.path,
-          builder: (BuildContext context, GoRouterState state) => const DiagnosticTestDecisionPage(),
-          redirect: (state) => guard(state, ref),
-        ),
-        GoRoute(
           path: AppPaths.diagnosticTest.path,
           builder: (BuildContext context, GoRouterState state) => const DiagnosticTestPage(),
           redirect: (state) => guard(state, ref),
@@ -100,6 +94,7 @@ class AppRouter {
     );
 
     isInitialized = true;
+
     return AppRouter._();
   }
 

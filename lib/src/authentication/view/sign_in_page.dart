@@ -114,10 +114,12 @@ class SignInForm extends HookConsumerWidget {
             children: [
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {
-                    FocusScope.of(context).unfocus();
-                    signInNotifier.signInBtnPressed();
-                  },
+                  onPressed: signInState.isSubmitting
+                      ? null
+                      : () {
+                          FocusScope.of(context).unfocus();
+                          signInNotifier.signInBtnPressed();
+                        },
                   child: Text(
                     t(context).signIn,
                   ),

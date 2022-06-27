@@ -12,7 +12,7 @@ part 'auth_state.dart';
 class AuthNotifier extends StateNotifier<AuthState> {
   final IAuth authApi;
   AuthNotifier._(this.authApi) : super(const AuthState.initial());
-  // final AuthService authService;
+  factory AuthNotifier(IAuth authApi) => AuthNotifier._(authApi);
 
   Future<Unit> stateChanged() async {
     state = const AuthState.loading();
@@ -27,6 +27,11 @@ class AuthNotifier extends StateNotifier<AuthState> {
     state = const AuthState.loading();
     await auth_service.signOut().run(authApi);
     return Future.value(unit);
+  }
+
+  Future<bool> isSignedIn() async {
+    final isSignIn = await auth_service.getToken();
+    return isSignIn.isNotEmpty;
   }
 }
 

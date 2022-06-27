@@ -1,29 +1,36 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:injectable/injectable.dart';
+import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 
 const serverApi = 'https://api.tuhoconline.org';
 
-@LazySingleton()
 class Api {
-  Api._();
   final Dio api = Dio();
-  String? accessToken;
+  String accessToken = '';
+  String refreshToken = '';
 
   final _storage = const FlutterSecureStorage();
 
-  Api() {
+  Api._() {
     api.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
+      if (accessToken.isEmpty) {
+        accessToken = await _storage.read(key: 'token') ?? '';
+      }
       if (!options.path.contains('http')) {
-        options.path = 'https://api.tuhoconline.org${options.path}';
+        options.path = '$serverApi${options.path}';
       }
       options.headers['Authorization'] = 'Bearer $accessToken';
       return handler.next(options);
     }, onError: (DioError error, handler) async {
       if ((error.response?.statusCode == 401 && error.response?.data['message'] == "Invalid JWT")) {
-        if (await _storage.containsKey(key: 'refreshToken')) {
-          if (await refreshToken()) {
-            return handler.resolve(await _retry(error.requestOptions));
+        if (refreshToken.isEmpty) {
+          refreshToken = await _storage.read(key: 'refreshToken') ?? '';
+          if (refreshToken.isEmpty) {
+            if (await getRefreshToken()) {
+              return handler.resolve(await _retry(error.requestOptions));
+            }
           }
         }
       }
@@ -42,7 +49,7 @@ class Api {
         data: requestOptions.data, queryParameters: requestOptions.queryParameters, options: options);
   }
 
-  Future<bool> refreshToken() async {
+  Future<bool> getRefreshToken() async {
     final refreshToken = await _storage.read(key: 'refreshToken');
     final response = await api.post('/auth/refresh', data: {'refreshToken': refreshToken});
 
@@ -51,9 +58,24 @@ class Api {
       return true;
     } else {
       // refresh token is wrong
-      accessToken = null;
+      accessToken = '';
       _storage.deleteAll();
       return false;
     }
   }
+}
+
+ApiFailure handleError(error, StackTrace __) {
+  print(error);
+  if (error is ApiFailure) return error;
+  return const ApiFailure.serverError();
+}
+
+dynamic handleResponseError(Response<dynamic> res) {
+  print(res.statusCode);
+  if (res.statusCode != 200) {
+    print(res.statusMessage);
+    return Future.error(const ApiFailure.serverError());
+  }
+  return res.data;
 }

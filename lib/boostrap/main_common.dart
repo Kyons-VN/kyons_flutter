@@ -9,6 +9,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/boostrap/config_reader.dart';
+import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/game_template/ads/ads_controller.dart';
@@ -43,13 +44,25 @@ Future<void> mainCommon(String env) async {
     guardedMain,
     crashlytics: crashlytics,
   );
-
-  // runApp(const ProviderScope(
-  //   child: AppWidget(),
-  // ));
 }
 
 Logger _log = Logger('main_dev.dart');
+
+class LoggerProviderObserver extends ProviderObserver {
+  @override
+  void didUpdateProvider(
+    ProviderBase provider,
+    Object? previousValue,
+    Object? newValue,
+    ProviderContainer container,
+  ) {
+    _log.info('''
+{
+  "provider": "${provider.name ?? provider.runtimeType}",
+  "newValue": "$newValue"
+}''');
+  }
+}
 
 void guardedMain() {
   if (kReleaseMode) {
@@ -97,15 +110,17 @@ void guardedMain() {
   //   // Ask the store what the player has bought already.
   //   inAppPurchaseController.restorePurchases();
   // }
+  final container = ProviderContainer(observers: [LoggerProviderObserver()]);
 
-  runApp(ProviderScope(
+  runApp(UncontrolledProviderScope(
+    container: container,
     child: GameMain(
       settingsPersistence: LocalStorageSettingsPersistence(),
       playerProgressPersistence: LocalStoragePlayerProgressPersistence(),
       inAppPurchaseController: inAppPurchaseController,
       adsController: adsController,
       gamesServicesController: gamesServicesController,
-      child: const AppWidget(),
+      child: kIsWeb ? const WebAppWidget() : const AppWidget(),
     ),
   ));
 }
@@ -121,52 +136,78 @@ class AppWidget extends HookConsumerWidget {
     //
     // The AnimatedBuilder Widget listens to the SettingsController for changes.
     // Whenever the user updates their settings, the MaterialApp is rebuilt.
-    final settingsProvider = ref.watch(settingsNotifierProvider);
     AppRouter.init(ref);
-    return AnimatedBuilder(
-      animation: settingsProvider,
-      builder: (BuildContext context, Widget? child) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          // Providing a restorationScopeId allows the Navigator built by the
-          // MaterialApp to restore the navigation stack when a user leaves and
-          // returns to the app after it has been killed while running in the
-          // background.
-          restorationScopeId: 'app',
+    return _builder(ref);
+  }
+}
 
-          // Provide the generated AppLocalizations to the MaterialApp. This
-          // allows descendant Widgets to display the correct translations
-          // depending on the user's locale.
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('vi', ''),
-            Locale('en', ''), // English, no country code
-          ],
-          locale: settingsProvider.locale,
+class WebAppWidget extends HookConsumerWidget {
+  const WebAppWidget({
+    Key? key,
+  }) : super(key: key);
 
-          // Use AppLocalizations to configure the correct application title
-          // depending on the user's locale.
-          //
-          // The appTitle is defined in .arb files found in the localization
-          // directory.
-          onGenerateTitle: (BuildContext context) => t(context).appTitle,
-
-          // Define a light and dark color theme. Then, read the user's
-          // preferred ThemeMode (light, dark, or system default) from the
-          // SettingsController to display the correct theme.
-          theme: lightTheme(),
-          // darkTheme: darkTheme(),
-          // themeMode: settingsNotifierProvider.themeMode,
-          routeInformationParser: AppRouter.router.routeInformationParser,
-          routerDelegate: AppRouter.router.routerDelegate,
-          routeInformationProvider: AppRouter.router.routeInformationProvider,
-        );
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Glue the SettingsController to the MaterialApp.
+    //
+    // The AnimatedBuilder Widget listens to the SettingsController for changes.
+    // Whenever the user updates their settings, the MaterialApp is rebuilt.
+    AppRouter.init(ref);
+    final authProvider = ref.read(authNotifierProvider.notifier);
+    return FutureBuilder(
+      future: authProvider.stateChanged(),
+      builder: (context, snapshot) {
+        return _builder(ref);
       },
     );
   }
+}
+
+AnimatedBuilder _builder(WidgetRef ref) {
+  final settingsProvider = ref.watch(settingsNotifierProvider);
+  return AnimatedBuilder(
+    animation: settingsProvider,
+    builder: (BuildContext context, Widget? child) {
+      return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        // Providing a restorationScopeId allows the Navigator built by the
+        // MaterialApp to restore the navigation stack when a user leaves and
+        // returns to the app after it has been killed while running in the
+        // background.
+        restorationScopeId: 'app',
+
+        // Provide the generated AppLocalizations to the MaterialApp. This
+        // allows descendant Widgets to display the correct translations
+        // depending on the user's locale.
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('vi', ''),
+          Locale('en', ''), // English, no country code
+        ],
+        locale: settingsProvider.locale,
+
+        // Use AppLocalizations to configure the correct application title
+        // depending on the user's locale.
+        //
+        // The appTitle is defined in .arb files found in the localization
+        // directory.
+        onGenerateTitle: (BuildContext context) => t(context).appTitle,
+
+        // Define a light and dark color theme. Then, read the user's
+        // preferred ThemeMode (light, dark, or system default) from the
+        // SettingsController to display the correct theme.
+        theme: lightTheme(),
+        // darkTheme: darkTheme(),
+        // themeMode: settingsNotifierProvider.themeMode,
+        routeInformationParser: AppRouter.router.routeInformationParser,
+        routerDelegate: AppRouter.router.routerDelegate,
+        routeInformationProvider: AppRouter.router.routeInformationProvider,
+      );
+    },
+  );
 }

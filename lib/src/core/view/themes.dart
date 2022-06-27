@@ -114,16 +114,17 @@ ThemeData lightTheme() => ThemeData.light().copyWith(
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all(Colors.orange),
-        overlayColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.hovered)) return AppColors.lightOrange2;
-          if (states.contains(MaterialState.pressed)) return AppColors.lightOrange3;
-          return null;
-        }),
+        backgroundColor: MaterialStateProperty.all(Colors.transparent),
+        foregroundColor: MaterialStateProperty.all(AppColors.orange),
+        overlayColor: MaterialStateProperty.all(Colors.transparent),
         textStyle: MaterialStateProperty.all(
           const TextStyle(
               fontWeight: FontWeight.w600, fontSize: AppFontSizes.button, decoration: (TextDecoration.underline)),
         ),
+        mouseCursor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.disabled)) return SystemMouseCursors.forbidden;
+          return MaterialStateMouseCursor.clickable;
+        }),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:kyons_flutter/src/authentication/data/user_dto.dart';
 import 'package:kyons_flutter/src/authentication/domain/auth_failures.dart';
@@ -26,19 +27,30 @@ Future<Option<User>> getCurrentUser() async {
   }
 }
 
+Future<String> getCurrentUserId() async {
+  final prefs = await SharedPreferences.getInstance();
+  final userPref = prefs.getString('user');
+  if (userPref == null) {
+    return '';
+  } else {
+    return UserDto.fromJson(jsonDecode(userPref)).toDomain().id;
+  }
+}
+
 Future<Option> setCurrentUser(User user) async {
   final prefs = await SharedPreferences.getInstance();
   return await prefs.setString('user', jsonEncode(user.toJson())).then((value) => optionOf(value ? value : null));
 }
 
 Future<Option> saveToken(String token) async {
-  final prefs = await SharedPreferences.getInstance();
-  return await prefs.setString('token', token).then((value) => optionOf(value ? value : null));
+  // final prefs = await SharedPreferences.getInstance();
+  const storage = FlutterSecureStorage();
+  return await storage.write(key: 'token', value: token).then((value) => some(unit), onError: (error) => none());
 }
 
 Future<String> getToken() async {
-  final prefs = await SharedPreferences.getInstance();
-  return Future.value(prefs.getString('token') ?? '');
+  const storage = FlutterSecureStorage();
+  return await storage.read(key: 'token') ?? '';
 }
 
 Future<Option> saveEmail(String email) async {
@@ -52,8 +64,10 @@ Future<String> getEmail() async {
 }
 
 Future<Option> saveRefreshToken(String refreshToken) async {
-  final prefs = await SharedPreferences.getInstance();
-  return await prefs.setString('refresh_token', refreshToken).then((value) => optionOf(value ? value : null));
+  const storage = FlutterSecureStorage();
+  return await storage
+      .write(key: 'refresh_token', value: refreshToken)
+      .then((value) => some(unit), onError: (error) => none());
 }
 
 Reader<IAuth, Future<Either<AuthFailure, Unit>>> signInEmailPassword(
@@ -172,10 +186,8 @@ class Auth implements IAuth {
 
   @override
   Future<Unit> signOut() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.remove('token');
-    prefs.remove('refresh_token');
-    return Future.value(unit);
+    const storage = FlutterSecureStorage();
+    return await storage.deleteAll().then((value) => unit);
   }
 }
 

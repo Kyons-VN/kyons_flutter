@@ -1,10 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/main.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/assets.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
+import 'package:kyons_flutter/src/core/view/widgets/option_picker.dart';
+import 'package:kyons_flutter/src/home/app/home_provider.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
+import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
 import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
 
@@ -13,7 +18,7 @@ class HomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int _selectedSubject = 0;
+    final homeNotifier = ref.read(homeNotifierProvider.notifier);
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -36,11 +41,13 @@ class HomePage extends HookConsumerWidget {
                 child: Center(
                   child: Column(
                     children: [
+                      // Text(homeState.selectedSubjectOption.getOrElse(() => Subject.empty()).toJson().toString()),
                       AppAssets.chooseSubjectSVG,
                       AppSizesUnit.sizedBox24,
                       Text(
                         t(context).choose_subject_and_program,
-                        style: Theme.of(context).textTheme.headline6,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.heading6,
                       ),
                       Expanded(child: Container()),
                       Column(
@@ -50,6 +57,7 @@ class HomePage extends HookConsumerWidget {
                             cursor: SystemMouseCursors.click,
                             child: ElevatedIconButton(
                               onPressed: () {
+                                homeNotifier.initial();
                                 showModalBottomSheet<void>(
                                   context: context,
                                   isScrollControlled: true,
@@ -57,7 +65,7 @@ class HomePage extends HookConsumerWidget {
                                     return SafeArea(
                                       child: Wrap(
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             height: MediaQuery.of(context).size.height - 150,
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,22 +77,10 @@ class HomePage extends HookConsumerWidget {
                                                     painter: LinePainter(),
                                                   ),
                                                 ),
-                                                const SizedBox(height: AppSizesUnit.large48),
-                                                Padding(
-                                                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
-                                                        t(context).choose_subject_and_program_headline,
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headline4!
-                                                            .copyWith(color: AppColors.white),
-                                                      ),
-                                                      const SizedBox(height: AppSizesUnit.large48),
-                                                      const CupertinoPickerSample(),
-                                                    ],
-                                                  ),
+                                                AppSizesUnit.sizedBox48,
+                                                const Padding(
+                                                  padding: EdgeInsets.symmetric(horizontal: 12.0),
+                                                  child: HomeOptions(),
                                                 ),
                                                 Padding(
                                                   padding:
@@ -103,7 +99,7 @@ class HomePage extends HookConsumerWidget {
                               },
                               icon: KyonsIcons.add,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ],
@@ -114,6 +110,90 @@ class HomePage extends HookConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class HomeOptions extends HookConsumerWidget {
+  const HomeOptions({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final homeState = ref.watch(homeNotifierProvider);
+    final homeNotifier = ref.read(homeNotifierProvider.notifier);
+    if (homeState.isContinue) {
+      return Column(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: Text(
+              t(context).choose_subject_and_program_headline,
+              style: Theme.of(context).textTheme.heading4.copyWith(color: AppColors.white),
+            ),
+          ),
+          AppSizesUnit.sizedBox48,
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+                context.go(AppPaths.diagnosticTest.path);
+              },
+              child: Text(t(context).do_diagnostictest_btn),
+            ),
+          ),
+          AppSizesUnit.sizedBox8,
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton(
+              onPressed: () {
+                Navigator.pop(context);
+                homeNotifier.defaultLearningPath();
+              },
+              child: Text(t(context).do_diagnostictest_cancel),
+            ),
+          ),
+        ],
+      );
+    }
+    return Column(
+      children: [
+        SizedBox(
+          width: double.infinity,
+          child: Text(
+            t(context).choose_subject_and_program_headline,
+            style: Theme.of(context).textTheme.heading4.copyWith(color: AppColors.white),
+          ),
+        ),
+        AppSizesUnit.sizedBox48,
+        CupertinoPickerOptions<Subject>(
+          options: homeState.subjectsOption.getOrElse(() => right([])).getOrElse((l) => []).toList(),
+          onPicked: homeNotifier.setSelectedSubject,
+          selectedOption: homeState.selectedSubjectOption.getOrElse(() => Subject.empty()),
+        ),
+        AppSizesUnit.sizedBox16,
+        CupertinoPickerOptions<Program>(
+          options: homeState.programsOption.getOrElse(() => []),
+          onPicked: homeNotifier.setSelectedProgram,
+          selectedOption: homeState.selectedProgramOption.getOrElse(() => Program(id: '', name: '', subjectId: '')),
+        ),
+        AppSizesUnit.sizedBox24,
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: homeNotifier.start,
+            child: Text(t(context).start),
+          ),
+        ),
+        AppSizesUnit.sizedBox8,
+        SizedBox(
+          width: double.infinity,
+          child: OutlinedButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(t(context).back_to_home),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -134,94 +214,4 @@ class LinePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
-
-class CupertinoPickerSample extends StatefulWidget {
-  const CupertinoPickerSample({Key? key}) : super(key: key);
-
-  @override
-  State<CupertinoPickerSample> createState() => _CupertinoPickerSampleState();
-}
-
-class _CupertinoPickerSampleState extends State<CupertinoPickerSample> {
-  int _selectedSubject = 0;
-
-  // This shows a CupertinoModalPopup with a reasonable fixed height which hosts CupertinoPicker.
-  void _showDialog(Widget child) {
-    showCupertinoModalPopup<void>(
-        barrierColor: Colors.transparent,
-        context: context,
-        builder: (BuildContext context) => Container(
-              height: 216,
-              padding: const EdgeInsets.only(top: 6.0),
-              // The Bottom margin is provided to align the popup above the system navigation bar.
-              margin: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-              ),
-              // Provide a background color for the popup.
-              color: CupertinoColors.systemBackground.resolveFrom(context),
-              // Use a SafeArea widget to avoid system overlaps.
-              child: SafeArea(
-                top: false,
-                child: child,
-              ),
-            ));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    const double _kItemExtent = 32.0;
-    final List<String> _fruitNames = <String>[
-      firstCapital(t(context).select_thing(t(context).subject)),
-      t(context).math,
-      t(context).english,
-    ];
-    return GestureDetector(
-      // Display a CupertinoPicker with list of fruits.
-      onTap: () => _showDialog(
-        CupertinoPicker(
-          magnification: 1.22,
-          squeeze: 1.2,
-          useMagnifier: true,
-          itemExtent: _kItemExtent,
-          // This is called when selected item is changed.
-          onSelectedItemChanged: (int selectedItem) {
-            setState(() {
-              _selectedSubject = selectedItem;
-            });
-          },
-          children: List<Widget>.generate(_fruitNames.length, (int index) {
-            return Center(
-              child: Text(
-                _fruitNames[index],
-              ),
-            );
-          }),
-        ),
-      ),
-      child: FocusableActionDetector(
-        mouseCursor: SystemMouseCursors.click,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 9.5),
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(AppSizesUnit.small5),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                _fruitNames[_selectedSubject],
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              const Icon(
-                AppIcons.arrowDown,
-                color: AppColors.primaryBlue,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }

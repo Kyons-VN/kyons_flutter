@@ -47,5 +47,10 @@
   },
   "subject": "Subject",
   "math": "Math",
-  "english": "English"
+  "english": "English",
+  "start": "Start",
+  "back_to_home": "Back to Home",
+  "do_diagnostictest_heading": "Will have\na diagnostictest",
+  "do_diagnostictest_btn": "Make diagnostic test",
+  "do_diagnostictest_cancel": "No, just let me in!"
 }

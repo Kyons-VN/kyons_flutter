@@ -35,7 +35,7 @@
   "success": "Thành công",
   "fail": "Không thành công",
   "back": "Trở về",
-  "choose_subject_and_program": "Bạn hãy chọn môn và chương trình học",
+  "choose_subject_and_program": "Bạn hãy chọn môn và\nchương trình học",
   "choose_subject_and_program_headline": "Chọn môn\n& chương trình học",
   "select_thing": "Chọn {thing}",
   "@select_thing": {
@@ -47,5 +47,10 @@
   },
   "subject": "Môn",
   "math": "Toán",
-  "english": "Tiếng Anh"
+  "english": "Tiếng Anh",
+  "start": "Bắt đầu",
+  "back_to_home": "Về trang chủ",
+  "do_diagnostictest_heading": "Làm bài khảo sát\ntrước nhé!",
+  "do_diagnostictest_btn": "Làm bài khảo sát trình độ",
+  "do_diagnostictest_cancel": "Thôi, không cần đâu!"
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
+import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
+import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
 import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
 
 class DiagnosticTestPage extends HookConsumerWidget {
@@ -8,21 +9,13 @@ class DiagnosticTestPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authNotifier = ref.read(authNotifierProvider.notifier);
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        appBar: AppBar(
-          leading: Builder(
-            builder: (context) => GestureDetector(
-              onTap: () {
-                Scaffold.of(context).openDrawer();
-              },
-              child: const Icon(Icons.menu),
-            ),
-          ),
+        appBar: const MainAppBar(
+          backPath: AppPaths.home,
         ),
-        drawer: AppDrawer(),
+        drawer: const AppDrawer(),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Center(

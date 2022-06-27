@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
+import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
 import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
 
 class DesignPage extends StatelessWidget {
@@ -10,16 +11,7 @@ class DesignPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        appBar: AppBar(
-          leading: Builder(
-            builder: (context) => GestureDetector(
-              onTap: () {
-                Scaffold.of(context).openDrawer();
-              },
-              child: const Icon(Icons.menu),
-            ),
-          ),
-        ),
+        appBar: const MainAppBar(),
         endDrawer: const AppDrawer(),
         body: SafeArea(
           child: SingleChildScrollView(
@@ -52,11 +44,15 @@ class DesignPage extends StatelessWidget {
                   const SizedBox(height: 8),
                   ElevatedButton(onPressed: () {}, child: const Text('Button')).small(context),
                   const SizedBox(height: 8),
+                  const ElevatedButton(onPressed: null, child: Text('Button')),
+                  const SizedBox(height: 8),
                   OutlinedButton(onPressed: () {}, child: const Text('Button')),
                   const SizedBox(height: 8),
                   OutlinedButton(onPressed: () {}, child: const Text('Button')).medium(context),
                   const SizedBox(height: 8),
                   OutlinedButton(onPressed: () {}, child: const Text('Button')).small(context),
+                  const SizedBox(height: 8),
+                  const OutlinedButton(onPressed: null, child: Text('Button')),
                   const SizedBox(height: 8),
                   Container(
                     width: double.infinity,
