@@ -15,7 +15,7 @@ class AppPaths {
       AppPath(path: '/diagnostic-test-decision', serverRedirectName: 'DiagnosticTest');
   static const diagnosticTest = AppPath(path: '/diagnostic-test');
   static const learningPath = AppPath(path: '/learning-path', serverRedirectName: 'LearningPath');
-  static const lessonPage = AppPath(path: '/learning-path/lesson-page');
+  static const lessonPage = AppPath(path: '/lesson-page/:id');
   static const waitingForTutor = AppPath(path: '/waiting-for-tutor');
   static const profile = AppPath(path: '/profile');
   static const pageNotfound = AppPath(path: '/page-not-found');

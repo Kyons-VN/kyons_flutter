@@ -29,3 +29,119 @@ class ProgramDto with _$ProgramDto {
   factory ProgramDto.fromJson(Map<String, dynamic> json) => _$ProgramDtoFromJson(json);
   Program toDomain() => Program(id: id.toString(), name: name, subjectId: subjectId.toString());
 }
+
+@freezed
+class LessonItemDto with _$LessonItemDto {
+  const LessonItemDto._();
+  const factory LessonItemDto({
+    required String id,
+    @JsonKey(name: 'new') required bool isNew,
+  }) = _LessonItemDto;
+
+  factory LessonItemDto.fromJson(Map<String, dynamic> json) => _$LessonItemDtoFromJson(json);
+  LessonItem toDomain() => LessonItem(id: id, isNew: isNew);
+}
+
+@freezed
+class LearningPathDto with _$LearningPathDto {
+  const LearningPathDto._();
+  const factory LearningPathDto({required List<LessonItemDto> lessonsDto}) = _LearningPathDto;
+
+  factory LearningPathDto.fromJson(Map<String, dynamic> json) => _$LearningPathDtoFromJson(json);
+  LearningPath toDomain() => LearningPath(lessonsDto.map((lessonDto) => lessonDto.toDomain()).toList());
+}
+
+@freezed
+class LessonGroupDto with _$LessonGroupDto {
+  const LessonGroupDto._();
+
+  const factory LessonGroupDto({
+    required String id,
+    required List<LessonInfoDto> lessonInfos,
+  }) = _LessonGroupDto;
+
+  factory LessonGroupDto.fromJson(Map<String, dynamic> json) => _$LessonGroupDtoFromJson(json);
+
+  LessonGroup toDomain() =>
+      LessonGroup(id: id, lessonInfos: lessonInfos.map((lessonDto) => lessonDto.toDomain()).toList());
+}
+
+@freezed
+class CategoryDto with _$CategoryDto {
+  const CategoryDto._();
+
+  const factory CategoryDto({
+    required int id,
+    required String name,
+  }) = _CategoryDto;
+
+  factory CategoryDto.fromJson(Map<String, dynamic> json) => _$CategoryDtoFromJson(json);
+
+  Category toDomain() => Category(id: id.toString(), name: name);
+}
+
+@freezed
+class TopicDto with _$TopicDto {
+  const TopicDto._();
+
+  const factory TopicDto({
+    @JsonKey(defaultValue: 0) required int id,
+    @JsonKey(defaultValue: '') required String name,
+  }) = _TopicDto;
+
+  factory TopicDto.fromJson(Map<String, dynamic> json) => _$TopicDtoFromJson(json);
+
+  Topic toDomain() {
+    if (id == 0) return Topic.empty();
+    return Topic(id: id.toString(), name: name);
+  }
+
+  factory TopicDto.fromId(int id) => TopicDto(id: id, name: '');
+}
+
+@freezed
+class LessonInfoDto with _$LessonInfoDto {
+  const LessonInfoDto._();
+
+  const factory LessonInfoDto({
+    required CategoryDto category,
+    required TopicDto topic,
+    required List<LessonDto> lessons,
+  }) = _LessonInfoDto;
+
+  factory LessonInfoDto.fromJson(Map<String, dynamic> json) => _$LessonInfoDtoFromJson(json);
+
+  LessonInfo toDomain() => LessonInfo(
+      category: category.toDomain(),
+      topic: topic.toDomain(),
+      lessons: lessons
+          .map((lessonDto) => lessonDto.toDomain(category: category.toDomain(), topic: topic.toDomain()))
+          .toList());
+}
+
+@freezed
+class LessonDto with _$LessonDto {
+  const LessonDto._();
+
+  const factory LessonDto({
+    required int id,
+    required String name,
+    @JsonKey(name: 'learning_point_id') required int learningPointId,
+    @JsonKey(name: 'learning_point_difficulty_id') required int learningPointDifficultyId,
+    @JsonKey(name: 'difficulty_level') required int difficultyLevel,
+    @JsonKey(defaultValue: '') required String content,
+  }) = _LessonDto;
+
+  factory LessonDto.fromJson(Map<String, dynamic> json) => _$LessonDtoFromJson(json);
+
+  Lesson toDomain({required Category category, required Topic topic}) => Lesson(
+        id: id.toString(),
+        difficultyLevel: difficultyLevel,
+        name: name,
+        learningPointId: learningPointId.toString(),
+        content: content,
+        category: category,
+        topic: topic,
+        learningPointDifficultyId: learningPointDifficultyId.toString(),
+      );
+}

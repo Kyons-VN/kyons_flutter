@@ -27,45 +27,32 @@ class AppDrawer extends ConsumerWidget {
             ),
             onTap: Navigator.of(context).pop,
           ),
-          ListTile(
-            leading: const Icon(AppIcons.home, color: AppColors.white),
-            title: const Text(
-              'Home',
-              style: TextStyle(color: AppColors.white),
-            ),
-            onTap: () => context.go(AppPaths.home.path),
-          ),
+          DrawerMenuItem(appPath: AppPaths.home, icon: AppIcons.home, pageName: t(context).home),
           const Divider(),
-          ListTile(
-            leading: const Icon(Icons.palette, color: AppColors.white),
-            title: const Text(
-              'Design',
-              style: TextStyle(color: AppColors.white),
-            ),
-            onTap: () {
-              context.go(AppPaths.design.path);
-            },
-          ),
+          DrawerMenuItem(
+              appPath: AppPaths.learningPath, icon: AppIcons.lessonContent, pageName: t(context).learning_path),
           const Divider(),
-          ListTile(
-            leading: const Icon(Icons.games, color: AppColors.white),
-            title: const Text(
-              'Game',
-              style: TextStyle(color: AppColors.white),
-            ),
-            onTap: () => context.go(AppPaths.game.path),
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.settings, color: AppColors.white),
-            title: const Text(
-              'Settings',
-              style: TextStyle(color: AppColors.white),
-            ),
-            onTap: () {
-              context.push(AppPaths.settings.path);
-            },
-          ),
+          DrawerMenuItem(appPath: AppPaths.settings, icon: Icons.settings, pageName: t(context).settings),
+          // ListTile(
+          //   leading: const Icon(Icons.palette, color: AppColors.white),
+          //   title: const Text(
+          //     'Design',
+          //     style: TextStyle(color: AppColors.white),
+          //   ),
+          //   onTap: () {
+          //     context.go(AppPaths.design.path);
+          //   },
+          // ),
+          // const Divider(),
+          // ListTile(
+          //   leading: const Icon(Icons.games, color: AppColors.white),
+          //   title: const Text(
+          //     'Game',
+          //     style: TextStyle(color: AppColors.white),
+          //   ),
+          //   onTap: () => context.go(AppPaths.game.path),
+          // ),
+          // const Divider(),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.logout, color: AppColors.white),
@@ -80,6 +67,31 @@ class AppDrawer extends ConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class DrawerMenuItem extends StatelessWidget {
+  final String pageName;
+  final AppPath appPath;
+  final IconData icon;
+  const DrawerMenuItem({Key? key, required this.appPath, required this.icon, required this.pageName}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final currentPath = GoRouter.of(context).location;
+    void goTo(String path) {
+      Navigator.of(context).pop();
+      if (path != currentPath) context.push(path);
+    }
+
+    return ListTile(
+      leading: Icon(icon, color: currentPath == appPath.path ? AppColors.lightBlue1 : AppColors.white),
+      title: Text(
+        pageName,
+        style: const TextStyle(color: AppColors.white),
+      ),
+      onTap: () => goTo(appPath.path),
     );
   }
 }

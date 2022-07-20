@@ -36,4 +36,8 @@ class AppColors {
   static const Color blueGray700 = Color(0xFF334155);
   static const Color blueGray800 = Color(0xFF1E293B);
   static const Color blueGray900 = Color(0xFF0F172A);
+  static const Color trasparent = Color(0x00000000);
+
+  static const Color shadow = Color.fromRGBO(0, 0, 0, 0.3);
+  static const Color buttonShadow = Color.fromRGBO(0, 0, 0, 0.1);
 }

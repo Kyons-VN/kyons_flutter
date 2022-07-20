@@ -20,10 +20,12 @@ TestContentDto _$TestContentDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TestContentDto {
+  @JsonKey(name: 'test_id', defaultValue: 0)
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'data')
+  @JsonKey(name: 'data', defaultValue: [])
   List<Map<String, dynamic>> get questions =>
       throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: false)
   bool get done => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,9 +40,12 @@ abstract class $TestContentDtoCopyWith<$Res> {
           TestContentDto value, $Res Function(TestContentDto) then) =
       _$TestContentDtoCopyWithImpl<$Res>;
   $Res call(
-      {int id,
-      @JsonKey(name: 'data') List<Map<String, dynamic>> questions,
-      bool done});
+      {@JsonKey(name: 'test_id', defaultValue: 0)
+          int id,
+      @JsonKey(name: 'data', defaultValue: [])
+          List<Map<String, dynamic>> questions,
+      @JsonKey(defaultValue: false)
+          bool done});
 }
 
 /// @nodoc
@@ -83,9 +88,12 @@ abstract class _$$_TestContentDtoCopyWith<$Res>
       __$$_TestContentDtoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int id,
-      @JsonKey(name: 'data') List<Map<String, dynamic>> questions,
-      bool done});
+      {@JsonKey(name: 'test_id', defaultValue: 0)
+          int id,
+      @JsonKey(name: 'data', defaultValue: [])
+          List<Map<String, dynamic>> questions,
+      @JsonKey(defaultValue: false)
+          bool done});
 }
 
 /// @nodoc
@@ -126,10 +134,12 @@ class __$$_TestContentDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TestContentDto extends _TestContentDto {
   const _$_TestContentDto(
-      {required this.id,
-      @JsonKey(name: 'data')
+      {@JsonKey(name: 'test_id', defaultValue: 0)
+          required this.id,
+      @JsonKey(name: 'data', defaultValue: [])
           required final List<Map<String, dynamic>> questions,
-      required this.done})
+      @JsonKey(defaultValue: false)
+          required this.done})
       : _questions = questions,
         super._();
 
@@ -137,16 +147,18 @@ class _$_TestContentDto extends _TestContentDto {
       _$$_TestContentDtoFromJson(json);
 
   @override
+  @JsonKey(name: 'test_id', defaultValue: 0)
   final int id;
   final List<Map<String, dynamic>> _questions;
   @override
-  @JsonKey(name: 'data')
+  @JsonKey(name: 'data', defaultValue: [])
   List<Map<String, dynamic>> get questions {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_questions);
   }
 
   @override
+  @JsonKey(defaultValue: false)
   final bool done;
 
   @override
@@ -186,22 +198,26 @@ class _$_TestContentDto extends _TestContentDto {
 
 abstract class _TestContentDto extends TestContentDto {
   const factory _TestContentDto(
-      {required final int id,
-      @JsonKey(name: 'data')
+      {@JsonKey(name: 'test_id', defaultValue: 0)
+          required final int id,
+      @JsonKey(name: 'data', defaultValue: [])
           required final List<Map<String, dynamic>> questions,
-      required final bool done}) = _$_TestContentDto;
+      @JsonKey(defaultValue: false)
+          required final bool done}) = _$_TestContentDto;
   const _TestContentDto._() : super._();
 
   factory _TestContentDto.fromJson(Map<String, dynamic> json) =
       _$_TestContentDto.fromJson;
 
   @override
+  @JsonKey(name: 'test_id', defaultValue: 0)
   int get id => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'data')
+  @JsonKey(name: 'data', defaultValue: [])
   List<Map<String, dynamic>> get questions =>
       throw _privateConstructorUsedError;
   @override
+  @JsonKey(defaultValue: false)
   bool get done => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -217,7 +233,22 @@ QuestionDto _$QuestionDtoFromJson(Map<String, dynamic> json) {
 mixin _$QuestionDto {
   int get id => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  @JsonKey(name: 'answer_keys')
   List<Map<String, dynamic>> get answers => throw _privateConstructorUsedError;
+  @JsonKey(name: 'learning_point_difficulty_id', defaultValue: 0)
+  int get learningPointDifficultyId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'difficulty_level', defaultValue: 0)
+  int get difficultyLevel => throw _privateConstructorUsedError;
+  @JsonKey(name: 'learning_point_id', defaultValue: 0)
+  int get learningPointId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'topic_id', defaultValue: 0)
+  int get topicId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'topic_name', defaultValue: '')
+  String get topicName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'category_id', defaultValue: 0)
+  int get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'category_name', defaultValue: '')
+  String get categoryName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -230,7 +261,25 @@ abstract class $QuestionDtoCopyWith<$Res> {
   factory $QuestionDtoCopyWith(
           QuestionDto value, $Res Function(QuestionDto) then) =
       _$QuestionDtoCopyWithImpl<$Res>;
-  $Res call({int id, String content, List<Map<String, dynamic>> answers});
+  $Res call(
+      {int id,
+      String content,
+      @JsonKey(name: 'answer_keys')
+          List<Map<String, dynamic>> answers,
+      @JsonKey(name: 'learning_point_difficulty_id', defaultValue: 0)
+          int learningPointDifficultyId,
+      @JsonKey(name: 'difficulty_level', defaultValue: 0)
+          int difficultyLevel,
+      @JsonKey(name: 'learning_point_id', defaultValue: 0)
+          int learningPointId,
+      @JsonKey(name: 'topic_id', defaultValue: 0)
+          int topicId,
+      @JsonKey(name: 'topic_name', defaultValue: '')
+          String topicName,
+      @JsonKey(name: 'category_id', defaultValue: 0)
+          int categoryId,
+      @JsonKey(name: 'category_name', defaultValue: '')
+          String categoryName});
 }
 
 /// @nodoc
@@ -246,6 +295,13 @@ class _$QuestionDtoCopyWithImpl<$Res> implements $QuestionDtoCopyWith<$Res> {
     Object? id = freezed,
     Object? content = freezed,
     Object? answers = freezed,
+    Object? learningPointDifficultyId = freezed,
+    Object? difficultyLevel = freezed,
+    Object? learningPointId = freezed,
+    Object? topicId = freezed,
+    Object? topicName = freezed,
+    Object? categoryId = freezed,
+    Object? categoryName = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -260,6 +316,34 @@ class _$QuestionDtoCopyWithImpl<$Res> implements $QuestionDtoCopyWith<$Res> {
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>,
+      learningPointDifficultyId: learningPointDifficultyId == freezed
+          ? _value.learningPointDifficultyId
+          : learningPointDifficultyId // ignore: cast_nullable_to_non_nullable
+              as int,
+      difficultyLevel: difficultyLevel == freezed
+          ? _value.difficultyLevel
+          : difficultyLevel // ignore: cast_nullable_to_non_nullable
+              as int,
+      learningPointId: learningPointId == freezed
+          ? _value.learningPointId
+          : learningPointId // ignore: cast_nullable_to_non_nullable
+              as int,
+      topicId: topicId == freezed
+          ? _value.topicId
+          : topicId // ignore: cast_nullable_to_non_nullable
+              as int,
+      topicName: topicName == freezed
+          ? _value.topicName
+          : topicName // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryId: categoryId == freezed
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      categoryName: categoryName == freezed
+          ? _value.categoryName
+          : categoryName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -271,7 +355,25 @@ abstract class _$$_QuestionDtoCopyWith<$Res>
           _$_QuestionDto value, $Res Function(_$_QuestionDto) then) =
       __$$_QuestionDtoCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String content, List<Map<String, dynamic>> answers});
+  $Res call(
+      {int id,
+      String content,
+      @JsonKey(name: 'answer_keys')
+          List<Map<String, dynamic>> answers,
+      @JsonKey(name: 'learning_point_difficulty_id', defaultValue: 0)
+          int learningPointDifficultyId,
+      @JsonKey(name: 'difficulty_level', defaultValue: 0)
+          int difficultyLevel,
+      @JsonKey(name: 'learning_point_id', defaultValue: 0)
+          int learningPointId,
+      @JsonKey(name: 'topic_id', defaultValue: 0)
+          int topicId,
+      @JsonKey(name: 'topic_name', defaultValue: '')
+          String topicName,
+      @JsonKey(name: 'category_id', defaultValue: 0)
+          int categoryId,
+      @JsonKey(name: 'category_name', defaultValue: '')
+          String categoryName});
 }
 
 /// @nodoc
@@ -289,6 +391,13 @@ class __$$_QuestionDtoCopyWithImpl<$Res> extends _$QuestionDtoCopyWithImpl<$Res>
     Object? id = freezed,
     Object? content = freezed,
     Object? answers = freezed,
+    Object? learningPointDifficultyId = freezed,
+    Object? difficultyLevel = freezed,
+    Object? learningPointId = freezed,
+    Object? topicId = freezed,
+    Object? topicName = freezed,
+    Object? categoryId = freezed,
+    Object? categoryName = freezed,
   }) {
     return _then(_$_QuestionDto(
       id: id == freezed
@@ -303,6 +412,34 @@ class __$$_QuestionDtoCopyWithImpl<$Res> extends _$QuestionDtoCopyWithImpl<$Res>
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>,
+      learningPointDifficultyId: learningPointDifficultyId == freezed
+          ? _value.learningPointDifficultyId
+          : learningPointDifficultyId // ignore: cast_nullable_to_non_nullable
+              as int,
+      difficultyLevel: difficultyLevel == freezed
+          ? _value.difficultyLevel
+          : difficultyLevel // ignore: cast_nullable_to_non_nullable
+              as int,
+      learningPointId: learningPointId == freezed
+          ? _value.learningPointId
+          : learningPointId // ignore: cast_nullable_to_non_nullable
+              as int,
+      topicId: topicId == freezed
+          ? _value.topicId
+          : topicId // ignore: cast_nullable_to_non_nullable
+              as int,
+      topicName: topicName == freezed
+          ? _value.topicName
+          : topicName // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryId: categoryId == freezed
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      categoryName: categoryName == freezed
+          ? _value.categoryName
+          : categoryName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -313,7 +450,22 @@ class _$_QuestionDto extends _QuestionDto {
   const _$_QuestionDto(
       {required this.id,
       required this.content,
-      required final List<Map<String, dynamic>> answers})
+      @JsonKey(name: 'answer_keys')
+          required final List<Map<String, dynamic>> answers,
+      @JsonKey(name: 'learning_point_difficulty_id', defaultValue: 0)
+          required this.learningPointDifficultyId,
+      @JsonKey(name: 'difficulty_level', defaultValue: 0)
+          required this.difficultyLevel,
+      @JsonKey(name: 'learning_point_id', defaultValue: 0)
+          required this.learningPointId,
+      @JsonKey(name: 'topic_id', defaultValue: 0)
+          required this.topicId,
+      @JsonKey(name: 'topic_name', defaultValue: '')
+          required this.topicName,
+      @JsonKey(name: 'category_id', defaultValue: 0)
+          required this.categoryId,
+      @JsonKey(name: 'category_name', defaultValue: '')
+          required this.categoryName})
       : _answers = answers,
         super._();
 
@@ -326,14 +478,37 @@ class _$_QuestionDto extends _QuestionDto {
   final String content;
   final List<Map<String, dynamic>> _answers;
   @override
+  @JsonKey(name: 'answer_keys')
   List<Map<String, dynamic>> get answers {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_answers);
   }
 
   @override
+  @JsonKey(name: 'learning_point_difficulty_id', defaultValue: 0)
+  final int learningPointDifficultyId;
+  @override
+  @JsonKey(name: 'difficulty_level', defaultValue: 0)
+  final int difficultyLevel;
+  @override
+  @JsonKey(name: 'learning_point_id', defaultValue: 0)
+  final int learningPointId;
+  @override
+  @JsonKey(name: 'topic_id', defaultValue: 0)
+  final int topicId;
+  @override
+  @JsonKey(name: 'topic_name', defaultValue: '')
+  final String topicName;
+  @override
+  @JsonKey(name: 'category_id', defaultValue: 0)
+  final int categoryId;
+  @override
+  @JsonKey(name: 'category_name', defaultValue: '')
+  final String categoryName;
+
+  @override
   String toString() {
-    return 'QuestionDto(id: $id, content: $content, answers: $answers)';
+    return 'QuestionDto(id: $id, content: $content, answers: $answers, learningPointDifficultyId: $learningPointDifficultyId, difficultyLevel: $difficultyLevel, learningPointId: $learningPointId, topicId: $topicId, topicName: $topicName, categoryId: $categoryId, categoryName: $categoryName)';
   }
 
   @override
@@ -343,7 +518,19 @@ class _$_QuestionDto extends _QuestionDto {
             other is _$_QuestionDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality().equals(other._answers, _answers));
+            const DeepCollectionEquality().equals(other._answers, _answers) &&
+            const DeepCollectionEquality().equals(
+                other.learningPointDifficultyId, learningPointDifficultyId) &&
+            const DeepCollectionEquality()
+                .equals(other.difficultyLevel, difficultyLevel) &&
+            const DeepCollectionEquality()
+                .equals(other.learningPointId, learningPointId) &&
+            const DeepCollectionEquality().equals(other.topicId, topicId) &&
+            const DeepCollectionEquality().equals(other.topicName, topicName) &&
+            const DeepCollectionEquality()
+                .equals(other.categoryId, categoryId) &&
+            const DeepCollectionEquality()
+                .equals(other.categoryName, categoryName));
   }
 
   @JsonKey(ignore: true)
@@ -352,7 +539,14 @@ class _$_QuestionDto extends _QuestionDto {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(_answers));
+      const DeepCollectionEquality().hash(_answers),
+      const DeepCollectionEquality().hash(learningPointDifficultyId),
+      const DeepCollectionEquality().hash(difficultyLevel),
+      const DeepCollectionEquality().hash(learningPointId),
+      const DeepCollectionEquality().hash(topicId),
+      const DeepCollectionEquality().hash(topicName),
+      const DeepCollectionEquality().hash(categoryId),
+      const DeepCollectionEquality().hash(categoryName));
 
   @JsonKey(ignore: true)
   @override
@@ -369,7 +563,22 @@ abstract class _QuestionDto extends QuestionDto {
   const factory _QuestionDto(
       {required final int id,
       required final String content,
-      required final List<Map<String, dynamic>> answers}) = _$_QuestionDto;
+      @JsonKey(name: 'answer_keys')
+          required final List<Map<String, dynamic>> answers,
+      @JsonKey(name: 'learning_point_difficulty_id', defaultValue: 0)
+          required final int learningPointDifficultyId,
+      @JsonKey(name: 'difficulty_level', defaultValue: 0)
+          required final int difficultyLevel,
+      @JsonKey(name: 'learning_point_id', defaultValue: 0)
+          required final int learningPointId,
+      @JsonKey(name: 'topic_id', defaultValue: 0)
+          required final int topicId,
+      @JsonKey(name: 'topic_name', defaultValue: '')
+          required final String topicName,
+      @JsonKey(name: 'category_id', defaultValue: 0)
+          required final int categoryId,
+      @JsonKey(name: 'category_name', defaultValue: '')
+          required final String categoryName}) = _$_QuestionDto;
   const _QuestionDto._() : super._();
 
   factory _QuestionDto.fromJson(Map<String, dynamic> json) =
@@ -380,7 +589,29 @@ abstract class _QuestionDto extends QuestionDto {
   @override
   String get content => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'answer_keys')
   List<Map<String, dynamic>> get answers => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'learning_point_difficulty_id', defaultValue: 0)
+  int get learningPointDifficultyId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'difficulty_level', defaultValue: 0)
+  int get difficultyLevel => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'learning_point_id', defaultValue: 0)
+  int get learningPointId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'topic_id', defaultValue: 0)
+  int get topicId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'topic_name', defaultValue: '')
+  String get topicName => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'category_id', defaultValue: 0)
+  int get categoryId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'category_name', defaultValue: '')
+  String get categoryName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_QuestionDtoCopyWith<_$_QuestionDto> get copyWith =>
@@ -395,6 +626,7 @@ AnswerDto _$AnswerDtoFromJson(Map<String, dynamic> json) {
 mixin _$AnswerDto {
   int get id => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: 0)
   int get order => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
 
@@ -408,7 +640,11 @@ mixin _$AnswerDto {
 abstract class $AnswerDtoCopyWith<$Res> {
   factory $AnswerDtoCopyWith(AnswerDto value, $Res Function(AnswerDto) then) =
       _$AnswerDtoCopyWithImpl<$Res>;
-  $Res call({int id, String value, int order, String content});
+  $Res call(
+      {int id,
+      String value,
+      @JsonKey(defaultValue: 0) int order,
+      String content});
 }
 
 /// @nodoc
@@ -453,7 +689,11 @@ abstract class _$$_AnswerDtoCopyWith<$Res> implements $AnswerDtoCopyWith<$Res> {
           _$_AnswerDto value, $Res Function(_$_AnswerDto) then) =
       __$$_AnswerDtoCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String value, int order, String content});
+  $Res call(
+      {int id,
+      String value,
+      @JsonKey(defaultValue: 0) int order,
+      String content});
 }
 
 /// @nodoc
@@ -500,7 +740,7 @@ class _$_AnswerDto extends _AnswerDto {
   const _$_AnswerDto(
       {required this.id,
       required this.value,
-      required this.order,
+      @JsonKey(defaultValue: 0) required this.order,
       required this.content})
       : super._();
 
@@ -512,6 +752,7 @@ class _$_AnswerDto extends _AnswerDto {
   @override
   final String value;
   @override
+  @JsonKey(defaultValue: 0)
   final int order;
   @override
   final String content;
@@ -556,7 +797,7 @@ abstract class _AnswerDto extends AnswerDto {
   const factory _AnswerDto(
       {required final int id,
       required final String value,
-      required final int order,
+      @JsonKey(defaultValue: 0) required final int order,
       required final String content}) = _$_AnswerDto;
   const _AnswerDto._() : super._();
 
@@ -568,11 +809,610 @@ abstract class _AnswerDto extends AnswerDto {
   @override
   String get value => throw _privateConstructorUsedError;
   @override
+  @JsonKey(defaultValue: 0)
   int get order => throw _privateConstructorUsedError;
   @override
   String get content => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AnswerDtoCopyWith<_$_AnswerDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AnswerResultDto _$AnswerResultDtoFromJson(Map<String, dynamic> json) {
+  return _AnswerResultDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AnswerResultDto {
+  @JsonKey(name: 'topic_id')
+  int get topicId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'category_id')
+  int get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'question_id')
+  int get questionId => throw _privateConstructorUsedError;
+  int get score => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AnswerResultDtoCopyWith<AnswerResultDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AnswerResultDtoCopyWith<$Res> {
+  factory $AnswerResultDtoCopyWith(
+          AnswerResultDto value, $Res Function(AnswerResultDto) then) =
+      _$AnswerResultDtoCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(name: 'topic_id') int topicId,
+      @JsonKey(name: 'category_id') int categoryId,
+      @JsonKey(name: 'question_id') int questionId,
+      int score});
+}
+
+/// @nodoc
+class _$AnswerResultDtoCopyWithImpl<$Res>
+    implements $AnswerResultDtoCopyWith<$Res> {
+  _$AnswerResultDtoCopyWithImpl(this._value, this._then);
+
+  final AnswerResultDto _value;
+  // ignore: unused_field
+  final $Res Function(AnswerResultDto) _then;
+
+  @override
+  $Res call({
+    Object? topicId = freezed,
+    Object? categoryId = freezed,
+    Object? questionId = freezed,
+    Object? score = freezed,
+  }) {
+    return _then(_value.copyWith(
+      topicId: topicId == freezed
+          ? _value.topicId
+          : topicId // ignore: cast_nullable_to_non_nullable
+              as int,
+      categoryId: categoryId == freezed
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      questionId: questionId == freezed
+          ? _value.questionId
+          : questionId // ignore: cast_nullable_to_non_nullable
+              as int,
+      score: score == freezed
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_AnswerResultDtoCopyWith<$Res>
+    implements $AnswerResultDtoCopyWith<$Res> {
+  factory _$$_AnswerResultDtoCopyWith(
+          _$_AnswerResultDto value, $Res Function(_$_AnswerResultDto) then) =
+      __$$_AnswerResultDtoCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(name: 'topic_id') int topicId,
+      @JsonKey(name: 'category_id') int categoryId,
+      @JsonKey(name: 'question_id') int questionId,
+      int score});
+}
+
+/// @nodoc
+class __$$_AnswerResultDtoCopyWithImpl<$Res>
+    extends _$AnswerResultDtoCopyWithImpl<$Res>
+    implements _$$_AnswerResultDtoCopyWith<$Res> {
+  __$$_AnswerResultDtoCopyWithImpl(
+      _$_AnswerResultDto _value, $Res Function(_$_AnswerResultDto) _then)
+      : super(_value, (v) => _then(v as _$_AnswerResultDto));
+
+  @override
+  _$_AnswerResultDto get _value => super._value as _$_AnswerResultDto;
+
+  @override
+  $Res call({
+    Object? topicId = freezed,
+    Object? categoryId = freezed,
+    Object? questionId = freezed,
+    Object? score = freezed,
+  }) {
+    return _then(_$_AnswerResultDto(
+      topicId: topicId == freezed
+          ? _value.topicId
+          : topicId // ignore: cast_nullable_to_non_nullable
+              as int,
+      categoryId: categoryId == freezed
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      questionId: questionId == freezed
+          ? _value.questionId
+          : questionId // ignore: cast_nullable_to_non_nullable
+              as int,
+      score: score == freezed
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_AnswerResultDto extends _AnswerResultDto {
+  const _$_AnswerResultDto(
+      {@JsonKey(name: 'topic_id') required this.topicId,
+      @JsonKey(name: 'category_id') required this.categoryId,
+      @JsonKey(name: 'question_id') required this.questionId,
+      required this.score})
+      : super._();
+
+  factory _$_AnswerResultDto.fromJson(Map<String, dynamic> json) =>
+      _$$_AnswerResultDtoFromJson(json);
+
+  @override
+  @JsonKey(name: 'topic_id')
+  final int topicId;
+  @override
+  @JsonKey(name: 'category_id')
+  final int categoryId;
+  @override
+  @JsonKey(name: 'question_id')
+  final int questionId;
+  @override
+  final int score;
+
+  @override
+  String toString() {
+    return 'AnswerResultDto(topicId: $topicId, categoryId: $categoryId, questionId: $questionId, score: $score)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AnswerResultDto &&
+            const DeepCollectionEquality().equals(other.topicId, topicId) &&
+            const DeepCollectionEquality()
+                .equals(other.categoryId, categoryId) &&
+            const DeepCollectionEquality()
+                .equals(other.questionId, questionId) &&
+            const DeepCollectionEquality().equals(other.score, score));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(topicId),
+      const DeepCollectionEquality().hash(categoryId),
+      const DeepCollectionEquality().hash(questionId),
+      const DeepCollectionEquality().hash(score));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_AnswerResultDtoCopyWith<_$_AnswerResultDto> get copyWith =>
+      __$$_AnswerResultDtoCopyWithImpl<_$_AnswerResultDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AnswerResultDtoToJson(this);
+  }
+}
+
+abstract class _AnswerResultDto extends AnswerResultDto {
+  const factory _AnswerResultDto(
+      {@JsonKey(name: 'topic_id') required final int topicId,
+      @JsonKey(name: 'category_id') required final int categoryId,
+      @JsonKey(name: 'question_id') required final int questionId,
+      required final int score}) = _$_AnswerResultDto;
+  const _AnswerResultDto._() : super._();
+
+  factory _AnswerResultDto.fromJson(Map<String, dynamic> json) =
+      _$_AnswerResultDto.fromJson;
+
+  @override
+  @JsonKey(name: 'topic_id')
+  int get topicId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'category_id')
+  int get categoryId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'question_id')
+  int get questionId => throw _privateConstructorUsedError;
+  @override
+  int get score => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_AnswerResultDtoCopyWith<_$_AnswerResultDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AnswerReviewDto _$AnswerReviewDtoFromJson(Map<String, dynamic> json) {
+  return _AnswerReviewDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AnswerReviewDto {
+  @JsonKey(name: 'selected_answer')
+  List<int> get selectedAnswers => throw _privateConstructorUsedError;
+  @JsonKey(name: 'right_answer')
+  List<int> get rightAnswers => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AnswerReviewDtoCopyWith<AnswerReviewDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AnswerReviewDtoCopyWith<$Res> {
+  factory $AnswerReviewDtoCopyWith(
+          AnswerReviewDto value, $Res Function(AnswerReviewDto) then) =
+      _$AnswerReviewDtoCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(name: 'selected_answer') List<int> selectedAnswers,
+      @JsonKey(name: 'right_answer') List<int> rightAnswers});
+}
+
+/// @nodoc
+class _$AnswerReviewDtoCopyWithImpl<$Res>
+    implements $AnswerReviewDtoCopyWith<$Res> {
+  _$AnswerReviewDtoCopyWithImpl(this._value, this._then);
+
+  final AnswerReviewDto _value;
+  // ignore: unused_field
+  final $Res Function(AnswerReviewDto) _then;
+
+  @override
+  $Res call({
+    Object? selectedAnswers = freezed,
+    Object? rightAnswers = freezed,
+  }) {
+    return _then(_value.copyWith(
+      selectedAnswers: selectedAnswers == freezed
+          ? _value.selectedAnswers
+          : selectedAnswers // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+      rightAnswers: rightAnswers == freezed
+          ? _value.rightAnswers
+          : rightAnswers // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_AnswerReviewDtoCopyWith<$Res>
+    implements $AnswerReviewDtoCopyWith<$Res> {
+  factory _$$_AnswerReviewDtoCopyWith(
+          _$_AnswerReviewDto value, $Res Function(_$_AnswerReviewDto) then) =
+      __$$_AnswerReviewDtoCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(name: 'selected_answer') List<int> selectedAnswers,
+      @JsonKey(name: 'right_answer') List<int> rightAnswers});
+}
+
+/// @nodoc
+class __$$_AnswerReviewDtoCopyWithImpl<$Res>
+    extends _$AnswerReviewDtoCopyWithImpl<$Res>
+    implements _$$_AnswerReviewDtoCopyWith<$Res> {
+  __$$_AnswerReviewDtoCopyWithImpl(
+      _$_AnswerReviewDto _value, $Res Function(_$_AnswerReviewDto) _then)
+      : super(_value, (v) => _then(v as _$_AnswerReviewDto));
+
+  @override
+  _$_AnswerReviewDto get _value => super._value as _$_AnswerReviewDto;
+
+  @override
+  $Res call({
+    Object? selectedAnswers = freezed,
+    Object? rightAnswers = freezed,
+  }) {
+    return _then(_$_AnswerReviewDto(
+      selectedAnswers: selectedAnswers == freezed
+          ? _value._selectedAnswers
+          : selectedAnswers // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+      rightAnswers: rightAnswers == freezed
+          ? _value._rightAnswers
+          : rightAnswers // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_AnswerReviewDto extends _AnswerReviewDto {
+  const _$_AnswerReviewDto(
+      {@JsonKey(name: 'selected_answer')
+          required final List<int> selectedAnswers,
+      @JsonKey(name: 'right_answer')
+          required final List<int> rightAnswers})
+      : _selectedAnswers = selectedAnswers,
+        _rightAnswers = rightAnswers,
+        super._();
+
+  factory _$_AnswerReviewDto.fromJson(Map<String, dynamic> json) =>
+      _$$_AnswerReviewDtoFromJson(json);
+
+  final List<int> _selectedAnswers;
+  @override
+  @JsonKey(name: 'selected_answer')
+  List<int> get selectedAnswers {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedAnswers);
+  }
+
+  final List<int> _rightAnswers;
+  @override
+  @JsonKey(name: 'right_answer')
+  List<int> get rightAnswers {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_rightAnswers);
+  }
+
+  @override
+  String toString() {
+    return 'AnswerReviewDto(selectedAnswers: $selectedAnswers, rightAnswers: $rightAnswers)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AnswerReviewDto &&
+            const DeepCollectionEquality()
+                .equals(other._selectedAnswers, _selectedAnswers) &&
+            const DeepCollectionEquality()
+                .equals(other._rightAnswers, _rightAnswers));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_selectedAnswers),
+      const DeepCollectionEquality().hash(_rightAnswers));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_AnswerReviewDtoCopyWith<_$_AnswerReviewDto> get copyWith =>
+      __$$_AnswerReviewDtoCopyWithImpl<_$_AnswerReviewDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AnswerReviewDtoToJson(this);
+  }
+}
+
+abstract class _AnswerReviewDto extends AnswerReviewDto {
+  const factory _AnswerReviewDto(
+      {@JsonKey(name: 'selected_answer')
+          required final List<int> selectedAnswers,
+      @JsonKey(name: 'right_answer')
+          required final List<int> rightAnswers}) = _$_AnswerReviewDto;
+  const _AnswerReviewDto._() : super._();
+
+  factory _AnswerReviewDto.fromJson(Map<String, dynamic> json) =
+      _$_AnswerReviewDto.fromJson;
+
+  @override
+  @JsonKey(name: 'selected_answer')
+  List<int> get selectedAnswers => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'right_answer')
+  List<int> get rightAnswers => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_AnswerReviewDtoCopyWith<_$_AnswerReviewDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TestResultDto _$TestResultDtoFromJson(Map<String, dynamic> json) {
+  return _TestResultDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TestResultDto {
+  @JsonKey(name: 'total_score')
+  double get score => throw _privateConstructorUsedError;
+  List<AnswerResultDto> get result => throw _privateConstructorUsedError;
+  AnswerReviewDto get review => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TestResultDtoCopyWith<TestResultDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TestResultDtoCopyWith<$Res> {
+  factory $TestResultDtoCopyWith(
+          TestResultDto value, $Res Function(TestResultDto) then) =
+      _$TestResultDtoCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(name: 'total_score') double score,
+      List<AnswerResultDto> result,
+      AnswerReviewDto review});
+
+  $AnswerReviewDtoCopyWith<$Res> get review;
+}
+
+/// @nodoc
+class _$TestResultDtoCopyWithImpl<$Res>
+    implements $TestResultDtoCopyWith<$Res> {
+  _$TestResultDtoCopyWithImpl(this._value, this._then);
+
+  final TestResultDto _value;
+  // ignore: unused_field
+  final $Res Function(TestResultDto) _then;
+
+  @override
+  $Res call({
+    Object? score = freezed,
+    Object? result = freezed,
+    Object? review = freezed,
+  }) {
+    return _then(_value.copyWith(
+      score: score == freezed
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as double,
+      result: result == freezed
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as List<AnswerResultDto>,
+      review: review == freezed
+          ? _value.review
+          : review // ignore: cast_nullable_to_non_nullable
+              as AnswerReviewDto,
+    ));
+  }
+
+  @override
+  $AnswerReviewDtoCopyWith<$Res> get review {
+    return $AnswerReviewDtoCopyWith<$Res>(_value.review, (value) {
+      return _then(_value.copyWith(review: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_TestResultDtoCopyWith<$Res>
+    implements $TestResultDtoCopyWith<$Res> {
+  factory _$$_TestResultDtoCopyWith(
+          _$_TestResultDto value, $Res Function(_$_TestResultDto) then) =
+      __$$_TestResultDtoCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(name: 'total_score') double score,
+      List<AnswerResultDto> result,
+      AnswerReviewDto review});
+
+  @override
+  $AnswerReviewDtoCopyWith<$Res> get review;
+}
+
+/// @nodoc
+class __$$_TestResultDtoCopyWithImpl<$Res>
+    extends _$TestResultDtoCopyWithImpl<$Res>
+    implements _$$_TestResultDtoCopyWith<$Res> {
+  __$$_TestResultDtoCopyWithImpl(
+      _$_TestResultDto _value, $Res Function(_$_TestResultDto) _then)
+      : super(_value, (v) => _then(v as _$_TestResultDto));
+
+  @override
+  _$_TestResultDto get _value => super._value as _$_TestResultDto;
+
+  @override
+  $Res call({
+    Object? score = freezed,
+    Object? result = freezed,
+    Object? review = freezed,
+  }) {
+    return _then(_$_TestResultDto(
+      score: score == freezed
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as double,
+      result: result == freezed
+          ? _value._result
+          : result // ignore: cast_nullable_to_non_nullable
+              as List<AnswerResultDto>,
+      review: review == freezed
+          ? _value.review
+          : review // ignore: cast_nullable_to_non_nullable
+              as AnswerReviewDto,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TestResultDto extends _TestResultDto {
+  const _$_TestResultDto(
+      {@JsonKey(name: 'total_score') required this.score,
+      required final List<AnswerResultDto> result,
+      required this.review})
+      : _result = result,
+        super._();
+
+  factory _$_TestResultDto.fromJson(Map<String, dynamic> json) =>
+      _$$_TestResultDtoFromJson(json);
+
+  @override
+  @JsonKey(name: 'total_score')
+  final double score;
+  final List<AnswerResultDto> _result;
+  @override
+  List<AnswerResultDto> get result {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_result);
+  }
+
+  @override
+  final AnswerReviewDto review;
+
+  @override
+  String toString() {
+    return 'TestResultDto(score: $score, result: $result, review: $review)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TestResultDto &&
+            const DeepCollectionEquality().equals(other.score, score) &&
+            const DeepCollectionEquality().equals(other._result, _result) &&
+            const DeepCollectionEquality().equals(other.review, review));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(score),
+      const DeepCollectionEquality().hash(_result),
+      const DeepCollectionEquality().hash(review));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_TestResultDtoCopyWith<_$_TestResultDto> get copyWith =>
+      __$$_TestResultDtoCopyWithImpl<_$_TestResultDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TestResultDtoToJson(this);
+  }
+}
+
+abstract class _TestResultDto extends TestResultDto {
+  const factory _TestResultDto(
+      {@JsonKey(name: 'total_score') required final double score,
+      required final List<AnswerResultDto> result,
+      required final AnswerReviewDto review}) = _$_TestResultDto;
+  const _TestResultDto._() : super._();
+
+  factory _TestResultDto.fromJson(Map<String, dynamic> json) =
+      _$_TestResultDto.fromJson;
+
+  @override
+  @JsonKey(name: 'total_score')
+  double get score => throw _privateConstructorUsedError;
+  @override
+  List<AnswerResultDto> get result => throw _privateConstructorUsedError;
+  @override
+  AnswerReviewDto get review => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TestResultDtoCopyWith<_$_TestResultDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

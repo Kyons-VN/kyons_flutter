@@ -27,15 +27,15 @@ Future<Option<User>> getCurrentUser() async {
   }
 }
 
-Future<String> getCurrentUserId() async {
-  final prefs = await SharedPreferences.getInstance();
-  final userPref = prefs.getString('user');
-  if (userPref == null) {
-    return '';
-  } else {
-    return UserDto.fromJson(jsonDecode(userPref)).toDomain().id;
-  }
-}
+// Future<String> getCurrentUserId() async {
+//   final prefs = await SharedPreferences.getInstance();
+//   final userPref = prefs.getString('user');
+//   if (userPref == null) {
+//     return '';
+//   } else {
+//     return UserDto.fromJson(jsonDecode(userPref)).toDomain().id;
+//   }
+// }
 
 Future<Option> setCurrentUser(User user) async {
   final prefs = await SharedPreferences.getInstance();
@@ -100,7 +100,6 @@ TaskEither<AuthFailure, Unit> _signIn(
     TaskEither.tryCatch(
       () => api.signInEmailPassword(emailAddress: email, password: password),
       (error, __) {
-        print(error);
         if (error is AuthFailure) return error;
         return const AuthFailure.serverError();
       },
@@ -132,16 +131,13 @@ class Auth implements IAuth {
       'password': password,
     });
     return response.then((res) {
-      print(res.statusCode);
       if (res.statusCode != 200) {
-        print(res.statusMessage);
         return Future.error(const AuthFailure.serverError());
       }
       return res.data;
     }).then((value) async {
       final data = value as Map<String, dynamic>;
       if (data['error'] != null || data['role'] != 'STUDENT') {
-        print(data['error']);
         return Future.error(const AuthFailure.invalidEmailPassword());
       }
       final token = data['access_token'] as String;
@@ -167,16 +163,13 @@ class Auth implements IAuth {
           'Authorization': 'Bearer $token',
         }));
     return response.then((res) {
-      print(res.statusCode);
       if (res.statusCode != 200) {
-        print(res.statusMessage);
         return Future.error(const AuthFailure.serverError());
       }
       return res.data;
     }).then((value) async {
       final data = value as Map<String, dynamic>;
       if (data['error'] != null) {
-        print(data['error']);
         return User.empty();
       }
       final user = UserDto.fromJson(data).toDomain();

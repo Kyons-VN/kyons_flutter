@@ -69,3 +69,49 @@ extension XOutlinedButton on OutlinedButton {
     return _size(context: context, size: ButtonSize.small);
   }
 }
+
+// class AppIconButton extends HookWidget {
+//   final IconData icon;
+//   final Function click;
+//   const AppIconButton({
+//     Key? key,
+//     required this.icon,
+//     required this.click,
+//     color = AppColors.orange,
+//     hoverColor = AppColors.lightOrange2,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final ValueNotifier<bool> _onHover = useState<bool>(false);
+//     return GestureDetector(
+//       onTap: () {
+//         click();
+//       },
+//       child: FocusableActionDetector(
+//         mouseCursor: SystemMouseCursors.click,
+//         onShowHoverHighlight: (value) {
+//           _onHover.value = value;
+//         },
+//         child: Center(
+//           child: Container(
+//               decoration: BoxDecoration(
+//                 boxShadow: _onHover.value
+//                     ? [
+//                         const BoxShadow(
+//                           color: AppColors.buttonShadow,
+//                           spreadRadius: 0,
+//                           offset: Offset(3, 5),
+//                           blurRadius: 0,
+//                           blurStyle: BlurStyle.normal,
+//                         ),
+//                       ]
+//                     : [],
+//                 borderRadius: BorderRadius.circular(AppSizesUnit.small8),
+//               ),
+//               child: Icon(icon, color: _onHover.value ? AppColors.lightOrange2 : AppColors.orange)),
+//         ),
+//       ),
+//     );
+//   }
+// }

@@ -1,6 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_service.dart' as test_service;
 import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
@@ -10,7 +11,7 @@ part 'diagnostic_test_state.dart';
 
 class DiagnosticTestNotifier extends StateNotifier<DiagnosticTestState> {
   final ITestKnowledge testApi;
-  DiagnosticTestNotifier(this.testApi) : super(DiagnosticTestState.loading());
+  DiagnosticTestNotifier(this.testApi) : super(DiagnosticTestState.initial());
 
   Future<void> init() async {
     state = DiagnosticTestState.loading();
@@ -19,12 +20,24 @@ class DiagnosticTestNotifier extends StateNotifier<DiagnosticTestState> {
       (l) => DiagnosticTestState.error(),
       (content) {
         content.startedAt = DateTime.now();
-        return DiagnosticTestState.loaded(content);
+        final lessonInfos = content.questions
+            .map((question) => LessonInfo(
+                  category: question.category,
+                  topic: question.topic,
+                  lessons: [],
+                ))
+            .toList()
+            .asMap()
+            .map((key, lessonInfo) => MapEntry(lessonInfo.topic.id, lessonInfo))
+            .values
+            .toList();
+        final lessonGroup = LessonGroup(id: '', lessonInfos: lessonInfos);
+        return DiagnosticTestState.loaded(content, lessonGroup);
       },
     );
   }
 
-  void update(Map<String, dynamic> answersResult) {
+  void update(Map<String, String> answersResult) {
     final progress =
         (answersResult.entries.length * 100 ~/ state.content.getOrElse(() => TestContent.empty()).questions.length);
     state = state.copyWith(
@@ -33,10 +46,49 @@ class DiagnosticTestNotifier extends StateNotifier<DiagnosticTestState> {
     );
   }
 
-  Future<void> submit() async {
+  void previous() {
+    if (state.currentQuestionIndex.isNone()) return;
+    final currentQuestionIndex = state.currentQuestionIndex.getOrElse(() => 0);
+    if (currentQuestionIndex > 0) {
+      state = state.copyWith(currentQuestionIndex: some(currentQuestionIndex - 1));
+    }
+  }
+
+  void next() {
+    if (state.currentQuestionIndex.isNone()) return;
+    final currentQuestionIndex = state.currentQuestionIndex.getOrElse(() => 0);
+    if (currentQuestionIndex < state.content.getOrElse(() => TestContent.empty()).questions.length - 1) {
+      state = state.copyWith(currentQuestionIndex: some(currentQuestionIndex + 1));
+    }
+  }
+
+  void selectedAnswer(String answerValue) {
+    if (state.currentQuestionIndex.isNone()) return;
+    final currentQuestionIndex = state.currentQuestionIndex.getOrElse(() => -1);
+    final currentQuestionId = state.content.getOrElse(() => TestContent.empty()).questions[currentQuestionIndex].id;
+    final answersResult = state.answersResult.getOrElse(() => {});
+    answersResult[currentQuestionId] = answerValue;
+    state = state.copyWith(answersResult: some(answersResult));
+  }
+
+  Future<void> submit(Map<String, String> answersResult) async {
     state = state.copyWith(isSubmitted: true);
     final content = state.content.getOrElse(() => TestContent.empty())..endedAt = DateTime.now();
+    content.setSubmission(answersResult);
     final failureOrSuccess = await test_service.submit(content).run(testApi);
-    state = state.copyWith(isSubmitted: false, hasError: failureOrSuccess.isLeft());
+    state = state.copyWith(
+      hasError: failureOrSuccess.isLeft(),
+      isSubmitted: false,
+      testResult: failureOrSuccess.fold(
+        (l) => none(),
+        (data) => some(data),
+      ),
+    );
   }
 }
+
+final testApi = Provider<test_service.TestKnowledge>((ref) => test_service.TestKnowledge());
+
+final diagnosticTestNotifierProvider = StateNotifierProvider.autoDispose<DiagnosticTestNotifier, DiagnosticTestState>(
+  (ref) => DiagnosticTestNotifier(ref.read(testApi)),
+);

@@ -18,11 +18,14 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DiagnosticTestState {
   bool get loading => throw _privateConstructorUsedError;
   Option<TestContent> get content => throw _privateConstructorUsedError;
-  Option<Map<String, dynamic>> get answersResult =>
+  Option<Map<String, String>> get answersResult =>
       throw _privateConstructorUsedError;
   int get progress => throw _privateConstructorUsedError;
+  Option<int> get currentQuestionIndex => throw _privateConstructorUsedError;
   bool get isSubmitted => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
+  Option<TestResult> get testResult => throw _privateConstructorUsedError;
+  Option<LessonGroup> get lessonGroup => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DiagnosticTestStateCopyWith<DiagnosticTestState> get copyWith =>
@@ -37,10 +40,13 @@ abstract class $DiagnosticTestStateCopyWith<$Res> {
   $Res call(
       {bool loading,
       Option<TestContent> content,
-      Option<Map<String, dynamic>> answersResult,
+      Option<Map<String, String>> answersResult,
       int progress,
+      Option<int> currentQuestionIndex,
       bool isSubmitted,
-      bool hasError});
+      bool hasError,
+      Option<TestResult> testResult,
+      Option<LessonGroup> lessonGroup});
 }
 
 /// @nodoc
@@ -58,8 +64,11 @@ class _$DiagnosticTestStateCopyWithImpl<$Res>
     Object? content = freezed,
     Object? answersResult = freezed,
     Object? progress = freezed,
+    Object? currentQuestionIndex = freezed,
     Object? isSubmitted = freezed,
     Object? hasError = freezed,
+    Object? testResult = freezed,
+    Object? lessonGroup = freezed,
   }) {
     return _then(_value.copyWith(
       loading: loading == freezed
@@ -73,11 +82,15 @@ class _$DiagnosticTestStateCopyWithImpl<$Res>
       answersResult: answersResult == freezed
           ? _value.answersResult
           : answersResult // ignore: cast_nullable_to_non_nullable
-              as Option<Map<String, dynamic>>,
+              as Option<Map<String, String>>,
       progress: progress == freezed
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as int,
+      currentQuestionIndex: currentQuestionIndex == freezed
+          ? _value.currentQuestionIndex
+          : currentQuestionIndex // ignore: cast_nullable_to_non_nullable
+              as Option<int>,
       isSubmitted: isSubmitted == freezed
           ? _value.isSubmitted
           : isSubmitted // ignore: cast_nullable_to_non_nullable
@@ -86,6 +99,14 @@ class _$DiagnosticTestStateCopyWithImpl<$Res>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
+      testResult: testResult == freezed
+          ? _value.testResult
+          : testResult // ignore: cast_nullable_to_non_nullable
+              as Option<TestResult>,
+      lessonGroup: lessonGroup == freezed
+          ? _value.lessonGroup
+          : lessonGroup // ignore: cast_nullable_to_non_nullable
+              as Option<LessonGroup>,
     ));
   }
 }
@@ -100,10 +121,13 @@ abstract class _$$_DiagnosticTestStateCopyWith<$Res>
   $Res call(
       {bool loading,
       Option<TestContent> content,
-      Option<Map<String, dynamic>> answersResult,
+      Option<Map<String, String>> answersResult,
       int progress,
+      Option<int> currentQuestionIndex,
       bool isSubmitted,
-      bool hasError});
+      bool hasError,
+      Option<TestResult> testResult,
+      Option<LessonGroup> lessonGroup});
 }
 
 /// @nodoc
@@ -123,8 +147,11 @@ class __$$_DiagnosticTestStateCopyWithImpl<$Res>
     Object? content = freezed,
     Object? answersResult = freezed,
     Object? progress = freezed,
+    Object? currentQuestionIndex = freezed,
     Object? isSubmitted = freezed,
     Object? hasError = freezed,
+    Object? testResult = freezed,
+    Object? lessonGroup = freezed,
   }) {
     return _then(_$_DiagnosticTestState(
       loading: loading == freezed
@@ -138,11 +165,15 @@ class __$$_DiagnosticTestStateCopyWithImpl<$Res>
       answersResult: answersResult == freezed
           ? _value.answersResult
           : answersResult // ignore: cast_nullable_to_non_nullable
-              as Option<Map<String, dynamic>>,
+              as Option<Map<String, String>>,
       progress: progress == freezed
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as int,
+      currentQuestionIndex: currentQuestionIndex == freezed
+          ? _value.currentQuestionIndex
+          : currentQuestionIndex // ignore: cast_nullable_to_non_nullable
+              as Option<int>,
       isSubmitted: isSubmitted == freezed
           ? _value.isSubmitted
           : isSubmitted // ignore: cast_nullable_to_non_nullable
@@ -151,6 +182,14 @@ class __$$_DiagnosticTestStateCopyWithImpl<$Res>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
+      testResult: testResult == freezed
+          ? _value.testResult
+          : testResult // ignore: cast_nullable_to_non_nullable
+              as Option<TestResult>,
+      lessonGroup: lessonGroup == freezed
+          ? _value.lessonGroup
+          : lessonGroup // ignore: cast_nullable_to_non_nullable
+              as Option<LessonGroup>,
     ));
   }
 }
@@ -163,25 +202,34 @@ class _$_DiagnosticTestState implements _DiagnosticTestState {
       required this.content,
       required this.answersResult,
       required this.progress,
+      required this.currentQuestionIndex,
       required this.isSubmitted,
-      required this.hasError});
+      required this.hasError,
+      required this.testResult,
+      required this.lessonGroup});
 
   @override
   final bool loading;
   @override
   final Option<TestContent> content;
   @override
-  final Option<Map<String, dynamic>> answersResult;
+  final Option<Map<String, String>> answersResult;
   @override
   final int progress;
+  @override
+  final Option<int> currentQuestionIndex;
   @override
   final bool isSubmitted;
   @override
   final bool hasError;
+  @override
+  final Option<TestResult> testResult;
+  @override
+  final Option<LessonGroup> lessonGroup;
 
   @override
   String toString() {
-    return 'DiagnosticTestState(loading: $loading, content: $content, answersResult: $answersResult, progress: $progress, isSubmitted: $isSubmitted, hasError: $hasError)';
+    return 'DiagnosticTestState(loading: $loading, content: $content, answersResult: $answersResult, progress: $progress, currentQuestionIndex: $currentQuestionIndex, isSubmitted: $isSubmitted, hasError: $hasError, testResult: $testResult, lessonGroup: $lessonGroup)';
   }
 
   @override
@@ -195,8 +243,14 @@ class _$_DiagnosticTestState implements _DiagnosticTestState {
                 .equals(other.answersResult, answersResult) &&
             const DeepCollectionEquality().equals(other.progress, progress) &&
             const DeepCollectionEquality()
+                .equals(other.currentQuestionIndex, currentQuestionIndex) &&
+            const DeepCollectionEquality()
                 .equals(other.isSubmitted, isSubmitted) &&
-            const DeepCollectionEquality().equals(other.hasError, hasError));
+            const DeepCollectionEquality().equals(other.hasError, hasError) &&
+            const DeepCollectionEquality()
+                .equals(other.testResult, testResult) &&
+            const DeepCollectionEquality()
+                .equals(other.lessonGroup, lessonGroup));
   }
 
   @override
@@ -206,8 +260,11 @@ class _$_DiagnosticTestState implements _DiagnosticTestState {
       const DeepCollectionEquality().hash(content),
       const DeepCollectionEquality().hash(answersResult),
       const DeepCollectionEquality().hash(progress),
+      const DeepCollectionEquality().hash(currentQuestionIndex),
       const DeepCollectionEquality().hash(isSubmitted),
-      const DeepCollectionEquality().hash(hasError));
+      const DeepCollectionEquality().hash(hasError),
+      const DeepCollectionEquality().hash(testResult),
+      const DeepCollectionEquality().hash(lessonGroup));
 
   @JsonKey(ignore: true)
   @override
@@ -220,24 +277,33 @@ abstract class _DiagnosticTestState implements DiagnosticTestState {
   const factory _DiagnosticTestState(
       {required final bool loading,
       required final Option<TestContent> content,
-      required final Option<Map<String, dynamic>> answersResult,
+      required final Option<Map<String, String>> answersResult,
       required final int progress,
+      required final Option<int> currentQuestionIndex,
       required final bool isSubmitted,
-      required final bool hasError}) = _$_DiagnosticTestState;
+      required final bool hasError,
+      required final Option<TestResult> testResult,
+      required final Option<LessonGroup> lessonGroup}) = _$_DiagnosticTestState;
 
   @override
   bool get loading => throw _privateConstructorUsedError;
   @override
   Option<TestContent> get content => throw _privateConstructorUsedError;
   @override
-  Option<Map<String, dynamic>> get answersResult =>
+  Option<Map<String, String>> get answersResult =>
       throw _privateConstructorUsedError;
   @override
   int get progress => throw _privateConstructorUsedError;
   @override
+  Option<int> get currentQuestionIndex => throw _privateConstructorUsedError;
+  @override
   bool get isSubmitted => throw _privateConstructorUsedError;
   @override
   bool get hasError => throw _privateConstructorUsedError;
+  @override
+  Option<TestResult> get testResult => throw _privateConstructorUsedError;
+  @override
+  Option<LessonGroup> get lessonGroup => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_DiagnosticTestStateCopyWith<_$_DiagnosticTestState> get copyWith =>

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
+import 'package:kyons_flutter/src/navigation/app/router.dart';
 
 import '../app/settings_controller.dart';
 
@@ -17,12 +17,12 @@ class LanguageSettingsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settingsProvider = ref.watch(settingsNotifierProvider);
+    final settingsProvider = ref.read(settingsNotifierProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text(t(context).language),
         leading: IconButton(
-          onPressed: () => context.pop(),
+          onPressed: () => context.canPop(),
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),

@@ -36,3 +36,49 @@ extension XTextTheme on TextTheme {
         fontWeight: FontWeight.w700,
       );
 }
+
+class Heading extends StatelessWidget {
+  final int heading;
+  final String text;
+  final Color? color;
+  const Heading(this.heading, this.text, {Key? key, this.color}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text, style: _getHeading(heading, context).copyWith(color: color ?? AppColors.primaryBlue));
+  }
+}
+
+TextStyle _getHeading(int heading, BuildContext context) {
+  TextStyle style;
+  switch (heading) {
+    case 1:
+      style = Theme.of(context).textTheme.heading1;
+      break;
+    case 2:
+      style = Theme.of(context).textTheme.heading2;
+      break;
+    case 3:
+      style = Theme.of(context).textTheme.heading3;
+      break;
+    case 4:
+      style = Theme.of(context).textTheme.heading4;
+      break;
+    case 5:
+      style = Theme.of(context).textTheme.heading5;
+      break;
+    case 6:
+      style = Theme.of(context).textTheme.heading6;
+      break;
+    case 7:
+      style = Theme.of(context).textTheme.heading7;
+      break;
+    case 8:
+      style = Theme.of(context).textTheme.heading8;
+      break;
+    default:
+      style = Theme.of(context).textTheme.heading1;
+      break;
+  }
+  return style;
+}

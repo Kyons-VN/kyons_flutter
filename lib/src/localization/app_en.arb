@@ -35,7 +35,7 @@
   "success": "Success",
   "fail": "Fail",
   "back": "Back",
-  "choose_subject_and_program": "Choose subject and program",
+  "choose_subject_and_program": "Choose your subject and program",
   "choose_subject_and_program_headline": "Choose subject\nand program",
   "select_thing": "Select {thing}",
   "@select_thing": {
@@ -51,6 +51,43 @@
   "start": "Start",
   "back_to_home": "Back to Home",
   "do_diagnostictest_heading": "Will have\na diagnostictest",
-  "do_diagnostictest_btn": "Make diagnostic test",
-  "do_diagnostictest_cancel": "No, just let me in!"
+  "do_diagnostictest_btn": "Start diagnostic test",
+  "do_diagnostictest_cancel": "No, just let me in!",
+  "diagnostic_test": "Diagnostic test",
+  "thing_number": "{thing} {number}",
+  "@thing_number": {
+    "placeholders": {
+      "thing": {
+        "type": "String"
+      },
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "question": "Question",
+  "lesson": "Lesson",
+  "question_number": "Question",
+  "lesson_number": "Lesson",
+  "home": "Home",
+  "learning_path": "Learning Path",
+  "ok": "Ok",
+  "cancel": "Cancel",
+  "call_tutor": "Call tutor for help?",
+  "connecting_tutor": "Tutor is connecting.\nPlease wait for a few minute.",
+  "tutor_ready": "Tutor is ready.\nClick button \"Meet tutor\" to connect with him/her.",
+  "meet_tutor": "Meet tutor",
+  "exercise": "Exercise",
+  "test": "Test",
+  "level": "Level",
+  "your_score": "Your score",
+  "general_knowledge": "General knowledge",
+  "knowledge_should_review": "Knowledge should be reviews",
+  "redo_exercise": "Redo exercise",
+  "do_test": "Do test",
+  "error": "Error, please try again later",
+  "to_learning_path": "To learning path",
+  "finish_test": "You have finished testing",
+  "learning_path_is_reparing": "Kyons is reparing learing path for you. Please wait!",
+  "learning_path_is_ready": "Kyons has created learing path for you. Let's get started!"
 }

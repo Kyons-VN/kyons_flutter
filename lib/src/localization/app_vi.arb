@@ -52,5 +52,42 @@
   "back_to_home": "Về trang chủ",
   "do_diagnostictest_heading": "Làm bài khảo sát\ntrước nhé!",
   "do_diagnostictest_btn": "Làm bài khảo sát trình độ",
-  "do_diagnostictest_cancel": "Thôi, không cần đâu!"
+  "do_diagnostictest_cancel": "Thôi, không cần đâu!",
+  "diagnostic_test": "Bài khảo sát",
+  "thing_number": "{thing} {number}",
+  "@thing_number": {
+    "placeholders": {
+      "thing": {
+        "type": "String"
+      },
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "question": "Câu hỏi",
+  "lesson": "Bài học",
+  "question_number": "Câu",
+  "lesson_number": "Bài",
+  "home": "Trang chủ",
+  "learning_path": "Lộ trình học",
+  "ok": "Đồng ý",
+  "cancel": "Hủy yêu cầu",
+  "call_tutor": "Gọi gia sư hỗ trợ nhé?",
+  "connecting_tutor": "Kyons đang kết nối với gia sư.\nBạn vui lòng đợi trong ít phút.",
+  "tutor_ready": "Gia sư đã sẵn sàng.\nNhấn vào nút \"Gặp gia sư\" để kết nối với gia sư.",
+  "meet_tutor": "Gặp gia sư",
+  "exercise": "Bài tập",
+  "test": "Kiểm tra cuối bài",
+  "level": "Cấp độ",
+  "your_score": "Điểm của bạn",
+  "general_knowledge": "Tổng quan kiến thức",
+  "knowledge_should_review": "Kiến thức cần xem lại",
+  "redo_exercise": "Làm lại bài tập",
+  "do_test": "Làm bài kiểm tra",
+  "error": "Có lỗi, vui lòng thử lại sau",
+  "to_learning_path": "Đến giáo trình",
+  "finish_test": "Bạn đã hoàn thành bài kiểm tra",
+  "learning_path_is_reparing": "Kyons đang chuẩn bị giáo trình cho bạn. Xin vui lòng đợi!",
+  "learning_path_is_ready": "Kyons đã chuẩn bị xong giáo trình cho bạn. Bắt đầu học thôi nào!"
 }

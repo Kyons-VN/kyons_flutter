@@ -46,7 +46,7 @@ class _CupertinoPickerOptionsState extends State<CupertinoPickerOptions> {
 
   @override
   Widget build(BuildContext context) {
-    const double _kItemExtent = 32.0;
+    const double kItemExtent = 32.0;
     return GestureDetector(
       // Display a CupertinoPicker with list of fruits.
       onTap: () => _showDialog(
@@ -55,7 +55,7 @@ class _CupertinoPickerOptionsState extends State<CupertinoPickerOptions> {
           magnification: 1.22,
           squeeze: 1.2,
           useMagnifier: true,
-          itemExtent: _kItemExtent,
+          itemExtent: kItemExtent,
           // This is called when selected item is changed.
           onSelectedItemChanged: (index) {
             setState(() {

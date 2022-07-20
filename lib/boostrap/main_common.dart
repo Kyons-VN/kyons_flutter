@@ -84,7 +84,6 @@ void guardedMain() {
 
   // TODO: When ready, uncomment the following lines to enable integrations.
   //       Read the README for more info on each integration.
-
   AdsController? adsController;
   // if (!kIsWeb && (Platform.isIOS || Platform.isAndroid)) {
   //   /// Prepare the google_mobile_ads plugin so that the first ad loads
@@ -132,10 +131,6 @@ class AppWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Glue the SettingsController to the MaterialApp.
-    //
-    // The AnimatedBuilder Widget listens to the SettingsController for changes.
-    // Whenever the user updates their settings, the MaterialApp is rebuilt.
     AppRouter.init(ref);
     return _builder(ref);
   }
@@ -148,10 +143,6 @@ class WebAppWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Glue the SettingsController to the MaterialApp.
-    //
-    // The AnimatedBuilder Widget listens to the SettingsController for changes.
-    // Whenever the user updates their settings, the MaterialApp is rebuilt.
     AppRouter.init(ref);
     final authProvider = ref.read(authNotifierProvider.notifier);
     return FutureBuilder(
@@ -164,7 +155,7 @@ class WebAppWidget extends HookConsumerWidget {
 }
 
 AnimatedBuilder _builder(WidgetRef ref) {
-  final settingsProvider = ref.watch(settingsNotifierProvider);
+  final settingsProvider = ref.read(settingsNotifierProvider);
   return AnimatedBuilder(
     animation: settingsProvider,
     builder: (BuildContext context, Widget? child) {

@@ -6,6 +6,7 @@ import 'package:kyons_flutter/src/authentication/view/sign_in_page.dart';
 import 'package:kyons_flutter/src/design/view/design_page.dart';
 import 'package:kyons_flutter/src/game_template/game_route.dart';
 import 'package:kyons_flutter/src/home/view/home_page.dart';
+import 'package:kyons_flutter/src/knowledge/view/lesson_page.dart';
 import 'package:kyons_flutter/src/learning_path/view/learning_path_page.dart';
 import 'package:kyons_flutter/src/navigation/app/auth_guard.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
@@ -30,6 +31,11 @@ class AppRouter {
         GoRoute(
           path: '/',
           redirect: (_) => AppPaths.home.path,
+        ),
+        GoRoute(
+          path: '/diagnostic-test-decision',
+          builder: (BuildContext context, GoRouterState state) => const HomePage(isShowHomeOptions: true),
+          redirect: (state) => guard(state, ref),
         ),
         GoRoute(
           path: AppPaths.home.path,
@@ -87,10 +93,16 @@ class AppRouter {
           builder: (BuildContext context, GoRouterState state) => const LearningPathPage(),
           redirect: (state) => guard(state, ref),
         ),
+        GoRoute(
+          path: AppPaths.lessonPage.path,
+          builder: (BuildContext context, GoRouterState state) => LessonPage(state.params['id']!),
+          redirect: (state) => guard(state, ref),
+        ),
         GameRoute().getGameRoute('/game', guard, ref),
       ],
       refreshListenable: GoRouterRefreshStream(authNotifier.stream),
       debugLogDiagnostics: true,
+      observers: [GoRouterObserver()],
     );
 
     isInitialized = true;
@@ -105,7 +117,7 @@ class AppRouter {
   static void redirect() {
     final redirect = _redirects.isNotEmpty ? _redirects.first : null;
     if (redirect != null) {
-      router.go(redirect.path);
+      router.push(redirect.path);
     } else {
       router.go(AppPaths.home.path);
     }
@@ -124,3 +136,18 @@ _slideTransitionBuilder() =>
           ),
           child: child,
         );
+
+class GoRouterObserver extends NavigatorObserver {
+  @override
+  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {}
+}
+
+extension AppRouteHelper on BuildContext {
+  void canPop() {
+    try {
+      GoRouter.of(this).pop();
+    } catch (e) {
+      GoRouter.of(this).go(AppPaths.home.path);
+    }
+  }
+}

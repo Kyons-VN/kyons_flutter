@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeState {
   Option<Either<ApiFailure, List<Subject>>> get subjectsOption =>
       throw _privateConstructorUsedError;
+  Option<Either<ApiFailure, List<Program>>> get studentProgramsOption =>
+      throw _privateConstructorUsedError;
   Option<List<Program>> get programsOption =>
       throw _privateConstructorUsedError;
   Option<Subject> get selectedSubjectOption =>
@@ -40,6 +42,7 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res>;
   $Res call(
       {Option<Either<ApiFailure, List<Subject>>> subjectsOption,
+      Option<Either<ApiFailure, List<Program>>> studentProgramsOption,
       Option<List<Program>> programsOption,
       Option<Subject> selectedSubjectOption,
       Option<Program> selectedProgramOption,
@@ -59,6 +62,7 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   $Res call({
     Object? subjectsOption = freezed,
+    Object? studentProgramsOption = freezed,
     Object? programsOption = freezed,
     Object? selectedSubjectOption = freezed,
     Object? selectedProgramOption = freezed,
@@ -71,6 +75,10 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
           ? _value.subjectsOption
           : subjectsOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, List<Subject>>>,
+      studentProgramsOption: studentProgramsOption == freezed
+          ? _value.studentProgramsOption
+          : studentProgramsOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ApiFailure, List<Program>>>,
       programsOption: programsOption == freezed
           ? _value.programsOption
           : programsOption // ignore: cast_nullable_to_non_nullable
@@ -107,6 +115,7 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   $Res call(
       {Option<Either<ApiFailure, List<Subject>>> subjectsOption,
+      Option<Either<ApiFailure, List<Program>>> studentProgramsOption,
       Option<List<Program>> programsOption,
       Option<Subject> selectedSubjectOption,
       Option<Program> selectedProgramOption,
@@ -128,6 +137,7 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? subjectsOption = freezed,
+    Object? studentProgramsOption = freezed,
     Object? programsOption = freezed,
     Object? selectedSubjectOption = freezed,
     Object? selectedProgramOption = freezed,
@@ -140,6 +150,10 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
           ? _value.subjectsOption
           : subjectsOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, List<Subject>>>,
+      studentProgramsOption: studentProgramsOption == freezed
+          ? _value.studentProgramsOption
+          : studentProgramsOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ApiFailure, List<Program>>>,
       programsOption: programsOption == freezed
           ? _value.programsOption
           : programsOption // ignore: cast_nullable_to_non_nullable
@@ -173,6 +187,7 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 class _$_HomeState implements _HomeState {
   const _$_HomeState(
       {required this.subjectsOption,
+      required this.studentProgramsOption,
       required this.programsOption,
       required this.selectedSubjectOption,
       required this.selectedProgramOption,
@@ -182,6 +197,8 @@ class _$_HomeState implements _HomeState {
 
   @override
   final Option<Either<ApiFailure, List<Subject>>> subjectsOption;
+  @override
+  final Option<Either<ApiFailure, List<Program>>> studentProgramsOption;
   @override
   final Option<List<Program>> programsOption;
   @override
@@ -197,7 +214,7 @@ class _$_HomeState implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(subjectsOption: $subjectsOption, programsOption: $programsOption, selectedSubjectOption: $selectedSubjectOption, selectedProgramOption: $selectedProgramOption, hasError: $hasError, isContinue: $isContinue, submitOption: $submitOption)';
+    return 'HomeState(subjectsOption: $subjectsOption, studentProgramsOption: $studentProgramsOption, programsOption: $programsOption, selectedSubjectOption: $selectedSubjectOption, selectedProgramOption: $selectedProgramOption, hasError: $hasError, isContinue: $isContinue, submitOption: $submitOption)';
   }
 
   @override
@@ -207,6 +224,8 @@ class _$_HomeState implements _HomeState {
             other is _$_HomeState &&
             const DeepCollectionEquality()
                 .equals(other.subjectsOption, subjectsOption) &&
+            const DeepCollectionEquality()
+                .equals(other.studentProgramsOption, studentProgramsOption) &&
             const DeepCollectionEquality()
                 .equals(other.programsOption, programsOption) &&
             const DeepCollectionEquality()
@@ -224,6 +243,7 @@ class _$_HomeState implements _HomeState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(subjectsOption),
+      const DeepCollectionEquality().hash(studentProgramsOption),
       const DeepCollectionEquality().hash(programsOption),
       const DeepCollectionEquality().hash(selectedSubjectOption),
       const DeepCollectionEquality().hash(selectedProgramOption),
@@ -240,6 +260,8 @@ class _$_HomeState implements _HomeState {
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {required final Option<Either<ApiFailure, List<Subject>>> subjectsOption,
+      required final Option<Either<ApiFailure, List<Program>>>
+          studentProgramsOption,
       required final Option<List<Program>> programsOption,
       required final Option<Subject> selectedSubjectOption,
       required final Option<Program> selectedProgramOption,
@@ -250,6 +272,9 @@ abstract class _HomeState implements HomeState {
 
   @override
   Option<Either<ApiFailure, List<Subject>>> get subjectsOption =>
+      throw _privateConstructorUsedError;
+  @override
+  Option<Either<ApiFailure, List<Program>>> get studentProgramsOption =>
       throw _privateConstructorUsedError;
   @override
   Option<List<Program>> get programsOption =>

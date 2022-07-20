@@ -18,18 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ApiFailure<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() clientError,
     required TResult Function() serverError,
     required TResult Function() unAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? clientError,
     TResult Function()? serverError,
     TResult Function()? unAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? clientError,
     TResult Function()? serverError,
     TResult Function()? unAuthenticated,
     required TResult orElse(),
@@ -37,18 +40,21 @@ mixin _$ApiFailure<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ClientError<T> value) clientError,
     required TResult Function(ServerError<T> value) serverError,
     required TResult Function(UnAuthenticated<T> value) unAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ClientError<T> value)? clientError,
     TResult Function(ServerError<T> value)? serverError,
     TResult Function(UnAuthenticated<T> value)? unAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ClientError<T> value)? clientError,
     TResult Function(ServerError<T> value)? serverError,
     TResult Function(UnAuthenticated<T> value)? unAuthenticated,
     required TResult orElse(),
@@ -71,6 +77,117 @@ class _$ApiFailureCopyWithImpl<T, $Res>
   final ApiFailure<T> _value;
   // ignore: unused_field
   final $Res Function(ApiFailure<T>) _then;
+}
+
+/// @nodoc
+abstract class _$$ClientErrorCopyWith<T, $Res> {
+  factory _$$ClientErrorCopyWith(
+          _$ClientError<T> value, $Res Function(_$ClientError<T>) then) =
+      __$$ClientErrorCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$ClientErrorCopyWithImpl<T, $Res>
+    extends _$ApiFailureCopyWithImpl<T, $Res>
+    implements _$$ClientErrorCopyWith<T, $Res> {
+  __$$ClientErrorCopyWithImpl(
+      _$ClientError<T> _value, $Res Function(_$ClientError<T>) _then)
+      : super(_value, (v) => _then(v as _$ClientError<T>));
+
+  @override
+  _$ClientError<T> get _value => super._value as _$ClientError<T>;
+}
+
+/// @nodoc
+
+class _$ClientError<T> implements ClientError<T> {
+  const _$ClientError();
+
+  @override
+  String toString() {
+    return 'ApiFailure<$T>.clientError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClientError<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() clientError,
+    required TResult Function() serverError,
+    required TResult Function() unAuthenticated,
+  }) {
+    return clientError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? clientError,
+    TResult Function()? serverError,
+    TResult Function()? unAuthenticated,
+  }) {
+    return clientError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? clientError,
+    TResult Function()? serverError,
+    TResult Function()? unAuthenticated,
+    required TResult orElse(),
+  }) {
+    if (clientError != null) {
+      return clientError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ClientError<T> value) clientError,
+    required TResult Function(ServerError<T> value) serverError,
+    required TResult Function(UnAuthenticated<T> value) unAuthenticated,
+  }) {
+    return clientError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ClientError<T> value)? clientError,
+    TResult Function(ServerError<T> value)? serverError,
+    TResult Function(UnAuthenticated<T> value)? unAuthenticated,
+  }) {
+    return clientError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ClientError<T> value)? clientError,
+    TResult Function(ServerError<T> value)? serverError,
+    TResult Function(UnAuthenticated<T> value)? unAuthenticated,
+    required TResult orElse(),
+  }) {
+    if (clientError != null) {
+      return clientError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClientError<T> implements ApiFailure<T> {
+  const factory ClientError() = _$ClientError<T>;
 }
 
 /// @nodoc
@@ -114,6 +231,7 @@ class _$ServerError<T> implements ServerError<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() clientError,
     required TResult Function() serverError,
     required TResult Function() unAuthenticated,
   }) {
@@ -123,6 +241,7 @@ class _$ServerError<T> implements ServerError<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? clientError,
     TResult Function()? serverError,
     TResult Function()? unAuthenticated,
   }) {
@@ -132,6 +251,7 @@ class _$ServerError<T> implements ServerError<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? clientError,
     TResult Function()? serverError,
     TResult Function()? unAuthenticated,
     required TResult orElse(),
@@ -145,6 +265,7 @@ class _$ServerError<T> implements ServerError<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ClientError<T> value) clientError,
     required TResult Function(ServerError<T> value) serverError,
     required TResult Function(UnAuthenticated<T> value) unAuthenticated,
   }) {
@@ -154,6 +275,7 @@ class _$ServerError<T> implements ServerError<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ClientError<T> value)? clientError,
     TResult Function(ServerError<T> value)? serverError,
     TResult Function(UnAuthenticated<T> value)? unAuthenticated,
   }) {
@@ -163,6 +285,7 @@ class _$ServerError<T> implements ServerError<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ClientError<T> value)? clientError,
     TResult Function(ServerError<T> value)? serverError,
     TResult Function(UnAuthenticated<T> value)? unAuthenticated,
     required TResult orElse(),
@@ -219,6 +342,7 @@ class _$UnAuthenticated<T> implements UnAuthenticated<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() clientError,
     required TResult Function() serverError,
     required TResult Function() unAuthenticated,
   }) {
@@ -228,6 +352,7 @@ class _$UnAuthenticated<T> implements UnAuthenticated<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? clientError,
     TResult Function()? serverError,
     TResult Function()? unAuthenticated,
   }) {
@@ -237,6 +362,7 @@ class _$UnAuthenticated<T> implements UnAuthenticated<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? clientError,
     TResult Function()? serverError,
     TResult Function()? unAuthenticated,
     required TResult orElse(),
@@ -250,6 +376,7 @@ class _$UnAuthenticated<T> implements UnAuthenticated<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ClientError<T> value) clientError,
     required TResult Function(ServerError<T> value) serverError,
     required TResult Function(UnAuthenticated<T> value) unAuthenticated,
   }) {
@@ -259,6 +386,7 @@ class _$UnAuthenticated<T> implements UnAuthenticated<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ClientError<T> value)? clientError,
     TResult Function(ServerError<T> value)? serverError,
     TResult Function(UnAuthenticated<T> value)? unAuthenticated,
   }) {
@@ -268,6 +396,7 @@ class _$UnAuthenticated<T> implements UnAuthenticated<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ClientError<T> value)? clientError,
     TResult Function(ServerError<T> value)? serverError,
     TResult Function(UnAuthenticated<T> value)? unAuthenticated,
     required TResult orElse(),

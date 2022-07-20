@@ -14,7 +14,6 @@ part 'sign_in_provider.freezed.dart';
 part 'sign_in_state.dart';
 
 class SignInNotifier extends StateNotifier<SignInState> {
-  // final AuthService authService;
   final IAuth authApi;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -74,7 +73,7 @@ class SignInNotifier extends StateNotifier<SignInState> {
   }
 }
 
-final signInProvider = StateNotifierProvider<SignInNotifier, SignInState>(
+final signInProvider = StateNotifierProvider.autoDispose<SignInNotifier, SignInState>(
   (ref) => SignInNotifier(ref.read(
     auth,
   )),

@@ -4,6 +4,7 @@ part of 'home_provider.dart';
 class HomeState with _$HomeState {
   const factory HomeState({
     required Option<Either<ApiFailure, List<Subject>>> subjectsOption,
+    required Option<Either<ApiFailure, List<Program>>> studentProgramsOption,
     required Option<List<Program>> programsOption,
     required Option<Subject> selectedSubjectOption,
     required Option<Program> selectedProgramOption,
@@ -14,6 +15,7 @@ class HomeState with _$HomeState {
 
   factory HomeState.initial() => HomeState(
         subjectsOption: none(),
+        studentProgramsOption: none(),
         programsOption: none(),
         selectedSubjectOption: none(),
         selectedProgramOption: none(),

@@ -21,7 +21,7 @@ class SettingsProvider extends ChangeNotifier {
   // Allow Widgets to read the user's preferred ThemeMode.
   ThemeMode get themeMode => _themeMode;
 
-  Locale _locale = Locale('en', '');
+  Locale _locale = const Locale('en', '');
   Locale get locale => _locale;
 
   /// Load the user's settings from the SettingsService. It may load from a

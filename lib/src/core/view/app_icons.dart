@@ -47,55 +47,21 @@ class AppIcons {
   static const IconData tutor = IconData(0xe927, fontFamily: _fontFamily);
   static const IconData work = IconData(0xe928, fontFamily: _fontFamily);
 
-  static const Widget menuIcon = MouseRegion(
-    cursor: SystemMouseCursors.click,
-    child: SizedBox(
-      width: 48.0,
-      height: 48.0,
-      child: Icon(
-        AppIcons.menu,
-        color: AppColors.orange,
-      ),
-    ),
-  );
+  static Widget menuIcon = square48(AppIcons.menu);
+  static Widget backIcon = square48(AppIcons.arrowLeft);
+  static Widget lessonContentIcon = square48(AppIcons.lessonContent);
+  static Widget notificationIcon = square48(AppIcons.notification);
+  static Widget closeIcon = square48(AppIcons.close);
 
-  static const Widget backIcon = MouseRegion(
-    cursor: SystemMouseCursors.click,
-    child: SizedBox(
-      width: 48.0,
-      height: 48.0,
-      child: Icon(
-        AppIcons.arrowLeft,
-        color: AppColors.orange,
-      ),
-    ),
-  );
-}
-
-class ElevatedIconButton extends StatelessWidget {
-  final IconData icon;
-  final void Function() onPressed;
-  const ElevatedIconButton({Key? key, required this.icon, required this.onPressed}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        height: 48.0,
-        width: 48.0,
-        decoration: BoxDecoration(
-          color: AppColors.orange,
-          borderRadius: BorderRadius.circular(AppSizesUnit.small8),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.orange.withOpacity(0.2),
-              blurRadius: 8.0,
-            ),
-          ],
+  static Widget square48(IconData icon, {Color color = AppColors.orange}) => MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: SizedBox(
+          width: AppSizesUnit.large48,
+          height: AppSizesUnit.large48,
+          child: Icon(
+            icon,
+            color: color,
+          ),
         ),
-        child: Center(child: Icon(icon, color: AppColors.white)),
-      ),
-    );
-  }
+      );
 }

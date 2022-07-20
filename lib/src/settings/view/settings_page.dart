@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
+import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
-
-import '../app/settings_controller.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
-class SettingsPage extends HookConsumerWidget {
+class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   static const routeName = '/settings';
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final settingsProvider = ref.watch(settingsNotifierProvider);
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(t(context).settings),
@@ -27,10 +24,10 @@ class SettingsPage extends HookConsumerWidget {
         //   icon: const Icon(Icons.arrow_back_ios),
         // ),
         leading: GestureDetector(
-          onTap: () => context.pop(),
+          onTap: () => context.canPop(),
           child: const MouseRegion(
             cursor: SystemMouseCursors.click,
-            child: Icon(Icons.arrow_back_ios),
+            child: Icon(Icons.arrow_back_ios, color: AppColors.orange),
           ),
         ),
       ),
@@ -55,16 +52,16 @@ class SettingsPage extends HookConsumerWidget {
                     trailing: const Icon(Icons.arrow_forward),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () => context.push(AppPaths.themeSettings.path),
-                  child: ListTile(
-                    title: Text(
-                      t(context).themeMode,
-                      style: Theme.of(context).textTheme.heading6,
-                    ),
-                    trailing: const Icon(Icons.arrow_forward),
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () => context.push(AppPaths.themeSettings.path),
+                //   child: ListTile(
+                //     title: Text(
+                //       t(context).themeMode,
+                //       style: Theme.of(context).textTheme.heading6,
+                //     ),
+                //     trailing: const Icon(Icons.arrow_forward),
+                //   ),
+                // ),
               ],
             ),
           ),

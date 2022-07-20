@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-
 // import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 // import 'preloaded_banner_ad.dart';
@@ -37,10 +35,10 @@ class AdsController {
   void preloadAd() {
     // TODO: When ready, change this to the Ad Unit IDs provided by AdMob.
     //       The current values are AdMob's sample IDs.
-    final adUnitId = defaultTargetPlatform == TargetPlatform.android
-        ? 'ca-app-pub-3940256099942544/6300978111'
-        // iOS
-        : 'ca-app-pub-3940256099942544/2934735716';
+    // final adUnitId = defaultTargetPlatform == TargetPlatform.android
+    //     ? 'ca-app-pub-3940256099942544/6300978111'
+    //     // iOS
+    //     : 'ca-app-pub-3940256099942544/2934735716';
     // _preloadedAd =
     //     PreloadedBannerAd(size: AdSize.mediumRectangle, adUnitId: adUnitId);
 
