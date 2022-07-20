@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
+import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 
 class MainAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -10,14 +11,12 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: backPath != null
-          ? GestureDetector(
-              onTap: () {
-                context.go(backPath!.path);
-              },
-              child: AppIcons.backIcon,
-            )
-          : null,
+      leading: GestureDetector(
+        onTap: () {
+          backPath != null ? context.go(backPath!.path) : context.canPop();
+        },
+        child: AppIcons.backIcon,
+      ),
       actions: [
         GestureDetector(
           onTap: () {},

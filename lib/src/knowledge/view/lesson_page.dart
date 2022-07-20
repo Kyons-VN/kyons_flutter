@@ -72,11 +72,9 @@ class LessonPage extends HookConsumerWidget {
       child: Stack(
         children: [
           Scaffold(
-            appBar: LessonAppBar(
-                backPath: AppPaths.learningPath,
-                openCallback: () {
-                  isMenuOpened.value = true;
-                }),
+            appBar: LessonAppBar(openCallback: () {
+              isMenuOpened.value = true;
+            }),
             endDrawer: const AppDrawer(),
             body: SizedBox.expand(
               child: Padding(
@@ -127,7 +125,6 @@ class LessonPage extends HookConsumerWidget {
                               Center(
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    isMenuOpened.value = false;
                                     context.go(AppPaths.learningPath.path);
                                   },
                                   child: Text(t(context).to_learning_path),

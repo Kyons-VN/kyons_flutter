@@ -11,14 +11,15 @@ class LessonAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: backPath != null
-          ? GestureDetector(
-              onTap: () {
-                context.go(backPath!.path);
-              },
-              child: AppIcons.backIcon,
-            )
-          : null,
+      leading: GestureDetector(
+        onTap: () {
+          backPath != null ? context.go(backPath!.path) : context.go(AppPaths.learningPath.path);
+        },
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: AppIcons.backIcon,
+        ),
+      ),
       actions: [
         GestureDetector(
           onTap: () {

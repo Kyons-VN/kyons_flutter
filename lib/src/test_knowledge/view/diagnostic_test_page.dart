@@ -28,9 +28,7 @@ class DiagnosticTestPage extends HookConsumerWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        appBar: const MainAppBar(
-          backPath: AppPaths.home,
-        ),
+        appBar: const MainAppBar(),
         endDrawer: const AppDrawer(),
         body: SafeArea(
           child: SingleChildScrollView(
@@ -41,14 +39,25 @@ class DiagnosticTestPage extends HookConsumerWidget {
                   final diagnosticTestState = ref.watch(diagnosticTestNotifierProvider);
                   if (diagnosticTestState.loading || diagnosticTestState.isSubmitted) {
                     return const Center(child: CircularProgressIndicator());
-                  } else if (diagnosticTestState.testResult.isNone() && diagnosticTestState.content.isSome()) {
-                    if (diagnosticTestState.content.getOrElse(() => TestContent.empty()).done) {
+                  } else if (diagnosticTestState.testResult.isNone() && diagnosticTestState.content.isSome() ||
+                      diagnosticTestState.hasError) {
+                    if (diagnosticTestState.content.getOrElse(() => TestContent.empty()).done ||
+                        diagnosticTestState.hasError) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Heading(4, t(context).finish_test),
                           AppSizesUnit.sizedBox16,
                           Heading(6, t(context).learning_path_is_ready, color: AppColors.secondaryBlue),
+                          AppSizesUnit.sizedBox16,
+                          Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                context.go(AppPaths.learningPath.path);
+                              },
+                              child: Text(t(context).to_learning_path),
+                            ).medium(context),
+                          ),
                         ],
                       );
                     } else {
