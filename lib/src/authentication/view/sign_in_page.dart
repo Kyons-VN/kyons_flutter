@@ -21,20 +21,29 @@ class SignInPage extends HookConsumerWidget {
         resizeToAvoidBottomInset: false,
         backgroundColor: AppColors.primaryBlue,
         body: SafeArea(
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              children: [
-                const SizedBox(height: 90),
-                GestureDetector(
-                    onDoubleTap: () => ref.read(signInProvider.notifier).initial(),
-                    child: SizedBox(height: 100, child: AppAssets.logoSVG)),
-                const SizedBox(height: 48),
-                const SignInForm(),
-              ],
+          child: Center(
+            child: Container(
+              width: context.isXsScreen() ? double.infinity : 400,
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                      onDoubleTap: () => ref.read(signInProvider.notifier).initial(),
+                      child: SizedBox(height: 100, child: AppAssets.logoSVG)),
+                  const SizedBox(height: 48),
+                  const SignInForm(),
+                  const SizedBox(height: 200),
+                ],
+              ),
             ),
           ),
+          // : Center(
+          //     child: Heading(
+          //     1,
+          //     'do',
+          //     color: AppColors.white,
+          //   )),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => context.push(AppPaths.settings.path),

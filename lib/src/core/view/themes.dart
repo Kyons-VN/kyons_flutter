@@ -7,6 +7,7 @@ part 'app_colors.dart';
 part 'app_font_sizes.dart';
 part 'app_icons.dart';
 part 'app_message.dart';
+part 'app_screen_sizes.dart';
 part 'app_spacings.dart';
 part 'app_text_theme.dart';
 
