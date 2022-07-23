@@ -25,9 +25,9 @@ class SettingsPage extends StatelessWidget {
         // ),
         leading: GestureDetector(
           onTap: () => context.canPop(),
-          child: const MouseRegion(
+          child: MouseRegion(
             cursor: SystemMouseCursors.click,
-            child: Icon(Icons.arrow_back_ios, color: AppColors.orange),
+            child: AppIcons.backIcon,
           ),
         ),
       ),

@@ -123,10 +123,6 @@ class TestResultDto with _$TestResultDto {
   factory TestResultDto.fromJson(Map<String, dynamic> json) => _$TestResultDtoFromJson(json);
 
   TestResult toDomain() {
-    // final Map<String, int> topicScoreMap = {};
-    // result.forEach((r) {
-    //   topicScoreMap[r.topicId.toString()] = (topicScoreMap[r.topicId.toString()] ?? 0) + r.score;
-    // });
     final total = result.length;
     final categoryToScoreMap = result.fold(<String, int>{}, (Map<String, int> previousValue, element) {
       previousValue[element.categoryId.toString()] =
@@ -145,11 +141,8 @@ class TestResultDto with _$TestResultDto {
       return previousValue;
     }));
 
-    final resultScore = result.map((result) => result.score).reduce((acc, next) => acc + next);
+    final resultScore = result.map((r) => r.score).reduce((acc, next) => acc + next);
 
-    // print(categoryToScoreMap);
-    // print(topicScoreMap);
-    // print(topicWrongQuestionsMap);
     final answerResult = AnswerResult(
       categories: categoryToScoreMap,
       topics: topicScoreMap,

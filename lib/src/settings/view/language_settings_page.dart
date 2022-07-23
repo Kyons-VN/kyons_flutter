@@ -21,9 +21,12 @@ class LanguageSettingsPage extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(t(context).language),
-        leading: IconButton(
-          onPressed: () => context.canPop(),
-          icon: const Icon(Icons.arrow_back_ios),
+        leading: GestureDetector(
+          onTap: () => context.canPop(),
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: AppIcons.backIcon,
+          ),
         ),
       ),
       body: SafeArea(
