@@ -76,6 +76,14 @@ class LearningPathPage extends HookConsumerWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: AppColors.orange,
+        child: const Icon(
+          Icons.add_outlined,
+          color: AppColors.white,
+        ),
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 import 'package:kyons_flutter/src/core/data/api.dart';
+import 'package:kyons_flutter/src/core/domain/core.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_dto.dart';
 import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
@@ -59,6 +60,15 @@ Reader<IKnowledge, Future<Either<ApiFailure, List<Program>>>> getStudentProgram(
 TaskEither<ApiFailure, List<Program>> _getStudentProgram(IKnowledge api) => TaskEither.tryCatch(
       () => api.getStudentProgram(),
       handleError,
+    );
+
+Reader<IKnowledge, Future<Either<ClientFailure, Unit>>> setCurrentProgram(Program program) => Reader(
+      (api) => _setCurrentProgram(api, program).run(),
+    );
+
+TaskEither<ClientFailure, Unit> _setCurrentProgram(IKnowledge api, Program program) => TaskEither.tryCatch(
+      () => api.setCurrentProgram(program),
+      handleClientError,
     );
 
 class Knowledge implements IKnowledge {
@@ -198,5 +208,17 @@ class Knowledge implements IKnowledge {
       final result = LessonGroupDto.fromJson(data).toDomain();
       return result;
     });
+  }
+
+  @override
+  Future<Program> getCurrentProgram() {
+    // TODO: implement getCurrentProgram
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Unit> setCurrentProgram(Program program) {
+    // TODO: implement setCurrentProgram
+    throw UnimplementedError();
   }
 }

@@ -9,4 +9,6 @@ abstract class IKnowledge {
   Future<TestContent> getDiagnosticTest();
   Future<LearningPath> getLearningPath();
   Future<LessonGroup> getLessonGroup(String lessonGroupId);
+  Future<Unit> setCurrentProgram(Program program);
+  Future<Program> getCurrentProgram();
 }
