@@ -94,6 +94,7 @@ class SignInForm extends HookConsumerWidget {
       autovalidateMode:
           signInState.shouldShowErrorMessages ? AutovalidateMode.onUserInteraction : AutovalidateMode.disabled,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TextFormField(
             autovalidateMode: signInState.shouldShowErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,

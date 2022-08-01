@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -113,13 +114,16 @@ void guardedMain() {
 
   runApp(UncontrolledProviderScope(
     container: container,
-    child: GameMain(
-      settingsPersistence: LocalStorageSettingsPersistence(),
-      playerProgressPersistence: LocalStoragePlayerProgressPersistence(),
-      inAppPurchaseController: inAppPurchaseController,
-      adsController: adsController,
-      gamesServicesController: gamesServicesController,
-      child: kIsWeb ? const WebAppWidget() : const AppWidget(),
+    child: DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => GameMain(
+        settingsPersistence: LocalStorageSettingsPersistence(),
+        playerProgressPersistence: LocalStoragePlayerProgressPersistence(),
+        inAppPurchaseController: inAppPurchaseController,
+        adsController: adsController,
+        gamesServicesController: gamesServicesController,
+        child: kIsWeb ? const WebAppWidget() : const AppWidget(),
+      ), // Wrap your app
     ),
   ));
 }
@@ -160,6 +164,8 @@ AnimatedBuilder _builder(WidgetRef ref) {
     animation: settingsProvider,
     builder: (BuildContext context, Widget? child) {
       return MaterialApp.router(
+        useInheritedMediaQuery: true,
+        builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
         // Providing a restorationScopeId allows the Navigator built by the
         // MaterialApp to restore the navigation stack when a user leaves and
