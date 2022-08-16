@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
+import 'package:kyons_flutter/src/authentication/app/current_user_provider.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
@@ -11,9 +12,12 @@ class AppDrawer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final currentUserState = ref.watch(currentUserProvider);
     return Drawer(
       child: ListView(
         children: [
+          currentUserState.userOption.map((t) => t).foldRight(Container(),
+              (acc, user) => ListTile(title: Heading(6, t(context).hi_so(user.firstName), color: AppColors.white))),
           ListTile(
             title: Row(
               children: [
@@ -61,8 +65,10 @@ class AppDrawer extends ConsumerWidget {
               style: const TextStyle(color: AppColors.white),
             ),
             onTap: () {
-              ref.read(authNotifierProvider.notifier).signOut();
-              ref.read(authNotifierProvider.notifier).stateChanged();
+              ref
+                  .read(authNotifierProvider.notifier)
+                  .signOut()
+                  .then((value) => ref.read(authNotifierProvider.notifier).stateChanged());
             },
           ),
         ],

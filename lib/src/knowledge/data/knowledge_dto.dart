@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 
 part 'knowledge_dto.freezed.dart';
 part 'knowledge_dto.g.dart';
@@ -144,4 +144,22 @@ class LessonDto with _$LessonDto {
         topic: topic,
         learningPointDifficultyId: learningPointDifficultyId.toString(),
       );
+}
+
+@freezed
+class LearningPointDto with _$LearningPointDto {
+  const LearningPointDto._();
+  const factory LearningPointDto({
+    required int id,
+    @JsonKey(name: 'learning_point') required String learningPoint,
+    @JsonKey(name: 'difficulty_id') required int difficultyId,
+    @JsonKey(name: 'topic_id') required int topicId,
+    @JsonKey(name: 'topic_name') required String topicName,
+  }) = _LearningPointDto;
+  factory LearningPointDto.fromJson(Map<String, dynamic> json) => _$LearningPointDtoFromJson(json);
+  LearningPoint toDomain() => LearningPoint(
+      id: id.toString(),
+      diffucultyId: difficultyId.toString(),
+      learningPoint: learningPoint,
+      topic: TopicDto(id: topicId, name: topicName).toDomain());
 }

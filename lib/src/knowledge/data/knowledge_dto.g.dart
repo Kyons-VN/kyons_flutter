@@ -131,3 +131,21 @@ Map<String, dynamic> _$$_LessonDtoToJson(_$_LessonDto instance) =>
       'difficulty_level': instance.difficultyLevel,
       'content': instance.content,
     };
+
+_$_LearningPointDto _$$_LearningPointDtoFromJson(Map<String, dynamic> json) =>
+    _$_LearningPointDto(
+      id: json['id'] as int,
+      learningPoint: json['learning_point'] as String,
+      difficultyId: json['difficulty_id'] as int,
+      topicId: json['topic_id'] as int,
+      topicName: json['topic_name'] as String,
+    );
+
+Map<String, dynamic> _$$_LearningPointDtoToJson(_$_LearningPointDto instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'learning_point': instance.learningPoint,
+      'difficulty_id': instance.difficultyId,
+      'topic_id': instance.topicId,
+      'topic_name': instance.topicName,
+    };

@@ -1612,3 +1612,241 @@ abstract class _LessonDto extends LessonDto {
   _$$_LessonDtoCopyWith<_$_LessonDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+LearningPointDto _$LearningPointDtoFromJson(Map<String, dynamic> json) {
+  return _LearningPointDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LearningPointDto {
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'learning_point')
+  String get learningPoint => throw _privateConstructorUsedError;
+  @JsonKey(name: 'difficulty_id')
+  int get difficultyId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'topic_id')
+  int get topicId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'topic_name')
+  String get topicName => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LearningPointDtoCopyWith<LearningPointDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LearningPointDtoCopyWith<$Res> {
+  factory $LearningPointDtoCopyWith(
+          LearningPointDto value, $Res Function(LearningPointDto) then) =
+      _$LearningPointDtoCopyWithImpl<$Res>;
+  $Res call(
+      {int id,
+      @JsonKey(name: 'learning_point') String learningPoint,
+      @JsonKey(name: 'difficulty_id') int difficultyId,
+      @JsonKey(name: 'topic_id') int topicId,
+      @JsonKey(name: 'topic_name') String topicName});
+}
+
+/// @nodoc
+class _$LearningPointDtoCopyWithImpl<$Res>
+    implements $LearningPointDtoCopyWith<$Res> {
+  _$LearningPointDtoCopyWithImpl(this._value, this._then);
+
+  final LearningPointDto _value;
+  // ignore: unused_field
+  final $Res Function(LearningPointDto) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? learningPoint = freezed,
+    Object? difficultyId = freezed,
+    Object? topicId = freezed,
+    Object? topicName = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      learningPoint: learningPoint == freezed
+          ? _value.learningPoint
+          : learningPoint // ignore: cast_nullable_to_non_nullable
+              as String,
+      difficultyId: difficultyId == freezed
+          ? _value.difficultyId
+          : difficultyId // ignore: cast_nullable_to_non_nullable
+              as int,
+      topicId: topicId == freezed
+          ? _value.topicId
+          : topicId // ignore: cast_nullable_to_non_nullable
+              as int,
+      topicName: topicName == freezed
+          ? _value.topicName
+          : topicName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_LearningPointDtoCopyWith<$Res>
+    implements $LearningPointDtoCopyWith<$Res> {
+  factory _$$_LearningPointDtoCopyWith(
+          _$_LearningPointDto value, $Res Function(_$_LearningPointDto) then) =
+      __$$_LearningPointDtoCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {int id,
+      @JsonKey(name: 'learning_point') String learningPoint,
+      @JsonKey(name: 'difficulty_id') int difficultyId,
+      @JsonKey(name: 'topic_id') int topicId,
+      @JsonKey(name: 'topic_name') String topicName});
+}
+
+/// @nodoc
+class __$$_LearningPointDtoCopyWithImpl<$Res>
+    extends _$LearningPointDtoCopyWithImpl<$Res>
+    implements _$$_LearningPointDtoCopyWith<$Res> {
+  __$$_LearningPointDtoCopyWithImpl(
+      _$_LearningPointDto _value, $Res Function(_$_LearningPointDto) _then)
+      : super(_value, (v) => _then(v as _$_LearningPointDto));
+
+  @override
+  _$_LearningPointDto get _value => super._value as _$_LearningPointDto;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? learningPoint = freezed,
+    Object? difficultyId = freezed,
+    Object? topicId = freezed,
+    Object? topicName = freezed,
+  }) {
+    return _then(_$_LearningPointDto(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      learningPoint: learningPoint == freezed
+          ? _value.learningPoint
+          : learningPoint // ignore: cast_nullable_to_non_nullable
+              as String,
+      difficultyId: difficultyId == freezed
+          ? _value.difficultyId
+          : difficultyId // ignore: cast_nullable_to_non_nullable
+              as int,
+      topicId: topicId == freezed
+          ? _value.topicId
+          : topicId // ignore: cast_nullable_to_non_nullable
+              as int,
+      topicName: topicName == freezed
+          ? _value.topicName
+          : topicName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_LearningPointDto extends _LearningPointDto {
+  const _$_LearningPointDto(
+      {required this.id,
+      @JsonKey(name: 'learning_point') required this.learningPoint,
+      @JsonKey(name: 'difficulty_id') required this.difficultyId,
+      @JsonKey(name: 'topic_id') required this.topicId,
+      @JsonKey(name: 'topic_name') required this.topicName})
+      : super._();
+
+  factory _$_LearningPointDto.fromJson(Map<String, dynamic> json) =>
+      _$$_LearningPointDtoFromJson(json);
+
+  @override
+  final int id;
+  @override
+  @JsonKey(name: 'learning_point')
+  final String learningPoint;
+  @override
+  @JsonKey(name: 'difficulty_id')
+  final int difficultyId;
+  @override
+  @JsonKey(name: 'topic_id')
+  final int topicId;
+  @override
+  @JsonKey(name: 'topic_name')
+  final String topicName;
+
+  @override
+  String toString() {
+    return 'LearningPointDto(id: $id, learningPoint: $learningPoint, difficultyId: $difficultyId, topicId: $topicId, topicName: $topicName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LearningPointDto &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.learningPoint, learningPoint) &&
+            const DeepCollectionEquality()
+                .equals(other.difficultyId, difficultyId) &&
+            const DeepCollectionEquality().equals(other.topicId, topicId) &&
+            const DeepCollectionEquality().equals(other.topicName, topicName));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(learningPoint),
+      const DeepCollectionEquality().hash(difficultyId),
+      const DeepCollectionEquality().hash(topicId),
+      const DeepCollectionEquality().hash(topicName));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_LearningPointDtoCopyWith<_$_LearningPointDto> get copyWith =>
+      __$$_LearningPointDtoCopyWithImpl<_$_LearningPointDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LearningPointDtoToJson(this);
+  }
+}
+
+abstract class _LearningPointDto extends LearningPointDto {
+  const factory _LearningPointDto(
+          {required final int id,
+          @JsonKey(name: 'learning_point') required final String learningPoint,
+          @JsonKey(name: 'difficulty_id') required final int difficultyId,
+          @JsonKey(name: 'topic_id') required final int topicId,
+          @JsonKey(name: 'topic_name') required final String topicName}) =
+      _$_LearningPointDto;
+  const _LearningPointDto._() : super._();
+
+  factory _LearningPointDto.fromJson(Map<String, dynamic> json) =
+      _$_LearningPointDto.fromJson;
+
+  @override
+  int get id => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'learning_point')
+  String get learningPoint => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'difficulty_id')
+  int get difficultyId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'topic_id')
+  int get topicId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'topic_name')
+  String get topicName => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LearningPointDtoCopyWith<_$_LearningPointDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}

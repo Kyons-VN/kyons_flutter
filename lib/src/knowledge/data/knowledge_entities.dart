@@ -19,7 +19,8 @@ class Program {
         'subjectId': subjectId,
       };
 
-  static empty() => Program(subjectId: '', id: '', name: '');
+  factory Program.empty() => Program(subjectId: '', id: '', name: '');
+  static String emptyJsonString() => Program.empty().toJson().toString();
 }
 
 class LessonItem {
@@ -97,7 +98,14 @@ class Lesson {
 
 class LearningPoint {
   final String id;
-  final String name;
+  final Topic topic;
+  final String diffucultyId;
+  final String learningPoint;
 
-  LearningPoint({required this.id, required this.name});
+  LearningPoint({
+    required this.diffucultyId,
+    required this.learningPoint,
+    required this.id,
+    required this.topic,
+  });
 }

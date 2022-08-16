@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 
 class LessonDrawer extends StatelessWidget {
@@ -83,14 +82,12 @@ class LessonDrawer extends StatelessWidget {
   }
 }
 
-class LessonMenu extends HookConsumerWidget {
+class LessonMenu extends StatelessWidget {
   final LessonGroup lessonGroup;
 
   const LessonMenu(this.lessonGroup, {Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // final lessonStudyState = ref.watch(lessonStudyNotifierProvider);
-    // final lessonStudyNotifier = ref.read(lessonStudyNotifierProvider.notifier);
+  Widget build(BuildContext context) {
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {},
       child: ListTile(

@@ -8,13 +8,12 @@ import 'package:kyons_flutter/src/core/view/assets.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/core/view/widgets/option_picker.dart';
 import 'package:kyons_flutter/src/home/app/home_provider.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
 import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
-import 'package:kyons_flutter/src/test_knowledge/app/diagnostic_test_provider.dart';
 
-class HomePage extends HookConsumerWidget {
+class HomePage extends ConsumerWidget {
   final bool isShowHomeOptions;
   const HomePage({Key? key, this.isShowHomeOptions = false}) : super(key: key);
 
@@ -23,8 +22,11 @@ class HomePage extends HookConsumerWidget {
     final homeNotifier = ref.read(homeNotifierProvider.notifier);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final homeState = ref.read(homeNotifierProvider);
-      if (homeState.studentProgramsOption.isNone()) homeNotifier.init();
-      if (isShowHomeOptions) showHomeOptions(context, homeNotifier);
+      if (homeState.studentProgramsOption.isNone()) {
+        homeNotifier.init().then((value) {
+          if (isShowHomeOptions) showHomeOptions(context, homeNotifier);
+        });
+      }
     });
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -116,22 +118,25 @@ class HomePage extends HookConsumerWidget {
   }
 }
 
-class HomeOptions extends HookConsumerWidget {
+class HomeOptions extends ConsumerWidget {
   const HomeOptions({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final homeState = ref.watch(homeNotifierProvider);
     final homeNotifier = ref.read(homeNotifierProvider.notifier);
-    final diagnosticTestNotifier = ref.read(diagnosticTestNotifierProvider.notifier);
+    bool isTest = false;
     if (homeState.isContinue) {
       return Column(
         children: [
           SizedBox(
             width: double.infinity,
-            child: Text(
-              t(context).choose_subject_and_program_headline,
-              style: Theme.of(context).textTheme.heading4.copyWith(color: AppColors.white),
+            child: GestureDetector(
+              onDoubleTap: () => isTest = true,
+              child: Text(
+                t(context).do_diagnostictest_heading,
+                style: Theme.of(context).textTheme.heading4.copyWith(color: AppColors.white),
+              ),
             ),
           ),
           AppSizesUnit.sizedBox48,
@@ -140,23 +145,24 @@ class HomeOptions extends HookConsumerWidget {
             child: ElevatedButton(
               onPressed: () {
                 // Navigator.pop(context);
-                context.go(AppPaths.diagnosticTest.path);
+                // print(isTest);
+                context.go(AppPaths.diagnosticTest.path, extra: isTest);
                 // diagnosticTestNotifier.init();
               },
               child: Text(t(context).do_diagnostictest_btn),
             ),
           ),
-          AppSizesUnit.sizedBox8,
-          SizedBox(
-            width: double.infinity,
-            child: OutlinedButton(
-              onPressed: () {
-                Navigator.pop(context);
-                homeNotifier.defaultLearningPath();
-              },
-              child: Text(t(context).do_diagnostictest_cancel),
-            ),
-          ),
+          // AppSizesUnit.sizedBox8,
+          // SizedBox(
+          //   width: double.infinity,
+          //   child: OutlinedButton(
+          //     onPressed: () {
+          //       Navigator.pop(context);
+          //       homeNotifier.defaultLearningPath();
+          //     },
+          //     child: Text(t(context).do_diagnostictest_cancel),
+          //   ),
+          // ),
         ],
       );
     }
@@ -172,13 +178,13 @@ class HomeOptions extends HookConsumerWidget {
         AppSizesUnit.sizedBox48,
         CupertinoPickerOptions<Subject>(
           options: homeState.subjectsOption.getOrElse(() => right([])).getOrElse((l) => []).toList(),
-          onPicked: homeNotifier.setSelectedSubject,
+          onPicked: homeNotifier.setSubjectOption,
           selectedOption: homeState.selectedSubjectOption.getOrElse(() => Subject.empty()),
         ),
         AppSizesUnit.sizedBox16,
         CupertinoPickerOptions<Program>(
           options: homeState.programsOption.getOrElse(() => []),
-          onPicked: homeNotifier.setSelectedProgram,
+          onPicked: homeNotifier.setProgramOption,
           selectedOption: homeState.selectedProgramOption.getOrElse(() => Program(id: '', name: '', subjectId: '')),
         ),
         AppSizesUnit.sizedBox24,
@@ -241,13 +247,15 @@ class ProgramsWidget extends HookConsumerWidget {
     //   ],
     // );
     return programs.isNotEmpty
-        ? GridView.count(
-            crossAxisCount: 2,
-            controller: scrollController,
-            children: [
-              for (var i = 0; i < programs.length; i++) ProgramWidget(program: programs[i], index: i),
-            ],
-          )
+        ? homeState.display == ProgramsDisplay.grid
+            ? GridView.count(
+                crossAxisCount: 2,
+                controller: scrollController,
+                children: [
+                  for (var i = 0; i < programs.length; i++) ProgramWidget(program: programs[i], index: i),
+                ],
+              )
+            : Text('carousel')
         : Column(
             children: [
               AppAssets.chooseSubjectSVG,
@@ -262,37 +270,33 @@ class ProgramsWidget extends HookConsumerWidget {
   }
 }
 
-class ProgramWidget extends StatefulWidget {
+class ProgramWidget extends HookConsumerWidget {
   final Program program;
   final int index;
   const ProgramWidget({Key? key, required this.program, required this.index}) : super(key: key);
 
   @override
-  State<ProgramWidget> createState() => _ProgramWidgetState();
-}
-
-class _ProgramWidgetState extends State<ProgramWidget> {
-  bool _onHovered = false;
-
-  void onHover(bool hover) {
-    setState(() {
-      _onHovered = !_onHovered;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(context, ref) {
+    final homeNotifier = ref.read(homeNotifierProvider.notifier);
+    final onHovered = useState<bool>(false);
+    final mounted = useIsMounted();
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
+        await homeNotifier.selectProgram(program);
+        if (!mounted()) return;
+        // ignore: use_build_context_synchronously
         context.go(AppPaths.learningPath.path);
       },
       child: FocusableActionDetector(
+        onShowHoverHighlight: (value) {
+          onHovered.value = !onHovered.value;
+        },
         mouseCursor: SystemMouseCursors.click,
         child: Container(
           margin: const EdgeInsets.only(top: 10),
           decoration: BoxDecoration(
             color: AppColors.primaryBlue,
-            boxShadow: _onHovered
+            boxShadow: onHovered.value
                 ? const [
                     BoxShadow(
                       color: AppColors.shadow,
@@ -310,7 +314,7 @@ class _ProgramWidgetState extends State<ProgramWidget> {
             children: [
               Heading(
                 6,
-                t(context).english,
+                program.name,
                 color: AppColors.white,
               ),
               AppSizesUnit.sizedBox8,

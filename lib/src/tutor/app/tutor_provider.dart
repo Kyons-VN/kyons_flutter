@@ -31,7 +31,7 @@ class TutorNotifier extends StateNotifier<TutorState> {
     );
   }
 
-  late StreamSubscription _sub;
+  StreamSubscription? _sub;
   void checkSessionStatus(String sessionId) {
     final Stream<Either<ApiFailure<dynamic>, TutorSessionStatus>> myStream =
         Stream.periodic(const Duration(seconds: 5)).asyncExpand((event) {
@@ -40,12 +40,12 @@ class TutorNotifier extends StateNotifier<TutorState> {
     _sub = myStream.listen((failureOrSuccess) {
       state = failureOrSuccess.fold(
         (l) {
-          _sub.cancel();
+          if (_sub != null) unawaited(_sub!.cancel());
           return TutorState.error(l.toString());
         },
         (sessionStatus) {
           if (sessionStatus.status == SessionStatus.processing) {
-            _sub.cancel();
+            if (_sub != null) unawaited(_sub!.cancel());
             return TutorState.complete(sessionStatus);
           } else {
             return TutorState.loading();
@@ -57,7 +57,7 @@ class TutorNotifier extends StateNotifier<TutorState> {
 
   @override
   void dispose() async {
-    await _sub.cancel();
+    if (_sub != null) await _sub!.cancel();
     super.dispose();
   }
 }

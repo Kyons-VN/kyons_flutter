@@ -6,8 +6,9 @@ import 'package:kyons_flutter/src/authentication/view/sign_in_page.dart';
 import 'package:kyons_flutter/src/design/view/design_page.dart';
 import 'package:kyons_flutter/src/game_template/game_route.dart';
 import 'package:kyons_flutter/src/home/view/home_page.dart';
-import 'package:kyons_flutter/src/knowledge/view/lesson_page.dart';
-import 'package:kyons_flutter/src/learning_path/view/learning_path_page.dart';
+import 'package:kyons_flutter/src/knowledge/view/learning_path/learning_path_page.dart';
+import 'package:kyons_flutter/src/knowledge/view/lesson/lesson_page.dart';
+import 'package:kyons_flutter/src/knowledge/view/lesson/new_lesson_page.dart';
 import 'package:kyons_flutter/src/navigation/app/auth_guard.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:kyons_flutter/src/settings/view/language_settings_page.dart';
@@ -85,7 +86,12 @@ class AppRouter {
         ),
         GoRoute(
           path: AppPaths.diagnosticTest.path,
-          builder: (BuildContext context, GoRouterState state) => const DiagnosticTestPage(),
+          builder: (BuildContext context, GoRouterState state) {
+            final isTest = (state.extra as bool?) ?? false;
+            return DiagnosticTestPage(
+              isTest: isTest,
+            );
+          },
           redirect: (state) => guard(state, ref),
         ),
         GoRoute(
@@ -96,6 +102,11 @@ class AppRouter {
         GoRoute(
           path: AppPaths.lessonPage.path,
           builder: (BuildContext context, GoRouterState state) => LessonPage(state.params['id']!),
+          redirect: (state) => guard(state, ref),
+        ),
+        GoRoute(
+          path: AppPaths.newLesonPage.path,
+          builder: (BuildContext context, GoRouterState state) => const NewLessonPage(),
           redirect: (state) => guard(state, ref),
         ),
         GameRoute().getGameRoute('/game', guard, ref),

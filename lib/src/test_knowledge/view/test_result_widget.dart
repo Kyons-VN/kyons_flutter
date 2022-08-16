@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/core/view/widgets/app_html.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 
 class TestResultWidget extends StatelessWidget {
@@ -42,6 +42,7 @@ class TestResultWidget extends StatelessWidget {
                           child: CircularProgressIndicator(
                             strokeWidth: 10,
                             value: testResult.score / 10,
+                            backgroundColor: AppColors.blueGray100,
                           ),
                         ),
                         Center(
@@ -190,8 +191,8 @@ class TopicResult extends HookWidget {
                                           margin: const EdgeInsets.only(top: AppSizesUnit.small8),
                                           child: Icon(
                                             testResult.review.rightAnswers.contains(answer.id)
-                                                ? Icons.info_outline_rounded
-                                                : Icons.check_circle_outline,
+                                                ? AppIcons.check
+                                                : AppIcons.error,
                                             size: 16,
                                             color: testResult.review.rightAnswers.contains(answer.id)
                                                 ? AppColors.darkEmerald

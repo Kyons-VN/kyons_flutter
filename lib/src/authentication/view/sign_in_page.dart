@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
+import 'package:kyons_flutter/src/authentication/app/current_user_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/sign_in_provider.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/assets.dart';
@@ -10,7 +11,7 @@ import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 
-class SignInPage extends HookConsumerWidget {
+class SignInPage extends ConsumerWidget {
   const SignInPage({Key? key}) : super(key: key);
 
   @override
@@ -54,7 +55,7 @@ class SignInPage extends HookConsumerWidget {
   }
 }
 
-class SignInForm extends HookConsumerWidget {
+class SignInForm extends ConsumerWidget {
   const SignInForm({Key? key}) : super(key: key);
 
   @override
@@ -63,6 +64,7 @@ class SignInForm extends HookConsumerWidget {
     final signInState = ref.watch(signInProvider);
     final authNotifier = ref.watch(authNotifierProvider.notifier);
     final signInNotifier = ref.read(signInProvider.notifier);
+    final currentUserNotifier = ref.read(currentUserProvider.notifier);
 
     ref.listen<SignInState>(signInProvider, (previous, next) {
       if (!(previous!.isSubmitting && !next.isSubmitting)) return;
@@ -81,6 +83,7 @@ class SignInForm extends HookConsumerWidget {
                 .success(firstCapital(t(context).thingWithStatus(t(context).signIn, t(context).success)))
                 .show(context);
             Future.delayed(const Duration(seconds: 2), () {
+              currentUserNotifier.logedIn();
               AppRouter.redirect();
             });
           });

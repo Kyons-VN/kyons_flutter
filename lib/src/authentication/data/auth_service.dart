@@ -9,6 +9,7 @@ import 'package:kyons_flutter/src/authentication/domain/user.dart';
 import 'package:kyons_flutter/src/authentication/domain/value_objects.dart';
 import 'package:kyons_flutter/src/core/data/api.dart';
 import 'package:kyons_flutter/src/core/domain/core.dart';
+import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
 import 'package:kyons_flutter/src/navigation/data/navigation_service.dart' as navigation_service;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,16 +17,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../domain/i_auth.dart';
 // import '../domain/value_objects.dart';
-
-Future<Option<User>> getCurrentUser() async {
-  final prefs = await SharedPreferences.getInstance();
-  final userPref = prefs.getString('user');
-  if (userPref == null) {
-    return none();
-  } else {
-    return optionOf(UserDto.fromJson(jsonDecode(userPref)).toDomain());
-  }
-}
 
 // Future<String> getCurrentUserId() async {
 //   final prefs = await SharedPreferences.getInstance();
@@ -36,11 +27,6 @@ Future<Option<User>> getCurrentUser() async {
 //     return UserDto.fromJson(jsonDecode(userPref)).toDomain().id;
 //   }
 // }
-
-Future<Option> setCurrentUser(User user) async {
-  final prefs = await SharedPreferences.getInstance();
-  return await prefs.setString('user', jsonEncode(user.toJson())).then((value) => optionOf(value ? value : null));
-}
 
 Future<Option> saveToken(String token) async {
   // final prefs = await SharedPreferences.getInstance();
@@ -105,6 +91,22 @@ TaskEither<AuthFailure, Unit> _signIn(
       },
     );
 
+Reader<IAuth, Future<Either<AuthFailure, User>>> getUser() {
+  return Reader(
+    (api) => _getUser(api).run(),
+  );
+}
+
+TaskEither<AuthFailure, User> _getUser(
+  IAuth api,
+) =>
+    TaskEither.tryCatch(
+      () => api.getUser(),
+      (error, __) {
+        return const AuthFailure.serverError();
+      },
+    );
+
 Reader<IAuth, Future<Either<ClientFailure, Unit>>> signOut() {
   return Reader(
     (api) => _signOut(api).run(),
@@ -113,9 +115,29 @@ Reader<IAuth, Future<Either<ClientFailure, Unit>>> signOut() {
 
 TaskEither<ClientFailure, Unit> _signOut(IAuth api) => TaskEither.tryCatch(
       () => api.signOut(),
-      (error, __) {
-        return const ClientFailure.storage();
-      },
+      handleClientError,
+    );
+
+Reader<IAuth, Future<Either<ClientFailure, User>>> getCurrentUser() {
+  return Reader(
+    (api) => _getCurrentUser(api).run(),
+  );
+}
+
+TaskEither<ClientFailure, User> _getCurrentUser(IAuth api) => TaskEither.tryCatch(
+      () => api.getCurrentUser(),
+      handleClientError,
+    );
+
+Reader<IAuth, Future<Either<ClientFailure, Unit>>> setCurrentUser(User user) {
+  return Reader(
+    (api) => _setCurrentUser(api, user).run(),
+  );
+}
+
+TaskEither<ClientFailure, Unit> _setCurrentUser(IAuth api, User user) => TaskEither.tryCatch(
+      () => api.setCurrentUser(user),
+      handleClientError,
     );
 
 class Auth implements IAuth {
@@ -182,20 +204,23 @@ class Auth implements IAuth {
     const storage = FlutterSecureStorage();
     return await storage.deleteAll().then((value) => unit);
   }
-}
 
-Reader<IAuth, Future<Either<AuthFailure, User>>> getUser() {
-  return Reader(
-    (api) => _getUser(api).run(),
-  );
-}
+  @override
+  Future<User> getCurrentUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    final userPref = prefs.getString('user');
+    return UserDto.fromJson(jsonDecode(userPref!)).toDomain();
+  }
 
-TaskEither<AuthFailure, User> _getUser(
-  IAuth api,
-) =>
-    TaskEither.tryCatch(
-      () => api.getUser(),
-      (error, __) {
-        return const AuthFailure.serverError();
-      },
-    );
+  @override
+  Future<StudyType> getStudyType() {
+    // TODO: implement getStudyType
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Unit> setCurrentUser(User user) async {
+    final prefs = await SharedPreferences.getInstance();
+    return await prefs.setString('user', jsonEncode(user.toJson())).then((value) => unit);
+  }
+}

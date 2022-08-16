@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
+import 'package:kyons_flutter/src/core/domain/core.dart';
 import 'package:logging/logging.dart';
 
 const serverApi = 'https://api.tuhoconline.org';
@@ -70,6 +71,13 @@ ApiFailure handleError(error, StackTrace stackTrace) {
   _log.info('ApiFailure handleError');
   if (error is ApiFailure) return error;
   return const ApiFailure.serverError();
+}
+
+ClientFailure handleClientError(error, StackTrace stackTrace) {
+  _log.info('ClientFailure handleError');
+
+  if (error is ClientFailure) return error;
+  return const ClientFailure.storage();
 }
 
 dynamic handleResponseError(Response<dynamic> res) {

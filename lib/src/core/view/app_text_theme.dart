@@ -41,11 +41,13 @@ class Heading extends StatelessWidget {
   final int heading;
   final String text;
   final Color? color;
-  const Heading(this.heading, this.text, {Key? key, this.color}) : super(key: key);
+  final TextAlign? textAlign;
+  const Heading(this.heading, this.text, {Key? key, this.color, this.textAlign}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text(text, style: _getHeading(heading, context).copyWith(color: color ?? AppColors.primaryBlue));
+    return Text(text,
+        style: _getHeading(heading, context).copyWith(color: color ?? AppColors.primaryBlue), textAlign: textAlign);
   }
 }
 

@@ -26,6 +26,9 @@ mixin _$UserDto {
   String get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
   String get lastName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'study_type', unknownEnumValue: StudyType.ai)
+  @JsonEnum()
+  StudyType get studyType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,8 +42,13 @@ abstract class $UserDtoCopyWith<$Res> {
   $Res call(
       {String id,
       String email,
-      @JsonKey(name: 'first_name') String firstName,
-      @JsonKey(name: 'last_name') String lastName});
+      @JsonKey(name: 'first_name')
+          String firstName,
+      @JsonKey(name: 'last_name')
+          String lastName,
+      @JsonKey(name: 'study_type', unknownEnumValue: StudyType.ai)
+      @JsonEnum()
+          StudyType studyType});
 }
 
 /// @nodoc
@@ -57,6 +65,7 @@ class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
     Object? email = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
+    Object? studyType = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -75,6 +84,10 @@ class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
+      studyType: studyType == freezed
+          ? _value.studyType
+          : studyType // ignore: cast_nullable_to_non_nullable
+              as StudyType,
     ));
   }
 }
@@ -88,8 +101,13 @@ abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
   $Res call(
       {String id,
       String email,
-      @JsonKey(name: 'first_name') String firstName,
-      @JsonKey(name: 'last_name') String lastName});
+      @JsonKey(name: 'first_name')
+          String firstName,
+      @JsonKey(name: 'last_name')
+          String lastName,
+      @JsonKey(name: 'study_type', unknownEnumValue: StudyType.ai)
+      @JsonEnum()
+          StudyType studyType});
 }
 
 /// @nodoc
@@ -107,6 +125,7 @@ class __$$_UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res>
     Object? email = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
+    Object? studyType = freezed,
   }) {
     return _then(_$_UserDto(
       id: id == freezed
@@ -125,6 +144,10 @@ class __$$_UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
+      studyType: studyType == freezed
+          ? _value.studyType
+          : studyType // ignore: cast_nullable_to_non_nullable
+              as StudyType,
     ));
   }
 }
@@ -135,8 +158,13 @@ class _$_UserDto extends _UserDto {
   const _$_UserDto(
       {required this.id,
       required this.email,
-      @JsonKey(name: 'first_name') required this.firstName,
-      @JsonKey(name: 'last_name') required this.lastName})
+      @JsonKey(name: 'first_name')
+          required this.firstName,
+      @JsonKey(name: 'last_name')
+          required this.lastName,
+      @JsonKey(name: 'study_type', unknownEnumValue: StudyType.ai)
+      @JsonEnum()
+          required this.studyType})
       : super._();
 
   factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
@@ -152,10 +180,14 @@ class _$_UserDto extends _UserDto {
   @override
   @JsonKey(name: 'last_name')
   final String lastName;
+  @override
+  @JsonKey(name: 'study_type', unknownEnumValue: StudyType.ai)
+  @JsonEnum()
+  final StudyType studyType;
 
   @override
   String toString() {
-    return 'UserDto(id: $id, email: $email, firstName: $firstName, lastName: $lastName)';
+    return 'UserDto(id: $id, email: $email, firstName: $firstName, lastName: $lastName, studyType: $studyType)';
   }
 
   @override
@@ -166,7 +198,8 @@ class _$_UserDto extends _UserDto {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.firstName, firstName) &&
-            const DeepCollectionEquality().equals(other.lastName, lastName));
+            const DeepCollectionEquality().equals(other.lastName, lastName) &&
+            const DeepCollectionEquality().equals(other.studyType, studyType));
   }
 
   @JsonKey(ignore: true)
@@ -176,7 +209,8 @@ class _$_UserDto extends _UserDto {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(firstName),
-      const DeepCollectionEquality().hash(lastName));
+      const DeepCollectionEquality().hash(lastName),
+      const DeepCollectionEquality().hash(studyType));
 
   @JsonKey(ignore: true)
   @override
@@ -193,8 +227,13 @@ abstract class _UserDto extends UserDto {
   const factory _UserDto(
       {required final String id,
       required final String email,
-      @JsonKey(name: 'first_name') required final String firstName,
-      @JsonKey(name: 'last_name') required final String lastName}) = _$_UserDto;
+      @JsonKey(name: 'first_name')
+          required final String firstName,
+      @JsonKey(name: 'last_name')
+          required final String lastName,
+      @JsonKey(name: 'study_type', unknownEnumValue: StudyType.ai)
+      @JsonEnum()
+          required final StudyType studyType}) = _$_UserDto;
   const _UserDto._() : super._();
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
@@ -209,6 +248,10 @@ abstract class _UserDto extends UserDto {
   @override
   @JsonKey(name: 'last_name')
   String get lastName => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'study_type', unknownEnumValue: StudyType.ai)
+  @JsonEnum()
+  StudyType get studyType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>

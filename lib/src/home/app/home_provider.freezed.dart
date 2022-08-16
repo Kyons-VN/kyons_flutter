@@ -30,6 +30,7 @@ mixin _$HomeState {
   bool get isContinue => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, Unit>> get submitOption =>
       throw _privateConstructorUsedError;
+  ProgramsDisplay get display => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -48,7 +49,8 @@ abstract class $HomeStateCopyWith<$Res> {
       Option<Program> selectedProgramOption,
       bool hasError,
       bool isContinue,
-      Option<Either<ApiFailure, Unit>> submitOption});
+      Option<Either<ApiFailure, Unit>> submitOption,
+      ProgramsDisplay display});
 }
 
 /// @nodoc
@@ -69,6 +71,7 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
     Object? hasError = freezed,
     Object? isContinue = freezed,
     Object? submitOption = freezed,
+    Object? display = freezed,
   }) {
     return _then(_value.copyWith(
       subjectsOption: subjectsOption == freezed
@@ -103,6 +106,10 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
           ? _value.submitOption
           : submitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, Unit>>,
+      display: display == freezed
+          ? _value.display
+          : display // ignore: cast_nullable_to_non_nullable
+              as ProgramsDisplay,
     ));
   }
 }
@@ -121,7 +128,8 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       Option<Program> selectedProgramOption,
       bool hasError,
       bool isContinue,
-      Option<Either<ApiFailure, Unit>> submitOption});
+      Option<Either<ApiFailure, Unit>> submitOption,
+      ProgramsDisplay display});
 }
 
 /// @nodoc
@@ -144,6 +152,7 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
     Object? hasError = freezed,
     Object? isContinue = freezed,
     Object? submitOption = freezed,
+    Object? display = freezed,
   }) {
     return _then(_$_HomeState(
       subjectsOption: subjectsOption == freezed
@@ -178,6 +187,10 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
           ? _value.submitOption
           : submitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, Unit>>,
+      display: display == freezed
+          ? _value.display
+          : display // ignore: cast_nullable_to_non_nullable
+              as ProgramsDisplay,
     ));
   }
 }
@@ -193,7 +206,8 @@ class _$_HomeState implements _HomeState {
       required this.selectedProgramOption,
       required this.hasError,
       required this.isContinue,
-      required this.submitOption});
+      required this.submitOption,
+      required this.display});
 
   @override
   final Option<Either<ApiFailure, List<Subject>>> subjectsOption;
@@ -211,10 +225,12 @@ class _$_HomeState implements _HomeState {
   final bool isContinue;
   @override
   final Option<Either<ApiFailure, Unit>> submitOption;
+  @override
+  final ProgramsDisplay display;
 
   @override
   String toString() {
-    return 'HomeState(subjectsOption: $subjectsOption, studentProgramsOption: $studentProgramsOption, programsOption: $programsOption, selectedSubjectOption: $selectedSubjectOption, selectedProgramOption: $selectedProgramOption, hasError: $hasError, isContinue: $isContinue, submitOption: $submitOption)';
+    return 'HomeState(subjectsOption: $subjectsOption, studentProgramsOption: $studentProgramsOption, programsOption: $programsOption, selectedSubjectOption: $selectedSubjectOption, selectedProgramOption: $selectedProgramOption, hasError: $hasError, isContinue: $isContinue, submitOption: $submitOption, display: $display)';
   }
 
   @override
@@ -236,7 +252,8 @@ class _$_HomeState implements _HomeState {
             const DeepCollectionEquality()
                 .equals(other.isContinue, isContinue) &&
             const DeepCollectionEquality()
-                .equals(other.submitOption, submitOption));
+                .equals(other.submitOption, submitOption) &&
+            const DeepCollectionEquality().equals(other.display, display));
   }
 
   @override
@@ -249,7 +266,8 @@ class _$_HomeState implements _HomeState {
       const DeepCollectionEquality().hash(selectedProgramOption),
       const DeepCollectionEquality().hash(hasError),
       const DeepCollectionEquality().hash(isContinue),
-      const DeepCollectionEquality().hash(submitOption));
+      const DeepCollectionEquality().hash(submitOption),
+      const DeepCollectionEquality().hash(display));
 
   @JsonKey(ignore: true)
   @override
@@ -267,8 +285,8 @@ abstract class _HomeState implements HomeState {
       required final Option<Program> selectedProgramOption,
       required final bool hasError,
       required final bool isContinue,
-      required final Option<Either<ApiFailure, Unit>>
-          submitOption}) = _$_HomeState;
+      required final Option<Either<ApiFailure, Unit>> submitOption,
+      required final ProgramsDisplay display}) = _$_HomeState;
 
   @override
   Option<Either<ApiFailure, List<Subject>>> get subjectsOption =>
@@ -292,6 +310,8 @@ abstract class _HomeState implements HomeState {
   @override
   Option<Either<ApiFailure, Unit>> get submitOption =>
       throw _privateConstructorUsedError;
+  @override
+  ProgramsDisplay get display => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>

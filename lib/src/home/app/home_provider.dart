@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 import 'package:kyons_flutter/src/knowledge/app/knowledge_provider.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
 import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
 import 'package:kyons_flutter/src/navigation/app/router.dart';
@@ -16,45 +16,56 @@ class HomeNotifier extends StateNotifier<HomeState> {
   final IKnowledge knowledgeApi;
   HomeNotifier(this.knowledgeApi) : super(HomeState.initial());
 
-  Future<void> init() async {
+  Future<Unit> init() async {
     final Either<ApiFailure, List<Program>> failureOrSuccess =
         await knowledge_service.getStudentProgram().run(knowledgeApi);
     state = HomeState.initial().copyWith(
       hasError: failureOrSuccess.isLeft(),
       studentProgramsOption: optionOf(failureOrSuccess),
     );
+    return unit;
   }
 
-  Future<void> initialSelection() async {
+  Future<Unit> initialSelection() async {
     final Either<ApiFailure, List<Subject>> failureOrSuccess = await knowledge_service.getSubjects().run(knowledgeApi);
     state = state.copyWith(
       hasError: failureOrSuccess.isLeft(),
       subjectsOption: optionOf(failureOrSuccess),
     );
-    setSelectedSubject(failureOrSuccess.getOrElse((l) => []).first);
+    setSubjectOption(failureOrSuccess.getOrElse((l) => []).first);
+    return unit;
   }
 
-  setSelectedSubject(Subject subject) {
+  Unit setSubjectOption(Subject subject) {
     state = state.copyWith(
       selectedSubjectOption: some(subject),
       programsOption: optionOf(subject.programs),
     );
-    setSelectedProgram(subject.programs.first);
+    setProgramOption(subject.programs.first);
+    return unit;
   }
 
-  setSelectedProgram(Program program) {
+  Unit setProgramOption(Program program) {
     state = state.copyWith(
       selectedProgramOption: some(program),
     );
+    return unit;
   }
 
-  start() {
+  Future<Unit> selectProgram(Program program) async {
+    await knowledge_service.selectProgram(program).run(knowledgeApi);
+    return unit;
+  }
+
+  Unit start() {
     state = state.copyWith(isContinue: true);
+    return unit;
   }
 
-  defaultLearningPath() async {
-    await knowledge_service.defaultLearningPath().run(knowledgeApi);
+  Future<Unit> defaultLearningPath() async {
+    await knowledge_service.defaultLearningPath(await knowledgeApi.getSelectedProgram()).run(knowledgeApi);
     AppRouter.router.go(AppPaths.learningPath.path);
+    return unit;
   }
 }
 

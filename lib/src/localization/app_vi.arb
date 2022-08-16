@@ -89,5 +89,18 @@
   "to_learning_path": "Đến giáo trình",
   "finish_test": "Bạn đã hoàn thành bài kiểm tra",
   "learning_path_is_reparing": "Kyons đang chuẩn bị giáo trình cho bạn. Xin vui lòng đợi!",
-  "learning_path_is_ready": "Kyons đã chuẩn bị xong giáo trình cho bạn. Bắt đầu học thôi nào!"
+  "learning_path_is_ready": "Kyons đã chuẩn bị xong giáo trình cho bạn. Bắt đầu học thôi nào!",
+  "hi_so": "Chào {so}",
+  "@hi_so": {
+    "placeholders": {
+      "so": {
+        "type": "String"
+      }
+    }
+  },
+  "lesson_is_reparing": "Kyons đang chuẩn bị bài học cho bạn",
+  "new_lesson": "Tạo bài học mới",
+  "press": "Nhấn (",
+  "to_add_knowledge": ") để đưa kiến thức vào bài học",
+  "create_lesson": "Tạo bài học"
 }

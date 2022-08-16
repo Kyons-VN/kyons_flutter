@@ -50,7 +50,7 @@
   "english": "English",
   "start": "Start",
   "back_to_home": "Back to Home",
-  "do_diagnostictest_heading": "Will have\na diagnostictest",
+  "do_diagnostictest_heading": "Will have\na diagnostictest!",
   "do_diagnostictest_btn": "Start diagnostic test",
   "do_diagnostictest_cancel": "No, just let me in!",
   "diagnostic_test": "Diagnostic test",
@@ -88,6 +88,19 @@
   "error": "Error, please try again later",
   "to_learning_path": "To learning path",
   "finish_test": "You have finished testing",
-  "learning_path_is_reparing": "Kyons is reparing learing path for you. Please wait!",
-  "learning_path_is_ready": "Kyons has created learing path for you. Let's get started!"
+  "learning_path_is_reparing": "Kyons is reparing learning path for you. Please wait!",
+  "learning_path_is_ready": "Kyons has created learing path for you. Let's get started!",
+  "hi_so": "Hi {so}",
+  "@hi_so": {
+    "placeholders": {
+      "so": {
+        "type": "String"
+      }
+    }
+  },
+  "lesson_is_reparing": "Kyons is reparing the lesson for you",
+  "new_lesson": "Create new lesson",
+  "press": "Press (",
+  "to_add_knowledge": ") to add knowledge to your lesson",
+  "create_lesson": "Create lesson"
 }

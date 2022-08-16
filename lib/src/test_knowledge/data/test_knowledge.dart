@@ -1,7 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:kyons_flutter/src/core/domain/core.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 
 class TestContent {
   final String id;

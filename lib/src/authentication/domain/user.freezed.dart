@@ -26,6 +26,8 @@ mixin _$User {
   @JsonKey(name: 'last_name')
   String get lastName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'study_type')
+  StudyType get studyType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +42,8 @@ abstract class $UserCopyWith<$Res> {
       {String id,
       @JsonKey(name: 'first_name') String firstName,
       @JsonKey(name: 'last_name') String lastName,
-      String email});
+      String email,
+      @JsonKey(name: 'study_type') StudyType studyType});
 }
 
 /// @nodoc
@@ -57,6 +60,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? email = freezed,
+    Object? studyType = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -75,6 +79,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      studyType: studyType == freezed
+          ? _value.studyType
+          : studyType // ignore: cast_nullable_to_non_nullable
+              as StudyType,
     ));
   }
 }
@@ -88,7 +96,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       {String id,
       @JsonKey(name: 'first_name') String firstName,
       @JsonKey(name: 'last_name') String lastName,
-      String email});
+      String email,
+      @JsonKey(name: 'study_type') StudyType studyType});
 }
 
 /// @nodoc
@@ -106,6 +115,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? email = freezed,
+    Object? studyType = freezed,
   }) {
     return _then(_$_User(
       id: id == freezed
@@ -124,6 +134,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      studyType: studyType == freezed
+          ? _value.studyType
+          : studyType // ignore: cast_nullable_to_non_nullable
+              as StudyType,
     ));
   }
 }
@@ -135,7 +149,8 @@ class _$_User extends _User {
       {required this.id,
       @JsonKey(name: 'first_name') required this.firstName,
       @JsonKey(name: 'last_name') required this.lastName,
-      required this.email})
+      required this.email,
+      @JsonKey(name: 'study_type') required this.studyType})
       : super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -150,10 +165,13 @@ class _$_User extends _User {
   final String lastName;
   @override
   final String email;
+  @override
+  @JsonKey(name: 'study_type')
+  final StudyType studyType;
 
   @override
   String toString() {
-    return 'User(id: $id, firstName: $firstName, lastName: $lastName, email: $email)';
+    return 'User(id: $id, firstName: $firstName, lastName: $lastName, email: $email, studyType: $studyType)';
   }
 
   @override
@@ -164,7 +182,8 @@ class _$_User extends _User {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.firstName, firstName) &&
             const DeepCollectionEquality().equals(other.lastName, lastName) &&
-            const DeepCollectionEquality().equals(other.email, email));
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.studyType, studyType));
   }
 
   @JsonKey(ignore: true)
@@ -174,7 +193,8 @@ class _$_User extends _User {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(firstName),
       const DeepCollectionEquality().hash(lastName),
-      const DeepCollectionEquality().hash(email));
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(studyType));
 
   @JsonKey(ignore: true)
   @override
@@ -189,10 +209,12 @@ class _$_User extends _User {
 
 abstract class _User extends User {
   const factory _User(
-      {required final String id,
-      @JsonKey(name: 'first_name') required final String firstName,
-      @JsonKey(name: 'last_name') required final String lastName,
-      required final String email}) = _$_User;
+          {required final String id,
+          @JsonKey(name: 'first_name') required final String firstName,
+          @JsonKey(name: 'last_name') required final String lastName,
+          required final String email,
+          @JsonKey(name: 'study_type') required final StudyType studyType}) =
+      _$_User;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -207,6 +229,9 @@ abstract class _User extends User {
   String get lastName => throw _privateConstructorUsedError;
   @override
   String get email => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'study_type')
+  StudyType get studyType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

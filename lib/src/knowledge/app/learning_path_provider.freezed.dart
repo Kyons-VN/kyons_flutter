@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LearningPathState {
   bool get loading => throw _privateConstructorUsedError;
   Option<LearningPath> get learningPath => throw _privateConstructorUsedError;
+  bool get missingProgram => throw _privateConstructorUsedError;
   Option<ApiFailure> get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,6 +34,7 @@ abstract class $LearningPathStateCopyWith<$Res> {
   $Res call(
       {bool loading,
       Option<LearningPath> learningPath,
+      bool missingProgram,
       Option<ApiFailure> error});
 }
 
@@ -49,6 +51,7 @@ class _$LearningPathStateCopyWithImpl<$Res>
   $Res call({
     Object? loading = freezed,
     Object? learningPath = freezed,
+    Object? missingProgram = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -60,6 +63,10 @@ class _$LearningPathStateCopyWithImpl<$Res>
           ? _value.learningPath
           : learningPath // ignore: cast_nullable_to_non_nullable
               as Option<LearningPath>,
+      missingProgram: missingProgram == freezed
+          ? _value.missingProgram
+          : missingProgram // ignore: cast_nullable_to_non_nullable
+              as bool,
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -78,6 +85,7 @@ abstract class _$$_LearningPathStateCopyWith<$Res>
   $Res call(
       {bool loading,
       Option<LearningPath> learningPath,
+      bool missingProgram,
       Option<ApiFailure> error});
 }
 
@@ -96,6 +104,7 @@ class __$$_LearningPathStateCopyWithImpl<$Res>
   $Res call({
     Object? loading = freezed,
     Object? learningPath = freezed,
+    Object? missingProgram = freezed,
     Object? error = freezed,
   }) {
     return _then(_$_LearningPathState(
@@ -107,6 +116,10 @@ class __$$_LearningPathStateCopyWithImpl<$Res>
           ? _value.learningPath
           : learningPath // ignore: cast_nullable_to_non_nullable
               as Option<LearningPath>,
+      missingProgram: missingProgram == freezed
+          ? _value.missingProgram
+          : missingProgram // ignore: cast_nullable_to_non_nullable
+              as bool,
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -119,18 +132,23 @@ class __$$_LearningPathStateCopyWithImpl<$Res>
 
 class _$_LearningPathState implements _LearningPathState {
   const _$_LearningPathState(
-      {required this.loading, required this.learningPath, required this.error});
+      {required this.loading,
+      required this.learningPath,
+      required this.missingProgram,
+      required this.error});
 
   @override
   final bool loading;
   @override
   final Option<LearningPath> learningPath;
   @override
+  final bool missingProgram;
+  @override
   final Option<ApiFailure> error;
 
   @override
   String toString() {
-    return 'LearningPathState(loading: $loading, learningPath: $learningPath, error: $error)';
+    return 'LearningPathState(loading: $loading, learningPath: $learningPath, missingProgram: $missingProgram, error: $error)';
   }
 
   @override
@@ -141,6 +159,8 @@ class _$_LearningPathState implements _LearningPathState {
             const DeepCollectionEquality().equals(other.loading, loading) &&
             const DeepCollectionEquality()
                 .equals(other.learningPath, learningPath) &&
+            const DeepCollectionEquality()
+                .equals(other.missingProgram, missingProgram) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -149,6 +169,7 @@ class _$_LearningPathState implements _LearningPathState {
       runtimeType,
       const DeepCollectionEquality().hash(loading),
       const DeepCollectionEquality().hash(learningPath),
+      const DeepCollectionEquality().hash(missingProgram),
       const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
@@ -162,12 +183,15 @@ abstract class _LearningPathState implements LearningPathState {
   const factory _LearningPathState(
       {required final bool loading,
       required final Option<LearningPath> learningPath,
+      required final bool missingProgram,
       required final Option<ApiFailure> error}) = _$_LearningPathState;
 
   @override
   bool get loading => throw _privateConstructorUsedError;
   @override
   Option<LearningPath> get learningPath => throw _privateConstructorUsedError;
+  @override
+  bool get missingProgram => throw _privateConstructorUsedError;
   @override
   Option<ApiFailure> get error => throw _privateConstructorUsedError;
   @override

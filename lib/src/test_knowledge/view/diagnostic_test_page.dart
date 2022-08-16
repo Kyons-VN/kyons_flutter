@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
 import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
@@ -12,8 +12,9 @@ import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/view/test_content_widget.dart';
 import 'package:kyons_flutter/src/test_knowledge/view/test_result_widget.dart';
 
-class DiagnosticTestPage extends HookConsumerWidget {
-  const DiagnosticTestPage({Key? key}) : super(key: key);
+class DiagnosticTestPage extends ConsumerWidget {
+  final bool isTest;
+  const DiagnosticTestPage({Key? key, this.isTest = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,7 +23,13 @@ class DiagnosticTestPage extends HookConsumerWidget {
       final diagnosticTestState = ref.watch(diagnosticTestNotifierProvider);
       if (diagnosticTestState.currentQuestionIndex.isNone() &&
           !diagnosticTestState.hasError &&
-          !diagnosticTestState.loading) diagnosticTestNotifier.init();
+          !diagnosticTestState.loading) {
+        diagnosticTestNotifier.init().then((_) {
+          if (isTest) {
+            diagnosticTestNotifier.test();
+          }
+        });
+      }
     });
 
     return GestureDetector(

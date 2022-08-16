@@ -1,5 +1,7 @@
 part of 'home_provider.dart';
 
+enum ProgramsDisplay { grid, carousel }
+
 @freezed
 class HomeState with _$HomeState {
   const factory HomeState({
@@ -11,6 +13,7 @@ class HomeState with _$HomeState {
     required bool hasError,
     required bool isContinue,
     required Option<Either<ApiFailure, Unit>> submitOption,
+    required ProgramsDisplay display,
   }) = _HomeState;
 
   factory HomeState.initial() => HomeState(
@@ -22,5 +25,6 @@ class HomeState with _$HomeState {
         hasError: false,
         isContinue: false,
         submitOption: none(),
+        display: ProgramsDisplay.grid,
       );
 }

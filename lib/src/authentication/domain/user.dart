@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';
@@ -11,6 +12,7 @@ class User with _$User {
     @JsonKey(name: 'first_name') required String firstName,
     @JsonKey(name: 'last_name') required String lastName,
     required String email,
+    @JsonKey(name: 'study_type') required StudyType studyType,
   }) = _User;
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
@@ -19,5 +21,6 @@ class User with _$User {
         firstName: '',
         lastName: '',
         email: '',
+        studyType: StudyType.ai,
       );
 }

@@ -1,7 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_service.dart' as test_service;
 import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
@@ -84,6 +84,16 @@ class DiagnosticTestNotifier extends StateNotifier<DiagnosticTestState> {
         (data) => some(data),
       ),
     );
+  }
+
+  void test() {
+    // final currentQuestionId = ;
+    // final answersResult = state.answersResult.getOrElse(() => {});
+    final Map<String, String> answersResult = Map.fromEntries(state.content
+        .getOrElse(() => TestContent.empty())
+        .questions
+        .map((question) => MapEntry(question.id, question.answers[0].id)));
+    state = state.copyWith(answersResult: some(answersResult));
   }
 }
 
