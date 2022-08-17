@@ -165,9 +165,12 @@ class Auth implements IAuth {
       final token = data['access_token'] as String;
       final refreshToken = data['refresh_token'] as String;
       final email = data['email'] as String;
+      const storage = FlutterSecureStorage();
+      print(storage);
       await saveToken(token);
       await saveRefreshToken(refreshToken);
       await saveEmail(email);
+      print(storage);
       final redirectAfterLogin = data['redirect_after_auth'] as String;
       await navigation_service.saveRedirecPath(redirectAfterLogin);
       return unit;
@@ -202,6 +205,7 @@ class Auth implements IAuth {
   @override
   Future<Unit> signOut() async {
     const storage = FlutterSecureStorage();
+    Api.init().clear();
     return await storage.deleteAll().then((value) => unit);
   }
 
@@ -213,9 +217,8 @@ class Auth implements IAuth {
   }
 
   @override
-  Future<StudyType> getStudyType() {
-    // TODO: implement getStudyType
-    throw UnimplementedError();
+  Future<StudyType> getStudyType() async {
+    return (await getCurrentUser()).studyType;
   }
 
   @override

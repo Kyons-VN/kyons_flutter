@@ -17,9 +17,9 @@ class Api {
 
   Api._() {
     api.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
-      if (accessToken.isEmpty) {
-        accessToken = await _storage.read(key: 'token') ?? '';
-      }
+      // if (accessToken.isEmpty) {
+      accessToken = await _storage.read(key: 'token') ?? '';
+      // }
       if (!options.path.contains('http')) {
         options.path = '$serverApi${options.path}';
       }
@@ -60,10 +60,15 @@ class Api {
       return true;
     } else {
       // refresh token is wrong
-      accessToken = '';
+      clear();
       _storage.deleteAll();
       return false;
     }
+  }
+
+  clear() {
+    accessToken = '';
+    refreshToken = '';
   }
 }
 
