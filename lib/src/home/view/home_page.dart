@@ -255,7 +255,7 @@ class ProgramsWidget extends HookConsumerWidget {
                   for (var i = 0; i < programs.length; i++) ProgramWidget(program: programs[i], index: i),
                 ],
               )
-            : Text('carousel')
+            : const Text('carousel')
         : Column(
             children: [
               AppAssets.chooseSubjectSVG,

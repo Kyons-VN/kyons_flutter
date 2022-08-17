@@ -25,7 +25,7 @@ class NewLessonNotifier extends StateNotifier<NewLessonState> {
     final successOrFailure =
         await knowledge_service.getLearningPoints(selectedProgram.getOrElse((l) => Program.empty())).run(knowledgeApi);
     state = successOrFailure.isLeft()
-        ? NewLessonState.error(successOrFailure.getLeft().getOrElse(() => ApiFailure.serverError()))
+        ? NewLessonState.error(successOrFailure.getLeft().getOrElse(() => const ApiFailure.serverError()))
         : NewLessonState.data(successOrFailure.getOrElse((l) => []));
     return unit;
   }

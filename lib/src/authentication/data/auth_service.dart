@@ -5,6 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:kyons_flutter/src/authentication/data/user_dto.dart';
 import 'package:kyons_flutter/src/authentication/domain/auth_failures.dart';
+import 'package:kyons_flutter/src/authentication/domain/i_auth.dart';
 import 'package:kyons_flutter/src/authentication/domain/user.dart';
 import 'package:kyons_flutter/src/authentication/domain/value_objects.dart';
 import 'package:kyons_flutter/src/core/data/api.dart';
@@ -12,21 +13,6 @@ import 'package:kyons_flutter/src/core/domain/core.dart';
 import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
 import 'package:kyons_flutter/src/navigation/data/navigation_service.dart' as navigation_service;
 import 'package:shared_preferences/shared_preferences.dart';
-
-// import 'package:kyons_flutter/src/authentication/domain/user.dart';
-
-import '../domain/i_auth.dart';
-// import '../domain/value_objects.dart';
-
-// Future<String> getCurrentUserId() async {
-//   final prefs = await SharedPreferences.getInstance();
-//   final userPref = prefs.getString('user');
-//   if (userPref == null) {
-//     return '';
-//   } else {
-//     return UserDto.fromJson(jsonDecode(userPref)).toDomain().id;
-//   }
-// }
 
 Future<Option> saveToken(String token) async {
   // final prefs = await SharedPreferences.getInstance();
@@ -165,12 +151,9 @@ class Auth implements IAuth {
       final token = data['access_token'] as String;
       final refreshToken = data['refresh_token'] as String;
       final email = data['email'] as String;
-      const storage = FlutterSecureStorage();
-      print(storage);
       await saveToken(token);
       await saveRefreshToken(refreshToken);
       await saveEmail(email);
-      print(storage);
       final redirectAfterLogin = data['redirect_after_auth'] as String;
       await navigation_service.saveRedirecPath(redirectAfterLogin);
       return unit;

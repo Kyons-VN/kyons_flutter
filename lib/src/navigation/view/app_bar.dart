@@ -28,7 +28,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           : const Icon(AppIcons.arrowLeft, color: AppColors.blueGray400),
       title: context.isLargerThanSmScreen() ? const TopMenu() : null,
       actions: context.isLargerThanSmScreen()
-          ? [DropdownMenu(), AppIcons.notificationIcon]
+          ? [const DropdownMenu(), AppIcons.notificationIcon]
           : [
               GestureDetector(
                 onTap: () {},

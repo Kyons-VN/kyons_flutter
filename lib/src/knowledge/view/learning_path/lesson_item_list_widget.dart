@@ -118,7 +118,7 @@ class NewLessonWidget extends HookWidget {
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
+                      const Icon(
                         AppIcons.add,
                         color: AppColors.white,
                         size: AppSizesUnit.large36,
