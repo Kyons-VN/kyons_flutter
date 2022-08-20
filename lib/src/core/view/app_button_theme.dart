@@ -16,8 +16,11 @@ extension XElevatedButton on ElevatedButton {
     final finalStyle = style != null
         ? style!.copyWith(
             padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: verticalPadding, horizontal: 20)))
-        : Theme.of(context).elevatedButtonTheme.style?.copyWith(
-            padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: verticalPadding, horizontal: 20)));
+        : Theme.of(context).elevatedButtonTheme.style != null
+            ? Theme.of(context).elevatedButtonTheme.style!.copyWith(
+                padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: verticalPadding, horizontal: 20)))
+            : ButtonStyle(
+                padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: verticalPadding, horizontal: 20)));
     return ElevatedButton(
       onPressed: onPressed,
       style: finalStyle,

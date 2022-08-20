@@ -44,6 +44,8 @@ class DesignPage extends StatelessWidget {
                   const SizedBox(height: 8),
                   ElevatedButton(onPressed: () {}, child: const Text('Button')).small(context),
                   const SizedBox(height: 8),
+                  ElevatedButton(onPressed: () {}, child: const Icon(AppIcons.notification)).small(context),
+                  const SizedBox(height: 8),
                   const ElevatedButton(onPressed: null, child: Text('Button')),
                   const SizedBox(height: 8),
                   OutlinedButton(onPressed: () {}, child: const Text('Button')),

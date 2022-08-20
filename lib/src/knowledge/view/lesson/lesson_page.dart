@@ -114,25 +114,6 @@ class LessonPage extends HookConsumerWidget {
                           testState.content.isSome() &&
                           lessonStudyState.selectedTabIndex == TabMenu.test.index) {
                         final answersResult = testState.answersResult.getOrElse(() => {});
-                        if (testState.content.getOrElse(() => TestContent.empty()).done) {
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Heading(4, t(context).finish_test),
-                              AppSizesUnit.sizedBox16,
-                              Heading(6, t(context).learning_path_is_ready, color: AppColors.secondaryBlue),
-                              AppSizesUnit.sizedBox16,
-                              Center(
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    context.go(AppPaths.learningPath.path);
-                                  },
-                                  child: Text(t(context).to_learning_path),
-                                ).medium(context),
-                              ),
-                            ],
-                          );
-                        }
                         return TestContentWidget(
                           title: t(context).test,
                           testContent: testState.content.getOrElse(() => TestContent.empty()),

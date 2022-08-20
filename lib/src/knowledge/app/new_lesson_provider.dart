@@ -12,22 +12,24 @@ part 'new_lesson_state.dart';
 
 class NewLessonNotifier extends StateNotifier<NewLessonState> {
   final IKnowledge knowledgeApi;
+  late Program selectedProgram;
 
   NewLessonNotifier(this.knowledgeApi) : super(NewLessonState.initial());
 
   Future<Unit> init() async {
     state = NewLessonState.loading();
-    final selectedProgram = await knowledge_service.getSelectedProgram().run(knowledgeApi);
-    if (selectedProgram.isLeft()) {
+    final selectedProgramSuccessOrFailure = await knowledge_service.getSelectedProgram().run(knowledgeApi);
+    if (selectedProgramSuccessOrFailure.isLeft()) {
       state = NewLessonState.error(const ApiFailure.serverError());
       return unit;
+    } else {
+      selectedProgram = selectedProgramSuccessOrFailure.getOrElse((l) => Program.empty());
+      final successOrFailure = await knowledge_service.getLearningPoints(selectedProgram).run(knowledgeApi);
+      state = successOrFailure.isLeft()
+          ? NewLessonState.error(successOrFailure.getLeft().getOrElse(() => const ApiFailure.serverError()))
+          : NewLessonState.data(successOrFailure.getOrElse((l) => []));
+      return unit;
     }
-    final successOrFailure =
-        await knowledge_service.getLearningPoints(selectedProgram.getOrElse((l) => Program.empty())).run(knowledgeApi);
-    state = successOrFailure.isLeft()
-        ? NewLessonState.error(successOrFailure.getLeft().getOrElse(() => const ApiFailure.serverError()))
-        : NewLessonState.data(successOrFailure.getOrElse((l) => []));
-    return unit;
   }
 
   Unit select(LearningPoint learningPoint) {
@@ -43,7 +45,7 @@ class NewLessonNotifier extends StateNotifier<NewLessonState> {
   }
 
   Unit submit() {
-    knowledge_service.createLesson(state.selectedIds).run(knowledgeApi);
+    knowledge_service.createLesson(selectedProgram, state.selectedIds).run(knowledgeApi);
     return unit;
   }
 }

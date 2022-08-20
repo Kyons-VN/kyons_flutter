@@ -22,6 +22,6 @@ abstract class IKnowledge {
   Future<Unit> selectProgram(Program program);
   Future<Program> getSelectedProgram();
   Future<Unit> removeSelectedProgram();
-  Future<Unit> createLesson(List<String> difficultyIds);
+  Future<Unit> createLesson(Program program, List<String> difficultyIds);
   Future<List<LearningPoint>> getLearningPoints(Program program);
 }

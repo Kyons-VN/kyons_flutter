@@ -50,7 +50,6 @@ class AppRouter {
             child: const SignInPage(),
             transitionsBuilder: _slideTransitionBuilder(),
           ),
-          // redirect: (state) => guard(state, authState),
         ),
         GoRoute(
           path: AppPaths.settings.path,
@@ -73,11 +72,6 @@ class AppRouter {
               ),
             ),
           ],
-          // pageBuilder: (BuildContext context, GoRouterState state) => CustomTransitionPage(
-          //   key: state.pageKey,
-          //   child: const SettingsPage(),
-          //   transitionsBuilder: _slideTransitionBuilder(),
-          // ),
         ),
         GoRoute(
           path: AppPaths.design.path,

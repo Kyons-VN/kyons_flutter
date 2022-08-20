@@ -130,9 +130,10 @@ class Knowledge implements IKnowledge {
   }
 
   @override
-  Future<Unit> createLesson(List<String> difficultyIds) {
+  Future<Unit> createLesson(Program program, List<String> difficultyIds) {
     final params = {
       'learning_point_difficulty_ids': difficultyIds,
+      'program_id': program.id,
     };
     final response = api.post('$serverApi/students/update_learning_path', data: params);
     return response.then(handleResponseError).then((value) async {

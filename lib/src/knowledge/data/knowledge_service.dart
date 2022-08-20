@@ -97,11 +97,13 @@ TaskEither<ApiFailure, List<LearningPoint>> _getLearningPoints(IKnowledge api, P
       handleError,
     );
 
-Reader<IKnowledge, Future<Either<ApiFailure, Unit>>> createLesson(List<String> difficultyList) => Reader(
-      (api) => _createLesson(api, difficultyList).run(),
+Reader<IKnowledge, Future<Either<ApiFailure, Unit>>> createLesson(Program program, List<String> difficultyList) =>
+    Reader(
+      (api) => _createLesson(api, program, difficultyList).run(),
     );
 
-TaskEither<ApiFailure, Unit> _createLesson(IKnowledge api, List<String> difficultyList) => TaskEither.tryCatch(
-      () => api.createLesson(difficultyList),
+TaskEither<ApiFailure, Unit> _createLesson(IKnowledge api, Program program, List<String> difficultyList) =>
+    TaskEither.tryCatch(
+      () => api.createLesson(program, difficultyList),
       handleError,
     );

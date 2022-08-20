@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
+import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_api.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_service.dart' as test_service;
 import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
 
@@ -97,7 +98,7 @@ class DiagnosticTestNotifier extends StateNotifier<DiagnosticTestState> {
   }
 }
 
-final testApi = Provider<test_service.TestKnowledge>((ref) => test_service.TestKnowledge());
+final testApi = Provider<TestKnowledge>((ref) => TestKnowledge());
 
 final diagnosticTestNotifierProvider = StateNotifierProvider.autoDispose<DiagnosticTestNotifier, DiagnosticTestState>(
   (ref) => DiagnosticTestNotifier(ref.read(testApi)),

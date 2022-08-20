@@ -27,6 +27,17 @@ class LessonTestNotifier extends StateNotifier<LessonTestState> {
       questions = data.questions;
       return LessonTestState.loaded(data);
     });
+    if (successOrFailure.isRight()) {
+      final isDone = successOrFailure.getOrElse((l) => TestContent.empty()).done;
+      if (isDone) {
+        final testResultSuccessOrFailure = await test_service.getTestResult(lessonGroupId).run(testApi);
+        if (testResultSuccessOrFailure.isRight()) {
+          state = state.copyWith(testResult: optionOf(testResultSuccessOrFailure.getOrElse((l) => TestResult.empty())));
+        } else {
+          state = state.copyWith(hasError: true);
+        }
+      }
+    }
   }
 
   void previous() {
