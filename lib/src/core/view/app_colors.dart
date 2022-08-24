@@ -10,8 +10,12 @@ class AppColors {
   static const Color orange = Color(0xFFFB7200);
   static const Color lightOrange1 = Color(0xFFFB923C);
   static const Color lightOrange2 = Color(0xFFFDBA74);
-  static const Color lightOrange3 = Color(0xFFFDBA74);
+  static const Color lightOrange3 = Color(0xFFFED7AA);
   static const Color lightOrange4 = Color(0xFFFFEDD5);
+  static const Color darkOrange1 = Color(0xFFDE6501);
+  static const Color darkOrange2 = Color(0xFFC15802);
+  static const Color darkOrange3 = Color(0xFFA54B03);
+  static const Color darkOrange4 = Color(0xFF883E04);
   static const Color darkEmerald = Color(0xFF109867);
   static const Color emerald = Color(0xFF34D399);
   static const Color emerald1 = Color(0xFF6EE7B7);
