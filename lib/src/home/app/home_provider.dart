@@ -41,6 +41,12 @@ class HomeNotifier extends StateNotifier<HomeState> {
       selectedSubjectOption: some(subject),
       programsOption: optionOf(subject.programs),
     );
+    if (subject.programs.isEmpty) {
+      state = state.copyWith(
+        selectedProgramOption: none(),
+      );
+      return unit;
+    }
     setProgramOption(subject.programs.first);
     return unit;
   }
@@ -53,6 +59,12 @@ class HomeNotifier extends StateNotifier<HomeState> {
   }
 
   Future<Unit> selectProgram(Program program) async {
+    await knowledge_service.selectProgram(program).run(knowledgeApi);
+    return unit;
+  }
+
+  Future<Unit> submit() async {
+    final program = state.selectedProgramOption.getOrElse(() => Program.empty());
     await knowledge_service.selectProgram(program).run(knowledgeApi);
     return unit;
   }
@@ -71,6 +83,6 @@ class HomeNotifier extends StateNotifier<HomeState> {
 
 final homeNotifierProvider = StateNotifierProvider.autoDispose<HomeNotifier, HomeState>(
   (ref) => HomeNotifier(ref.read(
-    knowledge,
+    knowledgeApi,
   )),
 );

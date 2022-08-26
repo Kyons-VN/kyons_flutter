@@ -59,8 +59,12 @@ class _CupertinoPickerOptionsState extends State<CupertinoPickerOptions> {
           // This is called when selected item is changed.
           onSelectedItemChanged: (index) {
             setState(() {
-              selectedIndex = index;
-              widget.onPicked(widget.options[selectedIndex]);
+              if (widget.options.isEmpty) {
+                selectedIndex = 0;
+              } else {
+                selectedIndex = index;
+                widget.onPicked(widget.options[selectedIndex]);
+              }
             });
           },
           children: List<Widget>.generate(widget.options.length, (int index) {

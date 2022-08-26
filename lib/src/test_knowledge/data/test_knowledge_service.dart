@@ -1,17 +1,18 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 import 'package:kyons_flutter/src/core/data/api.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
 
-Reader<ITestKnowledge, Future<Either<ApiFailure, TestContent>>> getDiagnosticTest() {
+Reader<ITestKnowledge, Future<Either<ApiFailure, TestContent>>> getDiagnosticTest(Program program) {
   return Reader(
-    (api) => _getDiagnosticTest(api).run(),
+    (api) => _getDiagnosticTest(api, program).run(),
   );
 }
 
-TaskEither<ApiFailure, TestContent> _getDiagnosticTest(ITestKnowledge api) => TaskEither.tryCatch(
-      () => api.getDiagnosticTest(),
+TaskEither<ApiFailure, TestContent> _getDiagnosticTest(ITestKnowledge api, Program program) => TaskEither.tryCatch(
+      () => api.getDiagnosticTest(program),
       handleError,
     );
 

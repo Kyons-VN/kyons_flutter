@@ -21,6 +21,7 @@ class Program {
 
   factory Program.empty() => Program(subjectId: '', id: '', name: '');
   static String emptyJsonString() => Program.empty().toJson().toString();
+  bool isEmpty() => id == '';
 }
 
 class LessonItem {

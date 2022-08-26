@@ -2,17 +2,17 @@ part of 'diagnostic_test_provider.dart';
 
 @freezed
 class DiagnosticTestState with _$DiagnosticTestState {
-  const factory DiagnosticTestState({
-    required bool loading,
-    required Option<TestContent> content,
-    required Option<Map<String, String>> answersResult,
-    required int progress,
-    required Option<int> currentQuestionIndex,
-    required bool isSubmitted,
-    required bool hasError,
-    required Option<TestResult> testResult,
-    required Option<LessonGroup> lessonGroup,
-  }) = _DiagnosticTestState;
+  const factory DiagnosticTestState(
+      {required bool loading,
+      required Option<TestContent> content,
+      required Option<Map<String, String>> answersResult,
+      required int progress,
+      required Option<int> currentQuestionIndex,
+      required bool isSubmitted,
+      required bool hasError,
+      required Option<TestResult> testResult,
+      required Option<LessonGroup> lessonGroup,
+      required Option<bool> missingProgram}) = _DiagnosticTestState;
 
   factory DiagnosticTestState.initial() => DiagnosticTestState(
         loading: false,
@@ -24,6 +24,7 @@ class DiagnosticTestState with _$DiagnosticTestState {
         hasError: false,
         testResult: none(),
         lessonGroup: none(),
+        missingProgram: none(),
       );
 
   factory DiagnosticTestState.loading() => DiagnosticTestState(
@@ -36,6 +37,7 @@ class DiagnosticTestState with _$DiagnosticTestState {
         hasError: false,
         testResult: none(),
         lessonGroup: none(),
+        missingProgram: none(),
       );
 
   factory DiagnosticTestState.loaded(TestContent content, LessonGroup lessonGroup) {
@@ -49,6 +51,7 @@ class DiagnosticTestState with _$DiagnosticTestState {
       hasError: false,
       testResult: none(),
       lessonGroup: some(lessonGroup),
+      missingProgram: none(),
     );
   }
   factory DiagnosticTestState.error() => DiagnosticTestState(
@@ -61,5 +64,18 @@ class DiagnosticTestState with _$DiagnosticTestState {
         hasError: true,
         testResult: none(),
         lessonGroup: none(),
+        missingProgram: none(),
+      );
+  factory DiagnosticTestState.missingProgram() => DiagnosticTestState(
+        loading: false,
+        content: none(),
+        answersResult: none(),
+        progress: 0,
+        currentQuestionIndex: none(),
+        isSubmitted: false,
+        hasError: true,
+        testResult: none(),
+        lessonGroup: none(),
+        missingProgram: some(true),
       );
 }

@@ -1,7 +1,10 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kyons_flutter/src/knowledge/app/knowledge_provider.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
+import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_api.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_service.dart' as test_service;
@@ -12,11 +15,19 @@ part 'diagnostic_test_state.dart';
 
 class DiagnosticTestNotifier extends StateNotifier<DiagnosticTestState> {
   final ITestKnowledge testApi;
-  DiagnosticTestNotifier(this.testApi) : super(DiagnosticTestState.initial());
+  final IKnowledge knowledgeApi;
+  DiagnosticTestNotifier(this.testApi, this.knowledgeApi) : super(DiagnosticTestState.initial());
 
   Future<void> init() async {
     state = DiagnosticTestState.loading();
-    final successOrFailure = await test_service.getDiagnosticTest().run(testApi);
+    final selectedProgram = await knowledge_service.getSelectedProgram().run(knowledgeApi);
+    if (selectedProgram.isLeft()) {
+      state = DiagnosticTestState.missingProgram();
+      return;
+    }
+
+    final successOrFailure =
+        await test_service.getDiagnosticTest(selectedProgram.getOrElse((l) => Program.empty())).run(testApi);
     state = successOrFailure.fold(
       (l) => DiagnosticTestState.error(),
       (content) {
@@ -101,5 +112,5 @@ class DiagnosticTestNotifier extends StateNotifier<DiagnosticTestState> {
 final testApi = Provider<TestKnowledge>((ref) => TestKnowledge());
 
 final diagnosticTestNotifierProvider = StateNotifierProvider.autoDispose<DiagnosticTestNotifier, DiagnosticTestState>(
-  (ref) => DiagnosticTestNotifier(ref.read(testApi)),
+  (ref) => DiagnosticTestNotifier(ref.read(testApi), ref.read(knowledgeApi)),
 );

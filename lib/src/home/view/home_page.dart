@@ -146,7 +146,7 @@ class HomeOptions extends ConsumerWidget {
               onPressed: () {
                 // Navigator.pop(context);
                 // print(isTest);
-                context.go(AppPaths.diagnosticTest.path, extra: isTest);
+                homeNotifier.submit().then((unit) => context.go(AppPaths.diagnosticTest.path, extra: isTest));
                 // diagnosticTestNotifier.init();
               },
               child: Text(t(context).do_diagnostictest_btn),
@@ -191,7 +191,8 @@ class HomeOptions extends ConsumerWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: homeNotifier.start,
+            onPressed:
+                homeState.selectedProgramOption.getOrElse(() => Program.empty()).isEmpty() ? null : homeNotifier.start,
             child: Text(t(context).start),
           ),
         ),

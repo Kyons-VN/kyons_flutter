@@ -26,6 +26,7 @@ mixin _$DiagnosticTestState {
   bool get hasError => throw _privateConstructorUsedError;
   Option<TestResult> get testResult => throw _privateConstructorUsedError;
   Option<LessonGroup> get lessonGroup => throw _privateConstructorUsedError;
+  Option<bool> get missingProgram => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DiagnosticTestStateCopyWith<DiagnosticTestState> get copyWith =>
@@ -46,7 +47,8 @@ abstract class $DiagnosticTestStateCopyWith<$Res> {
       bool isSubmitted,
       bool hasError,
       Option<TestResult> testResult,
-      Option<LessonGroup> lessonGroup});
+      Option<LessonGroup> lessonGroup,
+      Option<bool> missingProgram});
 }
 
 /// @nodoc
@@ -69,6 +71,7 @@ class _$DiagnosticTestStateCopyWithImpl<$Res>
     Object? hasError = freezed,
     Object? testResult = freezed,
     Object? lessonGroup = freezed,
+    Object? missingProgram = freezed,
   }) {
     return _then(_value.copyWith(
       loading: loading == freezed
@@ -107,6 +110,10 @@ class _$DiagnosticTestStateCopyWithImpl<$Res>
           ? _value.lessonGroup
           : lessonGroup // ignore: cast_nullable_to_non_nullable
               as Option<LessonGroup>,
+      missingProgram: missingProgram == freezed
+          ? _value.missingProgram
+          : missingProgram // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
     ));
   }
 }
@@ -127,7 +134,8 @@ abstract class _$$_DiagnosticTestStateCopyWith<$Res>
       bool isSubmitted,
       bool hasError,
       Option<TestResult> testResult,
-      Option<LessonGroup> lessonGroup});
+      Option<LessonGroup> lessonGroup,
+      Option<bool> missingProgram});
 }
 
 /// @nodoc
@@ -152,6 +160,7 @@ class __$$_DiagnosticTestStateCopyWithImpl<$Res>
     Object? hasError = freezed,
     Object? testResult = freezed,
     Object? lessonGroup = freezed,
+    Object? missingProgram = freezed,
   }) {
     return _then(_$_DiagnosticTestState(
       loading: loading == freezed
@@ -190,6 +199,10 @@ class __$$_DiagnosticTestStateCopyWithImpl<$Res>
           ? _value.lessonGroup
           : lessonGroup // ignore: cast_nullable_to_non_nullable
               as Option<LessonGroup>,
+      missingProgram: missingProgram == freezed
+          ? _value.missingProgram
+          : missingProgram // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
     ));
   }
 }
@@ -206,7 +219,8 @@ class _$_DiagnosticTestState implements _DiagnosticTestState {
       required this.isSubmitted,
       required this.hasError,
       required this.testResult,
-      required this.lessonGroup});
+      required this.lessonGroup,
+      required this.missingProgram});
 
   @override
   final bool loading;
@@ -226,10 +240,12 @@ class _$_DiagnosticTestState implements _DiagnosticTestState {
   final Option<TestResult> testResult;
   @override
   final Option<LessonGroup> lessonGroup;
+  @override
+  final Option<bool> missingProgram;
 
   @override
   String toString() {
-    return 'DiagnosticTestState(loading: $loading, content: $content, answersResult: $answersResult, progress: $progress, currentQuestionIndex: $currentQuestionIndex, isSubmitted: $isSubmitted, hasError: $hasError, testResult: $testResult, lessonGroup: $lessonGroup)';
+    return 'DiagnosticTestState(loading: $loading, content: $content, answersResult: $answersResult, progress: $progress, currentQuestionIndex: $currentQuestionIndex, isSubmitted: $isSubmitted, hasError: $hasError, testResult: $testResult, lessonGroup: $lessonGroup, missingProgram: $missingProgram)';
   }
 
   @override
@@ -250,7 +266,9 @@ class _$_DiagnosticTestState implements _DiagnosticTestState {
             const DeepCollectionEquality()
                 .equals(other.testResult, testResult) &&
             const DeepCollectionEquality()
-                .equals(other.lessonGroup, lessonGroup));
+                .equals(other.lessonGroup, lessonGroup) &&
+            const DeepCollectionEquality()
+                .equals(other.missingProgram, missingProgram));
   }
 
   @override
@@ -264,7 +282,8 @@ class _$_DiagnosticTestState implements _DiagnosticTestState {
       const DeepCollectionEquality().hash(isSubmitted),
       const DeepCollectionEquality().hash(hasError),
       const DeepCollectionEquality().hash(testResult),
-      const DeepCollectionEquality().hash(lessonGroup));
+      const DeepCollectionEquality().hash(lessonGroup),
+      const DeepCollectionEquality().hash(missingProgram));
 
   @JsonKey(ignore: true)
   @override
@@ -283,7 +302,8 @@ abstract class _DiagnosticTestState implements DiagnosticTestState {
       required final bool isSubmitted,
       required final bool hasError,
       required final Option<TestResult> testResult,
-      required final Option<LessonGroup> lessonGroup}) = _$_DiagnosticTestState;
+      required final Option<LessonGroup> lessonGroup,
+      required final Option<bool> missingProgram}) = _$_DiagnosticTestState;
 
   @override
   bool get loading => throw _privateConstructorUsedError;
@@ -304,6 +324,8 @@ abstract class _DiagnosticTestState implements DiagnosticTestState {
   Option<TestResult> get testResult => throw _privateConstructorUsedError;
   @override
   Option<LessonGroup> get lessonGroup => throw _privateConstructorUsedError;
+  @override
+  Option<bool> get missingProgram => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_DiagnosticTestStateCopyWith<_$_DiagnosticTestState> get copyWith =>

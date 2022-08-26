@@ -53,5 +53,5 @@ class LearningPathNotifier extends StateNotifier<LearningPathState> {
 }
 
 final learningPathNotifierProvider = StateNotifierProvider.autoDispose<LearningPathNotifier, LearningPathState>(
-  (ref) => LearningPathNotifier(ref.read(knowledge)),
+  (ref) => LearningPathNotifier(ref.read(knowledgeApi)),
 );

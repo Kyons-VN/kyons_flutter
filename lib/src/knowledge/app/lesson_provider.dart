@@ -31,7 +31,7 @@ class LessonNotifier extends StateNotifier<LessonState> {
 }
 
 final lessonNotifierProvider =
-    StateNotifierProvider<LessonNotifier, LessonState>((ref) => LessonNotifier.setup(ref.read(knowledge)));
+    StateNotifierProvider<LessonNotifier, LessonState>((ref) => LessonNotifier.setup(ref.read(knowledgeApi)));
 
 enum TabMenu {
   lesson,

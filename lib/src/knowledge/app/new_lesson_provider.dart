@@ -51,4 +51,4 @@ class NewLessonNotifier extends StateNotifier<NewLessonState> {
 }
 
 final newLessonNotifierProvider = StateNotifierProvider.autoDispose<NewLessonNotifier, NewLessonState>(
-    (ref) => NewLessonNotifier(ref.read(knowledge)));
+    (ref) => NewLessonNotifier(ref.read(knowledgeApi)));
