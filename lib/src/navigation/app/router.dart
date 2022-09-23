@@ -1,10 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/authentication/view/sign_in_page.dart';
 import 'package:kyons_flutter/src/design/view/design_page.dart';
-import 'package:kyons_flutter/src/game_template/game_route.dart';
+// import 'package:kyons_flutter/src/game_template/game_route.dart';
 import 'package:kyons_flutter/src/home/view/home_page.dart';
 import 'package:kyons_flutter/src/knowledge/view/learning_path/learning_path_page.dart';
 import 'package:kyons_flutter/src/knowledge/view/lesson/lesson_page.dart';
@@ -31,17 +33,17 @@ class AppRouter {
       routes: <GoRoute>[
         GoRoute(
           path: '/',
-          redirect: (_) => AppPaths.home.path,
+          redirect: (_, __) => AppPaths.home.path,
         ),
         GoRoute(
           path: '/diagnostic-test-decision',
           builder: (BuildContext context, GoRouterState state) => const HomePage(isShowHomeOptions: true),
-          redirect: (state) => guard(state, ref),
+          redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
           path: AppPaths.home.path,
           builder: (BuildContext context, GoRouterState state) => const HomePage(),
-          redirect: (state) => guard(state, ref),
+          redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
           path: AppPaths.signIn.path,
@@ -76,7 +78,7 @@ class AppRouter {
         GoRoute(
           path: AppPaths.design.path,
           builder: (BuildContext context, GoRouterState state) => const DesignPage(),
-          redirect: (state) => guard(state, ref),
+          redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
           path: AppPaths.diagnosticTest.path,
@@ -86,24 +88,24 @@ class AppRouter {
               isTest: isTest,
             );
           },
-          redirect: (state) => guard(state, ref),
+          redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
           path: AppPaths.learningPath.path,
           builder: (BuildContext context, GoRouterState state) => const LearningPathPage(),
-          redirect: (state) => guard(state, ref),
+          redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
           path: AppPaths.lessonPage.path,
           builder: (BuildContext context, GoRouterState state) => LessonPage(state.params['id']!),
-          redirect: (state) => guard(state, ref),
+          redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
           path: AppPaths.newLesonPage.path,
           builder: (BuildContext context, GoRouterState state) => const NewLessonPage(),
-          redirect: (state) => guard(state, ref),
+          redirect: (_, state) => guard(state, ref),
         ),
-        GameRoute().getGameRoute('/game', guard, ref),
+        // GameRoute().getGameRoute('/game', guard, ref),
       ],
       refreshListenable: GoRouterRefreshStream(authNotifier.stream),
       debugLogDiagnostics: true,
@@ -147,12 +149,29 @@ class GoRouterObserver extends NavigatorObserver {
   void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {}
 }
 
-extension AppRouteHelper on BuildContext {
-  void canPop() {
-    try {
-      GoRouter.of(this).pop();
-    } catch (e) {
-      GoRouter.of(this).go(AppPaths.home.path);
-    }
+// extension AppRouteHelper on BuildContext {
+//   void canPop() {
+//     try {
+//       GoRouter.of(this).pop();
+//     } catch (e) {
+//       GoRouter.of(this).go(AppPaths.home.path);
+//     }
+//   }
+// }
+
+class GoRouterRefreshStream extends ChangeNotifier {
+  GoRouterRefreshStream(Stream<dynamic> stream) {
+    notifyListeners();
+    _subscription = stream.asBroadcastStream().listen(
+          (dynamic _) => notifyListeners(),
+        );
+  }
+
+  late final StreamSubscription<dynamic> _subscription;
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
   }
 }

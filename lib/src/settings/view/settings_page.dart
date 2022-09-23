@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
-import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 
 /// Displays the various settings that can be customized by the user.

@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: '>=2.17.0 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -33,19 +33,19 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: 1.0.5
-  audioplayers: 0.20.1
-  go_router: 4.0.0
+  # audioplayers: 0.20.1
+  go_router: 5.0.1
   logging: 1.0.2
-  provider: 6.0.3
+  # provider: 6.0.3
   shared_preferences: 2.0.15
-  firebase_core: 1.17.1
-  firebase_crashlytics: 2.8.1
+  # firebase_core: 1.17.1
+  # firebase_crashlytics: 2.8.1
   intl: 0.17.0
   hooks_riverpod: 1.0.4
   freezed_annotation: 2.0.3
-  fpdart: 0.0.14
-  get_it: 7.2.0
-  injectable: 1.5.3
+  fpdart: 0.2.0
+  # get_it: 7.2.0
+  # injectable: 1.5.3
   dio: 4.0.6
   flutter_secure_storage: 5.0.2
   flutter_svg: 1.1.0
@@ -57,8 +57,8 @@ dependencies:
   another_flushbar: 1.10.29
   flutter_html: 3.0.0-alpha.5
   scrollable_positioned_list: 0.3.2
-  flame: 1.2.0
-  flame_behaviors: 0.1.1
+  # flame: 1.2.0
+  # flame_behaviors: 0.1.1
   url_launcher: 6.1.4
 
 dev_dependencies:
@@ -72,10 +72,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: 2.0.1
   # flutter_launcher_icons: 0.10.0
-  test: 1.21.1
-  build_runner: 
+  # test: 1.21.1
+  build_runner:
   freezed: 2.0.3+1
-  injectable_generator: 1.5.3
+  # injectable_generator: 1.5.3
   json_serializable: 6.2.0
 
 # For information on the generic Dart part of this file, see the
@@ -83,7 +83,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -107,13 +106,12 @@ flutter:
     - family: Kyons Icons
       fonts:
         - asset: assets/kyons_fonts/KyonsIcons.ttf
-
 # flutter_icons:
-  # android: true
-  # ios: true
-  # image_path: "assets/icon.png"
-  # adaptive_icon_background: "#2C3D5B"
-  # adaptive_icon_foreground: "assets/icon-adaptive-foreground.png"
-  # windows:
-  #   generate: true
-  #   image_path: "assets/icon.png"
+# android: true
+# ios: true
+# image_path: "assets/icon.png"
+# adaptive_icon_background: "#2C3D5B"
+# adaptive_icon_foreground: "assets/icon-adaptive-foreground.png"
+# windows:
+#   generate: true
+#   image_path: "assets/icon.png"
