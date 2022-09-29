@@ -35,7 +35,7 @@ class SignInNotifier extends StateNotifier<SignInState> {
     state = SignInState.initial();
     if (ConfigReader.env == Environment.dev) {
       state = state.copyWith(
-        emailAddress: EmailAddress('binhhm2009+0827ss@gmail.com'),
+        emailAddress: EmailAddress('binh+0929ss@te.st'),
         password: 'Zaq1@wsx',
       );
     }

@@ -43,11 +43,12 @@ class NewLessonPage extends ConsumerWidget {
                               TextSpan(text: t(context).to_add_knowledge)
                             ])),
                   ),
+                  AppSizesUnit.sizedBox24,
                   const Expanded(
                     flex: 1,
                     child: SingleChildScrollView(
                       clipBehavior: Clip.hardEdge,
-                      padding: EdgeInsets.all(AppSizesUnit.medium24),
+                      padding: EdgeInsets.symmetric(horizontal: AppSizesUnit.medium24),
                       child: LearningPointList(),
                     ),
                   ),
@@ -78,7 +79,7 @@ class NewLessonPage extends ConsumerWidget {
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -169,30 +170,35 @@ class _LearningPointItem extends HookWidget {
       child: FocusableActionDetector(
         mouseCursor: disabled ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
         onShowHoverHighlight: (value) => onHover.value = value,
-        child: ListTile(
-          tileColor: active ? AppColors.secondaryBlue : AppColors.white,
-          textColor: active
-              ? AppColors.white
-              : disabled
-                  ? AppColors.blueGray200
-                  : AppColors.primaryBlue,
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(4)), side: BorderSide(color: AppColors.blueGray400)),
-          title: Row(
-            children: [
-              active
-                  ? const Icon(AppIcons.subtract, color: AppColors.orange)
-                  : Icon(AppIcons.add, color: disabled ? AppColors.blueGray200 : AppColors.primaryBlue),
-              AppSizesUnit.sizedBox16,
-              Expanded(
-                  child: Text(learningPoint.learningPoint,
-                      style: TextStyle(
-                          color: active
-                              ? AppColors.white
-                              : disabled
-                                  ? AppColors.blueGray200
-                                  : AppColors.primaryBlue))),
-            ],
+        child: Material(
+          child: ListTile(
+            tileColor: active ? AppColors.secondaryBlue : AppColors.white,
+            textColor: active
+                ? AppColors.white
+                : disabled
+                    ? AppColors.blueGray200
+                    : AppColors.primaryBlue,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(4)), side: BorderSide(color: AppColors.blueGray400)),
+            title: Row(
+              children: [
+                active
+                    ? const Icon(AppIcons.subtract, color: AppColors.orange)
+                    : Icon(AppIcons.add, color: disabled ? AppColors.blueGray200 : AppColors.primaryBlue),
+                AppSizesUnit.sizedBox16,
+                Expanded(
+                  child: Text(
+                    learningPoint.learningPoint,
+                    style: TextStyle(
+                        color: active
+                            ? AppColors.white
+                            : disabled
+                                ? AppColors.blueGray200
+                                : AppColors.primaryBlue),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
