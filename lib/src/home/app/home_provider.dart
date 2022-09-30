@@ -19,6 +19,7 @@ class HomeNotifier extends StateNotifier<HomeState> {
   Future<Unit> init() async {
     final Either<ApiFailure, List<Program>> failureOrSuccess =
         await knowledge_service.getStudentProgram().run(knowledgeApi);
+    if (!mounted) return unit;
     state = HomeState.initial().copyWith(
       hasError: failureOrSuccess.isLeft(),
       studentProgramsOption: optionOf(failureOrSuccess),

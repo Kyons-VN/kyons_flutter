@@ -141,7 +141,11 @@ _slideTransitionBuilder() =>
               end: Offset.zero,
             ).chain(CurveTween(curve: Curves.easeIn)),
           ),
-          child: child,
+          child: GestureDetector(
+              onTapDown: (details) {
+                print(details);
+              },
+              child: child),
         );
 
 class GoRouterObserver extends NavigatorObserver {

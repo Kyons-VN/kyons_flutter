@@ -21,7 +21,7 @@ Map<String, dynamic> _$$_UserDtoToJson(_$_UserDto instance) =>
       'email': instance.email,
       'first_name': instance.firstName,
       'last_name': instance.lastName,
-      'study_type': _$StudyTypeEnumMap[instance.studyType],
+      'study_type': _$StudyTypeEnumMap[instance.studyType]!,
     };
 
 const _$StudyTypeEnumMap = {

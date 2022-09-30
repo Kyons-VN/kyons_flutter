@@ -219,7 +219,9 @@ class _$_UserDto extends _UserDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserDtoToJson(this);
+    return _$$_UserDtoToJson(
+      this,
+    );
   }
 }
 
@@ -239,19 +241,19 @@ abstract class _UserDto extends UserDto {
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
   @JsonKey(name: 'first_name')
-  String get firstName => throw _privateConstructorUsedError;
+  String get firstName;
   @override
   @JsonKey(name: 'last_name')
-  String get lastName => throw _privateConstructorUsedError;
+  String get lastName;
   @override
   @JsonKey(name: 'study_type', unknownEnumValue: StudyType.ai)
   @JsonEnum()
-  StudyType get studyType => throw _privateConstructorUsedError;
+  StudyType get studyType;
   @override
   @JsonKey(ignore: true)
   _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>

@@ -306,26 +306,25 @@ abstract class _DiagnosticTestState implements DiagnosticTestState {
       required final Option<bool> missingProgram}) = _$_DiagnosticTestState;
 
   @override
-  bool get loading => throw _privateConstructorUsedError;
+  bool get loading;
   @override
-  Option<TestContent> get content => throw _privateConstructorUsedError;
+  Option<TestContent> get content;
   @override
-  Option<Map<String, String>> get answersResult =>
-      throw _privateConstructorUsedError;
+  Option<Map<String, String>> get answersResult;
   @override
-  int get progress => throw _privateConstructorUsedError;
+  int get progress;
   @override
-  Option<int> get currentQuestionIndex => throw _privateConstructorUsedError;
+  Option<int> get currentQuestionIndex;
   @override
-  bool get isSubmitted => throw _privateConstructorUsedError;
+  bool get isSubmitted;
   @override
-  bool get hasError => throw _privateConstructorUsedError;
+  bool get hasError;
   @override
-  Option<TestResult> get testResult => throw _privateConstructorUsedError;
+  Option<TestResult> get testResult;
   @override
-  Option<LessonGroup> get lessonGroup => throw _privateConstructorUsedError;
+  Option<LessonGroup> get lessonGroup;
   @override
-  Option<bool> get missingProgram => throw _privateConstructorUsedError;
+  Option<bool> get missingProgram;
   @override
   @JsonKey(ignore: true)
   _$$_DiagnosticTestStateCopyWith<_$_DiagnosticTestState> get copyWith =>

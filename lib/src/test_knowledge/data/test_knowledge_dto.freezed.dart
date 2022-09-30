@@ -192,7 +192,9 @@ class _$_TestContentDto extends _TestContentDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TestContentDtoToJson(this);
+    return _$$_TestContentDtoToJson(
+      this,
+    );
   }
 }
 
@@ -211,14 +213,13 @@ abstract class _TestContentDto extends TestContentDto {
 
   @override
   @JsonKey(name: 'test_id', defaultValue: 0)
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
   @JsonKey(name: 'data', defaultValue: [])
-  List<Map<String, dynamic>> get questions =>
-      throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get questions;
   @override
   @JsonKey(defaultValue: false)
-  bool get done => throw _privateConstructorUsedError;
+  bool get done;
   @override
   @JsonKey(ignore: true)
   _$$_TestContentDtoCopyWith<_$_TestContentDto> get copyWith =>
@@ -555,7 +556,9 @@ class _$_QuestionDto extends _QuestionDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_QuestionDtoToJson(this);
+    return _$$_QuestionDtoToJson(
+      this,
+    );
   }
 }
 
@@ -585,33 +588,33 @@ abstract class _QuestionDto extends QuestionDto {
       _$_QuestionDto.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get content => throw _privateConstructorUsedError;
+  String get content;
   @override
   @JsonKey(name: 'answer_keys')
-  List<Map<String, dynamic>> get answers => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get answers;
   @override
   @JsonKey(name: 'learning_point_difficulty_id', defaultValue: 0)
-  int get learningPointDifficultyId => throw _privateConstructorUsedError;
+  int get learningPointDifficultyId;
   @override
   @JsonKey(name: 'difficulty_level', defaultValue: 0)
-  int get difficultyLevel => throw _privateConstructorUsedError;
+  int get difficultyLevel;
   @override
   @JsonKey(name: 'learning_point_id', defaultValue: 0)
-  int get learningPointId => throw _privateConstructorUsedError;
+  int get learningPointId;
   @override
   @JsonKey(name: 'topic_id', defaultValue: 0)
-  int get topicId => throw _privateConstructorUsedError;
+  int get topicId;
   @override
   @JsonKey(name: 'topic_name', defaultValue: '')
-  String get topicName => throw _privateConstructorUsedError;
+  String get topicName;
   @override
   @JsonKey(name: 'category_id', defaultValue: 0)
-  int get categoryId => throw _privateConstructorUsedError;
+  int get categoryId;
   @override
   @JsonKey(name: 'category_name', defaultValue: '')
-  String get categoryName => throw _privateConstructorUsedError;
+  String get categoryName;
   @override
   @JsonKey(ignore: true)
   _$$_QuestionDtoCopyWith<_$_QuestionDto> get copyWith =>
@@ -789,7 +792,9 @@ class _$_AnswerDto extends _AnswerDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AnswerDtoToJson(this);
+    return _$$_AnswerDtoToJson(
+      this,
+    );
   }
 }
 
@@ -805,14 +810,14 @@ abstract class _AnswerDto extends AnswerDto {
       _$_AnswerDto.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get value => throw _privateConstructorUsedError;
+  String get value;
   @override
   @JsonKey(defaultValue: 0)
-  int get order => throw _privateConstructorUsedError;
+  int get order;
   @override
-  String get content => throw _privateConstructorUsedError;
+  String get content;
   @override
   @JsonKey(ignore: true)
   _$$_AnswerDtoCopyWith<_$_AnswerDto> get copyWith =>
@@ -1000,7 +1005,9 @@ class _$_AnswerResultDto extends _AnswerResultDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AnswerResultDtoToJson(this);
+    return _$$_AnswerResultDtoToJson(
+      this,
+    );
   }
 }
 
@@ -1017,15 +1024,15 @@ abstract class _AnswerResultDto extends AnswerResultDto {
 
   @override
   @JsonKey(name: 'topic_id')
-  int get topicId => throw _privateConstructorUsedError;
+  int get topicId;
   @override
   @JsonKey(name: 'category_id')
-  int get categoryId => throw _privateConstructorUsedError;
+  int get categoryId;
   @override
   @JsonKey(name: 'question_id')
-  int get questionId => throw _privateConstructorUsedError;
+  int get questionId;
   @override
-  int get score => throw _privateConstructorUsedError;
+  int get score;
   @override
   @JsonKey(ignore: true)
   _$$_AnswerResultDtoCopyWith<_$_AnswerResultDto> get copyWith =>
@@ -1188,7 +1195,9 @@ class _$_AnswerReviewDto extends _AnswerReviewDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AnswerReviewDtoToJson(this);
+    return _$$_AnswerReviewDtoToJson(
+      this,
+    );
   }
 }
 
@@ -1205,10 +1214,10 @@ abstract class _AnswerReviewDto extends AnswerReviewDto {
 
   @override
   @JsonKey(name: 'selected_answer')
-  List<int> get selectedAnswers => throw _privateConstructorUsedError;
+  List<int> get selectedAnswers;
   @override
   @JsonKey(name: 'right_answer')
-  List<int> get rightAnswers => throw _privateConstructorUsedError;
+  List<int> get rightAnswers;
   @override
   @JsonKey(ignore: true)
   _$$_AnswerReviewDtoCopyWith<_$_AnswerReviewDto> get copyWith =>
@@ -1390,7 +1399,9 @@ class _$_TestResultDto extends _TestResultDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TestResultDtoToJson(this);
+    return _$$_TestResultDtoToJson(
+      this,
+    );
   }
 }
 
@@ -1406,11 +1417,11 @@ abstract class _TestResultDto extends TestResultDto {
 
   @override
   @JsonKey(name: 'total_score')
-  double get score => throw _privateConstructorUsedError;
+  double get score;
   @override
-  List<AnswerResultDto> get result => throw _privateConstructorUsedError;
+  List<AnswerResultDto> get result;
   @override
-  AnswerReviewDto get review => throw _privateConstructorUsedError;
+  AnswerReviewDto get review;
   @override
   @JsonKey(ignore: true)
   _$$_TestResultDtoCopyWith<_$_TestResultDto> get copyWith =>

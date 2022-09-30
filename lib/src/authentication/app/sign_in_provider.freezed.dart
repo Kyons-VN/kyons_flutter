@@ -247,21 +247,19 @@ abstract class _SignInState implements SignInState {
       required final Option<String> redirectPath}) = _$_SignInState;
 
   @override
-  EmailAddress get emailAddress => throw _privateConstructorUsedError;
+  EmailAddress get emailAddress;
   @override
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @override
-  bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get isSubmitting;
   @override
-  bool get shouldShowErrorMessages => throw _privateConstructorUsedError;
+  bool get shouldShowErrorMessages;
   @override
-  Option<Either<AuthFailure, Unit>> get signInOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>> get signInOption;
   @override
-  Option<Either<AuthFailure, User>> get currentUser =>
-      throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, User>> get currentUser;
   @override
-  Option<String> get redirectPath => throw _privateConstructorUsedError;
+  Option<String> get redirectPath;
   @override
   @JsonKey(ignore: true)
   _$$_SignInStateCopyWith<_$_SignInState> get copyWith =>

@@ -124,7 +124,7 @@ abstract class _CurrentUserState implements CurrentUserState {
       _$_CurrentUserState;
 
   @override
-  Option<User> get userOption => throw _privateConstructorUsedError;
+  Option<User> get userOption;
   @override
   @JsonKey(ignore: true)
   _$$_CurrentUserStateCopyWith<_$_CurrentUserState> get copyWith =>
