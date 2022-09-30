@@ -166,7 +166,9 @@ class _$_SubjectDto extends _SubjectDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SubjectDtoToJson(this);
+    return _$$_SubjectDtoToJson(
+      this,
+    );
   }
 }
 
@@ -181,11 +183,11 @@ abstract class _SubjectDto extends SubjectDto {
       _$_SubjectDto.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override
-  List<ProgramDto> get programs => throw _privateConstructorUsedError;
+  List<ProgramDto> get programs;
   @override
   @JsonKey(ignore: true)
   _$$_SubjectDtoCopyWith<_$_SubjectDto> get copyWith =>
@@ -341,7 +343,9 @@ class _$_ProgramDto extends _ProgramDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProgramDtoToJson(this);
+    return _$$_ProgramDtoToJson(
+      this,
+    );
   }
 }
 
@@ -357,12 +361,12 @@ abstract class _ProgramDto extends ProgramDto {
       _$_ProgramDto.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(name: 'subject_id')
-  int get subjectId => throw _privateConstructorUsedError;
+  int get subjectId;
   @override
   @JsonKey(ignore: true)
   _$$_ProgramDtoCopyWith<_$_ProgramDto> get copyWith =>
@@ -503,7 +507,9 @@ class _$_LessonItemDto extends _LessonItemDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LessonItemDtoToJson(this);
+    return _$$_LessonItemDtoToJson(
+      this,
+    );
   }
 }
 
@@ -517,10 +523,10 @@ abstract class _LessonItemDto extends LessonItemDto {
       _$_LessonItemDto.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @JsonKey(name: 'new')
-  bool get isNew => throw _privateConstructorUsedError;
+  bool get isNew;
   @override
   @JsonKey(ignore: true)
   _$$_LessonItemDtoCopyWith<_$_LessonItemDto> get copyWith =>
@@ -648,7 +654,9 @@ class _$_LearningPathDto extends _LearningPathDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LearningPathDtoToJson(this);
+    return _$$_LearningPathDtoToJson(
+      this,
+    );
   }
 }
 
@@ -661,7 +669,7 @@ abstract class _LearningPathDto extends LearningPathDto {
       _$_LearningPathDto.fromJson;
 
   @override
-  List<LessonItemDto> get lessonsDto => throw _privateConstructorUsedError;
+  List<LessonItemDto> get lessonsDto;
   @override
   @JsonKey(ignore: true)
   _$$_LearningPathDtoCopyWith<_$_LearningPathDto> get copyWith =>
@@ -806,7 +814,9 @@ class _$_LessonGroupDto extends _LessonGroupDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LessonGroupDtoToJson(this);
+    return _$$_LessonGroupDtoToJson(
+      this,
+    );
   }
 }
 
@@ -820,9 +830,9 @@ abstract class _LessonGroupDto extends LessonGroupDto {
       _$_LessonGroupDto.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  List<LessonInfoDto> get lessonInfos => throw _privateConstructorUsedError;
+  List<LessonInfoDto> get lessonInfos;
   @override
   @JsonKey(ignore: true)
   _$$_LessonGroupDtoCopyWith<_$_LessonGroupDto> get copyWith =>
@@ -957,7 +967,9 @@ class _$_CategoryDto extends _CategoryDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryDtoToJson(this);
+    return _$$_CategoryDtoToJson(
+      this,
+    );
   }
 }
 
@@ -970,9 +982,9 @@ abstract class _CategoryDto extends CategoryDto {
       _$_CategoryDto.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_CategoryDtoCopyWith<_$_CategoryDto> get copyWith =>
@@ -1116,7 +1128,9 @@ class _$_TopicDto extends _TopicDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TopicDtoToJson(this);
+    return _$$_TopicDtoToJson(
+      this,
+    );
   }
 }
 
@@ -1130,10 +1144,10 @@ abstract class _TopicDto extends TopicDto {
 
   @override
   @JsonKey(defaultValue: 0)
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
   @JsonKey(defaultValue: '')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_TopicDtoCopyWith<_$_TopicDto> get copyWith =>
@@ -1316,7 +1330,9 @@ class _$_LessonInfoDto extends _LessonInfoDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LessonInfoDtoToJson(this);
+    return _$$_LessonInfoDtoToJson(
+      this,
+    );
   }
 }
 
@@ -1331,11 +1347,11 @@ abstract class _LessonInfoDto extends LessonInfoDto {
       _$_LessonInfoDto.fromJson;
 
   @override
-  CategoryDto get category => throw _privateConstructorUsedError;
+  CategoryDto get category;
   @override
-  TopicDto get topic => throw _privateConstructorUsedError;
+  TopicDto get topic;
   @override
-  List<LessonDto> get lessons => throw _privateConstructorUsedError;
+  List<LessonDto> get lessons;
   @override
   @JsonKey(ignore: true)
   _$$_LessonInfoDtoCopyWith<_$_LessonInfoDto> get copyWith =>
@@ -1570,7 +1586,9 @@ class _$_LessonDto extends _LessonDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LessonDtoToJson(this);
+    return _$$_LessonDtoToJson(
+      this,
+    );
   }
 }
 
@@ -1592,21 +1610,21 @@ abstract class _LessonDto extends LessonDto {
       _$_LessonDto.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(name: 'learning_point_id')
-  int get learningPointId => throw _privateConstructorUsedError;
+  int get learningPointId;
   @override
   @JsonKey(name: 'learning_point_difficulty_id')
-  int get learningPointDifficultyId => throw _privateConstructorUsedError;
+  int get learningPointDifficultyId;
   @override
   @JsonKey(name: 'difficulty_level')
-  int get difficultyLevel => throw _privateConstructorUsedError;
+  int get difficultyLevel;
   @override
   @JsonKey(defaultValue: '')
-  String get content => throw _privateConstructorUsedError;
+  String get content;
   @override
   @JsonKey(ignore: true)
   _$$_LessonDtoCopyWith<_$_LessonDto> get copyWith =>
@@ -1814,7 +1832,9 @@ class _$_LearningPointDto extends _LearningPointDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LearningPointDtoToJson(this);
+    return _$$_LearningPointDtoToJson(
+      this,
+    );
   }
 }
 
@@ -1832,19 +1852,19 @@ abstract class _LearningPointDto extends LearningPointDto {
       _$_LearningPointDto.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
   @JsonKey(name: 'learning_point')
-  String get learningPoint => throw _privateConstructorUsedError;
+  String get learningPoint;
   @override
   @JsonKey(name: 'difficulty_id')
-  int get difficultyId => throw _privateConstructorUsedError;
+  int get difficultyId;
   @override
   @JsonKey(name: 'topic_id')
-  int get topicId => throw _privateConstructorUsedError;
+  int get topicId;
   @override
   @JsonKey(name: 'topic_name')
-  String get topicName => throw _privateConstructorUsedError;
+  String get topicName;
   @override
   @JsonKey(ignore: true)
   _$$_LearningPointDtoCopyWith<_$_LearningPointDto> get copyWith =>

@@ -158,11 +158,11 @@ abstract class _LessonState implements LessonState {
       required final bool hasError}) = _$_LessonState;
 
   @override
-  Option<LessonGroup> get lessonGroup => throw _privateConstructorUsedError;
+  Option<LessonGroup> get lessonGroup;
   @override
-  bool get loading => throw _privateConstructorUsedError;
+  bool get loading;
   @override
-  bool get hasError => throw _privateConstructorUsedError;
+  bool get hasError;
   @override
   @JsonKey(ignore: true)
   _$$_LessonStateCopyWith<_$_LessonState> get copyWith =>
@@ -319,11 +319,11 @@ abstract class _LessonStudyState implements LessonStudyState {
       required final String selectedLessonId}) = _$_LessonStudyState;
 
   @override
-  int get selectedLessonIndex => throw _privateConstructorUsedError;
+  int get selectedLessonIndex;
   @override
-  int get selectedTabIndex => throw _privateConstructorUsedError;
+  int get selectedTabIndex;
   @override
-  String get selectedLessonId => throw _privateConstructorUsedError;
+  String get selectedLessonId;
   @override
   @JsonKey(ignore: true)
   _$$_LessonStudyStateCopyWith<_$_LessonStudyState> get copyWith =>

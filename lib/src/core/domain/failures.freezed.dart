@@ -296,8 +296,8 @@ abstract class InvalidEmail<T> implements ValueFailure<T> {
       _$InvalidEmail<T>;
 
   @override
-  T? get failedValue => throw _privateConstructorUsedError;
-  String? get reason => throw _privateConstructorUsedError;
+  T? get failedValue;
+  String? get reason;
   @override
   @JsonKey(ignore: true)
   _$$InvalidEmailCopyWith<T, _$InvalidEmail<T>> get copyWith =>
@@ -489,9 +489,9 @@ abstract class ShortText<T> implements ValueFailure<T> {
       final String? reason}) = _$ShortText<T>;
 
   @override
-  T? get failedValue => throw _privateConstructorUsedError;
-  int? get minLength => throw _privateConstructorUsedError;
-  String? get reason => throw _privateConstructorUsedError;
+  T? get failedValue;
+  int? get minLength;
+  String? get reason;
   @override
   @JsonKey(ignore: true)
   _$$ShortTextCopyWith<T, _$ShortText<T>> get copyWith =>
@@ -672,8 +672,8 @@ abstract class EmptyValue<T> implements ValueFailure<T> {
       _$EmptyValue<T>;
 
   @override
-  T? get failedValue => throw _privateConstructorUsedError;
-  String? get reason => throw _privateConstructorUsedError;
+  T? get failedValue;
+  String? get reason;
   @override
   @JsonKey(ignore: true)
   _$$EmptyValueCopyWith<T, _$EmptyValue<T>> get copyWith =>
@@ -843,7 +843,7 @@ abstract class Multilines<T> implements ValueFailure<T> {
   const factory Multilines({final T? failedValue}) = _$Multilines<T>;
 
   @override
-  T? get failedValue => throw _privateConstructorUsedError;
+  T? get failedValue;
   @override
   @JsonKey(ignore: true)
   _$$MultilinesCopyWith<T, _$Multilines<T>> get copyWith =>
@@ -1024,8 +1024,8 @@ abstract class LongText<T> implements ValueFailure<T> {
       _$LongText<T>;
 
   @override
-  T? get failedValue => throw _privateConstructorUsedError;
-  int? get maxLength => throw _privateConstructorUsedError;
+  T? get failedValue;
+  int? get maxLength;
   @override
   @JsonKey(ignore: true)
   _$$LongTextCopyWith<T, _$LongText<T>> get copyWith =>
@@ -1206,8 +1206,8 @@ abstract class LongList<T> implements ValueFailure<T> {
       _$LongList<T>;
 
   @override
-  T? get failedValue => throw _privateConstructorUsedError;
-  int? get maxLength => throw _privateConstructorUsedError;
+  T? get failedValue;
+  int? get maxLength;
   @override
   @JsonKey(ignore: true)
   _$$LongListCopyWith<T, _$LongList<T>> get copyWith =>
@@ -1388,8 +1388,8 @@ abstract class LocalStorage<T> implements ValueFailure<T> {
       _$LocalStorage<T>;
 
   @override
-  T? get failedValue => throw _privateConstructorUsedError;
-  String? get reason => throw _privateConstructorUsedError;
+  T? get failedValue;
+  String? get reason;
   @override
   @JsonKey(ignore: true)
   _$$LocalStorageCopyWith<T, _$LocalStorage<T>> get copyWith =>

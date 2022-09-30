@@ -184,14 +184,13 @@ abstract class _TutorState implements TutorState {
       required final bool hasError}) = _$_TutorState;
 
   @override
-  Option<String> get sessionId => throw _privateConstructorUsedError;
+  Option<String> get sessionId;
   @override
-  Option<TutorSessionStatus> get sessionStatus =>
-      throw _privateConstructorUsedError;
+  Option<TutorSessionStatus> get sessionStatus;
   @override
-  bool get loading => throw _privateConstructorUsedError;
+  bool get loading;
   @override
-  bool get hasError => throw _privateConstructorUsedError;
+  bool get hasError;
   @override
   @JsonKey(ignore: true)
   _$$_TutorStateCopyWith<_$_TutorState> get copyWith =>

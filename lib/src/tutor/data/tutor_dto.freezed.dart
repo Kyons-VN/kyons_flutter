@@ -157,7 +157,9 @@ class _$_TutorSessionStatusDto extends _TutorSessionStatusDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TutorSessionStatusDtoToJson(this);
+    return _$$_TutorSessionStatusDtoToJson(
+      this,
+    );
   }
 }
 
@@ -172,10 +174,10 @@ abstract class _TutorSessionStatusDto extends TutorSessionStatusDto {
       _$_TutorSessionStatusDto.fromJson;
 
   @override
-  String get status => throw _privateConstructorUsedError;
+  String get status;
   @override
   @JsonKey(name: 'meeting_url', defaultValue: '')
-  String get meetingUrl => throw _privateConstructorUsedError;
+  String get meetingUrl;
   @override
   @JsonKey(ignore: true)
   _$$_TutorSessionStatusDtoCopyWith<_$_TutorSessionStatusDto> get copyWith =>

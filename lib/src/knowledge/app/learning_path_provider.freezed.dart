@@ -187,13 +187,13 @@ abstract class _LearningPathState implements LearningPathState {
       required final Option<ApiFailure> error}) = _$_LearningPathState;
 
   @override
-  bool get loading => throw _privateConstructorUsedError;
+  bool get loading;
   @override
-  Option<LearningPath> get learningPath => throw _privateConstructorUsedError;
+  Option<LearningPath> get learningPath;
   @override
-  bool get missingProgram => throw _privateConstructorUsedError;
+  bool get missingProgram;
   @override
-  Option<ApiFailure> get error => throw _privateConstructorUsedError;
+  Option<ApiFailure> get error;
   @override
   @JsonKey(ignore: true)
   _$$_LearningPathStateCopyWith<_$_LearningPathState> get copyWith =>

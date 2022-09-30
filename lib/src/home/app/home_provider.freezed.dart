@@ -289,29 +289,23 @@ abstract class _HomeState implements HomeState {
       required final ProgramsDisplay display}) = _$_HomeState;
 
   @override
-  Option<Either<ApiFailure, List<Subject>>> get subjectsOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<ApiFailure, List<Subject>>> get subjectsOption;
   @override
-  Option<Either<ApiFailure, List<Program>>> get studentProgramsOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<ApiFailure, List<Program>>> get studentProgramsOption;
   @override
-  Option<List<Program>> get programsOption =>
-      throw _privateConstructorUsedError;
+  Option<List<Program>> get programsOption;
   @override
-  Option<Subject> get selectedSubjectOption =>
-      throw _privateConstructorUsedError;
+  Option<Subject> get selectedSubjectOption;
   @override
-  Option<Program> get selectedProgramOption =>
-      throw _privateConstructorUsedError;
+  Option<Program> get selectedProgramOption;
   @override
-  bool get hasError => throw _privateConstructorUsedError;
+  bool get hasError;
   @override
-  bool get isContinue => throw _privateConstructorUsedError;
+  bool get isContinue;
   @override
-  Option<Either<ApiFailure, Unit>> get submitOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<ApiFailure, Unit>> get submitOption;
   @override
-  ProgramsDisplay get display => throw _privateConstructorUsedError;
+  ProgramsDisplay get display;
   @override
   @JsonKey(ignore: true)
   _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>

@@ -265,22 +265,21 @@ abstract class _LessonTestState implements LessonTestState {
       required final Option<TestResult> testResult}) = _$_LessonTestState;
 
   @override
-  bool get loading => throw _privateConstructorUsedError;
+  bool get loading;
   @override
-  Option<TestContent> get content => throw _privateConstructorUsedError;
+  Option<TestContent> get content;
   @override
-  Option<Map<String, String>> get answersResult =>
-      throw _privateConstructorUsedError;
+  Option<Map<String, String>> get answersResult;
   @override
-  int get progress => throw _privateConstructorUsedError;
+  int get progress;
   @override
-  Option<int> get currentQuestionIndex => throw _privateConstructorUsedError;
+  Option<int> get currentQuestionIndex;
   @override
-  bool get isSubmitted => throw _privateConstructorUsedError;
+  bool get isSubmitted;
   @override
-  bool get hasError => throw _privateConstructorUsedError;
+  bool get hasError;
   @override
-  Option<TestResult> get testResult => throw _privateConstructorUsedError;
+  Option<TestResult> get testResult;
   @override
   @JsonKey(ignore: true)
   _$$_LessonTestStateCopyWith<_$_LessonTestState> get copyWith =>

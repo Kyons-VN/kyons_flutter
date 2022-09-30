@@ -5,10 +5,16 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "main_dev.dart",
+      "name": "Mobile dev",
       "request": "launch",
       "type": "dart",
       "program": "lib/main_dev.dart"
+    },
+    {
+      "name": "Web dev",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_dev_web.dart"
     },
     {
       "name": "main.dart",

@@ -192,14 +192,13 @@ abstract class _NewLessonState implements NewLessonState {
       required final List<String> selectedIds}) = _$_NewLessonState;
 
   @override
-  bool get loading => throw _privateConstructorUsedError;
+  bool get loading;
   @override
-  Option<List<LearningPoint>> get learningPoints =>
-      throw _privateConstructorUsedError;
+  Option<List<LearningPoint>> get learningPoints;
   @override
-  bool get hasError => throw _privateConstructorUsedError;
+  bool get hasError;
   @override
-  List<String> get selectedIds => throw _privateConstructorUsedError;
+  List<String> get selectedIds;
   @override
   @JsonKey(ignore: true)
   _$$_NewLessonStateCopyWith<_$_NewLessonState> get copyWith =>

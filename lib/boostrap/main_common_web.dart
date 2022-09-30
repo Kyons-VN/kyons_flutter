@@ -8,6 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/boostrap/config_reader.dart';
+import 'package:kyons_flutter/boostrap/web_app.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/flash/flash_screen.dart';
@@ -84,55 +85,8 @@ void guardedMain() {
   runApp(UncontrolledProviderScope(
     container: container,
     // child: kIsWeb ? const WebAppWidget(builder: _builder) : const AppWidget(),
-    child: const AppWidget(),
+    child: const WebAppWidget(builder: _builder),
   ));
-}
-
-class AppWidget extends ConsumerStatefulWidget {
-  const AppWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _AppWidgetState();
-}
-
-class _AppWidgetState extends ConsumerState<AppWidget> with WidgetsBindingObserver {
-  @override
-  initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    switch (state) {
-      case AppLifecycleState.resumed:
-        print("app in resumed");
-        break;
-      case AppLifecycleState.inactive:
-        print("app in inactive");
-        break;
-      case AppLifecycleState.paused:
-        print("app in paused");
-        break;
-      case AppLifecycleState.detached:
-        print("app in detached");
-        break;
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    AppRouter.init(ref);
-    return _builder(ref);
-  }
 }
 
 AnimatedBuilder _builder(WidgetRef ref) {

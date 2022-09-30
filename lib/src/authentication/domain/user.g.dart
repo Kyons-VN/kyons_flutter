@@ -19,7 +19,7 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'first_name': instance.firstName,
       'last_name': instance.lastName,
       'email': instance.email,
-      'study_type': _$StudyTypeEnumMap[instance.studyType],
+      'study_type': _$StudyTypeEnumMap[instance.studyType]!,
     };
 
 const _$StudyTypeEnumMap = {
