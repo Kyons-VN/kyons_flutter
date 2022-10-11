@@ -105,7 +105,6 @@ class AppRouter {
           builder: (BuildContext context, GoRouterState state) => const NewLessonPage(),
           redirect: (_, state) => guard(state, ref),
         ),
-        // GameRoute().getGameRoute('/game', guard, ref),
       ],
       refreshListenable: GoRouterRefreshStream(authNotifier.stream),
       debugLogDiagnostics: true,

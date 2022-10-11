@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,6 +8,10 @@ import 'package:kyons_flutter/src/knowledge/app/knowledge_provider.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
 import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
+import 'package:kyons_flutter/src/tracking/app/tracking_provider.dart';
+import 'package:kyons_flutter/src/tracking/data/tracking_api.dart';
+import 'package:kyons_flutter/src/tracking/data/tracking_service.dart' as tracking_service;
+import 'package:kyons_flutter/src/tracking/domain/i_tracking.dart';
 
 part 'lesson_provider.freezed.dart';
 part 'lesson_state.dart';
@@ -30,11 +36,11 @@ class LessonNotifier extends StateNotifier<LessonState> {
   }
 }
 
-final lessonNotifierProvider =
-    StateNotifierProvider<LessonNotifier, LessonState>((ref) => LessonNotifier.setup(ref.read(knowledgeApi)));
+final lessonNotifierProvider = StateNotifierProvider.autoDispose<LessonNotifier, LessonState>(
+    (ref) => LessonNotifier.setup(ref.read(knowledgeApi)));
 
 enum TabMenu {
-  lesson,
+  study,
   exercise,
   test,
 }
@@ -43,17 +49,20 @@ class LessonStudyNotifier extends StateNotifier<LessonStudyState> {
   late List<String> idsList = [];
   late List<Lesson> lessonsList = [];
   late Map<String, int> idToIndexMap = {};
+  final TrackingApi trackingApi;
+  String lessonGroupId = '';
 
-  LessonStudyNotifier() : super(LessonStudyState.initial());
+  LessonStudyNotifier(this.trackingApi) : super(LessonStudyState.initial());
 
   Future<void> init(LessonGroup lessonGroup) async {
     state = LessonStudyState.initial();
-    lessonGroup = lessonGroup;
+    lessonGroupId = lessonGroup.id;
     lessonsList =
         lessonGroup.lessonInfos.map((lg) => lg.lessons).toList().reduce((acc, next) => List.from(acc)..addAll(next));
     idsList = lessonsList.map((lesson) => lesson.id).toList();
     idToIndexMap = Map.fromIterables(idsList, List.generate(idsList.length, (index) => index));
     state = state.copyWith(selectedLessonIndex: 0, selectedLessonId: _getIdFromIndex(0));
+    enableTracking();
   }
 
   void select(Lesson lesson) {
@@ -77,11 +86,46 @@ class LessonStudyNotifier extends StateNotifier<LessonStudyState> {
 
   Lesson getSelectedLesson(int selectedLessonIndex) => lessonsList[selectedLessonIndex];
 
-  void selectTabIndex(TabMenu tab) {
-    if (tab.index == state.selectedTabIndex) return;
-    state = state.copyWith(selectedTabIndex: tab.index);
+  Future<void> selectTabIndex(TabMenu tab) async {
+    if (tab == state.selectedTabIndex) return;
+    state = state.copyWith(selectedTabIndex: tab);
+    if (_sub != null) await _sub!.cancel();
+    enableTracking();
+  }
+
+  StreamSubscription? _sub;
+  void enableTracking() {
+    print(lessonGroupId);
+    if (lessonGroupId.isEmpty) return;
+    final Stream<Either<ApiFailure<dynamic>, Unit>> myStream =
+        Stream.periodic(const Duration(seconds: 10), ((e) => e + 1)).asyncExpand((event) {
+      return tracking_service
+          .trackOnLesson(lessonGroupId, TrackingLessonType.values[state.selectedTabIndex.index])
+          .run(trackingApi)
+          .asStream();
+    });
+    _sub = myStream.listen((successOrFailure) {
+      successOrFailure.fold(
+        (l) async {
+          print('Cancel');
+          if (_sub != null) await _sub!.cancel();
+        },
+        (data) {},
+      );
+    });
+  }
+
+  void disableTracking() async {
+    if (_sub != null) await _sub!.cancel();
+  }
+
+  @override
+  void dispose() async {
+    print('dispose');
+    if (_sub != null) await _sub!.cancel();
+    super.dispose();
   }
 }
 
-final lessonStudyNotifierProvider =
-    StateNotifierProvider<LessonStudyNotifier, LessonStudyState>((ref) => LessonStudyNotifier());
+final lessonStudyNotifierProvider = StateNotifierProvider.autoDispose<LessonStudyNotifier, LessonStudyState>(
+    (ref) => LessonStudyNotifier(ref.read(tracking)));

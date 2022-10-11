@@ -172,7 +172,7 @@ abstract class _LessonState implements LessonState {
 /// @nodoc
 mixin _$LessonStudyState {
   int get selectedLessonIndex => throw _privateConstructorUsedError;
-  int get selectedTabIndex => throw _privateConstructorUsedError;
+  TabMenu get selectedTabIndex => throw _privateConstructorUsedError;
   String get selectedLessonId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -186,7 +186,9 @@ abstract class $LessonStudyStateCopyWith<$Res> {
           LessonStudyState value, $Res Function(LessonStudyState) then) =
       _$LessonStudyStateCopyWithImpl<$Res>;
   $Res call(
-      {int selectedLessonIndex, int selectedTabIndex, String selectedLessonId});
+      {int selectedLessonIndex,
+      TabMenu selectedTabIndex,
+      String selectedLessonId});
 }
 
 /// @nodoc
@@ -212,7 +214,7 @@ class _$LessonStudyStateCopyWithImpl<$Res>
       selectedTabIndex: selectedTabIndex == freezed
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+              as TabMenu,
       selectedLessonId: selectedLessonId == freezed
           ? _value.selectedLessonId
           : selectedLessonId // ignore: cast_nullable_to_non_nullable
@@ -229,7 +231,9 @@ abstract class _$$_LessonStudyStateCopyWith<$Res>
       __$$_LessonStudyStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int selectedLessonIndex, int selectedTabIndex, String selectedLessonId});
+      {int selectedLessonIndex,
+      TabMenu selectedTabIndex,
+      String selectedLessonId});
 }
 
 /// @nodoc
@@ -257,7 +261,7 @@ class __$$_LessonStudyStateCopyWithImpl<$Res>
       selectedTabIndex: selectedTabIndex == freezed
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+              as TabMenu,
       selectedLessonId: selectedLessonId == freezed
           ? _value.selectedLessonId
           : selectedLessonId // ignore: cast_nullable_to_non_nullable
@@ -277,7 +281,7 @@ class _$_LessonStudyState implements _LessonStudyState {
   @override
   final int selectedLessonIndex;
   @override
-  final int selectedTabIndex;
+  final TabMenu selectedTabIndex;
   @override
   final String selectedLessonId;
 
@@ -315,13 +319,13 @@ class _$_LessonStudyState implements _LessonStudyState {
 abstract class _LessonStudyState implements LessonStudyState {
   const factory _LessonStudyState(
       {required final int selectedLessonIndex,
-      required final int selectedTabIndex,
+      required final TabMenu selectedTabIndex,
       required final String selectedLessonId}) = _$_LessonStudyState;
 
   @override
   int get selectedLessonIndex;
   @override
-  int get selectedTabIndex;
+  TabMenu get selectedTabIndex;
   @override
   String get selectedLessonId;
   @override

@@ -18,7 +18,7 @@ import 'package:kyons_flutter/src/settings/data/settings_service.dart';
 import 'package:logging/logging.dart';
 
 Future<void> mainCommon(String env) async {
-  if (!kIsWeb) runApp(const SplashScreen());
+  runApp(const SplashScreen());
   //Call this first to make sure we can make other system level calls safely
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -44,7 +44,7 @@ Future<void> mainCommon(String env) async {
   guardedMain();
 }
 
-Logger _log = Logger('main_dev.dart');
+Logger _log = Logger('main_dev_web.dart');
 
 class LoggerProviderObserver extends ProviderObserver {
   @override
@@ -54,11 +54,11 @@ class LoggerProviderObserver extends ProviderObserver {
     Object? newValue,
     ProviderContainer container,
   ) {
-    _log.info('''
-{
-  "provider": "${provider.name ?? provider.runtimeType}",
-  "newValue": "$newValue"
-}''');
+//     _log.info('''
+// {
+//   "provider": "${provider.name ?? provider.runtimeType}",
+//   "newValue": "$newValue"
+// }''');
   }
 }
 
@@ -68,9 +68,9 @@ void guardedMain() {
     Logger.root.level = Level.WARNING;
   }
   Logger.root.onRecord.listen((record) {
-    debugPrint('${record.level.name}: ${record.time}: '
-        '${record.loggerName}: '
-        '${record.message}');
+    // debugPrint('${record.level.name}: ${record.time}: '
+    //     '${record.loggerName}: '
+    //     '${record.message}');
   });
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -85,7 +85,9 @@ void guardedMain() {
   runApp(UncontrolledProviderScope(
     container: container,
     // child: kIsWeb ? const WebAppWidget(builder: _builder) : const AppWidget(),
-    child: const WebAppWidget(builder: _builder),
+    child: const WebAppWidget(
+      builder: _builder,
+    ),
   ));
 }
 

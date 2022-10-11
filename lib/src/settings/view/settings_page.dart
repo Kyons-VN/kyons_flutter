@@ -23,7 +23,7 @@ class SettingsPage extends StatelessWidget {
         //   icon: const Icon(Icons.arrow_back_ios),
         // ),
         leading: GestureDetector(
-          onTap: () => context.canPop(),
+          onTap: () => context.canPop() ? context.pop() : context.go(AppPaths.home.path),
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: AppIcons.backIcon,

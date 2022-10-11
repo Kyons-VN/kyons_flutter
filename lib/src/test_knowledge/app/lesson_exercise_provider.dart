@@ -78,6 +78,12 @@ class LessonExerciseNotifier extends StateNotifier<LessonExerciseState> {
         currentQuestionIndex:
             some(questions.indexOf(questions.firstWhere((q) => q.learningPointId == learningPointId))));
   }
+
+  @override
+  dispose() {
+    print('dispose');
+    super.dispose();
+  }
 }
 
 final exerciseNotifierProvider = StateNotifierProvider.autoDispose<LessonExerciseNotifier, LessonExerciseState>(

@@ -30,10 +30,10 @@ class LessonState with _$LessonState {
 class LessonStudyState with _$LessonStudyState {
   const factory LessonStudyState({
     required int selectedLessonIndex,
-    required int selectedTabIndex,
+    required TabMenu selectedTabIndex,
     required String selectedLessonId,
   }) = _LessonStudyState;
 
   factory LessonStudyState.initial() =>
-      const LessonStudyState(selectedLessonId: '', selectedLessonIndex: -1, selectedTabIndex: 0);
+      const LessonStudyState(selectedLessonId: '', selectedLessonIndex: -1, selectedTabIndex: TabMenu.study);
 }

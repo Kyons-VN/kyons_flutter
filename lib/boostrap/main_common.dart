@@ -8,16 +8,18 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/boostrap/config_reader.dart';
+import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/core/view/themes.dart';
-import 'package:kyons_flutter/src/flash/flash_screen.dart';
+import 'package:kyons_flutter/src/knowledge/app/lesson_provider.dart';
 import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/settings/app/settings_controller.dart';
 import 'package:kyons_flutter/src/settings/data/settings_service.dart';
+import 'package:kyons_flutter/src/tracking/app/tracking_provider.dart';
 import 'package:logging/logging.dart';
 
 Future<void> mainCommon(String env) async {
-  if (!kIsWeb) runApp(const SplashScreen());
+  // if (!kIsWeb) runApp(const SplashScreen());
   //Call this first to make sure we can make other system level calls safely
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -112,24 +114,43 @@ class _AppWidgetState extends ConsumerState<AppWidget> with WidgetsBindingObserv
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    final trackingNotifier = ref.read(trackingNotifierProvider.notifier);
+    final lessonNotifier = ref.read(lessonStudyNotifierProvider.notifier);
     switch (state) {
       case AppLifecycleState.resumed:
+        debugPrintStack(maxFrames: 1);
         print("app in resumed");
+        trackingNotifier.enable();
+        lessonNotifier.enableTracking();
         break;
       case AppLifecycleState.inactive:
         print("app in inactive");
+        trackingNotifier.disable();
+        lessonNotifier.disableTracking();
         break;
       case AppLifecycleState.paused:
         print("app in paused");
+        trackingNotifier.disable();
+        lessonNotifier.disableTracking();
         break;
       case AppLifecycleState.detached:
         print("app in detached");
+        trackingNotifier.disable();
+        lessonNotifier.disableTracking();
         break;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final trackingNotifier = ref.read(trackingNotifierProvider.notifier);
+    ref.listen<AuthState>(authNotifierProvider, (s1, s2) {
+      if (s2 == const AuthState.authenticated()) {
+        trackingNotifier.enable();
+      } else {
+        trackingNotifier.disable();
+      }
+    });
     AppRouter.init(ref);
     return _builder(ref);
   }

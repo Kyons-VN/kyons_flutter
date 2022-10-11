@@ -18,6 +18,7 @@ class LearningPathPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print('build lp');
     final learningPathNotifier = ref.read(learningPathNotifierProvider.notifier);
     final currentUserState = ref.read(currentUserProvider);
     final studyType = currentUserState.userOption.getOrElse(() => User.empty()).studyType;

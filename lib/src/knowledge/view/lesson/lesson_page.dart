@@ -26,31 +26,19 @@ class LessonPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final lessonNotifier = ref.read(lessonNotifierProvider.notifier);
     final lessonStudyNotifier = ref.read(lessonStudyNotifierProvider.notifier);
-    final lessonState = ref.watch(lessonNotifierProvider);
+    final lessonState = ref.read(lessonNotifierProvider);
     final isMenuOpened = useState<bool>(false);
     final exerciseNotifier = ref.read(exerciseNotifierProvider.notifier);
     final testNotifier = ref.read(testNotifierProvider.notifier);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final exerciseState = ref.read(exerciseNotifierProvider);
-      final testState = ref.read(exerciseNotifierProvider);
-      if (lessonState.lessonGroup.isSome()) {
-        if (lessonState.lessonGroup.getOrElse(() => LessonGroup.empty()).id != id) lessonNotifier.init(id);
-      }
-
-      if (exerciseState.content.isNone() && !exerciseState.hasError && !exerciseState.loading) {
-        exerciseNotifier.getExercise(id);
-      }
-
-      if (testState.content.isNone() && !testState.hasError && !testState.loading) {
-        testNotifier.getTest(id);
-      }
-
       if (!lessonState.hasError && lessonState.lessonGroup.isNone() && !lessonState.loading) lessonNotifier.init(id);
     });
     ref.listen<LessonState>(lessonNotifierProvider, (previous, next) {
       if (next.lessonGroup.isSome()) {
         lessonStudyNotifier.init(next.lessonGroup.getOrElse(() => LessonGroup.empty()));
+        exerciseNotifier.getExercise(id);
+        testNotifier.getTest(id);
       }
     });
 
@@ -94,7 +82,7 @@ class LessonPage extends HookConsumerWidget {
                       }
                       if (exerciseState.testResult.isNone() &&
                           exerciseState.content.isSome() &&
-                          lessonStudyState.selectedTabIndex == TabMenu.exercise.index) {
+                          lessonStudyState.selectedTabIndex == TabMenu.exercise) {
                         final answersResult = exerciseState.answersResult.getOrElse(() => {});
                         return TestContentWidget(
                           title: t(context).exercise,
@@ -112,7 +100,7 @@ class LessonPage extends HookConsumerWidget {
 
                       if (testState.testResult.isNone() &&
                           testState.content.isSome() &&
-                          lessonStudyState.selectedTabIndex == TabMenu.test.index) {
+                          lessonStudyState.selectedTabIndex == TabMenu.test) {
                         final answersResult = testState.answersResult.getOrElse(() => {});
                         return TestContentWidget(
                           title: t(context).test,
@@ -128,8 +116,7 @@ class LessonPage extends HookConsumerWidget {
                         );
                       }
 
-                      if (exerciseState.testResult.isSome() &&
-                          lessonStudyState.selectedTabIndex == TabMenu.exercise.index) {
+                      if (exerciseState.testResult.isSome() && lessonStudyState.selectedTabIndex == TabMenu.exercise) {
                         return TestResultWidget(
                           testResult: exerciseState.testResult.getOrElse(() => TestResult.empty()),
                           lessonGroup: lessonState.lessonGroup.getOrElse(() => LessonGroup.empty()),
@@ -155,7 +142,7 @@ class LessonPage extends HookConsumerWidget {
                           testContent: exerciseState.content.getOrElse(() => TestContent.empty()),
                         );
                       }
-                      if (testState.testResult.isSome() && lessonStudyState.selectedTabIndex == TabMenu.test.index) {
+                      if (testState.testResult.isSome() && lessonStudyState.selectedTabIndex == TabMenu.test) {
                         return TestResultWidget(
                           testResult: testState.testResult.getOrElse(() => TestResult.empty()),
                           lessonGroup: lessonState.lessonGroup.getOrElse(() => LessonGroup.empty()),
@@ -187,16 +174,11 @@ class LessonPage extends HookConsumerWidget {
                               value: (lessonStudyState.selectedLessonIndex + 1) / lessonStudyNotifier.idsList.length),
                           AppSizesUnit.sizedBox24,
                           Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                if (lessonStudyState.selectedTabIndex == TabMenu.lesson.index)
-                                  LessonContentWidget(
-                                    lessonStudyNotifier.getSelectedLesson(lessonStudyState.selectedLessonIndex),
-                                  ),
-                              ],
+                            child: LessonContentWidget(
+                              lessonStudyNotifier.getSelectedLesson(lessonStudyState.selectedLessonIndex),
                             ),
                           ),
+                          AppSizesUnit.sizedBox24,
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -299,16 +281,6 @@ class LessonContentWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Heading(7, lesson.category.name),
-//               const Text(
-//                   '''Reprehenderit amet mollit duis exercitation velit magna anim. Esse commodo elit ut ad quis irure id est reprehenderit. Nisi incididunt aliquip proident do. Excepteur adipisicing adipisicing et minim fugiat. Mollit consequat do ullamco sint duis.
-
-// Cillum reprehenderit eu pariatur sint irure magna id labore anim mollit irure cupidatat. Sit anim ut est nisi. Amet ex aliquip officia cupidatat amet nulla irure minim proident occaecat adipisicing cillum Lorem do.
-
-// Commodo aute pariatur Lorem consequat. Incididunt nulla commodo aute fugiat commodo labore pariatur veniam tempor dolor ad elit. Laboris officia nulla ut sit sit laboris nisi nisi velit.
-
-// Non deserunt incididunt incididunt laboris. Ullamco tempor aute et dolore in proident reprehenderit tempor Lorem amet magna deserunt. Ex quis id tempor ipsum aliquip enim voluptate laboris aute.
-
-// Magna sint nulla velit tempor sit elit occaecat ad ut est ad. Labore duis anim mollit pariatur irure veniam minim qui qui enim minim do sint. Mollit non voluptate consequat tempor proident cupidatat voluptate velit. Veniam velit tempor consectetur aute esse dolor dolor reprehenderit ea sit mollit cupidatat aliqua id. Quis minim esse incididunt cillum qui exercitation ad.'''),
               AppHtml(data: lesson.content),
             ],
           ),
@@ -328,14 +300,14 @@ class LessonMenu extends HookConsumerWidget {
     final lessonStudyNotifier = ref.read(lessonStudyNotifierProvider.notifier);
     final lessonStudyState = ref.read(lessonStudyNotifierProvider);
     final lessonState = ref.read(lessonNotifierProvider);
-    final isLessonOpen = useState<bool>(lessonStudyState.selectedTabIndex == TabMenu.lesson.index);
-    final isExerciseOpen = useState<bool>(lessonStudyState.selectedTabIndex == TabMenu.exercise.index);
-    final isTestOpen = useState<bool>(lessonStudyState.selectedTabIndex == TabMenu.test.index);
+    final isLessonOpen = useState<bool>(lessonStudyState.selectedTabIndex == TabMenu.study);
+    final isExerciseOpen = useState<bool>(lessonStudyState.selectedTabIndex == TabMenu.exercise);
+    final isTestOpen = useState<bool>(lessonStudyState.selectedTabIndex == TabMenu.test);
     ref.listen<LessonStudyState>(lessonStudyNotifierProvider, (pre, next) {
       if (pre!.selectedTabIndex != next.selectedTabIndex) {
-        isLessonOpen.value = next.selectedTabIndex == TabMenu.lesson.index;
-        isExerciseOpen.value = next.selectedTabIndex == TabMenu.exercise.index;
-        isTestOpen.value = next.selectedTabIndex == TabMenu.test.index;
+        isLessonOpen.value = next.selectedTabIndex == TabMenu.study;
+        isExerciseOpen.value = next.selectedTabIndex == TabMenu.exercise;
+        isTestOpen.value = next.selectedTabIndex == TabMenu.test;
       }
     });
     return Column(
@@ -344,7 +316,7 @@ class LessonMenu extends HookConsumerWidget {
       children: [
         GestureDetector(
           onTap: () {
-            lessonStudyNotifier.selectTabIndex(TabMenu.lesson);
+            lessonStudyNotifier.selectTabIndex(TabMenu.study);
             onClose();
           },
           child: MouseRegion(
@@ -385,7 +357,7 @@ class LessonMenu extends HookConsumerWidget {
                       for (final lesson in lessonInfo.lessons) ...[
                         GestureDetector(
                           onTap: () {
-                            lessonStudyNotifier.selectTabIndex(TabMenu.lesson);
+                            lessonStudyNotifier.selectTabIndex(TabMenu.study);
                             lessonStudyNotifier.select(lesson);
                             onClose();
                           },

@@ -79,6 +79,7 @@ TaskEither<ClientFailure, Program> _getSelectedProgram(IKnowledge api) => TaskEi
       handleClientError,
     );
 
+/// Clear selectedProgram value in SharedPreferences
 Reader<IKnowledge, Future<Either<ClientFailure, Unit>>> removeSelectedProgram() => Reader(
       (api) => _removeSelectedProgram(api).run(),
     );
