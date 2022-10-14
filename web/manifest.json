@@ -1,11 +1,11 @@
 {
-  "name": "kyons_flutter",
-  "short_name": "kyons_flutter",
+  "name": "KYONS",
+  "short_name": "KYONS",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0175C2",
   "theme_color": "#0175C2",
-  "description": "A new Flutter project.",
+  "description": "KYONS Student App.",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [

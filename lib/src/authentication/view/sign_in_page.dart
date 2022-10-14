@@ -26,16 +26,18 @@ class SignInPage extends ConsumerWidget {
             child: Container(
               width: context.isXsScreen() ? double.infinity : 400,
               padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                      onDoubleTap: () => ref.read(signInProvider.notifier).initial(),
-                      child: SizedBox(height: 100, child: AppAssets.logoSVG)),
-                  const SizedBox(height: 48),
-                  const SignInForm(),
-                  const SizedBox(height: 200),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                        onDoubleTap: () => ref.read(signInProvider.notifier).initial(),
+                        child: SizedBox(height: 100, child: AppAssets.logoSVG)),
+                    const SizedBox(height: 48),
+                    const SignInForm(),
+                    if (context.isXsScreen() || context.isLargerThanMdScreen()) const SizedBox(height: 200),
+                  ],
+                ),
               ),
             ),
           ),

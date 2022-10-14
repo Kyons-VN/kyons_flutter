@@ -14,7 +14,8 @@
       "name": "Web dev",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_dev_web.dart"
+      "program": "lib/main_dev_web.dart",
+      "args": ["--web-port", "12345"]
     },
     {
       "name": "main.dart",
