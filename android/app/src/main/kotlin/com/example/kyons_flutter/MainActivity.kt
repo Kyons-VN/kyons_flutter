@@ -1,4 +1,4 @@
-package com.example.kyons_flutter
+package com.student.kyons
 
 import io.flutter.embedding.android.FlutterActivity
 

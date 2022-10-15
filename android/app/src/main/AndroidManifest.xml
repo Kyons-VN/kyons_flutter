@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kyons_flutter">
+    package="com.student.kyons">
    <application
         android:label="kyons_flutter"
         android:name="${applicationName}"

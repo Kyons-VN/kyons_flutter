@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "kyons_flutter" "\0"
+            VALUE "CompanyName", "KYONS" "\0"
+            VALUE "FileDescription", "KYONS Student App" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "kyons_flutter" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "kyons_flutter.exe" "\0"
-            VALUE "ProductName", "kyons_flutter" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 KYONS. All rights reserved." "\0"
+            VALUE "OriginalFilename", "kyons.exe" "\0"
+            VALUE "ProductName", "kyons" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

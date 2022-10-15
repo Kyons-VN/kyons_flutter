@@ -8,7 +8,7 @@
 PRODUCT_NAME = kyons_flutter
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.kyonsFlutter
+PRODUCT_BUNDLE_IDENTIFIER = com.student.kyons
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2022 KYONS. All rights reserved.
