@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
 import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
+import 'package:shared_package/shared_package.dart';
 
 class DesignPage extends StatelessWidget {
   const DesignPage({Key? key}) : super(key: key);

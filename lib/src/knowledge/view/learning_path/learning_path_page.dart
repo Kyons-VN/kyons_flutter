@@ -5,13 +5,13 @@ import 'package:kyons_flutter/src/authentication/app/current_user_provider.dart'
 import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 import 'package:kyons_flutter/src/authentication/domain/user.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/knowledge/app/learning_path_provider.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/knowledge/view/learning_path/lesson_item_list_widget.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
 import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
+import 'package:shared_package/shared_package.dart';
 
 class LearningPathPage extends ConsumerWidget {
   const LearningPathPage({Key? key}) : super(key: key);

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/core/view/assets.dart';
-import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/home/view/home_page.dart';
 import 'package:kyons_flutter/src/knowledge/app/lesson_provider.dart';
 import 'package:kyons_flutter/src/tutor/app/tutor_provider.dart';
 import 'package:kyons_flutter/src/tutor/domain/session.dart';
+import 'package:shared_package/shared_package.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void showCallTutor(BuildContext context) {

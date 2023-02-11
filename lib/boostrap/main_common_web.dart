@@ -10,12 +10,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/boostrap/config_reader.dart';
 import 'package:kyons_flutter/boostrap/web_app.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/flash/flash_screen.dart';
 import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/settings/app/settings_controller.dart';
 import 'package:kyons_flutter/src/settings/data/settings_service.dart';
 import 'package:logging/logging.dart';
+import 'package:shared_package/shared_package.dart';
 
 Future<void> mainCommon(String env) async {
   runApp(const SplashScreen());

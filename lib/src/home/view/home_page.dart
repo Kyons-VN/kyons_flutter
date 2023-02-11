@@ -4,14 +4,12 @@ import 'package:fpdart/fpdart.dart' hide State;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/core/view/assets.dart';
-import 'package:kyons_flutter/src/core/view/themes.dart';
-import 'package:kyons_flutter/src/core/view/widgets/option_picker.dart';
 import 'package:kyons_flutter/src/home/app/home_provider.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
 import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
+import 'package:shared_package/shared_package.dart';
 
 class HomePage extends ConsumerWidget {
   final bool isShowHomeOptions;
