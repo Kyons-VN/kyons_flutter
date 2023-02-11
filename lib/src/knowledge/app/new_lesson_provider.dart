@@ -44,8 +44,10 @@ class NewLessonNotifier extends StateNotifier<NewLessonState> {
     return unit;
   }
 
-  Unit submit() {
-    knowledge_service.createLesson(selectedProgram, state.selectedIds).run(knowledgeApi);
+  Future<Unit> submit() async {
+    state = state.copyWith(submitting: true);
+    final okOrError = await knowledge_service.createLesson(selectedProgram, state.selectedIds).run(knowledgeApi);
+    state = state.copyWith(hasError: okOrError.isLeft(), submitting: false);
     return unit;
   }
 }

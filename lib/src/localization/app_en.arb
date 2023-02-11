@@ -102,5 +102,16 @@
   "new_lesson": "Create new lesson",
   "press": "Press (",
   "to_add_knowledge": ") to add knowledge to your lesson",
-  "create_lesson": "Create lesson"
+  "create_lesson": "Create lesson",
+  "selected_knowledge_count": "{count, plural, zero{No selected knowledge} one{1 knowledge is selected} other{{count} knowledge are selected}}",
+  "@selected_knowledge_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "forgot_password":"Forgot password",
+  "does_not_have_account":"Does not have account?",
+  "register_here":"Register here"
 }

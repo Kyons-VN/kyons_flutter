@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$NewLessonState {
   bool get loading => throw _privateConstructorUsedError;
+  bool get submitting => throw _privateConstructorUsedError;
   Option<List<LearningPoint>> get learningPoints =>
       throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
@@ -34,6 +35,7 @@ abstract class $NewLessonStateCopyWith<$Res> {
       _$NewLessonStateCopyWithImpl<$Res>;
   $Res call(
       {bool loading,
+      bool submitting,
       Option<List<LearningPoint>> learningPoints,
       bool hasError,
       List<String> selectedIds});
@@ -51,6 +53,7 @@ class _$NewLessonStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? loading = freezed,
+    Object? submitting = freezed,
     Object? learningPoints = freezed,
     Object? hasError = freezed,
     Object? selectedIds = freezed,
@@ -59,6 +62,10 @@ class _$NewLessonStateCopyWithImpl<$Res>
       loading: loading == freezed
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      submitting: submitting == freezed
+          ? _value.submitting
+          : submitting // ignore: cast_nullable_to_non_nullable
               as bool,
       learningPoints: learningPoints == freezed
           ? _value.learningPoints
@@ -85,6 +92,7 @@ abstract class _$$_NewLessonStateCopyWith<$Res>
   @override
   $Res call(
       {bool loading,
+      bool submitting,
       Option<List<LearningPoint>> learningPoints,
       bool hasError,
       List<String> selectedIds});
@@ -104,6 +112,7 @@ class __$$_NewLessonStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? loading = freezed,
+    Object? submitting = freezed,
     Object? learningPoints = freezed,
     Object? hasError = freezed,
     Object? selectedIds = freezed,
@@ -112,6 +121,10 @@ class __$$_NewLessonStateCopyWithImpl<$Res>
       loading: loading == freezed
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      submitting: submitting == freezed
+          ? _value.submitting
+          : submitting // ignore: cast_nullable_to_non_nullable
               as bool,
       learningPoints: learningPoints == freezed
           ? _value.learningPoints
@@ -134,6 +147,7 @@ class __$$_NewLessonStateCopyWithImpl<$Res>
 class _$_NewLessonState implements _NewLessonState {
   const _$_NewLessonState(
       {required this.loading,
+      required this.submitting,
       required this.learningPoints,
       required this.hasError,
       required final List<String> selectedIds})
@@ -141,6 +155,8 @@ class _$_NewLessonState implements _NewLessonState {
 
   @override
   final bool loading;
+  @override
+  final bool submitting;
   @override
   final Option<List<LearningPoint>> learningPoints;
   @override
@@ -154,7 +170,7 @@ class _$_NewLessonState implements _NewLessonState {
 
   @override
   String toString() {
-    return 'NewLessonState(loading: $loading, learningPoints: $learningPoints, hasError: $hasError, selectedIds: $selectedIds)';
+    return 'NewLessonState(loading: $loading, submitting: $submitting, learningPoints: $learningPoints, hasError: $hasError, selectedIds: $selectedIds)';
   }
 
   @override
@@ -163,6 +179,8 @@ class _$_NewLessonState implements _NewLessonState {
         (other.runtimeType == runtimeType &&
             other is _$_NewLessonState &&
             const DeepCollectionEquality().equals(other.loading, loading) &&
+            const DeepCollectionEquality()
+                .equals(other.submitting, submitting) &&
             const DeepCollectionEquality()
                 .equals(other.learningPoints, learningPoints) &&
             const DeepCollectionEquality().equals(other.hasError, hasError) &&
@@ -174,6 +192,7 @@ class _$_NewLessonState implements _NewLessonState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(loading),
+      const DeepCollectionEquality().hash(submitting),
       const DeepCollectionEquality().hash(learningPoints),
       const DeepCollectionEquality().hash(hasError),
       const DeepCollectionEquality().hash(_selectedIds));
@@ -187,12 +206,15 @@ class _$_NewLessonState implements _NewLessonState {
 abstract class _NewLessonState implements NewLessonState {
   const factory _NewLessonState(
       {required final bool loading,
+      required final bool submitting,
       required final Option<List<LearningPoint>> learningPoints,
       required final bool hasError,
       required final List<String> selectedIds}) = _$_NewLessonState;
 
   @override
   bool get loading;
+  @override
+  bool get submitting;
   @override
   Option<List<LearningPoint>> get learningPoints;
   @override

@@ -102,5 +102,16 @@
   "new_lesson": "Tạo bài học mới",
   "press": "Nhấn (",
   "to_add_knowledge": ") để đưa kiến thức vào bài học",
-  "create_lesson": "Tạo bài học"
+  "create_lesson": "Tạo bài học",
+  "selected_knowledge_count": "{count, plural, zero{Chưa chọn kiến thức} one{1 kiến thức được chọn} other{{count} kiến thức được chọn}}",
+  "@selected_knowledge_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "forgot_password":"Quên mật khẩu?",
+  "does_not_have_account":"Bạn chưa có tài khoản?",
+  "register_here":"Đăng ký tài khoản"
 }

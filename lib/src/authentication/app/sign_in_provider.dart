@@ -35,7 +35,7 @@ class SignInNotifier extends StateNotifier<SignInState> {
     state = SignInState.initial();
     if (ConfigReader.env == Environment.dev) {
       state = state.copyWith(
-        emailAddress: EmailAddress('binh+0929ss@te.st'),
+        emailAddress: EmailAddress('1025ss@te.st'),
         password: 'Zaq1@wsx',
       );
     }
@@ -74,7 +74,5 @@ class SignInNotifier extends StateNotifier<SignInState> {
 }
 
 final signInProvider = StateNotifierProvider.autoDispose<SignInNotifier, SignInState>(
-  (ref) => SignInNotifier(ref.read(
-    auth,
-  )),
+  (ref) => SignInNotifier(ref.read(auth)),
 );

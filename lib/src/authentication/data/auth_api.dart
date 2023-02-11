@@ -97,4 +97,22 @@ class AuthApi implements IAuth {
     final prefs = await SharedPreferences.getInstance();
     return await prefs.setString('user', jsonEncode(user.toJson())).then((value) => unit);
   }
+
+  @override
+  Future<Unit> signUp(String firstName, String lastName, EmailAddress email, String password) async {
+    final response = api.post('$serverApi/sign_up', data: {
+      'first_name': firstName,
+      'last_name': lastName,
+      'username': email.getValueOrError(),
+      'password': password,
+    });
+    return response.then((res) {
+      if (res.statusCode != 200) {
+        return Future.error(const AuthFailure.serverError());
+      }
+      return res.data;
+    }).then((value) async {
+      return unit;
+    });
+  }
 }

@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:kyons_flutter/boostrap/config_reader.dart';
 import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 import 'package:kyons_flutter/src/core/domain/core.dart';
 import 'package:logging/logging.dart';
 
-const serverApi = 'https://api.tuhoconline.org';
+final serverApi = ConfigReader.serverApi();
 
 class Api {
   final Dio api = Dio();
