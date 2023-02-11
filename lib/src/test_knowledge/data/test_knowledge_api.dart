@@ -25,12 +25,13 @@ class TestKnowledge implements ITestKnowledge {
 
   @override
   Future<TestResult> submit(TestContent testContent) {
-    final response = api.post('$serverApi/submit_answers', data: {
+    final params = {
       'test_id': testContent.id,
       'start_time': testContent.startedAt.serverRequest,
       'end_time': testContent.endedAt.serverRequest,
       'submission': testContent.submission,
-    });
+    };
+    final response = api.post('$serverApi/submit_answers', data: params);
 
     return response.then(handleResponseError).then((value) async {
       final data = value as Map<String, dynamic>;

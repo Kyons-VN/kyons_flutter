@@ -136,5 +136,6 @@ class AnswerResult {
 }
 
 extension XDateTion on DateTime {
-  String get serverRequest => DateFormat.yMd().add_jm().format(this);
+  // Server API time format: yyyy-mm-dd H:m:s
+  String get serverRequest => DateFormat('yyyy-MM-dd H:m:s').format(this);
 }

@@ -34,6 +34,7 @@ dependencies:
     sdk: flutter
   flutter_hooks: 0.18.5+1
   flutter_html: 3.0.0-alpha.5
+  flutter_inappwebview: 5.7.1
   flutter_localizations:
     sdk: flutter
   flutter_secure_storage: 7.0.1
@@ -55,16 +56,15 @@ dependencies:
     path: ../shared_package
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
   build_runner: null
-
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: 2.0.1
-  flutter_test:
-    sdk: flutter
   freezed: 2.3.2
   # injectable_generator: 1.5.3
   json_serializable: 6.6.1

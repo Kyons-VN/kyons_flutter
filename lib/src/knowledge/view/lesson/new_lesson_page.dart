@@ -67,14 +67,30 @@ class NewLessonPage extends ConsumerWidget {
                         children: [
                           HookConsumer(builder: (context, ref, child) {
                             final newLessonState = ref.watch(newLessonNotifierProvider);
-                            return ElevatedButton(
-                                onPressed: newLessonState.selectedIds.isEmpty
-                                    ? null
-                                    : () {
-                                        newLessonNotifier.submit();
-                                        context.go(AppPaths.learningPath.path);
-                                      },
-                                child: Text(t(context).create_lesson));
+                            ref.listen<NewLessonState>(newLessonNotifierProvider, (previous, next) {
+                              if (previous!.submitting && !next.submitting && !next.hasError) {
+                                context.go(AppPaths.learningPath.path);
+                              }
+                            });
+                            return Column(
+                              children: [
+                                ElevatedButton(
+                                  onPressed: newLessonState.selectedIds.isEmpty
+                                      ? null
+                                      : () {
+                                          newLessonNotifier.submit();
+                                        },
+                                  child: Text(
+                                    t(context).create_lesson,
+                                    // style: Theme.of(context).textTheme.button,
+                                  ),
+                                ),
+                                Text(
+                                  t(context).selected_knowledge_count(newLessonState.selectedIds.length),
+                                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white),
+                                ),
+                              ],
+                            );
                           }),
                         ],
                       ),
@@ -130,6 +146,7 @@ class _LearningPointList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: learningPointsList.length,
       separatorBuilder: (BuildContext context, int index) => AppSizesUnit.sizedBox16,

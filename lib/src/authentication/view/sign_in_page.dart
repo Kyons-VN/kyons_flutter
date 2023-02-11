@@ -2,6 +2,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kyons_flutter/boostrap/config_reader.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/current_user_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/sign_in_provider.dart';
@@ -9,6 +10,7 @@ import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:shared_package/shared_package.dart';
+import 'package:url_launcher/link.dart';
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -34,6 +36,16 @@ class SignInPage extends ConsumerWidget {
                         child: SizedBox(height: 100, child: AppAssets.logoSVG)),
                     const SizedBox(height: 48),
                     const SignInForm(),
+                    Column(
+                      children: [
+                        Link(
+                          uri: Uri.parse('${ConfigReader.clientApi()}/reset-password'),
+                          target: LinkTarget.blank,
+                          builder: (BuildContext ctx, FollowLink? openLink) =>
+                              TextButton(onPressed: openLink, child: Text(t(context).forgot_password)),
+                        ),
+                      ],
+                    ),
                     if (context.isXsScreen() || context.isLargerThanMdScreen()) const SizedBox(height: 200),
                   ],
                 ),

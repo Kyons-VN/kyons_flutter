@@ -14,18 +14,24 @@ class ConfigReader {
     _config = json.decode(configString) as Map<String, dynamic>;
   }
 
-  static Map<String, dynamic> _getFacebook() {
-    return _config['facebook'] as Map<String, dynamic>;
+  static bool isProduction() {
+    return _config['production'] as bool;
   }
 
-  static String getFacebookAppID() {
-    final facebook = _getFacebook();
-    return facebook['appID'];
+  static String name() {
+    return _config['name'];
   }
 
-  static String getFacebookVersion() {
-    final facebook = _getFacebook();
-    return facebook['version'];
+  static String isPromotionEnable() {
+    return _config['isPromotionEnable'];
+  }
+
+  static String serverApi() {
+    return _config['serverApi'];
+  }
+
+  static String clientApi() {
+    return _config['clientApi'];
   }
 
   static String get env => _env;

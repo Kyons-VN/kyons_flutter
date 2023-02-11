@@ -4,6 +4,8 @@ class AppPaths {
   static const home = AppPath(path: '/home', serverRedirectName: 'HomePage');
   static const signIn = AppPath(path: '/sign-in');
   static const signOut = AppPath(path: '/sign-out');
+  static const signUp = AppPath(path: '/sign-up');
+  static const resetPassword = AppPath(path: '/reset-password');
   static const settings = AppPath(path: '/settings');
   static const themeSettings = AppPath(path: '/settings/theme');
   static const languageSettings = AppPath(path: '/settings/language');

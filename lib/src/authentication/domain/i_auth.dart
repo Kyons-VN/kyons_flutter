@@ -13,4 +13,5 @@ abstract class IAuth {
   Future<User> getCurrentUser();
   Future<StudyType> getStudyType();
   Future<Unit> signOut();
+  Future<Unit> signUp(String firstName, String lastName, EmailAddress email, String password);
 }
