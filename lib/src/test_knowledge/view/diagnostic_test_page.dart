@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
@@ -11,6 +10,7 @@ import 'package:kyons_flutter/src/test_knowledge/app/diagnostic_test_provider.da
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/view/test_content_widget.dart';
 import 'package:kyons_flutter/src/test_knowledge/view/test_result_widget.dart';
+import 'package:shared_package/shared_package.dart';
 
 class DiagnosticTestPage extends ConsumerWidget {
   final bool isTest;

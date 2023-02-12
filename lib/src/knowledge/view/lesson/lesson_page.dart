@@ -3,9 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/core/view/themes.dart';
-import 'package:kyons_flutter/src/core/view/widgets/app_html.dart';
-import 'package:kyons_flutter/src/core/view/widgets/app_progress_indicator.dart';
 import 'package:kyons_flutter/src/knowledge/app/lesson_provider.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/knowledge/view/lesson/lesson_app_bar.dart';
@@ -17,6 +14,7 @@ import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/view/test_content_widget.dart';
 import 'package:kyons_flutter/src/test_knowledge/view/test_result_widget.dart';
 import 'package:kyons_flutter/src/tutor/view/call_tutor.dart';
+import 'package:shared_package/shared_package.dart';
 
 class LessonPage extends HookConsumerWidget {
   final String id;

@@ -4,8 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/current_user_provider.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
+import 'package:shared_package/shared_package.dart';
 
 class AppDrawer extends ConsumerWidget {
   const AppDrawer({Key? key}) : super(key: key);

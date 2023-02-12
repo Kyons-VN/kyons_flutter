@@ -7,10 +7,9 @@ import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/current_user_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/sign_in_provider.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/core/view/assets.dart';
-import 'package:kyons_flutter/src/core/view/themes.dart';
 import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
+import 'package:shared_package/shared_package.dart';
 import 'package:url_launcher/link.dart';
 
 class SignInPage extends ConsumerWidget {
@@ -88,13 +87,13 @@ class SignInForm extends ConsumerWidget {
             Flushbar()
                 .error(l.maybeMap(
                   invalidEmailPassword: (_) => t(context).invalidThing('${t(context).email} ${t(context).password}'),
-                  orElse: () => firstCapital(t(context).thingWithStatus(t(context).signIn, t(context).fail)),
+                  orElse: () => t(context).thingWithStatus(t(context).signIn, t(context).fail).firstCapital(),
                 ))
                 .show(context);
           }, (r) {
             authNotifier.stateChanged();
             Flushbar()
-                .success(firstCapital(t(context).thingWithStatus(t(context).signIn, t(context).success)))
+                .success(t(context).thingWithStatus(t(context).signIn, t(context).success).firstCapital())
                 .show(context);
             Future.delayed(const Duration(seconds: 2), () {
               currentUserNotifier.logedIn();

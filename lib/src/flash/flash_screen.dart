@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:kyons_flutter/src/core/view/themes.dart';
+import 'package:shared_package/shared_package.dart';
 
 class ThreeFourthsCirclePainter extends CustomPainter {
   @override
