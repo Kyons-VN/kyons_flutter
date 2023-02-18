@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/knowledge/app/lesson_provider.dart';
 import 'package:kyons_flutter/src/navigation/app/router.dart';
-import 'package:kyons_flutter/src/tracking/app/tracking_provider.dart';
 
 class WebAppWidget extends ConsumerStatefulWidget {
   final AnimatedBuilder Function(WidgetRef) builder;
@@ -34,7 +33,7 @@ class _WebAppWidget extends ConsumerState<WebAppWidget> with WidgetsBindingObser
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    final trackingNotifier = ref.read(trackingNotifierProvider.notifier);
+    // final trackingNotifier = ref.read(trackingNotifierProvider.notifier);
     final lessonNotifier = ref.read(lessonStudyNotifierProvider.notifier);
     final authState = ref.read(authNotifierProvider);
     if (authState == const AuthState.unAuthenticated()) return;
@@ -42,23 +41,23 @@ class _WebAppWidget extends ConsumerState<WebAppWidget> with WidgetsBindingObser
       case AppLifecycleState.resumed:
         debugPrintStack(maxFrames: 3);
         print("app in resumed");
-        trackingNotifier.enable();
-        lessonNotifier.enableTracking();
+        // trackingNotifier.enable();
+        // lessonNotifier.enableTracking();
         break;
       case AppLifecycleState.inactive:
         print("app in inactive");
-        trackingNotifier.disable();
-        lessonNotifier.disableTracking();
+        // trackingNotifier.disable();
+        // lessonNotifier.disableTracking();
         break;
       case AppLifecycleState.paused:
         print("app in paused");
-        trackingNotifier.disable();
-        lessonNotifier.disableTracking();
+        // trackingNotifier.disable();
+        // lessonNotifier.disableTracking();
         break;
       case AppLifecycleState.detached:
         print("app in detached");
-        trackingNotifier.disable();
-        lessonNotifier.disableTracking();
+        // trackingNotifier.disable();
+        // lessonNotifier.disableTracking();
         break;
     }
   }

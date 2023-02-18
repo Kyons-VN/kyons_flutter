@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'tutor_provider.dart';
 
@@ -31,7 +31,8 @@ mixin _$TutorState {
 abstract class $TutorStateCopyWith<$Res> {
   factory $TutorStateCopyWith(
           TutorState value, $Res Function(TutorState) then) =
-      _$TutorStateCopyWithImpl<$Res>;
+      _$TutorStateCopyWithImpl<$Res, TutorState>;
+  @useResult
   $Res call(
       {Option<String> sessionId,
       Option<TutorSessionStatus> sessionStatus,
@@ -40,38 +41,41 @@ abstract class $TutorStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TutorStateCopyWithImpl<$Res> implements $TutorStateCopyWith<$Res> {
+class _$TutorStateCopyWithImpl<$Res, $Val extends TutorState>
+    implements $TutorStateCopyWith<$Res> {
   _$TutorStateCopyWithImpl(this._value, this._then);
 
-  final TutorState _value;
   // ignore: unused_field
-  final $Res Function(TutorState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sessionId = freezed,
-    Object? sessionStatus = freezed,
-    Object? loading = freezed,
-    Object? hasError = freezed,
+    Object? sessionId = null,
+    Object? sessionStatus = null,
+    Object? loading = null,
+    Object? hasError = null,
   }) {
     return _then(_value.copyWith(
-      sessionId: sessionId == freezed
+      sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      sessionStatus: sessionStatus == freezed
+      sessionStatus: null == sessionStatus
           ? _value.sessionStatus
           : sessionStatus // ignore: cast_nullable_to_non_nullable
               as Option<TutorSessionStatus>,
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,6 +86,7 @@ abstract class _$$_TutorStateCopyWith<$Res>
           _$_TutorState value, $Res Function(_$_TutorState) then) =
       __$$_TutorStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Option<String> sessionId,
       Option<TutorSessionStatus> sessionStatus,
@@ -90,36 +95,35 @@ abstract class _$$_TutorStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TutorStateCopyWithImpl<$Res> extends _$TutorStateCopyWithImpl<$Res>
+class __$$_TutorStateCopyWithImpl<$Res>
+    extends _$TutorStateCopyWithImpl<$Res, _$_TutorState>
     implements _$$_TutorStateCopyWith<$Res> {
   __$$_TutorStateCopyWithImpl(
       _$_TutorState _value, $Res Function(_$_TutorState) _then)
-      : super(_value, (v) => _then(v as _$_TutorState));
+      : super(_value, _then);
 
-  @override
-  _$_TutorState get _value => super._value as _$_TutorState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sessionId = freezed,
-    Object? sessionStatus = freezed,
-    Object? loading = freezed,
-    Object? hasError = freezed,
+    Object? sessionId = null,
+    Object? sessionStatus = null,
+    Object? loading = null,
+    Object? hasError = null,
   }) {
     return _then(_$_TutorState(
-      sessionId: sessionId == freezed
+      sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      sessionStatus: sessionStatus == freezed
+      sessionStatus: null == sessionStatus
           ? _value.sessionStatus
           : sessionStatus // ignore: cast_nullable_to_non_nullable
               as Option<TutorSessionStatus>,
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -155,23 +159,22 @@ class _$_TutorState implements _TutorState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TutorState &&
-            const DeepCollectionEquality().equals(other.sessionId, sessionId) &&
-            const DeepCollectionEquality()
-                .equals(other.sessionStatus, sessionStatus) &&
-            const DeepCollectionEquality().equals(other.loading, loading) &&
-            const DeepCollectionEquality().equals(other.hasError, hasError));
+            (identical(other.sessionId, sessionId) ||
+                other.sessionId == sessionId) &&
+            (identical(other.sessionStatus, sessionStatus) ||
+                other.sessionStatus == sessionStatus) &&
+            (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(sessionId),
-      const DeepCollectionEquality().hash(sessionStatus),
-      const DeepCollectionEquality().hash(loading),
-      const DeepCollectionEquality().hash(hasError));
+  int get hashCode =>
+      Object.hash(runtimeType, sessionId, sessionStatus, loading, hasError);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TutorStateCopyWith<_$_TutorState> get copyWith =>
       __$$_TutorStateCopyWithImpl<_$_TutorState>(this, _$identity);
 }

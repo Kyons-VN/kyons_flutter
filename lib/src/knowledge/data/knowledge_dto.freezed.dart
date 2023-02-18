@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'knowledge_dto.dart';
 
@@ -34,38 +34,42 @@ mixin _$SubjectDto {
 abstract class $SubjectDtoCopyWith<$Res> {
   factory $SubjectDtoCopyWith(
           SubjectDto value, $Res Function(SubjectDto) then) =
-      _$SubjectDtoCopyWithImpl<$Res>;
+      _$SubjectDtoCopyWithImpl<$Res, SubjectDto>;
+  @useResult
   $Res call({int id, String label, List<ProgramDto> programs});
 }
 
 /// @nodoc
-class _$SubjectDtoCopyWithImpl<$Res> implements $SubjectDtoCopyWith<$Res> {
+class _$SubjectDtoCopyWithImpl<$Res, $Val extends SubjectDto>
+    implements $SubjectDtoCopyWith<$Res> {
   _$SubjectDtoCopyWithImpl(this._value, this._then);
 
-  final SubjectDto _value;
   // ignore: unused_field
-  final $Res Function(SubjectDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? label = freezed,
-    Object? programs = freezed,
+    Object? id = null,
+    Object? label = null,
+    Object? programs = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      programs: programs == freezed
+      programs: null == programs
           ? _value.programs
           : programs // ignore: cast_nullable_to_non_nullable
               as List<ProgramDto>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -76,35 +80,35 @@ abstract class _$$_SubjectDtoCopyWith<$Res>
           _$_SubjectDto value, $Res Function(_$_SubjectDto) then) =
       __$$_SubjectDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id, String label, List<ProgramDto> programs});
 }
 
 /// @nodoc
-class __$$_SubjectDtoCopyWithImpl<$Res> extends _$SubjectDtoCopyWithImpl<$Res>
+class __$$_SubjectDtoCopyWithImpl<$Res>
+    extends _$SubjectDtoCopyWithImpl<$Res, _$_SubjectDto>
     implements _$$_SubjectDtoCopyWith<$Res> {
   __$$_SubjectDtoCopyWithImpl(
       _$_SubjectDto _value, $Res Function(_$_SubjectDto) _then)
-      : super(_value, (v) => _then(v as _$_SubjectDto));
+      : super(_value, _then);
 
-  @override
-  _$_SubjectDto get _value => super._value as _$_SubjectDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? label = freezed,
-    Object? programs = freezed,
+    Object? id = null,
+    Object? label = null,
+    Object? programs = null,
   }) {
     return _then(_$_SubjectDto(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      programs: programs == freezed
+      programs: null == programs
           ? _value._programs
           : programs // ignore: cast_nullable_to_non_nullable
               as List<ProgramDto>,
@@ -132,6 +136,7 @@ class _$_SubjectDto extends _SubjectDto {
   final List<ProgramDto> _programs;
   @override
   List<ProgramDto> get programs {
+    if (_programs is EqualUnmodifiableListView) return _programs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_programs);
   }
@@ -146,21 +151,19 @@ class _$_SubjectDto extends _SubjectDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SubjectDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.label, label) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.label, label) || other.label == label) &&
             const DeepCollectionEquality().equals(other._programs, _programs));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(_programs));
+      runtimeType, id, label, const DeepCollectionEquality().hash(_programs));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SubjectDtoCopyWith<_$_SubjectDto> get copyWith =>
       __$$_SubjectDtoCopyWithImpl<_$_SubjectDto>(this, _$identity);
 
@@ -215,38 +218,42 @@ mixin _$ProgramDto {
 abstract class $ProgramDtoCopyWith<$Res> {
   factory $ProgramDtoCopyWith(
           ProgramDto value, $Res Function(ProgramDto) then) =
-      _$ProgramDtoCopyWithImpl<$Res>;
+      _$ProgramDtoCopyWithImpl<$Res, ProgramDto>;
+  @useResult
   $Res call({int id, String name, @JsonKey(name: 'subject_id') int subjectId});
 }
 
 /// @nodoc
-class _$ProgramDtoCopyWithImpl<$Res> implements $ProgramDtoCopyWith<$Res> {
+class _$ProgramDtoCopyWithImpl<$Res, $Val extends ProgramDto>
+    implements $ProgramDtoCopyWith<$Res> {
   _$ProgramDtoCopyWithImpl(this._value, this._then);
 
-  final ProgramDto _value;
   // ignore: unused_field
-  final $Res Function(ProgramDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? subjectId = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? subjectId = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      subjectId: subjectId == freezed
+      subjectId: null == subjectId
           ? _value.subjectId
           : subjectId // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -257,35 +264,35 @@ abstract class _$$_ProgramDtoCopyWith<$Res>
           _$_ProgramDto value, $Res Function(_$_ProgramDto) then) =
       __$$_ProgramDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id, String name, @JsonKey(name: 'subject_id') int subjectId});
 }
 
 /// @nodoc
-class __$$_ProgramDtoCopyWithImpl<$Res> extends _$ProgramDtoCopyWithImpl<$Res>
+class __$$_ProgramDtoCopyWithImpl<$Res>
+    extends _$ProgramDtoCopyWithImpl<$Res, _$_ProgramDto>
     implements _$$_ProgramDtoCopyWith<$Res> {
   __$$_ProgramDtoCopyWithImpl(
       _$_ProgramDto _value, $Res Function(_$_ProgramDto) _then)
-      : super(_value, (v) => _then(v as _$_ProgramDto));
+      : super(_value, _then);
 
-  @override
-  _$_ProgramDto get _value => super._value as _$_ProgramDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? subjectId = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? subjectId = null,
   }) {
     return _then(_$_ProgramDto(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      subjectId: subjectId == freezed
+      subjectId: null == subjectId
           ? _value.subjectId
           : subjectId // ignore: cast_nullable_to_non_nullable
               as int,
@@ -323,21 +330,19 @@ class _$_ProgramDto extends _ProgramDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProgramDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.subjectId, subjectId));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.subjectId, subjectId) ||
+                other.subjectId == subjectId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(subjectId));
+  int get hashCode => Object.hash(runtimeType, id, name, subjectId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ProgramDtoCopyWith<_$_ProgramDto> get copyWith =>
       __$$_ProgramDtoCopyWithImpl<_$_ProgramDto>(this, _$identity);
 
@@ -393,34 +398,37 @@ mixin _$LessonItemDto {
 abstract class $LessonItemDtoCopyWith<$Res> {
   factory $LessonItemDtoCopyWith(
           LessonItemDto value, $Res Function(LessonItemDto) then) =
-      _$LessonItemDtoCopyWithImpl<$Res>;
+      _$LessonItemDtoCopyWithImpl<$Res, LessonItemDto>;
+  @useResult
   $Res call({String id, @JsonKey(name: 'new') bool isNew});
 }
 
 /// @nodoc
-class _$LessonItemDtoCopyWithImpl<$Res>
+class _$LessonItemDtoCopyWithImpl<$Res, $Val extends LessonItemDto>
     implements $LessonItemDtoCopyWith<$Res> {
   _$LessonItemDtoCopyWithImpl(this._value, this._then);
 
-  final LessonItemDto _value;
   // ignore: unused_field
-  final $Res Function(LessonItemDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? isNew = freezed,
+    Object? id = null,
+    Object? isNew = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      isNew: isNew == freezed
+      isNew: null == isNew
           ? _value.isNew
           : isNew // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -431,31 +439,30 @@ abstract class _$$_LessonItemDtoCopyWith<$Res>
           _$_LessonItemDto value, $Res Function(_$_LessonItemDto) then) =
       __$$_LessonItemDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String id, @JsonKey(name: 'new') bool isNew});
 }
 
 /// @nodoc
 class __$$_LessonItemDtoCopyWithImpl<$Res>
-    extends _$LessonItemDtoCopyWithImpl<$Res>
+    extends _$LessonItemDtoCopyWithImpl<$Res, _$_LessonItemDto>
     implements _$$_LessonItemDtoCopyWith<$Res> {
   __$$_LessonItemDtoCopyWithImpl(
       _$_LessonItemDto _value, $Res Function(_$_LessonItemDto) _then)
-      : super(_value, (v) => _then(v as _$_LessonItemDto));
+      : super(_value, _then);
 
-  @override
-  _$_LessonItemDto get _value => super._value as _$_LessonItemDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? isNew = freezed,
+    Object? id = null,
+    Object? isNew = null,
   }) {
     return _then(_$_LessonItemDto(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      isNew: isNew == freezed
+      isNew: null == isNew
           ? _value.isNew
           : isNew // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -489,19 +496,17 @@ class _$_LessonItemDto extends _LessonItemDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LessonItemDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.isNew, isNew));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.isNew, isNew) || other.isNew == isNew));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(isNew));
+  int get hashCode => Object.hash(runtimeType, id, isNew);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LessonItemDtoCopyWith<_$_LessonItemDto> get copyWith =>
       __$$_LessonItemDtoCopyWithImpl<_$_LessonItemDto>(this, _$identity);
 
@@ -551,29 +556,32 @@ mixin _$LearningPathDto {
 abstract class $LearningPathDtoCopyWith<$Res> {
   factory $LearningPathDtoCopyWith(
           LearningPathDto value, $Res Function(LearningPathDto) then) =
-      _$LearningPathDtoCopyWithImpl<$Res>;
+      _$LearningPathDtoCopyWithImpl<$Res, LearningPathDto>;
+  @useResult
   $Res call({List<LessonItemDto> lessonsDto});
 }
 
 /// @nodoc
-class _$LearningPathDtoCopyWithImpl<$Res>
+class _$LearningPathDtoCopyWithImpl<$Res, $Val extends LearningPathDto>
     implements $LearningPathDtoCopyWith<$Res> {
   _$LearningPathDtoCopyWithImpl(this._value, this._then);
 
-  final LearningPathDto _value;
   // ignore: unused_field
-  final $Res Function(LearningPathDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lessonsDto = freezed,
+    Object? lessonsDto = null,
   }) {
     return _then(_value.copyWith(
-      lessonsDto: lessonsDto == freezed
+      lessonsDto: null == lessonsDto
           ? _value.lessonsDto
           : lessonsDto // ignore: cast_nullable_to_non_nullable
               as List<LessonItemDto>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -584,26 +592,25 @@ abstract class _$$_LearningPathDtoCopyWith<$Res>
           _$_LearningPathDto value, $Res Function(_$_LearningPathDto) then) =
       __$$_LearningPathDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<LessonItemDto> lessonsDto});
 }
 
 /// @nodoc
 class __$$_LearningPathDtoCopyWithImpl<$Res>
-    extends _$LearningPathDtoCopyWithImpl<$Res>
+    extends _$LearningPathDtoCopyWithImpl<$Res, _$_LearningPathDto>
     implements _$$_LearningPathDtoCopyWith<$Res> {
   __$$_LearningPathDtoCopyWithImpl(
       _$_LearningPathDto _value, $Res Function(_$_LearningPathDto) _then)
-      : super(_value, (v) => _then(v as _$_LearningPathDto));
+      : super(_value, _then);
 
-  @override
-  _$_LearningPathDto get _value => super._value as _$_LearningPathDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lessonsDto = freezed,
+    Object? lessonsDto = null,
   }) {
     return _then(_$_LearningPathDto(
-      lessonsDto: lessonsDto == freezed
+      lessonsDto: null == lessonsDto
           ? _value._lessonsDto
           : lessonsDto // ignore: cast_nullable_to_non_nullable
               as List<LessonItemDto>,
@@ -624,6 +631,7 @@ class _$_LearningPathDto extends _LearningPathDto {
   final List<LessonItemDto> _lessonsDto;
   @override
   List<LessonItemDto> get lessonsDto {
+    if (_lessonsDto is EqualUnmodifiableListView) return _lessonsDto;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_lessonsDto);
   }
@@ -649,6 +657,7 @@ class _$_LearningPathDto extends _LearningPathDto {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LearningPathDtoCopyWith<_$_LearningPathDto> get copyWith =>
       __$$_LearningPathDtoCopyWithImpl<_$_LearningPathDto>(this, _$identity);
 
@@ -695,34 +704,37 @@ mixin _$LessonGroupDto {
 abstract class $LessonGroupDtoCopyWith<$Res> {
   factory $LessonGroupDtoCopyWith(
           LessonGroupDto value, $Res Function(LessonGroupDto) then) =
-      _$LessonGroupDtoCopyWithImpl<$Res>;
+      _$LessonGroupDtoCopyWithImpl<$Res, LessonGroupDto>;
+  @useResult
   $Res call({String id, List<LessonInfoDto> lessonInfos});
 }
 
 /// @nodoc
-class _$LessonGroupDtoCopyWithImpl<$Res>
+class _$LessonGroupDtoCopyWithImpl<$Res, $Val extends LessonGroupDto>
     implements $LessonGroupDtoCopyWith<$Res> {
   _$LessonGroupDtoCopyWithImpl(this._value, this._then);
 
-  final LessonGroupDto _value;
   // ignore: unused_field
-  final $Res Function(LessonGroupDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? lessonInfos = freezed,
+    Object? id = null,
+    Object? lessonInfos = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      lessonInfos: lessonInfos == freezed
+      lessonInfos: null == lessonInfos
           ? _value.lessonInfos
           : lessonInfos // ignore: cast_nullable_to_non_nullable
               as List<LessonInfoDto>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -733,31 +745,30 @@ abstract class _$$_LessonGroupDtoCopyWith<$Res>
           _$_LessonGroupDto value, $Res Function(_$_LessonGroupDto) then) =
       __$$_LessonGroupDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String id, List<LessonInfoDto> lessonInfos});
 }
 
 /// @nodoc
 class __$$_LessonGroupDtoCopyWithImpl<$Res>
-    extends _$LessonGroupDtoCopyWithImpl<$Res>
+    extends _$LessonGroupDtoCopyWithImpl<$Res, _$_LessonGroupDto>
     implements _$$_LessonGroupDtoCopyWith<$Res> {
   __$$_LessonGroupDtoCopyWithImpl(
       _$_LessonGroupDto _value, $Res Function(_$_LessonGroupDto) _then)
-      : super(_value, (v) => _then(v as _$_LessonGroupDto));
+      : super(_value, _then);
 
-  @override
-  _$_LessonGroupDto get _value => super._value as _$_LessonGroupDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? lessonInfos = freezed,
+    Object? id = null,
+    Object? lessonInfos = null,
   }) {
     return _then(_$_LessonGroupDto(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      lessonInfos: lessonInfos == freezed
+      lessonInfos: null == lessonInfos
           ? _value._lessonInfos
           : lessonInfos // ignore: cast_nullable_to_non_nullable
               as List<LessonInfoDto>,
@@ -781,6 +792,7 @@ class _$_LessonGroupDto extends _LessonGroupDto {
   final List<LessonInfoDto> _lessonInfos;
   @override
   List<LessonInfoDto> get lessonInfos {
+    if (_lessonInfos is EqualUnmodifiableListView) return _lessonInfos;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_lessonInfos);
   }
@@ -795,7 +807,7 @@ class _$_LessonGroupDto extends _LessonGroupDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LessonGroupDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality()
                 .equals(other._lessonInfos, _lessonInfos));
   }
@@ -803,12 +815,11 @@ class _$_LessonGroupDto extends _LessonGroupDto {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(_lessonInfos));
+      runtimeType, id, const DeepCollectionEquality().hash(_lessonInfos));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LessonGroupDtoCopyWith<_$_LessonGroupDto> get copyWith =>
       __$$_LessonGroupDtoCopyWithImpl<_$_LessonGroupDto>(this, _$identity);
 
@@ -858,33 +869,37 @@ mixin _$CategoryDto {
 abstract class $CategoryDtoCopyWith<$Res> {
   factory $CategoryDtoCopyWith(
           CategoryDto value, $Res Function(CategoryDto) then) =
-      _$CategoryDtoCopyWithImpl<$Res>;
+      _$CategoryDtoCopyWithImpl<$Res, CategoryDto>;
+  @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class _$CategoryDtoCopyWithImpl<$Res> implements $CategoryDtoCopyWith<$Res> {
+class _$CategoryDtoCopyWithImpl<$Res, $Val extends CategoryDto>
+    implements $CategoryDtoCopyWith<$Res> {
   _$CategoryDtoCopyWithImpl(this._value, this._then);
 
-  final CategoryDto _value;
   // ignore: unused_field
-  final $Res Function(CategoryDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -895,30 +910,30 @@ abstract class _$$_CategoryDtoCopyWith<$Res>
           _$_CategoryDto value, $Res Function(_$_CategoryDto) then) =
       __$$_CategoryDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class __$$_CategoryDtoCopyWithImpl<$Res> extends _$CategoryDtoCopyWithImpl<$Res>
+class __$$_CategoryDtoCopyWithImpl<$Res>
+    extends _$CategoryDtoCopyWithImpl<$Res, _$_CategoryDto>
     implements _$$_CategoryDtoCopyWith<$Res> {
   __$$_CategoryDtoCopyWithImpl(
       _$_CategoryDto _value, $Res Function(_$_CategoryDto) _then)
-      : super(_value, (v) => _then(v as _$_CategoryDto));
+      : super(_value, _then);
 
-  @override
-  _$_CategoryDto get _value => super._value as _$_CategoryDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? name = null,
   }) {
     return _then(_$_CategoryDto(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
@@ -949,19 +964,17 @@ class _$_CategoryDto extends _CategoryDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CategoryDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CategoryDtoCopyWith<_$_CategoryDto> get copyWith =>
       __$$_CategoryDtoCopyWithImpl<_$_CategoryDto>(this, _$identity);
 
@@ -1011,35 +1024,39 @@ mixin _$TopicDto {
 /// @nodoc
 abstract class $TopicDtoCopyWith<$Res> {
   factory $TopicDtoCopyWith(TopicDto value, $Res Function(TopicDto) then) =
-      _$TopicDtoCopyWithImpl<$Res>;
+      _$TopicDtoCopyWithImpl<$Res, TopicDto>;
+  @useResult
   $Res call(
       {@JsonKey(defaultValue: 0) int id,
       @JsonKey(defaultValue: '') String name});
 }
 
 /// @nodoc
-class _$TopicDtoCopyWithImpl<$Res> implements $TopicDtoCopyWith<$Res> {
+class _$TopicDtoCopyWithImpl<$Res, $Val extends TopicDto>
+    implements $TopicDtoCopyWith<$Res> {
   _$TopicDtoCopyWithImpl(this._value, this._then);
 
-  final TopicDto _value;
   // ignore: unused_field
-  final $Res Function(TopicDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1049,32 +1066,32 @@ abstract class _$$_TopicDtoCopyWith<$Res> implements $TopicDtoCopyWith<$Res> {
           _$_TopicDto value, $Res Function(_$_TopicDto) then) =
       __$$_TopicDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(defaultValue: 0) int id,
       @JsonKey(defaultValue: '') String name});
 }
 
 /// @nodoc
-class __$$_TopicDtoCopyWithImpl<$Res> extends _$TopicDtoCopyWithImpl<$Res>
+class __$$_TopicDtoCopyWithImpl<$Res>
+    extends _$TopicDtoCopyWithImpl<$Res, _$_TopicDto>
     implements _$$_TopicDtoCopyWith<$Res> {
   __$$_TopicDtoCopyWithImpl(
       _$_TopicDto _value, $Res Function(_$_TopicDto) _then)
-      : super(_value, (v) => _then(v as _$_TopicDto));
+      : super(_value, _then);
 
-  @override
-  _$_TopicDto get _value => super._value as _$_TopicDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? name = null,
   }) {
     return _then(_$_TopicDto(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1110,19 +1127,17 @@ class _$_TopicDto extends _TopicDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TopicDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TopicDtoCopyWith<_$_TopicDto> get copyWith =>
       __$$_TopicDtoCopyWithImpl<_$_TopicDto>(this, _$identity);
 
@@ -1174,7 +1189,8 @@ mixin _$LessonInfoDto {
 abstract class $LessonInfoDtoCopyWith<$Res> {
   factory $LessonInfoDtoCopyWith(
           LessonInfoDto value, $Res Function(LessonInfoDto) then) =
-      _$LessonInfoDtoCopyWithImpl<$Res>;
+      _$LessonInfoDtoCopyWithImpl<$Res, LessonInfoDto>;
+  @useResult
   $Res call({CategoryDto category, TopicDto topic, List<LessonDto> lessons});
 
   $CategoryDtoCopyWith<$Res> get category;
@@ -1182,47 +1198,51 @@ abstract class $LessonInfoDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LessonInfoDtoCopyWithImpl<$Res>
+class _$LessonInfoDtoCopyWithImpl<$Res, $Val extends LessonInfoDto>
     implements $LessonInfoDtoCopyWith<$Res> {
   _$LessonInfoDtoCopyWithImpl(this._value, this._then);
 
-  final LessonInfoDto _value;
   // ignore: unused_field
-  final $Res Function(LessonInfoDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = freezed,
-    Object? topic = freezed,
-    Object? lessons = freezed,
+    Object? category = null,
+    Object? topic = null,
+    Object? lessons = null,
   }) {
     return _then(_value.copyWith(
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as CategoryDto,
-      topic: topic == freezed
+      topic: null == topic
           ? _value.topic
           : topic // ignore: cast_nullable_to_non_nullable
               as TopicDto,
-      lessons: lessons == freezed
+      lessons: null == lessons
           ? _value.lessons
           : lessons // ignore: cast_nullable_to_non_nullable
               as List<LessonDto>,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CategoryDtoCopyWith<$Res> get category {
     return $CategoryDtoCopyWith<$Res>(_value.category, (value) {
-      return _then(_value.copyWith(category: value));
+      return _then(_value.copyWith(category: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TopicDtoCopyWith<$Res> get topic {
     return $TopicDtoCopyWith<$Res>(_value.topic, (value) {
-      return _then(_value.copyWith(topic: value));
+      return _then(_value.copyWith(topic: value) as $Val);
     });
   }
 }
@@ -1234,6 +1254,7 @@ abstract class _$$_LessonInfoDtoCopyWith<$Res>
           _$_LessonInfoDto value, $Res Function(_$_LessonInfoDto) then) =
       __$$_LessonInfoDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({CategoryDto category, TopicDto topic, List<LessonDto> lessons});
 
   @override
@@ -1244,31 +1265,29 @@ abstract class _$$_LessonInfoDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_LessonInfoDtoCopyWithImpl<$Res>
-    extends _$LessonInfoDtoCopyWithImpl<$Res>
+    extends _$LessonInfoDtoCopyWithImpl<$Res, _$_LessonInfoDto>
     implements _$$_LessonInfoDtoCopyWith<$Res> {
   __$$_LessonInfoDtoCopyWithImpl(
       _$_LessonInfoDto _value, $Res Function(_$_LessonInfoDto) _then)
-      : super(_value, (v) => _then(v as _$_LessonInfoDto));
+      : super(_value, _then);
 
-  @override
-  _$_LessonInfoDto get _value => super._value as _$_LessonInfoDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = freezed,
-    Object? topic = freezed,
-    Object? lessons = freezed,
+    Object? category = null,
+    Object? topic = null,
+    Object? lessons = null,
   }) {
     return _then(_$_LessonInfoDto(
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as CategoryDto,
-      topic: topic == freezed
+      topic: null == topic
           ? _value.topic
           : topic // ignore: cast_nullable_to_non_nullable
               as TopicDto,
-      lessons: lessons == freezed
+      lessons: null == lessons
           ? _value._lessons
           : lessons // ignore: cast_nullable_to_non_nullable
               as List<LessonDto>,
@@ -1296,6 +1315,7 @@ class _$_LessonInfoDto extends _LessonInfoDto {
   final List<LessonDto> _lessons;
   @override
   List<LessonDto> get lessons {
+    if (_lessons is EqualUnmodifiableListView) return _lessons;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_lessons);
   }
@@ -1310,21 +1330,20 @@ class _$_LessonInfoDto extends _LessonInfoDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LessonInfoDto &&
-            const DeepCollectionEquality().equals(other.category, category) &&
-            const DeepCollectionEquality().equals(other.topic, topic) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.topic, topic) || other.topic == topic) &&
             const DeepCollectionEquality().equals(other._lessons, _lessons));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(topic),
+  int get hashCode => Object.hash(runtimeType, category, topic,
       const DeepCollectionEquality().hash(_lessons));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LessonInfoDtoCopyWith<_$_LessonInfoDto> get copyWith =>
       __$$_LessonInfoDtoCopyWithImpl<_$_LessonInfoDto>(this, _$identity);
 
@@ -1384,7 +1403,8 @@ mixin _$LessonDto {
 /// @nodoc
 abstract class $LessonDtoCopyWith<$Res> {
   factory $LessonDtoCopyWith(LessonDto value, $Res Function(LessonDto) then) =
-      _$LessonDtoCopyWithImpl<$Res>;
+      _$LessonDtoCopyWithImpl<$Res, LessonDto>;
+  @useResult
   $Res call(
       {int id,
       String name,
@@ -1399,48 +1419,51 @@ abstract class $LessonDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LessonDtoCopyWithImpl<$Res> implements $LessonDtoCopyWith<$Res> {
+class _$LessonDtoCopyWithImpl<$Res, $Val extends LessonDto>
+    implements $LessonDtoCopyWith<$Res> {
   _$LessonDtoCopyWithImpl(this._value, this._then);
 
-  final LessonDto _value;
   // ignore: unused_field
-  final $Res Function(LessonDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? learningPointId = freezed,
-    Object? learningPointDifficultyId = freezed,
-    Object? difficultyLevel = freezed,
-    Object? content = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? learningPointId = null,
+    Object? learningPointDifficultyId = null,
+    Object? difficultyLevel = null,
+    Object? content = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      learningPointId: learningPointId == freezed
+      learningPointId: null == learningPointId
           ? _value.learningPointId
           : learningPointId // ignore: cast_nullable_to_non_nullable
               as int,
-      learningPointDifficultyId: learningPointDifficultyId == freezed
+      learningPointDifficultyId: null == learningPointDifficultyId
           ? _value.learningPointDifficultyId
           : learningPointDifficultyId // ignore: cast_nullable_to_non_nullable
               as int,
-      difficultyLevel: difficultyLevel == freezed
+      difficultyLevel: null == difficultyLevel
           ? _value.difficultyLevel
           : difficultyLevel // ignore: cast_nullable_to_non_nullable
               as int,
-      content: content == freezed
+      content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1450,6 +1473,7 @@ abstract class _$$_LessonDtoCopyWith<$Res> implements $LessonDtoCopyWith<$Res> {
           _$_LessonDto value, $Res Function(_$_LessonDto) then) =
       __$$_LessonDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int id,
       String name,
@@ -1464,46 +1488,45 @@ abstract class _$$_LessonDtoCopyWith<$Res> implements $LessonDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LessonDtoCopyWithImpl<$Res> extends _$LessonDtoCopyWithImpl<$Res>
+class __$$_LessonDtoCopyWithImpl<$Res>
+    extends _$LessonDtoCopyWithImpl<$Res, _$_LessonDto>
     implements _$$_LessonDtoCopyWith<$Res> {
   __$$_LessonDtoCopyWithImpl(
       _$_LessonDto _value, $Res Function(_$_LessonDto) _then)
-      : super(_value, (v) => _then(v as _$_LessonDto));
+      : super(_value, _then);
 
-  @override
-  _$_LessonDto get _value => super._value as _$_LessonDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? learningPointId = freezed,
-    Object? learningPointDifficultyId = freezed,
-    Object? difficultyLevel = freezed,
-    Object? content = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? learningPointId = null,
+    Object? learningPointDifficultyId = null,
+    Object? difficultyLevel = null,
+    Object? content = null,
   }) {
     return _then(_$_LessonDto(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      learningPointId: learningPointId == freezed
+      learningPointId: null == learningPointId
           ? _value.learningPointId
           : learningPointId // ignore: cast_nullable_to_non_nullable
               as int,
-      learningPointDifficultyId: learningPointDifficultyId == freezed
+      learningPointDifficultyId: null == learningPointDifficultyId
           ? _value.learningPointDifficultyId
           : learningPointDifficultyId // ignore: cast_nullable_to_non_nullable
               as int,
-      difficultyLevel: difficultyLevel == freezed
+      difficultyLevel: null == difficultyLevel
           ? _value.difficultyLevel
           : difficultyLevel // ignore: cast_nullable_to_non_nullable
               as int,
-      content: content == freezed
+      content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1557,30 +1580,26 @@ class _$_LessonDto extends _LessonDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LessonDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.learningPointId, learningPointId) &&
-            const DeepCollectionEquality().equals(
-                other.learningPointDifficultyId, learningPointDifficultyId) &&
-            const DeepCollectionEquality()
-                .equals(other.difficultyLevel, difficultyLevel) &&
-            const DeepCollectionEquality().equals(other.content, content));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.learningPointId, learningPointId) ||
+                other.learningPointId == learningPointId) &&
+            (identical(other.learningPointDifficultyId,
+                    learningPointDifficultyId) ||
+                other.learningPointDifficultyId == learningPointDifficultyId) &&
+            (identical(other.difficultyLevel, difficultyLevel) ||
+                other.difficultyLevel == difficultyLevel) &&
+            (identical(other.content, content) || other.content == content));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(learningPointId),
-      const DeepCollectionEquality().hash(learningPointDifficultyId),
-      const DeepCollectionEquality().hash(difficultyLevel),
-      const DeepCollectionEquality().hash(content));
+  int get hashCode => Object.hash(runtimeType, id, name, learningPointId,
+      learningPointDifficultyId, difficultyLevel, content);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LessonDtoCopyWith<_$_LessonDto> get copyWith =>
       __$$_LessonDtoCopyWithImpl<_$_LessonDto>(this, _$identity);
 
@@ -1657,7 +1676,8 @@ mixin _$LearningPointDto {
 abstract class $LearningPointDtoCopyWith<$Res> {
   factory $LearningPointDtoCopyWith(
           LearningPointDto value, $Res Function(LearningPointDto) then) =
-      _$LearningPointDtoCopyWithImpl<$Res>;
+      _$LearningPointDtoCopyWithImpl<$Res, LearningPointDto>;
+  @useResult
   $Res call(
       {int id,
       @JsonKey(name: 'learning_point') String learningPoint,
@@ -1667,44 +1687,46 @@ abstract class $LearningPointDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LearningPointDtoCopyWithImpl<$Res>
+class _$LearningPointDtoCopyWithImpl<$Res, $Val extends LearningPointDto>
     implements $LearningPointDtoCopyWith<$Res> {
   _$LearningPointDtoCopyWithImpl(this._value, this._then);
 
-  final LearningPointDto _value;
   // ignore: unused_field
-  final $Res Function(LearningPointDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? learningPoint = freezed,
-    Object? difficultyId = freezed,
-    Object? topicId = freezed,
-    Object? topicName = freezed,
+    Object? id = null,
+    Object? learningPoint = null,
+    Object? difficultyId = null,
+    Object? topicId = null,
+    Object? topicName = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      learningPoint: learningPoint == freezed
+      learningPoint: null == learningPoint
           ? _value.learningPoint
           : learningPoint // ignore: cast_nullable_to_non_nullable
               as String,
-      difficultyId: difficultyId == freezed
+      difficultyId: null == difficultyId
           ? _value.difficultyId
           : difficultyId // ignore: cast_nullable_to_non_nullable
               as int,
-      topicId: topicId == freezed
+      topicId: null == topicId
           ? _value.topicId
           : topicId // ignore: cast_nullable_to_non_nullable
               as int,
-      topicName: topicName == freezed
+      topicName: null == topicName
           ? _value.topicName
           : topicName // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1715,6 +1737,7 @@ abstract class _$$_LearningPointDtoCopyWith<$Res>
           _$_LearningPointDto value, $Res Function(_$_LearningPointDto) then) =
       __$$_LearningPointDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int id,
       @JsonKey(name: 'learning_point') String learningPoint,
@@ -1725,41 +1748,39 @@ abstract class _$$_LearningPointDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_LearningPointDtoCopyWithImpl<$Res>
-    extends _$LearningPointDtoCopyWithImpl<$Res>
+    extends _$LearningPointDtoCopyWithImpl<$Res, _$_LearningPointDto>
     implements _$$_LearningPointDtoCopyWith<$Res> {
   __$$_LearningPointDtoCopyWithImpl(
       _$_LearningPointDto _value, $Res Function(_$_LearningPointDto) _then)
-      : super(_value, (v) => _then(v as _$_LearningPointDto));
+      : super(_value, _then);
 
-  @override
-  _$_LearningPointDto get _value => super._value as _$_LearningPointDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? learningPoint = freezed,
-    Object? difficultyId = freezed,
-    Object? topicId = freezed,
-    Object? topicName = freezed,
+    Object? id = null,
+    Object? learningPoint = null,
+    Object? difficultyId = null,
+    Object? topicId = null,
+    Object? topicName = null,
   }) {
     return _then(_$_LearningPointDto(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      learningPoint: learningPoint == freezed
+      learningPoint: null == learningPoint
           ? _value.learningPoint
           : learningPoint // ignore: cast_nullable_to_non_nullable
               as String,
-      difficultyId: difficultyId == freezed
+      difficultyId: null == difficultyId
           ? _value.difficultyId
           : difficultyId // ignore: cast_nullable_to_non_nullable
               as int,
-      topicId: topicId == freezed
+      topicId: null == topicId
           ? _value.topicId
           : topicId // ignore: cast_nullable_to_non_nullable
               as int,
-      topicName: topicName == freezed
+      topicName: null == topicName
           ? _value.topicName
           : topicName // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1806,27 +1827,24 @@ class _$_LearningPointDto extends _LearningPointDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LearningPointDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.learningPoint, learningPoint) &&
-            const DeepCollectionEquality()
-                .equals(other.difficultyId, difficultyId) &&
-            const DeepCollectionEquality().equals(other.topicId, topicId) &&
-            const DeepCollectionEquality().equals(other.topicName, topicName));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.learningPoint, learningPoint) ||
+                other.learningPoint == learningPoint) &&
+            (identical(other.difficultyId, difficultyId) ||
+                other.difficultyId == difficultyId) &&
+            (identical(other.topicId, topicId) || other.topicId == topicId) &&
+            (identical(other.topicName, topicName) ||
+                other.topicName == topicName));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(learningPoint),
-      const DeepCollectionEquality().hash(difficultyId),
-      const DeepCollectionEquality().hash(topicId),
-      const DeepCollectionEquality().hash(topicName));
+      runtimeType, id, learningPoint, difficultyId, topicId, topicName);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LearningPointDtoCopyWith<_$_LearningPointDto> get copyWith =>
       __$$_LearningPointDtoCopyWithImpl<_$_LearningPointDto>(this, _$identity);
 

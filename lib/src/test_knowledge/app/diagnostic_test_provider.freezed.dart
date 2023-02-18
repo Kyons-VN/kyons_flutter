@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'diagnostic_test_provider.dart';
 
@@ -37,7 +37,8 @@ mixin _$DiagnosticTestState {
 abstract class $DiagnosticTestStateCopyWith<$Res> {
   factory $DiagnosticTestStateCopyWith(
           DiagnosticTestState value, $Res Function(DiagnosticTestState) then) =
-      _$DiagnosticTestStateCopyWithImpl<$Res>;
+      _$DiagnosticTestStateCopyWithImpl<$Res, DiagnosticTestState>;
+  @useResult
   $Res call(
       {bool loading,
       Option<TestContent> content,
@@ -52,69 +53,71 @@ abstract class $DiagnosticTestStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DiagnosticTestStateCopyWithImpl<$Res>
+class _$DiagnosticTestStateCopyWithImpl<$Res, $Val extends DiagnosticTestState>
     implements $DiagnosticTestStateCopyWith<$Res> {
   _$DiagnosticTestStateCopyWithImpl(this._value, this._then);
 
-  final DiagnosticTestState _value;
   // ignore: unused_field
-  final $Res Function(DiagnosticTestState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loading = freezed,
-    Object? content = freezed,
-    Object? answersResult = freezed,
-    Object? progress = freezed,
-    Object? currentQuestionIndex = freezed,
-    Object? isSubmitted = freezed,
-    Object? hasError = freezed,
-    Object? testResult = freezed,
-    Object? lessonGroup = freezed,
-    Object? missingProgram = freezed,
+    Object? loading = null,
+    Object? content = null,
+    Object? answersResult = null,
+    Object? progress = null,
+    Object? currentQuestionIndex = null,
+    Object? isSubmitted = null,
+    Object? hasError = null,
+    Object? testResult = null,
+    Object? lessonGroup = null,
+    Object? missingProgram = null,
   }) {
     return _then(_value.copyWith(
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      content: content == freezed
+      content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as Option<TestContent>,
-      answersResult: answersResult == freezed
+      answersResult: null == answersResult
           ? _value.answersResult
           : answersResult // ignore: cast_nullable_to_non_nullable
               as Option<Map<String, String>>,
-      progress: progress == freezed
+      progress: null == progress
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as int,
-      currentQuestionIndex: currentQuestionIndex == freezed
+      currentQuestionIndex: null == currentQuestionIndex
           ? _value.currentQuestionIndex
           : currentQuestionIndex // ignore: cast_nullable_to_non_nullable
               as Option<int>,
-      isSubmitted: isSubmitted == freezed
+      isSubmitted: null == isSubmitted
           ? _value.isSubmitted
           : isSubmitted // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      testResult: testResult == freezed
+      testResult: null == testResult
           ? _value.testResult
           : testResult // ignore: cast_nullable_to_non_nullable
               as Option<TestResult>,
-      lessonGroup: lessonGroup == freezed
+      lessonGroup: null == lessonGroup
           ? _value.lessonGroup
           : lessonGroup // ignore: cast_nullable_to_non_nullable
               as Option<LessonGroup>,
-      missingProgram: missingProgram == freezed
+      missingProgram: null == missingProgram
           ? _value.missingProgram
           : missingProgram // ignore: cast_nullable_to_non_nullable
               as Option<bool>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -125,6 +128,7 @@ abstract class _$$_DiagnosticTestStateCopyWith<$Res>
           $Res Function(_$_DiagnosticTestState) then) =
       __$$_DiagnosticTestStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool loading,
       Option<TestContent> content,
@@ -140,66 +144,64 @@ abstract class _$$_DiagnosticTestStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_DiagnosticTestStateCopyWithImpl<$Res>
-    extends _$DiagnosticTestStateCopyWithImpl<$Res>
+    extends _$DiagnosticTestStateCopyWithImpl<$Res, _$_DiagnosticTestState>
     implements _$$_DiagnosticTestStateCopyWith<$Res> {
   __$$_DiagnosticTestStateCopyWithImpl(_$_DiagnosticTestState _value,
       $Res Function(_$_DiagnosticTestState) _then)
-      : super(_value, (v) => _then(v as _$_DiagnosticTestState));
+      : super(_value, _then);
 
-  @override
-  _$_DiagnosticTestState get _value => super._value as _$_DiagnosticTestState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loading = freezed,
-    Object? content = freezed,
-    Object? answersResult = freezed,
-    Object? progress = freezed,
-    Object? currentQuestionIndex = freezed,
-    Object? isSubmitted = freezed,
-    Object? hasError = freezed,
-    Object? testResult = freezed,
-    Object? lessonGroup = freezed,
-    Object? missingProgram = freezed,
+    Object? loading = null,
+    Object? content = null,
+    Object? answersResult = null,
+    Object? progress = null,
+    Object? currentQuestionIndex = null,
+    Object? isSubmitted = null,
+    Object? hasError = null,
+    Object? testResult = null,
+    Object? lessonGroup = null,
+    Object? missingProgram = null,
   }) {
     return _then(_$_DiagnosticTestState(
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      content: content == freezed
+      content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as Option<TestContent>,
-      answersResult: answersResult == freezed
+      answersResult: null == answersResult
           ? _value.answersResult
           : answersResult // ignore: cast_nullable_to_non_nullable
               as Option<Map<String, String>>,
-      progress: progress == freezed
+      progress: null == progress
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as int,
-      currentQuestionIndex: currentQuestionIndex == freezed
+      currentQuestionIndex: null == currentQuestionIndex
           ? _value.currentQuestionIndex
           : currentQuestionIndex // ignore: cast_nullable_to_non_nullable
               as Option<int>,
-      isSubmitted: isSubmitted == freezed
+      isSubmitted: null == isSubmitted
           ? _value.isSubmitted
           : isSubmitted // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      testResult: testResult == freezed
+      testResult: null == testResult
           ? _value.testResult
           : testResult // ignore: cast_nullable_to_non_nullable
               as Option<TestResult>,
-      lessonGroup: lessonGroup == freezed
+      lessonGroup: null == lessonGroup
           ? _value.lessonGroup
           : lessonGroup // ignore: cast_nullable_to_non_nullable
               as Option<LessonGroup>,
-      missingProgram: missingProgram == freezed
+      missingProgram: null == missingProgram
           ? _value.missingProgram
           : missingProgram // ignore: cast_nullable_to_non_nullable
               as Option<bool>,
@@ -253,40 +255,43 @@ class _$_DiagnosticTestState implements _DiagnosticTestState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DiagnosticTestState &&
-            const DeepCollectionEquality().equals(other.loading, loading) &&
-            const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality()
-                .equals(other.answersResult, answersResult) &&
-            const DeepCollectionEquality().equals(other.progress, progress) &&
-            const DeepCollectionEquality()
-                .equals(other.currentQuestionIndex, currentQuestionIndex) &&
-            const DeepCollectionEquality()
-                .equals(other.isSubmitted, isSubmitted) &&
-            const DeepCollectionEquality().equals(other.hasError, hasError) &&
-            const DeepCollectionEquality()
-                .equals(other.testResult, testResult) &&
-            const DeepCollectionEquality()
-                .equals(other.lessonGroup, lessonGroup) &&
-            const DeepCollectionEquality()
-                .equals(other.missingProgram, missingProgram));
+            (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.answersResult, answersResult) ||
+                other.answersResult == answersResult) &&
+            (identical(other.progress, progress) ||
+                other.progress == progress) &&
+            (identical(other.currentQuestionIndex, currentQuestionIndex) ||
+                other.currentQuestionIndex == currentQuestionIndex) &&
+            (identical(other.isSubmitted, isSubmitted) ||
+                other.isSubmitted == isSubmitted) &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError) &&
+            (identical(other.testResult, testResult) ||
+                other.testResult == testResult) &&
+            (identical(other.lessonGroup, lessonGroup) ||
+                other.lessonGroup == lessonGroup) &&
+            (identical(other.missingProgram, missingProgram) ||
+                other.missingProgram == missingProgram));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(loading),
-      const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(answersResult),
-      const DeepCollectionEquality().hash(progress),
-      const DeepCollectionEquality().hash(currentQuestionIndex),
-      const DeepCollectionEquality().hash(isSubmitted),
-      const DeepCollectionEquality().hash(hasError),
-      const DeepCollectionEquality().hash(testResult),
-      const DeepCollectionEquality().hash(lessonGroup),
-      const DeepCollectionEquality().hash(missingProgram));
+      loading,
+      content,
+      answersResult,
+      progress,
+      currentQuestionIndex,
+      isSubmitted,
+      hasError,
+      testResult,
+      lessonGroup,
+      missingProgram);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DiagnosticTestStateCopyWith<_$_DiagnosticTestState> get copyWith =>
       __$$_DiagnosticTestStateCopyWithImpl<_$_DiagnosticTestState>(
           this, _$identity);

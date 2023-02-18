@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'lesson_provider.dart';
 
@@ -29,38 +29,42 @@ mixin _$LessonState {
 abstract class $LessonStateCopyWith<$Res> {
   factory $LessonStateCopyWith(
           LessonState value, $Res Function(LessonState) then) =
-      _$LessonStateCopyWithImpl<$Res>;
+      _$LessonStateCopyWithImpl<$Res, LessonState>;
+  @useResult
   $Res call({Option<LessonGroup> lessonGroup, bool loading, bool hasError});
 }
 
 /// @nodoc
-class _$LessonStateCopyWithImpl<$Res> implements $LessonStateCopyWith<$Res> {
+class _$LessonStateCopyWithImpl<$Res, $Val extends LessonState>
+    implements $LessonStateCopyWith<$Res> {
   _$LessonStateCopyWithImpl(this._value, this._then);
 
-  final LessonState _value;
   // ignore: unused_field
-  final $Res Function(LessonState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lessonGroup = freezed,
-    Object? loading = freezed,
-    Object? hasError = freezed,
+    Object? lessonGroup = null,
+    Object? loading = null,
+    Object? hasError = null,
   }) {
     return _then(_value.copyWith(
-      lessonGroup: lessonGroup == freezed
+      lessonGroup: null == lessonGroup
           ? _value.lessonGroup
           : lessonGroup // ignore: cast_nullable_to_non_nullable
               as Option<LessonGroup>,
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -71,35 +75,35 @@ abstract class _$$_LessonStateCopyWith<$Res>
           _$_LessonState value, $Res Function(_$_LessonState) then) =
       __$$_LessonStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Option<LessonGroup> lessonGroup, bool loading, bool hasError});
 }
 
 /// @nodoc
-class __$$_LessonStateCopyWithImpl<$Res> extends _$LessonStateCopyWithImpl<$Res>
+class __$$_LessonStateCopyWithImpl<$Res>
+    extends _$LessonStateCopyWithImpl<$Res, _$_LessonState>
     implements _$$_LessonStateCopyWith<$Res> {
   __$$_LessonStateCopyWithImpl(
       _$_LessonState _value, $Res Function(_$_LessonState) _then)
-      : super(_value, (v) => _then(v as _$_LessonState));
+      : super(_value, _then);
 
-  @override
-  _$_LessonState get _value => super._value as _$_LessonState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lessonGroup = freezed,
-    Object? loading = freezed,
-    Object? hasError = freezed,
+    Object? lessonGroup = null,
+    Object? loading = null,
+    Object? hasError = null,
   }) {
     return _then(_$_LessonState(
-      lessonGroup: lessonGroup == freezed
+      lessonGroup: null == lessonGroup
           ? _value.lessonGroup
           : lessonGroup // ignore: cast_nullable_to_non_nullable
               as Option<LessonGroup>,
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -132,21 +136,19 @@ class _$_LessonState implements _LessonState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LessonState &&
-            const DeepCollectionEquality()
-                .equals(other.lessonGroup, lessonGroup) &&
-            const DeepCollectionEquality().equals(other.loading, loading) &&
-            const DeepCollectionEquality().equals(other.hasError, hasError));
+            (identical(other.lessonGroup, lessonGroup) ||
+                other.lessonGroup == lessonGroup) &&
+            (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(lessonGroup),
-      const DeepCollectionEquality().hash(loading),
-      const DeepCollectionEquality().hash(hasError));
+  int get hashCode => Object.hash(runtimeType, lessonGroup, loading, hasError);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LessonStateCopyWith<_$_LessonState> get copyWith =>
       __$$_LessonStateCopyWithImpl<_$_LessonState>(this, _$identity);
 }
@@ -184,7 +186,8 @@ mixin _$LessonStudyState {
 abstract class $LessonStudyStateCopyWith<$Res> {
   factory $LessonStudyStateCopyWith(
           LessonStudyState value, $Res Function(LessonStudyState) then) =
-      _$LessonStudyStateCopyWithImpl<$Res>;
+      _$LessonStudyStateCopyWithImpl<$Res, LessonStudyState>;
+  @useResult
   $Res call(
       {int selectedLessonIndex,
       TabMenu selectedTabIndex,
@@ -192,34 +195,36 @@ abstract class $LessonStudyStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LessonStudyStateCopyWithImpl<$Res>
+class _$LessonStudyStateCopyWithImpl<$Res, $Val extends LessonStudyState>
     implements $LessonStudyStateCopyWith<$Res> {
   _$LessonStudyStateCopyWithImpl(this._value, this._then);
 
-  final LessonStudyState _value;
   // ignore: unused_field
-  final $Res Function(LessonStudyState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedLessonIndex = freezed,
-    Object? selectedTabIndex = freezed,
-    Object? selectedLessonId = freezed,
+    Object? selectedLessonIndex = null,
+    Object? selectedTabIndex = null,
+    Object? selectedLessonId = null,
   }) {
     return _then(_value.copyWith(
-      selectedLessonIndex: selectedLessonIndex == freezed
+      selectedLessonIndex: null == selectedLessonIndex
           ? _value.selectedLessonIndex
           : selectedLessonIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      selectedTabIndex: selectedTabIndex == freezed
+      selectedTabIndex: null == selectedTabIndex
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
               as TabMenu,
-      selectedLessonId: selectedLessonId == freezed
+      selectedLessonId: null == selectedLessonId
           ? _value.selectedLessonId
           : selectedLessonId // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -230,6 +235,7 @@ abstract class _$$_LessonStudyStateCopyWith<$Res>
           _$_LessonStudyState value, $Res Function(_$_LessonStudyState) then) =
       __$$_LessonStudyStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int selectedLessonIndex,
       TabMenu selectedTabIndex,
@@ -238,31 +244,29 @@ abstract class _$$_LessonStudyStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_LessonStudyStateCopyWithImpl<$Res>
-    extends _$LessonStudyStateCopyWithImpl<$Res>
+    extends _$LessonStudyStateCopyWithImpl<$Res, _$_LessonStudyState>
     implements _$$_LessonStudyStateCopyWith<$Res> {
   __$$_LessonStudyStateCopyWithImpl(
       _$_LessonStudyState _value, $Res Function(_$_LessonStudyState) _then)
-      : super(_value, (v) => _then(v as _$_LessonStudyState));
+      : super(_value, _then);
 
-  @override
-  _$_LessonStudyState get _value => super._value as _$_LessonStudyState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedLessonIndex = freezed,
-    Object? selectedTabIndex = freezed,
-    Object? selectedLessonId = freezed,
+    Object? selectedLessonIndex = null,
+    Object? selectedTabIndex = null,
+    Object? selectedLessonId = null,
   }) {
     return _then(_$_LessonStudyState(
-      selectedLessonIndex: selectedLessonIndex == freezed
+      selectedLessonIndex: null == selectedLessonIndex
           ? _value.selectedLessonIndex
           : selectedLessonIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      selectedTabIndex: selectedTabIndex == freezed
+      selectedTabIndex: null == selectedTabIndex
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
               as TabMenu,
-      selectedLessonId: selectedLessonId == freezed
+      selectedLessonId: null == selectedLessonId
           ? _value.selectedLessonId
           : selectedLessonId // ignore: cast_nullable_to_non_nullable
               as String,
@@ -295,23 +299,21 @@ class _$_LessonStudyState implements _LessonStudyState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LessonStudyState &&
-            const DeepCollectionEquality()
-                .equals(other.selectedLessonIndex, selectedLessonIndex) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedTabIndex, selectedTabIndex) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedLessonId, selectedLessonId));
+            (identical(other.selectedLessonIndex, selectedLessonIndex) ||
+                other.selectedLessonIndex == selectedLessonIndex) &&
+            (identical(other.selectedTabIndex, selectedTabIndex) ||
+                other.selectedTabIndex == selectedTabIndex) &&
+            (identical(other.selectedLessonId, selectedLessonId) ||
+                other.selectedLessonId == selectedLessonId));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(selectedLessonIndex),
-      const DeepCollectionEquality().hash(selectedTabIndex),
-      const DeepCollectionEquality().hash(selectedLessonId));
+      runtimeType, selectedLessonIndex, selectedTabIndex, selectedLessonId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LessonStudyStateCopyWith<_$_LessonStudyState> get copyWith =>
       __$$_LessonStudyStateCopyWithImpl<_$_LessonStudyState>(this, _$identity);
 }

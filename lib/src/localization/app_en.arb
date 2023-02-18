@@ -5,6 +5,7 @@
   "password": "Password",
   "signIn": "Sign in",
   "signOut": "Sign out",
+  "signUp": "Sign up",
   "language": "Language",
   "invalidThing": "Invalid {thing}",
   "@invalidThing": {
@@ -20,6 +21,7 @@
   "lightMode": "Light mode",
   "dartMode": "Dark mode",
   "vi": "Tiếng Việt",
+  "languageName": "English",
   "en": "English",
   "thingWithStatus": "{thing} {status}",
   "@thingWithStatus": {
@@ -111,7 +113,16 @@
       }
     }
   },
-  "forgot_password":"Forgot password",
-  "does_not_have_account":"Does not have account?",
-  "register_here":"Register here"
+  "forgot_password": "Forgot password?",
+  "does_not_have_account": "Does not have account?",
+  "register_here": "Register here",
+  "ready_to_learn": "ready_to_learn",
+  "first_name": "first_name",
+  "last_name": "last_name",
+  "enter_email": "enter_email",
+  "enter_password": "enter_password",
+  "i_agree_privacy": "i_agree_privacy ",
+  "link_here": "link_here",
+  "create_account": "create_account",
+  "already_have_account": "already_have_account"
 }

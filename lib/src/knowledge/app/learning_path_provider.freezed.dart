@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'learning_path_provider.dart';
 
@@ -30,7 +30,8 @@ mixin _$LearningPathState {
 abstract class $LearningPathStateCopyWith<$Res> {
   factory $LearningPathStateCopyWith(
           LearningPathState value, $Res Function(LearningPathState) then) =
-      _$LearningPathStateCopyWithImpl<$Res>;
+      _$LearningPathStateCopyWithImpl<$Res, LearningPathState>;
+  @useResult
   $Res call(
       {bool loading,
       Option<LearningPath> learningPath,
@@ -39,39 +40,41 @@ abstract class $LearningPathStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LearningPathStateCopyWithImpl<$Res>
+class _$LearningPathStateCopyWithImpl<$Res, $Val extends LearningPathState>
     implements $LearningPathStateCopyWith<$Res> {
   _$LearningPathStateCopyWithImpl(this._value, this._then);
 
-  final LearningPathState _value;
   // ignore: unused_field
-  final $Res Function(LearningPathState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loading = freezed,
-    Object? learningPath = freezed,
-    Object? missingProgram = freezed,
-    Object? error = freezed,
+    Object? loading = null,
+    Object? learningPath = null,
+    Object? missingProgram = null,
+    Object? error = null,
   }) {
     return _then(_value.copyWith(
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      learningPath: learningPath == freezed
+      learningPath: null == learningPath
           ? _value.learningPath
           : learningPath // ignore: cast_nullable_to_non_nullable
               as Option<LearningPath>,
-      missingProgram: missingProgram == freezed
+      missingProgram: null == missingProgram
           ? _value.missingProgram
           : missingProgram // ignore: cast_nullable_to_non_nullable
               as bool,
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as Option<ApiFailure>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,6 +85,7 @@ abstract class _$$_LearningPathStateCopyWith<$Res>
           $Res Function(_$_LearningPathState) then) =
       __$$_LearningPathStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool loading,
       Option<LearningPath> learningPath,
@@ -91,36 +95,34 @@ abstract class _$$_LearningPathStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_LearningPathStateCopyWithImpl<$Res>
-    extends _$LearningPathStateCopyWithImpl<$Res>
+    extends _$LearningPathStateCopyWithImpl<$Res, _$_LearningPathState>
     implements _$$_LearningPathStateCopyWith<$Res> {
   __$$_LearningPathStateCopyWithImpl(
       _$_LearningPathState _value, $Res Function(_$_LearningPathState) _then)
-      : super(_value, (v) => _then(v as _$_LearningPathState));
+      : super(_value, _then);
 
-  @override
-  _$_LearningPathState get _value => super._value as _$_LearningPathState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loading = freezed,
-    Object? learningPath = freezed,
-    Object? missingProgram = freezed,
-    Object? error = freezed,
+    Object? loading = null,
+    Object? learningPath = null,
+    Object? missingProgram = null,
+    Object? error = null,
   }) {
     return _then(_$_LearningPathState(
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      learningPath: learningPath == freezed
+      learningPath: null == learningPath
           ? _value.learningPath
           : learningPath // ignore: cast_nullable_to_non_nullable
               as Option<LearningPath>,
-      missingProgram: missingProgram == freezed
+      missingProgram: null == missingProgram
           ? _value.missingProgram
           : missingProgram // ignore: cast_nullable_to_non_nullable
               as bool,
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as Option<ApiFailure>,
@@ -156,24 +158,21 @@ class _$_LearningPathState implements _LearningPathState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LearningPathState &&
-            const DeepCollectionEquality().equals(other.loading, loading) &&
-            const DeepCollectionEquality()
-                .equals(other.learningPath, learningPath) &&
-            const DeepCollectionEquality()
-                .equals(other.missingProgram, missingProgram) &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.learningPath, learningPath) ||
+                other.learningPath == learningPath) &&
+            (identical(other.missingProgram, missingProgram) ||
+                other.missingProgram == missingProgram) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(loading),
-      const DeepCollectionEquality().hash(learningPath),
-      const DeepCollectionEquality().hash(missingProgram),
-      const DeepCollectionEquality().hash(error));
+  int get hashCode =>
+      Object.hash(runtimeType, loading, learningPath, missingProgram, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LearningPathStateCopyWith<_$_LearningPathState> get copyWith =>
       __$$_LearningPathStateCopyWithImpl<_$_LearningPathState>(
           this, _$identity);

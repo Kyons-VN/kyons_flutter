@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'sign_up_provider.dart';
 
@@ -34,7 +34,8 @@ mixin _$SignUpState {
 abstract class $SignUpStateCopyWith<$Res> {
   factory $SignUpStateCopyWith(
           SignUpState value, $Res Function(SignUpState) then) =
-      _$SignUpStateCopyWithImpl<$Res>;
+      _$SignUpStateCopyWithImpl<$Res, SignUpState>;
+  @useResult
   $Res call(
       {EmailAddress emailAddress,
       String firstName,
@@ -46,53 +47,56 @@ abstract class $SignUpStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SignUpStateCopyWithImpl<$Res> implements $SignUpStateCopyWith<$Res> {
+class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
+    implements $SignUpStateCopyWith<$Res> {
   _$SignUpStateCopyWithImpl(this._value, this._then);
 
-  final SignUpState _value;
   // ignore: unused_field
-  final $Res Function(SignUpState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? emailAddress = freezed,
-    Object? firstName = freezed,
-    Object? lastName = freezed,
-    Object? password = freezed,
-    Object? isSubmitting = freezed,
-    Object? shouldShowErrorMessages = freezed,
-    Object? signUpOption = freezed,
+    Object? emailAddress = null,
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? password = null,
+    Object? isSubmitting = null,
+    Object? shouldShowErrorMessages = null,
+    Object? signUpOption = null,
   }) {
     return _then(_value.copyWith(
-      emailAddress: emailAddress == freezed
+      emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
               as EmailAddress,
-      firstName: firstName == freezed
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String,
-      lastName: lastName == freezed
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
-      password: password == freezed
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      isSubmitting: isSubmitting == freezed
+      isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      shouldShowErrorMessages: shouldShowErrorMessages == freezed
+      shouldShowErrorMessages: null == shouldShowErrorMessages
           ? _value.shouldShowErrorMessages
           : shouldShowErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
-      signUpOption: signUpOption == freezed
+      signUpOption: null == signUpOption
           ? _value.signUpOption
           : signUpOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -103,6 +107,7 @@ abstract class _$$_SignUpStateCopyWith<$Res>
           _$_SignUpState value, $Res Function(_$_SignUpState) then) =
       __$$_SignUpStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {EmailAddress emailAddress,
       String firstName,
@@ -114,51 +119,50 @@ abstract class _$$_SignUpStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SignUpStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
+class __$$_SignUpStateCopyWithImpl<$Res>
+    extends _$SignUpStateCopyWithImpl<$Res, _$_SignUpState>
     implements _$$_SignUpStateCopyWith<$Res> {
   __$$_SignUpStateCopyWithImpl(
       _$_SignUpState _value, $Res Function(_$_SignUpState) _then)
-      : super(_value, (v) => _then(v as _$_SignUpState));
+      : super(_value, _then);
 
-  @override
-  _$_SignUpState get _value => super._value as _$_SignUpState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? emailAddress = freezed,
-    Object? firstName = freezed,
-    Object? lastName = freezed,
-    Object? password = freezed,
-    Object? isSubmitting = freezed,
-    Object? shouldShowErrorMessages = freezed,
-    Object? signUpOption = freezed,
+    Object? emailAddress = null,
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? password = null,
+    Object? isSubmitting = null,
+    Object? shouldShowErrorMessages = null,
+    Object? signUpOption = null,
   }) {
     return _then(_$_SignUpState(
-      emailAddress: emailAddress == freezed
+      emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
               as EmailAddress,
-      firstName: firstName == freezed
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String,
-      lastName: lastName == freezed
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
-      password: password == freezed
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      isSubmitting: isSubmitting == freezed
+      isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      shouldShowErrorMessages: shouldShowErrorMessages == freezed
+      shouldShowErrorMessages: null == shouldShowErrorMessages
           ? _value.shouldShowErrorMessages
           : shouldShowErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
-      signUpOption: signUpOption == freezed
+      signUpOption: null == signUpOption
           ? _value.signUpOption
           : signUpOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
@@ -203,32 +207,30 @@ class _$_SignUpState implements _SignUpState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SignUpState &&
-            const DeepCollectionEquality()
-                .equals(other.emailAddress, emailAddress) &&
-            const DeepCollectionEquality().equals(other.firstName, firstName) &&
-            const DeepCollectionEquality().equals(other.lastName, lastName) &&
-            const DeepCollectionEquality().equals(other.password, password) &&
-            const DeepCollectionEquality()
-                .equals(other.isSubmitting, isSubmitting) &&
-            const DeepCollectionEquality().equals(
-                other.shouldShowErrorMessages, shouldShowErrorMessages) &&
-            const DeepCollectionEquality()
-                .equals(other.signUpOption, signUpOption));
+            (identical(other.emailAddress, emailAddress) ||
+                other.emailAddress == emailAddress) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.isSubmitting, isSubmitting) ||
+                other.isSubmitting == isSubmitting) &&
+            (identical(
+                    other.shouldShowErrorMessages, shouldShowErrorMessages) ||
+                other.shouldShowErrorMessages == shouldShowErrorMessages) &&
+            (identical(other.signUpOption, signUpOption) ||
+                other.signUpOption == signUpOption));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(emailAddress),
-      const DeepCollectionEquality().hash(firstName),
-      const DeepCollectionEquality().hash(lastName),
-      const DeepCollectionEquality().hash(password),
-      const DeepCollectionEquality().hash(isSubmitting),
-      const DeepCollectionEquality().hash(shouldShowErrorMessages),
-      const DeepCollectionEquality().hash(signUpOption));
+  int get hashCode => Object.hash(runtimeType, emailAddress, firstName,
+      lastName, password, isSubmitting, shouldShowErrorMessages, signUpOption);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SignUpStateCopyWith<_$_SignUpState> get copyWith =>
       __$$_SignUpStateCopyWithImpl<_$_SignUpState>(this, _$identity);
 }

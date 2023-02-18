@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'new_lesson_provider.dart';
 
@@ -32,7 +32,8 @@ mixin _$NewLessonState {
 abstract class $NewLessonStateCopyWith<$Res> {
   factory $NewLessonStateCopyWith(
           NewLessonState value, $Res Function(NewLessonState) then) =
-      _$NewLessonStateCopyWithImpl<$Res>;
+      _$NewLessonStateCopyWithImpl<$Res, NewLessonState>;
+  @useResult
   $Res call(
       {bool loading,
       bool submitting,
@@ -42,44 +43,46 @@ abstract class $NewLessonStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewLessonStateCopyWithImpl<$Res>
+class _$NewLessonStateCopyWithImpl<$Res, $Val extends NewLessonState>
     implements $NewLessonStateCopyWith<$Res> {
   _$NewLessonStateCopyWithImpl(this._value, this._then);
 
-  final NewLessonState _value;
   // ignore: unused_field
-  final $Res Function(NewLessonState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loading = freezed,
-    Object? submitting = freezed,
-    Object? learningPoints = freezed,
-    Object? hasError = freezed,
-    Object? selectedIds = freezed,
+    Object? loading = null,
+    Object? submitting = null,
+    Object? learningPoints = null,
+    Object? hasError = null,
+    Object? selectedIds = null,
   }) {
     return _then(_value.copyWith(
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      submitting: submitting == freezed
+      submitting: null == submitting
           ? _value.submitting
           : submitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      learningPoints: learningPoints == freezed
+      learningPoints: null == learningPoints
           ? _value.learningPoints
           : learningPoints // ignore: cast_nullable_to_non_nullable
               as Option<List<LearningPoint>>,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      selectedIds: selectedIds == freezed
+      selectedIds: null == selectedIds
           ? _value.selectedIds
           : selectedIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -90,6 +93,7 @@ abstract class _$$_NewLessonStateCopyWith<$Res>
           _$_NewLessonState value, $Res Function(_$_NewLessonState) then) =
       __$$_NewLessonStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool loading,
       bool submitting,
@@ -100,41 +104,39 @@ abstract class _$$_NewLessonStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_NewLessonStateCopyWithImpl<$Res>
-    extends _$NewLessonStateCopyWithImpl<$Res>
+    extends _$NewLessonStateCopyWithImpl<$Res, _$_NewLessonState>
     implements _$$_NewLessonStateCopyWith<$Res> {
   __$$_NewLessonStateCopyWithImpl(
       _$_NewLessonState _value, $Res Function(_$_NewLessonState) _then)
-      : super(_value, (v) => _then(v as _$_NewLessonState));
+      : super(_value, _then);
 
-  @override
-  _$_NewLessonState get _value => super._value as _$_NewLessonState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loading = freezed,
-    Object? submitting = freezed,
-    Object? learningPoints = freezed,
-    Object? hasError = freezed,
-    Object? selectedIds = freezed,
+    Object? loading = null,
+    Object? submitting = null,
+    Object? learningPoints = null,
+    Object? hasError = null,
+    Object? selectedIds = null,
   }) {
     return _then(_$_NewLessonState(
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      submitting: submitting == freezed
+      submitting: null == submitting
           ? _value.submitting
           : submitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      learningPoints: learningPoints == freezed
+      learningPoints: null == learningPoints
           ? _value.learningPoints
           : learningPoints // ignore: cast_nullable_to_non_nullable
               as Option<List<LearningPoint>>,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      selectedIds: selectedIds == freezed
+      selectedIds: null == selectedIds
           ? _value._selectedIds
           : selectedIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
@@ -164,6 +166,7 @@ class _$_NewLessonState implements _NewLessonState {
   final List<String> _selectedIds;
   @override
   List<String> get selectedIds {
+    if (_selectedIds is EqualUnmodifiableListView) return _selectedIds;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_selectedIds);
   }
@@ -178,12 +181,13 @@ class _$_NewLessonState implements _NewLessonState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NewLessonState &&
-            const DeepCollectionEquality().equals(other.loading, loading) &&
-            const DeepCollectionEquality()
-                .equals(other.submitting, submitting) &&
-            const DeepCollectionEquality()
-                .equals(other.learningPoints, learningPoints) &&
-            const DeepCollectionEquality().equals(other.hasError, hasError) &&
+            (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.submitting, submitting) ||
+                other.submitting == submitting) &&
+            (identical(other.learningPoints, learningPoints) ||
+                other.learningPoints == learningPoints) &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError) &&
             const DeepCollectionEquality()
                 .equals(other._selectedIds, _selectedIds));
   }
@@ -191,14 +195,15 @@ class _$_NewLessonState implements _NewLessonState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(loading),
-      const DeepCollectionEquality().hash(submitting),
-      const DeepCollectionEquality().hash(learningPoints),
-      const DeepCollectionEquality().hash(hasError),
+      loading,
+      submitting,
+      learningPoints,
+      hasError,
       const DeepCollectionEquality().hash(_selectedIds));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_NewLessonStateCopyWith<_$_NewLessonState> get copyWith =>
       __$$_NewLessonStateCopyWithImpl<_$_NewLessonState>(this, _$identity);
 }

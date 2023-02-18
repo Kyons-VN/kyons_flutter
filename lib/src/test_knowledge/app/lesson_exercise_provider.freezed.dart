@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'lesson_exercise_provider.dart';
 
@@ -35,7 +35,8 @@ mixin _$LessonExerciseState {
 abstract class $LessonExerciseStateCopyWith<$Res> {
   factory $LessonExerciseStateCopyWith(
           LessonExerciseState value, $Res Function(LessonExerciseState) then) =
-      _$LessonExerciseStateCopyWithImpl<$Res>;
+      _$LessonExerciseStateCopyWithImpl<$Res, LessonExerciseState>;
+  @useResult
   $Res call(
       {bool loading,
       Option<TestContent> content,
@@ -48,59 +49,61 @@ abstract class $LessonExerciseStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LessonExerciseStateCopyWithImpl<$Res>
+class _$LessonExerciseStateCopyWithImpl<$Res, $Val extends LessonExerciseState>
     implements $LessonExerciseStateCopyWith<$Res> {
   _$LessonExerciseStateCopyWithImpl(this._value, this._then);
 
-  final LessonExerciseState _value;
   // ignore: unused_field
-  final $Res Function(LessonExerciseState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loading = freezed,
-    Object? content = freezed,
-    Object? answersResult = freezed,
-    Object? progress = freezed,
-    Object? currentQuestionIndex = freezed,
-    Object? isSubmitted = freezed,
-    Object? hasError = freezed,
-    Object? testResult = freezed,
+    Object? loading = null,
+    Object? content = null,
+    Object? answersResult = null,
+    Object? progress = null,
+    Object? currentQuestionIndex = null,
+    Object? isSubmitted = null,
+    Object? hasError = null,
+    Object? testResult = null,
   }) {
     return _then(_value.copyWith(
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      content: content == freezed
+      content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as Option<TestContent>,
-      answersResult: answersResult == freezed
+      answersResult: null == answersResult
           ? _value.answersResult
           : answersResult // ignore: cast_nullable_to_non_nullable
               as Option<Map<String, String>>,
-      progress: progress == freezed
+      progress: null == progress
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as int,
-      currentQuestionIndex: currentQuestionIndex == freezed
+      currentQuestionIndex: null == currentQuestionIndex
           ? _value.currentQuestionIndex
           : currentQuestionIndex // ignore: cast_nullable_to_non_nullable
               as Option<int>,
-      isSubmitted: isSubmitted == freezed
+      isSubmitted: null == isSubmitted
           ? _value.isSubmitted
           : isSubmitted // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      testResult: testResult == freezed
+      testResult: null == testResult
           ? _value.testResult
           : testResult // ignore: cast_nullable_to_non_nullable
               as Option<TestResult>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -111,6 +114,7 @@ abstract class _$$_LessonExerciseStateCopyWith<$Res>
           $Res Function(_$_LessonExerciseState) then) =
       __$$_LessonExerciseStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool loading,
       Option<TestContent> content,
@@ -124,56 +128,54 @@ abstract class _$$_LessonExerciseStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_LessonExerciseStateCopyWithImpl<$Res>
-    extends _$LessonExerciseStateCopyWithImpl<$Res>
+    extends _$LessonExerciseStateCopyWithImpl<$Res, _$_LessonExerciseState>
     implements _$$_LessonExerciseStateCopyWith<$Res> {
   __$$_LessonExerciseStateCopyWithImpl(_$_LessonExerciseState _value,
       $Res Function(_$_LessonExerciseState) _then)
-      : super(_value, (v) => _then(v as _$_LessonExerciseState));
+      : super(_value, _then);
 
-  @override
-  _$_LessonExerciseState get _value => super._value as _$_LessonExerciseState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loading = freezed,
-    Object? content = freezed,
-    Object? answersResult = freezed,
-    Object? progress = freezed,
-    Object? currentQuestionIndex = freezed,
-    Object? isSubmitted = freezed,
-    Object? hasError = freezed,
-    Object? testResult = freezed,
+    Object? loading = null,
+    Object? content = null,
+    Object? answersResult = null,
+    Object? progress = null,
+    Object? currentQuestionIndex = null,
+    Object? isSubmitted = null,
+    Object? hasError = null,
+    Object? testResult = null,
   }) {
     return _then(_$_LessonExerciseState(
-      loading: loading == freezed
+      loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      content: content == freezed
+      content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as Option<TestContent>,
-      answersResult: answersResult == freezed
+      answersResult: null == answersResult
           ? _value.answersResult
           : answersResult // ignore: cast_nullable_to_non_nullable
               as Option<Map<String, String>>,
-      progress: progress == freezed
+      progress: null == progress
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as int,
-      currentQuestionIndex: currentQuestionIndex == freezed
+      currentQuestionIndex: null == currentQuestionIndex
           ? _value.currentQuestionIndex
           : currentQuestionIndex // ignore: cast_nullable_to_non_nullable
               as Option<int>,
-      isSubmitted: isSubmitted == freezed
+      isSubmitted: null == isSubmitted
           ? _value.isSubmitted
           : isSubmitted // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      testResult: testResult == freezed
+      testResult: null == testResult
           ? _value.testResult
           : testResult // ignore: cast_nullable_to_non_nullable
               as Option<TestResult>,
@@ -221,34 +223,29 @@ class _$_LessonExerciseState implements _LessonExerciseState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LessonExerciseState &&
-            const DeepCollectionEquality().equals(other.loading, loading) &&
-            const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality()
-                .equals(other.answersResult, answersResult) &&
-            const DeepCollectionEquality().equals(other.progress, progress) &&
-            const DeepCollectionEquality()
-                .equals(other.currentQuestionIndex, currentQuestionIndex) &&
-            const DeepCollectionEquality()
-                .equals(other.isSubmitted, isSubmitted) &&
-            const DeepCollectionEquality().equals(other.hasError, hasError) &&
-            const DeepCollectionEquality()
-                .equals(other.testResult, testResult));
+            (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.answersResult, answersResult) ||
+                other.answersResult == answersResult) &&
+            (identical(other.progress, progress) ||
+                other.progress == progress) &&
+            (identical(other.currentQuestionIndex, currentQuestionIndex) ||
+                other.currentQuestionIndex == currentQuestionIndex) &&
+            (identical(other.isSubmitted, isSubmitted) ||
+                other.isSubmitted == isSubmitted) &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError) &&
+            (identical(other.testResult, testResult) ||
+                other.testResult == testResult));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(loading),
-      const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(answersResult),
-      const DeepCollectionEquality().hash(progress),
-      const DeepCollectionEquality().hash(currentQuestionIndex),
-      const DeepCollectionEquality().hash(isSubmitted),
-      const DeepCollectionEquality().hash(hasError),
-      const DeepCollectionEquality().hash(testResult));
+  int get hashCode => Object.hash(runtimeType, loading, content, answersResult,
+      progress, currentQuestionIndex, isSubmitted, hasError, testResult);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LessonExerciseStateCopyWith<_$_LessonExerciseState> get copyWith =>
       __$$_LessonExerciseStateCopyWithImpl<_$_LessonExerciseState>(
           this, _$identity);

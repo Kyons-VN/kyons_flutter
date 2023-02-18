@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'current_user_provider.dart';
 
@@ -27,29 +27,32 @@ mixin _$CurrentUserState {
 abstract class $CurrentUserStateCopyWith<$Res> {
   factory $CurrentUserStateCopyWith(
           CurrentUserState value, $Res Function(CurrentUserState) then) =
-      _$CurrentUserStateCopyWithImpl<$Res>;
+      _$CurrentUserStateCopyWithImpl<$Res, CurrentUserState>;
+  @useResult
   $Res call({Option<User> userOption});
 }
 
 /// @nodoc
-class _$CurrentUserStateCopyWithImpl<$Res>
+class _$CurrentUserStateCopyWithImpl<$Res, $Val extends CurrentUserState>
     implements $CurrentUserStateCopyWith<$Res> {
   _$CurrentUserStateCopyWithImpl(this._value, this._then);
 
-  final CurrentUserState _value;
   // ignore: unused_field
-  final $Res Function(CurrentUserState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userOption = freezed,
+    Object? userOption = null,
   }) {
     return _then(_value.copyWith(
-      userOption: userOption == freezed
+      userOption: null == userOption
           ? _value.userOption
           : userOption // ignore: cast_nullable_to_non_nullable
               as Option<User>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -60,26 +63,25 @@ abstract class _$$_CurrentUserStateCopyWith<$Res>
           _$_CurrentUserState value, $Res Function(_$_CurrentUserState) then) =
       __$$_CurrentUserStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Option<User> userOption});
 }
 
 /// @nodoc
 class __$$_CurrentUserStateCopyWithImpl<$Res>
-    extends _$CurrentUserStateCopyWithImpl<$Res>
+    extends _$CurrentUserStateCopyWithImpl<$Res, _$_CurrentUserState>
     implements _$$_CurrentUserStateCopyWith<$Res> {
   __$$_CurrentUserStateCopyWithImpl(
       _$_CurrentUserState _value, $Res Function(_$_CurrentUserState) _then)
-      : super(_value, (v) => _then(v as _$_CurrentUserState));
+      : super(_value, _then);
 
-  @override
-  _$_CurrentUserState get _value => super._value as _$_CurrentUserState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userOption = freezed,
+    Object? userOption = null,
   }) {
     return _then(_$_CurrentUserState(
-      userOption: userOption == freezed
+      userOption: null == userOption
           ? _value.userOption
           : userOption // ignore: cast_nullable_to_non_nullable
               as Option<User>,
@@ -105,16 +107,16 @@ class _$_CurrentUserState implements _CurrentUserState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CurrentUserState &&
-            const DeepCollectionEquality()
-                .equals(other.userOption, userOption));
+            (identical(other.userOption, userOption) ||
+                other.userOption == userOption));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(userOption));
+  int get hashCode => Object.hash(runtimeType, userOption);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CurrentUserStateCopyWith<_$_CurrentUserState> get copyWith =>
       __$$_CurrentUserStateCopyWithImpl<_$_CurrentUserState>(this, _$identity);
 }

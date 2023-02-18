@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'api_failures.dart';
 
@@ -25,9 +25,9 @@ mixin _$ApiFailure<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? clientError,
-    TResult Function()? serverError,
-    TResult Function()? unAuthenticated,
+    TResult? Function()? clientError,
+    TResult? Function()? serverError,
+    TResult? Function()? unAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,9 +47,9 @@ mixin _$ApiFailure<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ClientError<T> value)? clientError,
-    TResult Function(ServerError<T> value)? serverError,
-    TResult Function(UnAuthenticated<T> value)? unAuthenticated,
+    TResult? Function(ClientError<T> value)? clientError,
+    TResult? Function(ServerError<T> value)? serverError,
+    TResult? Function(UnAuthenticated<T> value)? unAuthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,17 +66,18 @@ mixin _$ApiFailure<T> {
 abstract class $ApiFailureCopyWith<T, $Res> {
   factory $ApiFailureCopyWith(
           ApiFailure<T> value, $Res Function(ApiFailure<T>) then) =
-      _$ApiFailureCopyWithImpl<T, $Res>;
+      _$ApiFailureCopyWithImpl<T, $Res, ApiFailure<T>>;
 }
 
 /// @nodoc
-class _$ApiFailureCopyWithImpl<T, $Res>
+class _$ApiFailureCopyWithImpl<T, $Res, $Val extends ApiFailure<T>>
     implements $ApiFailureCopyWith<T, $Res> {
   _$ApiFailureCopyWithImpl(this._value, this._then);
 
-  final ApiFailure<T> _value;
   // ignore: unused_field
-  final $Res Function(ApiFailure<T>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -88,14 +89,11 @@ abstract class _$$ClientErrorCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$ClientErrorCopyWithImpl<T, $Res>
-    extends _$ApiFailureCopyWithImpl<T, $Res>
+    extends _$ApiFailureCopyWithImpl<T, $Res, _$ClientError<T>>
     implements _$$ClientErrorCopyWith<T, $Res> {
   __$$ClientErrorCopyWithImpl(
       _$ClientError<T> _value, $Res Function(_$ClientError<T>) _then)
-      : super(_value, (v) => _then(v as _$ClientError<T>));
-
-  @override
-  _$ClientError<T> get _value => super._value as _$ClientError<T>;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -130,9 +128,9 @@ class _$ClientError<T> implements ClientError<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? clientError,
-    TResult Function()? serverError,
-    TResult Function()? unAuthenticated,
+    TResult? Function()? clientError,
+    TResult? Function()? serverError,
+    TResult? Function()? unAuthenticated,
   }) {
     return clientError?.call();
   }
@@ -164,9 +162,9 @@ class _$ClientError<T> implements ClientError<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ClientError<T> value)? clientError,
-    TResult Function(ServerError<T> value)? serverError,
-    TResult Function(UnAuthenticated<T> value)? unAuthenticated,
+    TResult? Function(ClientError<T> value)? clientError,
+    TResult? Function(ServerError<T> value)? serverError,
+    TResult? Function(UnAuthenticated<T> value)? unAuthenticated,
   }) {
     return clientError?.call(this);
   }
@@ -199,14 +197,11 @@ abstract class _$$ServerErrorCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$ServerErrorCopyWithImpl<T, $Res>
-    extends _$ApiFailureCopyWithImpl<T, $Res>
+    extends _$ApiFailureCopyWithImpl<T, $Res, _$ServerError<T>>
     implements _$$ServerErrorCopyWith<T, $Res> {
   __$$ServerErrorCopyWithImpl(
       _$ServerError<T> _value, $Res Function(_$ServerError<T>) _then)
-      : super(_value, (v) => _then(v as _$ServerError<T>));
-
-  @override
-  _$ServerError<T> get _value => super._value as _$ServerError<T>;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -241,9 +236,9 @@ class _$ServerError<T> implements ServerError<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? clientError,
-    TResult Function()? serverError,
-    TResult Function()? unAuthenticated,
+    TResult? Function()? clientError,
+    TResult? Function()? serverError,
+    TResult? Function()? unAuthenticated,
   }) {
     return serverError?.call();
   }
@@ -275,9 +270,9 @@ class _$ServerError<T> implements ServerError<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ClientError<T> value)? clientError,
-    TResult Function(ServerError<T> value)? serverError,
-    TResult Function(UnAuthenticated<T> value)? unAuthenticated,
+    TResult? Function(ClientError<T> value)? clientError,
+    TResult? Function(ServerError<T> value)? serverError,
+    TResult? Function(UnAuthenticated<T> value)? unAuthenticated,
   }) {
     return serverError?.call(this);
   }
@@ -310,14 +305,11 @@ abstract class _$$UnAuthenticatedCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$UnAuthenticatedCopyWithImpl<T, $Res>
-    extends _$ApiFailureCopyWithImpl<T, $Res>
+    extends _$ApiFailureCopyWithImpl<T, $Res, _$UnAuthenticated<T>>
     implements _$$UnAuthenticatedCopyWith<T, $Res> {
   __$$UnAuthenticatedCopyWithImpl(
       _$UnAuthenticated<T> _value, $Res Function(_$UnAuthenticated<T>) _then)
-      : super(_value, (v) => _then(v as _$UnAuthenticated<T>));
-
-  @override
-  _$UnAuthenticated<T> get _value => super._value as _$UnAuthenticated<T>;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -352,9 +344,9 @@ class _$UnAuthenticated<T> implements UnAuthenticated<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? clientError,
-    TResult Function()? serverError,
-    TResult Function()? unAuthenticated,
+    TResult? Function()? clientError,
+    TResult? Function()? serverError,
+    TResult? Function()? unAuthenticated,
   }) {
     return unAuthenticated?.call();
   }
@@ -386,9 +378,9 @@ class _$UnAuthenticated<T> implements UnAuthenticated<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ClientError<T> value)? clientError,
-    TResult Function(ServerError<T> value)? serverError,
-    TResult Function(UnAuthenticated<T> value)? unAuthenticated,
+    TResult? Function(ClientError<T> value)? clientError,
+    TResult? Function(ServerError<T> value)? serverError,
+    TResult? Function(UnAuthenticated<T> value)? unAuthenticated,
   }) {
     return unAuthenticated?.call(this);
   }

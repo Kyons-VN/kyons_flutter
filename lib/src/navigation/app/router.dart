@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
+import 'package:kyons_flutter/src/authentication/view/reset_password.dart';
 import 'package:kyons_flutter/src/authentication/view/sign_in_page.dart';
+import 'package:kyons_flutter/src/authentication/view/sign_up_page.dart';
 import 'package:kyons_flutter/src/design/view/design_page.dart';
 // import 'package:kyons_flutter/src/game_template/game_route.dart';
 import 'package:kyons_flutter/src/home/view/home_page.dart';
@@ -104,6 +106,14 @@ class AppRouter {
           path: AppPaths.newLesonPage.path,
           builder: (BuildContext context, GoRouterState state) => const NewLessonPage(),
           redirect: (_, state) => guard(state, ref),
+        ),
+        GoRoute(
+          path: AppPaths.resetPassword.path,
+          builder: (BuildContext context, GoRouterState state) => const ResetPasswordPage(),
+        ),
+        GoRoute(
+          path: AppPaths.signUp.path,
+          builder: (BuildContext context, GoRouterState state) => const SignUpPage(),
         ),
       ],
       refreshListenable: GoRouterRefreshStream(authNotifier.stream),

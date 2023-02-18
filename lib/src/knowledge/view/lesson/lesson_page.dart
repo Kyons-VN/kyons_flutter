@@ -196,7 +196,7 @@ class LessonPage extends HookConsumerWidget {
                                 onPressed: () {
                                   showCallTutor(context);
                                 },
-                                child: const Icon(AppIcons.tutor),
+                                child: const Icon(AppIcons.callTutor),
                               ),
                               AppSizesUnit.sizedBox24,
                               if (lessonStudyState.selectedLessonIndex < lessonStudyNotifier.idsList.length - 1)

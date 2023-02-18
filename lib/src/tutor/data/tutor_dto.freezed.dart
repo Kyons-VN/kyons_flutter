@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'tutor_dto.dart';
 
@@ -35,36 +35,40 @@ mixin _$TutorSessionStatusDto {
 abstract class $TutorSessionStatusDtoCopyWith<$Res> {
   factory $TutorSessionStatusDtoCopyWith(TutorSessionStatusDto value,
           $Res Function(TutorSessionStatusDto) then) =
-      _$TutorSessionStatusDtoCopyWithImpl<$Res>;
+      _$TutorSessionStatusDtoCopyWithImpl<$Res, TutorSessionStatusDto>;
+  @useResult
   $Res call(
       {String status,
       @JsonKey(name: 'meeting_url', defaultValue: '') String meetingUrl});
 }
 
 /// @nodoc
-class _$TutorSessionStatusDtoCopyWithImpl<$Res>
+class _$TutorSessionStatusDtoCopyWithImpl<$Res,
+        $Val extends TutorSessionStatusDto>
     implements $TutorSessionStatusDtoCopyWith<$Res> {
   _$TutorSessionStatusDtoCopyWithImpl(this._value, this._then);
 
-  final TutorSessionStatusDto _value;
   // ignore: unused_field
-  final $Res Function(TutorSessionStatusDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? meetingUrl = freezed,
+    Object? status = null,
+    Object? meetingUrl = null,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      meetingUrl: meetingUrl == freezed
+      meetingUrl: null == meetingUrl
           ? _value.meetingUrl
           : meetingUrl // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -75,6 +79,7 @@ abstract class _$$_TutorSessionStatusDtoCopyWith<$Res>
           $Res Function(_$_TutorSessionStatusDto) then) =
       __$$_TutorSessionStatusDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String status,
       @JsonKey(name: 'meeting_url', defaultValue: '') String meetingUrl});
@@ -82,27 +87,24 @@ abstract class _$$_TutorSessionStatusDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_TutorSessionStatusDtoCopyWithImpl<$Res>
-    extends _$TutorSessionStatusDtoCopyWithImpl<$Res>
+    extends _$TutorSessionStatusDtoCopyWithImpl<$Res, _$_TutorSessionStatusDto>
     implements _$$_TutorSessionStatusDtoCopyWith<$Res> {
   __$$_TutorSessionStatusDtoCopyWithImpl(_$_TutorSessionStatusDto _value,
       $Res Function(_$_TutorSessionStatusDto) _then)
-      : super(_value, (v) => _then(v as _$_TutorSessionStatusDto));
+      : super(_value, _then);
 
-  @override
-  _$_TutorSessionStatusDto get _value =>
-      super._value as _$_TutorSessionStatusDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? meetingUrl = freezed,
+    Object? status = null,
+    Object? meetingUrl = null,
   }) {
     return _then(_$_TutorSessionStatusDto(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      meetingUrl: meetingUrl == freezed
+      meetingUrl: null == meetingUrl
           ? _value.meetingUrl
           : meetingUrl // ignore: cast_nullable_to_non_nullable
               as String,
@@ -137,20 +139,18 @@ class _$_TutorSessionStatusDto extends _TutorSessionStatusDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TutorSessionStatusDto &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.meetingUrl, meetingUrl));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.meetingUrl, meetingUrl) ||
+                other.meetingUrl == meetingUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(meetingUrl));
+  int get hashCode => Object.hash(runtimeType, status, meetingUrl);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TutorSessionStatusDtoCopyWith<_$_TutorSessionStatusDto> get copyWith =>
       __$$_TutorSessionStatusDtoCopyWithImpl<_$_TutorSessionStatusDto>(
           this, _$identity);

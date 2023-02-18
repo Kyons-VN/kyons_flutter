@@ -1,16 +1,18 @@
 import 'package:another_flushbar/flushbar.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/boostrap/config_reader.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/current_user_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/sign_in_provider.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
 import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
+import 'package:kyons_flutter/src/settings/app/settings_controller.dart';
 import 'package:shared_package/shared_package.dart';
-import 'package:url_launcher/link.dart';
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -23,35 +25,19 @@ class SignInPage extends ConsumerWidget {
         resizeToAvoidBottomInset: false,
         backgroundColor: AppColors.primaryBlue,
         body: SafeArea(
-          child: Center(
-            child: Container(
-              width: context.isXsScreen() ? double.infinity : 400,
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                        onDoubleTap: () => ref.read(signInProvider.notifier).initial(),
-                        child: SizedBox(height: 100, child: AppAssets.logoSVG)),
-                    const SizedBox(height: 48),
-                    const SignInForm(),
-                    Column(
-                      children: [
-                        Link(
-                          uri: Uri.parse('${ConfigReader.clientApi()}/reset-password'),
-                          target: LinkTarget.blank,
-                          builder: (BuildContext ctx, FollowLink? openLink) =>
-                              TextButton(onPressed: openLink, child: Text(t(context).forgot_password)),
-                        ),
-                      ],
-                    ),
-                    if (context.isXsScreen() || context.isLargerThanMdScreen()) const SizedBox(height: 200),
-                  ],
+          child: context.isXsScreen()
+              ? Container(
+                  width: double.infinity,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: AppSizesUnit.medium24, vertical: AppSizesUnit.large48),
+                  child: SignInFormWrapper(ref: ref),
+                )
+              : Center(
+                  child: SizedBox(
+                    width: 434,
+                    child: SignInFormWrapper(ref: ref),
+                  ),
                 ),
-              ),
-            ),
-          ),
           // : Center(
           //     child: Heading(
           //     1,
@@ -59,16 +45,85 @@ class SignInPage extends ConsumerWidget {
           //     color: AppColors.white,
           //   )),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => context.push(AppPaths.settings.path),
-          child: const Icon(Icons.settings),
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () => context.push(AppPaths.settings.path),
+        //   child: const Icon(Icons.settings),
+        // ),
       ),
     );
   }
 }
 
-class SignInForm extends ConsumerWidget {
+class LocaleOption extends Locale {
+  LocaleOption(super.languageCode);
+
+  String get name {
+    return lookupAppLocalizations(this).languageName;
+  }
+}
+
+class SignInFormWrapper extends StatelessWidget {
+  final WidgetRef ref;
+  const SignInFormWrapper({super.key, required this.ref});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+              onDoubleTap: () => ref.read(signInProvider.notifier).initial(),
+              child: SizedBox(height: 100, child: AppAssets.logoSVG)),
+          const SizedBox(height: 48),
+          const SignInForm(),
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white, height: 2),
+                    children: [
+                      TextSpan(
+                        text: t(context).forgot_password,
+                        style: const TextStyle(color: AppColors.orange),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            print('OD');
+                            context.go(AppPaths.resetPassword.path);
+                          },
+                      ),
+                      TextSpan(text: "\n${t(context).does_not_have_account} "),
+                      TextSpan(
+                        text: t(context).register_here,
+                        style: const TextStyle(color: AppColors.orange),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            context.go(AppPaths.signUp.path);
+                          },
+                      ),
+                    ],
+                  ),
+                ),
+                AppSizesUnit.sizedBox24,
+                CupertinoPickerOptions<LocaleOption>(
+                  options: AppLocalizations.supportedLocales.map((e) => LocaleOption(e.languageCode)).toList(),
+                  onPicked: (v) => ref.read(settingsNotifierProvider).updateLocale(v),
+                  selectedOption: LocaleOption(Localizations.localeOf(context).languageCode),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SignInForm extends HookConsumerWidget {
   const SignInForm({Key? key}) : super(key: key);
 
   @override
@@ -78,6 +133,7 @@ class SignInForm extends ConsumerWidget {
     final authNotifier = ref.watch(authNotifierProvider.notifier);
     final signInNotifier = ref.read(signInProvider.notifier);
     final currentUserNotifier = ref.read(currentUserProvider.notifier);
+    final showPassword = useState(true);
 
     ref.listen<SignInState>(signInProvider, (previous, next) {
       if (!(previous!.isSubmitting && !next.isSubmitting)) return;
@@ -128,8 +184,23 @@ class SignInForm extends ConsumerWidget {
             decoration: InputDecoration(
               border: const OutlineInputBorder(),
               labelText: t(context).password,
+              suffixIcon: FocusableActionDetector(
+                mouseCursor: SystemMouseCursors.click,
+                onShowHoverHighlight: (value) => {},
+                child: GestureDetector(
+                  onTap: () {
+                    showPassword.value = !showPassword.value;
+                  },
+                  child: IconTheme(
+                    data: IconTheme.of(context),
+                    child: Icon(
+                      showPassword.value ? AppIcons.visibility : AppIcons.visibilityOff,
+                    ),
+                  ),
+                ),
+              ),
             ),
-            obscureText: true,
+            obscureText: showPassword.value,
             onChanged: signInNotifier.passwordChanged,
             validator: (_) => signInState.password.isEmpty ? t(context).invalidThing(t(context).password) : null,
           ),
@@ -152,7 +223,7 @@ class SignInForm extends ConsumerWidget {
               ),
             ],
           ),
-          const SizedBox(height: 8),
+          AppSizesUnit.sizedBox8,
         ],
       ),
     );

@@ -5,6 +5,7 @@
   "password": "Mật khẩu",
   "signIn": "Đăng nhập",
   "signOut": "Đăng xuất",
+  "signUp": "Đăng ký",
   "language": "Ngôn ngữ",
   "invalidThing": "{thing} chưa đúng",
   "@invalidThing": {
@@ -20,6 +21,7 @@
   "lightMode": "Nền sáng",
   "dartMode": "Nền tối",
   "vi": "Tiếng Việt",
+  "languageName": "Tiếng Việt",
   "en": "English",
   "thingWithStatus": "{thing} {status}",
   "@thingWithStatus": {
@@ -111,7 +113,16 @@
       }
     }
   },
-  "forgot_password":"Quên mật khẩu?",
-  "does_not_have_account":"Bạn chưa có tài khoản?",
-  "register_here":"Đăng ký tài khoản"
+  "forgot_password": "Quên mật khẩu?",
+  "does_not_have_account": "Bạn chưa có tài khoản?",
+  "register_here": "Đăng ký tại đây",
+  "ready_to_learn": "Bạn đã sẵn sàng học ít nhưng trúng đích cùng Kyons chưa?",
+  "first_name": "Tên",
+  "last_name": "Họ",
+  "enter_email": "Nhập email của bạn",
+  "enter_password": "Nhập mật khẩu",
+  "i_agree_privacy": "Tôi đồng ý với điều kiện và điều khoản sử dụng của Kyons. Xem điều kiện và điều khoản sử dụng tại ",
+  "link_here": "đây",
+  "create_account": "Tạo tài khoản",
+  "already_have_account": "Đã có tài khoản?"
 }

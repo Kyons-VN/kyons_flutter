@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'failures.dart';
 
@@ -31,13 +31,14 @@ mixin _$ValueFailure<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? failedValue, String? reason)? invalidEmail,
-    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
-    TResult Function(T? failedValue, String? reason)? emptyValue,
-    TResult Function(T? failedValue)? multilines,
-    TResult Function(T? failedValue, int? maxLength)? longText,
-    TResult Function(T? failedValue, int? maxLength)? longList,
-    TResult Function(T? failedValue, String? reason)? localStorage,
+    TResult? Function(T? failedValue, String? reason)? invalidEmail,
+    TResult? Function(T? failedValue, int? minLength, String? reason)?
+        shortText,
+    TResult? Function(T? failedValue, String? reason)? emptyValue,
+    TResult? Function(T? failedValue)? multilines,
+    TResult? Function(T? failedValue, int? maxLength)? longText,
+    TResult? Function(T? failedValue, int? maxLength)? longList,
+    TResult? Function(T? failedValue, String? reason)? localStorage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,13 +66,13 @@ mixin _$ValueFailure<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidEmail<T> value)? invalidEmail,
-    TResult Function(ShortText<T> value)? shortText,
-    TResult Function(EmptyValue<T> value)? emptyValue,
-    TResult Function(Multilines<T> value)? multilines,
-    TResult Function(LongText<T> value)? longText,
-    TResult Function(LongList<T> value)? longList,
-    TResult Function(LocalStorage<T> value)? localStorage,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(ShortText<T> value)? shortText,
+    TResult? Function(EmptyValue<T> value)? emptyValue,
+    TResult? Function(Multilines<T> value)? multilines,
+    TResult? Function(LongText<T> value)? longText,
+    TResult? Function(LongList<T> value)? longList,
+    TResult? Function(LocalStorage<T> value)? localStorage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,29 +97,32 @@ mixin _$ValueFailure<T> {
 abstract class $ValueFailureCopyWith<T, $Res> {
   factory $ValueFailureCopyWith(
           ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
-      _$ValueFailureCopyWithImpl<T, $Res>;
+      _$ValueFailureCopyWithImpl<T, $Res, ValueFailure<T>>;
+  @useResult
   $Res call({T? failedValue});
 }
 
 /// @nodoc
-class _$ValueFailureCopyWithImpl<T, $Res>
+class _$ValueFailureCopyWithImpl<T, $Res, $Val extends ValueFailure<T>>
     implements $ValueFailureCopyWith<T, $Res> {
   _$ValueFailureCopyWithImpl(this._value, this._then);
 
-  final ValueFailure<T> _value;
   // ignore: unused_field
-  final $Res Function(ValueFailure<T>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? failedValue = freezed,
   }) {
     return _then(_value.copyWith(
-      failedValue: failedValue == freezed
+      failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as T?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -129,31 +133,30 @@ abstract class _$$InvalidEmailCopyWith<T, $Res>
           _$InvalidEmail<T> value, $Res Function(_$InvalidEmail<T>) then) =
       __$$InvalidEmailCopyWithImpl<T, $Res>;
   @override
+  @useResult
   $Res call({T? failedValue, String? reason});
 }
 
 /// @nodoc
 class __$$InvalidEmailCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$InvalidEmail<T>>
     implements _$$InvalidEmailCopyWith<T, $Res> {
   __$$InvalidEmailCopyWithImpl(
       _$InvalidEmail<T> _value, $Res Function(_$InvalidEmail<T>) _then)
-      : super(_value, (v) => _then(v as _$InvalidEmail<T>));
+      : super(_value, _then);
 
-  @override
-  _$InvalidEmail<T> get _value => super._value as _$InvalidEmail<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? failedValue = freezed,
     Object? reason = freezed,
   }) {
     return _then(_$InvalidEmail<T>(
-      failedValue: failedValue == freezed
+      failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as T?,
-      reason: reason == freezed
+      reason: freezed == reason
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -183,17 +186,16 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
             other is _$InvalidEmail<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
-            const DeepCollectionEquality().equals(other.reason, reason));
+            (identical(other.reason, reason) || other.reason == reason));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(failedValue),
-      const DeepCollectionEquality().hash(reason));
+      runtimeType, const DeepCollectionEquality().hash(failedValue), reason);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$InvalidEmailCopyWith<T, _$InvalidEmail<T>> get copyWith =>
       __$$InvalidEmailCopyWithImpl<T, _$InvalidEmail<T>>(this, _$identity);
 
@@ -215,13 +217,14 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? failedValue, String? reason)? invalidEmail,
-    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
-    TResult Function(T? failedValue, String? reason)? emptyValue,
-    TResult Function(T? failedValue)? multilines,
-    TResult Function(T? failedValue, int? maxLength)? longText,
-    TResult Function(T? failedValue, int? maxLength)? longList,
-    TResult Function(T? failedValue, String? reason)? localStorage,
+    TResult? Function(T? failedValue, String? reason)? invalidEmail,
+    TResult? Function(T? failedValue, int? minLength, String? reason)?
+        shortText,
+    TResult? Function(T? failedValue, String? reason)? emptyValue,
+    TResult? Function(T? failedValue)? multilines,
+    TResult? Function(T? failedValue, int? maxLength)? longText,
+    TResult? Function(T? failedValue, int? maxLength)? longList,
+    TResult? Function(T? failedValue, String? reason)? localStorage,
   }) {
     return invalidEmail?.call(failedValue, reason);
   }
@@ -261,13 +264,13 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidEmail<T> value)? invalidEmail,
-    TResult Function(ShortText<T> value)? shortText,
-    TResult Function(EmptyValue<T> value)? emptyValue,
-    TResult Function(Multilines<T> value)? multilines,
-    TResult Function(LongText<T> value)? longText,
-    TResult Function(LongList<T> value)? longList,
-    TResult Function(LocalStorage<T> value)? localStorage,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(ShortText<T> value)? shortText,
+    TResult? Function(EmptyValue<T> value)? emptyValue,
+    TResult? Function(Multilines<T> value)? multilines,
+    TResult? Function(LongText<T> value)? longText,
+    TResult? Function(LongList<T> value)? longList,
+    TResult? Function(LocalStorage<T> value)? localStorage,
   }) {
     return invalidEmail?.call(this);
   }
@@ -311,20 +314,19 @@ abstract class _$$ShortTextCopyWith<T, $Res>
           _$ShortText<T> value, $Res Function(_$ShortText<T>) then) =
       __$$ShortTextCopyWithImpl<T, $Res>;
   @override
+  @useResult
   $Res call({T? failedValue, int? minLength, String? reason});
 }
 
 /// @nodoc
 class __$$ShortTextCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$ShortText<T>>
     implements _$$ShortTextCopyWith<T, $Res> {
   __$$ShortTextCopyWithImpl(
       _$ShortText<T> _value, $Res Function(_$ShortText<T>) _then)
-      : super(_value, (v) => _then(v as _$ShortText<T>));
+      : super(_value, _then);
 
-  @override
-  _$ShortText<T> get _value => super._value as _$ShortText<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? failedValue = freezed,
@@ -332,15 +334,15 @@ class __$$ShortTextCopyWithImpl<T, $Res>
     Object? reason = freezed,
   }) {
     return _then(_$ShortText<T>(
-      failedValue: failedValue == freezed
+      failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as T?,
-      minLength: minLength == freezed
+      minLength: freezed == minLength
           ? _value.minLength
           : minLength // ignore: cast_nullable_to_non_nullable
               as int?,
-      reason: reason == freezed
+      reason: freezed == reason
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -372,19 +374,18 @@ class _$ShortText<T> implements ShortText<T> {
             other is _$ShortText<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
-            const DeepCollectionEquality().equals(other.minLength, minLength) &&
-            const DeepCollectionEquality().equals(other.reason, reason));
+            (identical(other.minLength, minLength) ||
+                other.minLength == minLength) &&
+            (identical(other.reason, reason) || other.reason == reason));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(failedValue),
-      const DeepCollectionEquality().hash(minLength),
-      const DeepCollectionEquality().hash(reason));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(failedValue), minLength, reason);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$ShortTextCopyWith<T, _$ShortText<T>> get copyWith =>
       __$$ShortTextCopyWithImpl<T, _$ShortText<T>>(this, _$identity);
 
@@ -406,13 +407,14 @@ class _$ShortText<T> implements ShortText<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? failedValue, String? reason)? invalidEmail,
-    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
-    TResult Function(T? failedValue, String? reason)? emptyValue,
-    TResult Function(T? failedValue)? multilines,
-    TResult Function(T? failedValue, int? maxLength)? longText,
-    TResult Function(T? failedValue, int? maxLength)? longList,
-    TResult Function(T? failedValue, String? reason)? localStorage,
+    TResult? Function(T? failedValue, String? reason)? invalidEmail,
+    TResult? Function(T? failedValue, int? minLength, String? reason)?
+        shortText,
+    TResult? Function(T? failedValue, String? reason)? emptyValue,
+    TResult? Function(T? failedValue)? multilines,
+    TResult? Function(T? failedValue, int? maxLength)? longText,
+    TResult? Function(T? failedValue, int? maxLength)? longList,
+    TResult? Function(T? failedValue, String? reason)? localStorage,
   }) {
     return shortText?.call(failedValue, minLength, reason);
   }
@@ -452,13 +454,13 @@ class _$ShortText<T> implements ShortText<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidEmail<T> value)? invalidEmail,
-    TResult Function(ShortText<T> value)? shortText,
-    TResult Function(EmptyValue<T> value)? emptyValue,
-    TResult Function(Multilines<T> value)? multilines,
-    TResult Function(LongText<T> value)? longText,
-    TResult Function(LongList<T> value)? longList,
-    TResult Function(LocalStorage<T> value)? localStorage,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(ShortText<T> value)? shortText,
+    TResult? Function(EmptyValue<T> value)? emptyValue,
+    TResult? Function(Multilines<T> value)? multilines,
+    TResult? Function(LongText<T> value)? longText,
+    TResult? Function(LongList<T> value)? longList,
+    TResult? Function(LocalStorage<T> value)? localStorage,
   }) {
     return shortText?.call(this);
   }
@@ -505,31 +507,30 @@ abstract class _$$EmptyValueCopyWith<T, $Res>
           _$EmptyValue<T> value, $Res Function(_$EmptyValue<T>) then) =
       __$$EmptyValueCopyWithImpl<T, $Res>;
   @override
+  @useResult
   $Res call({T? failedValue, String? reason});
 }
 
 /// @nodoc
 class __$$EmptyValueCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$EmptyValue<T>>
     implements _$$EmptyValueCopyWith<T, $Res> {
   __$$EmptyValueCopyWithImpl(
       _$EmptyValue<T> _value, $Res Function(_$EmptyValue<T>) _then)
-      : super(_value, (v) => _then(v as _$EmptyValue<T>));
+      : super(_value, _then);
 
-  @override
-  _$EmptyValue<T> get _value => super._value as _$EmptyValue<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? failedValue = freezed,
     Object? reason = freezed,
   }) {
     return _then(_$EmptyValue<T>(
-      failedValue: failedValue == freezed
+      failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as T?,
-      reason: reason == freezed
+      reason: freezed == reason
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -559,17 +560,16 @@ class _$EmptyValue<T> implements EmptyValue<T> {
             other is _$EmptyValue<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
-            const DeepCollectionEquality().equals(other.reason, reason));
+            (identical(other.reason, reason) || other.reason == reason));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(failedValue),
-      const DeepCollectionEquality().hash(reason));
+      runtimeType, const DeepCollectionEquality().hash(failedValue), reason);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$EmptyValueCopyWith<T, _$EmptyValue<T>> get copyWith =>
       __$$EmptyValueCopyWithImpl<T, _$EmptyValue<T>>(this, _$identity);
 
@@ -591,13 +591,14 @@ class _$EmptyValue<T> implements EmptyValue<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? failedValue, String? reason)? invalidEmail,
-    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
-    TResult Function(T? failedValue, String? reason)? emptyValue,
-    TResult Function(T? failedValue)? multilines,
-    TResult Function(T? failedValue, int? maxLength)? longText,
-    TResult Function(T? failedValue, int? maxLength)? longList,
-    TResult Function(T? failedValue, String? reason)? localStorage,
+    TResult? Function(T? failedValue, String? reason)? invalidEmail,
+    TResult? Function(T? failedValue, int? minLength, String? reason)?
+        shortText,
+    TResult? Function(T? failedValue, String? reason)? emptyValue,
+    TResult? Function(T? failedValue)? multilines,
+    TResult? Function(T? failedValue, int? maxLength)? longText,
+    TResult? Function(T? failedValue, int? maxLength)? longList,
+    TResult? Function(T? failedValue, String? reason)? localStorage,
   }) {
     return emptyValue?.call(failedValue, reason);
   }
@@ -637,13 +638,13 @@ class _$EmptyValue<T> implements EmptyValue<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidEmail<T> value)? invalidEmail,
-    TResult Function(ShortText<T> value)? shortText,
-    TResult Function(EmptyValue<T> value)? emptyValue,
-    TResult Function(Multilines<T> value)? multilines,
-    TResult Function(LongText<T> value)? longText,
-    TResult Function(LongList<T> value)? longList,
-    TResult Function(LocalStorage<T> value)? localStorage,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(ShortText<T> value)? shortText,
+    TResult? Function(EmptyValue<T> value)? emptyValue,
+    TResult? Function(Multilines<T> value)? multilines,
+    TResult? Function(LongText<T> value)? longText,
+    TResult? Function(LongList<T> value)? longList,
+    TResult? Function(LocalStorage<T> value)? localStorage,
   }) {
     return emptyValue?.call(this);
   }
@@ -687,26 +688,25 @@ abstract class _$$MultilinesCopyWith<T, $Res>
           _$Multilines<T> value, $Res Function(_$Multilines<T>) then) =
       __$$MultilinesCopyWithImpl<T, $Res>;
   @override
+  @useResult
   $Res call({T? failedValue});
 }
 
 /// @nodoc
 class __$$MultilinesCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$Multilines<T>>
     implements _$$MultilinesCopyWith<T, $Res> {
   __$$MultilinesCopyWithImpl(
       _$Multilines<T> _value, $Res Function(_$Multilines<T>) _then)
-      : super(_value, (v) => _then(v as _$Multilines<T>));
+      : super(_value, _then);
 
-  @override
-  _$Multilines<T> get _value => super._value as _$Multilines<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? failedValue = freezed,
   }) {
     return _then(_$Multilines<T>(
-      failedValue: failedValue == freezed
+      failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as T?,
@@ -742,6 +742,7 @@ class _$Multilines<T> implements Multilines<T> {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$MultilinesCopyWith<T, _$Multilines<T>> get copyWith =>
       __$$MultilinesCopyWithImpl<T, _$Multilines<T>>(this, _$identity);
 
@@ -763,13 +764,14 @@ class _$Multilines<T> implements Multilines<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? failedValue, String? reason)? invalidEmail,
-    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
-    TResult Function(T? failedValue, String? reason)? emptyValue,
-    TResult Function(T? failedValue)? multilines,
-    TResult Function(T? failedValue, int? maxLength)? longText,
-    TResult Function(T? failedValue, int? maxLength)? longList,
-    TResult Function(T? failedValue, String? reason)? localStorage,
+    TResult? Function(T? failedValue, String? reason)? invalidEmail,
+    TResult? Function(T? failedValue, int? minLength, String? reason)?
+        shortText,
+    TResult? Function(T? failedValue, String? reason)? emptyValue,
+    TResult? Function(T? failedValue)? multilines,
+    TResult? Function(T? failedValue, int? maxLength)? longText,
+    TResult? Function(T? failedValue, int? maxLength)? longList,
+    TResult? Function(T? failedValue, String? reason)? localStorage,
   }) {
     return multilines?.call(failedValue);
   }
@@ -809,13 +811,13 @@ class _$Multilines<T> implements Multilines<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidEmail<T> value)? invalidEmail,
-    TResult Function(ShortText<T> value)? shortText,
-    TResult Function(EmptyValue<T> value)? emptyValue,
-    TResult Function(Multilines<T> value)? multilines,
-    TResult Function(LongText<T> value)? longText,
-    TResult Function(LongList<T> value)? longList,
-    TResult Function(LocalStorage<T> value)? localStorage,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(ShortText<T> value)? shortText,
+    TResult? Function(EmptyValue<T> value)? emptyValue,
+    TResult? Function(Multilines<T> value)? multilines,
+    TResult? Function(LongText<T> value)? longText,
+    TResult? Function(LongList<T> value)? longList,
+    TResult? Function(LocalStorage<T> value)? localStorage,
   }) {
     return multilines?.call(this);
   }
@@ -857,31 +859,30 @@ abstract class _$$LongTextCopyWith<T, $Res>
           _$LongText<T> value, $Res Function(_$LongText<T>) then) =
       __$$LongTextCopyWithImpl<T, $Res>;
   @override
+  @useResult
   $Res call({T? failedValue, int? maxLength});
 }
 
 /// @nodoc
 class __$$LongTextCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$LongText<T>>
     implements _$$LongTextCopyWith<T, $Res> {
   __$$LongTextCopyWithImpl(
       _$LongText<T> _value, $Res Function(_$LongText<T>) _then)
-      : super(_value, (v) => _then(v as _$LongText<T>));
+      : super(_value, _then);
 
-  @override
-  _$LongText<T> get _value => super._value as _$LongText<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? failedValue = freezed,
     Object? maxLength = freezed,
   }) {
     return _then(_$LongText<T>(
-      failedValue: failedValue == freezed
+      failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as T?,
-      maxLength: maxLength == freezed
+      maxLength: freezed == maxLength
           ? _value.maxLength
           : maxLength // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -911,17 +912,17 @@ class _$LongText<T> implements LongText<T> {
             other is _$LongText<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
-            const DeepCollectionEquality().equals(other.maxLength, maxLength));
+            (identical(other.maxLength, maxLength) ||
+                other.maxLength == maxLength));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(failedValue),
-      const DeepCollectionEquality().hash(maxLength));
+      runtimeType, const DeepCollectionEquality().hash(failedValue), maxLength);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$LongTextCopyWith<T, _$LongText<T>> get copyWith =>
       __$$LongTextCopyWithImpl<T, _$LongText<T>>(this, _$identity);
 
@@ -943,13 +944,14 @@ class _$LongText<T> implements LongText<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? failedValue, String? reason)? invalidEmail,
-    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
-    TResult Function(T? failedValue, String? reason)? emptyValue,
-    TResult Function(T? failedValue)? multilines,
-    TResult Function(T? failedValue, int? maxLength)? longText,
-    TResult Function(T? failedValue, int? maxLength)? longList,
-    TResult Function(T? failedValue, String? reason)? localStorage,
+    TResult? Function(T? failedValue, String? reason)? invalidEmail,
+    TResult? Function(T? failedValue, int? minLength, String? reason)?
+        shortText,
+    TResult? Function(T? failedValue, String? reason)? emptyValue,
+    TResult? Function(T? failedValue)? multilines,
+    TResult? Function(T? failedValue, int? maxLength)? longText,
+    TResult? Function(T? failedValue, int? maxLength)? longList,
+    TResult? Function(T? failedValue, String? reason)? localStorage,
   }) {
     return longText?.call(failedValue, maxLength);
   }
@@ -989,13 +991,13 @@ class _$LongText<T> implements LongText<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidEmail<T> value)? invalidEmail,
-    TResult Function(ShortText<T> value)? shortText,
-    TResult Function(EmptyValue<T> value)? emptyValue,
-    TResult Function(Multilines<T> value)? multilines,
-    TResult Function(LongText<T> value)? longText,
-    TResult Function(LongList<T> value)? longList,
-    TResult Function(LocalStorage<T> value)? localStorage,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(ShortText<T> value)? shortText,
+    TResult? Function(EmptyValue<T> value)? emptyValue,
+    TResult? Function(Multilines<T> value)? multilines,
+    TResult? Function(LongText<T> value)? longText,
+    TResult? Function(LongList<T> value)? longList,
+    TResult? Function(LocalStorage<T> value)? localStorage,
   }) {
     return longText?.call(this);
   }
@@ -1039,31 +1041,30 @@ abstract class _$$LongListCopyWith<T, $Res>
           _$LongList<T> value, $Res Function(_$LongList<T>) then) =
       __$$LongListCopyWithImpl<T, $Res>;
   @override
+  @useResult
   $Res call({T? failedValue, int? maxLength});
 }
 
 /// @nodoc
 class __$$LongListCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$LongList<T>>
     implements _$$LongListCopyWith<T, $Res> {
   __$$LongListCopyWithImpl(
       _$LongList<T> _value, $Res Function(_$LongList<T>) _then)
-      : super(_value, (v) => _then(v as _$LongList<T>));
+      : super(_value, _then);
 
-  @override
-  _$LongList<T> get _value => super._value as _$LongList<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? failedValue = freezed,
     Object? maxLength = freezed,
   }) {
     return _then(_$LongList<T>(
-      failedValue: failedValue == freezed
+      failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as T?,
-      maxLength: maxLength == freezed
+      maxLength: freezed == maxLength
           ? _value.maxLength
           : maxLength // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -1093,17 +1094,17 @@ class _$LongList<T> implements LongList<T> {
             other is _$LongList<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
-            const DeepCollectionEquality().equals(other.maxLength, maxLength));
+            (identical(other.maxLength, maxLength) ||
+                other.maxLength == maxLength));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(failedValue),
-      const DeepCollectionEquality().hash(maxLength));
+      runtimeType, const DeepCollectionEquality().hash(failedValue), maxLength);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$LongListCopyWith<T, _$LongList<T>> get copyWith =>
       __$$LongListCopyWithImpl<T, _$LongList<T>>(this, _$identity);
 
@@ -1125,13 +1126,14 @@ class _$LongList<T> implements LongList<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? failedValue, String? reason)? invalidEmail,
-    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
-    TResult Function(T? failedValue, String? reason)? emptyValue,
-    TResult Function(T? failedValue)? multilines,
-    TResult Function(T? failedValue, int? maxLength)? longText,
-    TResult Function(T? failedValue, int? maxLength)? longList,
-    TResult Function(T? failedValue, String? reason)? localStorage,
+    TResult? Function(T? failedValue, String? reason)? invalidEmail,
+    TResult? Function(T? failedValue, int? minLength, String? reason)?
+        shortText,
+    TResult? Function(T? failedValue, String? reason)? emptyValue,
+    TResult? Function(T? failedValue)? multilines,
+    TResult? Function(T? failedValue, int? maxLength)? longText,
+    TResult? Function(T? failedValue, int? maxLength)? longList,
+    TResult? Function(T? failedValue, String? reason)? localStorage,
   }) {
     return longList?.call(failedValue, maxLength);
   }
@@ -1171,13 +1173,13 @@ class _$LongList<T> implements LongList<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidEmail<T> value)? invalidEmail,
-    TResult Function(ShortText<T> value)? shortText,
-    TResult Function(EmptyValue<T> value)? emptyValue,
-    TResult Function(Multilines<T> value)? multilines,
-    TResult Function(LongText<T> value)? longText,
-    TResult Function(LongList<T> value)? longList,
-    TResult Function(LocalStorage<T> value)? localStorage,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(ShortText<T> value)? shortText,
+    TResult? Function(EmptyValue<T> value)? emptyValue,
+    TResult? Function(Multilines<T> value)? multilines,
+    TResult? Function(LongText<T> value)? longText,
+    TResult? Function(LongList<T> value)? longList,
+    TResult? Function(LocalStorage<T> value)? localStorage,
   }) {
     return longList?.call(this);
   }
@@ -1221,31 +1223,30 @@ abstract class _$$LocalStorageCopyWith<T, $Res>
           _$LocalStorage<T> value, $Res Function(_$LocalStorage<T>) then) =
       __$$LocalStorageCopyWithImpl<T, $Res>;
   @override
+  @useResult
   $Res call({T? failedValue, String? reason});
 }
 
 /// @nodoc
 class __$$LocalStorageCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$LocalStorage<T>>
     implements _$$LocalStorageCopyWith<T, $Res> {
   __$$LocalStorageCopyWithImpl(
       _$LocalStorage<T> _value, $Res Function(_$LocalStorage<T>) _then)
-      : super(_value, (v) => _then(v as _$LocalStorage<T>));
+      : super(_value, _then);
 
-  @override
-  _$LocalStorage<T> get _value => super._value as _$LocalStorage<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? failedValue = freezed,
     Object? reason = freezed,
   }) {
     return _then(_$LocalStorage<T>(
-      failedValue: failedValue == freezed
+      failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as T?,
-      reason: reason == freezed
+      reason: freezed == reason
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -1275,17 +1276,16 @@ class _$LocalStorage<T> implements LocalStorage<T> {
             other is _$LocalStorage<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
-            const DeepCollectionEquality().equals(other.reason, reason));
+            (identical(other.reason, reason) || other.reason == reason));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(failedValue),
-      const DeepCollectionEquality().hash(reason));
+      runtimeType, const DeepCollectionEquality().hash(failedValue), reason);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$LocalStorageCopyWith<T, _$LocalStorage<T>> get copyWith =>
       __$$LocalStorageCopyWithImpl<T, _$LocalStorage<T>>(this, _$identity);
 
@@ -1307,13 +1307,14 @@ class _$LocalStorage<T> implements LocalStorage<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? failedValue, String? reason)? invalidEmail,
-    TResult Function(T? failedValue, int? minLength, String? reason)? shortText,
-    TResult Function(T? failedValue, String? reason)? emptyValue,
-    TResult Function(T? failedValue)? multilines,
-    TResult Function(T? failedValue, int? maxLength)? longText,
-    TResult Function(T? failedValue, int? maxLength)? longList,
-    TResult Function(T? failedValue, String? reason)? localStorage,
+    TResult? Function(T? failedValue, String? reason)? invalidEmail,
+    TResult? Function(T? failedValue, int? minLength, String? reason)?
+        shortText,
+    TResult? Function(T? failedValue, String? reason)? emptyValue,
+    TResult? Function(T? failedValue)? multilines,
+    TResult? Function(T? failedValue, int? maxLength)? longText,
+    TResult? Function(T? failedValue, int? maxLength)? longList,
+    TResult? Function(T? failedValue, String? reason)? localStorage,
   }) {
     return localStorage?.call(failedValue, reason);
   }
@@ -1353,13 +1354,13 @@ class _$LocalStorage<T> implements LocalStorage<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidEmail<T> value)? invalidEmail,
-    TResult Function(ShortText<T> value)? shortText,
-    TResult Function(EmptyValue<T> value)? emptyValue,
-    TResult Function(Multilines<T> value)? multilines,
-    TResult Function(LongText<T> value)? longText,
-    TResult Function(LongList<T> value)? longList,
-    TResult Function(LocalStorage<T> value)? localStorage,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(ShortText<T> value)? shortText,
+    TResult? Function(EmptyValue<T> value)? emptyValue,
+    TResult? Function(Multilines<T> value)? multilines,
+    TResult? Function(LongText<T> value)? longText,
+    TResult? Function(LongList<T> value)? longList,
+    TResult? Function(LocalStorage<T> value)? localStorage,
   }) {
     return localStorage?.call(this);
   }
@@ -1405,7 +1406,7 @@ mixin _$ClientFailure<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? storage,
+    TResult? Function()? storage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1421,7 +1422,7 @@ mixin _$ClientFailure<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Storage<T> value)? storage,
+    TResult? Function(Storage<T> value)? storage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1436,17 +1437,18 @@ mixin _$ClientFailure<T> {
 abstract class $ClientFailureCopyWith<T, $Res> {
   factory $ClientFailureCopyWith(
           ClientFailure<T> value, $Res Function(ClientFailure<T>) then) =
-      _$ClientFailureCopyWithImpl<T, $Res>;
+      _$ClientFailureCopyWithImpl<T, $Res, ClientFailure<T>>;
 }
 
 /// @nodoc
-class _$ClientFailureCopyWithImpl<T, $Res>
+class _$ClientFailureCopyWithImpl<T, $Res, $Val extends ClientFailure<T>>
     implements $ClientFailureCopyWith<T, $Res> {
   _$ClientFailureCopyWithImpl(this._value, this._then);
 
-  final ClientFailure<T> _value;
   // ignore: unused_field
-  final $Res Function(ClientFailure<T>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -1458,14 +1460,11 @@ abstract class _$$StorageCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$StorageCopyWithImpl<T, $Res>
-    extends _$ClientFailureCopyWithImpl<T, $Res>
+    extends _$ClientFailureCopyWithImpl<T, $Res, _$Storage<T>>
     implements _$$StorageCopyWith<T, $Res> {
   __$$StorageCopyWithImpl(
       _$Storage<T> _value, $Res Function(_$Storage<T>) _then)
-      : super(_value, (v) => _then(v as _$Storage<T>));
-
-  @override
-  _$Storage<T> get _value => super._value as _$Storage<T>;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1498,7 +1497,7 @@ class _$Storage<T> implements Storage<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? storage,
+    TResult? Function()? storage,
   }) {
     return storage?.call();
   }
@@ -1526,7 +1525,7 @@ class _$Storage<T> implements Storage<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Storage<T> value)? storage,
+    TResult? Function(Storage<T> value)? storage,
   }) {
     return storage?.call(this);
   }

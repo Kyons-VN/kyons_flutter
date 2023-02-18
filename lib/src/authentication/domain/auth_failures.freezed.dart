@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'auth_failures.dart';
 
@@ -26,10 +26,10 @@ mixin _$AuthFailure<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? cancelByUser,
-    TResult Function()? serverError,
-    TResult Function()? emailAlreadyUsed,
-    TResult Function()? invalidEmailPassword,
+    TResult? Function()? cancelByUser,
+    TResult? Function()? serverError,
+    TResult? Function()? emailAlreadyUsed,
+    TResult? Function()? invalidEmailPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,10 +52,10 @@ mixin _$AuthFailure<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CancelByUser<T> value)? cancelByUser,
-    TResult Function(ServerError<T> value)? serverError,
-    TResult Function(EmailAlreadyUsed<T> value)? emailAlreadyUsed,
-    TResult Function(InvalidEmailPassword<T> value)? invalidEmailPassword,
+    TResult? Function(CancelByUser<T> value)? cancelByUser,
+    TResult? Function(ServerError<T> value)? serverError,
+    TResult? Function(EmailAlreadyUsed<T> value)? emailAlreadyUsed,
+    TResult? Function(InvalidEmailPassword<T> value)? invalidEmailPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,17 +73,18 @@ mixin _$AuthFailure<T> {
 abstract class $AuthFailureCopyWith<T, $Res> {
   factory $AuthFailureCopyWith(
           AuthFailure<T> value, $Res Function(AuthFailure<T>) then) =
-      _$AuthFailureCopyWithImpl<T, $Res>;
+      _$AuthFailureCopyWithImpl<T, $Res, AuthFailure<T>>;
 }
 
 /// @nodoc
-class _$AuthFailureCopyWithImpl<T, $Res>
+class _$AuthFailureCopyWithImpl<T, $Res, $Val extends AuthFailure<T>>
     implements $AuthFailureCopyWith<T, $Res> {
   _$AuthFailureCopyWithImpl(this._value, this._then);
 
-  final AuthFailure<T> _value;
   // ignore: unused_field
-  final $Res Function(AuthFailure<T>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -95,14 +96,11 @@ abstract class _$$CancelByUserCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$CancelByUserCopyWithImpl<T, $Res>
-    extends _$AuthFailureCopyWithImpl<T, $Res>
+    extends _$AuthFailureCopyWithImpl<T, $Res, _$CancelByUser<T>>
     implements _$$CancelByUserCopyWith<T, $Res> {
   __$$CancelByUserCopyWithImpl(
       _$CancelByUser<T> _value, $Res Function(_$CancelByUser<T>) _then)
-      : super(_value, (v) => _then(v as _$CancelByUser<T>));
-
-  @override
-  _$CancelByUser<T> get _value => super._value as _$CancelByUser<T>;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -138,10 +136,10 @@ class _$CancelByUser<T> implements CancelByUser<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? cancelByUser,
-    TResult Function()? serverError,
-    TResult Function()? emailAlreadyUsed,
-    TResult Function()? invalidEmailPassword,
+    TResult? Function()? cancelByUser,
+    TResult? Function()? serverError,
+    TResult? Function()? emailAlreadyUsed,
+    TResult? Function()? invalidEmailPassword,
   }) {
     return cancelByUser?.call();
   }
@@ -176,10 +174,10 @@ class _$CancelByUser<T> implements CancelByUser<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CancelByUser<T> value)? cancelByUser,
-    TResult Function(ServerError<T> value)? serverError,
-    TResult Function(EmailAlreadyUsed<T> value)? emailAlreadyUsed,
-    TResult Function(InvalidEmailPassword<T> value)? invalidEmailPassword,
+    TResult? Function(CancelByUser<T> value)? cancelByUser,
+    TResult? Function(ServerError<T> value)? serverError,
+    TResult? Function(EmailAlreadyUsed<T> value)? emailAlreadyUsed,
+    TResult? Function(InvalidEmailPassword<T> value)? invalidEmailPassword,
   }) {
     return cancelByUser?.call(this);
   }
@@ -213,14 +211,11 @@ abstract class _$$ServerErrorCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$ServerErrorCopyWithImpl<T, $Res>
-    extends _$AuthFailureCopyWithImpl<T, $Res>
+    extends _$AuthFailureCopyWithImpl<T, $Res, _$ServerError<T>>
     implements _$$ServerErrorCopyWith<T, $Res> {
   __$$ServerErrorCopyWithImpl(
       _$ServerError<T> _value, $Res Function(_$ServerError<T>) _then)
-      : super(_value, (v) => _then(v as _$ServerError<T>));
-
-  @override
-  _$ServerError<T> get _value => super._value as _$ServerError<T>;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -256,10 +251,10 @@ class _$ServerError<T> implements ServerError<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? cancelByUser,
-    TResult Function()? serverError,
-    TResult Function()? emailAlreadyUsed,
-    TResult Function()? invalidEmailPassword,
+    TResult? Function()? cancelByUser,
+    TResult? Function()? serverError,
+    TResult? Function()? emailAlreadyUsed,
+    TResult? Function()? invalidEmailPassword,
   }) {
     return serverError?.call();
   }
@@ -294,10 +289,10 @@ class _$ServerError<T> implements ServerError<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CancelByUser<T> value)? cancelByUser,
-    TResult Function(ServerError<T> value)? serverError,
-    TResult Function(EmailAlreadyUsed<T> value)? emailAlreadyUsed,
-    TResult Function(InvalidEmailPassword<T> value)? invalidEmailPassword,
+    TResult? Function(CancelByUser<T> value)? cancelByUser,
+    TResult? Function(ServerError<T> value)? serverError,
+    TResult? Function(EmailAlreadyUsed<T> value)? emailAlreadyUsed,
+    TResult? Function(InvalidEmailPassword<T> value)? invalidEmailPassword,
   }) {
     return serverError?.call(this);
   }
@@ -331,14 +326,11 @@ abstract class _$$EmailAlreadyUsedCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$EmailAlreadyUsedCopyWithImpl<T, $Res>
-    extends _$AuthFailureCopyWithImpl<T, $Res>
+    extends _$AuthFailureCopyWithImpl<T, $Res, _$EmailAlreadyUsed<T>>
     implements _$$EmailAlreadyUsedCopyWith<T, $Res> {
   __$$EmailAlreadyUsedCopyWithImpl(
       _$EmailAlreadyUsed<T> _value, $Res Function(_$EmailAlreadyUsed<T>) _then)
-      : super(_value, (v) => _then(v as _$EmailAlreadyUsed<T>));
-
-  @override
-  _$EmailAlreadyUsed<T> get _value => super._value as _$EmailAlreadyUsed<T>;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -374,10 +366,10 @@ class _$EmailAlreadyUsed<T> implements EmailAlreadyUsed<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? cancelByUser,
-    TResult Function()? serverError,
-    TResult Function()? emailAlreadyUsed,
-    TResult Function()? invalidEmailPassword,
+    TResult? Function()? cancelByUser,
+    TResult? Function()? serverError,
+    TResult? Function()? emailAlreadyUsed,
+    TResult? Function()? invalidEmailPassword,
   }) {
     return emailAlreadyUsed?.call();
   }
@@ -412,10 +404,10 @@ class _$EmailAlreadyUsed<T> implements EmailAlreadyUsed<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CancelByUser<T> value)? cancelByUser,
-    TResult Function(ServerError<T> value)? serverError,
-    TResult Function(EmailAlreadyUsed<T> value)? emailAlreadyUsed,
-    TResult Function(InvalidEmailPassword<T> value)? invalidEmailPassword,
+    TResult? Function(CancelByUser<T> value)? cancelByUser,
+    TResult? Function(ServerError<T> value)? serverError,
+    TResult? Function(EmailAlreadyUsed<T> value)? emailAlreadyUsed,
+    TResult? Function(InvalidEmailPassword<T> value)? invalidEmailPassword,
   }) {
     return emailAlreadyUsed?.call(this);
   }
@@ -449,15 +441,11 @@ abstract class _$$InvalidEmailPasswordCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$InvalidEmailPasswordCopyWithImpl<T, $Res>
-    extends _$AuthFailureCopyWithImpl<T, $Res>
+    extends _$AuthFailureCopyWithImpl<T, $Res, _$InvalidEmailPassword<T>>
     implements _$$InvalidEmailPasswordCopyWith<T, $Res> {
   __$$InvalidEmailPasswordCopyWithImpl(_$InvalidEmailPassword<T> _value,
       $Res Function(_$InvalidEmailPassword<T>) _then)
-      : super(_value, (v) => _then(v as _$InvalidEmailPassword<T>));
-
-  @override
-  _$InvalidEmailPassword<T> get _value =>
-      super._value as _$InvalidEmailPassword<T>;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -494,10 +482,10 @@ class _$InvalidEmailPassword<T> implements InvalidEmailPassword<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? cancelByUser,
-    TResult Function()? serverError,
-    TResult Function()? emailAlreadyUsed,
-    TResult Function()? invalidEmailPassword,
+    TResult? Function()? cancelByUser,
+    TResult? Function()? serverError,
+    TResult? Function()? emailAlreadyUsed,
+    TResult? Function()? invalidEmailPassword,
   }) {
     return invalidEmailPassword?.call();
   }
@@ -532,10 +520,10 @@ class _$InvalidEmailPassword<T> implements InvalidEmailPassword<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CancelByUser<T> value)? cancelByUser,
-    TResult Function(ServerError<T> value)? serverError,
-    TResult Function(EmailAlreadyUsed<T> value)? emailAlreadyUsed,
-    TResult Function(InvalidEmailPassword<T> value)? invalidEmailPassword,
+    TResult? Function(CancelByUser<T> value)? cancelByUser,
+    TResult? Function(ServerError<T> value)? serverError,
+    TResult? Function(EmailAlreadyUsed<T> value)? emailAlreadyUsed,
+    TResult? Function(InvalidEmailPassword<T> value)? invalidEmailPassword,
   }) {
     return invalidEmailPassword?.call(this);
   }
