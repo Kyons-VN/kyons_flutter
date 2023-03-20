@@ -318,7 +318,7 @@ class SignUpForm extends HookConsumerWidget {
 }
 
 _launchURL() async {
-  const url = 'https://student.kyons.vn/terms-of-service';
+  const url = 'https://kyons.vn/Terms%20and%20Conditions.pdf';
   final uri = Uri.parse(url);
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri);
