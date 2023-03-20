@@ -11,12 +11,14 @@ class Program {
   final String id;
   final String name;
   final String subjectId;
+  final LearningGoal? learningGoal;
 
-  Program({required this.subjectId, required this.id, required this.name});
+  Program({required this.subjectId, required this.id, required this.name, this.learningGoal});
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
         'subjectId': subjectId,
+        'learningGoal': learningGoal?.toJson() ?? '',
       };
 
   factory Program.empty() => Program(subjectId: '', id: '', name: '');
@@ -24,30 +26,69 @@ class Program {
   bool isEmpty() => id == '';
 }
 
-class LessonItem {
+class LearningGoal {
   final String id;
-  final bool isNew;
+  final String name;
+  final double progress;
+  final int maxTopics;
+  final int minTopics;
 
-  LessonItem({required this.id, this.isNew = false});
-  factory LessonItem.empty() => LessonItem(id: '');
+  const LearningGoal(
+      {required this.id, required this.name, required this.progress, this.maxTopics = 99, this.minTopics = 0});
+  factory LearningGoal.empty() => LearningGoal(id: '', name: '', progress: 0.0, maxTopics: 99, minTopics: 0);
+  Map<String, dynamic> toJson() =>
+      {'id': id, 'name': name, 'progress': progress, 'maxTopic': maxTopics, 'minTopic': minTopics};
+  static String emptyJsonString() => LearningGoal.empty().toJson().toString();
+  bool isEmpty() => id == '';
 }
 
-class LearningPath {
+class LearningGoalPath {
+  final List<LearningGoalCategory> lessonCategories;
+  final double progress;
+  const LearningGoalPath({required this.lessonCategories, required this.progress});
+  factory LearningGoalPath.empty() => const LearningGoalPath(lessonCategories: [], progress: 0.0);
+
+  List<Category> getCategories() => lessonCategories.map((e) => e.category).toList();
+  List<LearningGoalCategory> getUncompletedLearningGoalCategories() =>
+      lessonCategories.where((e) => !e.isCompleted).toList();
+  LearningGoalCategory getLearningGoalCategoryById(String categoryId) =>
+      lessonCategories.firstWhere((e) => e.category.id == categoryId, orElse: () => LearningGoalCategory.empty());
+}
+
+class LearningGoalCategory {
+  final bool isCompleted;
+  final Category category;
   final List<LessonItem> lessons;
 
-  LearningPath(this.lessons);
-  int get length => lessons.length;
-  void push(Iterable<LessonItem> lessonsList) => lessons.addAll(lessonsList);
-  factory LearningPath.empty() => LearningPath([]);
-
-  LessonItem getLessonAt(int index) => lessons[index];
+  LearningGoalCategory({this.isCompleted = false, required this.category, required this.lessons});
+  factory LearningGoalCategory.empty() => LearningGoalCategory(category: Category.empty(), lessons: []);
 }
+
+class LessonItem {
+  final String id;
+  final String name;
+  final bool isNew;
+
+  LessonItem({required this.id, required this.name, this.isNew = false});
+  factory LessonItem.empty() => LessonItem(id: '', name: '');
+}
+
+// class LearningPath {
+//   final List<LessonItem> lessons;
+
+//   const LearningPath(this.lessons);
+//   int get length => lessons.length;
+//   void push(Iterable<LessonItem> lessonsList) => lessons.addAll(lessonsList);
+//   factory LearningPath.empty() => LearningPath([]);
+
+//   LessonItem getLessonAt(int index) => lessons[index];
+// }
 
 class Category {
   final String id;
   final String name;
 
-  Category({required this.id, required this.name});
+  const Category({required this.id, required this.name});
   factory Category.empty() => Category(id: '', name: '');
 }
 
@@ -55,8 +96,15 @@ class Topic {
   final String id;
   final String name;
 
-  Topic({required this.id, required this.name});
+  const Topic({required this.id, required this.name});
   factory Topic.empty() => Topic(id: '', name: '');
+}
+
+class TopicSelection extends Topic {
+  bool isSelected;
+
+  TopicSelection({required String id, required String name, this.isSelected = false}) : super(id: id, name: name);
+  factory TopicSelection.empty() => TopicSelection(id: '', name: '');
 }
 
 class LessonGroup {
@@ -72,7 +120,7 @@ class LessonInfo {
   final Topic topic;
   final List<Lesson> lessons;
 
-  LessonInfo({required this.category, required this.topic, required this.lessons});
+  const LessonInfo({required this.category, required this.topic, required this.lessons});
 }
 
 class Lesson {
@@ -85,7 +133,7 @@ class Lesson {
   final Category category;
   final Topic topic;
 
-  Lesson({
+  const Lesson({
     required this.id,
     required this.name,
     required this.content,
@@ -103,10 +151,19 @@ class LearningPoint {
   final String diffucultyId;
   final String learningPoint;
 
-  LearningPoint({
+  const LearningPoint({
     required this.diffucultyId,
     required this.learningPoint,
     required this.id,
     required this.topic,
   });
 }
+
+// class LessonCategory {
+//   final Category category;
+//   final Topic topic;
+//   final List<Lesson> lessons;
+
+//   const LessonCategory({required this.category, required this.topic, required this.lessons});
+//   factory LessonCategory.empty() => LessonCategory(category: Category.empty(), topic: Topic.empty(), lessons: []);
+// }

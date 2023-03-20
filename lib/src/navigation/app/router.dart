@@ -4,21 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
-import 'package:kyons_flutter/src/authentication/view/reset_password.dart';
+import 'package:kyons_flutter/src/authentication/view/reset_password_page.dart';
 import 'package:kyons_flutter/src/authentication/view/sign_in_page.dart';
 import 'package:kyons_flutter/src/authentication/view/sign_up_page.dart';
 import 'package:kyons_flutter/src/design/view/design_page.dart';
-// import 'package:kyons_flutter/src/game_template/game_route.dart';
 import 'package:kyons_flutter/src/home/view/home_page.dart';
 import 'package:kyons_flutter/src/knowledge/view/learning_path/learning_path_page.dart';
-import 'package:kyons_flutter/src/knowledge/view/lesson/lesson_page.dart';
 import 'package:kyons_flutter/src/knowledge/view/lesson/new_lesson_page.dart';
 import 'package:kyons_flutter/src/navigation/app/auth_guard.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:kyons_flutter/src/settings/view/language_settings_page.dart';
 import 'package:kyons_flutter/src/settings/view/settings_page.dart';
 import 'package:kyons_flutter/src/settings/view/theme_settings_page.dart';
-import 'package:kyons_flutter/src/test_knowledge/view/diagnostic_test_page.dart';
+import 'package:kyons_flutter/src/test_knowledge/view/mock_test/select_learning_goal_page.dart';
+
+import '../../knowledge/view/lesson/lesson_page.dart';
+import '../../test_knowledge/view/mock_test/select_topic_page.dart';
+import '../../test_knowledge/view/mock_test/test_page.dart';
 
 class AppRouter {
   AppRouter._();
@@ -83,16 +85,6 @@ class AppRouter {
           redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
-          path: AppPaths.diagnosticTest.path,
-          builder: (BuildContext context, GoRouterState state) {
-            final isTest = (state.extra as bool?) ?? false;
-            return DiagnosticTestPage(
-              isTest: isTest,
-            );
-          },
-          redirect: (_, state) => guard(state, ref),
-        ),
-        GoRoute(
           path: AppPaths.learningPath.path,
           builder: (BuildContext context, GoRouterState state) => const LearningPathPage(),
           redirect: (_, state) => guard(state, ref),
@@ -115,6 +107,23 @@ class AppRouter {
           path: AppPaths.signUp.path,
           builder: (BuildContext context, GoRouterState state) => const SignUpPage(),
         ),
+        GoRoute(
+          path: AppPaths.mockTestLearningGoal.path,
+          builder: (BuildContext context, GoRouterState state) => const SelectLearningGoalPage(),
+          routes: [
+            GoRoute(
+              path: ':lgId/select-topic',
+              builder: (BuildContext context, GoRouterState state) => SelectTopicPage(lgId: state.params['lgId']!),
+              redirect: (_, state) => guard(state, ref),
+            ),
+            GoRoute(
+              path: ':lgId/test',
+              builder: (BuildContext context, GoRouterState state) => TestPage(lgId: state.params['lgId']!),
+              redirect: (_, state) => guard(state, ref),
+            ),
+          ],
+          redirect: (_, state) => guard(state, ref),
+        ),
       ],
       refreshListenable: GoRouterRefreshStream(authNotifier.stream),
       debugLogDiagnostics: true,
@@ -133,7 +142,7 @@ class AppRouter {
   static void redirect() {
     final redirect = _redirects.isNotEmpty ? _redirects.first : null;
     if (redirect != null) {
-      router.push(redirect.path);
+      router.go(redirect.path);
     } else {
       router.go(AppPaths.home.path);
     }

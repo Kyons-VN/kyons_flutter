@@ -1,5 +1,4 @@
 import 'package:kyons_flutter/src/core/data/api.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_dto.dart';
 import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
@@ -8,11 +7,11 @@ class TestKnowledge implements ITestKnowledge {
   final api = Api.init().api;
 
   @override
-  Future<TestContent> getDiagnosticTest(Program program) {
+  Future<TestContent> getDiagnosticTest(String learningGoalId) {
     final params = {
-      'program_id': program.id,
+      'learning_goal_id': learningGoalId,
     };
-    final response = api.get('$serverApi/test/diagnostic_test?program_id=${program.id}');
+    final response = api.get('$serverApi/test/learning_goal_test', queryParameters: params);
 
     return response.then(handleResponseError).then((value) async {
       final data = value as Map<String, dynamic>;

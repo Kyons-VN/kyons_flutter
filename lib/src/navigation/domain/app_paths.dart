@@ -21,15 +21,20 @@ class AppPaths {
   static const newLesonPage = AppPath(path: '/new-lesson');
   static const waitingForTutor = AppPath(path: '/waiting-for-tutor');
   static const profile = AppPath(path: '/profile');
+  static const mockTestLearningGoal = AppPath(path: '/mock-test', serverRedirectName: 'MockTest');
+  static const mockTestTopic = AppPath(path: '/mock-test/:lgId/select-topic');
+  static const mockTestTest = AppPath(path: '/mock-test/:id/test');
+  static const mockTestShare = AppPath(path: '/share-mocktest/:ref');
+  static const termsOfService = AppPath(path: '/terms-of-service');
   static const pageNotfound = AppPath(path: '/page-not-found');
 
   static AppPath getByRedirectName(String serverRedirectName) {
     if (serverRedirectName == home.serverRedirectName) {
       return home;
-    } else if (serverRedirectName == diagnosticTestDecision.serverRedirectName) {
-      return diagnosticTestDecision;
     } else if (serverRedirectName == learningPath.serverRedirectName) {
       return learningPath;
+    } else if (serverRedirectName == mockTestLearningGoal.serverRedirectName) {
+      return mockTestLearningGoal;
     } else {
       return home;
     }
@@ -41,4 +46,5 @@ class AppPath {
   final String? serverRedirectName;
   final String? description;
   const AppPath({required this.path, this.serverRedirectName, this.description});
+  String pathId(String id) => path.replaceAll(':id', id);
 }

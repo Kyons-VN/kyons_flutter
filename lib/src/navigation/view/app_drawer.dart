@@ -17,7 +17,7 @@ class AppDrawer extends ConsumerWidget {
       child: ListView(
         children: [
           currentUserState.userOption.map((t) => t).foldRight(Container(),
-              (acc, user) => ListTile(title: Heading(6, t(context).hi_so(user.firstName), color: AppColors.white))),
+              (acc, user) => ListTile(title: Heading(6, t(context).hiSo(user.firstName), color: AppColors.white))),
           ListTile(
             title: Row(
               children: [
@@ -34,7 +34,7 @@ class AppDrawer extends ConsumerWidget {
           DrawerMenuItem(appPath: AppPaths.home, icon: AppIcons.home, pageName: t(context).home),
           const Divider(),
           DrawerMenuItem(
-              appPath: AppPaths.learningPath, icon: AppIcons.lessonContent, pageName: t(context).learning_path),
+              appPath: AppPaths.learningPath, icon: AppIcons.lessonContent, pageName: t(context).learningPath),
           const Divider(),
           DrawerMenuItem(appPath: AppPaths.settings, icon: Icons.settings, pageName: t(context).settings),
           // ListTile(

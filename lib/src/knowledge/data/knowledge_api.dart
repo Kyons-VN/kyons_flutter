@@ -1,7 +1,7 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:fpdart/fpdart.dart';
-import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 import 'package:kyons_flutter/src/core/data/api.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_dto.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
@@ -9,6 +9,7 @@ import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart';
 import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_dto.dart';
+import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Knowledge implements IKnowledge {
@@ -20,7 +21,13 @@ class Knowledge implements IKnowledge {
     final response = api.get('$serverApi/students/programs');
     return response.then(handleResponseError).then((value) async {
       final data = value as List<dynamic>;
-      final result = data.map((json) => ProgramDto.fromJson(json).toDomain()).toList();
+      final result = data.map((json) {
+        json['learning_goal'] = {
+          'id': json['learning_goal_id'],
+          'name': json['learning_goal_name'],
+        };
+        return ProgramDto.fromJson(json).toDomain();
+      }).toList();
       return result;
     });
   }
@@ -59,17 +66,23 @@ class Knowledge implements IKnowledge {
   }
 
   @override
-  Future<LearningPath> getLearningPath(Program program) {
-    final params = {'program_id': program.id};
+  Future<LearningGoalPath> getLearningGoalPath(Program program, LearningGoal learningGoal) {
+    final params = {'program_id': program.id, 'learning_goal_id': learningGoal.id};
     final response = api.get('$serverApi/lesson/list', queryParameters: params);
     return response.then(handleResponseError).then((value) async {
-      final data = {
-        'lessonsDto': (value as List<dynamic>).map((lessonJson) {
-          lessonJson['new'] = lessonJson['new'] ?? false;
-          return lessonJson;
-        }).toList()
-      };
-      final result = LearningPathDto.fromJson(data).toDomain();
+      final data = value as Map<String, dynamic>;
+      data['complete_percentage'] = double.parse(data['complete_percentage']);
+      // data['complete_percentage'] = 10;
+      final categories = data['categories'] as List<dynamic>;
+      data['categories'] = categories.map((cat) {
+        cat['category'] = {
+          'id': cat['category_id'],
+          'name': cat['category_name'],
+        };
+        // cat['completed'] = true;
+        return cat;
+      }).toList();
+      final result = LearningGoalPathDto.fromJson(data).toDomain();
       return result;
     });
   }
@@ -115,8 +128,8 @@ class Knowledge implements IKnowledge {
   Future<Program> getSelectedProgram() async {
     final prefs = await SharedPreferences.getInstance();
     final json = jsonDecode(prefs.getString(selectedProgramKey) ?? Program.emptyJsonString());
-    final Program program = Program(id: json['id'], name: json['name'], subjectId: json['subjectId']);
-    return Future.value(program);
+    final program = Program(id: json['id'], name: json['name'], subjectId: json['subjectId']);
+    return program;
   }
 
   @override
@@ -139,5 +152,72 @@ class Knowledge implements IKnowledge {
     return response.then(handleResponseError).then((value) async {
       return unit;
     });
+  }
+
+  @override
+  Future<List<LearningGoal>> getLearningGoals(Program program) {
+    final params = {'program_id': program.id};
+    final response = api.get('$serverApi/students/learning_goal/list', queryParameters: params);
+    return response.then(handleResponseError).then((value) async {
+      final result = (value as List<dynamic>).map((json) => LearningGoalDto.fromJson(json).toDomain()).toList();
+      return result;
+    });
+  }
+
+  @override
+  Future<Unit> selectLearningGoal(LearningGoal learningGoal) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(selectedLearningGoalKey, jsonEncode(learningGoal.toJson()));
+    return unit;
+  }
+
+  @override
+  Future<List<TopicSelection>> getTopicsFromLearningGoal(LearningGoal learningGoal) {
+    final params = {'learning_goal_id': learningGoal.id};
+    final response = api.get('$serverApi/students/learning_goal/details', queryParameters: params);
+    return response.then(handleResponseError).then((value) async {
+      final result = (value as List<dynamic>).map((json) => TopicDto.fromJson(json).toTopicSelection()).toList();
+      return result;
+    });
+  }
+
+  @override
+  Future<LearningGoal> getSelectedLearningGoal() async {
+    final prefs = await SharedPreferences.getInstance();
+    final json = jsonDecode(prefs.getString(selectedLearningGoalKey) ?? LearningGoal.emptyJsonString());
+    final learningGoal = LearningGoal(
+      id: json['id'],
+      name: json['name'],
+      progress: json['progress'],
+      maxTopics: json['maxTopic'],
+      minTopics: json['minTopic'],
+    );
+    return learningGoal;
+  }
+
+  @override
+  Future<LearningGoal> createLearningGoal(LearningGoal learningGoal, List<Topic> selectedTopics) {
+    final params = {
+      'master_id': learningGoal.id,
+      'topic_list': selectedTopics.map((e) => int.parse(e.id)).toList(),
+    };
+    final response = api.post('$serverApi/students/learning_goal/submit', data: params);
+    return response.then(handleResponseError).then((value) async {
+      log('createLearningGoal: $value');
+      return LearningGoal(id: value['learning_goal_id'].toString(), name: value['learning_goal_name'], progress: 0);
+    });
+  }
+
+  @override
+  Future<Unit> setSelectedCatIndex(int index) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(selectedCatIndexKey, index);
+    return unit;
+  }
+
+  @override
+  Future<int> getSelectedCatIndex() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(selectedCatIndexKey) ?? 0;
   }
 }

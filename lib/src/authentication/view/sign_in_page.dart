@@ -3,16 +3,18 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/current_user_provider.dart';
 import 'package:kyons_flutter/src/authentication/app/sign_in_provider.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/navigation/app/router.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:kyons_flutter/src/settings/app/settings_controller.dart';
 import 'package:shared_package/shared_package.dart';
+
+import '../../navigation/app/router.dart';
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -88,7 +90,7 @@ class SignInFormWrapper extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white, height: 2),
                     children: [
                       TextSpan(
-                        text: t(context).forgot_password,
+                        text: t(context).forgotPassword,
                         style: const TextStyle(color: AppColors.orange),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
@@ -96,9 +98,9 @@ class SignInFormWrapper extends StatelessWidget {
                             context.go(AppPaths.resetPassword.path);
                           },
                       ),
-                      TextSpan(text: "\n${t(context).does_not_have_account} "),
+                      TextSpan(text: "\n${t(context).doesNotHaveAccount} "),
                       TextSpan(
-                        text: t(context).register_here,
+                        text: t(context).registerHere,
                         style: const TextStyle(color: AppColors.orange),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
@@ -111,8 +113,8 @@ class SignInFormWrapper extends StatelessWidget {
                 AppSizesUnit.sizedBox24,
                 CupertinoPickerOptions<LocaleOption>(
                   options: AppLocalizations.supportedLocales.map((e) => LocaleOption(e.languageCode)).toList(),
-                  onPicked: (v) => ref.read(settingsNotifierProvider).updateLocale(v),
-                  selectedOption: LocaleOption(Localizations.localeOf(context).languageCode),
+                  onPicked: some((v) => ref.read(settingsNotifierProvider).updateLocale(v)),
+                  selectedOption: optionOf(LocaleOption(Localizations.localeOf(context).languageCode)),
                 )
               ],
             ),
@@ -206,7 +208,6 @@ class SignInForm extends HookConsumerWidget {
           ),
           AppSizesUnit.sizedBox24,
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Expanded(
                 child: ElevatedButton(

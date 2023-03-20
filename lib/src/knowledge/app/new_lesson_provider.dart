@@ -1,11 +1,11 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 import 'package:kyons_flutter/src/knowledge/app/knowledge_provider.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
 import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
+import 'package:shared_package/shared_package.dart';
 
 part 'new_lesson_provider.freezed.dart';
 part 'new_lesson_state.dart';

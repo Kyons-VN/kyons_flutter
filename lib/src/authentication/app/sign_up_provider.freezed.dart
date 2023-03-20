@@ -19,7 +19,9 @@ mixin _$SignUpState {
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  Password get password => throw _privateConstructorUsedError;
+  String get passwordStr => throw _privateConstructorUsedError;
+  bool get isAgreedToTerms => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get shouldShowErrorMessages => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get signUpOption =>
@@ -40,7 +42,9 @@ abstract class $SignUpStateCopyWith<$Res> {
       {EmailAddress emailAddress,
       String firstName,
       String lastName,
-      String password,
+      Password password,
+      String passwordStr,
+      bool isAgreedToTerms,
       bool isSubmitting,
       bool shouldShowErrorMessages,
       Option<Either<AuthFailure, Unit>> signUpOption});
@@ -63,6 +67,8 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
     Object? firstName = null,
     Object? lastName = null,
     Object? password = null,
+    Object? passwordStr = null,
+    Object? isAgreedToTerms = null,
     Object? isSubmitting = null,
     Object? shouldShowErrorMessages = null,
     Object? signUpOption = null,
@@ -83,7 +89,15 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as Password,
+      passwordStr: null == passwordStr
+          ? _value.passwordStr
+          : passwordStr // ignore: cast_nullable_to_non_nullable
               as String,
+      isAgreedToTerms: null == isAgreedToTerms
+          ? _value.isAgreedToTerms
+          : isAgreedToTerms // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -112,7 +126,9 @@ abstract class _$$_SignUpStateCopyWith<$Res>
       {EmailAddress emailAddress,
       String firstName,
       String lastName,
-      String password,
+      Password password,
+      String passwordStr,
+      bool isAgreedToTerms,
       bool isSubmitting,
       bool shouldShowErrorMessages,
       Option<Either<AuthFailure, Unit>> signUpOption});
@@ -133,6 +149,8 @@ class __$$_SignUpStateCopyWithImpl<$Res>
     Object? firstName = null,
     Object? lastName = null,
     Object? password = null,
+    Object? passwordStr = null,
+    Object? isAgreedToTerms = null,
     Object? isSubmitting = null,
     Object? shouldShowErrorMessages = null,
     Object? signUpOption = null,
@@ -153,7 +171,15 @@ class __$$_SignUpStateCopyWithImpl<$Res>
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as Password,
+      passwordStr: null == passwordStr
+          ? _value.passwordStr
+          : passwordStr // ignore: cast_nullable_to_non_nullable
               as String,
+      isAgreedToTerms: null == isAgreedToTerms
+          ? _value.isAgreedToTerms
+          : isAgreedToTerms // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -178,6 +204,8 @@ class _$_SignUpState implements _SignUpState {
       required this.firstName,
       required this.lastName,
       required this.password,
+      required this.passwordStr,
+      required this.isAgreedToTerms,
       required this.isSubmitting,
       required this.shouldShowErrorMessages,
       required this.signUpOption});
@@ -189,7 +217,11 @@ class _$_SignUpState implements _SignUpState {
   @override
   final String lastName;
   @override
-  final String password;
+  final Password password;
+  @override
+  final String passwordStr;
+  @override
+  final bool isAgreedToTerms;
   @override
   final bool isSubmitting;
   @override
@@ -199,7 +231,7 @@ class _$_SignUpState implements _SignUpState {
 
   @override
   String toString() {
-    return 'SignUpState(emailAddress: $emailAddress, firstName: $firstName, lastName: $lastName, password: $password, isSubmitting: $isSubmitting, shouldShowErrorMessages: $shouldShowErrorMessages, signUpOption: $signUpOption)';
+    return 'SignUpState(emailAddress: $emailAddress, firstName: $firstName, lastName: $lastName, password: $password, passwordStr: $passwordStr, isAgreedToTerms: $isAgreedToTerms, isSubmitting: $isSubmitting, shouldShowErrorMessages: $shouldShowErrorMessages, signUpOption: $signUpOption)';
   }
 
   @override
@@ -215,6 +247,10 @@ class _$_SignUpState implements _SignUpState {
                 other.lastName == lastName) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.passwordStr, passwordStr) ||
+                other.passwordStr == passwordStr) &&
+            (identical(other.isAgreedToTerms, isAgreedToTerms) ||
+                other.isAgreedToTerms == isAgreedToTerms) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(
@@ -225,8 +261,17 @@ class _$_SignUpState implements _SignUpState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, emailAddress, firstName,
-      lastName, password, isSubmitting, shouldShowErrorMessages, signUpOption);
+  int get hashCode => Object.hash(
+      runtimeType,
+      emailAddress,
+      firstName,
+      lastName,
+      password,
+      passwordStr,
+      isAgreedToTerms,
+      isSubmitting,
+      shouldShowErrorMessages,
+      signUpOption);
 
   @JsonKey(ignore: true)
   @override
@@ -240,7 +285,9 @@ abstract class _SignUpState implements SignUpState {
           {required final EmailAddress emailAddress,
           required final String firstName,
           required final String lastName,
-          required final String password,
+          required final Password password,
+          required final String passwordStr,
+          required final bool isAgreedToTerms,
           required final bool isSubmitting,
           required final bool shouldShowErrorMessages,
           required final Option<Either<AuthFailure, Unit>> signUpOption}) =
@@ -253,7 +300,11 @@ abstract class _SignUpState implements SignUpState {
   @override
   String get lastName;
   @override
-  String get password;
+  Password get password;
+  @override
+  String get passwordStr;
+  @override
+  bool get isAgreedToTerms;
   @override
   bool get isSubmitting;
   @override

@@ -3,41 +3,52 @@ import 'dart:async';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 import 'package:kyons_flutter/src/knowledge/app/knowledge_provider.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
 import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
 import 'package:kyons_flutter/src/tracking/app/tracking_provider.dart';
-import 'package:kyons_flutter/src/tracking/data/tracking_api.dart';
 import 'package:kyons_flutter/src/tracking/data/tracking_service.dart' as tracking_service;
 import 'package:kyons_flutter/src/tracking/domain/i_tracking.dart';
+import 'package:shared_package/shared_package.dart';
+
+import '../../tracking/data/tracking_api.dart';
 
 part 'lesson_provider.freezed.dart';
 part 'lesson_state.dart';
 
 class LessonNotifier extends StateNotifier<LessonState> {
   final IKnowledge knowledgeApi;
-  String lessonGroupId = '';
+  final ITracking trackingApi;
+  final String lessonGroupId;
 
-  LessonNotifier._(this.knowledgeApi) : super(LessonState.initial());
+  LessonNotifier(this.knowledgeApi, this.trackingApi, this.lessonGroupId) : super(LessonState.initial()) {
+    init();
+  }
 
-  factory LessonNotifier.setup(IKnowledge knowledgeApi) => LessonNotifier._(knowledgeApi);
+  // factory LessonNotifier.setup(IKnowledge knowledgeApi) => LessonNotifier._(knowledgeApi);
 
-  Future<void> init(String lessonGroupId) async {
-    state = LessonState.loading();
-    lessonGroupId = lessonGroupId;
+  Future<void> init() async {
+    state = state.copyWith(isLoading: true);
     final Either<ApiFailure, LessonGroup> failureOrSuccess =
         await knowledge_service.getLessonGroup(lessonGroupId).run(knowledgeApi);
+    final selectedProgram = await knowledge_service.getSelectedProgram().run(knowledgeApi);
+    if (selectedProgram.isLeft()) {
+      state = LessonState.clientError(selectedProgram.getLeft().getOrElse(() => const ClientFailure.storage()));
+      return;
+    }
     state = failureOrSuccess.fold(
-      (l) => LessonState.error(l.toString()),
-      (lessonGroup) => LessonState.data(lessonGroup),
+      (l) => LessonState.apiError(l),
+      (lessonGroup) => LessonState.data(
+        lessonGroup,
+        selectedProgram.getOrElse((_) => Program.empty()),
+      ),
     );
   }
 }
 
-final lessonNotifierProvider = StateNotifierProvider.autoDispose<LessonNotifier, LessonState>(
-    (ref) => LessonNotifier.setup(ref.read(knowledgeApi)));
+final lessonNotifierProvider = StateNotifierProvider.autoDispose.family<LessonNotifier, LessonState, String>(
+    (ref, lessonGroupId) => LessonNotifier(ref.read(knowledgeApi), ref.read(tracking), lessonGroupId));
 
 enum TabMenu {
   study,
@@ -46,45 +57,45 @@ enum TabMenu {
 }
 
 class LessonStudyNotifier extends StateNotifier<LessonStudyState> {
-  late List<String> idsList = [];
-  late List<Lesson> lessonsList = [];
-  late Map<String, int> idToIndexMap = {};
+  // late List<String> idsList = [];
+  // late List<Lesson> lessonsList = [];
+  // late Map<String, int> idToIndexMap = {};
   final TrackingApi trackingApi;
   String lessonGroupId = '';
 
   LessonStudyNotifier(this.trackingApi) : super(LessonStudyState.initial());
 
-  Future<void> init(LessonGroup lessonGroup) async {
+  Future<void> init(String lessonGroupId) async {
     state = LessonStudyState.initial();
-    lessonGroupId = lessonGroup.id;
-    lessonsList =
-        lessonGroup.lessonInfos.map((lg) => lg.lessons).toList().reduce((acc, next) => List.from(acc)..addAll(next));
-    idsList = lessonsList.map((lesson) => lesson.id).toList();
-    idToIndexMap = Map.fromIterables(idsList, List.generate(idsList.length, (index) => index));
-    state = state.copyWith(selectedLessonIndex: 0, selectedLessonId: _getIdFromIndex(0));
+    // lessonGroupId = lessonGroup.id;
+    // lessonsList =
+    //     lessonGroup.lessonInfos.map((lg) => lg.lessons).toList().reduce((acc, next) => List.from(acc)..addAll(next));
+    // idsList = lessonsList.map((lesson) => lesson.id).toList();
+    // idToIndexMap = Map.fromIterables(idsList, List.generate(idsList.length, (index) => index));
+    // state = state.copyWith(selectedLessonIndex: 0, selectedLessonId: _getIdFromIndex(0));
     enableTracking();
   }
 
-  void select(Lesson lesson) {
-    state = state.copyWith(selectedLessonId: lesson.id, selectedLessonIndex: _getIndexFromId(lesson.id));
-  }
+  // void select(Lesson lesson) {
+  //   state = state.copyWith(selectedLessonId: lesson.id, selectedLessonIndex: _getIndexFromId(lesson.id));
+  // }
 
-  void pre() {
-    final currentIndex = state.selectedLessonIndex;
-    if (currentIndex == 0) return;
-    state = state.copyWith(selectedLessonIndex: currentIndex - 1, selectedLessonId: _getIdFromIndex(currentIndex - 1));
-  }
+  // void pre() {
+  //   final currentIndex = state.selectedLessonIndex;
+  //   if (currentIndex == 0) return;
+  //   state = state.copyWith(selectedLessonIndex: currentIndex - 1, selectedLessonId: _getIdFromIndex(currentIndex - 1));
+  // }
 
-  void next() {
-    final currentIndex = state.selectedLessonIndex;
-    if (currentIndex == idsList.length - 1) return;
-    state = state.copyWith(selectedLessonIndex: currentIndex + 1, selectedLessonId: _getIdFromIndex(currentIndex + 1));
-  }
+  // void next() {
+  //   final currentIndex = state.selectedLessonIndex;
+  //   if (currentIndex == idsList.length - 1) return;
+  //   state = state.copyWith(selectedLessonIndex: currentIndex + 1, selectedLessonId: _getIdFromIndex(currentIndex + 1));
+  // }
 
-  _getIndexFromId(String id) => idToIndexMap[id];
-  _getIdFromIndex(int index) => idsList[index];
+  // _getIndexFromId(String id) => idToIndexMap[id];
+  // _getIdFromIndex(int index) => idsList[index];
 
-  Lesson getSelectedLesson(int selectedLessonIndex) => lessonsList[selectedLessonIndex];
+  // Lesson getSelectedLesson(int selectedLessonIndex) => lessonsList[selectedLessonIndex];
 
   Future<void> selectTabIndex(TabMenu tab) async {
     if (tab == state.selectedTabIndex) return;

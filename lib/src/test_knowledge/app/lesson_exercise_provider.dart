@@ -1,26 +1,29 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/test_knowledge/app/diagnostic_test_provider.dart';
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_service.dart' as test_service;
 import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
 
 import '../data/test_knowledge.dart';
+import 'test_provider.dart';
 
 part 'lesson_exercise_provider.freezed.dart';
 part 'lesson_exercise_state.dart';
 
 class LessonExerciseNotifier extends StateNotifier<LessonExerciseState> {
   final ITestKnowledge testApi;
-  LessonExerciseNotifier(this.testApi) : super(LessonExerciseState.initialize());
+  final String lessonGroupId;
+  LessonExerciseNotifier(this.testApi, this.lessonGroupId) : super(LessonExerciseState.initialize()) {
+    init();
+  }
 
   late List<Question> questions;
 
-  void initialize() {
-    state = LessonExerciseState.initialize();
-  }
+  // void initialize() {
+  //   state = LessonExerciseState.initialize();
+  // }
 
-  Future<void> getExercise(String lessonGroupId) async {
+  Future<void> init() async {
     state = LessonExerciseState.loading();
     final successOrFailure = await test_service.getExercise(lessonGroupId).run(testApi);
     state = successOrFailure.fold((l) => LessonExerciseState.error(), (data) {
@@ -86,6 +89,7 @@ class LessonExerciseNotifier extends StateNotifier<LessonExerciseState> {
   }
 }
 
-final exerciseNotifierProvider = StateNotifierProvider.autoDispose<LessonExerciseNotifier, LessonExerciseState>(
-  (ref) => LessonExerciseNotifier(ref.read(testApi)),
+final exerciseNotifierProvider =
+    StateNotifierProvider.autoDispose.family<LessonExerciseNotifier, LessonExerciseState, String>(
+  (ref, lessonGroupId) => LessonExerciseNotifier(ref.read(testApi), lessonGroupId),
 );

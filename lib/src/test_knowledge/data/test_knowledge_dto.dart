@@ -74,11 +74,12 @@ class AnswerDto with _$AnswerDto {
     required int id,
     required String value,
     @JsonKey(defaultValue: 0) required int order,
+    @JsonKey(defaultValue: false, name: 'is_correct') required bool isCorrect,
     required String content,
   }) = _AnswerDto;
 
   factory AnswerDto.fromJson(Map<String, dynamic> json) => _$AnswerDtoFromJson(json);
-  Answer toDomain() => Answer(id: id.toString(), value: value, order: order, content: content);
+  Answer toDomain() => Answer(id: id.toString(), value: value, order: order, content: content, isCorrect: isCorrect);
 }
 
 @freezed
@@ -118,7 +119,27 @@ class TestResultDto with _$TestResultDto {
     @JsonKey(name: 'total_score') required double score,
     required List<AnswerResultDto> result,
     required AnswerReviewDto review,
+    @TestTypeConverter() required TestType type,
+    @JsonKey(name: 'mocktest_referral', defaultValue: '') required String referral,
   }) = _TestResultDto;
+
+  // Function _fromJson(Map<String, dynamic> json) {
+  //   switch (json['type']) {
+  //     case 'Mock':
+  //       json['type'] = 'mock';
+  //       break;
+  //     case 'Exercise':
+  //       json['type'] = 'exercise';
+  //       break;
+  //     case 'Lesson':
+  //       json['type'] = 'exam';
+  //       break;
+  //   }
+  //   TestType.values
+  //       .firstWhere((e) => e.toString() == 'TestType.${json['type']}', orElse: () => TestType.undefined)
+  //       .index;
+  //   return _$TestResultDtoFromJson(json);
+  // }
 
   factory TestResultDto.fromJson(Map<String, dynamic> json) => _$TestResultDtoFromJson(json);
 
@@ -154,6 +175,43 @@ class TestResultDto with _$TestResultDto {
       score: score,
       result: answerResult,
       review: review.toDomain(),
+      type: type,
+      referral: referral,
     );
+  }
+}
+
+class TestTypeConverter implements JsonConverter<TestType, String> {
+  const TestTypeConverter();
+
+  @override
+  TestType fromJson(String type) {
+    String result = 'undefined';
+    switch (type) {
+      case 'Mock':
+        result = 'mock';
+        break;
+      case 'Exercise':
+        result = 'exercise';
+        break;
+      case 'Lesson':
+        result = 'exam';
+        break;
+    }
+    return TestType.values.firstWhere((e) => e.toString() == 'TestType.$result', orElse: () => TestType.undefined);
+  }
+
+  @override
+  String toJson(TestType type) {
+    switch (type) {
+      case TestType.mock:
+        return 'Mock';
+      case TestType.exercise:
+        return 'Exercise';
+      case TestType.exam:
+        return 'Lesson';
+      case TestType.undefined:
+        return 'Undefined';
+    }
   }
 }

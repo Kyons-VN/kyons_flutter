@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/home/view/home_page.dart';
-import 'package:kyons_flutter/src/knowledge/app/lesson_provider.dart';
 import 'package:kyons_flutter/src/tutor/app/tutor_provider.dart';
 import 'package:kyons_flutter/src/tutor/domain/session.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void showCallTutor(BuildContext context) {
+import '../../knowledge/data/knowledge_entities.dart';
+
+void showCallTutor(BuildContext context, Lesson lesson) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
@@ -23,8 +23,8 @@ void showCallTutor(BuildContext context) {
                 child: HookConsumer(builder: (context, ref, child) {
                   final tutorNotifier = ref.read(tutorNotifierProvider.notifier);
                   final tutorState = ref.watch(tutorNotifierProvider);
-                  final lessonStudyState = ref.read(lessonStudyNotifierProvider);
-                  final lessonStudyNotifier = ref.read(lessonStudyNotifierProvider.notifier);
+                  // final lessonStudyState = ref.read(lessonStudyNotifierProvider);
+                  // final lessonState = ref.watch(lessonNotifierProvider);
                   ref.listen<TutorState>(tutorNotifierProvider, (pre, next) {
                     if (next.loading && next.sessionId.isSome()) {
                       tutorNotifier.checkSessionStatus(next.sessionId.getOrElse(() => ''));
@@ -44,11 +44,11 @@ void showCallTutor(BuildContext context) {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       const SizedBox(height: AppSizesUnit.medium24 - 6),
-                      Center(
-                        child: CustomPaint(
-                          painter: LinePainter(),
-                        ),
-                      ),
+                      // Center(
+                      //   child: CustomPaint(
+                      //     painter: LinePainter(),
+                      //   ),
+                      // ),
                       AppSizesUnit.sizedBox48,
                       Expanded(
                         child: Column(
@@ -93,10 +93,10 @@ void showCallTutor(BuildContext context) {
                               child: Text(
                                 textAlign: TextAlign.center,
                                 tutorState.loading
-                                    ? t(context).connecting_tutor
+                                    ? t(context).connectingTutor
                                     : tutorState.sessionStatus.isNone()
-                                        ? t(context).call_tutor
-                                        : t(context).tutor_ready,
+                                        ? t(context).callTutor
+                                        : t(context).tutorReady,
                                 style: const TextStyle(color: AppColors.white),
                               ),
                             )
@@ -107,9 +107,7 @@ void showCallTutor(BuildContext context) {
                       if (!tutorState.loading && tutorState.sessionStatus.isNone()) ...[
                         ElevatedButton(
                             onPressed: () {
-                              tutorNotifier.requestTutor(lessonStudyNotifier
-                                  .getSelectedLesson(lessonStudyState.selectedLessonIndex)
-                                  .learningPointDifficultyId);
+                              tutorNotifier.requestTutor(lesson.learningPointDifficultyId);
                             },
                             child: Text(t(context).ok)),
                         AppSizesUnit.sizedBox8,
@@ -126,7 +124,7 @@ void showCallTutor(BuildContext context) {
                                   tutorState.sessionStatus.getOrElse(() => TutorSessionStatus.empty()).meetUrl!);
                               launchUrl(uri);
                             },
-                            child: Text(t(context).meet_tutor)),
+                            child: Text(t(context).meetTutor)),
                     ],
                   );
                 }),

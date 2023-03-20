@@ -1,18 +1,16 @@
 import 'dart:async';
 
 import 'package:fpdart/fpdart.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 import 'package:kyons_flutter/src/tracking/data/tracking_api.dart';
 import 'package:kyons_flutter/src/tracking/data/tracking_service.dart' as tracking_service;
+import 'package:shared_package/shared_package.dart';
 
-part 'tracking_provider.freezed.dart';
 part 'tracking_state.dart';
 
 class TrackingNotifier extends StateNotifier<TrackingState> {
   final TrackingApi trackingApi;
-  TrackingNotifier(this.trackingApi) : super(TrackingState.initial());
+  TrackingNotifier(this.trackingApi) : super(TrackingState());
 
   StreamSubscription? _sub;
   void enable() {

@@ -1,9 +1,9 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
 import 'package:kyons_flutter/src/core/data/api.dart';
 import 'package:kyons_flutter/src/tutor/data/tutor_dto.dart';
 import 'package:kyons_flutter/src/tutor/domain/session.dart';
 import 'package:kyons_flutter/src/tutor/domain/tutor.dart';
+import 'package:shared_package/shared_package.dart';
 
 Reader<ITutor, Future<Either<ApiFailure, String>>> requestTutor(String learningPointDifficultyId) => Reader(
       (api) => _requestTutor(api, learningPointDifficultyId).run(),

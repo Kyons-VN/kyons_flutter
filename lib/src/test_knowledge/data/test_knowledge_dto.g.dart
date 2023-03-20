@@ -58,6 +58,7 @@ _$_AnswerDto _$$_AnswerDtoFromJson(Map<String, dynamic> json) => _$_AnswerDto(
       id: json['id'] as int,
       value: json['value'] as String,
       order: json['order'] as int? ?? 0,
+      isCorrect: json['is_correct'] as bool? ?? false,
       content: json['content'] as String,
     );
 
@@ -66,6 +67,7 @@ Map<String, dynamic> _$$_AnswerDtoToJson(_$_AnswerDto instance) =>
       'id': instance.id,
       'value': instance.value,
       'order': instance.order,
+      'is_correct': instance.isCorrect,
       'content': instance.content,
     };
 
@@ -107,6 +109,8 @@ _$_TestResultDto _$$_TestResultDtoFromJson(Map<String, dynamic> json) =>
           .map((e) => AnswerResultDto.fromJson(e as Map<String, dynamic>))
           .toList(),
       review: AnswerReviewDto.fromJson(json['review'] as Map<String, dynamic>),
+      type: const TestTypeConverter().fromJson(json['type'] as String),
+      referral: json['mocktest_referral'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_TestResultDtoToJson(_$_TestResultDto instance) =>
@@ -114,4 +118,6 @@ Map<String, dynamic> _$$_TestResultDtoToJson(_$_TestResultDto instance) =>
       'total_score': instance.score,
       'result': instance.result,
       'review': instance.review,
+      'type': const TestTypeConverter().toJson(instance.type),
+      'mocktest_referral': instance.referral,
     };

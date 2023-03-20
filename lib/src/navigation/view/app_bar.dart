@@ -17,29 +17,25 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     final currentPath = GoRouter.of(context).location;
     return AppBar(
       leading: currentPath != AppPaths.home.path
-          ? GestureDetector(
-              onTap: () {
-                backPath != null ? context.go(backPath!.path) : context.canPop();
-              },
-              child: AppIcons.backIcon,
+          ? IconButton(
+              icon: AppIcons.backIcon,
+              onPressed: () => backPath != null ? context.go(backPath!.path) : context.canPop(),
             )
-          : const Icon(AppIcons.arrowLeft, color: AppColors.blueGray400),
+          : null,
       title: context.isLargerThanSmScreen() ? const TopMenu() : null,
       actions: context.isLargerThanSmScreen()
           ? [const DropdownMenu(), AppIcons.notificationIcon]
           : [
-              GestureDetector(
-                onTap: () {},
-                child: const Icon(AppIcons.notification),
-              ),
+              // GestureDetector(
+              //   onTap: () {},
+              //   child: const Icon(AppIcons.notification),
+              // ),
               AppSizesUnit.sizedBox24,
               Builder(
                 builder: (context) {
-                  return GestureDetector(
-                    onTap: () {
-                      Scaffold.of(context).openEndDrawer();
-                    },
-                    child: AppIcons.menuIcon,
+                  return IconButton(
+                    icon: const Icon(AppIcons.menuHambuger),
+                    onPressed: () => Scaffold.of(context).openEndDrawer(),
                   );
                 },
               ),
@@ -71,7 +67,7 @@ class TopMenu extends StatelessWidget {
           AppSizesUnit.sizedBox24,
           TopMenuItem(
             appPath: AppPaths.learningPath,
-            pageName: t(context).learning_path,
+            pageName: t(context).learningPath,
             icon: AppIcons.lessonContent,
           ),
           AppSizesUnit.sizedBox24,

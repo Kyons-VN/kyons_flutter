@@ -40,7 +40,7 @@ class NewLessonPage extends ConsumerWidget {
                             style: const TextStyle(color: AppColors.primaryBlue),
                             children: [
                               const TextSpan(text: '+', style: TextStyle(color: AppColors.orange)),
-                              TextSpan(text: t(context).to_add_knowledge)
+                              TextSpan(text: t(context).toAddKnowledge)
                             ])),
                   ),
                   AppSizesUnit.sizedBox24,
@@ -81,12 +81,12 @@ class NewLessonPage extends ConsumerWidget {
                                           newLessonNotifier.submit();
                                         },
                                   child: Text(
-                                    t(context).create_lesson,
+                                    t(context).createLesson,
                                     // style: Theme.of(context).textTheme.button,
                                   ),
                                 ),
                                 Text(
-                                  t(context).selected_knowledge_count(newLessonState.selectedIds.length),
+                                  t(context).selectedKnowledgeCount(newLessonState.selectedIds.length),
                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white),
                                 ),
                               ],

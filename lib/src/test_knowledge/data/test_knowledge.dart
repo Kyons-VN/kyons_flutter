@@ -1,7 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
-import 'package:kyons_flutter/src/core/domain/core.dart';
 import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
+import 'package:shared_package/shared_package.dart';
 
 class TestContent {
   final String id;
@@ -58,12 +58,14 @@ class Answer {
   final int order;
   final String value;
   final String content;
+  final bool isCorrect;
 
   Answer({
     required this.id,
     required this.order,
     required this.value,
     required this.content,
+    required this.isCorrect,
   });
 }
 
@@ -101,13 +103,24 @@ Either<ValueFailure<List<Map<String, int>>>, List<Map<String, int>>> validateSub
   }
 }
 
+enum TestType { undefined, mock, exercise, exam }
+
 class TestResult {
   final double score;
   final AnswerResult result;
   final AnswerReview review;
+  final TestType type;
+  final String referral;
 
-  TestResult({required this.score, required this.result, required this.review});
-  factory TestResult.empty() => TestResult(score: 0, result: AnswerResult.empty(), review: AnswerReview.empty());
+  TestResult({
+    required this.score,
+    required this.result,
+    required this.review,
+    required this.type,
+    this.referral = '',
+  });
+  factory TestResult.empty() =>
+      TestResult(score: 0, result: AnswerResult.empty(), review: AnswerReview.empty(), type: TestType.undefined);
 }
 
 class AnswerReview {

@@ -1,28 +1,38 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/test_knowledge/app/diagnostic_test_provider.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
 import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_service.dart' as test_service;
 import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
 
+import '../../knowledge/app/knowledge_provider.dart';
+import '../../knowledge/data/knowledge_entities.dart';
+import '../../knowledge/domain/i_knowledge.dart';
 import '../data/test_knowledge.dart';
+import 'test_provider.dart';
 
 part 'lesson_test_provider.freezed.dart';
 part 'lesson_test_state.dart';
 
 class LessonTestNotifier extends StateNotifier<LessonTestState> {
   final ITestKnowledge testApi;
-  LessonTestNotifier(this.testApi) : super(LessonTestState.initialize());
+  final IKnowledge knowledgeApi;
+  final String lessonGroupId;
+  LessonTestNotifier(this.testApi, this.knowledgeApi, this.lessonGroupId) : super(LessonTestState.initialize()) {
+    init();
+  }
 
   late List<Question> questions;
+  late Option<LearningGoal> learningGoal = none();
 
   void initialize() {
     state = LessonTestState.initialize();
   }
 
-  Future<void> getTest(String lessonGroupId) async {
+  Future<void> init() async {
     state = LessonTestState.loading();
     final successOrFailure = await test_service.getTest(lessonGroupId).run(testApi);
+    if (!mounted) return;
     state = successOrFailure.fold((l) => LessonTestState.error(), (data) {
       questions = data.questions;
       return LessonTestState.loaded(data);
@@ -38,6 +48,8 @@ class LessonTestNotifier extends StateNotifier<LessonTestState> {
         }
       }
     }
+    final selectedLearningGoal = await knowledge_service.getSelectedLearningGoal().run(knowledgeApi);
+    learningGoal = selectedLearningGoal.getRight();
   }
 
   void previous() {
@@ -91,6 +103,6 @@ class LessonTestNotifier extends StateNotifier<LessonTestState> {
   }
 }
 
-final testNotifierProvider = StateNotifierProvider.autoDispose<LessonTestNotifier, LessonTestState>(
-  (ref) => LessonTestNotifier(ref.read(testApi)),
+final testNotifierProvider = StateNotifierProvider.autoDispose.family<LessonTestNotifier, LessonTestState, String>(
+  (ref, lessonGroupId) => LessonTestNotifier(ref.read(testApi), ref.read(knowledgeApi), lessonGroupId),
 );

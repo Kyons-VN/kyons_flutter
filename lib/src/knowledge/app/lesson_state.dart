@@ -4,36 +4,54 @@ part of 'lesson_provider.dart';
 class LessonState with _$LessonState {
   const factory LessonState({
     required Option<LessonGroup> lessonGroup,
-    required bool loading,
-    required bool hasError,
+    required bool isLoading,
+    required Option<Program> selectedProgram,
+    required Option<ApiFailure> apiError,
+    required Option<ClientFailure> clientError,
   }) = _LessonState;
 
   factory LessonState.initial() => LessonState(
         lessonGroup: none(),
-        loading: false,
-        hasError: false,
+        isLoading: false,
+        selectedProgram: none(),
+        apiError: none(),
+        clientError: none(),
       );
   factory LessonState.loading() => LessonState(
         lessonGroup: none(),
-        loading: true,
-        hasError: false,
+        isLoading: true,
+        selectedProgram: none(),
+        apiError: none(),
+        clientError: none(),
       );
-  factory LessonState.data(LessonGroup lessonGroup) => LessonState(
+  factory LessonState.data(LessonGroup lessonGroup, Program selectedProgram) => LessonState(
         lessonGroup: some(lessonGroup),
-        loading: false,
-        hasError: false,
+        isLoading: false,
+        selectedProgram: some(selectedProgram),
+        apiError: none(),
+        clientError: none(),
       );
-  factory LessonState.error([String? error]) => LessonState(lessonGroup: none(), loading: false, hasError: true);
+  factory LessonState.apiError(ApiFailure error) => LessonState(
+        lessonGroup: none(),
+        isLoading: false,
+        selectedProgram: none(),
+        apiError: some(error),
+        clientError: none(),
+      );
+  factory LessonState.clientError(ClientFailure error) => LessonState(
+        lessonGroup: none(),
+        isLoading: false,
+        selectedProgram: none(),
+        apiError: none(),
+        clientError: some(error),
+      );
 }
 
 @freezed
 class LessonStudyState with _$LessonStudyState {
   const factory LessonStudyState({
-    required int selectedLessonIndex,
     required TabMenu selectedTabIndex,
-    required String selectedLessonId,
   }) = _LessonStudyState;
 
-  factory LessonStudyState.initial() =>
-      const LessonStudyState(selectedLessonId: '', selectedLessonIndex: -1, selectedTabIndex: TabMenu.study);
+  factory LessonStudyState.initial() => const LessonStudyState(selectedTabIndex: TabMenu.test);
 }

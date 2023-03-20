@@ -5,13 +5,13 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:kyons_flutter/src/authentication/data/auth_service.dart' as auth_service;
 import 'package:kyons_flutter/src/authentication/data/user_dto.dart';
-import 'package:kyons_flutter/src/authentication/domain/auth_failures.dart';
 import 'package:kyons_flutter/src/authentication/domain/i_auth.dart';
 import 'package:kyons_flutter/src/authentication/domain/user.dart';
 import 'package:kyons_flutter/src/authentication/domain/value_objects.dart';
 import 'package:kyons_flutter/src/core/data/api.dart';
 import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
 import 'package:kyons_flutter/src/navigation/data/navigation_service.dart' as navigation_service;
+import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthApi implements IAuth {
@@ -38,10 +38,10 @@ class AuthApi implements IAuth {
       }
       final token = data['access_token'] as String;
       final refreshToken = data['refresh_token'] as String;
-      final email = data['email'] as String;
+      final uuid = data['sub'] as String;
       await auth_service.saveToken(token);
       await auth_service.saveRefreshToken(refreshToken);
-      await auth_service.saveEmail(email);
+      await auth_service.saveId(uuid);
       final redirectAfterLogin = data['redirect_after_auth'] as String;
       await navigation_service.saveRedirecPath(redirectAfterLogin);
       return unit;
@@ -51,10 +51,10 @@ class AuthApi implements IAuth {
   @override
   Future<User> getUser() async {
     final token = await auth_service.getToken();
-    final email = await auth_service.getEmail();
+    final id = await auth_service.getId();
     // final intercepter = Api();
     final response = api.get('$serverApi/auth/get_user',
-        queryParameters: {'email': email},
+        queryParameters: {'id': id},
         options: Options(headers: {
           'Authorization': 'Bearer $token',
         }));
@@ -99,12 +99,39 @@ class AuthApi implements IAuth {
   }
 
   @override
-  Future<Unit> signUp(String firstName, String lastName, EmailAddress email, String password) async {
-    final response = api.post('$serverApi/sign_up', data: {
-      'first_name': firstName,
-      'last_name': lastName,
-      'username': email.getValueOrError(),
-      'password': password,
+  Future<Unit> signUp({
+    required String firstName,
+    required String lastName,
+    required EmailAddress email,
+    required Password password,
+    required bool isAgreedToTerms,
+  }) async {
+    final response = api.post('$serverApi/auth/sign_up', data: {
+      'given_name': firstName,
+      'family_name': lastName,
+      'email': email.getValueOrError(),
+      'password': password.getValueOrError(),
+      'accept_term_condition': isAgreedToTerms
+    });
+    return response.then((res) {
+      print(res);
+      if (res.statusCode != 200) {
+        return Future.error(const AuthFailure.serverError());
+      }
+      return res.data;
+    }).then((value) async {
+      final data = value as Map<String, dynamic>;
+      if (data['success'] == false) {
+        return Future.error(const AuthFailure.emailAlreadyUsed());
+      }
+      return unit;
+    });
+  }
+
+  @override
+  Future<Unit> requestResetPassword(EmailAddress email) async {
+    final response = api.post('$serverApi/forgot_password', data: {
+      'email': email.getValueOrError(),
     });
     return response.then((res) {
       if (res.statusCode != 200) {
@@ -112,6 +139,31 @@ class AuthApi implements IAuth {
       }
       return res.data;
     }).then((value) async {
+      final data = value as Map<String, dynamic>;
+      if (data['success'] == false) {
+        return Future.error(const AuthFailure.emailNotFound());
+      }
+      return unit;
+    });
+  }
+
+  @override
+  Future<Unit> newPassword({required EmailAddress email, required Password password, required String code}) {
+    final response = api.post('$serverApi/forgot_password', data: {
+      'email': email.getValueOrError(),
+      'password': password.getValueOrError(),
+      'code': code,
+    });
+    return response.then((res) {
+      if (res.statusCode != 200) {
+        return Future.error(const AuthFailure.serverError());
+      }
+      return res.data;
+    }).then((value) async {
+      final data = value as Map<String, dynamic>;
+      if (data['success'] == false) {
+        return Future.error(const AuthFailure.invalidCode());
+      }
       return unit;
     });
   }

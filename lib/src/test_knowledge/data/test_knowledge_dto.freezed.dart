@@ -640,6 +640,8 @@ mixin _$AnswerDto {
   String get value => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: 0)
   int get order => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: false, name: 'is_correct')
+  bool get isCorrect => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -657,6 +659,7 @@ abstract class $AnswerDtoCopyWith<$Res> {
       {int id,
       String value,
       @JsonKey(defaultValue: 0) int order,
+      @JsonKey(defaultValue: false, name: 'is_correct') bool isCorrect,
       String content});
 }
 
@@ -676,6 +679,7 @@ class _$AnswerDtoCopyWithImpl<$Res, $Val extends AnswerDto>
     Object? id = null,
     Object? value = null,
     Object? order = null,
+    Object? isCorrect = null,
     Object? content = null,
   }) {
     return _then(_value.copyWith(
@@ -691,6 +695,10 @@ class _$AnswerDtoCopyWithImpl<$Res, $Val extends AnswerDto>
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as int,
+      isCorrect: null == isCorrect
+          ? _value.isCorrect
+          : isCorrect // ignore: cast_nullable_to_non_nullable
+              as bool,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -710,6 +718,7 @@ abstract class _$$_AnswerDtoCopyWith<$Res> implements $AnswerDtoCopyWith<$Res> {
       {int id,
       String value,
       @JsonKey(defaultValue: 0) int order,
+      @JsonKey(defaultValue: false, name: 'is_correct') bool isCorrect,
       String content});
 }
 
@@ -727,6 +736,7 @@ class __$$_AnswerDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? value = null,
     Object? order = null,
+    Object? isCorrect = null,
     Object? content = null,
   }) {
     return _then(_$_AnswerDto(
@@ -742,6 +752,10 @@ class __$$_AnswerDtoCopyWithImpl<$Res>
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as int,
+      isCorrect: null == isCorrect
+          ? _value.isCorrect
+          : isCorrect // ignore: cast_nullable_to_non_nullable
+              as bool,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -757,6 +771,7 @@ class _$_AnswerDto extends _AnswerDto {
       {required this.id,
       required this.value,
       @JsonKey(defaultValue: 0) required this.order,
+      @JsonKey(defaultValue: false, name: 'is_correct') required this.isCorrect,
       required this.content})
       : super._();
 
@@ -771,11 +786,14 @@ class _$_AnswerDto extends _AnswerDto {
   @JsonKey(defaultValue: 0)
   final int order;
   @override
+  @JsonKey(defaultValue: false, name: 'is_correct')
+  final bool isCorrect;
+  @override
   final String content;
 
   @override
   String toString() {
-    return 'AnswerDto(id: $id, value: $value, order: $order, content: $content)';
+    return 'AnswerDto(id: $id, value: $value, order: $order, isCorrect: $isCorrect, content: $content)';
   }
 
   @override
@@ -786,12 +804,15 @@ class _$_AnswerDto extends _AnswerDto {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.order, order) || other.order == order) &&
+            (identical(other.isCorrect, isCorrect) ||
+                other.isCorrect == isCorrect) &&
             (identical(other.content, content) || other.content == content));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, value, order, content);
+  int get hashCode =>
+      Object.hash(runtimeType, id, value, order, isCorrect, content);
 
   @JsonKey(ignore: true)
   @override
@@ -811,7 +832,10 @@ abstract class _AnswerDto extends AnswerDto {
   const factory _AnswerDto(
       {required final int id,
       required final String value,
-      @JsonKey(defaultValue: 0) required final int order,
+      @JsonKey(defaultValue: 0)
+          required final int order,
+      @JsonKey(defaultValue: false, name: 'is_correct')
+          required final bool isCorrect,
       required final String content}) = _$_AnswerDto;
   const _AnswerDto._() : super._();
 
@@ -825,6 +849,9 @@ abstract class _AnswerDto extends AnswerDto {
   @override
   @JsonKey(defaultValue: 0)
   int get order;
+  @override
+  @JsonKey(defaultValue: false, name: 'is_correct')
+  bool get isCorrect;
   @override
   String get content;
   @override
@@ -1247,6 +1274,10 @@ mixin _$TestResultDto {
   double get score => throw _privateConstructorUsedError;
   List<AnswerResultDto> get result => throw _privateConstructorUsedError;
   AnswerReviewDto get review => throw _privateConstructorUsedError;
+  @TestTypeConverter()
+  TestType get type => throw _privateConstructorUsedError;
+  @JsonKey(name: 'mocktest_referral', defaultValue: '')
+  String get referral => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1263,7 +1294,9 @@ abstract class $TestResultDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'total_score') double score,
       List<AnswerResultDto> result,
-      AnswerReviewDto review});
+      AnswerReviewDto review,
+      @TestTypeConverter() TestType type,
+      @JsonKey(name: 'mocktest_referral', defaultValue: '') String referral});
 
   $AnswerReviewDtoCopyWith<$Res> get review;
 }
@@ -1284,6 +1317,8 @@ class _$TestResultDtoCopyWithImpl<$Res, $Val extends TestResultDto>
     Object? score = null,
     Object? result = null,
     Object? review = null,
+    Object? type = null,
+    Object? referral = null,
   }) {
     return _then(_value.copyWith(
       score: null == score
@@ -1298,6 +1333,14 @@ class _$TestResultDtoCopyWithImpl<$Res, $Val extends TestResultDto>
           ? _value.review
           : review // ignore: cast_nullable_to_non_nullable
               as AnswerReviewDto,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TestType,
+      referral: null == referral
+          ? _value.referral
+          : referral // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -1321,7 +1364,9 @@ abstract class _$$_TestResultDtoCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'total_score') double score,
       List<AnswerResultDto> result,
-      AnswerReviewDto review});
+      AnswerReviewDto review,
+      @TestTypeConverter() TestType type,
+      @JsonKey(name: 'mocktest_referral', defaultValue: '') String referral});
 
   @override
   $AnswerReviewDtoCopyWith<$Res> get review;
@@ -1341,6 +1386,8 @@ class __$$_TestResultDtoCopyWithImpl<$Res>
     Object? score = null,
     Object? result = null,
     Object? review = null,
+    Object? type = null,
+    Object? referral = null,
   }) {
     return _then(_$_TestResultDto(
       score: null == score
@@ -1355,6 +1402,14 @@ class __$$_TestResultDtoCopyWithImpl<$Res>
           ? _value.review
           : review // ignore: cast_nullable_to_non_nullable
               as AnswerReviewDto,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TestType,
+      referral: null == referral
+          ? _value.referral
+          : referral // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1363,9 +1418,14 @@ class __$$_TestResultDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TestResultDto extends _TestResultDto {
   const _$_TestResultDto(
-      {@JsonKey(name: 'total_score') required this.score,
+      {@JsonKey(name: 'total_score')
+          required this.score,
       required final List<AnswerResultDto> result,
-      required this.review})
+      required this.review,
+      @TestTypeConverter()
+          required this.type,
+      @JsonKey(name: 'mocktest_referral', defaultValue: '')
+          required this.referral})
       : _result = result,
         super._();
 
@@ -1385,10 +1445,16 @@ class _$_TestResultDto extends _TestResultDto {
 
   @override
   final AnswerReviewDto review;
+  @override
+  @TestTypeConverter()
+  final TestType type;
+  @override
+  @JsonKey(name: 'mocktest_referral', defaultValue: '')
+  final String referral;
 
   @override
   String toString() {
-    return 'TestResultDto(score: $score, result: $result, review: $review)';
+    return 'TestResultDto(score: $score, result: $result, review: $review, type: $type, referral: $referral)';
   }
 
   @override
@@ -1398,13 +1464,16 @@ class _$_TestResultDto extends _TestResultDto {
             other is _$_TestResultDto &&
             (identical(other.score, score) || other.score == score) &&
             const DeepCollectionEquality().equals(other._result, _result) &&
-            (identical(other.review, review) || other.review == review));
+            (identical(other.review, review) || other.review == review) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.referral, referral) ||
+                other.referral == referral));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, score, const DeepCollectionEquality().hash(_result), review);
+  int get hashCode => Object.hash(runtimeType, score,
+      const DeepCollectionEquality().hash(_result), review, type, referral);
 
   @JsonKey(ignore: true)
   @override
@@ -1422,9 +1491,14 @@ class _$_TestResultDto extends _TestResultDto {
 
 abstract class _TestResultDto extends TestResultDto {
   const factory _TestResultDto(
-      {@JsonKey(name: 'total_score') required final double score,
+      {@JsonKey(name: 'total_score')
+          required final double score,
       required final List<AnswerResultDto> result,
-      required final AnswerReviewDto review}) = _$_TestResultDto;
+      required final AnswerReviewDto review,
+      @TestTypeConverter()
+          required final TestType type,
+      @JsonKey(name: 'mocktest_referral', defaultValue: '')
+          required final String referral}) = _$_TestResultDto;
   const _TestResultDto._() : super._();
 
   factory _TestResultDto.fromJson(Map<String, dynamic> json) =
@@ -1437,6 +1511,12 @@ abstract class _TestResultDto extends TestResultDto {
   List<AnswerResultDto> get result;
   @override
   AnswerReviewDto get review;
+  @override
+  @TestTypeConverter()
+  TestType get type;
+  @override
+  @JsonKey(name: 'mocktest_referral', defaultValue: '')
+  String get referral;
   @override
   @JsonKey(ignore: true)
   _$$_TestResultDtoCopyWith<_$_TestResultDto> get copyWith =>

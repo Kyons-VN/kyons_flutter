@@ -17,11 +17,18 @@ abstract class IKnowledge {
   Future<List<Program>> getStudentProgram();
   Future<Unit> defaultLearningPath(Program program);
   Future<TestContent> getDiagnosticTest(Program program);
-  Future<LearningPath> getLearningPath(Program program);
   Future<LessonGroup> getLessonGroup(String lessonGroupId);
   Future<Unit> selectProgram(Program program);
+  Future<List<LearningGoal>> getLearningGoals(Program program);
+  Future<Unit> selectLearningGoal(LearningGoal learningGoal);
   Future<Program> getSelectedProgram();
   Future<Unit> removeSelectedProgram();
   Future<Unit> createLesson(Program program, List<String> difficultyIds);
   Future<List<LearningPoint>> getLearningPoints(Program program);
+  Future<LearningGoal> getSelectedLearningGoal();
+  Future<List<TopicSelection>> getTopicsFromLearningGoal(LearningGoal learningGoal);
+  Future<LearningGoal> createLearningGoal(LearningGoal masterLearningGoal, List<Topic> selectedTopics);
+  Future<LearningGoalPath> getLearningGoalPath(Program program, LearningGoal learningGoal);
+  Future<Unit> setSelectedCatIndex(int index);
+  Future<int> getSelectedCatIndex();
 }

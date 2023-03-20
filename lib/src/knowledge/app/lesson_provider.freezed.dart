@@ -17,8 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LessonState {
   Option<LessonGroup> get lessonGroup => throw _privateConstructorUsedError;
-  bool get loading => throw _privateConstructorUsedError;
-  bool get hasError => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  Option<Program> get selectedProgram => throw _privateConstructorUsedError;
+  Option<ApiFailure> get apiError => throw _privateConstructorUsedError;
+  Option<ClientFailure> get clientError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LessonStateCopyWith<LessonState> get copyWith =>
@@ -31,7 +33,12 @@ abstract class $LessonStateCopyWith<$Res> {
           LessonState value, $Res Function(LessonState) then) =
       _$LessonStateCopyWithImpl<$Res, LessonState>;
   @useResult
-  $Res call({Option<LessonGroup> lessonGroup, bool loading, bool hasError});
+  $Res call(
+      {Option<LessonGroup> lessonGroup,
+      bool isLoading,
+      Option<Program> selectedProgram,
+      Option<ApiFailure> apiError,
+      Option<ClientFailure> clientError});
 }
 
 /// @nodoc
@@ -48,22 +55,32 @@ class _$LessonStateCopyWithImpl<$Res, $Val extends LessonState>
   @override
   $Res call({
     Object? lessonGroup = null,
-    Object? loading = null,
-    Object? hasError = null,
+    Object? isLoading = null,
+    Object? selectedProgram = null,
+    Object? apiError = null,
+    Object? clientError = null,
   }) {
     return _then(_value.copyWith(
       lessonGroup: null == lessonGroup
           ? _value.lessonGroup
           : lessonGroup // ignore: cast_nullable_to_non_nullable
               as Option<LessonGroup>,
-      loading: null == loading
-          ? _value.loading
-          : loading // ignore: cast_nullable_to_non_nullable
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: null == hasError
-          ? _value.hasError
-          : hasError // ignore: cast_nullable_to_non_nullable
-              as bool,
+      selectedProgram: null == selectedProgram
+          ? _value.selectedProgram
+          : selectedProgram // ignore: cast_nullable_to_non_nullable
+              as Option<Program>,
+      apiError: null == apiError
+          ? _value.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
+              as Option<ApiFailure>,
+      clientError: null == clientError
+          ? _value.clientError
+          : clientError // ignore: cast_nullable_to_non_nullable
+              as Option<ClientFailure>,
     ) as $Val);
   }
 }
@@ -76,7 +93,12 @@ abstract class _$$_LessonStateCopyWith<$Res>
       __$$_LessonStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Option<LessonGroup> lessonGroup, bool loading, bool hasError});
+  $Res call(
+      {Option<LessonGroup> lessonGroup,
+      bool isLoading,
+      Option<Program> selectedProgram,
+      Option<ApiFailure> apiError,
+      Option<ClientFailure> clientError});
 }
 
 /// @nodoc
@@ -91,22 +113,32 @@ class __$$_LessonStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? lessonGroup = null,
-    Object? loading = null,
-    Object? hasError = null,
+    Object? isLoading = null,
+    Object? selectedProgram = null,
+    Object? apiError = null,
+    Object? clientError = null,
   }) {
     return _then(_$_LessonState(
       lessonGroup: null == lessonGroup
           ? _value.lessonGroup
           : lessonGroup // ignore: cast_nullable_to_non_nullable
               as Option<LessonGroup>,
-      loading: null == loading
-          ? _value.loading
-          : loading // ignore: cast_nullable_to_non_nullable
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: null == hasError
-          ? _value.hasError
-          : hasError // ignore: cast_nullable_to_non_nullable
-              as bool,
+      selectedProgram: null == selectedProgram
+          ? _value.selectedProgram
+          : selectedProgram // ignore: cast_nullable_to_non_nullable
+              as Option<Program>,
+      apiError: null == apiError
+          ? _value.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
+              as Option<ApiFailure>,
+      clientError: null == clientError
+          ? _value.clientError
+          : clientError // ignore: cast_nullable_to_non_nullable
+              as Option<ClientFailure>,
     ));
   }
 }
@@ -116,19 +148,25 @@ class __$$_LessonStateCopyWithImpl<$Res>
 class _$_LessonState implements _LessonState {
   const _$_LessonState(
       {required this.lessonGroup,
-      required this.loading,
-      required this.hasError});
+      required this.isLoading,
+      required this.selectedProgram,
+      required this.apiError,
+      required this.clientError});
 
   @override
   final Option<LessonGroup> lessonGroup;
   @override
-  final bool loading;
+  final bool isLoading;
   @override
-  final bool hasError;
+  final Option<Program> selectedProgram;
+  @override
+  final Option<ApiFailure> apiError;
+  @override
+  final Option<ClientFailure> clientError;
 
   @override
   String toString() {
-    return 'LessonState(lessonGroup: $lessonGroup, loading: $loading, hasError: $hasError)';
+    return 'LessonState(lessonGroup: $lessonGroup, isLoading: $isLoading, selectedProgram: $selectedProgram, apiError: $apiError, clientError: $clientError)';
   }
 
   @override
@@ -138,13 +176,19 @@ class _$_LessonState implements _LessonState {
             other is _$_LessonState &&
             (identical(other.lessonGroup, lessonGroup) ||
                 other.lessonGroup == lessonGroup) &&
-            (identical(other.loading, loading) || other.loading == loading) &&
-            (identical(other.hasError, hasError) ||
-                other.hasError == hasError));
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.selectedProgram, selectedProgram) ||
+                other.selectedProgram == selectedProgram) &&
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError) &&
+            (identical(other.clientError, clientError) ||
+                other.clientError == clientError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, lessonGroup, loading, hasError);
+  int get hashCode => Object.hash(runtimeType, lessonGroup, isLoading,
+      selectedProgram, apiError, clientError);
 
   @JsonKey(ignore: true)
   @override
@@ -156,15 +200,21 @@ class _$_LessonState implements _LessonState {
 abstract class _LessonState implements LessonState {
   const factory _LessonState(
       {required final Option<LessonGroup> lessonGroup,
-      required final bool loading,
-      required final bool hasError}) = _$_LessonState;
+      required final bool isLoading,
+      required final Option<Program> selectedProgram,
+      required final Option<ApiFailure> apiError,
+      required final Option<ClientFailure> clientError}) = _$_LessonState;
 
   @override
   Option<LessonGroup> get lessonGroup;
   @override
-  bool get loading;
+  bool get isLoading;
   @override
-  bool get hasError;
+  Option<Program> get selectedProgram;
+  @override
+  Option<ApiFailure> get apiError;
+  @override
+  Option<ClientFailure> get clientError;
   @override
   @JsonKey(ignore: true)
   _$$_LessonStateCopyWith<_$_LessonState> get copyWith =>
@@ -173,9 +223,7 @@ abstract class _LessonState implements LessonState {
 
 /// @nodoc
 mixin _$LessonStudyState {
-  int get selectedLessonIndex => throw _privateConstructorUsedError;
   TabMenu get selectedTabIndex => throw _privateConstructorUsedError;
-  String get selectedLessonId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LessonStudyStateCopyWith<LessonStudyState> get copyWith =>
@@ -188,10 +236,7 @@ abstract class $LessonStudyStateCopyWith<$Res> {
           LessonStudyState value, $Res Function(LessonStudyState) then) =
       _$LessonStudyStateCopyWithImpl<$Res, LessonStudyState>;
   @useResult
-  $Res call(
-      {int selectedLessonIndex,
-      TabMenu selectedTabIndex,
-      String selectedLessonId});
+  $Res call({TabMenu selectedTabIndex});
 }
 
 /// @nodoc
@@ -207,23 +252,13 @@ class _$LessonStudyStateCopyWithImpl<$Res, $Val extends LessonStudyState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedLessonIndex = null,
     Object? selectedTabIndex = null,
-    Object? selectedLessonId = null,
   }) {
     return _then(_value.copyWith(
-      selectedLessonIndex: null == selectedLessonIndex
-          ? _value.selectedLessonIndex
-          : selectedLessonIndex // ignore: cast_nullable_to_non_nullable
-              as int,
       selectedTabIndex: null == selectedTabIndex
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
               as TabMenu,
-      selectedLessonId: null == selectedLessonId
-          ? _value.selectedLessonId
-          : selectedLessonId // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -236,10 +271,7 @@ abstract class _$$_LessonStudyStateCopyWith<$Res>
       __$$_LessonStudyStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int selectedLessonIndex,
-      TabMenu selectedTabIndex,
-      String selectedLessonId});
+  $Res call({TabMenu selectedTabIndex});
 }
 
 /// @nodoc
@@ -253,23 +285,13 @@ class __$$_LessonStudyStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedLessonIndex = null,
     Object? selectedTabIndex = null,
-    Object? selectedLessonId = null,
   }) {
     return _then(_$_LessonStudyState(
-      selectedLessonIndex: null == selectedLessonIndex
-          ? _value.selectedLessonIndex
-          : selectedLessonIndex // ignore: cast_nullable_to_non_nullable
-              as int,
       selectedTabIndex: null == selectedTabIndex
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
               as TabMenu,
-      selectedLessonId: null == selectedLessonId
-          ? _value.selectedLessonId
-          : selectedLessonId // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -277,21 +299,14 @@ class __$$_LessonStudyStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LessonStudyState implements _LessonStudyState {
-  const _$_LessonStudyState(
-      {required this.selectedLessonIndex,
-      required this.selectedTabIndex,
-      required this.selectedLessonId});
+  const _$_LessonStudyState({required this.selectedTabIndex});
 
   @override
-  final int selectedLessonIndex;
-  @override
   final TabMenu selectedTabIndex;
-  @override
-  final String selectedLessonId;
 
   @override
   String toString() {
-    return 'LessonStudyState(selectedLessonIndex: $selectedLessonIndex, selectedTabIndex: $selectedTabIndex, selectedLessonId: $selectedLessonId)';
+    return 'LessonStudyState(selectedTabIndex: $selectedTabIndex)';
   }
 
   @override
@@ -299,17 +314,12 @@ class _$_LessonStudyState implements _LessonStudyState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LessonStudyState &&
-            (identical(other.selectedLessonIndex, selectedLessonIndex) ||
-                other.selectedLessonIndex == selectedLessonIndex) &&
             (identical(other.selectedTabIndex, selectedTabIndex) ||
-                other.selectedTabIndex == selectedTabIndex) &&
-            (identical(other.selectedLessonId, selectedLessonId) ||
-                other.selectedLessonId == selectedLessonId));
+                other.selectedTabIndex == selectedTabIndex));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, selectedLessonIndex, selectedTabIndex, selectedLessonId);
+  int get hashCode => Object.hash(runtimeType, selectedTabIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -319,17 +329,11 @@ class _$_LessonStudyState implements _LessonStudyState {
 }
 
 abstract class _LessonStudyState implements LessonStudyState {
-  const factory _LessonStudyState(
-      {required final int selectedLessonIndex,
-      required final TabMenu selectedTabIndex,
-      required final String selectedLessonId}) = _$_LessonStudyState;
+  const factory _LessonStudyState({required final TabMenu selectedTabIndex}) =
+      _$_LessonStudyState;
 
   @override
-  int get selectedLessonIndex;
-  @override
   TabMenu get selectedTabIndex;
-  @override
-  String get selectedLessonId;
   @override
   @JsonKey(ignore: true)
   _$$_LessonStudyStateCopyWith<_$_LessonStudyState> get copyWith =>

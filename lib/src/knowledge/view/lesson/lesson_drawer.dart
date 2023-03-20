@@ -27,11 +27,10 @@ class LessonDrawer extends StatelessWidget {
             ),
             onTap: Navigator.of(context).pop,
           ),
-
           ListTile(
             leading: const Icon(AppIcons.lessonContent, color: AppColors.white),
             title: Text(
-              t(context).learning_path,
+              t(context).learningPath,
               style: const TextStyle(color: AppColors.white),
             ),
             onTap: () => {},

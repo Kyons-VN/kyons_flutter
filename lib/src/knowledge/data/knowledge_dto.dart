@@ -24,10 +24,12 @@ class ProgramDto with _$ProgramDto {
     required int id,
     required String name,
     @JsonKey(name: 'subject_id') required int subjectId,
+    @JsonKey(name: 'learning_goal') required LearningGoalDto? learningGoal,
   }) = _ProgramDto;
 
   factory ProgramDto.fromJson(Map<String, dynamic> json) => _$ProgramDtoFromJson(json);
-  Program toDomain() => Program(id: id.toString(), name: name, subjectId: subjectId.toString());
+  Program toDomain() =>
+      Program(id: id.toString(), name: name, subjectId: subjectId.toString(), learningGoal: learningGoal?.toDomain());
 }
 
 @freezed
@@ -35,20 +37,41 @@ class LessonItemDto with _$LessonItemDto {
   const LessonItemDto._();
   const factory LessonItemDto({
     required String id,
+    required String name,
     @JsonKey(name: 'new') required bool isNew,
   }) = _LessonItemDto;
 
   factory LessonItemDto.fromJson(Map<String, dynamic> json) => _$LessonItemDtoFromJson(json);
-  LessonItem toDomain() => LessonItem(id: id, isNew: isNew);
+  LessonItem toDomain() => LessonItem(id: id, name: name, isNew: isNew);
 }
 
 @freezed
-class LearningPathDto with _$LearningPathDto {
-  const LearningPathDto._();
-  const factory LearningPathDto({required List<LessonItemDto> lessonsDto}) = _LearningPathDto;
+class LearningGoalPathDto with _$LearningGoalPathDto {
+  const LearningGoalPathDto._();
+  const factory LearningGoalPathDto({
+    required List<LearningGoalCategoryDto> categories,
+    @JsonKey(name: 'complete_percentage') required double progress,
+  }) = _LearningGoalPathDto;
 
-  factory LearningPathDto.fromJson(Map<String, dynamic> json) => _$LearningPathDtoFromJson(json);
-  LearningPath toDomain() => LearningPath(lessonsDto.map((lessonDto) => lessonDto.toDomain()).toList());
+  factory LearningGoalPathDto.fromJson(Map<String, dynamic> json) => _$LearningGoalPathDtoFromJson(json);
+  LearningGoalPath toDomain() => LearningGoalPath(
+      lessonCategories: categories.map((categoryDto) => categoryDto.toDomain()).toList(), progress: progress);
+}
+
+@freezed
+class LearningGoalCategoryDto with _$LearningGoalCategoryDto {
+  const LearningGoalCategoryDto._();
+  const factory LearningGoalCategoryDto({
+    @JsonKey(name: 'completed') required bool isCompleted,
+    @JsonKey(name: 'category') required CategoryDto categoryDto,
+    @JsonKey(name: 'lesson_list') required List<LessonItemDto> lessonsDto,
+  }) = _LearningGoalCategoryDto;
+  factory LearningGoalCategoryDto.fromJson(Map<String, dynamic> json) => _$LearningGoalCategoryDtoFromJson(json);
+  LearningGoalCategory toDomain() => LearningGoalCategory(
+        isCompleted: isCompleted,
+        category: categoryDto.toDomain(),
+        lessons: lessonsDto.map((lessonDto) => lessonDto.toDomain()).toList(),
+      );
 }
 
 @freezed
@@ -94,6 +117,11 @@ class TopicDto with _$TopicDto {
   Topic toDomain() {
     if (id == 0) return Topic.empty();
     return Topic(id: id.toString(), name: name);
+  }
+
+  TopicSelection toTopicSelection() {
+    if (id == 0) return TopicSelection.empty();
+    return TopicSelection(id: id.toString(), name: name);
   }
 
   factory TopicDto.fromId(int id) => TopicDto(id: id, name: '');
@@ -162,4 +190,19 @@ class LearningPointDto with _$LearningPointDto {
       diffucultyId: difficultyId.toString(),
       learningPoint: learningPoint,
       topic: TopicDto(id: topicId, name: topicName).toDomain());
+}
+
+@freezed
+class LearningGoalDto with _$LearningGoalDto {
+  const LearningGoalDto._();
+  const factory LearningGoalDto({
+    required int id,
+    @JsonKey(defaultValue: 0) required double progress,
+    required String name,
+    @JsonKey(name: 'min_topic_numb', defaultValue: 0) required int minTopic,
+    @JsonKey(name: 'max_topic_numb', defaultValue: 99) required int maxTopic,
+  }) = _LearningGoalDto;
+  factory LearningGoalDto.fromJson(Map<String, dynamic> json) => _$LearningGoalDtoFromJson(json);
+  LearningGoal toDomain() =>
+      LearningGoal(id: id.toString(), name: name, progress: progress, minTopics: minTopic, maxTopics: maxTopic);
 }

@@ -17,9 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LearningPathState {
   bool get loading => throw _privateConstructorUsedError;
-  Option<LearningPath> get learningPath => throw _privateConstructorUsedError;
-  bool get missingProgram => throw _privateConstructorUsedError;
-  Option<ApiFailure> get error => throw _privateConstructorUsedError;
+  Option<LearningGoalPath> get learningGoalPathOption =>
+      throw _privateConstructorUsedError;
+  Option<Program> get selectedProgram => throw _privateConstructorUsedError;
+  Option<LearningGoal> get selectedLearningGoal =>
+      throw _privateConstructorUsedError;
+  Option<ApiFailure> get hasError => throw _privateConstructorUsedError;
+  int get selectedCat => throw _privateConstructorUsedError;
+  bool get isMissing => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LearningPathStateCopyWith<LearningPathState> get copyWith =>
@@ -34,9 +39,12 @@ abstract class $LearningPathStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool loading,
-      Option<LearningPath> learningPath,
-      bool missingProgram,
-      Option<ApiFailure> error});
+      Option<LearningGoalPath> learningGoalPathOption,
+      Option<Program> selectedProgram,
+      Option<LearningGoal> selectedLearningGoal,
+      Option<ApiFailure> hasError,
+      int selectedCat,
+      bool isMissing});
 }
 
 /// @nodoc
@@ -53,27 +61,42 @@ class _$LearningPathStateCopyWithImpl<$Res, $Val extends LearningPathState>
   @override
   $Res call({
     Object? loading = null,
-    Object? learningPath = null,
-    Object? missingProgram = null,
-    Object? error = null,
+    Object? learningGoalPathOption = null,
+    Object? selectedProgram = null,
+    Object? selectedLearningGoal = null,
+    Object? hasError = null,
+    Object? selectedCat = null,
+    Object? isMissing = null,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      learningPath: null == learningPath
-          ? _value.learningPath
-          : learningPath // ignore: cast_nullable_to_non_nullable
-              as Option<LearningPath>,
-      missingProgram: null == missingProgram
-          ? _value.missingProgram
-          : missingProgram // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
+      learningGoalPathOption: null == learningGoalPathOption
+          ? _value.learningGoalPathOption
+          : learningGoalPathOption // ignore: cast_nullable_to_non_nullable
+              as Option<LearningGoalPath>,
+      selectedProgram: null == selectedProgram
+          ? _value.selectedProgram
+          : selectedProgram // ignore: cast_nullable_to_non_nullable
+              as Option<Program>,
+      selectedLearningGoal: null == selectedLearningGoal
+          ? _value.selectedLearningGoal
+          : selectedLearningGoal // ignore: cast_nullable_to_non_nullable
+              as Option<LearningGoal>,
+      hasError: null == hasError
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
               as Option<ApiFailure>,
+      selectedCat: null == selectedCat
+          ? _value.selectedCat
+          : selectedCat // ignore: cast_nullable_to_non_nullable
+              as int,
+      isMissing: null == isMissing
+          ? _value.isMissing
+          : isMissing // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -88,9 +111,12 @@ abstract class _$$_LearningPathStateCopyWith<$Res>
   @useResult
   $Res call(
       {bool loading,
-      Option<LearningPath> learningPath,
-      bool missingProgram,
-      Option<ApiFailure> error});
+      Option<LearningGoalPath> learningGoalPathOption,
+      Option<Program> selectedProgram,
+      Option<LearningGoal> selectedLearningGoal,
+      Option<ApiFailure> hasError,
+      int selectedCat,
+      bool isMissing});
 }
 
 /// @nodoc
@@ -105,27 +131,42 @@ class __$$_LearningPathStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? loading = null,
-    Object? learningPath = null,
-    Object? missingProgram = null,
-    Object? error = null,
+    Object? learningGoalPathOption = null,
+    Object? selectedProgram = null,
+    Object? selectedLearningGoal = null,
+    Object? hasError = null,
+    Object? selectedCat = null,
+    Object? isMissing = null,
   }) {
     return _then(_$_LearningPathState(
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      learningPath: null == learningPath
-          ? _value.learningPath
-          : learningPath // ignore: cast_nullable_to_non_nullable
-              as Option<LearningPath>,
-      missingProgram: null == missingProgram
-          ? _value.missingProgram
-          : missingProgram // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
+      learningGoalPathOption: null == learningGoalPathOption
+          ? _value.learningGoalPathOption
+          : learningGoalPathOption // ignore: cast_nullable_to_non_nullable
+              as Option<LearningGoalPath>,
+      selectedProgram: null == selectedProgram
+          ? _value.selectedProgram
+          : selectedProgram // ignore: cast_nullable_to_non_nullable
+              as Option<Program>,
+      selectedLearningGoal: null == selectedLearningGoal
+          ? _value.selectedLearningGoal
+          : selectedLearningGoal // ignore: cast_nullable_to_non_nullable
+              as Option<LearningGoal>,
+      hasError: null == hasError
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
               as Option<ApiFailure>,
+      selectedCat: null == selectedCat
+          ? _value.selectedCat
+          : selectedCat // ignore: cast_nullable_to_non_nullable
+              as int,
+      isMissing: null == isMissing
+          ? _value.isMissing
+          : isMissing // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -135,22 +176,31 @@ class __$$_LearningPathStateCopyWithImpl<$Res>
 class _$_LearningPathState implements _LearningPathState {
   const _$_LearningPathState(
       {required this.loading,
-      required this.learningPath,
-      required this.missingProgram,
-      required this.error});
+      required this.learningGoalPathOption,
+      required this.selectedProgram,
+      required this.selectedLearningGoal,
+      required this.hasError,
+      required this.selectedCat,
+      required this.isMissing});
 
   @override
   final bool loading;
   @override
-  final Option<LearningPath> learningPath;
+  final Option<LearningGoalPath> learningGoalPathOption;
   @override
-  final bool missingProgram;
+  final Option<Program> selectedProgram;
   @override
-  final Option<ApiFailure> error;
+  final Option<LearningGoal> selectedLearningGoal;
+  @override
+  final Option<ApiFailure> hasError;
+  @override
+  final int selectedCat;
+  @override
+  final bool isMissing;
 
   @override
   String toString() {
-    return 'LearningPathState(loading: $loading, learningPath: $learningPath, missingProgram: $missingProgram, error: $error)';
+    return 'LearningPathState(loading: $loading, learningGoalPathOption: $learningGoalPathOption, selectedProgram: $selectedProgram, selectedLearningGoal: $selectedLearningGoal, hasError: $hasError, selectedCat: $selectedCat, isMissing: $isMissing)';
   }
 
   @override
@@ -159,16 +209,23 @@ class _$_LearningPathState implements _LearningPathState {
         (other.runtimeType == runtimeType &&
             other is _$_LearningPathState &&
             (identical(other.loading, loading) || other.loading == loading) &&
-            (identical(other.learningPath, learningPath) ||
-                other.learningPath == learningPath) &&
-            (identical(other.missingProgram, missingProgram) ||
-                other.missingProgram == missingProgram) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.learningGoalPathOption, learningGoalPathOption) ||
+                other.learningGoalPathOption == learningGoalPathOption) &&
+            (identical(other.selectedProgram, selectedProgram) ||
+                other.selectedProgram == selectedProgram) &&
+            (identical(other.selectedLearningGoal, selectedLearningGoal) ||
+                other.selectedLearningGoal == selectedLearningGoal) &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError) &&
+            (identical(other.selectedCat, selectedCat) ||
+                other.selectedCat == selectedCat) &&
+            (identical(other.isMissing, isMissing) ||
+                other.isMissing == isMissing));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, loading, learningPath, missingProgram, error);
+  int get hashCode => Object.hash(runtimeType, loading, learningGoalPathOption,
+      selectedProgram, selectedLearningGoal, hasError, selectedCat, isMissing);
 
   @JsonKey(ignore: true)
   @override
@@ -181,18 +238,27 @@ class _$_LearningPathState implements _LearningPathState {
 abstract class _LearningPathState implements LearningPathState {
   const factory _LearningPathState(
       {required final bool loading,
-      required final Option<LearningPath> learningPath,
-      required final bool missingProgram,
-      required final Option<ApiFailure> error}) = _$_LearningPathState;
+      required final Option<LearningGoalPath> learningGoalPathOption,
+      required final Option<Program> selectedProgram,
+      required final Option<LearningGoal> selectedLearningGoal,
+      required final Option<ApiFailure> hasError,
+      required final int selectedCat,
+      required final bool isMissing}) = _$_LearningPathState;
 
   @override
   bool get loading;
   @override
-  Option<LearningPath> get learningPath;
+  Option<LearningGoalPath> get learningGoalPathOption;
   @override
-  bool get missingProgram;
+  Option<Program> get selectedProgram;
   @override
-  Option<ApiFailure> get error;
+  Option<LearningGoal> get selectedLearningGoal;
+  @override
+  Option<ApiFailure> get hasError;
+  @override
+  int get selectedCat;
+  @override
+  bool get isMissing;
   @override
   @JsonKey(ignore: true)
   _$$_LearningPathStateCopyWith<_$_LearningPathState> get copyWith =>

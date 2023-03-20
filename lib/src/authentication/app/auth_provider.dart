@@ -23,7 +23,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
   factory AuthNotifier(authApi, knowledgeApi, trackingApi) => AuthNotifier._(authApi, knowledgeApi, trackingApi);
 
   Future<Unit> stateChanged() async {
-    state = const AuthState.loading();
+    // state = const AuthState.loading();
     final userEither = await auth_service.getUser().run(authApi);
     state = userEither.fold((failure) => const AuthState.unAuthenticated(), (user) {
       trackingApi.init();

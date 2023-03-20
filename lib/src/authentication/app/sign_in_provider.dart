@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart' hide Reader;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/boostrap/config_reader.dart';
 import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
 import 'package:kyons_flutter/src/authentication/data/auth_service.dart' as auth_service;
-import 'package:kyons_flutter/src/authentication/domain/auth_failures.dart';
 import 'package:kyons_flutter/src/authentication/domain/i_auth.dart';
 import 'package:kyons_flutter/src/authentication/domain/user.dart';
 import 'package:kyons_flutter/src/authentication/domain/value_objects.dart';
+import 'package:shared_package/shared_package.dart';
 
 part 'sign_in_provider.freezed.dart';
 part 'sign_in_state.dart';
@@ -35,7 +35,8 @@ class SignInNotifier extends StateNotifier<SignInState> {
     state = SignInState.initial();
     if (ConfigReader.env == Environment.dev) {
       state = state.copyWith(
-        emailAddress: EmailAddress('1025ss@te.st'),
+        // emailAddress: EmailAddress('binhhm2009+0311@gmail.com'),
+        emailAddress: EmailAddress('binhhm2009+0224@gmail.com'),
         password: 'Zaq1@wsx',
       );
     }

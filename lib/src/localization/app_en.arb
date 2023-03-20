@@ -37,10 +37,10 @@
   "success": "Success",
   "fail": "Fail",
   "back": "Back",
-  "choose_subject_and_program": "Choose your subject and program",
-  "choose_subject_and_program_headline": "Choose subject\nand program",
-  "select_thing": "Select {thing}",
-  "@select_thing": {
+  "chooseSubjectAndProgram": "Choose your subject and program",
+  "chooseSubjectAndProgramHeadline": "Choose subject\nand program",
+  "selectThing": "Select {thing}",
+  "@selectThing": {
     "placeholders": {
       "thing": {
         "type": "String"
@@ -51,13 +51,14 @@
   "math": "Math",
   "english": "English",
   "start": "Start",
-  "back_to_home": "Back to Home",
-  "do_diagnostictest_heading": "Will have\na diagnostictest!",
-  "do_diagnostictest_btn": "Start diagnostic test",
-  "do_diagnostictest_cancel": "No, just let me in!",
-  "diagnostic_test": "Diagnostic test",
-  "thing_number": "{thing} {number}",
-  "@thing_number": {
+  "backToHome": "Back to home",
+  "backToLogin": "Back to login",
+  "doDiagnostictestHeading": "Will have\na diagnostictest!",
+  "doDiagnostictestBtn": "Start diagnostic test",
+  "doDiagnostictestCancel": "No, just let me in!",
+  "diagnosticTest": "Diagnostic test",
+  "thingNumber": "{thing} {number}",
+  "@thingNumber": {
     "placeholders": {
       "thing": {
         "type": "String"
@@ -69,60 +70,151 @@
   },
   "question": "Question",
   "lesson": "Lesson",
-  "question_number": "Question",
-  "lesson_number": "Lesson",
+  "questionNumber": "Question",
+  "lessonNumber": "Lesson",
   "home": "Home",
-  "learning_path": "Learning Path",
+  "learningPath": "Learning Path",
   "ok": "Ok",
   "cancel": "Cancel",
-  "call_tutor": "Call tutor for help?",
-  "connecting_tutor": "Tutor is connecting.\nPlease wait for a few minute.",
-  "tutor_ready": "Tutor is ready.\nClick button \"Meet tutor\" to connect with him/her.",
-  "meet_tutor": "Meet tutor",
+  "callTutor": "Call tutor for help?",
+  "connectingTutor": "Tutor is connecting.\nPlease wait for a few minute.",
+  "tutorReady": "Tutor is ready.\nClick button \"Meet tutor\" to connect with him/her.",
+  "meetTutor": "Meet tutor",
   "exercise": "Exercise",
   "test": "Test",
   "level": "Level",
-  "your_score": "Your score",
-  "general_knowledge": "General knowledge",
-  "knowledge_should_review": "Knowledge to review",
-  "redo_exercise": "Redo exercise",
-  "do_test": "Do test",
+  "yourScore": "Your score",
+  "generalKnowledge": "General knowledge",
+  "knowledgeShouldReview": "Knowledge to review",
+  "redoExercise": "Redo exercise",
+  "doTest": "Do test",
   "error": "Error, please try again later",
-  "to_learning_path": "To learning path",
-  "finish_test": "You have finished testing",
-  "learning_path_is_reparing": "Kyons is reparing learning path for you. Please wait!",
-  "learning_path_is_ready": "Kyons has created learing path for you. Let's get started!",
-  "hi_so": "Hi {so}",
-  "@hi_so": {
+  "toLearningPath": "To learning path",
+  "finishTest": "You have finished testing",
+  "learningPathIsReparing": "Kyons is reparing learning path for you. Please wait!",
+  "learningPathIsReady": "Kyons has created learing path for you. Let''s get started!",
+  "hiSo": "Hi {so}",
+  "@hiSo": {
     "placeholders": {
       "so": {
         "type": "String"
       }
     }
   },
-  "lesson_is_reparing": "Kyons is reparing the lesson for you",
-  "new_lesson": "Create new lesson",
+  "lessonIsReparing": "Kyons is reparing the lesson for you",
+  "newLesson": "Create new lesson",
   "press": "Press (",
-  "to_add_knowledge": ") to add knowledge to your lesson",
-  "create_lesson": "Create lesson",
-  "selected_knowledge_count": "{count, plural, zero{No selected knowledge} one{1 knowledge is selected} other{{count} knowledge are selected}}",
-  "@selected_knowledge_count": {
+  "toAddKnowledge": ") to add knowledge to your lesson",
+  "createLesson": "Create lesson",
+  "selectedKnowledgeCount": "{count, plural, zero{No selected knowledge} one{1 knowledge is selected} other{{count} knowledge are selected}}",
+  "@selectedKnowledgeCount": {
     "placeholders": {
       "count": {
         "type": "int"
       }
     }
   },
-  "forgot_password": "Forgot password?",
-  "does_not_have_account": "Does not have account?",
-  "register_here": "Register here",
-  "ready_to_learn": "ready_to_learn",
-  "first_name": "first_name",
-  "last_name": "last_name",
-  "enter_email": "enter_email",
-  "enter_password": "enter_password",
-  "i_agree_privacy": "i_agree_privacy ",
-  "link_here": "link_here",
-  "create_account": "create_account",
-  "already_have_account": "already_have_account"
+  "forgotPassword": "Forgot password?",
+  "doesNotHaveAccount": "Does not have account?",
+  "registerHere": "Register here",
+  "readyToLearn": "ready_to_learn",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "enterEmail": "Enter email",
+  "enterPassword": "Enter password",
+  "iAgreePrivacy": "i_agree_privacy ",
+  "linkHere": "here",
+  "createAccount": "create_account",
+  "alreadyHaveAccount": "Already have account?",
+  "passwordMustHave": "Password must have",
+  "passwordValidateMin": "Have more than 8 characters",
+  "passwordValidateUpper": "Upper case (A-Z)",
+  "passwordValidate_0": "Degit (0-9)",
+  "passwordValidateSpecial": "Special (~!@#$%^&*_-+=`'{'|'}'[]:;\"''<>,.?/)",
+  "emailAlreadyUsed": "Email already in the system",
+  "pleaseCheckCodeInEmail": "Please check code send to email {email}",
+  "@pleaseCheckCodeInEmail": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "code": "Code",
+  "sendMeCode": "Send me the code",
+  "changePassword": "Change password",
+  "emailNotFound": "Email not found",
+  "enterEmailToGetCode": "Enter your email to get code",
+  "codeIsSend": "codeIsSend.",
+  "limitExceededException": "limitExceededException",
+  "selectLearningGoalTitle": "Choose a study program",
+  "selectLearningGoalDesc": "Choose your subject and program of study, then choose the specific goal you want to achieve",
+  "selectSubject": "Select subject",
+  "selectProgram": "Select program",
+  "selectLearningGoal": "Learning goal",
+  "selectContent": "Select content",
+  "selectContentDesc": "Select {min} - {max} content you want to learn",
+  "@selectContentDesc": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "mockTest": "Mock test",
+  "target": "Target",
+  "mockTestPoint": "Mock test point",
+  "yourPoint": "Your point",
+  "compareWithTarget": "Compare with target",
+  "thisIsTheMockTestResult": "Here are the results of the entrance test. Kyons will rely on this result to create many exercises to reinforce the missing knowledge. Let''s start studying with Kyons.",
+  "continueDoingExercise": "Continue doing exercises",
+  "challengeYourFriends": "Challenge your best friend to receive a gift!",
+  "giftFromKyons": "Receive gifts from Kyons when sending quizzes to friends",
+  "easyMockTest": "Is the mock test too easy?",
+  "reselectTarget": "You can re-select your learning goal",
+  "shareYourThoughts": "Share your experience end receiving gifts from Kyons!",
+  "aFewMinutes": "Take a few minutes to take a few minutes to survey so that Kyons can understand more about you and your learning needs. In return, we also have interesting and unexpected gifts for you.",
+  "nevermind": "Nevermind!",
+  "shareMockTest": "Share the challenge and receive gift!",
+  "testFormat": "<p>You can share mock test with your friends and invite them to join Kyons.</p><ul><li>For each successful registration and activation email, you will be rewarded with <strong >1 test and 36 hours of free lessons</strong>.</li><li>From the 6th email of successful registration, you will receive <strong>1 week of free lessons and 1 counseling package. with a tutor</strong> (up to 30 minutes)</li></ul><p></p><p><strong>Note:</strong> the challenge sharing program is only valid treat those who accept the challenge without a Kyons account.</p>",
+  "nationalProgram": "National program",
+  "toDestination": "To destination",
+  "changeDirection": "Change direction",
+  "toSt": "To {st}",
+  "@toSt": {
+    "placeholders": {
+      "st": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryCompleted": "Congratulations on completing the {category_name} section",
+  "@categoryCompleted": {
+    "placeholders": {
+      "category_name": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryCompletedDesc": "You did a great job already! Continue learning the rest to complete your goal! You can study the course selection by clicking on the map on the syllabus page anytime you want.",
+  "learnedKnowledge": "Learned knowledge",
+  "subscriptionExpired": "Your subscription has expired.",
+  "subscriptionExpiredDesc": "To create a new lesson, you need to purchase additional Kyons''s subscription!",
+  "buyPackage": "Buy package",
+  "notChangeTarget": "Don''t change your target",
+  "doYouWantToStop": "Do you want to stop the test?",
+  "youWillHaveTo": "You will have to start the test from the beginning",
+  "continueText": "Continue",
+  "stop": "Stop",
+  "closeDialog": "Close dialog",
+  "ranOutMockTest": "Ran out of mock test",
+  "ranOutMockTestDesc": "To create a new goal, you need to purchase additional Kyons''s service packs.",
+  "thisIsTestResult": "Here are the test results. Please continue to study with Kyons to complete your learning goals!",
+  "copiedToClipboard": "Copied to clipboard",
+  "youWillUse": "You will use Kyons''s service",
+  "toCreateLearningGoal": "<p>To create a new goal, you will use <strong>a Kyos test</strong>.</p><p>When creating a new goal, Kyons will change the syllabus to match the results. your new test results.</p>",
+  "changeTarget": "Change target"
 }

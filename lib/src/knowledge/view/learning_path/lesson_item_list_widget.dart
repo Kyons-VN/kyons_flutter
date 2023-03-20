@@ -113,7 +113,7 @@ class NewLessonWidget extends HookWidget {
             child: studyType == StudyType.ai
                 ? Heading(
                     6,
-                    t(context).lesson_is_reparing,
+                    t(context).lessonIsReparing,
                   )
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -125,7 +125,7 @@ class NewLessonWidget extends HookWidget {
                       ),
                       Heading(
                         6,
-                        t(context).new_lesson,
+                        t(context).newLesson,
                         color: AppColors.white,
                         textAlign: TextAlign.center,
                       ),
@@ -176,7 +176,7 @@ class LessonWidget extends HookWidget {
           child: Center(
             child: Heading(
               6,
-              t(context).thing_number(t(context).lesson_number, index),
+              t(context).thingNumber(t(context).lessonNumber, index),
               color: AppColors.white,
             ),
           ),

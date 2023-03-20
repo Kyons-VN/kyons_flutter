@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:kyons_flutter/src/core/domain/core.dart';
+import 'package:shared_package/shared_package.dart';
 
 class EmailAddress extends ValueObject<String> {
   @override

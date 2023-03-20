@@ -13,5 +13,13 @@ abstract class IAuth {
   Future<User> getCurrentUser();
   Future<StudyType> getStudyType();
   Future<Unit> signOut();
-  Future<Unit> signUp(String firstName, String lastName, EmailAddress email, String password);
+  Future<Unit> signUp({
+    required String firstName,
+    required String lastName,
+    required EmailAddress email,
+    required Password password,
+    required bool isAgreedToTerms,
+  });
+  Future<Unit> requestResetPassword(EmailAddress email);
+  Future<Unit> newPassword({required EmailAddress email, required Password password, required String code});
 }

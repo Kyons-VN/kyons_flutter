@@ -37,10 +37,10 @@
   "success": "Thành công",
   "fail": "Không thành công",
   "back": "Trở về",
-  "choose_subject_and_program": "Bạn hãy chọn môn và\nchương trình học",
-  "choose_subject_and_program_headline": "Chọn môn\n& chương trình học",
-  "select_thing": "Chọn {thing}",
-  "@select_thing": {
+  "chooseSubjectAndProgram": "Bạn hãy chọn môn và\nchương trình học",
+  "chooseSubjectAndProgramHeadline": "Chọn môn\n& chương trình học",
+  "selectThing": "Chọn {thing}",
+  "@selectThing": {
     "placeholders": {
       "thing": {
         "type": "String"
@@ -51,13 +51,14 @@
   "math": "Toán",
   "english": "Tiếng Anh",
   "start": "Bắt đầu",
-  "back_to_home": "Về trang chủ",
-  "do_diagnostictest_heading": "Làm bài khảo sát\ntrước nhé!",
-  "do_diagnostictest_btn": "Làm bài khảo sát trình độ",
-  "do_diagnostictest_cancel": "Thôi, không cần đâu!",
-  "diagnostic_test": "Bài khảo sát",
-  "thing_number": "{thing} {number}",
-  "@thing_number": {
+  "backToHome": "Về trang chủ",
+  "backToLogin": "Về trang đang nhập",
+  "doDiagnostictestHeading": "Làm bài khảo sát\ntrước nhé!",
+  "doDiagnostictestBtn": "Làm bài khảo sát trình độ",
+  "doDiagnostictestCancel": "Thôi, không cần đâu!",
+  "diagnosticTest": "Bài khảo sát",
+  "thingNumber": "{thing} {number}",
+  "@thingNumber": {
     "placeholders": {
       "thing": {
         "type": "String"
@@ -69,60 +70,151 @@
   },
   "question": "Câu hỏi",
   "lesson": "Bài học",
-  "question_number": "Câu",
-  "lesson_number": "Bài",
+  "questionNumber": "Câu",
+  "lessonNumber": "Bài",
   "home": "Trang chủ",
-  "learning_path": "Lộ trình học",
-  "ok": "Đồng ý",
+  "learningPath": "Lộ trình học",
+  "ok": "Ok",
   "cancel": "Hủy yêu cầu",
-  "call_tutor": "Gọi gia sư hỗ trợ nhé?",
-  "connecting_tutor": "Kyons đang kết nối với gia sư.\nBạn vui lòng đợi trong ít phút.",
-  "tutor_ready": "Gia sư đã sẵn sàng.\nNhấn vào nút \"Gặp gia sư\" để kết nối với gia sư.",
-  "meet_tutor": "Gặp gia sư",
+  "callTutor": "Gọi gia sư hỗ trợ nhé?",
+  "connectingTutor": "Kyons đang kết nối với gia sư.\nBạn vui lòng đợi trong ít phút.",
+  "tutorReady": "Gia sư đã sẵn sàng.\nNhấn vào nút \"Gặp gia sư\" để kết nối với gia sư.",
+  "meetTutor": "Gặp gia sư",
   "exercise": "Bài tập",
   "test": "Kiểm tra cuối bài",
   "level": "Cấp độ",
-  "your_score": "Điểm của bạn",
-  "general_knowledge": "Tổng quan kiến thức",
-  "knowledge_should_review": "Kiến thức cần xem lại",
-  "redo_exercise": "Làm lại bài tập",
-  "do_test": "Làm bài kiểm tra",
+  "yourScore": "Điểm của bạn",
+  "generalKnowledge": "Tổng quan kiến thức",
+  "knowledgeShouldReview": "Kiến thức cần xem lại",
+  "redoExercise": "Làm lại bài tập",
+  "doTest": "Làm bài kiểm tra",
   "error": "Có lỗi, vui lòng thử lại sau",
-  "to_learning_path": "Đến giáo trình",
-  "finish_test": "Bạn đã hoàn thành bài kiểm tra",
-  "learning_path_is_reparing": "Kyons đang chuẩn bị giáo trình cho bạn. Xin vui lòng đợi!",
-  "learning_path_is_ready": "Kyons đã chuẩn bị xong giáo trình cho bạn. Bắt đầu học thôi nào!",
-  "hi_so": "Chào {so}",
-  "@hi_so": {
+  "toLearningPath": "Đến giáo trình",
+  "finishTest": "Bạn đã hoàn thành bài kiểm tra",
+  "learningPathIsReparing": "Kyons đang chuẩn bị giáo trình cho bạn. Xin vui lòng đợi!",
+  "learningPathIsReady": "Kyons đã chuẩn bị xong giáo trình cho bạn. Bắt đầu học thôi nào!",
+  "hiSo": "Chào {so}",
+  "@hiSo": {
     "placeholders": {
       "so": {
         "type": "String"
       }
     }
   },
-  "lesson_is_reparing": "Kyons đang chuẩn bị bài học cho bạn",
-  "new_lesson": "Tạo bài học mới",
+  "lessonIsReparing": "Kyons đang chuẩn bị bài học cho bạn",
+  "newLesson": "Tạo bài học mới",
   "press": "Nhấn (",
-  "to_add_knowledge": ") để đưa kiến thức vào bài học",
-  "create_lesson": "Tạo bài học",
-  "selected_knowledge_count": "{count, plural, zero{Chưa chọn kiến thức} one{1 kiến thức được chọn} other{{count} kiến thức được chọn}}",
-  "@selected_knowledge_count": {
+  "toAddKnowledge": ") để đưa kiến thức vào bài học",
+  "createLesson": "Tạo bài học",
+  "selectedKnowledgeCount": "{count, plural, zero{Chưa chọn kiến thức} one{1 kiến thức được chọn} other{{count} kiến thức được chọn}}",
+  "@selectedKnowledgeCount": {
     "placeholders": {
       "count": {
         "type": "int"
       }
     }
   },
-  "forgot_password": "Quên mật khẩu?",
-  "does_not_have_account": "Bạn chưa có tài khoản?",
-  "register_here": "Đăng ký tại đây",
-  "ready_to_learn": "Bạn đã sẵn sàng học ít nhưng trúng đích cùng Kyons chưa?",
-  "first_name": "Tên",
-  "last_name": "Họ",
-  "enter_email": "Nhập email của bạn",
-  "enter_password": "Nhập mật khẩu",
-  "i_agree_privacy": "Tôi đồng ý với điều kiện và điều khoản sử dụng của Kyons. Xem điều kiện và điều khoản sử dụng tại ",
-  "link_here": "đây",
-  "create_account": "Tạo tài khoản",
-  "already_have_account": "Đã có tài khoản?"
+  "forgotPassword": "Quên mật khẩu?",
+  "doesNotHaveAccount": "Bạn chưa có tài khoản?",
+  "registerHere": "Đăng ký tại đây",
+  "readyToLearn": "Bạn đã sẵn sàng học ít nhưng trúng đích cùng Kyons chưa?",
+  "firstName": "Tên",
+  "lastName": "Họ",
+  "enterEmail": "Nhập email của bạn",
+  "enterPassword": "Nhập mật khẩu",
+  "iAgreePrivacy": "Tôi đồng ý với điều kiện và điều khoản sử dụng của Kyons. Xem điều kiện và điều khoản sử dụng tại ",
+  "linkHere": "đây",
+  "createAccount": "Tạo tài khoản",
+  "alreadyHaveAccount": "Đã có tài khoản?",
+  "passwordMustHave": "Mật khẩu phải có:",
+  "passwordValidateMin": "Từ 8 ký tự trở lên",
+  "passwordValidateUpper": "Ký tự viết hoa (A-Z)",
+  "passwordValidate_0": "Ký tự số (0-9)",
+  "passwordValidateSpecial": "Ký tự đặt biệt (~!@#$%^&*_-+=`'{'|'}'[]:;\"''<>,.?/)",
+  "emailAlreadyUsed": "Email đã có trong hệ thống",
+  "pleaseCheckCodeInEmail": "Vui lòng nhập mã gửi đến email {email}",
+  "@pleaseCheckCodeInEmail": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "code": "Mã code",
+  "sendMeCode": "Gửi tôi mã code",
+  "changePassword": "Đặt lại mật khẩu",
+  "emailNotFound": "Không tìm thấy email",
+  "enterEmailToGetCode": "Nhập email của bạn để nhận mã thay đổi mật khẩu",
+  "codeIsSend": "Mã code đã được gửi đến email của bạn. Kiểm tra email và nhập mã vào ô bên dưới.",
+  "limitExceededException": "limitExceededException",
+  "selectLearningGoalTitle": "Chọn chương trình học",
+  "selectLearningGoalDesc": "Bạn hãy chọn môn và chương trình học, sau đó chọn mục tiêu cụ thể mà bạn muốn đạt được",
+  "selectSubject": "Chọn môn",
+  "selectProgram": "Chọn chương trình",
+  "selectLearningGoal": "Mục tiêu học tập",
+  "selectContent": "Chọn nội dung",
+  "selectContentDesc": "Bạn chọn từ {min} - {max} bài để ôn tập nhé",
+  "@selectContentDesc": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "mockTest": "Bài kiểm tra",
+  "target": "Mục tiêu",
+  "mockTestPoint": "Điểm bài kiểm tra",
+  "yourPoint": "Điểm của bạn",
+  "compareWithTarget": "So sánh với mục tiêu",
+  "thisIsTheMockTestResult": "Đây là kết quả bài kiểm tra đầu vào. Kyons sẽ dựa vào kết quả này tạo nên nhiều bài tập củng cố kiến thức còn thiếu. Hãy bắt đầu học cùng Kyons nhé.",
+  "continueDoingExercise": "Tiếp tục làm bài tập",
+  "challengeYourFriends": "Thách thức bạn thân nhận quà!",
+  "giftFromKyons": "Nhận quà từ Kyons khi gửi bài kiểm tra cho bạn bè",
+  "easyMockTest": "Bài khảo sát quá dễ?",
+  "reselectTarget": "Bạn có thể lựa chọn lại mục tiêu học tập",
+  "shareYourThoughts": "Chia sẻ trải nghiệm nhận quà từ Kyons!",
+  "aFewMinutes": "Dành ít phút cho dăm câu khảo sát để Kyons có thể hiểu thêm về bạn và nhu cầu học tập của bạn nhé. Đổi lại chúng mình cũng có những phần quà thú vị bất ngờ dành tặng bạn đó.",
+  "nevermind": "Thôi bỏ đi!",
+  "shareMockTest": "Chia sẻ thử thách nhận quà!",
+  "testFormat": "<p>Bạn có thể chia sẻ các bài kiểm tra với bạn bè và mời họ cùng tham gia Kyons.</p><ul><li>Với mỗi email đăng ký và kích hoạt thành công, bạn sẽ được tặng <strong>1 bài kiểm tra và 36 giờ học không tính phí</strong>.</li><li>Từ email thứ 6 đăng ký thành công, bạn sẽ nhận được <strong>1 tuần học miễn phí và 1 gói tư vấn cùng gia sư</strong> (tối đa 30 phút)</li></ul><p></p><p><strong>Lưu ý:</strong> chương trình chia sẻ thử thách chỉ có giá trị với các bạn nhận thử thách mà chưa có tài khoản Kyons.</p>",
+  "nationalProgram": "Chương trình quốc gia",
+  "toDestination": "Tới đích",
+  "changeDirection": "Chuyển hướng",
+  "toSt": "Đến {st}",
+  "@toSt": {
+    "placeholders": {
+      "st": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryCompleted": "Chúc mừng bạn hoàn thành phần {category_name}",
+  "@categoryCompleted": {
+    "placeholders": {
+      "category_name": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryCompletedDesc": "Bạn đã làm rất tốt rồi! Tiếp tục học những phần còn lại để hoàn thành mục tiêu của bạn nhé! Bạn có thể học lựa chọn phần học bằng cách click vào bản đồ ở trang giáo trình bất cứ lúc nào bạn muốn.",
+  "learnedKnowledge": "Các kiến thức đã học",
+  "subscriptionExpired": "Bạn đã hết gói bài học",
+  "subscriptionExpiredDesc": "Để tạo bài học mới, bạn cần mua thêm gói bài học của Kyons nhé!",
+  "buyPackage": "Mua gói",
+  "notChangeTarget": "Không đổi mục tiêu",
+  "doYouWantToStop": "Bạn có chắc muốn dừng lại?",
+  "youWillHaveTo": "Bạn sẽ phải làm lại bài kiểm tra từ đầu nếu bạn muốn dừng làm làm kiểm lúc này.",
+  "continueText": "Tiếp tục",
+  "stop": "Dừng",
+  "closeDialog": "Đóng thông báo",
+  "ranOutMockTest": "Bạn đã sử dụng hết bài kiểm tra!",
+  "ranOutMockTestDesc": "Để tạo mục tiêu mới, bạn cần mua thêm gói dịch vụ Kyons.",
+  "thisIsTestResult": "Đây là kết quả bài kiểm tra. Bạn hãy tiếp tục học cùng Kyons để hoàn thành mục tiêu học tập nhé!",
+  "copiedToClipboard": "Đã sao chép vào clipboard",
+  "youWillUse": "Bạn sẽ sử dụng dịch vụ Kyons",
+  "toCreateLearningGoal": "<p>Để tạo mục tiêu mới, bạn sẽ dùng <strong>một bài kiểm tra Kyons</strong>.</p><p>Khi tạo mục tiêu mới, Kyons sẽ thay đổi giáo trình lại cho phù hợp với kết quả bài kiểm tra mới của bạn.</p>",
+  "changeTarget": "Đổi mục tiêu"
 }

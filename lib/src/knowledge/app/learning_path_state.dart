@@ -4,38 +4,58 @@ part of 'learning_path_provider.dart';
 class LearningPathState with _$LearningPathState {
   const factory LearningPathState({
     required bool loading,
-    required Option<LearningPath> learningPath,
-    required bool missingProgram,
-    required Option<ApiFailure> error,
+    required Option<LearningGoalPath> learningGoalPathOption,
+    required Option<Program> selectedProgram,
+    required Option<LearningGoal> selectedLearningGoal,
+    required Option<ApiFailure> hasError,
+    required int selectedCat,
+    required bool isMissing,
   }) = _LearningPathState;
   factory LearningPathState.initial() => LearningPathState(
         loading: false,
-        learningPath: none(),
-        missingProgram: false,
-        error: none(),
+        learningGoalPathOption: none(),
+        selectedProgram: none(),
+        selectedLearningGoal: none(),
+        hasError: none(),
+        selectedCat: 0,
+        isMissing: false,
       );
   factory LearningPathState.loading() => LearningPathState(
         loading: true,
-        learningPath: none(),
-        missingProgram: false,
-        error: none(),
+        learningGoalPathOption: none(),
+        selectedProgram: none(),
+        selectedLearningGoal: none(),
+        hasError: none(),
+        selectedCat: 0,
+        isMissing: false,
       );
-  factory LearningPathState.loaded(LearningPath learningPath) => LearningPathState(
+  factory LearningPathState.loaded(
+          Program selectedProgram, LearningGoal selectedLearningGoal, LearningGoalPath learningGoalPath) =>
+      LearningPathState(
         loading: false,
-        learningPath: some(learningPath),
-        missingProgram: false,
-        error: none(),
+        learningGoalPathOption: some(learningGoalPath),
+        selectedProgram: some(selectedProgram),
+        selectedLearningGoal: some(selectedLearningGoal),
+        hasError: none(),
+        selectedCat: 0,
+        isMissing: false,
       );
   factory LearningPathState.error(ApiFailure error) => LearningPathState(
         loading: false,
-        learningPath: none(),
-        missingProgram: false,
-        error: some(error),
+        learningGoalPathOption: none(),
+        selectedProgram: none(),
+        selectedLearningGoal: none(),
+        hasError: some(error),
+        selectedCat: 0,
+        isMissing: false,
       );
-  factory LearningPathState.missingProgram(ClientFailure error) => LearningPathState(
+  factory LearningPathState.missing(ClientFailure error) => LearningPathState(
         loading: false,
-        learningPath: none(),
-        missingProgram: true,
-        error: none(),
+        learningGoalPathOption: none(),
+        selectedProgram: none(),
+        selectedLearningGoal: none(),
+        hasError: none(),
+        selectedCat: 0,
+        isMissing: true,
       );
 }

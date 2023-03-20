@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:fpdart/fpdart.dart' hide State;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/home/app/home_provider.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
-import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
-import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
 import 'package:shared_package/shared_package.dart';
 
-class HomePage extends ConsumerWidget {
+import '../../core/helper/translate.dart';
+import '../../knowledge/data/knowledge_entities.dart';
+import '../../navigation/view/app_bar.dart';
+import '../../navigation/view/app_drawer.dart';
+import '../app/home_provider.dart';
+
+class HomePage extends StatelessWidget {
   final bool isShowHomeOptions;
   const HomePage({Key? key, this.isShowHomeOptions = false}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final homeNotifier = ref.read(homeNotifierProvider.notifier);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final homeState = ref.read(homeNotifierProvider);
-      if (homeState.studentProgramsOption.isNone()) {
-        homeNotifier.init().then((value) {
-          if (isShowHomeOptions) showHomeOptions(context, homeNotifier);
-        });
-      }
-    });
+  Widget build(BuildContext context) {
+    // final homeNotifier = ref.read(homeNotifierProvider.notifier);
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   final homeState = ref.read(homeNotifierProvider);
+    //   if (homeState.studentProgramsOption.isNone()) {
+    //     homeNotifier.init().then((value) {
+    //       if (isShowHomeOptions) context.go(AppPaths.mockTestLearningGoal.path);
+    //     });
+    //   }
+    // });
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -34,175 +34,32 @@ class HomePage extends ConsumerWidget {
         body: SafeArea(
           child: SingleChildScrollView(
             child: SizedBox(
+              width: double.infinity,
               height: MediaQuery.of(context).size.height -
                   AppSizesUnit.large48 -
                   AppSizesUnit.medium24 -
                   const MainAppBar().preferredSize.height,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(
+              child: const Padding(
+                padding: EdgeInsets.fromLTRB(
                   AppSizesUnit.medium24,
                   AppSizesUnit.large36,
                   AppSizesUnit.medium24,
-                  AppSizesUnit.large48,
+                  0,
                 ),
-                child: Center(
-                  child: Column(
-                    children: [
-                      const Expanded(child: ProgramsWidget()),
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                showHomeOptions(context, homeNotifier);
-                              },
-                              child: const Icon(AppIcons.add),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                child: ProgramsWidget(),
               ),
             ),
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => context.go(AppPaths.mockTestLearningGoal.path),
+          child: const Icon(
+            AppIcons.add,
+            color: AppColors.white,
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
-    );
-  }
-
-  void showHomeOptions(BuildContext context, HomeNotifier homeNotifier) {
-    homeNotifier.initialSelection();
-    showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      builder: (BuildContext context) {
-        return SafeArea(
-          child: Wrap(
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height - 150,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    const SizedBox(height: AppSizesUnit.medium24 - 6),
-                    Center(
-                      child: CustomPaint(
-                        painter: LinePainter(),
-                      ),
-                    ),
-                    AppSizesUnit.sizedBox48,
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12.0),
-                      child: HomeOptions(),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: Container(),
-                    ),
-                    const SizedBox(height: 10),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-}
-
-class HomeOptions extends ConsumerWidget {
-  const HomeOptions({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final homeState = ref.watch(homeNotifierProvider);
-    final homeNotifier = ref.read(homeNotifierProvider.notifier);
-    bool isTest = false;
-    if (homeState.isContinue) {
-      return Column(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            child: GestureDetector(
-              onDoubleTap: () => isTest = true,
-              child: Text(
-                t(context).do_diagnostictest_heading,
-                style: Theme.of(context).textTheme.heading4.copyWith(color: AppColors.white),
-              ),
-            ),
-          ),
-          AppSizesUnit.sizedBox48,
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                // Navigator.pop(context);
-                // print(isTest);
-                homeNotifier.submit().then((unit) => context.go(AppPaths.diagnosticTest.path, extra: isTest));
-                // diagnosticTestNotifier.init();
-              },
-              child: Text(t(context).do_diagnostictest_btn),
-            ),
-          ),
-          // AppSizesUnit.sizedBox8,
-          // SizedBox(
-          //   width: double.infinity,
-          //   child: OutlinedButton(
-          //     onPressed: () {
-          //       Navigator.pop(context);
-          //       homeNotifier.defaultLearningPath();
-          //     },
-          //     child: Text(t(context).do_diagnostictest_cancel),
-          //   ),
-          // ),
-        ],
-      );
-    }
-    return Column(
-      children: [
-        SizedBox(
-          width: double.infinity,
-          child: Text(
-            t(context).choose_subject_and_program_headline,
-            style: Theme.of(context).textTheme.heading4.copyWith(color: AppColors.white),
-          ),
-        ),
-        AppSizesUnit.sizedBox48,
-        CupertinoPickerOptions<Subject>(
-          options: homeState.subjectsOption.getOrElse(() => right([])).getOrElse((l) => []).toList(),
-          onPicked: homeNotifier.setSubjectOption,
-          selectedOption: homeState.selectedSubjectOption.getOrElse(() => Subject.empty()),
-        ),
-        AppSizesUnit.sizedBox16,
-        CupertinoPickerOptions<Program>(
-          options: homeState.programsOption.getOrElse(() => []),
-          onPicked: homeNotifier.setProgramOption,
-          selectedOption: homeState.selectedProgramOption.getOrElse(() => Program(id: '', name: '', subjectId: '')),
-        ),
-        AppSizesUnit.sizedBox24,
-        SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-            onPressed:
-                homeState.selectedProgramOption.getOrElse(() => Program.empty()).isEmpty() ? null : homeNotifier.start,
-            child: Text(t(context).start),
-          ),
-        ),
-        AppSizesUnit.sizedBox8,
-        SizedBox(
-          width: double.infinity,
-          child: OutlinedButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(t(context).back_to_home),
-          ),
-        ),
-      ],
     );
   }
 }
@@ -231,41 +88,90 @@ class ProgramsWidget extends HookConsumerWidget {
   @override
   Widget build(context, ref) {
     final homeState = ref.watch(homeNotifierProvider);
-    final programs = homeState.studentProgramsOption.getOrElse(() => right([])).getRight().getOrElse(() => []);
+    final homeController = ref.watch(homeNotifierProvider.notifier);
     final scrollController = useScrollController();
-
-    // return Column(
-    //   children: [
-    //     AppAssets.chooseSubjectSVG,
-    //     AppSizesUnit.sizedBox24,
-    //     Text(
-    //       t(context).choose_subject_and_program,
-    //       textAlign: TextAlign.center,
-    //       style: Theme.of(context).textTheme.heading6,
-    //     ),
-    //   ],
-    // );
-    return programs.isNotEmpty
-        ? homeState.display == ProgramsDisplay.grid
-            ? GridView.count(
-                crossAxisCount: 2,
-                controller: scrollController,
-                children: [
-                  for (var i = 0; i < programs.length; i++) ProgramWidget(program: programs[i], index: i),
-                ],
-              )
-            : const Text('carousel')
-        : Column(
+    ref.listen<AsyncValue<HomeState>>(homeNotifierProvider, (previousCount, newCount) {
+      if (newCount.value!.selectedLearningGoalOption.isSome()) {
+        context.go(AppPaths.learningPath.path);
+      }
+    });
+    return homeState.when(
+        skipError: true,
+        data: (state) {
+          final programs = state.studentProgramsOption.fold(() => [], (either) => either.getOrElse((l) => []));
+          // final programs = [
+          //   Program(subjectId: '1', id: '1', name: 'English 1'),
+          //   Program(subjectId: '1', id: '2', name: 'English 2'),
+          //   Program(subjectId: '1', id: '3', name: 'English 3'),
+          //   Program(subjectId: '1', id: '4', name: 'English 4'),
+          //   Program(subjectId: '1', id: '5', name: 'English 5'),
+          //   Program(subjectId: '1', id: '6', name: 'English 6'),
+          //   Program(subjectId: '1', id: '7', name: 'English 7'),
+          //   Program(subjectId: '1', id: '8', name: 'English 8'),
+          // ];
+          return Column(
             children: [
-              AppAssets.chooseSubjectSVG,
-              AppSizesUnit.sizedBox24,
-              Text(
-                t(context).choose_subject_and_program,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.heading6,
+              if (programs.isEmpty) ...[
+                AppAssets.chooseSubjectSVG,
+                AppSizesUnit.sizedBox24,
+                Text(
+                  t(context).chooseSubjectAndProgram,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.heading6,
+                ),
+                AppSizesUnit.sizedBox24,
+                LongArrowWidget(height: MediaQuery.of(context).size.height - 532),
+                AppSizesUnit.sizedBox48,
+              ] else
+                Flexible(
+                    // width: double.infinity,
+                    // height: 100,
+                    child: state.display == ProgramsDisplay.grid
+                        ? GridView.count(
+                            crossAxisCount: 2,
+                            controller: scrollController,
+                            crossAxisSpacing: AppSizesUnit.medium24,
+                            mainAxisSpacing: AppSizesUnit.medium24,
+                            children: [
+                              for (var i = 0; i < programs.length; i++) ProgramWidget(program: programs[i], index: i),
+                            ],
+                          )
+                        : Carousel(
+                            items: [
+                              for (var i = 0; i < programs.length; i++)
+                                SizedBox.square(
+                                    dimension: MediaQuery.of(context).size.width - 105,
+                                    child: ProgramWidget(program: programs[i], index: i)),
+                            ],
+                            initialIndex: state.carouselIndex,
+                            defaultPreviousIndex: state.previousIndex,
+                            onIndexChanged: homeController.setCarouselIndex,
+                            // gap: 100,
+                            // placeholderScale: 0.5,
+                            // duration: const Duration(milliseconds: 1000),
+                            // curve: Curves.linear,
+                          )),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      state.display == ProgramsDisplay.carousel ? AppIcons.thumbnail : AppIcons.carousel,
+                      color: programs.isEmpty ? AppColors.blueGray400 : AppColors.orange,
+                    ),
+                    onPressed: programs.isEmpty ? null : () => homeController.toggleDisplay(),
+                  ),
+                ],
               ),
             ],
           );
+        },
+        error: (_, __) {
+          return Container();
+        },
+        loading: () {
+          return const Center(child: CircularProgressIndicator());
+        });
   }
 }
 
@@ -292,7 +198,6 @@ class ProgramWidget extends HookConsumerWidget {
         },
         mouseCursor: SystemMouseCursors.click,
         child: Container(
-          margin: const EdgeInsets.only(top: 10),
           decoration: BoxDecoration(
             color: AppColors.primaryBlue,
             boxShadow: onHovered.value
@@ -308,23 +213,62 @@ class ProgramWidget extends HookConsumerWidget {
                 : [],
             borderRadius: BorderRadius.circular(AppSizesUnit.small8),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Heading(
-                6,
-                program.name,
-                color: AppColors.white,
-              ),
-              AppSizesUnit.sizedBox8,
-              Text(
-                'Chương trình quốc gia',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.lightBlue3),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(AppSizesUnit.medium16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Heading(
+                  6,
+                  program.name,
+                  color: AppColors.white,
+                ),
+                AppSizesUnit.sizedBox8,
+                Text(
+                  t(context).nationalProgram,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.lightBlue3),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+}
+
+class LongArrowWidget extends StatelessWidget {
+  final double height;
+  const LongArrowWidget({super.key, required this.height});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: height, child: CustomPaint(painter: LongArrowPainter(height)));
+  }
+}
+
+class LongArrowPainter extends CustomPainter {
+  final double height;
+
+  LongArrowPainter(this.height);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint = Paint()
+      ..color = AppColors.blueGray300
+      ..strokeWidth = 3;
+    double arrow = 12;
+    canvas.drawLine(const Offset(0, 0), Offset(0, height), paint);
+    canvas.drawLine(Offset(0 - arrow, height - arrow), Offset(0, height), paint);
+    canvas.drawLine(Offset(0 + arrow, height - arrow), Offset(0, height), paint);
+
+    // final space = (dashSpace + dashWidth);
+    // startY += space;
+    // max -= space;
+    // }
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

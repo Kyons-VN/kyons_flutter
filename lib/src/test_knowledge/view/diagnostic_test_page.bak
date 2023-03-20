@@ -1,0 +1,82 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kyons_flutter/src/core/helper/translate.dart';
+import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
+import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
+import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
+import 'package:shared_package/shared_package.dart';
+
+import 'widgets/test_content_widget.dart';
+import 'widgets/test_result_widget.dart';
+
+class DiagnosticTestPage extends ConsumerWidget {
+  final bool isTest;
+  final String lgId;
+  const DiagnosticTestPage({Key? key, this.isTest = false, required this.lgId}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final diagnosticTestNotifier = ref.read(diagnosticTestNotifierProvider(lgId).notifier);
+
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(AppSizesUnit.medium24),
+              child: HookConsumer(
+                builder: (context, ref, child) {
+                  final diagnosticTestState = ref.watch(diagnosticTestNotifierProvider(lgId));
+                  if (diagnosticTestState.loading || diagnosticTestState.isSubmitted) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (diagnosticTestState.testResult.isNone()) {
+                    final answersResult = diagnosticTestState.answersResult.getOrElse(() => {});
+                    return TestContentWidget(
+                      title: t(context).diagnosticTest,
+                      testContent: diagnosticTestState.content.getOrElse(() => TestContent.empty()),
+                      currentQuestionIndex: diagnosticTestState.currentQuestionIndex.getOrElse(() => 0),
+                      previousCallback: diagnosticTestNotifier.previous,
+                      nextCallback: diagnosticTestNotifier.next,
+                      answersResult: answersResult,
+                      answerSelectedCallback: diagnosticTestNotifier.selectedAnswer,
+                      submitCallback: () {
+                        diagnosticTestNotifier.submit(answersResult);
+                      },
+                    );
+                  } else if (diagnosticTestState.testResult.isSome()) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Heading(4, t(context).finishTest),
+                        AppSizesUnit.sizedBox16,
+                        Heading(6, t(context).learningPathIsReparing, color: AppColors.secondaryBlue),
+                        AppSizesUnit.sizedBox16,
+                        TestResultWidget(
+                          testResult: diagnosticTestState.testResult.getOrElse(() => TestResult.empty()),
+                          lessonGroup: diagnosticTestState.lessonGroup.getOrElse(() => LessonGroup.empty()),
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () {
+                                context.go(AppPaths.learningPath.path);
+                              },
+                              child: Text(t(context).toLearningPath),
+                            ).medium(context),
+                          ],
+                          testContent: diagnosticTestState.content.getOrElse(() => TestContent.empty()),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return const Text('Error loading');
+                  }
+                },
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

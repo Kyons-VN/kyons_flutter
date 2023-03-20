@@ -16,21 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeState {
-  Option<Either<ApiFailure, List<Subject>>> get subjectsOption =>
-      throw _privateConstructorUsedError;
   Option<Either<ApiFailure, List<Program>>> get studentProgramsOption =>
       throw _privateConstructorUsedError;
-  Option<List<Program>> get programsOption =>
-      throw _privateConstructorUsedError;
-  Option<Subject> get selectedSubjectOption =>
-      throw _privateConstructorUsedError;
-  Option<Program> get selectedProgramOption =>
-      throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
-  bool get isContinue => throw _privateConstructorUsedError;
-  Option<Either<ApiFailure, Unit>> get submitOption =>
-      throw _privateConstructorUsedError;
   ProgramsDisplay get display => throw _privateConstructorUsedError;
+  int get carouselIndex => throw _privateConstructorUsedError;
+  int get previousIndex => throw _privateConstructorUsedError;
+  Option<LearningGoal> get selectedLearningGoalOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -43,15 +36,12 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
   $Res call(
-      {Option<Either<ApiFailure, List<Subject>>> subjectsOption,
-      Option<Either<ApiFailure, List<Program>>> studentProgramsOption,
-      Option<List<Program>> programsOption,
-      Option<Subject> selectedSubjectOption,
-      Option<Program> selectedProgramOption,
+      {Option<Either<ApiFailure, List<Program>>> studentProgramsOption,
       bool hasError,
-      bool isContinue,
-      Option<Either<ApiFailure, Unit>> submitOption,
-      ProgramsDisplay display});
+      ProgramsDisplay display,
+      int carouselIndex,
+      int previousIndex,
+      Option<LearningGoal> selectedLearningGoalOption});
 }
 
 /// @nodoc
@@ -67,53 +57,38 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? subjectsOption = null,
     Object? studentProgramsOption = null,
-    Object? programsOption = null,
-    Object? selectedSubjectOption = null,
-    Object? selectedProgramOption = null,
     Object? hasError = null,
-    Object? isContinue = null,
-    Object? submitOption = null,
     Object? display = null,
+    Object? carouselIndex = null,
+    Object? previousIndex = null,
+    Object? selectedLearningGoalOption = null,
   }) {
     return _then(_value.copyWith(
-      subjectsOption: null == subjectsOption
-          ? _value.subjectsOption
-          : subjectsOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ApiFailure, List<Subject>>>,
       studentProgramsOption: null == studentProgramsOption
           ? _value.studentProgramsOption
           : studentProgramsOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, List<Program>>>,
-      programsOption: null == programsOption
-          ? _value.programsOption
-          : programsOption // ignore: cast_nullable_to_non_nullable
-              as Option<List<Program>>,
-      selectedSubjectOption: null == selectedSubjectOption
-          ? _value.selectedSubjectOption
-          : selectedSubjectOption // ignore: cast_nullable_to_non_nullable
-              as Option<Subject>,
-      selectedProgramOption: null == selectedProgramOption
-          ? _value.selectedProgramOption
-          : selectedProgramOption // ignore: cast_nullable_to_non_nullable
-              as Option<Program>,
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      isContinue: null == isContinue
-          ? _value.isContinue
-          : isContinue // ignore: cast_nullable_to_non_nullable
-              as bool,
-      submitOption: null == submitOption
-          ? _value.submitOption
-          : submitOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ApiFailure, Unit>>,
       display: null == display
           ? _value.display
           : display // ignore: cast_nullable_to_non_nullable
               as ProgramsDisplay,
+      carouselIndex: null == carouselIndex
+          ? _value.carouselIndex
+          : carouselIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      previousIndex: null == previousIndex
+          ? _value.previousIndex
+          : previousIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      selectedLearningGoalOption: null == selectedLearningGoalOption
+          ? _value.selectedLearningGoalOption
+          : selectedLearningGoalOption // ignore: cast_nullable_to_non_nullable
+              as Option<LearningGoal>,
     ) as $Val);
   }
 }
@@ -126,15 +101,12 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {Option<Either<ApiFailure, List<Subject>>> subjectsOption,
-      Option<Either<ApiFailure, List<Program>>> studentProgramsOption,
-      Option<List<Program>> programsOption,
-      Option<Subject> selectedSubjectOption,
-      Option<Program> selectedProgramOption,
+      {Option<Either<ApiFailure, List<Program>>> studentProgramsOption,
       bool hasError,
-      bool isContinue,
-      Option<Either<ApiFailure, Unit>> submitOption,
-      ProgramsDisplay display});
+      ProgramsDisplay display,
+      int carouselIndex,
+      int previousIndex,
+      Option<LearningGoal> selectedLearningGoalOption});
 }
 
 /// @nodoc
@@ -148,53 +120,38 @@ class __$$_HomeStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? subjectsOption = null,
     Object? studentProgramsOption = null,
-    Object? programsOption = null,
-    Object? selectedSubjectOption = null,
-    Object? selectedProgramOption = null,
     Object? hasError = null,
-    Object? isContinue = null,
-    Object? submitOption = null,
     Object? display = null,
+    Object? carouselIndex = null,
+    Object? previousIndex = null,
+    Object? selectedLearningGoalOption = null,
   }) {
     return _then(_$_HomeState(
-      subjectsOption: null == subjectsOption
-          ? _value.subjectsOption
-          : subjectsOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ApiFailure, List<Subject>>>,
       studentProgramsOption: null == studentProgramsOption
           ? _value.studentProgramsOption
           : studentProgramsOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, List<Program>>>,
-      programsOption: null == programsOption
-          ? _value.programsOption
-          : programsOption // ignore: cast_nullable_to_non_nullable
-              as Option<List<Program>>,
-      selectedSubjectOption: null == selectedSubjectOption
-          ? _value.selectedSubjectOption
-          : selectedSubjectOption // ignore: cast_nullable_to_non_nullable
-              as Option<Subject>,
-      selectedProgramOption: null == selectedProgramOption
-          ? _value.selectedProgramOption
-          : selectedProgramOption // ignore: cast_nullable_to_non_nullable
-              as Option<Program>,
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      isContinue: null == isContinue
-          ? _value.isContinue
-          : isContinue // ignore: cast_nullable_to_non_nullable
-              as bool,
-      submitOption: null == submitOption
-          ? _value.submitOption
-          : submitOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ApiFailure, Unit>>,
       display: null == display
           ? _value.display
           : display // ignore: cast_nullable_to_non_nullable
               as ProgramsDisplay,
+      carouselIndex: null == carouselIndex
+          ? _value.carouselIndex
+          : carouselIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      previousIndex: null == previousIndex
+          ? _value.previousIndex
+          : previousIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      selectedLearningGoalOption: null == selectedLearningGoalOption
+          ? _value.selectedLearningGoalOption
+          : selectedLearningGoalOption // ignore: cast_nullable_to_non_nullable
+              as Option<LearningGoal>,
     ));
   }
 }
@@ -203,38 +160,29 @@ class __$$_HomeStateCopyWithImpl<$Res>
 
 class _$_HomeState implements _HomeState {
   const _$_HomeState(
-      {required this.subjectsOption,
-      required this.studentProgramsOption,
-      required this.programsOption,
-      required this.selectedSubjectOption,
-      required this.selectedProgramOption,
+      {required this.studentProgramsOption,
       required this.hasError,
-      required this.isContinue,
-      required this.submitOption,
-      required this.display});
+      required this.display,
+      required this.carouselIndex,
+      required this.previousIndex,
+      required this.selectedLearningGoalOption});
 
-  @override
-  final Option<Either<ApiFailure, List<Subject>>> subjectsOption;
   @override
   final Option<Either<ApiFailure, List<Program>>> studentProgramsOption;
   @override
-  final Option<List<Program>> programsOption;
-  @override
-  final Option<Subject> selectedSubjectOption;
-  @override
-  final Option<Program> selectedProgramOption;
-  @override
   final bool hasError;
   @override
-  final bool isContinue;
-  @override
-  final Option<Either<ApiFailure, Unit>> submitOption;
-  @override
   final ProgramsDisplay display;
+  @override
+  final int carouselIndex;
+  @override
+  final int previousIndex;
+  @override
+  final Option<LearningGoal> selectedLearningGoalOption;
 
   @override
   String toString() {
-    return 'HomeState(subjectsOption: $subjectsOption, studentProgramsOption: $studentProgramsOption, programsOption: $programsOption, selectedSubjectOption: $selectedSubjectOption, selectedProgramOption: $selectedProgramOption, hasError: $hasError, isContinue: $isContinue, submitOption: $submitOption, display: $display)';
+    return 'HomeState(studentProgramsOption: $studentProgramsOption, hasError: $hasError, display: $display, carouselIndex: $carouselIndex, previousIndex: $previousIndex, selectedLearningGoalOption: $selectedLearningGoalOption)';
   }
 
   @override
@@ -242,37 +190,24 @@ class _$_HomeState implements _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_HomeState &&
-            (identical(other.subjectsOption, subjectsOption) ||
-                other.subjectsOption == subjectsOption) &&
             (identical(other.studentProgramsOption, studentProgramsOption) ||
                 other.studentProgramsOption == studentProgramsOption) &&
-            (identical(other.programsOption, programsOption) ||
-                other.programsOption == programsOption) &&
-            (identical(other.selectedSubjectOption, selectedSubjectOption) ||
-                other.selectedSubjectOption == selectedSubjectOption) &&
-            (identical(other.selectedProgramOption, selectedProgramOption) ||
-                other.selectedProgramOption == selectedProgramOption) &&
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
-            (identical(other.isContinue, isContinue) ||
-                other.isContinue == isContinue) &&
-            (identical(other.submitOption, submitOption) ||
-                other.submitOption == submitOption) &&
-            (identical(other.display, display) || other.display == display));
+            (identical(other.display, display) || other.display == display) &&
+            (identical(other.carouselIndex, carouselIndex) ||
+                other.carouselIndex == carouselIndex) &&
+            (identical(other.previousIndex, previousIndex) ||
+                other.previousIndex == previousIndex) &&
+            (identical(other.selectedLearningGoalOption,
+                    selectedLearningGoalOption) ||
+                other.selectedLearningGoalOption ==
+                    selectedLearningGoalOption));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      subjectsOption,
-      studentProgramsOption,
-      programsOption,
-      selectedSubjectOption,
-      selectedProgramOption,
-      hasError,
-      isContinue,
-      submitOption,
-      display);
+  int get hashCode => Object.hash(runtimeType, studentProgramsOption, hasError,
+      display, carouselIndex, previousIndex, selectedLearningGoalOption);
 
   @JsonKey(ignore: true)
   @override
@@ -283,35 +218,27 @@ class _$_HomeState implements _HomeState {
 
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
-      {required final Option<Either<ApiFailure, List<Subject>>> subjectsOption,
-      required final Option<Either<ApiFailure, List<Program>>>
-          studentProgramsOption,
-      required final Option<List<Program>> programsOption,
-      required final Option<Subject> selectedSubjectOption,
-      required final Option<Program> selectedProgramOption,
-      required final bool hasError,
-      required final bool isContinue,
-      required final Option<Either<ApiFailure, Unit>> submitOption,
-      required final ProgramsDisplay display}) = _$_HomeState;
+          {required final Option<Either<ApiFailure, List<Program>>>
+              studentProgramsOption,
+          required final bool hasError,
+          required final ProgramsDisplay display,
+          required final int carouselIndex,
+          required final int previousIndex,
+          required final Option<LearningGoal> selectedLearningGoalOption}) =
+      _$_HomeState;
 
-  @override
-  Option<Either<ApiFailure, List<Subject>>> get subjectsOption;
   @override
   Option<Either<ApiFailure, List<Program>>> get studentProgramsOption;
   @override
-  Option<List<Program>> get programsOption;
-  @override
-  Option<Subject> get selectedSubjectOption;
-  @override
-  Option<Program> get selectedProgramOption;
-  @override
   bool get hasError;
   @override
-  bool get isContinue;
-  @override
-  Option<Either<ApiFailure, Unit>> get submitOption;
-  @override
   ProgramsDisplay get display;
+  @override
+  int get carouselIndex;
+  @override
+  int get previousIndex;
+  @override
+  Option<LearningGoal> get selectedLearningGoalOption;
   @override
   @JsonKey(ignore: true)
   _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>

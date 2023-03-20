@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:kyons_flutter/boostrap/config_reader.dart';
-import 'package:kyons_flutter/src/authentication/domain/api_failures.dart';
-import 'package:kyons_flutter/src/core/domain/core.dart';
 import 'package:logging/logging.dart';
+import 'package:shared_package/shared_package.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final serverApi = ConfigReader.serverApi();
 
@@ -18,7 +18,8 @@ class Api {
 
   Api._() {
     api.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
-      accessToken = await _storage.read(key: 'token') ?? '';
+      final prefs = await SharedPreferences.getInstance();
+      accessToken = prefs.getString('token') ?? '';
       if (!options.path.contains('http')) {
         options.path = '$serverApi${options.path}';
       }
@@ -27,7 +28,8 @@ class Api {
     }, onError: (DioError error, handler) async {
       if ((error.response?.statusCode == 401)) {
         if (refreshToken.isEmpty) {
-          refreshToken = await _storage.read(key: 'refreshToken') ?? '';
+          final prefs = await SharedPreferences.getInstance();
+          refreshToken = prefs.getString('refreshToken') ?? '';
           if (refreshToken.isEmpty) {
             if (await getRefreshToken()) {
               return handler.resolve(await _retry(error.requestOptions));
@@ -51,7 +53,8 @@ class Api {
   }
 
   Future<bool> getRefreshToken() async {
-    final refreshToken = await _storage.read(key: 'refreshToken');
+    final prefs = await SharedPreferences.getInstance();
+    final refreshToken = prefs.getString('refreshToken') ?? '';
     final response = await api.post('/auth/refresh', data: {'refreshToken': refreshToken});
 
     if (response.statusCode == 201) {
@@ -73,7 +76,17 @@ class Api {
 
 ApiFailure handleError(error, StackTrace stackTrace) {
   _log.info('ApiFailure handleError');
-  if (error is ApiFailure) return error;
+  if (error is ApiFailure) {
+    return error;
+  } else if (error is DioError) {
+    if (error.response?.statusCode == 400 && error.response != null) {
+      if (error.response!.data['error_code'] == 'SubscriptionExpired') {
+        return const ApiFailure.subscriptionExpired();
+      } else if (error.response!.data['error_code'] == 'RanOutMockTest') {
+        return const ApiFailure.ranOutMockTest();
+      }
+    }
+  }
   return const ApiFailure.serverError();
 }
 
