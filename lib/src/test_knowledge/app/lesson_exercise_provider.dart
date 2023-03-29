@@ -1,8 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_service.dart' as test_service;
-import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
+import '../../test_knowledge/data/test_knowledge_service.dart' as test_service;
+import '../../test_knowledge/domain/i_test_knowledge.dart';
 
 import '../data/test_knowledge.dart';
 import 'test_provider.dart';

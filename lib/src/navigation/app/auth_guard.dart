@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
+import '../../authentication/app/auth_provider.dart';
+import '../../navigation/domain/app_paths.dart';
 
 Future<String?> guard(GoRouterState state, WidgetRef ref) async {
   final authState = ref.read(authNotifierProvider);

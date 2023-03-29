@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/knowledge/view/lesson/widgets/difficulty_star_widget.dart';
-import 'package:kyons_flutter/src/knowledge/view/lesson/widgets/exam_widget.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../../core/helper/translate.dart';
+import '../../../knowledge/view/lesson/widgets/difficulty_star_widget.dart';
+import '../../../knowledge/view/lesson/widgets/exam_widget.dart';
+import '../../../navigation/domain/app_paths.dart';
 import '../../app/lesson_provider.dart';
 import '../../data/knowledge_entities.dart';
 import 'lesson_drawer.dart';

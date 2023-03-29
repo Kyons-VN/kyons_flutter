@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:kyons_flutter/src/core/data/api.dart';
-import 'package:kyons_flutter/src/tracking/domain/i_tracking.dart';
+import '../../core/data/api.dart';
+import '../../tracking/domain/i_tracking.dart';
 import 'package:shared_package/shared_package.dart';
 
 /// Clear tracking value in SharedPreferences

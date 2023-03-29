@@ -1,17 +1,17 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/knowledge/app/knowledge_provider.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
-import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
+import '../../knowledge/app/knowledge_provider.dart';
+import '../../knowledge/data/knowledge_entities.dart';
+import '../../knowledge/data/knowledge_service.dart' as knowledge_service;
+import '../../knowledge/domain/i_knowledge.dart';
 import 'package:shared_package/shared_package.dart';
 
 part 'new_lesson_provider.freezed.dart';
 part 'new_lesson_state.dart';
 
 class NewLessonNotifier extends StateNotifier<NewLessonState> {
-  final IKnowledge knowledgeApi;
+  final IKnowledgeApi knowledgeApi;
   late Program selectedProgram;
 
   NewLessonNotifier(this.knowledgeApi) : super(NewLessonState.initial());
@@ -53,4 +53,4 @@ class NewLessonNotifier extends StateNotifier<NewLessonState> {
 }
 
 final newLessonNotifierProvider = StateNotifierProvider.autoDispose<NewLessonNotifier, NewLessonState>(
-    (ref) => NewLessonNotifier(ref.read(knowledgeApi)));
+    (ref) => NewLessonNotifier(ref.read(knowledgeApiProvider)));

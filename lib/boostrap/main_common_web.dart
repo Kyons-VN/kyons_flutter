@@ -7,17 +7,18 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/boostrap/config_reader.dart';
-import 'package:kyons_flutter/boostrap/web_app.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/flash/flash_screen.dart';
-import 'package:kyons_flutter/src/navigation/app/router.dart';
-import 'package:kyons_flutter/src/settings/app/settings_controller.dart';
-import 'package:kyons_flutter/src/settings/data/settings_service.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_package/shared_package.dart';
 
-Future<void> mainCommon(String env) async {
+import '../src/core/helper/translate.dart';
+import '../src/flash/flash_screen.dart';
+import '../src/navigation/app/router.dart';
+import '../src/settings/app/settings_controller.dart';
+import '../src/settings/data/settings_service.dart';
+import 'config_reader.dart';
+import 'web_app.dart';
+
+Future<void> mainCommon(Environment env) async {
   runApp(const SplashScreen());
   //Call this first to make sure we can make other system level calls safely
   WidgetsFlutterBinding.ensureInitialized();

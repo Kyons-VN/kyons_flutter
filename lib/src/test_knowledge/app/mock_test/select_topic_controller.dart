@@ -16,18 +16,18 @@ part 'select_topic_state.dart';
 
 @riverpod
 class SelectTopicController extends _$SelectTopicController {
-  late IKnowledge api;
+  late IKnowledgeApi api;
   LearningGoal selectedLearningGoal = LearningGoal.empty();
   @override
   SelectTopicState build() {
-    api = ref.read(knowledgeApi);
+    api = ref.read(knowledgeApiProvider);
     Future.delayed(const Duration(milliseconds: 200), () => init());
     return SelectTopicState.initial();
   }
 
   Future<Unit> init() async {
     state = state.copyWith(isLoading: true);
-    final selectedLearningGoalEither = await knowledge_service.getSelectedLearningGoal().run(api);
+    final selectedLearningGoalEither = await knowledge_service.getMockLearningGoal().run(api);
     await selectedLearningGoalEither.fold((error) async {
       state = state.copyWith(
         clientError: some(error),

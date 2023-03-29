@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
+import '../../knowledge/domain/i_knowledge.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';

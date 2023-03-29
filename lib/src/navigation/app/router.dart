@@ -3,22 +3,23 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
-import 'package:kyons_flutter/src/authentication/view/reset_password_page.dart';
-import 'package:kyons_flutter/src/authentication/view/sign_in_page.dart';
-import 'package:kyons_flutter/src/authentication/view/sign_up_page.dart';
-import 'package:kyons_flutter/src/design/view/design_page.dart';
-import 'package:kyons_flutter/src/home/view/home_page.dart';
-import 'package:kyons_flutter/src/knowledge/view/learning_path/learning_path_page.dart';
-import 'package:kyons_flutter/src/knowledge/view/lesson/new_lesson_page.dart';
-import 'package:kyons_flutter/src/navigation/app/auth_guard.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
-import 'package:kyons_flutter/src/settings/view/language_settings_page.dart';
-import 'package:kyons_flutter/src/settings/view/settings_page.dart';
-import 'package:kyons_flutter/src/settings/view/theme_settings_page.dart';
-import 'package:kyons_flutter/src/test_knowledge/view/mock_test/select_learning_goal_page.dart';
 
+import '../../authentication/app/auth_provider.dart';
+import '../../authentication/view/reset_password_page.dart';
+import '../../authentication/view/sign_in_page.dart';
+import '../../authentication/view/sign_up_page.dart';
+import '../../design/view/design_page.dart';
+import '../../home/view/home_page.dart';
+import '../../knowledge/view/learning_path/learning_path_page.dart';
 import '../../knowledge/view/lesson/lesson_page.dart';
+import '../../knowledge/view/lesson/new_lesson_page.dart';
+import '../../navigation/app/auth_guard.dart';
+import '../../navigation/domain/app_paths.dart';
+import '../../order/view/new_user_page.dart';
+import '../../settings/view/language_settings_page.dart';
+import '../../settings/view/settings_page.dart';
+import '../../settings/view/theme_settings_page.dart';
+import '../../test_knowledge/view/mock_test/select_learning_goal_page.dart';
 import '../../test_knowledge/view/mock_test/select_topic_page.dart';
 import '../../test_knowledge/view/mock_test/test_page.dart';
 
@@ -106,6 +107,10 @@ class AppRouter {
         GoRoute(
           path: AppPaths.signUp.path,
           builder: (BuildContext context, GoRouterState state) => const SignUpPage(),
+        ),
+        GoRoute(
+          path: AppPaths.newUser.path,
+          builder: (BuildContext context, GoRouterState state) => const NewUserPage(),
         ),
         GoRoute(
           path: AppPaths.mockTestLearningGoal.path,

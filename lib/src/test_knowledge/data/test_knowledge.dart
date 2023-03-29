@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
+import '../../knowledge/data/knowledge_entities.dart';
 import 'package:shared_package/shared_package.dart';
 
 class TestContent {

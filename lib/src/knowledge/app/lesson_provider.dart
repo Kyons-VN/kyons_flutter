@@ -3,22 +3,22 @@ import 'dart:async';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/knowledge/app/knowledge_provider.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
-import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
-import 'package:kyons_flutter/src/tracking/app/tracking_provider.dart';
-import 'package:kyons_flutter/src/tracking/data/tracking_service.dart' as tracking_service;
-import 'package:kyons_flutter/src/tracking/domain/i_tracking.dart';
 import 'package:shared_package/shared_package.dart';
 
+import '../../knowledge/app/knowledge_provider.dart';
+import '../../knowledge/data/knowledge_entities.dart';
+import '../../knowledge/data/knowledge_service.dart' as knowledge_service;
+import '../../knowledge/domain/i_knowledge.dart';
+import '../../tracking/app/tracking_provider.dart';
 import '../../tracking/data/tracking_api.dart';
+import '../../tracking/data/tracking_service.dart' as tracking_service;
+import '../../tracking/domain/i_tracking.dart';
 
 part 'lesson_provider.freezed.dart';
 part 'lesson_state.dart';
 
 class LessonNotifier extends StateNotifier<LessonState> {
-  final IKnowledge knowledgeApi;
+  final IKnowledgeApi knowledgeApi;
   final ITracking trackingApi;
   final String lessonGroupId;
 
@@ -48,7 +48,7 @@ class LessonNotifier extends StateNotifier<LessonState> {
 }
 
 final lessonNotifierProvider = StateNotifierProvider.autoDispose.family<LessonNotifier, LessonState, String>(
-    (ref, lessonGroupId) => LessonNotifier(ref.read(knowledgeApi), ref.read(tracking), lessonGroupId));
+    (ref, lessonGroupId) => LessonNotifier(ref.read(knowledgeApiProvider), ref.read(tracking), lessonGroupId));
 
 enum TabMenu {
   study,

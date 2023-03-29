@@ -1,13 +1,13 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_service.dart' as test_service;
-import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
 
 import '../../knowledge/app/knowledge_provider.dart';
 import '../../knowledge/data/knowledge_entities.dart';
+import '../../knowledge/data/knowledge_service.dart' as knowledge_service;
 import '../../knowledge/domain/i_knowledge.dart';
+import '../../test_knowledge/data/test_knowledge_service.dart' as test_service;
+import '../../test_knowledge/domain/i_test_knowledge.dart';
 import '../data/test_knowledge.dart';
 import 'test_provider.dart';
 
@@ -16,7 +16,7 @@ part 'lesson_test_state.dart';
 
 class LessonTestNotifier extends StateNotifier<LessonTestState> {
   final ITestKnowledge testApi;
-  final IKnowledge knowledgeApi;
+  final IKnowledgeApi knowledgeApi;
   final String lessonGroupId;
   LessonTestNotifier(this.testApi, this.knowledgeApi, this.lessonGroupId) : super(LessonTestState.initialize()) {
     init();
@@ -104,5 +104,5 @@ class LessonTestNotifier extends StateNotifier<LessonTestState> {
 }
 
 final testNotifierProvider = StateNotifierProvider.autoDispose.family<LessonTestNotifier, LessonTestState, String>(
-  (ref, lessonGroupId) => LessonTestNotifier(ref.read(testApi), ref.read(knowledgeApi), lessonGroupId),
+  (ref, lessonGroupId) => LessonTestNotifier(ref.read(testApi), ref.read(knowledgeApiProvider), lessonGroupId),
 );

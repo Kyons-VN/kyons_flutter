@@ -1,4 +1,4 @@
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
+import '../../test_knowledge/data/test_knowledge.dart';
 
 abstract class ITestKnowledge {
   Future<TestContent> getDiagnosticTest(String learningGoalId);

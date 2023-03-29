@@ -1,16 +1,14 @@
-import 'dart:developer';
-
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
-import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_service.dart' as test_service;
-import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
 
 import '../../../knowledge/app/knowledge_provider.dart';
+import '../../../knowledge/data/knowledge_entities.dart';
+import '../../../knowledge/data/knowledge_service.dart' as knowledge_service;
+import '../../../knowledge/domain/i_knowledge.dart';
+import '../../../test_knowledge/data/test_knowledge.dart';
+import '../../../test_knowledge/data/test_knowledge_service.dart' as test_service;
+import '../../../test_knowledge/domain/i_test_knowledge.dart';
 import '../test_provider.dart';
 
 part 'diagnostic_test_controller.freezed.dart';
@@ -18,7 +16,7 @@ part 'diagnostic_test_state.dart';
 
 class DiagnosticTestController extends StateNotifier<DiagnosticTestState> {
   final ITestKnowledge testApi;
-  final IKnowledge knowledgeApi;
+  final IKnowledgeApi knowledgeApi;
   final String learningGoalId;
   Option<LearningGoal> learningGoal = none();
 
@@ -35,13 +33,12 @@ class DiagnosticTestController extends StateNotifier<DiagnosticTestState> {
 
   Future<void> init(String learningGoalId) async {
     state = DiagnosticTestState.loading();
-    final selectedLearningGoal = await knowledge_service.getSelectedLearningGoal().run(knowledgeApi);
-    if (selectedLearningGoal.isLeft()) {
+    final mockLearningGoal = await knowledge_service.getSelectedLearningGoal().run(knowledgeApi);
+    if (mockLearningGoal.isLeft()) {
       state = DiagnosticTestState.missingLearningGoal();
       return;
     } else {
-      log(selectedLearningGoal.isRight().toString());
-      learningGoal = selectedLearningGoal.getOrElse((_) => LearningGoal.empty()).toOption();
+      learningGoal = mockLearningGoal.toOption();
     }
 
     final successOrFailure = await test_service.getDiagnosticTest(learningGoalId).run(testApi);
@@ -129,5 +126,5 @@ class DiagnosticTestController extends StateNotifier<DiagnosticTestState> {
 // final diagnosticTestControllerProvider = NotifierProvider.autoDispose((ref) => ref)
 //     .family<DiagnosticTestController, DiagnosticTestState, String>(() => DiagnosticTestController());
 final diagnosticTestControllerProvider = StateNotifierProvider.autoDispose
-    .family<DiagnosticTestController, DiagnosticTestState, String>(
-        (ref, learningGoalId) => DiagnosticTestController(learningGoalId, ref.read(testApi), ref.read(knowledgeApi)));
+    .family<DiagnosticTestController, DiagnosticTestState, String>((ref, learningGoalId) =>
+        DiagnosticTestController(learningGoalId, ref.read(testApi), ref.read(knowledgeApiProvider)));

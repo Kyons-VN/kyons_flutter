@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/tutor/data/tutor_service.dart' as tutor_service;
-import 'package:kyons_flutter/src/tutor/data/tutor_service.dart';
-import 'package:kyons_flutter/src/tutor/domain/session.dart';
-import 'package:kyons_flutter/src/tutor/domain/tutor.dart';
+import '../../tutor/data/tutor_service.dart' as tutor_service;
+import '../../tutor/data/tutor_service.dart';
+import '../../tutor/domain/session.dart';
+import '../../tutor/domain/tutor.dart';
 import 'package:shared_package/shared_package.dart';
 
 part 'tutor_provider.freezed.dart';

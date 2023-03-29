@@ -1,8 +1,8 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:kyons_flutter/src/core/data/api.dart';
-import 'package:kyons_flutter/src/tutor/data/tutor_dto.dart';
-import 'package:kyons_flutter/src/tutor/domain/session.dart';
-import 'package:kyons_flutter/src/tutor/domain/tutor.dart';
+import '../../core/data/api.dart';
+import '../../tutor/data/tutor_dto.dart';
+import '../../tutor/domain/session.dart';
+import '../../tutor/domain/tutor.dart';
 import 'package:shared_package/shared_package.dart';
 
 Reader<ITutor, Future<Either<ApiFailure, String>>> requestTutor(String learningPointDifficultyId) => Reader(

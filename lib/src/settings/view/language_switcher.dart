@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/settings/app/settings_controller.dart';
+import '../../settings/app/settings_controller.dart';
 
 class LanguageSwitcher extends HookConsumerWidget {
   const LanguageSwitcher({Key? key}) : super(key: key);

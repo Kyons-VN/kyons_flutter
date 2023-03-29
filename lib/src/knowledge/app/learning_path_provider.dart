@@ -3,17 +3,17 @@ import 'dart:async';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/knowledge/app/knowledge_provider.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
-import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
+import '../../knowledge/app/knowledge_provider.dart';
+import '../../knowledge/data/knowledge_entities.dart';
+import '../../knowledge/data/knowledge_service.dart' as knowledge_service;
+import '../../knowledge/domain/i_knowledge.dart';
 import 'package:shared_package/shared_package.dart';
 
 part 'learning_path_provider.freezed.dart';
 part 'learning_path_state.dart';
 
 class LearningPathNotifier extends StateNotifier<LearningPathState> {
-  final IKnowledge knowledgeApi;
+  final IKnowledgeApi knowledgeApi;
   LearningPathNotifier(this.knowledgeApi) : super(LearningPathState.initial()) {
     init();
   }
@@ -70,5 +70,5 @@ class LearningPathNotifier extends StateNotifier<LearningPathState> {
 }
 
 final learningPathNotifierProvider = StateNotifierProvider.autoDispose<LearningPathNotifier, LearningPathState>(
-  (ref) => LearningPathNotifier(ref.read(knowledgeApi)),
+  (ref) => LearningPathNotifier(ref.read(knowledgeApiProvider)),
 );

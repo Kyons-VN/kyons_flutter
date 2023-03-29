@@ -1,4 +1,5 @@
 {
+  "@@locale": "vi",
   "appTitle": "KYONS",
   "loginSuccess": "Đăng nhập thành công",
   "email": "Email",
@@ -216,5 +217,49 @@
   "copiedToClipboard": "Đã sao chép vào clipboard",
   "youWillUse": "Bạn sẽ sử dụng dịch vụ Kyons",
   "toCreateLearningGoal": "<p>Để tạo mục tiêu mới, bạn sẽ dùng <strong>một bài kiểm tra Kyons</strong>.</p><p>Khi tạo mục tiêu mới, Kyons sẽ thay đổi giáo trình lại cho phù hợp với kết quả bài kiểm tra mới của bạn.</p>",
-  "changeTarget": "Đổi mục tiêu"
+  "changeTarget": "Đổi mục tiêu",
+  "freeTrial": "Bạn được tặng 7 ngày học miễn phí cùng Kyons!",
+  "freeTrialDesc": "<p>Bài học ngắn gọn, bài tập chọn lọc và một lộ trình học được Kyons thiết kế dựa trên mục tiêu học tập của riêng bạn đang chờ ở phía trước.</p><p>Còn chần chừ gì mà chưa học cùng Kyons nào!</p>",
+  "startLearing": "Bắt đầu học",
+  "processing": "Đang xử lý",
+  "day": "ngày",
+  "dayNum": "1 ngày",
+  "daysNum": "{num} ngày",
+  "@daysNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "hour": "hour",
+  "hourNum": "1 hour",
+  "hoursNum": "{num} hours",
+  "@hoursNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "minute": "minute",
+  "minuteNum": "1 minute",
+  "minutesNum": "{num} minutes",
+  "@minutesNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "second": "second",
+  "secondNum": "1 second",
+  "secondsNum": "{num} seconds",
+  "@secondsNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  }
 }

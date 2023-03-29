@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:shared_package/shared_package.dart';
+
+import '../../../core/helper/translate.dart';
+import '../../../knowledge/data/knowledge_entities.dart';
+import '../../../knowledge/domain/i_knowledge.dart';
+import '../../../navigation/domain/app_paths.dart';
 
 class LessonItemsListWidget extends StatelessWidget {
   final List<LessonItem> lessons;

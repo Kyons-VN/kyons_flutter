@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_package/shared_package.dart';
+
+import '../../authentication/view/sign_in_page.dart';
+import '../../core/helper/translate.dart';
+import '../../navigation/domain/app_paths.dart';
+import '../app/settings_controller.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
@@ -38,31 +44,45 @@ class SettingsPage extends StatelessWidget {
           // When a user selects a theme from the dropdown list, the
           // SettingsController is updated, which rebuilds the MaterialApp.
           child: SingleChildScrollView(
-            child: ListView(
-              shrinkWrap: true,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () => context.push(AppPaths.languageSettings.path),
-                  child: ListTile(
-                    title: Text(
-                      t(context).language,
-                      style: Theme.of(context).textTheme.heading6,
-                    ),
-                    trailing: const Icon(Icons.arrow_forward),
-                  ),
-                ),
-                // GestureDetector(
-                //   onTap: () => context.push(AppPaths.themeSettings.path),
-                //   child: ListTile(
-                //     title: Text(
-                //       t(context).themeMode,
-                //       style: Theme.of(context).textTheme.heading6,
-                //     ),
-                //     trailing: const Icon(Icons.arrow_forward),
-                //   ),
-                // ),
+                Heading(7, t(context).language),
+                AppSizesUnit.sizedBox8,
+                Consumer(builder: (context, ref, child) {
+                  return CupertinoPickerOptions<LocaleOption>(
+                    options: AppLocalizations.supportedLocales.map((e) => LocaleOption(e.languageCode)).toList(),
+                    onPicked: some((v) => ref.read(settingsNotifierProvider).updateLocale(v)),
+                    selectedOption: optionOf(LocaleOption(Localizations.localeOf(context).languageCode)),
+                  );
+                })
               ],
             ),
+            // child: ListView(
+            //   shrinkWrap: true,
+            //   children: [
+            //     GestureDetector(
+            //       onTap: () => context.push(AppPaths.languageSettings.path),
+            //       child: ListTile(
+            //         title: Text(
+            //           t(context).language,
+            //           style: Theme.of(context).textTheme.heading6,
+            //         ),
+            //         trailing: const Icon(Icons.arrow_forward),
+            //       ),
+            //     ),
+            // GestureDetector(
+            //   onTap: () => context.push(AppPaths.themeSettings.path),
+            //   child: ListTile(
+            //     title: Text(
+            //       t(context).themeMode,
+            //       style: Theme.of(context).textTheme.heading6,
+            //     ),
+            //     trailing: const Icon(Icons.arrow_forward),
+            //   ),
+            // ),
+            // ],
+            // ),
           ),
         ),
       ),

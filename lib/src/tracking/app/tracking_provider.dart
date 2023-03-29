@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/tracking/data/tracking_api.dart';
-import 'package:kyons_flutter/src/tracking/data/tracking_service.dart' as tracking_service;
+import '../../tracking/data/tracking_api.dart';
+import '../../tracking/data/tracking_service.dart' as tracking_service;
 import 'package:shared_package/shared_package.dart';
 
 part 'tracking_state.dart';

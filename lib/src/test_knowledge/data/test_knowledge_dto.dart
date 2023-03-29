@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_dto.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
+import '../../knowledge/data/knowledge_dto.dart';
+import '../../test_knowledge/data/test_knowledge.dart';
 
 part 'test_knowledge_dto.freezed.dart';
 part 'test_knowledge_dto.g.dart';

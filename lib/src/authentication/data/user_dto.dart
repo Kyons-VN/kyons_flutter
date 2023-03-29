@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kyons_flutter/src/authentication/domain/user.dart';
-import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
+import '../../authentication/domain/user.dart';
+import '../../knowledge/domain/i_knowledge.dart';
 
 part 'user_dto.freezed.dart';
 part 'user_dto.g.dart';

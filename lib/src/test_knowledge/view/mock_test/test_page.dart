@@ -2,17 +2,19 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
-import 'package:kyons_flutter/src/test_knowledge/app/mock_test/diagnostic_test_controller.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_package/shared_package.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../boostrap/config_reader.dart';
+import '../../../core/helper/translate.dart';
+import '../../../knowledge/data/knowledge_entities.dart';
+import '../../../navigation/domain/app_paths.dart';
+import '../../../test_knowledge/app/mock_test/diagnostic_test_controller.dart';
+import '../../../test_knowledge/data/test_knowledge.dart';
 import '../widgets/test_content_widget.dart';
 import '../widgets/test_result_widget.dart';
 
@@ -93,6 +95,10 @@ class TestPage extends ConsumerWidget {
                         submitCallback: () {
                           controller.submit(answersResult);
                         },
+                        reportCallback: () => launchUrl(
+                          Uri.parse(ConfigReader.getReportUrl()),
+                          webOnlyWindowName: '_blank',
+                        ),
                       ),
                     ],
                   );

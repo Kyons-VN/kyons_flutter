@@ -14,16 +14,17 @@ part 'select_learning_goal_state.dart';
 
 @riverpod
 class SelectLearningGoalController extends _$SelectLearningGoalController {
-  late IKnowledge api;
+  late IKnowledgeApi api;
   @override
   SelectLearningGoalState build() {
-    api = ref.read(knowledgeApi);
+    api = ref.read(knowledgeApiProvider);
     Future.delayed(const Duration(milliseconds: 200), () => init());
     return SelectLearningGoalState.initial();
   }
 
   Future<Unit> init() async {
     state = state.copyWith(isLoading: true);
+
     final Either<ApiFailure, List<Subject>> failureOrSuccess = await knowledge_service.getSubjects().run(api);
     state = state.copyWith(
       hasError: failureOrSuccess.isLeft(),
@@ -79,8 +80,8 @@ class SelectLearningGoalController extends _$SelectLearningGoalController {
     state = state.copyWith(isLoading: true);
     await state.selectedProgramOption.fold(() {}, (program) async {
       await state.selectedLearningGoalOption.fold(() {}, (learningGoal) async {
-        final failureOrSuccess1 = await knowledge_service.selectProgram(program).run(api);
-        final failureOrSuccess2 = await knowledge_service.selectLearningGoal(learningGoal).run(api);
+        final failureOrSuccess1 = await knowledge_service.selectMockProgram(program).run(api);
+        final failureOrSuccess2 = await knowledge_service.selectMockLearningGoal(learningGoal).run(api);
         failureOrSuccess1.flatMap((a) => failureOrSuccess2).fold((l) {
           state = state.copyWith(
             hasError: true,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
-import 'package:kyons_flutter/src/test_knowledge/view/widgets/answer_result_widget.dart';
 import 'package:shared_package/shared_package.dart';
 
+import '../../../test_knowledge/data/test_knowledge.dart';
+import '../../../test_knowledge/view/widgets/answer_result_widget.dart';
 import '../../app/test_provider.dart';
 
 class TestContentWidget extends HookWidget {
@@ -14,11 +14,11 @@ class TestContentWidget extends HookWidget {
   final Map<String, String> answersResult;
   final Function answerSelectedCallback;
   final Function submitCallback;
-  final Function? reportCallback;
+  final Function reportCallback;
   const TestContentWidget({
     Key? key,
     Function? previousCallback,
-    this.reportCallback,
+    required this.reportCallback,
     required this.testContent,
     required this.currentQuestionIndex,
     required this.nextCallback,
@@ -30,6 +30,7 @@ class TestContentWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(reportCallback != null);
     final testLength = testContent.questions.length;
     final viewType = useState(QuestionViewType.question);
     if (testLength == 0) return const Center(child: Text('No data'));
@@ -204,7 +205,7 @@ class AnswerWidget extends StatelessWidget {
                         width: AppSizesUnit.small8,
                         height: AppSizesUnit.small8,
                         decoration: BoxDecoration(
-                          color: AppColors.primaryBlue,
+                          color: AppColors.lightBlue1,
                           borderRadius: BorderRadius.circular(AppSizesUnit.small8),
                         ),
                       )),

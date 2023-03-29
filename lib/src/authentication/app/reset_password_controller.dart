@@ -1,11 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
-import 'package:kyons_flutter/src/authentication/data/auth_service.dart' as auth_service;
-import 'package:kyons_flutter/src/authentication/domain/value_objects.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_package/shared_package.dart';
+
+import '../../authentication/app/auth_provider.dart';
+import '../../authentication/data/auth_service.dart' as auth_service;
+import '../../authentication/domain/value_objects.dart';
 
 part 'reset_password_controller.freezed.dart';
 part 'reset_password_controller.g.dart';
@@ -46,7 +47,7 @@ class ResetPasswordController extends _$ResetPasswordController {
           .requestResetPassword(
             state.emailAddress.getValueOrError(),
           )
-          .run(ref.read(auth));
+          .run(ref.read(authApiProvider));
     }
     state = state.copyWith(
       isSubmitting: false,
@@ -73,7 +74,7 @@ class ResetPasswordController extends _$ResetPasswordController {
             password: state.password.getValueOrError(),
             code: state.code,
           )
-          .run(ref.read(auth));
+          .run(ref.read(authApiProvider));
     }
     state = state.copyWith(
       isSubmitting: false,

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_package/shared_package.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../boostrap/config_reader.dart';
 import '../../../../core/helper/translate.dart';
 import '../../../../navigation/domain/app_paths.dart';
 import '../../../../test_knowledge/app/lesson_test_provider.dart';
@@ -62,6 +65,10 @@ class LessonExamWidget extends ConsumerWidget {
             submitCallback: () {
               controller.submit(answersResult);
             },
+            reportCallback: () => launchUrl(
+              Uri.parse(ConfigReader.getReportUrl()),
+              webOnlyWindowName: '_blank',
+            ),
           ),
         ],
       );

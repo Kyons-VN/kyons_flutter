@@ -1,4 +1,4 @@
-import 'package:kyons_flutter/src/tutor/domain/session.dart';
+import '../../tutor/domain/session.dart';
 
 abstract class ITutor {
   Future<String> requestTutor(String learningPointDifficultyId);

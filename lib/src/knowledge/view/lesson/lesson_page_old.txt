@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/knowledge/app/lesson_provider.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/knowledge/view/lesson/lesson_app_bar.dart';
-import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
-import 'package:kyons_flutter/src/test_knowledge/app/lesson_exercise_provider.dart';
-import 'package:kyons_flutter/src/test_knowledge/app/lesson_test_provider.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
-import 'package:kyons_flutter/src/tutor/view/call_tutor.dart';
+import '../../core/helper/translate.dart';
+import '../../knowledge/app/lesson_provider.dart';
+import '../../knowledge/data/knowledge_entities.dart';
+import '../../knowledge/view/lesson/lesson_app_bar.dart';
+import '../../navigation/view/app_drawer.dart';
+import '../../test_knowledge/app/lesson_exercise_provider.dart';
+import '../../test_knowledge/app/lesson_test_provider.dart';
+import '../../test_knowledge/data/test_knowledge.dart';
+import '../../tutor/view/call_tutor.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../../test_knowledge/view/widgets/test_content_widget.dart';

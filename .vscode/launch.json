@@ -18,6 +18,13 @@
       "args": ["--web-port", "12345"]
     },
     {
+      "name": "Web stg",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_stg_web.dart",
+      "args": ["--web-port", "12345"]
+    },
+    {
       "name": "main.dart",
       "request": "launch",
       "type": "dart"

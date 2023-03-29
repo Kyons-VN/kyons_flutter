@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../../core/helper/translate.dart';
+import '../../../knowledge/data/knowledge_entities.dart';
 import '../../../navigation/domain/app_paths.dart';
 import '../../app/mock_test/select_topic_controller.dart';
 
@@ -156,20 +156,16 @@ class TopicPickerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return Text(topic.name);
-    return Container(
+    return CheckboxFormField(
+      label: Text(topic.name),
+      onChanged: onChanged,
+      contentPadding: const EdgeInsets.all(AppSizesUnit.small8),
       decoration: BoxDecoration(
         color: AppColors.white,
         border: Border.all(color: AppColors.blueGray300),
         borderRadius: BorderRadius.circular(AppSizesUnit.small5),
       ),
-      width: double.infinity,
-      // child: Text(topic.name),
-      child: CheckboxFormField(
-        label: Text(topic.name),
-        onChanged: onChanged,
-        contentPadding: const EdgeInsets.all(AppSizesUnit.small8),
-        initialValue: topic.isSelected,
-      ),
+      initialValue: topic.isSelected,
     );
   }
 }

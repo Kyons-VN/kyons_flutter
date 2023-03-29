@@ -6,15 +6,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
-import 'package:kyons_flutter/src/authentication/app/current_user_provider.dart';
-import 'package:kyons_flutter/src/authentication/app/sign_in_provider.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
-import 'package:kyons_flutter/src/settings/app/settings_controller.dart';
 import 'package:shared_package/shared_package.dart';
 
+import '../../authentication/app/auth_provider.dart';
+import '../../authentication/app/current_user_provider.dart';
+import '../../authentication/app/sign_in_provider.dart';
+import '../../core/helper/translate.dart';
 import '../../navigation/app/router.dart';
+import '../../navigation/domain/app_paths.dart';
+import '../../settings/app/settings_controller.dart';
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -60,7 +60,7 @@ class LocaleOption extends Locale {
   LocaleOption(super.languageCode);
 
   String get name {
-    return lookupAppLocalizations(this).languageName;
+    return languageName;
   }
 }
 
@@ -94,7 +94,6 @@ class SignInFormWrapper extends StatelessWidget {
                         style: const TextStyle(color: AppColors.orange),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            print('OD');
                             context.go(AppPaths.resetPassword.path);
                           },
                       ),
@@ -115,7 +114,7 @@ class SignInFormWrapper extends StatelessWidget {
                   options: AppLocalizations.supportedLocales.map((e) => LocaleOption(e.languageCode)).toList(),
                   onPicked: some((v) => ref.read(settingsNotifierProvider).updateLocale(v)),
                   selectedOption: optionOf(LocaleOption(Localizations.localeOf(context).languageCode)),
-                )
+                ),
               ],
             ),
           ),

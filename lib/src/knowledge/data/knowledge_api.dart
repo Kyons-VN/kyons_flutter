@@ -2,17 +2,18 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:fpdart/fpdart.dart';
-import 'package:kyons_flutter/src/core/data/api.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_dto.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart';
-import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_dto.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Knowledge implements IKnowledge {
+import '../../core/data/api.dart';
+import '../../knowledge/data/knowledge_dto.dart';
+import '../../knowledge/data/knowledge_entities.dart';
+import '../../knowledge/data/knowledge_service.dart';
+import '../../knowledge/domain/i_knowledge.dart';
+import '../../test_knowledge/data/test_knowledge.dart';
+import '../../test_knowledge/data/test_knowledge_dto.dart';
+
+class KnowledgeApi implements IKnowledgeApi {
   final api = Api.init().api;
 
   @override
@@ -111,9 +112,16 @@ class Knowledge implements IKnowledge {
   }
 
   @override
-  Future<Unit> selectProgram(Program program) async {
+  Future<Unit> setProgram(Program program) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(selectedProgramKey, jsonEncode(program.toJson()));
+    return unit;
+  }
+
+  @override
+  Future<Unit> selectMockProgram(Program program) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(mockProgramKey, jsonEncode(program.toJson()));
     return unit;
   }
 
@@ -122,6 +130,14 @@ class Knowledge implements IKnowledge {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(selectedProgramKey);
     return unit;
+  }
+
+  @override
+  Future<Program> getMockProgram() async {
+    final prefs = await SharedPreferences.getInstance();
+    final json = jsonDecode(prefs.getString(mockProgramKey) ?? Program.emptyJsonString());
+    final program = Program(id: json['id'], name: json['name'], subjectId: json['subjectId']);
+    return program;
   }
 
   @override
@@ -165,7 +181,14 @@ class Knowledge implements IKnowledge {
   }
 
   @override
-  Future<Unit> selectLearningGoal(LearningGoal learningGoal) async {
+  Future<Unit> selectMockLearningGoal(LearningGoal learningGoal) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(mockLearningGoalKey, jsonEncode(learningGoal.toJson()));
+    return unit;
+  }
+
+  @override
+  Future<Unit> setLearningGoal(LearningGoal learningGoal) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(selectedLearningGoalKey, jsonEncode(learningGoal.toJson()));
     return unit;
@@ -191,6 +214,18 @@ class Knowledge implements IKnowledge {
       progress: json['progress'],
       maxTopics: json['maxTopic'],
       minTopics: json['minTopic'],
+    );
+    return learningGoal;
+  }
+
+  @override
+  Future<LearningGoal> getMockLearningGoal() async {
+    final prefs = await SharedPreferences.getInstance();
+    final json = jsonDecode(prefs.getString(mockLearningGoalKey) ?? LearningGoal.emptyJsonString());
+    final learningGoal = LearningGoal(
+      id: json['id'],
+      name: json['name'],
+      progress: json['progress'],
     );
     return learningGoal;
   }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
 import 'package:shared_package/shared_package.dart';
 
+import '../../../../knowledge/data/knowledge_entities.dart';
 import '../../../app/learning_path_provider.dart';
 
 class CategoryDrawer extends StatelessWidget {

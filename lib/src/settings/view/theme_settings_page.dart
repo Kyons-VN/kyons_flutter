@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
+import '../../core/helper/translate.dart';
+import '../../navigation/domain/app_paths.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../app/settings_controller.dart';

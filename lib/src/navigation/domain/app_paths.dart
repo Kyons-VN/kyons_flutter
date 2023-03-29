@@ -25,6 +25,7 @@ class AppPaths {
   static const mockTestTopic = AppPath(path: '/mock-test/:lgId/select-topic');
   static const mockTestTest = AppPath(path: '/mock-test/:id/test');
   static const mockTestShare = AppPath(path: '/share-mocktest/:ref');
+  static const newUser = AppPath(path: '/new-user');
   static const termsOfService = AppPath(path: '/terms-of-service');
   static const pageNotfound = AppPath(path: '/page-not-found');
 

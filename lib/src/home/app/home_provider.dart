@@ -1,11 +1,12 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kyons_flutter/src/knowledge/app/knowledge_provider.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_service.dart' as knowledge_service;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../knowledge/app/knowledge_provider.dart';
+import '../../knowledge/data/knowledge_entities.dart';
+import '../../knowledge/data/knowledge_service.dart' as knowledge_service;
 
 part 'home_provider.freezed.dart';
 part 'home_provider.g.dart';
@@ -18,7 +19,7 @@ class HomeNotifier extends _$HomeNotifier {
   @override
   Future<HomeState> build() async {
     final Either<ApiFailure, List<Program>> failureOrSuccess =
-        await knowledge_service.getStudentProgram().run(ref.read(knowledgeApi));
+        await knowledge_service.getStudentProgram().run(ref.read(knowledgeApiProvider));
     final prefs = await SharedPreferences.getInstance();
     final currentDisplay = prefs.getString('display') == 'carousel' ? ProgramsDisplay.carousel : ProgramsDisplay.grid;
     return HomeState(
@@ -94,9 +95,9 @@ class HomeNotifier extends _$HomeNotifier {
   // }
 
   Future<Unit> selectProgram(Program program) async {
-    await knowledge_service.selectProgram(program).run(ref.read(knowledgeApi));
+    await knowledge_service.setProgram(program).run(ref.read(knowledgeApiProvider));
     if (program.learningGoal != null) {
-      await knowledge_service.selectLearningGoal(program.learningGoal!).run(ref.read(knowledgeApi));
+      await knowledge_service.setLearningGoal(program.learningGoal!).run(ref.read(knowledgeApiProvider));
     }
     state = AsyncData(state.value!.copyWith(selectedLearningGoalOption: optionOf(program.learningGoal)));
     return unit;

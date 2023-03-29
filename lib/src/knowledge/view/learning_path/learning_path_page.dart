@@ -1,36 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/knowledge/app/learning_path_provider.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/knowledge/view/learning_path/widgets/category_drawer.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
-import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
-import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
 import 'package:shared_package/shared_package.dart';
 
+import '../../../knowledge/app/learning_path_provider.dart';
+import '../../../knowledge/data/knowledge_entities.dart';
+import '../../../knowledge/view/learning_path/widgets/category_drawer.dart';
+import '../../../navigation/domain/app_paths.dart';
+import '../../../navigation/view/app_bar.dart';
+import '../../../navigation/view/app_drawer.dart';
 import 'widgets/lesson_list_widget.dart';
 
-class LearningPathPage extends ConsumerWidget {
+class LearningPathPage extends StatelessWidget {
   const LearningPathPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // print('build lp');
-    final controller = ref.read(learningPathNotifierProvider.notifier);
-    // final currentUserState = ref.read(currentUserProvider);
-    // final studyType = currentUserState.userOption.getOrElse(() => User.empty()).studyType;
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    final state = ref.watch(learningPathNotifierProvider);
-    // if (learningPathState.learningPath.isNone()) learningPathNotifier.init();
-    // });
-
-    ref.listen<LearningPathState>(learningPathNotifierProvider, (pre, next) {
-      if (next.isMissing) {
-        context.go(AppPaths.home.path);
-      }
-    });
-
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MainAppBar(backPath: AppPaths.home),
       drawer: const CategoryDrawer(),
@@ -38,18 +24,28 @@ class LearningPathPage extends ConsumerWidget {
       body: SafeArea(
         child: HookConsumer(
           builder: (context, ref, child) {
-            final learningPathState = ref.watch(learningPathNotifierProvider);
-            if (learningPathState.loading) {
+            final controller = ref.read(learningPathNotifierProvider.notifier);
+            final state = ref.watch(learningPathNotifierProvider);
+            ref.listen<LearningPathState>(learningPathNotifierProvider, (pre, next) {
+              if (next.isMissing) {
+                context.go(AppPaths.home.path);
+              }
+              if (next.learningGoalPathOption.getOrElse(() => LearningGoalPath.empty()).isNewUser) {
+                context.go(AppPaths.newUser.path);
+              }
+            });
+            // final state = ref.watch(learningPathNotifierProvider);
+            if (state.loading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             }
-            if (learningPathState.hasError.isSome()) {
+            if (state.hasError.isSome()) {
               return Center(
-                child: Text(learningPathState.hasError.getOrElse(() => const ApiFailure.clientError()).toString()),
+                child: Text(state.hasError.getOrElse(() => const ApiFailure.clientError()).toString()),
               );
             }
-            final learningGoalPath = learningPathState.learningGoalPathOption.getOrElse(() => LearningGoalPath.empty());
+            final learningGoalPath = state.learningGoalPathOption.getOrElse(() => LearningGoalPath.empty());
             if (learningGoalPath.lessonCategories.isNotEmpty) {
               // return LessonItemsListWidget(
               //   lessons: categories

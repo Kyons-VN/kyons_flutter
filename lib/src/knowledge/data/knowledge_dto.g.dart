@@ -63,6 +63,7 @@ _$_LearningGoalPathDto _$$_LearningGoalPathDtoFromJson(
               LearningGoalCategoryDto.fromJson(e as Map<String, dynamic>))
           .toList(),
       progress: (json['complete_percentage'] as num).toDouble(),
+      isNewUser: json['new_user'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_LearningGoalPathDtoToJson(
@@ -70,6 +71,7 @@ Map<String, dynamic> _$$_LearningGoalPathDtoToJson(
     <String, dynamic>{
       'categories': instance.categories,
       'complete_percentage': instance.progress,
+      'new_user': instance.isNewUser,
     };
 
 _$_LearningGoalCategoryDto _$$_LearningGoalCategoryDtoFromJson(

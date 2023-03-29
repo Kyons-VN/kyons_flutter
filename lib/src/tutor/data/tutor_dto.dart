@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kyons_flutter/src/tutor/domain/session.dart';
+import '../../tutor/domain/session.dart';
 
 part 'tutor_dto.freezed.dart';
 part 'tutor_dto.g.dart';

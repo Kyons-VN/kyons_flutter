@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/tutor/app/tutor_provider.dart';
-import 'package:kyons_flutter/src/tutor/domain/session.dart';
+import '../../core/helper/translate.dart';
+import '../../tutor/app/tutor_provider.dart';
+import '../../tutor/domain/session.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:url_launcher/url_launcher.dart';
 

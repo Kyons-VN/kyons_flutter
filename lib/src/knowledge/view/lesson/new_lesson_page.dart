@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/knowledge/app/new_lesson_provider.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
-import 'package:kyons_flutter/src/navigation/view/app_bar.dart';
-import 'package:kyons_flutter/src/navigation/view/app_drawer.dart';
 import 'package:shared_package/shared_package.dart';
+
+import '../../../core/helper/translate.dart';
+import '../../../knowledge/app/new_lesson_provider.dart';
+import '../../../knowledge/data/knowledge_entities.dart';
+import '../../../navigation/domain/app_paths.dart';
+import '../../../navigation/view/app_bar.dart';
+import '../../../navigation/view/app_drawer.dart';
 
 class NewLessonPage extends ConsumerWidget {
   const NewLessonPage({Key? key}) : super(key: key);

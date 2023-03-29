@@ -1,9 +1,10 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:kyons_flutter/src/authentication/domain/user.dart';
-import 'package:kyons_flutter/src/authentication/domain/value_objects.dart';
-import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
 
-abstract class IAuth {
+import '../../authentication/domain/user.dart';
+import '../../authentication/domain/value_objects.dart';
+import '../../knowledge/domain/i_knowledge.dart';
+
+abstract class IAuthApi {
   Future<Unit> signInEmailPassword({
     required EmailAddress emailAddress,
     required String password,

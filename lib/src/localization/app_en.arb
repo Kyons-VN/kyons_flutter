@@ -1,4 +1,5 @@
 {
+  "@@locale": "en",
   "appTitle": "KYONS",
   "loginSuccess": "Login Success",
   "email": "Email",
@@ -117,12 +118,12 @@
   "forgotPassword": "Forgot password?",
   "doesNotHaveAccount": "Does not have account?",
   "registerHere": "Register here",
-  "readyToLearn": "ready_to_learn",
+  "readyToLearn": "Are you ready to learn less but hit with Kyons?",
   "firstName": "First name",
   "lastName": "Last name",
   "enterEmail": "Enter email",
   "enterPassword": "Enter password",
-  "iAgreePrivacy": "i_agree_privacy ",
+  "iAgreePrivacy": "I agree with Kyons''s terms and conditions.See the terms and conditions of use at ",
   "linkHere": "here",
   "createAccount": "create_account",
   "alreadyHaveAccount": "Already have account?",
@@ -216,5 +217,49 @@
   "copiedToClipboard": "Copied to clipboard",
   "youWillUse": "You will use Kyons''s service",
   "toCreateLearningGoal": "<p>To create a new goal, you will use <strong>a Kyos test</strong>.</p><p>When creating a new goal, Kyons will change the syllabus to match the results. your new test results.</p>",
-  "changeTarget": "Change target"
+  "changeTarget": "Change target",
+  "freeTrial": "You are given 7 free days with Kyons!",
+  "freeTrialDesc": "<p>Short lessons, selective exercises and a learning route designed by Kyons based on your own learning goals waiting ahead.</p><p>Let''s Kyons!</p>",
+  "startLearing": "Start learning",
+  "processing": "Processing",
+  "day": "day",
+  "dayNum": "1 day",
+  "daysNum": "{num} days",
+  "@daysNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "hour": "giờ",
+  "hourNum": "1 giờ",
+  "hoursNum": "{num} giờ",
+  "@hoursNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "minute": "minute",
+  "minuteNum": "1 minute",
+  "minutesNum": "{num} minutes",
+  "@minutesNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "second": "giây",
+  "secondNum": "1 giây",
+  "secondsNum": "{num} giây",
+  "@secondsNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  }
 }

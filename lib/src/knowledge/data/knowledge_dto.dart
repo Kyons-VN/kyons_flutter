@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
+
+import '../../knowledge/data/knowledge_entities.dart';
 
 part 'knowledge_dto.freezed.dart';
 part 'knowledge_dto.g.dart';
@@ -48,14 +49,16 @@ class LessonItemDto with _$LessonItemDto {
 @freezed
 class LearningGoalPathDto with _$LearningGoalPathDto {
   const LearningGoalPathDto._();
-  const factory LearningGoalPathDto({
-    required List<LearningGoalCategoryDto> categories,
-    @JsonKey(name: 'complete_percentage') required double progress,
-  }) = _LearningGoalPathDto;
+  const factory LearningGoalPathDto(
+      {required List<LearningGoalCategoryDto> categories,
+      @JsonKey(name: 'complete_percentage') required double progress,
+      @JsonKey(name: 'new_user', defaultValue: false) required bool isNewUser}) = _LearningGoalPathDto;
 
   factory LearningGoalPathDto.fromJson(Map<String, dynamic> json) => _$LearningGoalPathDtoFromJson(json);
   LearningGoalPath toDomain() => LearningGoalPath(
-      lessonCategories: categories.map((categoryDto) => categoryDto.toDomain()).toList(), progress: progress);
+      lessonCategories: categories.map((categoryDto) => categoryDto.toDomain()).toList(),
+      progress: progress,
+      isNewUser: isNewUser);
 }
 
 @freezed

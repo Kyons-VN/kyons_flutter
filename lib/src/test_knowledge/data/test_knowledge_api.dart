@@ -1,7 +1,7 @@
-import 'package:kyons_flutter/src/core/data/api.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge_dto.dart';
-import 'package:kyons_flutter/src/test_knowledge/domain/i_test_knowledge.dart';
+import '../../core/data/api.dart';
+import '../../test_knowledge/data/test_knowledge.dart';
+import '../../test_knowledge/data/test_knowledge_dto.dart';
+import '../../test_knowledge/domain/i_test_knowledge.dart';
 
 class TestKnowledge implements ITestKnowledge {
   final api = Api.init().api;

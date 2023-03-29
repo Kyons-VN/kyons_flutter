@@ -45,7 +45,8 @@ class LearningGoal {
 class LearningGoalPath {
   final List<LearningGoalCategory> lessonCategories;
   final double progress;
-  const LearningGoalPath({required this.lessonCategories, required this.progress});
+  final bool isNewUser;
+  const LearningGoalPath({required this.lessonCategories, required this.progress, this.isNewUser = false});
   factory LearningGoalPath.empty() => const LearningGoalPath(lessonCategories: [], progress: 0.0);
 
   List<Category> getCategories() => lessonCategories.map((e) => e.category).toList();

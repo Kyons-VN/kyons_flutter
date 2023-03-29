@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:fpdart/fpdart.dart';
-import 'package:kyons_flutter/src/core/data/api.dart';
-import 'package:kyons_flutter/src/tracking/data/tracking_service.dart' as tracking_service;
-import 'package:kyons_flutter/src/tracking/domain/i_tracking.dart';
+import '../../core/data/api.dart';
+import '../../tracking/data/tracking_service.dart' as tracking_service;
+import '../../tracking/domain/i_tracking.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 

@@ -3,18 +3,19 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:kyons_flutter/src/authentication/data/auth_service.dart' as auth_service;
-import 'package:kyons_flutter/src/authentication/data/user_dto.dart';
-import 'package:kyons_flutter/src/authentication/domain/i_auth.dart';
-import 'package:kyons_flutter/src/authentication/domain/user.dart';
-import 'package:kyons_flutter/src/authentication/domain/value_objects.dart';
-import 'package:kyons_flutter/src/core/data/api.dart';
-import 'package:kyons_flutter/src/knowledge/domain/i_knowledge.dart';
-import 'package:kyons_flutter/src/navigation/data/navigation_service.dart' as navigation_service;
 import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthApi implements IAuth {
+import '../../authentication/data/auth_service.dart' as auth_service;
+import '../../authentication/data/user_dto.dart';
+import '../../authentication/domain/i_auth.dart';
+import '../../authentication/domain/user.dart';
+import '../../authentication/domain/value_objects.dart';
+import '../../core/data/api.dart';
+import '../../knowledge/domain/i_knowledge.dart';
+import '../../navigation/data/navigation_service.dart' as navigation_service;
+
+class AuthApi implements IAuthApi {
   final Dio api = Dio();
 
   @override

@@ -6,11 +6,11 @@ class ConfigReader {
   ConfigReader._();
 
   static late Map<String, dynamic> _config;
-  static late String _env;
+  static late Environment _env;
 
-  static Future<void> initialize(String env) async {
-    _env = env == 'dev' ? Environment.dev : Environment.prod;
-    final configString = await rootBundle.loadString('config/$env.json');
+  static Future<void> initialize(Environment env) async {
+    _env = env;
+    final configString = await rootBundle.loadString('config/${env.toString()}.json');
     _config = json.decode(configString) as Map<String, dynamic>;
   }
 
@@ -34,11 +34,21 @@ class ConfigReader {
     return _config['clientApi'];
   }
 
-  static String get env => _env;
+  static String getReportUrl() {
+    return _config['reportUrl'];
+  }
+
+  static Environment get env => _env;
 }
 
-abstract class Environment {
-  static const dev = 'dev';
-  static const prod = 'prod';
-  static const stg = 'stg';
+enum Environment {
+  dev('dev'),
+  stg('stg'),
+  prod('prod');
+
+  const Environment(this.text);
+  final String text;
+
+  @override
+  String toString() => text;
 }

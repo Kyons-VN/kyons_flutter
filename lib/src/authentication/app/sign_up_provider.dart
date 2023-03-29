@@ -2,18 +2,19 @@ import 'package:flutter/widgets.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/boostrap/config_reader.dart';
-import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
-import 'package:kyons_flutter/src/authentication/data/auth_service.dart' as auth_service;
-import 'package:kyons_flutter/src/authentication/domain/i_auth.dart';
-import 'package:kyons_flutter/src/authentication/domain/value_objects.dart';
 import 'package:shared_package/shared_package.dart';
+
+import '../../../boostrap/config_reader.dart';
+import '../../authentication/app/auth_provider.dart';
+import '../../authentication/data/auth_service.dart' as auth_service;
+import '../../authentication/domain/i_auth.dart';
+import '../../authentication/domain/value_objects.dart';
 
 part 'sign_up_provider.freezed.dart';
 part 'sign_up_state.dart';
 
 class SignUpNotifier extends StateNotifier<SignUpState> {
-  final IAuth authApi;
+  final IAuthApi authApi;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   SignUpNotifier(this.authApi) : super(SignUpState.initial());
@@ -79,4 +80,4 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
 }
 
 final signUpNotifierProvider =
-    StateNotifierProvider<SignUpNotifier, SignUpState>((ref) => SignUpNotifier(ref.read(auth)));
+    StateNotifierProvider<SignUpNotifier, SignUpState>((ref) => SignUpNotifier(ref.read(authApiProvider)));

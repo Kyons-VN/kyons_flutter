@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/boostrap/config_reader.dart';
-import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
-import 'package:kyons_flutter/src/authentication/data/auth_service.dart' as auth_service;
-import 'package:kyons_flutter/src/authentication/domain/i_auth.dart';
-import 'package:kyons_flutter/src/authentication/domain/user.dart';
-import 'package:kyons_flutter/src/authentication/domain/value_objects.dart';
 import 'package:shared_package/shared_package.dart';
+
+import '../../../boostrap/config_reader.dart';
+import '../../authentication/app/auth_provider.dart';
+import '../../authentication/data/auth_service.dart' as auth_service;
+import '../../authentication/domain/i_auth.dart';
+import '../../authentication/domain/user.dart';
+import '../../authentication/domain/value_objects.dart';
 
 part 'sign_in_provider.freezed.dart';
 part 'sign_in_state.dart';
 
 class SignInNotifier extends StateNotifier<SignInState> {
-  final IAuth authApi;
+  final IAuthApi authApi;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   SignInNotifier(this.authApi) : super(SignInState.initial());
@@ -33,11 +34,11 @@ class SignInNotifier extends StateNotifier<SignInState> {
 
   initial() {
     state = SignInState.initial();
-    if (ConfigReader.env == Environment.dev) {
+    if (ConfigReader.env == Environment.dev || ConfigReader.env == Environment.stg) {
       state = state.copyWith(
         // emailAddress: EmailAddress('binhhm2009+0311@gmail.com'),
-        emailAddress: EmailAddress('binhhm2009+0224@gmail.com'),
-        password: 'Zaq1@wsx',
+        emailAddress: EmailAddress('ngocminhtam96+stgmob1@gmail.com'),
+        password: 'P@ssword78',
       );
     }
   }
@@ -75,5 +76,5 @@ class SignInNotifier extends StateNotifier<SignInState> {
 }
 
 final signInProvider = StateNotifierProvider.autoDispose<SignInNotifier, SignInState>(
-  (ref) => SignInNotifier(ref.read(auth)),
+  (ref) => SignInNotifier(ref.read(authApiProvider)),
 );

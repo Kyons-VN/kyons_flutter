@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/navigation/app/router.dart';
+
+import '../src/navigation/app/router.dart';
 
 class AppWidget extends ConsumerStatefulWidget {
   final AnimatedBuilder Function(WidgetRef) builder;

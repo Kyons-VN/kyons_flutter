@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:kyons_flutter/boostrap/config_reader.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../boostrap/config_reader.dart';
 
 final serverApi = ConfigReader.serverApi();
 
@@ -13,8 +13,6 @@ class Api {
   final Dio api = Dio();
   String accessToken = '';
   String refreshToken = '';
-
-  final _storage = const FlutterSecureStorage();
 
   Api._() {
     api.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
@@ -63,7 +61,6 @@ class Api {
     } else {
       // refresh token is wrong
       clear();
-      _storage.deleteAll();
       return false;
     }
   }

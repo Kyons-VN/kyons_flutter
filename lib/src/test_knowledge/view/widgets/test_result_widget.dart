@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/knowledge/data/knowledge_entities.dart';
-import 'package:kyons_flutter/src/test_knowledge/data/test_knowledge.dart';
 import 'package:shared_package/shared_package.dart';
 
+import '../../../core/helper/translate.dart';
+import '../../../knowledge/data/knowledge_entities.dart';
+import '../../../test_knowledge/data/test_knowledge.dart';
 import 'answer_result_widget.dart';
 
 class TestResultWidget extends HookWidget {

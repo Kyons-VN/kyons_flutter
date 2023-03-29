@@ -616,6 +616,8 @@ mixin _$LearningGoalPathDto {
       throw _privateConstructorUsedError;
   @JsonKey(name: 'complete_percentage')
   double get progress => throw _privateConstructorUsedError;
+  @JsonKey(name: 'new_user', defaultValue: false)
+  bool get isNewUser => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -631,7 +633,8 @@ abstract class $LearningGoalPathDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {List<LearningGoalCategoryDto> categories,
-      @JsonKey(name: 'complete_percentage') double progress});
+      @JsonKey(name: 'complete_percentage') double progress,
+      @JsonKey(name: 'new_user', defaultValue: false) bool isNewUser});
 }
 
 /// @nodoc
@@ -649,6 +652,7 @@ class _$LearningGoalPathDtoCopyWithImpl<$Res, $Val extends LearningGoalPathDto>
   $Res call({
     Object? categories = null,
     Object? progress = null,
+    Object? isNewUser = null,
   }) {
     return _then(_value.copyWith(
       categories: null == categories
@@ -659,6 +663,10 @@ class _$LearningGoalPathDtoCopyWithImpl<$Res, $Val extends LearningGoalPathDto>
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as double,
+      isNewUser: null == isNewUser
+          ? _value.isNewUser
+          : isNewUser // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -673,7 +681,8 @@ abstract class _$$_LearningGoalPathDtoCopyWith<$Res>
   @useResult
   $Res call(
       {List<LearningGoalCategoryDto> categories,
-      @JsonKey(name: 'complete_percentage') double progress});
+      @JsonKey(name: 'complete_percentage') double progress,
+      @JsonKey(name: 'new_user', defaultValue: false) bool isNewUser});
 }
 
 /// @nodoc
@@ -689,6 +698,7 @@ class __$$_LearningGoalPathDtoCopyWithImpl<$Res>
   $Res call({
     Object? categories = null,
     Object? progress = null,
+    Object? isNewUser = null,
   }) {
     return _then(_$_LearningGoalPathDto(
       categories: null == categories
@@ -699,6 +709,10 @@ class __$$_LearningGoalPathDtoCopyWithImpl<$Res>
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as double,
+      isNewUser: null == isNewUser
+          ? _value.isNewUser
+          : isNewUser // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -708,7 +722,8 @@ class __$$_LearningGoalPathDtoCopyWithImpl<$Res>
 class _$_LearningGoalPathDto extends _LearningGoalPathDto {
   const _$_LearningGoalPathDto(
       {required final List<LearningGoalCategoryDto> categories,
-      @JsonKey(name: 'complete_percentage') required this.progress})
+      @JsonKey(name: 'complete_percentage') required this.progress,
+      @JsonKey(name: 'new_user', defaultValue: false) required this.isNewUser})
       : _categories = categories,
         super._();
 
@@ -726,10 +741,13 @@ class _$_LearningGoalPathDto extends _LearningGoalPathDto {
   @override
   @JsonKey(name: 'complete_percentage')
   final double progress;
+  @override
+  @JsonKey(name: 'new_user', defaultValue: false)
+  final bool isNewUser;
 
   @override
   String toString() {
-    return 'LearningGoalPathDto(categories: $categories, progress: $progress)';
+    return 'LearningGoalPathDto(categories: $categories, progress: $progress, isNewUser: $isNewUser)';
   }
 
   @override
@@ -740,13 +758,15 @@ class _$_LearningGoalPathDto extends _LearningGoalPathDto {
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
             (identical(other.progress, progress) ||
-                other.progress == progress));
+                other.progress == progress) &&
+            (identical(other.isNewUser, isNewUser) ||
+                other.isNewUser == isNewUser));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_categories), progress);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_categories), progress, isNewUser);
 
   @JsonKey(ignore: true)
   @override
@@ -767,7 +787,9 @@ abstract class _LearningGoalPathDto extends LearningGoalPathDto {
   const factory _LearningGoalPathDto(
       {required final List<LearningGoalCategoryDto> categories,
       @JsonKey(name: 'complete_percentage')
-          required final double progress}) = _$_LearningGoalPathDto;
+          required final double progress,
+      @JsonKey(name: 'new_user', defaultValue: false)
+          required final bool isNewUser}) = _$_LearningGoalPathDto;
   const _LearningGoalPathDto._() : super._();
 
   factory _LearningGoalPathDto.fromJson(Map<String, dynamic> json) =
@@ -778,6 +800,9 @@ abstract class _LearningGoalPathDto extends LearningGoalPathDto {
   @override
   @JsonKey(name: 'complete_percentage')
   double get progress;
+  @override
+  @JsonKey(name: 'new_user', defaultValue: false)
+  bool get isNewUser;
   @override
   @JsonKey(ignore: true)
   _$$_LearningGoalPathDtoCopyWith<_$_LearningGoalPathDto> get copyWith =>

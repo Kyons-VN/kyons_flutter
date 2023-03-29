@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/authentication/app/auth_provider.dart';
-import 'package:kyons_flutter/src/authentication/app/current_user_provider.dart';
-import 'package:kyons_flutter/src/core/helper/translate.dart';
-import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
+import '../../authentication/app/auth_provider.dart';
+import '../../authentication/app/current_user_provider.dart';
+import '../../core/helper/translate.dart';
+import '../../navigation/domain/app_paths.dart';
 import 'package:shared_package/shared_package.dart';
 
 class AppDrawer extends ConsumerWidget {
@@ -16,8 +16,8 @@ class AppDrawer extends ConsumerWidget {
     return Drawer(
       child: ListView(
         children: [
-          currentUserState.userOption.map((t) => t).foldRight(Container(),
-              (acc, user) => ListTile(title: Heading(6, t(context).hiSo(user.firstName), color: AppColors.white))),
+          currentUserState.userOption.map((t) => t).fold(() => Container(),
+              (user) => ListTile(title: Heading(6, t(context).hiSo(user.firstName), color: AppColors.white))),
           ListTile(
             title: Row(
               children: [
