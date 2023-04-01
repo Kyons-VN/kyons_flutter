@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_package/shared_package.dart';
 
-import '../../authentication/view/sign_in_page.dart';
 import '../../core/helper/translate.dart';
 import '../../navigation/domain/app_paths.dart';
-import '../app/settings_controller.dart';
+import 'language_switcher.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
@@ -49,13 +45,14 @@ class SettingsPage extends StatelessWidget {
               children: [
                 Heading(7, t(context).language),
                 AppSizesUnit.sizedBox8,
-                Consumer(builder: (context, ref, child) {
-                  return CupertinoPickerOptions<LocaleOption>(
-                    options: AppLocalizations.supportedLocales.map((e) => LocaleOption(e.languageCode)).toList(),
-                    onPicked: some((v) => ref.read(settingsNotifierProvider).updateLocale(v)),
-                    selectedOption: optionOf(LocaleOption(Localizations.localeOf(context).languageCode)),
-                  );
-                })
+                const LanguageSwitcher(),
+                // Consumer(builder: (context, ref, child) {
+                //   return CupertinoPickerOptions<LocaleOption>(
+                //     options: AppLocalizations.supportedLocales.map((e) => LocaleOption(e.languageCode)).toList(),
+                //     onPicked: some((v) => ref.read(settingsNotifierProvider).updateLocale(v)),
+                //     selectedOption: optionOf(LocaleOption(Localizations.localeOf(context).languageCode)),
+                //   );
+                // })
               ],
             ),
             // child: ListView(

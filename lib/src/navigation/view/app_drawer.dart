@@ -1,42 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../authentication/app/auth_provider.dart';
-import '../../authentication/app/current_user_provider.dart';
+import 'package:shared_package/shared_package.dart';
+
 import '../../core/helper/translate.dart';
 import '../../navigation/domain/app_paths.dart';
-import 'package:shared_package/shared_package.dart';
+import '../../settings/view/language_switcher.dart';
 
 class AppDrawer extends ConsumerWidget {
   const AppDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentUserState = ref.watch(currentUserProvider);
+    // final currentUserState = ref.watch(currentUserProvider);
     return Drawer(
       child: ListView(
         children: [
-          currentUserState.userOption.map((t) => t).fold(() => Container(),
-              (user) => ListTile(title: Heading(6, t(context).hiSo(user.firstName), color: AppColors.white))),
-          ListTile(
-            title: Row(
-              children: [
-                const Icon(AppIcons.arrowLeft, color: AppColors.orange),
-                const SizedBox(width: 15),
-                Text(
-                  t(context).back,
-                  style: const TextStyle(color: AppColors.orange),
+          MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: context.pop,
+              child: Container(
+                padding: const EdgeInsets.all(AppSizesUnit.medium24),
+                child: Row(
+                  children: [
+                    const Icon(
+                      AppIcons.arrowLeft,
+                      size: AppSizesUnit.medium24,
+                      color: AppColors.orange,
+                    ),
+                    AppSizesUnit.sizedBox8,
+                    Expanded(
+                      child: Text(t(context).back,
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.orange)),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-            onTap: Navigator.of(context).pop,
           ),
           DrawerMenuItem(appPath: AppPaths.home, icon: AppIcons.home, pageName: t(context).home),
           const Divider(),
           DrawerMenuItem(
               appPath: AppPaths.learningPath, icon: AppIcons.lessonContent, pageName: t(context).learningPath),
           const Divider(),
-          DrawerMenuItem(appPath: AppPaths.settings, icon: Icons.settings, pageName: t(context).settings),
+          DrawerMenuItem(appPath: AppPaths.user, icon: AppIcons.profile, pageName: t(context).profile),
+          const Divider(),
+          DrawerMenuItem(appPath: AppPaths.account, icon: AppIcons.bankTransfer, pageName: t(context).account),
+          // const Divider(),
+          // DrawerMenuItem(appPath: AppPaths.settings, icon: Icons.settings, pageName: t(context).settings),
           // ListTile(
           //   leading: const Icon(Icons.palette, color: AppColors.white),
           //   title: const Text(
@@ -58,19 +70,9 @@ class AppDrawer extends ConsumerWidget {
           // ),
           // const Divider(),
           const Divider(),
-          ListTile(
-            leading: const Icon(Icons.logout, color: AppColors.white),
-            title: Text(
-              t(context).signOut,
-              style: const TextStyle(color: AppColors.white),
-            ),
-            onTap: () {
-              ref
-                  .read(authNotifierProvider.notifier)
-                  .signOut()
-                  .then((value) => ref.read(authNotifierProvider.notifier).stateChanged());
-            },
-          ),
+          DrawerMenuItem(appPath: AppPaths.signOut, icon: AppIcons.signOut, pageName: t(context).signOut),
+          AppSizesUnit.sizedBox48,
+          const Padding(padding: EdgeInsets.all(16), child: LanguageSwitcher()),
         ],
       ),
     );
@@ -86,11 +88,36 @@ class DrawerMenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentPath = GoRouter.of(context).location;
+    final color = appPath.path == currentPath ? AppColors.lightBlue1 : AppColors.white;
     void goTo(String path) {
       Navigator.of(context).pop();
       if (path != currentPath) context.push(path);
     }
 
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => goTo(appPath.path),
+        child: Container(
+          padding: const EdgeInsets.all(AppSizesUnit.medium24),
+          child: Row(
+            children: [
+              Icon(
+                icon,
+                size: AppSizesUnit.medium24,
+                color: color,
+              ),
+              AppSizesUnit.sizedBox8,
+              Expanded(
+                child: Heading(8, pageName, color: color),
+              ),
+              AppSizesUnit.sizedBox8,
+              const Icon(AppIcons.arrowRight, size: AppSizesUnit.medium24, color: AppColors.orange),
+            ],
+          ),
+        ),
+      ),
+    );
     return ListTile(
       leading: Icon(icon, color: currentPath == appPath.path ? AppColors.lightBlue1 : AppColors.white),
       title: Text(

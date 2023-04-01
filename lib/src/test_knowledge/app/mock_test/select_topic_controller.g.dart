@@ -7,7 +7,7 @@ part of 'select_topic_controller.dart';
 // **************************************************************************
 
 String _$selectTopicControllerHash() =>
-    r'51408a3d6f773f0bac0b7096c5f68b0476760df6';
+    r'6b1b7a2985aa1cc68b90ec3cb1bcee160fb0d356';
 
 /// See also [SelectTopicController].
 @ProviderFor(SelectTopicController)

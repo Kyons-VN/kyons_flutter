@@ -22,7 +22,7 @@ class DiagnosticTestController extends StateNotifier<DiagnosticTestState> {
 
   DiagnosticTestController(this.learningGoalId, this.testApi, this.knowledgeApi)
       : super(DiagnosticTestState.initial()) {
-    Future.delayed(const Duration(milliseconds: 200), () => init(learningGoalId));
+    _init(learningGoalId);
   }
 
   // @override
@@ -31,9 +31,9 @@ class DiagnosticTestController extends StateNotifier<DiagnosticTestState> {
   //   return DiagnosticTestState.initial();
   // }
 
-  Future<void> init(String learningGoalId) async {
+  Future<void> _init(String learningGoalId) async {
     state = DiagnosticTestState.loading();
-    final mockLearningGoal = await knowledge_service.getSelectedLearningGoal().run(knowledgeApi);
+    final mockLearningGoal = await knowledge_service.getMockLearningGoal().run(knowledgeApi);
     if (mockLearningGoal.isLeft()) {
       state = DiagnosticTestState.missingLearningGoal();
       return;

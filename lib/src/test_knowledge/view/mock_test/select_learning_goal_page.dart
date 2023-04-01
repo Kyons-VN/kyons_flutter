@@ -1,5 +1,6 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:fpdart/fpdart.dart' hide State;
+import 'package:fpdart/fpdart.dart' hide State, id;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_package/shared_package.dart';
@@ -68,6 +69,40 @@ class LearningGoalPickerWrapper extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(selectLearningGoalControllerProvider);
     final controller = ref.read(selectLearningGoalControllerProvider.notifier);
+    ref.listen<SelectLearningGoalState>(selectLearningGoalControllerProvider, (previous, next) {
+      if (next.hasError) {
+        Flushbar().error(t(context).error);
+      }
+      if (next.isCompleted) {
+        final mockTestTopicPath = AppPaths.mockTestTopic.path
+            .replaceAll(':lgId', state.selectedLearningGoalOption.getOrElse(() => LearningGoal.empty()).id);
+        context.go(mockTestTopicPath);
+      }
+    });
+    if (state.hasError) {
+      return Container(
+        padding: const EdgeInsets.all(AppSizesUnit.medium16),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(AppSizesUnit.small8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Heading(7, t(context).ranOutMockTest),
+            AppSizesUnit.sizedBox8,
+            Text(t(context).ranOutMockTestDesc),
+            AppSizesUnit.sizedBox16,
+            ElevatedButton(onPressed: () {}, child: Text(t(context).buyPackage)),
+            AppSizesUnit.sizedBox8,
+            OutlinedButton(
+              onPressed: () => context.go(AppPaths.learningPath.path),
+              child: Text(t(context).notChangeTarget),
+            ),
+          ],
+        ),
+      );
+    }
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,29 +113,35 @@ class LearningGoalPickerWrapper extends HookConsumerWidget {
           AppSizesUnit.sizedBox16,
           Column(
             children: [
-              CupertinoPickerOptions<Subject>(
-                options: state.subjectsOption.getOrElse(() => []),
-                onPicked: state.subjectsOption.isSome() ? some(controller.setSubjectOption) : none(),
-                selectedOption: state.selectedSubjectOption,
+              Dropdown<Subject>(
+                items: state.subjectsOption.getOrElse(() => []),
+                onChanged: (value) => controller.setSubjectOption(value.toOption()),
+                value: state.selectedSubjectOption,
                 placeholder: t(context).selectSubject,
+                itemWidget: (subject) => Text(subject.name),
+                // status: DropdownStatus.enable,
               ),
               AppSizesUnit.sizedBox8,
-              CupertinoPickerOptions<Program>(
-                options: state.programsOption.getOrElse(() => []),
-                onPicked: state.selectedSubjectOption.isSome()
-                    ? some((program) => controller.setProgramOption(program))
-                    : none(),
-                selectedOption: state.selectedProgramOption,
+              Dropdown<Program>(
+                items: state.programsOption.getOrElse(() => []),
+                onChanged: state.selectedSubjectOption.isSome()
+                    ? (value) => controller.setProgramOption(value.toOption())
+                    : null,
+                value: state.selectedProgramOption,
                 placeholder: t(context).selectProgram,
+                itemWidget: (subject) => Text(subject.name),
+                // status: state.selectedSubjectOption.isSome() ? DropdownStatus.enable : DropdownStatus.disabled,
               ),
               AppSizesUnit.sizedBox8,
-              CupertinoPickerOptions<LearningGoal>(
-                options: state.learningGoalsOption.getOrElse(() => []),
-                onPicked: state.selectedProgramOption.isSome()
-                    ? some((learningGoal) => controller.setLearningGoalOption(learningGoal))
-                    : none(),
-                selectedOption: state.selectedLearningGoalOption,
+              Dropdown<LearningGoal>(
+                items: state.learningGoalsOption.getOrElse(() => []),
+                onChanged: state.selectedProgramOption.isSome()
+                    ? (learningGoal) => controller.setLearningGoalOption(learningGoal.toOption())
+                    : null,
+                value: state.selectedLearningGoalOption,
                 placeholder: t(context).selectLearningGoal,
+                itemWidget: (subject) => Text(subject.name),
+                // status: state.selectedProgramOption.isSome() ? DropdownStatus.enable : DropdownStatus.disabled,
               ),
             ],
           ),
@@ -110,9 +151,10 @@ class LearningGoalPickerWrapper extends HookConsumerWidget {
             child: ElevatedButton(
               onPressed: state.selectedLearningGoalOption.isSome()
                   ? () {
-                      final mockTestTopicPath = AppPaths.mockTestTopic.path.replaceAll(
-                          ':lgId', state.selectedLearningGoalOption.getOrElse(() => LearningGoal.empty()).id);
-                      controller.submitBtnPressed().then((unit) => context.go(mockTestTopicPath));
+                      // final mockTestTopicPath = AppPaths.mockTestTopic.path.replaceAll(
+                      //     ':lgId', state.selectedLearningGoalOption.getOrElse(() => LearningGoal.empty()).id);
+                      controller.submitBtnPressed();
+                      // .then((unit) => context.go(mockTestTopicPath));
                     }
                   : null,
               child: Text(t(context).start),
@@ -123,3 +165,18 @@ class LearningGoalPickerWrapper extends HookConsumerWidget {
     );
   }
 }
+
+// class SubjectOption extends Subject with HasName {
+//   late Key key;
+//   SubjectOption({
+//     required String id,
+//     required String name,
+//     required List<Program> programs,
+//   }) : super(id: id, name: name, programs: programs) {
+//     key = ValueKey(id);
+//   }
+
+//   factory SubjectOption.from(Subject subject) =>
+//       SubjectOption(id: subject.id, name: subject.name, programs: subject.programs);
+//   Subject toSubject() => Subject(id: id, name: name, programs: programs);
+// }

@@ -11,6 +11,7 @@ class SelectTopicState with _$SelectTopicState {
     required Option<LearningGoal> newLearningGoal,
     required Option<ApiFailure> apiError,
     required Option<ClientFailure> clientError,
+    required bool isCompleted,
   }) = _SelectTopicState;
   factory SelectTopicState.initial() => SelectTopicState(
         isLoading: false,
@@ -21,5 +22,6 @@ class SelectTopicState with _$SelectTopicState {
         newLearningGoal: none(),
         apiError: none(),
         clientError: none(),
+        isCompleted: false,
       );
 }

@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../authentication/app/auth_provider.dart';
 import '../../authentication/view/reset_password_page.dart';
 import '../../authentication/view/sign_in_page.dart';
+import '../../authentication/view/sign_out_page.dart';
 import '../../authentication/view/sign_up_page.dart';
 import '../../design/view/design_page.dart';
 import '../../home/view/home_page.dart';
@@ -15,13 +16,18 @@ import '../../knowledge/view/lesson/lesson_page.dart';
 import '../../knowledge/view/lesson/new_lesson_page.dart';
 import '../../navigation/app/auth_guard.dart';
 import '../../navigation/domain/app_paths.dart';
-import '../../order/view/new_user_page.dart';
 import '../../settings/view/language_settings_page.dart';
 import '../../settings/view/settings_page.dart';
 import '../../settings/view/theme_settings_page.dart';
 import '../../test_knowledge/view/mock_test/select_learning_goal_page.dart';
 import '../../test_knowledge/view/mock_test/select_topic_page.dart';
 import '../../test_knowledge/view/mock_test/test_page.dart';
+import '../../user/view/pages/account_menu_page.dart';
+import '../../user/view/pages/change_password_page.dart';
+import '../../user/view/pages/delete_account_page.dart';
+import '../../user/view/pages/new_user_page.dart';
+import '../../user/view/pages/user_info_page.dart';
+import '../../user/view/pages/user_menu_page.dart';
 
 class AppRouter {
   AppRouter._();
@@ -109,8 +115,41 @@ class AppRouter {
           builder: (BuildContext context, GoRouterState state) => const SignUpPage(),
         ),
         GoRoute(
+          path: AppPaths.signOut.path,
+          builder: (BuildContext context, GoRouterState state) => const SignOutPage(),
+          redirect: (_, state) => guard(state, ref),
+        ),
+        GoRoute(
           path: AppPaths.newUser.path,
           builder: (BuildContext context, GoRouterState state) => const NewUserPage(),
+          redirect: (_, state) => guard(state, ref),
+        ),
+        GoRoute(
+          path: AppPaths.account.path,
+          builder: (BuildContext context, GoRouterState state) => const AccountMenuPage(),
+          redirect: (_, state) => guard(state, ref),
+        ),
+        GoRoute(
+          path: AppPaths.user.path,
+          builder: (BuildContext context, GoRouterState state) => const UserMenuPage(),
+          routes: [
+            GoRoute(
+              path: 'user-info',
+              builder: (BuildContext context, GoRouterState state) => const UserInfoPage(),
+              redirect: (_, state) => guard(state, ref),
+            ),
+            GoRoute(
+              path: 'change-password',
+              builder: (BuildContext context, GoRouterState state) => const ChangePasswordPage(),
+              redirect: (_, state) => guard(state, ref),
+            ),
+            GoRoute(
+              path: 'delete-account',
+              builder: (BuildContext context, GoRouterState state) => const DeleteAccountPage(),
+              redirect: (_, state) => guard(state, ref),
+            ),
+          ],
+          redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
           path: AppPaths.mockTestLearningGoal.path,

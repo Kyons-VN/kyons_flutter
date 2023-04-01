@@ -19,12 +19,10 @@ abstract class IKnowledgeApi {
   Future<Unit> defaultLearningPath(Program program);
   Future<TestContent> getDiagnosticTest(Program program);
   Future<LessonGroup> getLessonGroup(String lessonGroupId);
-  Future<Unit> selectMockProgram(Program program);
   Future<Unit> setProgram(Program program);
   Future<List<LearningGoal>> getLearningGoals(Program program);
   Future<Unit> selectMockLearningGoal(LearningGoal learningGoal);
   Future<Unit> setLearningGoal(LearningGoal learningGoal);
-  Future<Program> getMockProgram();
   Future<Program> getSelectedProgram();
   Future<Unit> removeSelectedProgram();
   Future<Unit> createLesson(Program program, List<String> difficultyIds);

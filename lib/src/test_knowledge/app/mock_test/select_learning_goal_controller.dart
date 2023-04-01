@@ -38,40 +38,44 @@ class SelectLearningGoalController extends _$SelectLearningGoalController {
     return unit;
   }
 
-  Unit setSubjectOption(Subject subject) {
+  Unit setSubjectOption(Option<Subject> subject) {
     state = state.copyWith(
-      selectedSubjectOption: some(subject),
-      programsOption: optionOf(subject.programs),
+      selectedSubjectOption: subject,
+      programsOption: subject.fold(() => none(), (t) => some(t.programs)),
       selectedLearningGoalOption: none(),
+      selectedProgramOption: none(),
     );
-    if (subject.programs.isEmpty) {
-      state = state.copyWith(
-        selectedProgramOption: none(),
-      );
-      return unit;
-    }
+    // if (subject.fold(() => true, (t) => t.programs.isEmpty)) {
+    //   state = state.copyWith(
+    //     selectedProgramOption: none(),
+    //   );
+    //   return unit;
+    // }
     // setProgramOption(subject.programs.first);
     return unit;
   }
 
-  Future<Unit> setProgramOption(Program program) async {
+  Future<Unit> setProgramOption(Option<Program> program) async {
     state = state.copyWith(
-      selectedProgramOption: some(program),
+      selectedProgramOption: program,
       selectedLearningGoalOption: none(),
       isLoading: true,
     );
-    final failureOrSuccess = await knowledge_service.getLearningGoals(program).run(api);
-    state = state.copyWith(
-      hasError: failureOrSuccess.isLeft(),
-      learningGoalsOption: failureOrSuccess.getRight(),
-      isLoading: false,
-    );
+    await program.fold(() {}, (p) async {
+      final failureOrSuccess = await knowledge_service.getLearningGoals(p).run(api);
+      state = state.copyWith(
+        hasError: failureOrSuccess.isLeft(),
+        learningGoalsOption: failureOrSuccess.getRight(),
+        isLoading: false,
+      );
+    });
+
     return unit;
   }
 
-  Unit setLearningGoalOption(LearningGoal learningGoal) {
+  Unit setLearningGoalOption(Option<LearningGoal> learningGoal) {
     state = state.copyWith(
-      selectedLearningGoalOption: some(learningGoal),
+      selectedLearningGoalOption: learningGoal,
     );
     return unit;
   }
@@ -80,9 +84,9 @@ class SelectLearningGoalController extends _$SelectLearningGoalController {
     state = state.copyWith(isLoading: true);
     await state.selectedProgramOption.fold(() {}, (program) async {
       await state.selectedLearningGoalOption.fold(() {}, (learningGoal) async {
-        final failureOrSuccess1 = await knowledge_service.selectMockProgram(program).run(api);
-        final failureOrSuccess2 = await knowledge_service.selectMockLearningGoal(learningGoal).run(api);
-        failureOrSuccess1.flatMap((a) => failureOrSuccess2).fold((l) {
+        // final failureOrSuccess1 = await knowledge_service.selectMockProgram(program).run(api);
+        final failureOrSuccess = await knowledge_service.selectMockLearningGoal(learningGoal).run(api);
+        failureOrSuccess.fold((l) {
           state = state.copyWith(
             hasError: true,
             isLoading: false,

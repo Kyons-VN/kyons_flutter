@@ -79,7 +79,11 @@ class SelectTopicPage extends ConsumerWidget {
                               .copyWith(color: state.isValid ? AppColors.primaryBlue : AppColors.red),
                         ),
                         AppSizesUnit.sizedBox16,
-                        const Expanded(child: TopicPickerWrapper()),
+                        Expanded(
+                            child: TopicPickerWrapper(
+                          state: state,
+                          controller: controller,
+                        )),
                       ],
                     ],
                   ),
@@ -88,20 +92,23 @@ class SelectTopicPage extends ConsumerWidget {
                   child: Container(
                     color: AppColors.white,
                     width: 434,
-                    child: const TopicPickerWrapper(),
+                    child: TopicPickerWrapper(
+                      state: state,
+                      controller: controller,
+                    ),
                   ),
                 ),
         ));
   }
 }
 
-class TopicPickerWrapper extends ConsumerWidget {
-  const TopicPickerWrapper({super.key});
+class TopicPickerWrapper extends StatelessWidget {
+  final SelectTopicController controller;
+  final SelectTopicState state;
+  const TopicPickerWrapper({super.key, required this.controller, required this.state});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(selectTopicControllerProvider);
-    final controller = ref.read(selectTopicControllerProvider.notifier);
+  Widget build(BuildContext context) {
     final items = state.topicsOption.fold(
       () => [const SizedBox.shrink()],
       (topics) => topics

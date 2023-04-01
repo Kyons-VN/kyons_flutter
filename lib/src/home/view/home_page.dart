@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../navigation/domain/app_paths.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../core/helper/translate.dart';
 import '../../knowledge/data/knowledge_entities.dart';
+import '../../navigation/domain/app_paths.dart';
 import '../../navigation/view/app_bar.dart';
 import '../../navigation/view/app_drawer.dart';
 import '../app/home_provider.dart';
@@ -157,9 +157,9 @@ class ProgramsWidget extends HookConsumerWidget {
                   IconButton(
                     icon: Icon(
                       state.display == ProgramsDisplay.carousel ? AppIcons.thumbnail : AppIcons.carousel,
-                      color: programs.isEmpty ? AppColors.blueGray400 : AppColors.orange,
+                      color: programs.isEmpty || programs.length == 1 ? AppColors.blueGray400 : AppColors.orange,
                     ),
-                    onPressed: programs.isEmpty ? null : () => homeController.toggleDisplay(),
+                    onPressed: programs.isEmpty || programs.length == 1 ? null : () => homeController.toggleDisplay(),
                   ),
                 ],
               ),

@@ -63,14 +63,6 @@ TaskEither<ApiFailure, List<Program>> _getStudentProgram(IKnowledgeApi api) => T
       handleError,
     );
 
-Reader<IKnowledgeApi, Future<Either<ClientFailure, Unit>>> selectMockProgram(Program program) => Reader(
-      (api) => _selectMockProgram(api, program).run(),
-    );
-TaskEither<ClientFailure, Unit> _selectMockProgram(IKnowledgeApi api, Program program) => TaskEither.tryCatch(
-      () => api.selectMockProgram(program),
-      handleClientError,
-    );
-
 Reader<IKnowledgeApi, Future<Either<ClientFailure, Unit>>> setProgram(Program program) => Reader(
       (api) => _setProgram(api, program).run(),
     );

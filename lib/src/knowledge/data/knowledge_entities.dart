@@ -35,7 +35,7 @@ class LearningGoal {
 
   const LearningGoal(
       {required this.id, required this.name, required this.progress, this.maxTopics = 99, this.minTopics = 0});
-  factory LearningGoal.empty() => LearningGoal(id: '', name: '', progress: 0.0, maxTopics: 99, minTopics: 0);
+  factory LearningGoal.empty() => const LearningGoal(id: '', name: '', progress: 0.0, maxTopics: 99, minTopics: 0);
   Map<String, dynamic> toJson() =>
       {'id': id, 'name': name, 'progress': progress, 'maxTopic': maxTopics, 'minTopic': minTopics};
   static String emptyJsonString() => LearningGoal.empty().toJson().toString();

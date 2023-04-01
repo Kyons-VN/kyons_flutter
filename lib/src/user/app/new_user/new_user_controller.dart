@@ -1,8 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../data/order_service.dart' as order_service;
-import 'order_provider.dart';
+import '../../data/order_service.dart' as order_service;
+import '../order_provider.dart';
 
 part 'new_user_controller.g.dart';
 

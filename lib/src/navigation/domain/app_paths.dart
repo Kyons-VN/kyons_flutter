@@ -2,10 +2,13 @@ class AppPaths {
   AppPaths._();
 
   static const home = AppPath(path: '/home', serverRedirectName: 'HomePage');
+
+  // Authentication
   static const signIn = AppPath(path: '/sign-in');
   static const signOut = AppPath(path: '/sign-out');
   static const signUp = AppPath(path: '/sign-up');
   static const resetPassword = AppPath(path: '/reset-password');
+
   static const settings = AppPath(path: '/settings');
   static const themeSettings = AppPath(path: '/settings/theme');
   static const languageSettings = AppPath(path: '/settings/language');
@@ -20,12 +23,23 @@ class AppPaths {
   static const lessonPage = AppPath(path: '/lesson/:id');
   static const newLesonPage = AppPath(path: '/new-lesson');
   static const waitingForTutor = AppPath(path: '/waiting-for-tutor');
-  static const profile = AppPath(path: '/profile');
   static const mockTestLearningGoal = AppPath(path: '/mock-test', serverRedirectName: 'MockTest');
   static const mockTestTopic = AppPath(path: '/mock-test/:lgId/select-topic');
   static const mockTestTest = AppPath(path: '/mock-test/:id/test');
   static const mockTestShare = AppPath(path: '/share-mocktest/:ref');
   static const newUser = AppPath(path: '/new-user');
+
+  // Account
+  static const account = AppPath(path: '/account');
+  static const transactionHistory = AppPath(path: '/account/transaction-history');
+  static const services = AppPath(path: '/account/services');
+
+  // User
+  static const user = AppPath(path: '/user');
+  static const userInfo = AppPath(path: '/user/user-info');
+  static const changePassword = AppPath(path: '/user/change-password');
+  static const deleteAccount = AppPath(path: '/user/delete-account');
+
   static const termsOfService = AppPath(path: '/terms-of-service');
   static const pageNotfound = AppPath(path: '/page-not-found');
 

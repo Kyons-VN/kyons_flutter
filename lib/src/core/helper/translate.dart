@@ -51,3 +51,11 @@ extension DoubleX on double {
     return '$daysText $hoursText $minutesText}';
   }
 }
+
+// Format Price with currency. Ex: 1 000 000 NVD
+extension IntX on int {
+  String price(Locale locale) {
+    final formatter = NumberFormat('#,###', locale.languageCode);
+    return formatter.format(this);
+  }
+}

@@ -119,13 +119,6 @@ class KnowledgeApi implements IKnowledgeApi {
   }
 
   @override
-  Future<Unit> selectMockProgram(Program program) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(mockProgramKey, jsonEncode(program.toJson()));
-    return unit;
-  }
-
-  @override
   Future<Unit> removeSelectedProgram() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(selectedProgramKey);
@@ -133,19 +126,15 @@ class KnowledgeApi implements IKnowledgeApi {
   }
 
   @override
-  Future<Program> getMockProgram() async {
-    final prefs = await SharedPreferences.getInstance();
-    final json = jsonDecode(prefs.getString(mockProgramKey) ?? Program.emptyJsonString());
-    final program = Program(id: json['id'], name: json['name'], subjectId: json['subjectId']);
-    return program;
-  }
-
-  @override
   Future<Program> getSelectedProgram() async {
     final prefs = await SharedPreferences.getInstance();
-    final json = jsonDecode(prefs.getString(selectedProgramKey) ?? Program.emptyJsonString());
-    final program = Program(id: json['id'], name: json['name'], subjectId: json['subjectId']);
-    return program;
+    final string = prefs.getString(selectedProgramKey);
+    if (string != null) {
+      final json = jsonDecode(string);
+      final program = Program(id: json['id'], name: json['name'], subjectId: json['subjectId']);
+      return program;
+    }
+    throw const ClientFailure.storage();
   }
 
   @override
@@ -207,27 +196,37 @@ class KnowledgeApi implements IKnowledgeApi {
   @override
   Future<LearningGoal> getSelectedLearningGoal() async {
     final prefs = await SharedPreferences.getInstance();
-    final json = jsonDecode(prefs.getString(selectedLearningGoalKey) ?? LearningGoal.emptyJsonString());
-    final learningGoal = LearningGoal(
-      id: json['id'],
-      name: json['name'],
-      progress: json['progress'],
-      maxTopics: json['maxTopic'],
-      minTopics: json['minTopic'],
-    );
-    return learningGoal;
+    final string = prefs.getString(selectedLearningGoalKey);
+    if (string != null) {
+      final json = jsonDecode(string);
+      final learningGoal = LearningGoal(
+        id: json['id'],
+        name: json['name'],
+        progress: json['progress'],
+        maxTopics: json['maxTopic'],
+        minTopics: json['minTopic'],
+      );
+      return learningGoal;
+    }
+    throw const ClientFailure.storage();
   }
 
   @override
   Future<LearningGoal> getMockLearningGoal() async {
     final prefs = await SharedPreferences.getInstance();
-    final json = jsonDecode(prefs.getString(mockLearningGoalKey) ?? LearningGoal.emptyJsonString());
-    final learningGoal = LearningGoal(
-      id: json['id'],
-      name: json['name'],
-      progress: json['progress'],
-    );
-    return learningGoal;
+    final string = prefs.getString(mockLearningGoalKey);
+    if (string != null) {
+      final json = jsonDecode(string);
+      final learningGoal = LearningGoal(
+        id: json['id'],
+        name: json['name'],
+        progress: json['progress'],
+        maxTopics: json['maxTopic'],
+        minTopics: json['minTopic'],
+      );
+      return learningGoal;
+    }
+    throw const ClientFailure.storage();
   }
 
   @override

@@ -1,9 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_package/shared_package.dart';
@@ -14,7 +12,7 @@ import '../../authentication/app/sign_in_provider.dart';
 import '../../core/helper/translate.dart';
 import '../../navigation/app/router.dart';
 import '../../navigation/domain/app_paths.dart';
-import '../../settings/app/settings_controller.dart';
+import '../../settings/view/language_switcher.dart';
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -80,8 +78,7 @@ class SignInFormWrapper extends StatelessWidget {
           const SizedBox(height: 48),
           const SignInForm(),
           const SizedBox(height: 12),
-          SizedBox(
-            width: double.infinity,
+          IntrinsicHeight(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -110,11 +107,12 @@ class SignInFormWrapper extends StatelessWidget {
                   ),
                 ),
                 AppSizesUnit.sizedBox24,
-                CupertinoPickerOptions<LocaleOption>(
-                  options: AppLocalizations.supportedLocales.map((e) => LocaleOption(e.languageCode)).toList(),
-                  onPicked: some((v) => ref.read(settingsNotifierProvider).updateLocale(v)),
-                  selectedOption: optionOf(LocaleOption(Localizations.localeOf(context).languageCode)),
-                ),
+                // CupertinoPickerOptions<LocaleOption>(
+                //   options: AppLocalizations.supportedLocales.map((e) => LocaleOption(e.languageCode)).toList(),
+                //   onPicked: some((v) => ref.read(settingsNotifierProvider).updateLocale(v)),
+                //   selectedOption: optionOf(LocaleOption(Localizations.localeOf(context).languageCode)),
+                // ),
+                const LanguageSwitcher(),
               ],
             ),
           ),
@@ -129,7 +127,6 @@ class SignInForm extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final _formKey = GlobalKey<FormState>();
     final signInState = ref.watch(signInProvider);
     final authNotifier = ref.watch(authNotifierProvider.notifier);
     final signInNotifier = ref.read(signInProvider.notifier);

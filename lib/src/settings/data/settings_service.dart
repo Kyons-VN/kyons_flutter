@@ -25,7 +25,7 @@ class SettingsService {
   Future<Locale> locale() async {
     final prefs = await SharedPreferences.getInstance();
     final locale = prefs.getString('locale');
-    return Locale(locale ?? 'vi', '');
+    return Locale(locale ?? 'vi');
   }
 
   Future<void> updateLocale(Locale newLocale) async {

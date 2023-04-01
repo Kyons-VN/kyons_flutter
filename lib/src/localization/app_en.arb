@@ -123,14 +123,14 @@
   "lastName": "Last name",
   "enterEmail": "Enter email",
   "enterPassword": "Enter password",
-  "iAgreePrivacy": "I agree with Kyons''s terms and conditions.See the terms and conditions of use at ",
+  "iAgreePrivacy": "I agree with Kyons''s terms and conditions. See the terms and conditions of use at ",
   "linkHere": "here",
   "createAccount": "create_account",
   "alreadyHaveAccount": "Already have account?",
   "passwordMustHave": "Password must have",
   "passwordValidateMin": "Have more than 8 characters",
   "passwordValidateUpper": "Upper case (A-Z)",
-  "passwordValidate_0": "Degit (0-9)",
+  "passwordValidate_0": "Digit (0-9)",
   "passwordValidateSpecial": "Special (~!@#$%^&*_-+=`'{'|'}'[]:;\"''<>,.?/)",
   "emailAlreadyUsed": "Email already in the system",
   "pleaseCheckCodeInEmail": "Please check code send to email {email}",
@@ -261,5 +261,22 @@
         "type": "int"
       }
     }
-  }
+  },
+  "profile": "Profile",
+  "userInfo": "Personal information",
+  "deleteAccount": "Delete the account",
+  "deleteAccountDesc": "When deleting your account, learning process and results will not be saved.All account balances and services you have will not be refunded.Are you sure to delete your account?",
+  "account": "Kyons account",
+  "yourAccount": "Your account",
+  "transactionHistory": "Transaction history",
+  "yourServices": "Your service",
+  "selectProfilePicture": "Choose avatar",
+  "selectProfilePictureDesc": "JPG format, png, no more than 1MB",
+  "updateUserInfo": "Update personal information",
+  "enterOldPassword": "Enter old password",
+  "enterNewPassword": "Enter new password",
+  "confirmNewPassword": "Confirm new password",
+  "newPassword": "New password",
+  "confirmPassword": "Confirm password",
+  "currency": "VND"
 }

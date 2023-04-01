@@ -4,8 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/navigation/domain/app_paths.dart';
 import 'package:shared_package/shared_package.dart';
 
-import '../../core/helper/translate.dart';
-import '../app/new_user_controller.dart';
+import '../../../core/helper/translate.dart';
+import '../../app/new_user/new_user_controller.dart';
 
 class NewUserPage extends ConsumerWidget {
   const NewUserPage({super.key});

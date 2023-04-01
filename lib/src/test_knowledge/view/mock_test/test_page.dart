@@ -18,14 +18,13 @@ import '../../../test_knowledge/data/test_knowledge.dart';
 import '../widgets/test_content_widget.dart';
 import '../widgets/test_result_widget.dart';
 
-class TestPage extends ConsumerWidget {
+class TestPage extends StatelessWidget {
   final bool isTest;
   final String lgId;
   const TestPage({Key? key, this.isTest = false, required this.lgId}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.read(diagnosticTestControllerProvider(lgId).notifier);
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -34,6 +33,7 @@ class TestPage extends ConsumerWidget {
             padding: const EdgeInsets.all(AppSizesUnit.medium24),
             child: HookConsumer(
               builder: (context, ref, child) {
+                final controller = ref.read(diagnosticTestControllerProvider(lgId).notifier);
                 final state = ref.watch(diagnosticTestControllerProvider(lgId));
                 final testLength = state.content.getOrElse(() => TestContent.empty()).questions.length;
                 if (testLength == 0) {

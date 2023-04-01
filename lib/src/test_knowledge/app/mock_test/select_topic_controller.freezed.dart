@@ -26,6 +26,7 @@ mixin _$SelectTopicState {
       throw _privateConstructorUsedError;
   Option<ApiFailure> get apiError => throw _privateConstructorUsedError;
   Option<ClientFailure> get clientError => throw _privateConstructorUsedError;
+  bool get isCompleted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SelectTopicStateCopyWith<SelectTopicState> get copyWith =>
@@ -46,7 +47,8 @@ abstract class $SelectTopicStateCopyWith<$Res> {
       List<TopicSelection> selectedTopics,
       Option<LearningGoal> newLearningGoal,
       Option<ApiFailure> apiError,
-      Option<ClientFailure> clientError});
+      Option<ClientFailure> clientError,
+      bool isCompleted});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$SelectTopicStateCopyWithImpl<$Res, $Val extends SelectTopicState>
     Object? newLearningGoal = null,
     Object? apiError = null,
     Object? clientError = null,
+    Object? isCompleted = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -104,6 +107,10 @@ class _$SelectTopicStateCopyWithImpl<$Res, $Val extends SelectTopicState>
           ? _value.clientError
           : clientError // ignore: cast_nullable_to_non_nullable
               as Option<ClientFailure>,
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -124,7 +131,8 @@ abstract class _$$_SelectTopicStateCopyWith<$Res>
       List<TopicSelection> selectedTopics,
       Option<LearningGoal> newLearningGoal,
       Option<ApiFailure> apiError,
-      Option<ClientFailure> clientError});
+      Option<ClientFailure> clientError,
+      bool isCompleted});
 }
 
 /// @nodoc
@@ -146,6 +154,7 @@ class __$$_SelectTopicStateCopyWithImpl<$Res>
     Object? newLearningGoal = null,
     Object? apiError = null,
     Object? clientError = null,
+    Object? isCompleted = null,
   }) {
     return _then(_$_SelectTopicState(
       isLoading: null == isLoading
@@ -180,6 +189,10 @@ class __$$_SelectTopicStateCopyWithImpl<$Res>
           ? _value.clientError
           : clientError // ignore: cast_nullable_to_non_nullable
               as Option<ClientFailure>,
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -195,7 +208,8 @@ class _$_SelectTopicState implements _SelectTopicState {
       required final List<TopicSelection> selectedTopics,
       required this.newLearningGoal,
       required this.apiError,
-      required this.clientError})
+      required this.clientError,
+      required this.isCompleted})
       : _selectedTopics = selectedTopics;
 
   @override
@@ -220,10 +234,12 @@ class _$_SelectTopicState implements _SelectTopicState {
   final Option<ApiFailure> apiError;
   @override
   final Option<ClientFailure> clientError;
+  @override
+  final bool isCompleted;
 
   @override
   String toString() {
-    return 'SelectTopicState(isLoading: $isLoading, isTouched: $isTouched, isValid: $isValid, topicsOption: $topicsOption, selectedTopics: $selectedTopics, newLearningGoal: $newLearningGoal, apiError: $apiError, clientError: $clientError)';
+    return 'SelectTopicState(isLoading: $isLoading, isTouched: $isTouched, isValid: $isValid, topicsOption: $topicsOption, selectedTopics: $selectedTopics, newLearningGoal: $newLearningGoal, apiError: $apiError, clientError: $clientError, isCompleted: $isCompleted)';
   }
 
   @override
@@ -245,7 +261,9 @@ class _$_SelectTopicState implements _SelectTopicState {
             (identical(other.apiError, apiError) ||
                 other.apiError == apiError) &&
             (identical(other.clientError, clientError) ||
-                other.clientError == clientError));
+                other.clientError == clientError) &&
+            (identical(other.isCompleted, isCompleted) ||
+                other.isCompleted == isCompleted));
   }
 
   @override
@@ -258,7 +276,8 @@ class _$_SelectTopicState implements _SelectTopicState {
       const DeepCollectionEquality().hash(_selectedTopics),
       newLearningGoal,
       apiError,
-      clientError);
+      clientError,
+      isCompleted);
 
   @JsonKey(ignore: true)
   @override
@@ -276,7 +295,8 @@ abstract class _SelectTopicState implements SelectTopicState {
       required final List<TopicSelection> selectedTopics,
       required final Option<LearningGoal> newLearningGoal,
       required final Option<ApiFailure> apiError,
-      required final Option<ClientFailure> clientError}) = _$_SelectTopicState;
+      required final Option<ClientFailure> clientError,
+      required final bool isCompleted}) = _$_SelectTopicState;
 
   @override
   bool get isLoading;
@@ -294,6 +314,8 @@ abstract class _SelectTopicState implements SelectTopicState {
   Option<ApiFailure> get apiError;
   @override
   Option<ClientFailure> get clientError;
+  @override
+  bool get isCompleted;
   @override
   @JsonKey(ignore: true)
   _$$_SelectTopicStateCopyWith<_$_SelectTopicState> get copyWith =>

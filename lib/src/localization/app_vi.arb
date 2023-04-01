@@ -261,5 +261,22 @@
         "type": "int"
       }
     }
-  }
+  },
+  "profile": "Hồ sơ cá nhân",
+  "userInfo": "Thông tin cá nhân",
+  "deleteAccount": "Xóa tài khoản",
+  "deleteAccountDesc": "Khi xoá tài khoản, quá trình học và kết quả của bạn sẽ không được lưu lại. Tất cả số dư tài khoản và dịch vụ mà bạn đang có sẽ không được hoàn tiền. Bạn có chắc muốn xoá tài khoản?",
+  "account": "Tài khoản Kyons",
+  "yourAccount": "Tài khoản của bạn",
+  "transactionHistory": "Lịch sử giao dịch",
+  "yourServices": "Dịch vụ của bạn",
+  "selectProfilePicture": "Chọn ảnh đại diện",
+  "selectProfilePictureDesc": "Định dạng JPG, PNG, không quá 1MB",
+  "updateUserInfo": "Cập nhật thông tin cá nhân",
+  "enterOldPassword": "Nhập mật khẩu cũ",
+  "enterNewPassword": "Nhập mật khẩu mới",
+  "confirmNewPassword": "Nhập lại mật khẩu mới",
+  "newPassword": "Mật khẩu mới",
+  "confirmPassword": "Mật khẩu xác nhận",
+  "currency": "VNĐ"
 }

@@ -30,7 +30,6 @@ class TestContentWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(reportCallback != null);
     final testLength = testContent.questions.length;
     final viewType = useState(QuestionViewType.question);
     if (testLength == 0) return const Center(child: Text('No data'));
@@ -64,7 +63,7 @@ class TestContentWidget extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             OutlinedButton(
-              onPressed: reportCallback != null ? () => reportCallback!() : null,
+              onPressed: () => reportCallback(),
               child: const Icon(AppIcons.error),
             ).largeIcon(context),
             AppSizesUnit.sizedBox8,
