@@ -10,12 +10,22 @@ class LanguageSwitcher extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return DropdownButtonFormField<Locale>(
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.white, width: 1),
+          disabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.blueGray300, width: 1),
             borderRadius: BorderRadius.circular(AppSizesUnit.small5),
           ),
-          filled: true,
-          fillColor: AppColors.white,
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.blueGray300, width: 1),
+            borderRadius: BorderRadius.circular(AppSizesUnit.small5),
+          ),
+          border: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.blueGray300, width: 1),
+            borderRadius: BorderRadius.circular(AppSizesUnit.small5),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.primaryBlue, width: 1),
+            borderRadius: BorderRadius.circular(AppSizesUnit.small5),
+          ),
         ),
         dropdownColor: AppColors.white,
         icon: const Icon(

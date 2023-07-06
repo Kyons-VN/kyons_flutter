@@ -14,6 +14,19 @@ class EmailAddress extends ValueObject<String> {
   const EmailAddress._(this.value);
 }
 
+class Phone extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory Phone(String input) {
+    return Phone._(
+      validatePhoneNumber(input),
+    );
+  }
+
+  const Phone._(this.value);
+}
+
 class Password extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;

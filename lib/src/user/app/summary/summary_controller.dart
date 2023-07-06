@@ -28,6 +28,7 @@ class SummaryController extends _$SummaryController {
     // state = state.copyWith(balance: some(result[0] as Balance), inventory: some(result[1] as Inventory));
     // or use fpdart to combine 2 Futures
     state = state.copyWith(
+      isLoading: false,
       balance: balanceFailureOrSuccess.getOrElse((_) => Balance.empty()),
       inventory: inventoryFailureOrSuccess.getOrElse((_) => Inventory.empty()),
       error: balanceFailureOrSuccess.isLeft()

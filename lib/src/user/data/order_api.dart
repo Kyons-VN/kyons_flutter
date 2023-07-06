@@ -26,7 +26,9 @@ class OrderApi implements IOrderApi {
   Future<Balance> getBalance() async {
     final response = api.get('$serverApi/students/balance');
     return response.then(handleResponseError).then((value) async {
-      return BalanceDto.fromJson(value).toDomain();
+      final data = value as Map<String, dynamic>;
+      if (data['data'] == null) return Balance(0);
+      return BalanceDto.fromJson(data['data']).toDomain();
     });
   }
 
@@ -34,7 +36,9 @@ class OrderApi implements IOrderApi {
   Future<Inventory> getInventory() {
     final response = api.get('$serverApi/students/inventories');
     return response.then(handleResponseError).then((value) async {
-      return InventoryDto.fromJson(value).toDomain();
+      final data = value as Map<String, dynamic>;
+      if (data['data'] == null) return Inventory.empty();
+      return InventoryDto.fromJson(data['data']).toDomain();
     });
   }
 
@@ -42,8 +46,28 @@ class OrderApi implements IOrderApi {
   Future<List<Package>> getPackages() {
     final response = api.get('$serverApi/students/packages');
     return response.then(handleResponseError).then((value) async {
-      final data = value as List<Map<String, dynamic>>;
-      return data.map((json) => PackageDto.fromJson(json).toDomain()).toList();
+      final map = Map<String, dynamic>.from(value);
+      final data = map['data'] as List<dynamic>;
+      // final data0 = Map.from(data[0]) as Map<String, dynamic>;
+      // final asd = PackageDto.fromJson(data0).toDomain();
+      // print(asd);
+      return data.map((json) {
+        json['discount'] = {
+          'discount_amount': json['discount_amount'],
+          'discount_type': json['discount_type'],
+          'discount_value': json['discount_value']
+        };
+        json['package_items'] = json['package_items'].map((jsonItem) {
+          jsonItem['service'] = {
+            'service_amount': jsonItem['service_amount'],
+            'service_type': jsonItem['service_type'],
+            'service_type_text': jsonItem['service_type_text'],
+          };
+          return jsonItem;
+        }).toList();
+        final d = json as Map<String, dynamic>;
+        return PackageDto.fromJson(d).toDomain();
+      }).toList();
     });
   }
 
@@ -60,10 +84,12 @@ class OrderApi implements IOrderApi {
   }
 
   @override
-  Future<List<Transaction>> getTransactions() {
+  Future<List<Transaction>> getTransactions() async {
     final response = api.get('$serverApi/students/transactions');
     return response.then(handleResponseError).then((value) async {
-      final data = value as List<Map<String, dynamic>>;
+      if (value['data'] == null) return [];
+      final data = value['data'] as List<dynamic>;
+      if (data.isEmpty) return [];
       return data.map((json) => TransactionDto.fromJson(json).toDomain()).toList();
     });
   }

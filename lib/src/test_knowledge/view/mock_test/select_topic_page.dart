@@ -91,7 +91,9 @@ class SelectTopicPage extends ConsumerWidget {
               : Center(
                   child: Container(
                     color: AppColors.white,
-                    width: 434,
+                    width: MediaQuery.of(context).size.width < 434
+                        ? MediaQuery.of(context).size.width - AppSizesUnit.large32
+                        : 434,
                     child: TopicPickerWrapper(
                       state: state,
                       controller: controller,

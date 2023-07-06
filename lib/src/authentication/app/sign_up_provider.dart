@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kyons_flutter/src/authentication/data/cities_list.dart';
 import 'package:shared_package/shared_package.dart';
 
-import '../../../boostrap/config_reader.dart';
 import '../../authentication/app/auth_provider.dart';
 import '../../authentication/data/auth_service.dart' as auth_service;
 import '../../authentication/domain/i_auth.dart';
@@ -31,32 +31,42 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
     state = state.copyWith(emailAddress: EmailAddress(emailStr));
   }
 
-  void passwordChanged(String password) {
-    state = state.copyWith(password: Password(password), passwordStr: password);
+  void phoneChanged(String phone) {
+    state = state.copyWith(phone: Phone(phone));
+  }
+
+  void birthdateChanged(DateTime birthdate) {
+    state = state.copyWith(birthdate: birthdate);
+  }
+
+  void gradeChanged(String grade) {
+    state = state.copyWith(grade: grade);
+  }
+
+  void schoolChanged(String school) {
+    state = state.copyWith(school: school);
+  }
+
+  void addressChanged(String address) {
+    state = state.copyWith(address: address);
   }
 
   void agreeChanged(bool isAgreed) {
     state = state.copyWith(isAgreedToTerms: isAgreed);
   }
 
-  initial() {
-    state = SignUpState.initial();
-    if (ConfigReader.env == Environment.dev) {
-      state = state.copyWith(
-        emailAddress: EmailAddress('1025ss@te.st'),
-        password: Password('Zaq1@wsx'),
-      );
-    }
+  void showValidation() {
+    state = state.copyWith(shouldShowErrorMessages: true);
   }
 
   Future<Unit> signUpBtnPressed() async {
     Either<AuthFailure, Unit> failureOrSuccess = left(const AuthFailure.invalidEmailPassword());
 
     final isEmailValid = state.emailAddress.isValid();
-    final isPasswordValid = state.password.isValid();
     final isLastNameValid = state.lastName != '';
     final isFirstNameValid = state.firstName != '';
-    if (isEmailValid && isPasswordValid && isLastNameValid && isFirstNameValid && state.isAgreedToTerms) {
+    final isPhoneValid = state.phone.isValid();
+    if (isEmailValid && isPhoneValid && isLastNameValid && isFirstNameValid && state.isAgreedToTerms) {
       state = state.copyWith(
         isSubmitting: true,
       );
@@ -64,9 +74,12 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
           .signUp(
             firstName: state.firstName,
             lastName: state.lastName,
-            emailAddress: state.emailAddress.getValueOrError(),
-            password: state.password.getValueOrError(),
-            isAgreed: state.isAgreedToTerms,
+            emailAddress: state.emailAddress.getValueOrError().trim(),
+            phone: state.phone.getValueOrError().trim(),
+            birthdate: state.birthdate,
+            grade: state.grade,
+            school: state.school,
+            address: state.address,
           )
           .run(authApi);
     }

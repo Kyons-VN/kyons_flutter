@@ -1,9 +1,25 @@
 {
   "@@locale": "vi",
   "appTitle": "KYONS",
+  "welcomeBack": "Mừng bạn quay trở lại!",
+  "knowledgeStart": "Tri thức khởi đầu từ\n“Tại sao”?",
   "loginSuccess": "Đăng nhập thành công",
+  "startExploringKnowledge": "Bắt đầu khám phá tri thức",
+  "beforeStart": "Trước khi bắt đầu hành trình...",
+  "kyonsNeeds": "Kyons cần một vài thông tin cơ bản để hiểu bạn hơn nhé!",
+  "noteYouCanChange": "Lưu ý: Bạn có thể thay đổi thông tin này sau.",
+  "yourBirthdate": "Ngày sinh của bạn",
+  "yourGrade": "Khối lớp của bạn",
+  "grade10": "Lớp 10",
+  "grade11": "Lớp 11",
+  "grade12": "Lớp 12",
+  "whatIsSchool": "Bạn đang học trường nào",
+  "schoolPlaceholder": "VD: THPT Nguyễn Thượng Hiền",
+  "whereIsYourAddress": "Thành phố nơi bạn sinh sống?",
   "email": "Email",
+  "phone": "Số điện thoại",
   "password": "Mật khẩu",
+  "birthdate": "Ngày sinh",
   "signIn": "Đăng nhập",
   "signOut": "Đăng xuất",
   "signUp": "Đăng ký",
@@ -76,13 +92,13 @@
   "home": "Trang chủ",
   "learningPath": "Lộ trình học",
   "ok": "Ok",
-  "cancel": "Hủy yêu cầu",
+  "cancelRequest": "Hủy yêu cầu",
   "callTutor": "Gọi gia sư hỗ trợ nhé?",
   "connectingTutor": "Kyons đang kết nối với gia sư.\nBạn vui lòng đợi trong ít phút.",
   "tutorReady": "Gia sư đã sẵn sàng.\nNhấn vào nút \"Gặp gia sư\" để kết nối với gia sư.",
   "meetTutor": "Gặp gia sư",
   "exercise": "Bài tập",
-  "test": "Kiểm tra cuối bài",
+  "test": "Kiểm tra",
   "level": "Cấp độ",
   "yourScore": "Điểm của bạn",
   "generalKnowledge": "Tổng quan kiến thức",
@@ -232,9 +248,9 @@
       }
     }
   },
-  "hour": "hour",
-  "hourNum": "1 hour",
-  "hoursNum": "{num} hours",
+  "hour": "giờ",
+  "hourNum": "1 giờ",
+  "hoursNum": "{num} giờ",
   "@hoursNum": {
     "placeholders": {
       "num": {
@@ -242,9 +258,9 @@
       }
     }
   },
-  "minute": "minute",
-  "minuteNum": "1 minute",
-  "minutesNum": "{num} minutes",
+  "minute": "phút",
+  "minuteNum": "1 phút",
+  "minutesNum": "{num} phút",
   "@minutesNum": {
     "placeholders": {
       "num": {
@@ -278,5 +294,53 @@
   "confirmNewPassword": "Nhập lại mật khẩu mới",
   "newPassword": "Mật khẩu mới",
   "confirmPassword": "Mật khẩu xác nhận",
-  "currency": "VNĐ"
+  "currency": "VNĐ",
+  "takeProfilePicture": "Chụp ảnh đại diện",
+  "selectImageFromGallery": "Chọn ảnh trong album",
+  "emptyData": "Chưa có dữ liệu",
+  "balance": "Tiền trong tài khoản",
+  "tutorSuggestions": "Gia sư tư vấn",
+  "learningPackage": "Gói học tập",
+  "buyMore": "Mua thêm",
+  "leftSt": "Còn {st}",
+  "@leftSt": {
+    "placeholders": {
+      "st": {
+        "type": "String"
+      }
+    }
+  },
+  "kyonsPackages": "Gói dịch vụ của Kyons",
+  "depositToAccount": "Nạp tiền vào tài khoản",
+  "bankTransferHtml": "<h6>Chuyển khoản ngân hàng</h6><p>Chuyển khoản để nạp tiền vào tài khoản, kèm ghi chú:<br /><strong>[Email của bạn] - Kyons credit</strong></p><p>Ngân hàng<br /><strong>Techcombank</strong></p><p>Số tài khoản<br /><strong>19037780961051</strong></p><p>Tên chủ tài khoản:<br /><strong>Công Ty TNHH Kyons</strong></p>",
+  "canNotBuyPackage": "Không thể mua gói",
+  "canNotBuyPackageDesc": "Tài khoản của bạn hiện không đủ số dư để thanh toán. Vui lòng nạp thêm tiền vào Kyons",
+  "quantity": "Số lượng",
+  "totalPrice": "Tổng giá tiền",
+  "confirm": "Xác nhận",
+  "cancel": "Hủy",
+  "numberTypeError": "Vui lòng nhập ký tự số",
+  "youCanBuyOnlyNumberPackage": "Bạn chỉ có thể mua tối đa {number} gói",
+  "@youCanBuyOnlyNumberPackage": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "buySuccess": "Mua gói thành công!",
+  "buySuccessDesc": "Bạn vừa mua {number} {name}<br />Mã số đơn  hàng của bạn là <br /><strong>{orderNumber}</strong>",
+  "@buySuccessDesc": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      },
+      "orderNumber": {
+        "type": "String"
+      }
+    }
+  }
 }

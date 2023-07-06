@@ -44,7 +44,9 @@ class SelectLearningGoalPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(AppSizesUnit.small8),
                         ),
                         padding: const EdgeInsets.all(AppSizesUnit.medium24),
-                        width: 434,
+                        width: MediaQuery.of(context).size.width < 434
+                            ? MediaQuery.of(context).size.width - AppSizesUnit.large32
+                            : 434,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

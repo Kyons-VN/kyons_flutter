@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kyons_flutter/src/user/view/pages/services_history_page.dart';
+import 'package:kyons_flutter/src/user/view/pages/summary_page.dart';
 
 import '../../authentication/app/auth_provider.dart';
 import '../../authentication/view/reset_password_page.dart';
@@ -26,6 +28,9 @@ import '../../user/view/pages/account_menu_page.dart';
 import '../../user/view/pages/change_password_page.dart';
 import '../../user/view/pages/delete_account_page.dart';
 import '../../user/view/pages/new_user_page.dart';
+import '../../user/view/pages/packages_page.dart';
+import '../../user/view/pages/top_up_page.dart';
+import '../../user/view/pages/transactions_history_page.dart';
 import '../../user/view/pages/user_info_page.dart';
 import '../../user/view/pages/user_menu_page.dart';
 
@@ -127,6 +132,33 @@ class AppRouter {
         GoRoute(
           path: AppPaths.account.path,
           builder: (BuildContext context, GoRouterState state) => const AccountMenuPage(),
+          routes: [
+            GoRoute(
+              path: 'summary',
+              builder: (BuildContext context, GoRouterState state) => const SummaryPage(),
+              redirect: (_, state) => guard(state, ref),
+            ),
+            GoRoute(
+              path: 'transactions-history',
+              builder: (BuildContext context, GoRouterState state) => const TransactionsHistoryPage(),
+              redirect: (_, state) => guard(state, ref),
+            ),
+            GoRoute(
+              path: 'services-history',
+              builder: (BuildContext context, GoRouterState state) => const ServicesHistoryPage(),
+              redirect: (_, state) => guard(state, ref),
+            ),
+            GoRoute(
+              path: 'packages',
+              builder: (BuildContext context, GoRouterState state) => const PackagesPage(),
+              redirect: (_, state) => guard(state, ref),
+            ),
+            GoRoute(
+              path: 'top-up',
+              builder: (BuildContext context, GoRouterState state) => const TopUpPage(),
+              redirect: (_, state) => guard(state, ref),
+            ),
+          ],
           redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(

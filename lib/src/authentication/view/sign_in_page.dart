@@ -10,6 +10,7 @@ import '../../authentication/app/auth_provider.dart';
 import '../../authentication/app/current_user_provider.dart';
 import '../../authentication/app/sign_in_provider.dart';
 import '../../core/helper/translate.dart';
+import '../../core/view/layouts/sign_in_layout.dart';
 import '../../navigation/app/router.dart';
 import '../../navigation/domain/app_paths.dart';
 import '../../settings/view/language_switcher.dart';
@@ -19,37 +20,8 @@ class SignInPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: AppColors.primaryBlue,
-        body: SafeArea(
-          child: context.isXsScreen()
-              ? Container(
-                  width: double.infinity,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: AppSizesUnit.medium24, vertical: AppSizesUnit.large48),
-                  child: SignInFormWrapper(ref: ref),
-                )
-              : Center(
-                  child: SizedBox(
-                    width: 434,
-                    child: SignInFormWrapper(ref: ref),
-                  ),
-                ),
-          // : Center(
-          //     child: Heading(
-          //     1,
-          //     'do',
-          //     color: AppColors.white,
-          //   )),
-        ),
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () => context.push(AppPaths.settings.path),
-        //   child: const Icon(Icons.settings),
-        // ),
-      ),
+    return SignInLayout(
+      body: SignInFormWrapper(ref: ref),
     );
   }
 }
@@ -68,56 +40,54 @@ class SignInFormWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GestureDetector(
-              onDoubleTap: () => ref.read(signInProvider.notifier).initial(),
-              child: SizedBox(height: 100, child: AppAssets.logoSVG)),
-          const SizedBox(height: 48),
-          const SignInForm(),
-          const SizedBox(height: 12),
-          IntrinsicHeight(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white, height: 2),
-                    children: [
-                      TextSpan(
-                        text: t(context).forgotPassword,
-                        style: const TextStyle(color: AppColors.orange),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            context.go(AppPaths.resetPassword.path);
-                          },
-                      ),
-                      TextSpan(text: "\n${t(context).doesNotHaveAccount} "),
-                      TextSpan(
-                        text: t(context).registerHere,
-                        style: const TextStyle(color: AppColors.orange),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            context.go(AppPaths.signUp.path);
-                          },
-                      ),
-                    ],
-                  ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // GestureDetector(
+        //     onDoubleTap: () => ref.read(signInProvider.notifier).initial(),
+        //     child: SizedBox(height: 100, child: AppAssets.logoSVG)),
+        // const SizedBox(height: 48),
+        AppSizesUnit.sizedBox24,
+        Text(t(context).welcomeBack, style: Theme.of(context).textTheme.heading6),
+        AppSizesUnit.sizedBox24,
+        const SignInForm(),
+        const SizedBox(height: 12),
+        IntrinsicHeight(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              RichText(
+                text: TextSpan(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 2),
+                  children: [
+                    TextSpan(
+                      text: t(context).forgotPassword,
+                      style: const TextStyle(color: AppColors.orange),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          context.go(AppPaths.resetPassword.path);
+                        },
+                    ),
+                    TextSpan(text: "\n${t(context).doesNotHaveAccount} "),
+                    TextSpan(
+                      text: t(context).registerHere,
+                      style: const TextStyle(color: AppColors.orange),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          context.go(AppPaths.signUp.path);
+                        },
+                    ),
+                  ],
                 ),
-                AppSizesUnit.sizedBox24,
-                // CupertinoPickerOptions<LocaleOption>(
-                //   options: AppLocalizations.supportedLocales.map((e) => LocaleOption(e.languageCode)).toList(),
-                //   onPicked: some((v) => ref.read(settingsNotifierProvider).updateLocale(v)),
-                //   selectedOption: optionOf(LocaleOption(Localizations.localeOf(context).languageCode)),
-                // ),
-                const LanguageSwitcher(),
-              ],
-            ),
+              ),
+              AppSizesUnit.sizedBox24,
+              const LanguageSwitcher(),
+              AppSizesUnit.sizedBox24,
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -180,7 +150,7 @@ class SignInForm extends HookConsumerWidget {
           TextFormField(
             autovalidateMode: signInState.shouldShowErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,
             decoration: InputDecoration(
-              border: const OutlineInputBorder(),
+              border: Theme.of(context).inputDecorationTheme.border,
               labelText: t(context).password,
               suffixIcon: FocusableActionDetector(
                 mouseCursor: SystemMouseCursors.click,

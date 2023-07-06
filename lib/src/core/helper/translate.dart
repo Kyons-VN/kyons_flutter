@@ -9,6 +9,10 @@ extension LocaleX on Locale {
   String get languageName {
     return lookupAppLocalizations(this).languageName;
   }
+
+  String get currency {
+    return lookupAppLocalizations(this).currency;
+  }
 }
 
 extension DoubleX on double {
@@ -48,14 +52,14 @@ extension DoubleX on double {
       desc: 'Description of how minutes left.',
       examples: const {'minutes': 3},
     );
-    return '$daysText $hoursText $minutesText}';
+    return '$daysText $hoursText $minutesText';
   }
 }
 
-// Format Price with currency. Ex: 1 000 000 NVD
+// Format Price with currency. Ex: 1.000.000 VND
 extension IntX on int {
   String price(Locale locale) {
-    final formatter = NumberFormat('#,###', locale.languageCode);
+    final formatter = NumberFormat.currency(locale: 'vi', symbol: 'VND');
     return formatter.format(this);
   }
 }

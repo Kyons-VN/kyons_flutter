@@ -7,7 +7,7 @@ part of 'select_learning_goal_controller.dart';
 // **************************************************************************
 
 String _$selectLearningGoalControllerHash() =>
-    r'33bd986610630ed97e2fa94239e0b7b62e227b66';
+    r'dca34c2779e8bc4ef8e4478be104e5c3d69dd3df';
 
 /// See also [SelectLearningGoalController].
 @ProviderFor(SelectLearningGoalController)

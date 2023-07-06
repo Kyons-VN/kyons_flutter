@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,8 +41,8 @@ class AuthApi implements IAuthApi {
       final token = data['access_token'] as String;
       final refreshToken = data['refresh_token'] as String;
       final uuid = data['sub'] as String;
-      await auth_service.saveToken(token);
-      await auth_service.saveRefreshToken(refreshToken);
+      await auth_service.setToken(token);
+      await auth_service.setRefreshToken(refreshToken);
       await auth_service.saveId(uuid);
       final redirectAfterLogin = data['redirect_after_auth'] as String;
       await navigation_service.saveRedirecPath(redirectAfterLogin);
@@ -104,15 +105,21 @@ class AuthApi implements IAuthApi {
     required String firstName,
     required String lastName,
     required EmailAddress email,
-    required Password password,
-    required bool isAgreedToTerms,
+    required Phone phone,
+    required DateTime birthdate,
+    required String grade,
+    required String school,
+    required String address,
   }) async {
     final response = api.post('$serverApi/auth/sign_up', data: {
       'given_name': firstName,
       'family_name': lastName,
       'email': email.getValueOrError(),
-      'password': password.getValueOrError(),
-      'accept_term_condition': isAgreedToTerms
+      'phone_number': phone.getValueOrError(),
+      'birthdate': DateFormat('yyyy-MM-dd').format(birthdate),
+      'grade': grade,
+      'school': school,
+      'address': address,
     });
     return response.then((res) {
       print(res);

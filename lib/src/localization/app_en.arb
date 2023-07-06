@@ -1,9 +1,25 @@
 {
   "@@locale": "en",
   "appTitle": "KYONS",
+  "welcomeBack": "Welcome back!",
   "loginSuccess": "Login Success",
+  "knowledgeStart": "Knowledge starts from\n“Why”?",
+  "startExploringKnowledge": "Start exploring knowledge",
+  "beforeStart": "Before starting the journey ...",
+  "kyonsNeeds": "Kyons needs some basic information to understand you better!",
+  "noteYouCanChange": "Note: You can change this information later.",
+  "yourBirthdate": "Your birthday",
+  "yourGrade": "Your grade",
+  "grade10": "Grade 10",
+  "grade11": "Grade 11",
+  "grade12": "Grade 12",
+  "whatIsSchool": "Which school are you studying?",
+  "schoolPlaceholder": "Example: Nguyen Thuong Hien High School",
+  "whereIsYourAddress": "The city where you live?",
   "email": "Email",
+  "phone": "Phone number",
   "password": "Password",
+  "birthdate": "Birthdate",
   "signIn": "Sign in",
   "signOut": "Sign out",
   "signUp": "Sign up",
@@ -76,7 +92,7 @@
   "home": "Home",
   "learningPath": "Learning Path",
   "ok": "Ok",
-  "cancel": "Cancel",
+  "cancelRequest": "Cancel",
   "callTutor": "Call tutor for help?",
   "connectingTutor": "Tutor is connecting.\nPlease wait for a few minute.",
   "tutorReady": "Tutor is ready.\nClick button \"Meet tutor\" to connect with him/her.",
@@ -278,5 +294,53 @@
   "confirmNewPassword": "Confirm new password",
   "newPassword": "New password",
   "confirmPassword": "Confirm password",
-  "currency": "VND"
+  "currency": "$",
+  "takeProfilePicture": "Take a picture",
+  "selectImageFromGallery": "Select image from gallery",
+  "emptyData": "No data",
+  "balance": "Money in the account",
+  "tutorSuggestions": "Consulting tutor",
+  "learningPackage": "Learning package",
+  "buyMore": "Buy more",
+  "leftSt": "Have {st}",
+  "@leftSt": {
+    "placeholders": {
+      "st": {
+        "type": "String"
+      }
+    }
+  },
+  "kyonsPackages": "Service package of Kyons",
+  "depositToAccount": "Deposit money into your account",
+  "bankTransferHtml": "<h6>Bank transfer</h6><p>Transfer to deposit money into the account, with notes:<br /><strong> [Your email] - Kyons Credit</strong></p><p>Bank<br /><strong>Techcombank</strong></p><p>Account number<br /><strong> 19037780961051</strong></p><p>Account holder''s name<br /><strong>Kyons Company Limited</strong></p>",
+  "canNotBuyPackage": "Can''t buy package",
+  "canNotBuyPackageDesc": "Your account does not currently have enough balance to pay.Please add more money to Kyons",
+  "quantity": "Quantity",
+  "totalPrice": "Total price",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "numberTypeError": "Please enter the number",
+  "youCanBuyOnlyNumberPackage": "You can only buy maximum {number} package(s)",
+  "@youCanBuyOnlyNumberPackage": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "buySuccess": "Buy package successfully!",
+  "buySuccessDesc": "You just bought {number} {name}<br />Your order number is<br /><strong>{orderNumber}</strong>",
+  "@buySuccessDesc": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      },
+      "orderNumber": {
+        "type": "String"
+      }
+    }
+  }
 }

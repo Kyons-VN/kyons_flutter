@@ -37,6 +37,17 @@ class Package {
   String formatedSalePrice(Locale locale) => salePrice.price(locale);
 
   String formatedPrice(Locale locale) => price.price(locale);
+
+  // empty
+  factory Package.empty() => Package(
+      id: '',
+      name: '',
+      description: '',
+      discount: Discount(type: DiscountType.amount, amount: 0.0),
+      limit: 0,
+      price: 0,
+      salePrice: 0,
+      items: []);
 }
 
 enum DiscountType {
@@ -48,7 +59,7 @@ enum DiscountType {
 
 class Discount {
   final DiscountType type;
-  final int amount;
+  final double amount;
 
   Discount({required this.type, required this.amount});
 

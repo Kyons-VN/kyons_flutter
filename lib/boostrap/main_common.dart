@@ -14,7 +14,6 @@ import '../src/authentication/app/auth_provider.dart';
 import '../src/core/helper/translate.dart';
 import '../src/navigation/app/router.dart';
 import '../src/settings/app/settings_controller.dart';
-import '../src/settings/data/settings_service.dart';
 import 'config_reader.dart';
 
 Future<void> mainCommon(Environment env) async {
@@ -23,7 +22,6 @@ Future<void> mainCommon(Environment env) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize the settings controller
-  final settingsProvider = SettingsProvider(SettingsService());
   GoogleFonts.config.allowRuntimeFetching = false;
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('google_fonts/OFL.txt');
@@ -31,8 +29,8 @@ Future<void> mainCommon(Environment env) async {
   });
   await Future.wait([
     ConfigReader.initialize(env),
-    settingsProvider.loadSettings(),
-    if (!kIsWeb) Future.delayed(const Duration(seconds: 1)),
+    // settingsProvider.loadSettings(),
+    // if (!kIsWeb) Future.delayed(const Duration(seconds: 1)),
   ]);
 
   // Game section
@@ -103,6 +101,8 @@ class _AppWidgetState extends ConsumerState<AppWidget> with WidgetsBindingObserv
   initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    final settingsProvider = ref.read(settingsNotifierProvider.notifier);
+    settingsProvider.loadSettings();
   }
 
   @override

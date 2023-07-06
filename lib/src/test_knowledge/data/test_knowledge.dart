@@ -1,7 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
-import '../../knowledge/data/knowledge_entities.dart';
 import 'package:shared_package/shared_package.dart';
+
+import '../../knowledge/data/knowledge_entities.dart';
 
 class TestContent {
   final String id;
@@ -151,4 +152,5 @@ class AnswerResult {
 extension XDateTion on DateTime {
   // Server API time format: yyyy-mm-dd H:m:s
   String get serverRequest => DateFormat('yyyy-MM-dd H:m:s').format(this);
+  String get date => DateFormat('dd/MM/yy').format(this);
 }

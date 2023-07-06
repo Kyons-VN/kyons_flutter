@@ -8,15 +8,38 @@ import '../../authentication/domain/user.dart';
 import '../../authentication/domain/value_objects.dart';
 import '../../core/data/api.dart';
 
-Future<Option> saveToken(String token) async {
+Future<Unit> setToken(String token) async {
   final prefs = await SharedPreferences.getInstance();
-  // const storage = FlutterSecureStorage();
-  return await prefs.setString('token', token).then((value) => some(unit), onError: (error) => none());
+  await prefs.setString(kAccessToken, token);
+  return unit;
 }
 
 Future<String> getToken() async {
   final prefs = await SharedPreferences.getInstance();
-  return prefs.getString('token') ?? '';
+  return prefs.getString(kAccessToken) ?? '';
+}
+
+Future<Unit> removeToken() async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.remove(kAccessToken);
+  return unit;
+}
+
+Future<Unit> setRefreshToken(String token) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setString(kRefreshToken, token);
+  return unit;
+}
+
+Future<String> getRefreshToken() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getString(kRefreshToken) ?? '';
+}
+
+Future<Unit> removeRefreshToken() async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.remove(kRefreshToken);
+  return unit;
 }
 
 Future<Option> saveId(String uuid) async {
@@ -38,16 +61,6 @@ Future<Option> saveEmail(String email) async {
 Future<String> getEmail() async {
   final prefs = await SharedPreferences.getInstance();
   return Future.value(prefs.getString('email') ?? '');
-}
-
-Future<Option> saveRefreshToken(String refreshToken) async {
-  final prefs = await SharedPreferences.getInstance();
-  return await prefs.setString('refreshToken', refreshToken).then((value) => some(unit), onError: (error) => none());
-}
-
-Future<String> getRefreshToken() async {
-  final prefs = await SharedPreferences.getInstance();
-  return prefs.getString('refreshToken') ?? '';
 }
 
 Reader<IAuthApi, Future<Either<AuthFailure, Unit>>> signInEmailPassword(
@@ -82,6 +95,12 @@ IOEither<AuthFailure, String> _isValidPassword(String password) => IOEither.from
       password,
       (a) => Password(a).isValid(),
       (_) => const AuthFailure.invalidEmailPassword(),
+    );
+
+IOEither<AuthFailure, String> _isValidPhone(String email) => IOEither.fromPredicate(
+      email,
+      (a) => Phone(a).isValid(),
+      (_) => const AuthFailure.invalidPhone(),
     );
 
 TaskEither<AuthFailure, Unit> _signIn(
@@ -146,38 +165,71 @@ TaskEither<ClientFailure, Unit> _setCurrentUser(IAuthApi api, User user) => Task
       handleClientError,
     );
 
-Reader<IAuthApi, Future<Either<AuthFailure, Unit>>> signUp(
-    {required String firstName,
-    required String lastName,
-    required String emailAddress,
-    required String password,
-    required bool isAgreed}) {
+Reader<IAuthApi, Future<Either<AuthFailure, Unit>>> signUp({
+  required String firstName,
+  required String lastName,
+  required String emailAddress,
+  required String phone,
+  required DateTime birthdate,
+  required String grade,
+  required String school,
+  required String address,
+}) {
   return Reader(
     (api) => _isValidEmail(emailAddress)
-        .flatMap((_) => _isValidPassword(password))
+        .flatMap((_) => _isValidPhone(phone))
         .flatMap((_) => _isNotEmpty(firstName))
         .flatMap((_) => _isNotEmpty(lastName))
-        .flatMapTask((_) => _signUp(EmailAddress(emailAddress), Password(password), firstName, lastName, isAgreed, api))
+        .flatMapTask((_) => _signUp(
+              firstName: firstName,
+              lastName: lastName,
+              email: EmailAddress(emailAddress),
+              phone: Phone(phone),
+              birthdate: birthdate,
+              school: school,
+              grade: grade,
+              address: address,
+              api: api,
+            ))
         .run(),
   );
 }
 
-TaskEither<AuthFailure, Unit> _signUp(
-  EmailAddress email,
-  Password password,
-  String firstName,
-  String lastName,
-  bool isAggreed,
-  IAuthApi api,
-) =>
+TaskEither<AuthFailure, Unit> _signUp({
+  required String firstName,
+  required String lastName,
+  required EmailAddress email,
+  required Phone phone,
+  required DateTime birthdate,
+  required String grade,
+  required String school,
+  required String address,
+  required IAuthApi api,
+}) =>
     TaskEither.tryCatch(
       () => api.signUp(
-          email: email, password: password, firstName: firstName, lastName: lastName, isAgreedToTerms: isAggreed),
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+        birthdate: birthdate,
+        school: school,
+        grade: grade,
+        address: address,
+      ),
       (error, __) {
         if (error is AuthFailure) return error;
         if (error is DioError) {
-          if (error.response!.statusCode == 404) {
-            return const AuthFailure.emailNotFound();
+          if (error.response!.statusCode == 400) {
+            print(error.response!.statusCode);
+            print(error.response!.data);
+            return switch (error.response!.data['error_code']) {
+              'UsernameExistsException' => const AuthFailure.emailAlreadyUsed(),
+              'InvalidParam' ||
+              'InvalidParameterException' =>
+                AuthFailure.invalidParam(error.response!.data['invalid_param'] ?? ''),
+              _ => const AuthFailure.serverError(),
+            };
           }
         }
         return const AuthFailure.serverError();

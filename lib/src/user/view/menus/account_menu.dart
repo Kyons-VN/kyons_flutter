@@ -15,11 +15,11 @@ class AccountMenu extends StatelessWidget {
       children: [
         Heading(4, t(context).profile),
         AppSizesUnit.sizedBox24,
-        MenuItem(text: t(context).yourAccount, path: AppPaths.account.path),
+        MenuItem(text: t(context).yourAccount, path: AppPaths.summary.path),
         AppSizesUnit.sizedBox16,
-        MenuItem(text: t(context).transactionHistory, path: AppPaths.transactionHistory.path),
+        MenuItem(text: t(context).transactionHistory, path: AppPaths.transactionsHistory.path),
         AppSizesUnit.sizedBox16,
-        MenuItem(text: t(context).yourServices, path: AppPaths.services.path),
+        MenuItem(text: t(context).yourServices, path: AppPaths.servicesHistory.path),
       ],
     );
   }

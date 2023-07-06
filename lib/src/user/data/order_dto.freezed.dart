@@ -20,6 +20,7 @@ BalanceDto _$BalanceDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BalanceDto {
+  @JsonKey(name: 'balance')
   int get value => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +35,7 @@ abstract class $BalanceDtoCopyWith<$Res> {
           BalanceDto value, $Res Function(BalanceDto) then) =
       _$BalanceDtoCopyWithImpl<$Res, BalanceDto>;
   @useResult
-  $Res call({int value});
+  $Res call({@JsonKey(name: 'balance') int value});
 }
 
 /// @nodoc
@@ -69,7 +70,7 @@ abstract class _$$_BalanceDtoCopyWith<$Res>
       __$$_BalanceDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int value});
+  $Res call({@JsonKey(name: 'balance') int value});
 }
 
 /// @nodoc
@@ -97,12 +98,14 @@ class __$$_BalanceDtoCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_BalanceDto extends _BalanceDto {
-  const _$_BalanceDto({required this.value}) : super._();
+  const _$_BalanceDto({@JsonKey(name: 'balance') required this.value})
+      : super._();
 
   factory _$_BalanceDto.fromJson(Map<String, dynamic> json) =>
       _$$_BalanceDtoFromJson(json);
 
   @override
+  @JsonKey(name: 'balance')
   final int value;
 
   @override
@@ -137,13 +140,15 @@ class _$_BalanceDto extends _BalanceDto {
 }
 
 abstract class _BalanceDto extends BalanceDto {
-  const factory _BalanceDto({required final int value}) = _$_BalanceDto;
+  const factory _BalanceDto(
+      {@JsonKey(name: 'balance') required final int value}) = _$_BalanceDto;
   const _BalanceDto._() : super._();
 
   factory _BalanceDto.fromJson(Map<String, dynamic> json) =
       _$_BalanceDto.fromJson;
 
   @override
+  @JsonKey(name: 'balance')
   int get value;
   @override
   @JsonKey(ignore: true)

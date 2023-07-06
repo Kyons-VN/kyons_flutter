@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../core/helper/translate.dart';
-import '../../tutor/app/tutor_provider.dart';
-import '../../tutor/domain/session.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../core/helper/translate.dart';
 import '../../knowledge/data/knowledge_entities.dart';
+import '../../tutor/app/tutor_provider.dart';
+import '../../tutor/domain/session.dart';
 
 void showCallTutor(BuildContext context, Lesson lesson) {
   showModalBottomSheet<void>(
@@ -116,7 +116,7 @@ void showCallTutor(BuildContext context, Lesson lesson) {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text(t(context).cancel)),
+                            child: Text(t(context).cancelRequest)),
                       ],
                       if (tutorState.sessionStatus.isSome())
                         ElevatedButton(

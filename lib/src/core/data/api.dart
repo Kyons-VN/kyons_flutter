@@ -6,18 +6,19 @@ import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../boostrap/config_reader.dart';
+import '../../authentication/data/auth_service.dart' as auth_service;
 
 final serverApi = ConfigReader.serverApi();
+const kAccessToken = 'access_token';
+const kRefreshToken = 'refresh_token';
 
 class Api {
   final Dio api = Dio();
-  String accessToken = '';
-  String refreshToken = '';
 
   Api._() {
     api.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
-      final prefs = await SharedPreferences.getInstance();
-      accessToken = prefs.getString('token') ?? '';
+      // final prefs = await SharedPreferences.getInstance();
+      final accessToken = auth_service.getToken();
       if (!options.path.contains('http')) {
         options.path = '$serverApi${options.path}';
       }
@@ -25,15 +26,18 @@ class Api {
       return handler.next(options);
     }, onError: (DioError error, handler) async {
       if ((error.response?.statusCode == 401)) {
+        // if (refreshToken.isNotEmpty) {
+        final prefs = await SharedPreferences.getInstance();
+        final refreshToken = prefs.getString(kRefreshToken) ?? '';
         if (refreshToken.isEmpty) {
-          final prefs = await SharedPreferences.getInstance();
-          refreshToken = prefs.getString('refreshToken') ?? '';
-          if (refreshToken.isEmpty) {
-            if (await getRefreshToken()) {
-              return handler.resolve(await _retry(error.requestOptions));
-            }
+          final newToken = await getRefreshToken();
+          if (newToken.isNotEmpty) {
+            auth_service.setToken(newToken);
+            error.requestOptions.headers['Authorization'] = 'Bearer $newToken';
+            return handler.resolve(await _retry(error.requestOptions));
           }
         }
+        // }
       }
       return handler.next(error);
     }));
@@ -50,29 +54,29 @@ class Api {
         data: requestOptions.data, queryParameters: requestOptions.queryParameters, options: options);
   }
 
-  Future<bool> getRefreshToken() async {
+  Future<String> getRefreshToken() async {
     final prefs = await SharedPreferences.getInstance();
-    final refreshToken = prefs.getString('refreshToken') ?? '';
-    final response = await api.post('/auth/refresh', data: {'refreshToken': refreshToken});
+    final refreshToken = prefs.getString(kRefreshToken) ?? '';
+    final Dio request = Dio();
+    final response = await request.post('/auth/refresh', data: {kRefreshToken: refreshToken});
 
     if (response.statusCode == 201) {
-      accessToken = response.data;
-      return true;
+      final accessToken = response.data;
+      return accessToken;
     } else {
       // refresh token is wrong
       clear();
-      return false;
+      return '';
     }
   }
 
   clear() {
-    accessToken = '';
-    refreshToken = '';
+    auth_service.removeRefreshToken();
   }
 }
 
 ApiFailure handleError(error, StackTrace stackTrace) {
-  _log.info('ApiFailure handleError');
+  _log.shout('ApiFailure handleError', error, stackTrace);
   if (error is ApiFailure) {
     return error;
   } else if (error is DioError) {

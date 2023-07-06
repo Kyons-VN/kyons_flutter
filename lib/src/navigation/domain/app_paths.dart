@@ -31,8 +31,11 @@ class AppPaths {
 
   // Account
   static const account = AppPath(path: '/account');
-  static const transactionHistory = AppPath(path: '/account/transaction-history');
-  static const services = AppPath(path: '/account/services');
+  static const summary = AppPath(path: '/account/summary');
+  static const transactionsHistory = AppPath(path: '/account/transactions-history');
+  static const servicesHistory = AppPath(path: '/account/services-history');
+  static const packages = AppPath(path: '/account/packages');
+  static const topUp = AppPath(path: '/account/top-up');
 
   // User
   static const user = AppPath(path: '/user');

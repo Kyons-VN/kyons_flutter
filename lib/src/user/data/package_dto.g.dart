@@ -8,15 +8,15 @@ part of 'package_dto.dart';
 
 _$_PackageDto _$$_PackageDtoFromJson(Map<String, dynamic> json) =>
     _$_PackageDto(
-      id: json['id'] as String,
+      id: json['id'] as int,
       name: json['name'] as String,
       description: json['description'] as String,
-      discount: json['discount'] as Map<String, dynamic>,
-      limit: json['limit'] as int,
-      price: json['price'] as int,
-      salePrice: json['salePrice'] as int,
-      items: (json['items'] as List<dynamic>)
-          .map((e) => e as Map<String, dynamic>)
+      discount: DiscountDto.fromJson(json['discount'] as Map<String, dynamic>),
+      limit: json['limit'] as int? ?? 99,
+      price: json['price'] as String,
+      salePrice: json['sale_price'] as String,
+      items: (json['package_items'] as List<dynamic>)
+          .map((e) => PackageItemDto.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -28,15 +28,15 @@ Map<String, dynamic> _$$_PackageDtoToJson(_$_PackageDto instance) =>
       'discount': instance.discount,
       'limit': instance.limit,
       'price': instance.price,
-      'salePrice': instance.salePrice,
-      'items': instance.items,
+      'sale_price': instance.salePrice,
+      'package_items': instance.items,
     };
 
 _$_DiscountDto _$$_DiscountDtoFromJson(Map<String, dynamic> json) =>
     _$_DiscountDto(
       type: $enumDecode(_$DiscountTypeEnumMap, json['discount_type'],
           unknownValue: DiscountType.amount),
-      amount: json['discount_amount'] as int,
+      amount: json['discount_amount'] as String? ?? '0.0',
     );
 
 Map<String, dynamic> _$$_DiscountDtoToJson(_$_DiscountDto instance) =>
@@ -52,7 +52,7 @@ const _$DiscountTypeEnumMap = {
 
 _$_PackageItemDto _$$_PackageItemDtoFromJson(Map<String, dynamic> json) =>
     _$_PackageItemDto(
-      id: json['id'] as String,
+      id: json['id'] as int,
       service:
           PackageServiceDto.fromJson(json['service'] as Map<String, dynamic>),
     );
@@ -65,17 +65,17 @@ Map<String, dynamic> _$$_PackageItemDtoToJson(_$_PackageItemDto instance) =>
 
 _$_PackageServiceDto _$$_PackageServiceDtoFromJson(Map<String, dynamic> json) =>
     _$_PackageServiceDto(
-      name: json['name'] as String,
-      type: $enumDecode(_$PackageServiceTypeEnumMap, json['service']),
-      amount: json['amount'] as int,
+      name: json['service_type_text'] as String,
+      type: $enumDecode(_$PackageServiceTypeEnumMap, json['service_type']),
+      amount: json['service_amount'] as int,
     );
 
 Map<String, dynamic> _$$_PackageServiceDtoToJson(
         _$_PackageServiceDto instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'service': _$PackageServiceTypeEnumMap[instance.type]!,
-      'amount': instance.amount,
+      'service_type_text': instance.name,
+      'service_type': _$PackageServiceTypeEnumMap[instance.type]!,
+      'service_amount': instance.amount,
     };
 
 const _$PackageServiceTypeEnumMap = {

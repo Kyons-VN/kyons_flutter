@@ -8,7 +8,7 @@ part 'order_dto.g.dart';
 @freezed
 class BalanceDto with _$BalanceDto {
   const BalanceDto._();
-  const factory BalanceDto({required int value}) = _BalanceDto;
+  const factory BalanceDto({@JsonKey(name: 'balance') required int value}) = _BalanceDto;
   // fromJson
   factory BalanceDto.fromJson(Map<String, dynamic> json) => _$BalanceDtoFromJson(json);
   // toDomain
