@@ -8,7 +8,12 @@ part of 'user_dto.dart';
 
 _$_UserDto _$$_UserDtoFromJson(Map<String, dynamic> json) => _$_UserDto(
       id: json['id'] as String,
+      address: json['address'] as String,
       email: json['email'] as String,
+      birthdate: DateTime.parse(json['birthdate'] as String),
+      grade: json['grade'] as String,
+      phone: json['phone'] as String,
+      school: json['school'] as String,
       firstName: json['first_name'] as String,
       lastName: json['last_name'] as String,
       studyType: $enumDecode(_$StudyTypeEnumMap, json['study_type'],
@@ -18,7 +23,12 @@ _$_UserDto _$$_UserDtoFromJson(Map<String, dynamic> json) => _$_UserDto(
 Map<String, dynamic> _$$_UserDtoToJson(_$_UserDto instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'address': instance.address,
       'email': instance.email,
+      'birthdate': instance.birthdate.toIso8601String(),
+      'grade': instance.grade,
+      'phone': instance.phone,
+      'school': instance.school,
       'first_name': instance.firstName,
       'last_name': instance.lastName,
       'study_type': _$StudyTypeEnumMap[instance.studyType]!,

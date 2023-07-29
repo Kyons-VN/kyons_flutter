@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../knowledge/data/knowledge_entities.dart';
+import '../../test_knowledge/data/test_entities.dart';
 
 part 'knowledge_dto.freezed.dart';
 part 'knowledge_dto.g.dart';
@@ -15,7 +16,8 @@ class SubjectDto with _$SubjectDto {
   }) = _SubjectDto;
 
   factory SubjectDto.fromJson(Map<String, dynamic> json) => _$SubjectDtoFromJson(json);
-  Subject toDomain() => Subject(id: id.toString(), name: label, programs: programs.map((e) => e.toDomain()).toList());
+  Subject toDomain() =>
+      Subject(id: id.toString(), name: label, programs: programs.map((e) => e.toDomain()).toList(), label: '');
 }
 
 @freezed
@@ -190,7 +192,7 @@ class LearningPointDto with _$LearningPointDto {
   factory LearningPointDto.fromJson(Map<String, dynamic> json) => _$LearningPointDtoFromJson(json);
   LearningPoint toDomain() => LearningPoint(
       id: id.toString(),
-      diffucultyId: difficultyId.toString(),
+      difficultyId: difficultyId.toString(),
       learningPoint: learningPoint,
       topic: TopicDto(id: topicId, name: topicName).toDomain());
 }
@@ -204,8 +206,27 @@ class LearningGoalDto with _$LearningGoalDto {
     required String name,
     @JsonKey(name: 'min_topic_numb', defaultValue: 0) required int minTopic,
     @JsonKey(name: 'max_topic_numb', defaultValue: 99) required int maxTopic,
+    @JsonKey(name: 'mock_test_templates', defaultValue: []) required List<TestTemplateDto> templates,
   }) = _LearningGoalDto;
   factory LearningGoalDto.fromJson(Map<String, dynamic> json) => _$LearningGoalDtoFromJson(json);
-  LearningGoal toDomain() =>
-      LearningGoal(id: id.toString(), name: name, progress: progress, minTopics: minTopic, maxTopics: maxTopic);
+  LearningGoal toDomain() => LearningGoal(
+      id: id.toString(),
+      name: name,
+      progress: progress,
+      minTopics: minTopic,
+      maxTopics: maxTopic,
+      templates: templates.map((template) => template.toDomain()).toList());
+}
+
+@freezed
+class TestTemplateDto with _$TestTemplateDto {
+  const TestTemplateDto._();
+  const factory TestTemplateDto({
+    required int id,
+    required String name,
+  }) = _TestTemplateDto;
+
+  factory TestTemplateDto.fromJson(Map<String, dynamic> json) => _$TestTemplateDtoFromJson(json);
+
+  TestTemplate toDomain() => TestTemplate(id: id.toString(), name: name);
 }

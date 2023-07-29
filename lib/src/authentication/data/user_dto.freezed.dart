@@ -21,7 +21,12 @@ UserDto _$UserDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserDto {
   String get id => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  DateTime get birthdate => throw _privateConstructorUsedError;
+  String get grade => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
+  String get school => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
   String get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
@@ -42,7 +47,12 @@ abstract class $UserDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String address,
       String email,
+      DateTime birthdate,
+      String grade,
+      String phone,
+      String school,
       @JsonKey(name: 'first_name')
           String firstName,
       @JsonKey(name: 'last_name')
@@ -66,7 +76,12 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
   @override
   $Res call({
     Object? id = null,
+    Object? address = null,
     Object? email = null,
+    Object? birthdate = null,
+    Object? grade = null,
+    Object? phone = null,
+    Object? school = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? studyType = null,
@@ -76,9 +91,29 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      birthdate: null == birthdate
+          ? _value.birthdate
+          : birthdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      grade: null == grade
+          ? _value.grade
+          : grade // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      school: null == school
+          ? _value.school
+          : school // ignore: cast_nullable_to_non_nullable
               as String,
       firstName: null == firstName
           ? _value.firstName
@@ -105,7 +140,12 @@ abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String address,
       String email,
+      DateTime birthdate,
+      String grade,
+      String phone,
+      String school,
       @JsonKey(name: 'first_name')
           String firstName,
       @JsonKey(name: 'last_name')
@@ -126,7 +166,12 @@ class __$$_UserDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? address = null,
     Object? email = null,
+    Object? birthdate = null,
+    Object? grade = null,
+    Object? phone = null,
+    Object? school = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? studyType = null,
@@ -136,9 +181,29 @@ class __$$_UserDtoCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      birthdate: null == birthdate
+          ? _value.birthdate
+          : birthdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      grade: null == grade
+          ? _value.grade
+          : grade // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      school: null == school
+          ? _value.school
+          : school // ignore: cast_nullable_to_non_nullable
               as String,
       firstName: null == firstName
           ? _value.firstName
@@ -161,7 +226,12 @@ class __$$_UserDtoCopyWithImpl<$Res>
 class _$_UserDto extends _UserDto {
   const _$_UserDto(
       {required this.id,
+      required this.address,
       required this.email,
+      required this.birthdate,
+      required this.grade,
+      required this.phone,
+      required this.school,
       @JsonKey(name: 'first_name')
           required this.firstName,
       @JsonKey(name: 'last_name')
@@ -177,7 +247,17 @@ class _$_UserDto extends _UserDto {
   @override
   final String id;
   @override
+  final String address;
+  @override
   final String email;
+  @override
+  final DateTime birthdate;
+  @override
+  final String grade;
+  @override
+  final String phone;
+  @override
+  final String school;
   @override
   @JsonKey(name: 'first_name')
   final String firstName;
@@ -191,7 +271,7 @@ class _$_UserDto extends _UserDto {
 
   @override
   String toString() {
-    return 'UserDto(id: $id, email: $email, firstName: $firstName, lastName: $lastName, studyType: $studyType)';
+    return 'UserDto(id: $id, address: $address, email: $email, birthdate: $birthdate, grade: $grade, phone: $phone, school: $school, firstName: $firstName, lastName: $lastName, studyType: $studyType)';
   }
 
   @override
@@ -200,7 +280,13 @@ class _$_UserDto extends _UserDto {
         (other.runtimeType == runtimeType &&
             other is _$_UserDto &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.address, address) || other.address == address) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.birthdate, birthdate) ||
+                other.birthdate == birthdate) &&
+            (identical(other.grade, grade) || other.grade == grade) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.school, school) || other.school == school) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -211,8 +297,8 @@ class _$_UserDto extends _UserDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, email, firstName, lastName, studyType);
+  int get hashCode => Object.hash(runtimeType, id, address, email, birthdate,
+      grade, phone, school, firstName, lastName, studyType);
 
   @JsonKey(ignore: true)
   @override
@@ -231,7 +317,12 @@ class _$_UserDto extends _UserDto {
 abstract class _UserDto extends UserDto {
   const factory _UserDto(
       {required final String id,
+      required final String address,
       required final String email,
+      required final DateTime birthdate,
+      required final String grade,
+      required final String phone,
+      required final String school,
       @JsonKey(name: 'first_name')
           required final String firstName,
       @JsonKey(name: 'last_name')
@@ -246,7 +337,17 @@ abstract class _UserDto extends UserDto {
   @override
   String get id;
   @override
+  String get address;
+  @override
   String get email;
+  @override
+  DateTime get birthdate;
+  @override
+  String get grade;
+  @override
+  String get phone;
+  @override
+  String get school;
   @override
   @JsonKey(name: 'first_name')
   String get firstName;

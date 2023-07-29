@@ -1,8 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../authentication/domain/user.dart';
 import '../../authentication/domain/value_objects.dart';
 import '../../knowledge/domain/i_knowledge.dart';
+import '../data/auth_entities.dart';
 
 abstract class IAuthApi {
   Future<Unit> signInEmailPassword({

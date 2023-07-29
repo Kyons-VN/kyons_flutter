@@ -13,6 +13,49 @@ enum StudyType {
   // String toString() => '';
 }
 
+abstract class ISubject {
+  final String id;
+  final String name;
+  final String label;
+  final List<IProgram> programs;
+
+  ISubject({required this.id, required this.name, required this.label, required this.programs});
+}
+
+abstract class IProgram {
+  final String id;
+  final String name;
+  final String subjectId;
+  final List<ILearningGoalSelection> learningGoals;
+
+  IProgram({required this.id, required this.name, required this.subjectId, required this.learningGoals});
+}
+
+abstract class ILearningGoalSelection {
+  final String id;
+  final String name;
+  final int? maxTopics;
+  final int? minTopics;
+  final bool canSelectTopic;
+  final IMockTestTemplate mockTestTemplates;
+
+  ILearningGoalSelection({
+    required this.id,
+    required this.name,
+    this.maxTopics,
+    this.minTopics,
+    required this.canSelectTopic,
+    required this.mockTestTemplates,
+  });
+}
+
+abstract class IMockTestTemplate {
+  final String id;
+  final String name;
+
+  IMockTestTemplate({required this.id, required this.name});
+}
+
 abstract class IKnowledgeApi {
   Future<List<Subject>> getSubjects();
   Future<List<Program>> getStudentProgram();

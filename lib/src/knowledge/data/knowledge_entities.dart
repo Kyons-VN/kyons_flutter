@@ -1,9 +1,12 @@
+import '../../test_knowledge/data/test_entities.dart';
+
 class Subject {
   final String id;
   final String name;
+  final String label;
   final List<Program> programs;
-  Subject({required this.programs, required this.id, required this.name});
-  factory Subject.empty() => Subject(id: '', name: '', programs: []);
+  Subject({required this.label, required this.programs, required this.id, required this.name});
+  factory Subject.empty() => Subject(id: '', name: '', programs: [], label: '');
   Map<String, dynamic> toJson() => {'id': id, 'name': name, 'programs': programs.map((p) => p.toJson())};
 }
 
@@ -32,10 +35,18 @@ class LearningGoal {
   final double progress;
   final int maxTopics;
   final int minTopics;
+  final List<TestTemplate> templates;
 
-  const LearningGoal(
-      {required this.id, required this.name, required this.progress, this.maxTopics = 99, this.minTopics = 0});
-  factory LearningGoal.empty() => const LearningGoal(id: '', name: '', progress: 0.0, maxTopics: 99, minTopics: 0);
+  const LearningGoal({
+    required this.templates,
+    required this.id,
+    required this.name,
+    required this.progress,
+    this.maxTopics = 99,
+    this.minTopics = 0,
+  });
+  factory LearningGoal.empty() =>
+      const LearningGoal(id: '', name: '', progress: 0.0, maxTopics: 99, minTopics: 0, templates: []);
   Map<String, dynamic> toJson() =>
       {'id': id, 'name': name, 'progress': progress, 'maxTopic': maxTopics, 'minTopic': minTopics};
   static String emptyJsonString() => LearningGoal.empty().toJson().toString();
@@ -149,22 +160,13 @@ class Lesson {
 class LearningPoint {
   final String id;
   final Topic topic;
-  final String diffucultyId;
+  final String difficultyId;
   final String learningPoint;
 
   const LearningPoint({
-    required this.diffucultyId,
+    required this.difficultyId,
     required this.learningPoint,
     required this.id,
     required this.topic,
   });
 }
-
-// class LessonCategory {
-//   final Category category;
-//   final Topic topic;
-//   final List<Lesson> lessons;
-
-//   const LessonCategory({required this.category, required this.topic, required this.lessons});
-//   factory LessonCategory.empty() => LessonCategory(category: Category.empty(), topic: Topic.empty(), lessons: []);
-// }

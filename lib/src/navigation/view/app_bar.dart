@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_package/shared_package.dart';
+
 import '../../authentication/app/current_user_provider.dart';
 import '../../core/helper/translate.dart';
 import '../../navigation/domain/app_paths.dart';
-import 'package:shared_package/shared_package.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final AppPath? backPath;
@@ -27,13 +28,13 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           : [
               // GestureDetector(
               //   onTap: () {},
-              //   child: const Icon(AppIcons.notification),
+              //   child: const Icon(AppIcons.Notification),
               // ),
               AppSizesUnit.sizedBox24,
               Builder(
                 builder: (context) {
                   return IconButton(
-                    icon: const Icon(AppIcons.menuHambuger),
+                    icon: const Icon(AppIcons.menuHamburger),
                     onPressed: () => Scaffold.of(context).openEndDrawer(),
                   );
                 },

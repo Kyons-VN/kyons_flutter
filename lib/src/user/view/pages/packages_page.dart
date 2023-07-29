@@ -41,7 +41,7 @@ class PackagesPage extends StatelessWidget {
               //   child: Row(children: [
               //     Expanded(child: Text(t(context).depositToAccount, style: Theme.of(context).textTheme.bold)),
               //     AppSizesUnit.sizedBox8,
-              //     const Icon(AppIcons.arrowRight, color: AppColors.orange, size: AppSizesUnit.medium24),
+              //     const Icon(AppIcons.ArrowRight, color: AppColors.orange, size: AppSizesUnit.medium24),
               //   ]),
               // ),
               AppSizesUnit.sizedBox24,

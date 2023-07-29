@@ -28,6 +28,10 @@ class LessonItemsListWidget extends StatelessWidget {
             child: Column(
               children: [
                 const Icon(AppIcons.arrowUp, color: AppColors.primaryBlue),
+                const Icon(AppIcons.arrowUp, color: AppColors.primaryBlue),
+                const Icon(AppIcons.arrowUp, color: AppColors.primaryBlue),
+                const Icon(AppIcons.arrowUp, color: AppColors.primaryBlue),
+                const Icon(AppIcons.arrowUp, color: AppColors.primaryBlue),
                 CustomPaint(
                     painter: LineDashedPainter((lessons.length > availableBlocs
                             ? lessons.length

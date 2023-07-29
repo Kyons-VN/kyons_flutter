@@ -25,11 +25,11 @@
 //           onTap: () {
 //             openCallback();
 //           },
-//           child: AppIcons.lessonContentIcon,
+//           child: AppIcons.LessonContentIcon,
 //         ),
 //         GestureDetector(
 //           onTap: () {},
-//           child: AppIcons.notificationIcon,
+//           child: AppIcons.NotificationIcon,
 //         ),
 //         Builder(
 //           builder: (context) {

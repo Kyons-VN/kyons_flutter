@@ -8,8 +8,8 @@ import '../../../boostrap/config_reader.dart';
 import '../../authentication/app/auth_provider.dart';
 import '../../authentication/data/auth_service.dart' as auth_service;
 import '../../authentication/domain/i_auth.dart';
-import '../../authentication/domain/user.dart';
 import '../../authentication/domain/value_objects.dart';
+import '../data/auth_entities.dart';
 
 part 'sign_in_provider.freezed.dart';
 part 'sign_in_state.dart';

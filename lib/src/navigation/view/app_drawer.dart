@@ -46,7 +46,7 @@ class AppDrawer extends ConsumerWidget {
           const Divider(),
           DrawerMenuItem(appPath: AppPaths.user, icon: AppIcons.profile, pageName: t(context).profile),
           const Divider(),
-          DrawerMenuItem(appPath: AppPaths.account, icon: AppIcons.bankTransfer, pageName: t(context).account),
+          DrawerMenuItem(appPath: AppPaths.account, icon: AppIcons.inventory, pageName: t(context).account),
           // const Divider(),
           // DrawerMenuItem(appPath: AppPaths.settings, icon: Icons.settings, pageName: t(context).settings),
           // ListTile(

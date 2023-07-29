@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:fpdart/fpdart.dart';
+import 'package:fpdart/fpdart.dart' hide id;
 import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../authentication/domain/i_auth.dart';
-import '../../authentication/domain/user.dart';
 import '../../authentication/domain/value_objects.dart';
 import '../../core/data/api.dart';
+import 'auth_entities.dart';
 
 Future<Unit> setToken(String token) async {
   final prefs = await SharedPreferences.getInstance();
@@ -223,13 +223,14 @@ TaskEither<AuthFailure, Unit> _signUp({
           if (error.response!.statusCode == 400) {
             print(error.response!.statusCode);
             print(error.response!.data);
-            return switch (error.response!.data['error_code']) {
-              'UsernameExistsException' => const AuthFailure.emailAlreadyUsed(),
-              'InvalidParam' ||
-              'InvalidParameterException' =>
-                AuthFailure.invalidParam(error.response!.data['invalid_param'] ?? ''),
-              _ => const AuthFailure.serverError(),
-            };
+            if (error.response!.data['error_code'] == 'UsernameExistsException') {
+              return const AuthFailure.emailAlreadyUsed();
+            } else if (error.response!.data['error_code'] == 'InvalidParam' ||
+                error.response!.data['error_code'] == 'InvalidParameterException') {
+              return AuthFailure.invalidParam(error.response!.data['invalid_param'] ?? '');
+            } else {
+              return const AuthFailure.serverError();
+            }
           }
         }
         return const AuthFailure.serverError();

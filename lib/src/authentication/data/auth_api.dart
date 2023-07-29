@@ -10,11 +10,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../authentication/data/auth_service.dart' as auth_service;
 import '../../authentication/data/user_dto.dart';
 import '../../authentication/domain/i_auth.dart';
-import '../../authentication/domain/user.dart';
 import '../../authentication/domain/value_objects.dart';
 import '../../core/data/api.dart';
 import '../../knowledge/domain/i_knowledge.dart';
 import '../../navigation/data/navigation_service.dart' as navigation_service;
+import 'auth_entities.dart';
 
 class AuthApi implements IAuthApi {
   final Dio api = Dio();
@@ -97,7 +97,7 @@ class AuthApi implements IAuthApi {
   @override
   Future<Unit> setCurrentUser(User user) async {
     final prefs = await SharedPreferences.getInstance();
-    return await prefs.setString('user', jsonEncode(user.toJson())).then((value) => unit);
+    return await prefs.setString('user', jsonEncode(user.toDto().toJson())).then((value) => unit);
   }
 
   @override

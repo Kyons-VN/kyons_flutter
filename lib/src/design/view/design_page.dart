@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shared_package/shared_package.dart';
+
 import '../../navigation/view/app_bar.dart';
 import '../../navigation/view/app_drawer.dart';
-import 'package:shared_package/shared_package.dart';
 
 class DesignPage extends StatelessWidget {
   const DesignPage({Key? key}) : super(key: key);

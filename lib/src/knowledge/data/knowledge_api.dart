@@ -205,6 +205,7 @@ class KnowledgeApi implements IKnowledgeApi {
         progress: json['progress'],
         maxTopics: json['maxTopic'],
         minTopics: json['minTopic'],
+        templates: json['templates'],
       );
       return learningGoal;
     }
@@ -223,6 +224,7 @@ class KnowledgeApi implements IKnowledgeApi {
         progress: json['progress'],
         maxTopics: json['maxTopic'],
         minTopics: json['minTopic'],
+        templates: json['templates'],
       );
       return learningGoal;
     }
@@ -238,7 +240,7 @@ class KnowledgeApi implements IKnowledgeApi {
     final response = api.post('$serverApi/students/learning_goal/submit', data: params);
     return response.then(handleResponseError).then((value) async {
       log('createLearningGoal: $value');
-      return LearningGoal(id: value['learning_goal_id'].toString(), name: value['learning_goal_name'], progress: 0);
+      return LearningGoalDto.fromJson(value).toDomain();
     });
   }
 

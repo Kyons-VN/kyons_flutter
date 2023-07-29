@@ -87,7 +87,7 @@ class TestContentWidget extends HookWidget {
             //   AppSizesUnit.sizedBox24,
             //   ElevatedButton(
             //     onPressed: answersResult.entries.length == testLength ? () => submitCallback() : null,
-            //     child: const Icon(AppIcons.submit),
+            //     child: const Icon(AppIcons.Submit),
             //   ),
             // ],
           ],

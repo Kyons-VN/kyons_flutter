@@ -63,6 +63,9 @@ class SignUpForm extends HookConsumerWidget {
     final birthdateController = useTextEditingController(text: state.birthdate.date);
     final gradeController = useTextEditingController(text: state.grade);
     final addressController = useTextEditingController(text: state.address);
+    final phoneController = useTextEditingController(text: state.phone.isValid() ? state.phone.getValueOrError() : '');
+    final emailController =
+        useTextEditingController(text: state.emailAddress.isValid() ? state.emailAddress.getValueOrError() : '');
 
     ref.listen<SignUpState>(signUpNotifierProvider, (previous, next) {
       if (!(previous!.isSubmitting && !next.isSubmitting)) return;
@@ -151,12 +154,19 @@ class SignUpForm extends HookConsumerWidget {
             ),
             AppSizesUnit.sizedBox8,
             TextFormField(
-              key: const Key('signUpForm_email_textField'),
+              controller: emailController,
               autovalidateMode: state.shouldShowErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,
               decoration: InputDecoration(
                 labelText: '${t(context).email} (*)',
               ),
-              onChanged: controller.emailChanged,
+              onChanged: (value) {
+                final filterValue = value.replaceAll(RegExp(r'[^a-z0-9@.\+]'), '');
+                controller.emailChanged(filterValue);
+                emailController.value = TextEditingValue(
+                    text: filterValue,
+                    selection: TextSelection.collapsed(
+                        offset: emailController.selection.baseOffset - (value.length - filterValue.length)));
+              },
               validator: (email) {
                 if (invalidEmails.value.contains(email)) {
                   return t(context).emailAlreadyUsed;
@@ -164,23 +174,26 @@ class SignUpForm extends HookConsumerWidget {
                 return state.emailAddress.isInvalid() ? t(context).invalidThing(t(context).email).firstCapital() : null;
               },
               keyboardType: TextInputType.emailAddress,
-              initialValue: state.emailAddress.isValid() ? state.emailAddress.getValueOrError() : '',
             ),
             AppSizesUnit.sizedBox8,
             TextFormField(
-              key: const Key('signUpForm_phone_textField'),
+              controller: phoneController,
               autovalidateMode: state.shouldShowErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,
               decoration: InputDecoration(
                 labelText: '${t(context).phone} (*)',
               ),
               onChanged: (value) {
-                controller.phoneChanged(value);
+                final filterValue = value.replaceAll(RegExp(r'[^0-9]'), '');
+                controller.phoneChanged(filterValue);
+                phoneController.value = TextEditingValue(
+                    text: filterValue,
+                    selection: TextSelection.collapsed(
+                        offset: phoneController.selection.baseOffset - (value.length - filterValue.length)));
               },
               validator: (_) {
                 return state.phone.isInvalid() ? t(context).invalidThing(t(context).phone).firstCapital() : null;
               },
-              keyboardType: TextInputType.name,
-              initialValue: state.phone.isValid() ? state.phone.getValueOrError() : '',
+              keyboardType: TextInputType.phone,
             ),
             AppSizesUnit.sizedBox24,
             // if (signUpState.shouldShowErrorMessages)

@@ -18,7 +18,7 @@ class Api {
   Api._() {
     api.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
       // final prefs = await SharedPreferences.getInstance();
-      final accessToken = auth_service.getToken();
+      final accessToken = await auth_service.getToken();
       if (!options.path.contains('http')) {
         options.path = '$serverApi${options.path}';
       }

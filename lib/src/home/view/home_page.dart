@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/flutter_svg.dart' hide Svg;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../core/helper/translate.dart';
+import '../../core/view/assets/student_assets.dart';
+import '../../core/view/widgets/large_blue_btn.dart';
 import '../../knowledge/data/knowledge_entities.dart';
 import '../../navigation/domain/app_paths.dart';
-import '../../navigation/view/app_bar.dart';
 import '../../navigation/view/app_drawer.dart';
 import '../app/home_provider.dart';
 
@@ -29,37 +31,182 @@ class HomePage extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        appBar: const MainAppBar(),
         endDrawer: const AppDrawer(),
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height -
-                  AppSizesUnit.large48 -
-                  AppSizesUnit.medium24 -
-                  const MainAppBar().preferredSize.height,
-              child: const Padding(
-                padding: EdgeInsets.fromLTRB(
-                  AppSizesUnit.medium24,
-                  AppSizesUnit.large36,
-                  AppSizesUnit.medium24,
-                  0,
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      print('object');
+                    },
+                    icon: const Icon(
+                      AppIcons.settings,
+                      color: AppColors.white,
+                    ),
+                  ),
+                ],
+                leadingWidth: MediaQuery.of(context).size.width - AppSizesUnit.medium16 * 2,
+                toolbarHeight: 100,
+                leading: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSizesUnit.medium16,
+                    vertical: AppSizesUnit.medium16,
+                  ),
+                  child: Row(
+                    children: [
+                      StudentAssets.avatar,
+                      AppSizesUnit.sizedBox8,
+                      Heading(6, t(context).hello, color: AppColors.white),
+                    ],
+                  ),
                 ),
-                child: ProgramsWidget(),
+                expandedHeight: 180.0,
+                flexibleSpace: FlexibleSpaceBar(
+                  titlePadding: const EdgeInsets.only(left: 16, top: 16),
+                  // background: SvgPicture.asset(
+                  //   'assets/images/home.svg',
+                  //   fit: BoxFit.fill,
+                  // ),
+                  background: Container(
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(AppSizesUnit.medium16),
+                      bottomRight: Radius.circular(AppSizesUnit.medium16),
+                    )),
+                    clipBehavior: Clip.antiAlias,
+                    child: StudentAssets.homeImageXs,
+                  ),
+                  centerTitle: true,
+                ),
+                pinned: true,
+              ),
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      AppSizesUnit.medium16,
+                      AppSizesUnit.medium20,
+                      AppSizesUnit.medium16,
+                      0,
+                    ),
+                    child: HomeWidget(),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () => context.go(AppPaths.mockTestLearningGoal.path),
+        //   child: const Icon(
+        //     AppIcons.Add,
+        //     color: AppColors.white,
+        //   ),
+        // ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      ),
+    );
+  }
+}
+
+class HomeWidget extends ConsumerWidget {
+  const HomeWidget({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(homeNotifierProvider.notifier);
+    return Column(
+      children: [
+        Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          Heading(7, t(context).shortcuts),
+          AppSizesUnit.sizedBox12,
+          BlueLargeBtn(
+            onClick: () {
+              context.go(AppPaths.learningPath.path);
+            },
+          ),
+          AppSizesUnit.sizedBox24,
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Heading(7, t(context).yourAttributes),
+            GestureDetector(
+              onTap: () {},
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: Row(children: [
+                  const Icon(
+                    AppIcons.help,
+                    size: AppSizesUnit.medium16,
+                  ),
+                  AppSizesUnit.sizedBox6,
+                  Text(t(context).whatAreThese),
+                ]),
               ),
             ),
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => context.go(AppPaths.mockTestLearningGoal.path),
-          child: const Icon(
-            AppIcons.add,
-            color: AppColors.white,
-          ),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      ),
+          ]),
+          AppSizesUnit.sizedBox16,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(
+                AppSizesUnit.medium16,
+              ),
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  AppColors.primaryBlue,
+                  AppColors.blueGray900,
+                ],
+                stops: [0.0, 0.2],
+                transform: GradientRotation(0.0),
+              ),
+              boxShadow: AppColors.shadow3,
+              color: AppColors.blueGray900,
+            ),
+            padding: const EdgeInsets.all(AppSizesUnit.medium24),
+            child: Column(
+              children: [
+                SvgPicture.asset('assets/images/Spider chart.svg'),
+                SizedBox(
+                  width: 223,
+                  child: Column(
+                    children: [
+                      AppSizesUnit.sizedBox16,
+                      const Divider(),
+                      AppSizesUnit.sizedBox16,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          AnimatedSize(
+                            duration: const Duration(milliseconds: 300),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  AppSizesUnit.large40,
+                                ),
+                                color: AppColors.white,
+                              ),
+                              padding: const EdgeInsets.all(AppSizesUnit.small4),
+                              width: AppSizesUnit.large40,
+                              height: AppSizesUnit.large40,
+                              child: SvgPicture.asset('assets/images/Speed.svg'),
+                            ),
+                          ),
+                        ],
+                      ),
+                      AppSizesUnit.sizedBox24,
+                      Heading(6, t(context).secrectFeature, color: AppColors.white, textAlign: TextAlign.center),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ]),
+        ProgramsWidget(),
+      ],
     );
   }
 }
@@ -112,7 +259,6 @@ class ProgramsWidget extends HookConsumerWidget {
           return Column(
             children: [
               if (programs.isEmpty) ...[
-                AppAssets.chooseSubjectSVG,
                 AppSizesUnit.sizedBox24,
                 Text(
                   t(context).chooseSubjectAndProgram,

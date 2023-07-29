@@ -2253,6 +2253,8 @@ mixin _$LearningGoalDto {
   int get minTopic => throw _privateConstructorUsedError;
   @JsonKey(name: 'max_topic_numb', defaultValue: 99)
   int get maxTopic => throw _privateConstructorUsedError;
+  @JsonKey(name: 'mock_test_templates', defaultValue: [])
+  List<TestTemplateDto> get templates => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -2268,10 +2270,15 @@ abstract class $LearningGoalDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      @JsonKey(defaultValue: 0) double progress,
+      @JsonKey(defaultValue: 0)
+          double progress,
       String name,
-      @JsonKey(name: 'min_topic_numb', defaultValue: 0) int minTopic,
-      @JsonKey(name: 'max_topic_numb', defaultValue: 99) int maxTopic});
+      @JsonKey(name: 'min_topic_numb', defaultValue: 0)
+          int minTopic,
+      @JsonKey(name: 'max_topic_numb', defaultValue: 99)
+          int maxTopic,
+      @JsonKey(name: 'mock_test_templates', defaultValue: [])
+          List<TestTemplateDto> templates});
 }
 
 /// @nodoc
@@ -2292,6 +2299,7 @@ class _$LearningGoalDtoCopyWithImpl<$Res, $Val extends LearningGoalDto>
     Object? name = null,
     Object? minTopic = null,
     Object? maxTopic = null,
+    Object? templates = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -2314,6 +2322,10 @@ class _$LearningGoalDtoCopyWithImpl<$Res, $Val extends LearningGoalDto>
           ? _value.maxTopic
           : maxTopic // ignore: cast_nullable_to_non_nullable
               as int,
+      templates: null == templates
+          ? _value.templates
+          : templates // ignore: cast_nullable_to_non_nullable
+              as List<TestTemplateDto>,
     ) as $Val);
   }
 }
@@ -2328,10 +2340,15 @@ abstract class _$$_LearningGoalDtoCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      @JsonKey(defaultValue: 0) double progress,
+      @JsonKey(defaultValue: 0)
+          double progress,
       String name,
-      @JsonKey(name: 'min_topic_numb', defaultValue: 0) int minTopic,
-      @JsonKey(name: 'max_topic_numb', defaultValue: 99) int maxTopic});
+      @JsonKey(name: 'min_topic_numb', defaultValue: 0)
+          int minTopic,
+      @JsonKey(name: 'max_topic_numb', defaultValue: 99)
+          int maxTopic,
+      @JsonKey(name: 'mock_test_templates', defaultValue: [])
+          List<TestTemplateDto> templates});
 }
 
 /// @nodoc
@@ -2350,6 +2367,7 @@ class __$$_LearningGoalDtoCopyWithImpl<$Res>
     Object? name = null,
     Object? minTopic = null,
     Object? maxTopic = null,
+    Object? templates = null,
   }) {
     return _then(_$_LearningGoalDto(
       id: null == id
@@ -2372,6 +2390,10 @@ class __$$_LearningGoalDtoCopyWithImpl<$Res>
           ? _value.maxTopic
           : maxTopic // ignore: cast_nullable_to_non_nullable
               as int,
+      templates: null == templates
+          ? _value._templates
+          : templates // ignore: cast_nullable_to_non_nullable
+              as List<TestTemplateDto>,
     ));
   }
 }
@@ -2387,8 +2409,11 @@ class _$_LearningGoalDto extends _LearningGoalDto {
       @JsonKey(name: 'min_topic_numb', defaultValue: 0)
           required this.minTopic,
       @JsonKey(name: 'max_topic_numb', defaultValue: 99)
-          required this.maxTopic})
-      : super._();
+          required this.maxTopic,
+      @JsonKey(name: 'mock_test_templates', defaultValue: [])
+          required final List<TestTemplateDto> templates})
+      : _templates = templates,
+        super._();
 
   factory _$_LearningGoalDto.fromJson(Map<String, dynamic> json) =>
       _$$_LearningGoalDtoFromJson(json);
@@ -2406,10 +2431,18 @@ class _$_LearningGoalDto extends _LearningGoalDto {
   @override
   @JsonKey(name: 'max_topic_numb', defaultValue: 99)
   final int maxTopic;
+  final List<TestTemplateDto> _templates;
+  @override
+  @JsonKey(name: 'mock_test_templates', defaultValue: [])
+  List<TestTemplateDto> get templates {
+    if (_templates is EqualUnmodifiableListView) return _templates;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_templates);
+  }
 
   @override
   String toString() {
-    return 'LearningGoalDto(id: $id, progress: $progress, name: $name, minTopic: $minTopic, maxTopic: $maxTopic)';
+    return 'LearningGoalDto(id: $id, progress: $progress, name: $name, minTopic: $minTopic, maxTopic: $maxTopic, templates: $templates)';
   }
 
   @override
@@ -2424,13 +2457,15 @@ class _$_LearningGoalDto extends _LearningGoalDto {
             (identical(other.minTopic, minTopic) ||
                 other.minTopic == minTopic) &&
             (identical(other.maxTopic, maxTopic) ||
-                other.maxTopic == maxTopic));
+                other.maxTopic == maxTopic) &&
+            const DeepCollectionEquality()
+                .equals(other._templates, _templates));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, progress, name, minTopic, maxTopic);
+  int get hashCode => Object.hash(runtimeType, id, progress, name, minTopic,
+      maxTopic, const DeepCollectionEquality().hash(_templates));
 
   @JsonKey(ignore: true)
   @override
@@ -2455,7 +2490,9 @@ abstract class _LearningGoalDto extends LearningGoalDto {
       @JsonKey(name: 'min_topic_numb', defaultValue: 0)
           required final int minTopic,
       @JsonKey(name: 'max_topic_numb', defaultValue: 99)
-          required final int maxTopic}) = _$_LearningGoalDto;
+          required final int maxTopic,
+      @JsonKey(name: 'mock_test_templates', defaultValue: [])
+          required final List<TestTemplateDto> templates}) = _$_LearningGoalDto;
   const _LearningGoalDto._() : super._();
 
   factory _LearningGoalDto.fromJson(Map<String, dynamic> json) =
@@ -2475,7 +2512,164 @@ abstract class _LearningGoalDto extends LearningGoalDto {
   @JsonKey(name: 'max_topic_numb', defaultValue: 99)
   int get maxTopic;
   @override
+  @JsonKey(name: 'mock_test_templates', defaultValue: [])
+  List<TestTemplateDto> get templates;
+  @override
   @JsonKey(ignore: true)
   _$$_LearningGoalDtoCopyWith<_$_LearningGoalDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TestTemplateDto _$TestTemplateDtoFromJson(Map<String, dynamic> json) {
+  return _TestTemplateDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TestTemplateDto {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TestTemplateDtoCopyWith<TestTemplateDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TestTemplateDtoCopyWith<$Res> {
+  factory $TestTemplateDtoCopyWith(
+          TestTemplateDto value, $Res Function(TestTemplateDto) then) =
+      _$TestTemplateDtoCopyWithImpl<$Res, TestTemplateDto>;
+  @useResult
+  $Res call({int id, String name});
+}
+
+/// @nodoc
+class _$TestTemplateDtoCopyWithImpl<$Res, $Val extends TestTemplateDto>
+    implements $TestTemplateDtoCopyWith<$Res> {
+  _$TestTemplateDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TestTemplateDtoCopyWith<$Res>
+    implements $TestTemplateDtoCopyWith<$Res> {
+  factory _$$_TestTemplateDtoCopyWith(
+          _$_TestTemplateDto value, $Res Function(_$_TestTemplateDto) then) =
+      __$$_TestTemplateDtoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id, String name});
+}
+
+/// @nodoc
+class __$$_TestTemplateDtoCopyWithImpl<$Res>
+    extends _$TestTemplateDtoCopyWithImpl<$Res, _$_TestTemplateDto>
+    implements _$$_TestTemplateDtoCopyWith<$Res> {
+  __$$_TestTemplateDtoCopyWithImpl(
+      _$_TestTemplateDto _value, $Res Function(_$_TestTemplateDto) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_$_TestTemplateDto(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TestTemplateDto extends _TestTemplateDto {
+  const _$_TestTemplateDto({required this.id, required this.name}) : super._();
+
+  factory _$_TestTemplateDto.fromJson(Map<String, dynamic> json) =>
+      _$$_TestTemplateDtoFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'TestTemplateDto(id: $id, name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TestTemplateDto &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TestTemplateDtoCopyWith<_$_TestTemplateDto> get copyWith =>
+      __$$_TestTemplateDtoCopyWithImpl<_$_TestTemplateDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TestTemplateDtoToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TestTemplateDto extends TestTemplateDto {
+  const factory _TestTemplateDto(
+      {required final int id, required final String name}) = _$_TestTemplateDto;
+  const _TestTemplateDto._() : super._();
+
+  factory _TestTemplateDto.fromJson(Map<String, dynamic> json) =
+      _$_TestTemplateDto.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TestTemplateDtoCopyWith<_$_TestTemplateDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

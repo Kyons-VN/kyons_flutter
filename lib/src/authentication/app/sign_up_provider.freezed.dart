@@ -72,7 +72,7 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
     Object? emailAddress = null,
     Object? firstName = null,
     Object? lastName = null,
-    Object? phone = freezed,
+    Object? phone = null,
     Object? isAgreedToTerms = null,
     Object? birthdate = null,
     Object? grade = null,
@@ -95,7 +95,7 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: freezed == phone
+      phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as Phone,
@@ -172,7 +172,7 @@ class __$$_SignUpStateCopyWithImpl<$Res>
     Object? emailAddress = null,
     Object? firstName = null,
     Object? lastName = null,
-    Object? phone = freezed,
+    Object? phone = null,
     Object? isAgreedToTerms = null,
     Object? birthdate = null,
     Object? grade = null,
@@ -195,7 +195,7 @@ class __$$_SignUpStateCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: freezed == phone
+      phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as Phone,
@@ -293,7 +293,7 @@ class _$_SignUpState implements _SignUpState {
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
-            const DeepCollectionEquality().equals(other.phone, phone) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.isAgreedToTerms, isAgreedToTerms) ||
                 other.isAgreedToTerms == isAgreedToTerms) &&
             (identical(other.birthdate, birthdate) ||
@@ -316,7 +316,7 @@ class _$_SignUpState implements _SignUpState {
       emailAddress,
       firstName,
       lastName,
-      const DeepCollectionEquality().hash(phone),
+      phone,
       isAgreedToTerms,
       birthdate,
       grade,

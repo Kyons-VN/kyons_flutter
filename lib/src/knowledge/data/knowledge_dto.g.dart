@@ -190,6 +190,10 @@ _$_LearningGoalDto _$$_LearningGoalDtoFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       minTopic: json['min_topic_numb'] as int? ?? 0,
       maxTopic: json['max_topic_numb'] as int? ?? 99,
+      templates: (json['mock_test_templates'] as List<dynamic>?)
+              ?.map((e) => TestTemplateDto.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$$_LearningGoalDtoToJson(_$_LearningGoalDto instance) =>
@@ -199,4 +203,17 @@ Map<String, dynamic> _$$_LearningGoalDtoToJson(_$_LearningGoalDto instance) =>
       'name': instance.name,
       'min_topic_numb': instance.minTopic,
       'max_topic_numb': instance.maxTopic,
+      'mock_test_templates': instance.templates,
+    };
+
+_$_TestTemplateDto _$$_TestTemplateDtoFromJson(Map<String, dynamic> json) =>
+    _$_TestTemplateDto(
+      id: json['id'] as int,
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$$_TestTemplateDtoToJson(_$_TestTemplateDto instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
     };

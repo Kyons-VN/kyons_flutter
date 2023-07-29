@@ -1,11 +1,11 @@
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import '../../authentication/app/auth_provider.dart';
-import '../../navigation/domain/app_paths.dart';
+import '../domain/app_paths.dart';
 
 Future<String?> guard(GoRouterState state, WidgetRef ref) async {
-  final authState = ref.read(authNotifierProvider);
-  final bool signedIn = authState.maybeMap(orElse: () => false, authenticated: (_) => true);
+  final signedIn = await ref.read(authNotifierProvider.notifier).isSignedIn();
 
   // Go to sign-in if the user is not signed in
   if (!signedIn) {

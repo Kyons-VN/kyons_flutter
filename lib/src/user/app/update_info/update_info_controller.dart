@@ -5,9 +5,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../../authentication/app/auth_provider.dart';
+import '../../../authentication/data/auth_entities.dart';
 import '../../../authentication/data/auth_service.dart' as auth_service;
 import '../../../authentication/domain/i_auth.dart';
-import '../../../authentication/domain/user.dart';
 import '../../../authentication/domain/value_objects.dart';
 
 part 'update_info_controller.freezed.dart';

@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_package/shared_package.dart';
+
 import '../../authentication/app/reset_password_controller.dart';
 import '../../core/helper/translate.dart';
 import '../../navigation/domain/app_paths.dart';
-import 'package:shared_package/shared_package.dart';
 
 class ResetPasswordPage extends ConsumerWidget {
   const ResetPasswordPage({Key? key}) : super(key: key);

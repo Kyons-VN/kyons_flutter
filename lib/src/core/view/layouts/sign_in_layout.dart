@@ -22,8 +22,8 @@ class SignInLayout extends StatelessWidget {
                   decoration: BoxDecoration(gradient: linearGradient(177.7, ['#F1F5F9 85.73%', '#DEEFF9 100%'])),
                   child: Stack(
                     children: [
-                      Positioned(top: 185, right: -16, child: AppAssets.planetImageXs1),
-                      Positioned(bottom: -71, left: -35, child: AppAssets.planetImageXs2),
+                      Positioned(top: 185, right: -16, child: StudentAssets.planetImageXs1),
+                      Positioned(bottom: -71, left: -35, child: StudentAssets.planetImageXs2),
                       SingleChildScrollView(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -37,13 +37,15 @@ class SignInLayout extends StatelessWidget {
                                     horizontal: AppSizesUnit.medium24,
                                     vertical: AppSizesUnit.large32,
                                   ),
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AppAssets.heroImageXs,
-                                      alignment: Alignment.bottomCenter,
-                                      fit: BoxFit.fitWidth,
-                                    ),
-                                  ),
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                        image: StudentAssets.heroImageXs,
+                                        alignment: Alignment.bottomCenter,
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                      borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(AppSizesUnit.medium16),
+                                          bottomRight: Radius.circular(AppSizesUnit.medium16))),
                                   child: Column(
                                     children: [
                                       Row(
