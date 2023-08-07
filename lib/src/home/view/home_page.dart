@@ -13,12 +13,12 @@ import '../../navigation/domain/app_paths.dart';
 import '../../navigation/view/app_drawer.dart';
 import '../app/home_provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   final bool isShowHomeOptions;
   const HomePage({Key? key, this.isShowHomeOptions = false}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     // final homeNotifier = ref.read(homeNotifierProvider.notifier);
     // WidgetsBinding.instance.addPostFrameCallback((_) {
     //   final homeState = ref.read(homeNotifierProvider);
@@ -39,7 +39,8 @@ class HomePage extends StatelessWidget {
                 actions: [
                   IconButton(
                     onPressed: () {
-                      print('object');
+                      context.go(AppPaths.signOut.path);
+                      // ref.read(signInProvider.notifier).test();
                     },
                     icon: const Icon(
                       AppIcons.settings,

@@ -30,6 +30,10 @@ class ConfigReader {
     return _config['serverApi'];
   }
 
+  static String serverFirebase() {
+    return _config['serverFirebase'];
+  }
+
   static String clientApi() {
     return _config['clientApi'];
   }

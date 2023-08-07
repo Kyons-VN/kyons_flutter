@@ -12,20 +12,20 @@ class StudentAssets {
     height: 278,
   );
   static SvgPicture planetImageXs1 = SvgPicture.asset(
-    '/images/planet.svg',
+    'assets/images/planet.svg',
     width: 63.39,
     height: 63.39,
   );
   static SvgPicture planetImageXs2 = SvgPicture.asset(
-    '/images/planet.svg',
+    'assets/images/planet.svg',
     width: 171,
     height: 171,
   );
   static const AssetImage heroImageXs = AssetImage(
-    '/images/hero-image-xs.jpg',
+    'assets/images/hero-image-xs.jpg',
   );
   static Image homeImageXs = Image.asset(
-    '/images/home.jpg',
+    'assets/images/home.jpg',
     fit: BoxFit.cover,
   );
   static SvgPicture bankTransfer = SvgPicture.asset(

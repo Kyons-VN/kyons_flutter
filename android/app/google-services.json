@@ -1,0 +1,222 @@
+{
+  "project_info": {
+    "project_number": "830127784291",
+    "project_id": "kyonsvn",
+    "storage_bucket": "kyonsvn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830127784291:android:9184a65bb628c96c1b5356",
+        "android_client_info": {
+          "package_name": "com.kyons.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830127784291-d436frehum1unvkh7re36nc0fvv4hbjt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kyons.client",
+            "certificate_hash": "a9091d0d87d968e391a4fe7b167ffb95a65364ae"
+          }
+        },
+        {
+          "client_id": "830127784291-f1rkork5obqf2582eu384gh8qq9032f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMvrTFCONz00g57uGd8Hiw4rysLRSJhcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830127784291-f1rkork5obqf2582eu384gh8qq9032f9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "830127784291-qh5ivvdphsj9hhk6na00bjsbf02u497c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kyons.tutor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830127784291:android:1c7825671869fb381b5356",
+        "android_client_info": {
+          "package_name": "com.kyons.tutor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830127784291-a6ol5k3rijf1c69fr802ukjnks6qvb7v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kyons.tutor",
+            "certificate_hash": "a9091d0d87d968e391a4fe7b167ffb95a65364ae"
+          }
+        },
+        {
+          "client_id": "830127784291-f1rkork5obqf2582eu384gh8qq9032f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMvrTFCONz00g57uGd8Hiw4rysLRSJhcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830127784291-f1rkork5obqf2582eu384gh8qq9032f9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "830127784291-qh5ivvdphsj9hhk6na00bjsbf02u497c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kyons.tutor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830127784291:android:072f12f495bd8a521b5356",
+        "android_client_info": {
+          "package_name": "com.mibi.kyons"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830127784291-virdqif2uihkfds3oenkd8uutim8cnts.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mibi.kyons",
+            "certificate_hash": "a9091d0d87d968e391a4fe7b167ffb95a65364ae"
+          }
+        },
+        {
+          "client_id": "830127784291-f1rkork5obqf2582eu384gh8qq9032f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMvrTFCONz00g57uGd8Hiw4rysLRSJhcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830127784291-f1rkork5obqf2582eu384gh8qq9032f9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "830127784291-qh5ivvdphsj9hhk6na00bjsbf02u497c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kyons.tutor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830127784291:android:8dc7c373919869da1b5356",
+        "android_client_info": {
+          "package_name": "com.sendbird.flutter_example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830127784291-39ajr6j1nfsdroqh7j6lh0e03eflmtic.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sendbird.flutter_example",
+            "certificate_hash": "a9091d0d87d968e391a4fe7b167ffb95a65364ae"
+          }
+        },
+        {
+          "client_id": "830127784291-f1rkork5obqf2582eu384gh8qq9032f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMvrTFCONz00g57uGd8Hiw4rysLRSJhcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830127784291-f1rkork5obqf2582eu384gh8qq9032f9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "830127784291-qh5ivvdphsj9hhk6na00bjsbf02u497c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kyons.tutor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830127784291:android:669220286661597b1b5356",
+        "android_client_info": {
+          "package_name": "vn.kyons.student"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830127784291-f1rkork5obqf2582eu384gh8qq9032f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMvrTFCONz00g57uGd8Hiw4rysLRSJhcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830127784291-f1rkork5obqf2582eu384gh8qq9032f9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "830127784291-qh5ivvdphsj9hhk6na00bjsbf02u497c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kyons.tutor"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,12 +8,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kyons_flutter/firebase_options.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../src/authentication/app/auth_provider.dart';
 import '../src/core/helper/translate.dart';
 import '../src/navigation/app/router.dart';
+import '../src/notification/data/firebase_api.dart';
 import '../src/settings/app/settings_controller.dart';
 import 'config_reader.dart';
 
@@ -20,6 +23,10 @@ Future<void> mainCommon(Environment env) async {
   // if (!kIsWeb) runApp(const SplashScreen());
   //Call this first to make sure we can make other system level calls safely
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseApi().initNotification();
 
   // Initialize the settings controller
   GoogleFonts.config.allowRuntimeFetching = false;

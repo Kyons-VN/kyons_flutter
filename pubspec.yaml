@@ -30,6 +30,8 @@ dependencies:
   another_flushbar: 1.12.30
   dio: 5.1.2
   fimber: 0.6.6
+  firebase_core: 2.15.0
+  firebase_messaging: 14.6.5
   flutter:
     sdk: flutter
   flutter_adaptive_scaffold: 0.1.3

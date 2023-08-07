@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_package/shared_package.dart';
+
 import '../../tracking/data/tracking_api.dart';
 import '../../tracking/data/tracking_service.dart' as tracking_service;
-import 'package:shared_package/shared_package.dart';
 
 part 'tracking_state.dart';
 
@@ -41,9 +42,9 @@ class TrackingNotifier extends StateNotifier<TrackingState> {
   }
 }
 
-final tracking = Provider<TrackingApi>(
+final trackingApiProvider = Provider<TrackingApi>(
   (ref) => TrackingApi.init(),
 );
 
 final trackingNotifierProvider =
-    StateNotifierProvider<TrackingNotifier, TrackingState>((ref) => TrackingNotifier(ref.read(tracking)));
+    StateNotifierProvider<TrackingNotifier, TrackingState>((ref) => TrackingNotifier(ref.read(trackingApiProvider)));

@@ -53,4 +53,4 @@ final authApiProvider = Provider<AuthApi>(
 );
 
 final authNotifierProvider = StateNotifierProvider<AuthNotifier, AuthState>(
-    (ref) => AuthNotifier._(ref.read(authApiProvider), ref.read(knowledgeApiProvider), ref.read(tracking)));
+    (ref) => AuthNotifier._(ref.read(authApiProvider), ref.read(knowledgeApiProvider), ref.read(trackingApiProvider)));

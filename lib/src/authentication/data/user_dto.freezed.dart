@@ -24,8 +24,11 @@ mixin _$UserDto {
   String get address => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   DateTime get birthdate => throw _privateConstructorUsedError;
+  @JsonValue('')
   String get grade => throw _privateConstructorUsedError;
+  @JsonKey(name: 'mobile_number')
   String get phone => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: '')
   String get school => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
   String get firstName => throw _privateConstructorUsedError;
@@ -50,9 +53,12 @@ abstract class $UserDtoCopyWith<$Res> {
       String address,
       String email,
       DateTime birthdate,
-      String grade,
-      String phone,
-      String school,
+      @JsonValue('')
+          String grade,
+      @JsonKey(name: 'mobile_number')
+          String phone,
+      @JsonKey(defaultValue: '')
+          String school,
       @JsonKey(name: 'first_name')
           String firstName,
       @JsonKey(name: 'last_name')
@@ -143,9 +149,12 @@ abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       String address,
       String email,
       DateTime birthdate,
-      String grade,
-      String phone,
-      String school,
+      @JsonValue('')
+          String grade,
+      @JsonKey(name: 'mobile_number')
+          String phone,
+      @JsonKey(defaultValue: '')
+          String school,
       @JsonKey(name: 'first_name')
           String firstName,
       @JsonKey(name: 'last_name')
@@ -229,9 +238,12 @@ class _$_UserDto extends _UserDto {
       required this.address,
       required this.email,
       required this.birthdate,
-      required this.grade,
-      required this.phone,
-      required this.school,
+      @JsonValue('')
+          required this.grade,
+      @JsonKey(name: 'mobile_number')
+          required this.phone,
+      @JsonKey(defaultValue: '')
+          required this.school,
       @JsonKey(name: 'first_name')
           required this.firstName,
       @JsonKey(name: 'last_name')
@@ -253,10 +265,13 @@ class _$_UserDto extends _UserDto {
   @override
   final DateTime birthdate;
   @override
+  @JsonValue('')
   final String grade;
   @override
+  @JsonKey(name: 'mobile_number')
   final String phone;
   @override
+  @JsonKey(defaultValue: '')
   final String school;
   @override
   @JsonKey(name: 'first_name')
@@ -320,9 +335,12 @@ abstract class _UserDto extends UserDto {
       required final String address,
       required final String email,
       required final DateTime birthdate,
-      required final String grade,
-      required final String phone,
-      required final String school,
+      @JsonValue('')
+          required final String grade,
+      @JsonKey(name: 'mobile_number')
+          required final String phone,
+      @JsonKey(defaultValue: '')
+          required final String school,
       @JsonKey(name: 'first_name')
           required final String firstName,
       @JsonKey(name: 'last_name')
@@ -343,10 +361,13 @@ abstract class _UserDto extends UserDto {
   @override
   DateTime get birthdate;
   @override
+  @JsonValue('')
   String get grade;
   @override
+  @JsonKey(name: 'mobile_number')
   String get phone;
   @override
+  @JsonKey(defaultValue: '')
   String get school;
   @override
   @JsonKey(name: 'first_name')

@@ -48,7 +48,8 @@ class LessonNotifier extends StateNotifier<LessonState> {
 }
 
 final lessonNotifierProvider = StateNotifierProvider.autoDispose.family<LessonNotifier, LessonState, String>(
-    (ref, lessonGroupId) => LessonNotifier(ref.read(knowledgeApiProvider), ref.read(tracking), lessonGroupId));
+    (ref, lessonGroupId) =>
+        LessonNotifier(ref.read(knowledgeApiProvider), ref.read(trackingApiProvider), lessonGroupId));
 
 enum TabMenu {
   study,
@@ -139,4 +140,4 @@ class LessonStudyNotifier extends StateNotifier<LessonStudyState> {
 }
 
 final lessonStudyNotifierProvider = StateNotifierProvider.autoDispose<LessonStudyNotifier, LessonStudyState>(
-    (ref) => LessonStudyNotifier(ref.read(tracking)));
+    (ref) => LessonStudyNotifier(ref.read(trackingApiProvider)));

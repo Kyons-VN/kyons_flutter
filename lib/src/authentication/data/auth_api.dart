@@ -55,24 +55,26 @@ class AuthApi implements IAuthApi {
     final token = await auth_service.getToken();
     final id = await auth_service.getId();
     // final intercepter = Api();
-    final response = api.get('$serverApi/auth/get_user',
+    final response = await api.get('$serverApi/auth/get_user',
         queryParameters: {'id': id},
         options: Options(headers: {
           'Authorization': 'Bearer $token',
         }));
-    return response.then((res) {
-      if (res.statusCode != 200) {
-        return Future.error(const AuthFailure.serverError());
-      }
-      return res.data;
-    }).then((value) async {
-      final data = value as Map<String, dynamic>;
-      if (data['error'] != null) {
-        return User.empty();
-      }
-      final user = UserDto.fromJson(data).toDomain();
-      return user;
-    });
+
+    // return response.then((res) {
+    if (response.statusCode != 200) {
+      return Future.error(const AuthFailure.serverError());
+    }
+    //   return res.data;
+    // }).then((value) async {
+    final value = response.data;
+    final data = value as Map<String, dynamic>;
+    if (data['error'] != null) {
+      return User.empty();
+    }
+    final user = UserDto.fromJson(data).toDomain();
+    return user;
+    // });
   }
 
   @override
