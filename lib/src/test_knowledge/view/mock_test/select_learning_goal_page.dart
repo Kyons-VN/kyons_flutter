@@ -1,6 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:fpdart/fpdart.dart' hide State, id;
+import 'package:fpdart/fpdart.dart' hide State;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_package/shared_package.dart';
@@ -117,7 +117,7 @@ class LearningGoalPickerWrapper extends HookConsumerWidget {
             children: [
               Dropdown<Subject>(
                 items: state.subjectsOption.getOrElse(() => []),
-                onChanged: (value) => controller.setSubjectOption(value.toOption()),
+                onChanged: (value) => controller.setSubjectOption(optionOf(value)),
                 value: state.selectedSubjectOption,
                 placeholder: t(context).selectSubject,
                 itemWidget: (subject) => Text(subject.name),
@@ -127,7 +127,7 @@ class LearningGoalPickerWrapper extends HookConsumerWidget {
               Dropdown<Program>(
                 items: state.programsOption.getOrElse(() => []),
                 onChanged: state.selectedSubjectOption.isSome()
-                    ? (value) => controller.setProgramOption(value.toOption())
+                    ? (value) => controller.setProgramOption(optionOf(value))
                     : null,
                 value: state.selectedProgramOption,
                 placeholder: t(context).selectProgram,
@@ -138,7 +138,7 @@ class LearningGoalPickerWrapper extends HookConsumerWidget {
               Dropdown<LearningGoal>(
                 items: state.learningGoalsOption.getOrElse(() => []),
                 onChanged: state.selectedProgramOption.isSome()
-                    ? (learningGoal) => controller.setLearningGoalOption(learningGoal.toOption())
+                    ? (learningGoal) => controller.setLearningGoalOption(optionOf(learningGoal))
                     : null,
                 value: state.selectedLearningGoalOption,
                 placeholder: t(context).selectLearningGoal,

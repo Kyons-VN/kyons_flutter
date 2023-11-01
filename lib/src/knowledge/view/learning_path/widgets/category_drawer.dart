@@ -28,20 +28,20 @@ class CategoryDrawer extends StatelessWidget {
             AppSizesUnit.sizedBox8,
             Consumer(builder: (context, ref, child) {
               final state = ref.read(learningPathNotifierProvider);
-              final controller = ref.read(learningPathNotifierProvider.notifier);
+              // final controller = ref.read(learningPathNotifierProvider.notifier);
               final learningGoalPath = state.learningGoalPathOption.getOrElse(() => LearningGoalPath.empty());
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Heading(
-                    6,
-                    state.selectedProgram.getOrElse(() => Program.empty()).name,
-                    color: AppColors.white,
-                  ),
+                  // Heading(
+                  //   6,
+                  //   state.selectedProgram.getOrElse(() => Program.empty()).name,
+                  //   color: AppColors.white,
+                  // ),
                   AppSizesUnit.sizedBox16,
                   Heading(
                     8,
-                    state.selectedLearningGoal.getOrElse(() => LearningGoal.empty()).name,
+                    state.selectedLearningGoal.getOrElse(() => StudentLearningGoal.empty()).name,
                     color: AppColors.white,
                   ),
                   AppSizesUnit.sizedBox8,
@@ -57,34 +57,34 @@ class CategoryDrawer extends StatelessWidget {
                           style: Theme.of(context).textTheme.heading7.copyWith(color: AppColors.white)),
                     ],
                   ),
-                  ...learningGoalPath.lessonCategories.mapWithIndex((categoryInfo, index) {
-                    return MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                        onTap: () {
-                          controller.setSelectedCatIndex(index);
-                          context.pop();
-                        },
-                        child: SizedBox(
-                          height: 40,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  categoryInfo.category.name,
-                                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                        color: state.selectedCat == index ? AppColors.lightBlue1 : AppColors.white,
-                                      ),
-                                ),
-                              ),
-                              // Text(categoryInfo.),
-                              const Icon(AppIcons.arrowRight, color: AppColors.orange),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }).toList(),
+                  // ...learningGoalPath.lessonCategories.mapWithIndex((categoryInfo, index) {
+                  //   return MouseRegion(
+                  //     cursor: SystemMouseCursors.click,
+                  //     child: GestureDetector(
+                  //       onTap: () {
+                  //         controller.selectSelectedCatIndex(index);
+                  //         context.pop();
+                  //       },
+                  //       child: SizedBox(
+                  //         height: 40,
+                  //         child: Row(
+                  //           children: [
+                  //             Expanded(
+                  //               child: Text(
+                  //                 categoryInfo.category.name,
+                  //                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  //                       color: state.selectedCat == index ? AppColors.lightBlue1 : AppColors.white,
+                  //                     ),
+                  //               ),
+                  //             ),
+                  //             // Text(categoryInfo.),
+                  //             const Icon(AppIcons.arrowRight, color: AppColors.orange),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   );
+                  // }).toList(),
                 ],
               );
             }),

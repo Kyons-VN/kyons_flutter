@@ -16,14 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeState {
-  Option<Either<ApiFailure, List<Program>>> get studentProgramsOption =>
+  Option<List<StudentLearningGoal>> get studentLearningGoalsOption =>
       throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
-  ProgramsDisplay get display => throw _privateConstructorUsedError;
-  int get carouselIndex => throw _privateConstructorUsedError;
-  int get previousIndex => throw _privateConstructorUsedError;
-  Option<LearningGoal> get selectedLearningGoalOption =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -36,12 +31,8 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
   $Res call(
-      {Option<Either<ApiFailure, List<Program>>> studentProgramsOption,
-      bool hasError,
-      ProgramsDisplay display,
-      int carouselIndex,
-      int previousIndex,
-      Option<LearningGoal> selectedLearningGoalOption});
+      {Option<List<StudentLearningGoal>> studentLearningGoalsOption,
+      bool hasError});
 }
 
 /// @nodoc
@@ -57,190 +48,114 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? studentProgramsOption = null,
+    Object? studentLearningGoalsOption = null,
     Object? hasError = null,
-    Object? display = null,
-    Object? carouselIndex = null,
-    Object? previousIndex = null,
-    Object? selectedLearningGoalOption = null,
   }) {
     return _then(_value.copyWith(
-      studentProgramsOption: null == studentProgramsOption
-          ? _value.studentProgramsOption
-          : studentProgramsOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ApiFailure, List<Program>>>,
+      studentLearningGoalsOption: null == studentLearningGoalsOption
+          ? _value.studentLearningGoalsOption
+          : studentLearningGoalsOption // ignore: cast_nullable_to_non_nullable
+              as Option<List<StudentLearningGoal>>,
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      display: null == display
-          ? _value.display
-          : display // ignore: cast_nullable_to_non_nullable
-              as ProgramsDisplay,
-      carouselIndex: null == carouselIndex
-          ? _value.carouselIndex
-          : carouselIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      previousIndex: null == previousIndex
-          ? _value.previousIndex
-          : previousIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      selectedLearningGoalOption: null == selectedLearningGoalOption
-          ? _value.selectedLearningGoalOption
-          : selectedLearningGoalOption // ignore: cast_nullable_to_non_nullable
-              as Option<LearningGoal>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory _$$_HomeStateCopyWith(
-          _$_HomeState value, $Res Function(_$_HomeState) then) =
-      __$$_HomeStateCopyWithImpl<$Res>;
+abstract class _$$HomeStateImplCopyWith<$Res>
+    implements $HomeStateCopyWith<$Res> {
+  factory _$$HomeStateImplCopyWith(
+          _$HomeStateImpl value, $Res Function(_$HomeStateImpl) then) =
+      __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {Option<Either<ApiFailure, List<Program>>> studentProgramsOption,
-      bool hasError,
-      ProgramsDisplay display,
-      int carouselIndex,
-      int previousIndex,
-      Option<LearningGoal> selectedLearningGoalOption});
+      {Option<List<StudentLearningGoal>> studentLearningGoalsOption,
+      bool hasError});
 }
 
 /// @nodoc
-class __$$_HomeStateCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_HomeState>
-    implements _$$_HomeStateCopyWith<$Res> {
-  __$$_HomeStateCopyWithImpl(
-      _$_HomeState _value, $Res Function(_$_HomeState) _then)
+class __$$HomeStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$HomeStateImpl>
+    implements _$$HomeStateImplCopyWith<$Res> {
+  __$$HomeStateImplCopyWithImpl(
+      _$HomeStateImpl _value, $Res Function(_$HomeStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? studentProgramsOption = null,
+    Object? studentLearningGoalsOption = null,
     Object? hasError = null,
-    Object? display = null,
-    Object? carouselIndex = null,
-    Object? previousIndex = null,
-    Object? selectedLearningGoalOption = null,
   }) {
-    return _then(_$_HomeState(
-      studentProgramsOption: null == studentProgramsOption
-          ? _value.studentProgramsOption
-          : studentProgramsOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ApiFailure, List<Program>>>,
+    return _then(_$HomeStateImpl(
+      studentLearningGoalsOption: null == studentLearningGoalsOption
+          ? _value.studentLearningGoalsOption
+          : studentLearningGoalsOption // ignore: cast_nullable_to_non_nullable
+              as Option<List<StudentLearningGoal>>,
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      display: null == display
-          ? _value.display
-          : display // ignore: cast_nullable_to_non_nullable
-              as ProgramsDisplay,
-      carouselIndex: null == carouselIndex
-          ? _value.carouselIndex
-          : carouselIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      previousIndex: null == previousIndex
-          ? _value.previousIndex
-          : previousIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      selectedLearningGoalOption: null == selectedLearningGoalOption
-          ? _value.selectedLearningGoalOption
-          : selectedLearningGoalOption // ignore: cast_nullable_to_non_nullable
-              as Option<LearningGoal>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_HomeState implements _HomeState {
-  const _$_HomeState(
-      {required this.studentProgramsOption,
-      required this.hasError,
-      required this.display,
-      required this.carouselIndex,
-      required this.previousIndex,
-      required this.selectedLearningGoalOption});
+class _$HomeStateImpl implements _HomeState {
+  const _$HomeStateImpl(
+      {required this.studentLearningGoalsOption, required this.hasError});
 
   @override
-  final Option<Either<ApiFailure, List<Program>>> studentProgramsOption;
+  final Option<List<StudentLearningGoal>> studentLearningGoalsOption;
   @override
   final bool hasError;
-  @override
-  final ProgramsDisplay display;
-  @override
-  final int carouselIndex;
-  @override
-  final int previousIndex;
-  @override
-  final Option<LearningGoal> selectedLearningGoalOption;
 
   @override
   String toString() {
-    return 'HomeState(studentProgramsOption: $studentProgramsOption, hasError: $hasError, display: $display, carouselIndex: $carouselIndex, previousIndex: $previousIndex, selectedLearningGoalOption: $selectedLearningGoalOption)';
+    return 'HomeState(studentLearningGoalsOption: $studentLearningGoalsOption, hasError: $hasError)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeState &&
-            (identical(other.studentProgramsOption, studentProgramsOption) ||
-                other.studentProgramsOption == studentProgramsOption) &&
+            other is _$HomeStateImpl &&
+            (identical(other.studentLearningGoalsOption,
+                    studentLearningGoalsOption) ||
+                other.studentLearningGoalsOption ==
+                    studentLearningGoalsOption) &&
             (identical(other.hasError, hasError) ||
-                other.hasError == hasError) &&
-            (identical(other.display, display) || other.display == display) &&
-            (identical(other.carouselIndex, carouselIndex) ||
-                other.carouselIndex == carouselIndex) &&
-            (identical(other.previousIndex, previousIndex) ||
-                other.previousIndex == previousIndex) &&
-            (identical(other.selectedLearningGoalOption,
-                    selectedLearningGoalOption) ||
-                other.selectedLearningGoalOption ==
-                    selectedLearningGoalOption));
+                other.hasError == hasError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, studentProgramsOption, hasError,
-      display, carouselIndex, previousIndex, selectedLearningGoalOption);
+  int get hashCode =>
+      Object.hash(runtimeType, studentLearningGoalsOption, hasError);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
-      __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
+  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
+      __$$HomeStateImplCopyWithImpl<_$HomeStateImpl>(this, _$identity);
 }
 
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
-          {required final Option<Either<ApiFailure, List<Program>>>
-              studentProgramsOption,
-          required final bool hasError,
-          required final ProgramsDisplay display,
-          required final int carouselIndex,
-          required final int previousIndex,
-          required final Option<LearningGoal> selectedLearningGoalOption}) =
-      _$_HomeState;
+      {required final Option<List<StudentLearningGoal>>
+          studentLearningGoalsOption,
+      required final bool hasError}) = _$HomeStateImpl;
 
   @override
-  Option<Either<ApiFailure, List<Program>>> get studentProgramsOption;
+  Option<List<StudentLearningGoal>> get studentLearningGoalsOption;
   @override
   bool get hasError;
   @override
-  ProgramsDisplay get display;
-  @override
-  int get carouselIndex;
-  @override
-  int get previousIndex;
-  @override
-  Option<LearningGoal> get selectedLearningGoalOption;
-  @override
   @JsonKey(ignore: true)
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

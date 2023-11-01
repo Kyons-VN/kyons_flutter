@@ -46,6 +46,10 @@ class AppPaths {
   static const termsOfService = AppPath(path: '/terms-of-service');
   static const pageNotfound = AppPath(path: '/page-not-found');
 
+  // Tutorial
+  static const tutorial = AppPath(path: '/tutorial', name: 'Tutorial');
+  static const tutorialHome = AppPath(path: '/tutorial/home');
+
   static AppPath getByRedirectName(String serverRedirectName) {
     if (serverRedirectName == home.serverRedirectName) {
       return home;
@@ -63,6 +67,7 @@ class AppPath {
   final String path;
   final String? serverRedirectName;
   final String? description;
-  const AppPath({required this.path, this.serverRedirectName, this.description});
+  final String? name;
+  const AppPath({required this.path, this.serverRedirectName, this.description, this.name});
   String pathId(String id) => path.replaceAll(':id', id);
 }

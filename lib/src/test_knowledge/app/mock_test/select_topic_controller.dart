@@ -27,7 +27,7 @@ class SelectTopicController extends _$SelectTopicController {
 
   Future<Unit> init() async {
     state = state.copyWith(isLoading: true);
-    final selectedLearningGoalEither = await knowledge_service.getMockLearningGoal().run(api);
+    final selectedLearningGoalEither = await knowledge_service.getSelectedLearningGoal().run(api);
     await selectedLearningGoalEither.fold((error) async {
       state = state.copyWith(
         clientError: some(error),

@@ -21,10 +21,10 @@
   "password": "Mật khẩu",
   "birthdate": "Ngày sinh",
   "signIn": "Đăng nhập",
-  "signOut": "Đăng xuất",
+  "signOut": "Thoát",
   "signUp": "Đăng ký",
   "language": "Ngôn ngữ",
-  "invalidThing": "{thing} chưa đúng",
+  "invalidThing": "{thing} chưa đúng!",
   "@invalidThing": {
     "placeholders": {
       "thing": {
@@ -356,5 +356,8 @@
         "type": "String"
       }
     }
-  }
+  },
+  "userManual": "Hướng dẫn sử dụng",
+  "pleaseTryAgain": "Bạn thử lại nhé",
+  "payment": "Thanh toán"
 }

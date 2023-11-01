@@ -19,10 +19,11 @@ mixin _$LearningPathState {
   bool get loading => throw _privateConstructorUsedError;
   Option<LearningGoalPath> get learningGoalPathOption =>
       throw _privateConstructorUsedError;
-  Option<Program> get selectedProgram => throw _privateConstructorUsedError;
-  Option<LearningGoal> get selectedLearningGoal =>
+  Option<StudentLearningGoal> get selectedLearningGoal =>
       throw _privateConstructorUsedError;
   Option<ApiFailure> get hasError => throw _privateConstructorUsedError;
+  Option<List<MockTestItem>> get mockTestItemsOption =>
+      throw _privateConstructorUsedError;
   int get selectedCat => throw _privateConstructorUsedError;
   bool get isMissing => throw _privateConstructorUsedError;
 
@@ -40,9 +41,9 @@ abstract class $LearningPathStateCopyWith<$Res> {
   $Res call(
       {bool loading,
       Option<LearningGoalPath> learningGoalPathOption,
-      Option<Program> selectedProgram,
-      Option<LearningGoal> selectedLearningGoal,
+      Option<StudentLearningGoal> selectedLearningGoal,
       Option<ApiFailure> hasError,
+      Option<List<MockTestItem>> mockTestItemsOption,
       int selectedCat,
       bool isMissing});
 }
@@ -62,9 +63,9 @@ class _$LearningPathStateCopyWithImpl<$Res, $Val extends LearningPathState>
   $Res call({
     Object? loading = null,
     Object? learningGoalPathOption = null,
-    Object? selectedProgram = null,
     Object? selectedLearningGoal = null,
     Object? hasError = null,
+    Object? mockTestItemsOption = null,
     Object? selectedCat = null,
     Object? isMissing = null,
   }) {
@@ -77,18 +78,18 @@ class _$LearningPathStateCopyWithImpl<$Res, $Val extends LearningPathState>
           ? _value.learningGoalPathOption
           : learningGoalPathOption // ignore: cast_nullable_to_non_nullable
               as Option<LearningGoalPath>,
-      selectedProgram: null == selectedProgram
-          ? _value.selectedProgram
-          : selectedProgram // ignore: cast_nullable_to_non_nullable
-              as Option<Program>,
       selectedLearningGoal: null == selectedLearningGoal
           ? _value.selectedLearningGoal
           : selectedLearningGoal // ignore: cast_nullable_to_non_nullable
-              as Option<LearningGoal>,
+              as Option<StudentLearningGoal>,
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as Option<ApiFailure>,
+      mockTestItemsOption: null == mockTestItemsOption
+          ? _value.mockTestItemsOption
+          : mockTestItemsOption // ignore: cast_nullable_to_non_nullable
+              as Option<List<MockTestItem>>,
       selectedCat: null == selectedCat
           ? _value.selectedCat
           : selectedCat // ignore: cast_nullable_to_non_nullable
@@ -102,29 +103,29 @@ class _$LearningPathStateCopyWithImpl<$Res, $Val extends LearningPathState>
 }
 
 /// @nodoc
-abstract class _$$_LearningPathStateCopyWith<$Res>
+abstract class _$$LearningPathStateImplCopyWith<$Res>
     implements $LearningPathStateCopyWith<$Res> {
-  factory _$$_LearningPathStateCopyWith(_$_LearningPathState value,
-          $Res Function(_$_LearningPathState) then) =
-      __$$_LearningPathStateCopyWithImpl<$Res>;
+  factory _$$LearningPathStateImplCopyWith(_$LearningPathStateImpl value,
+          $Res Function(_$LearningPathStateImpl) then) =
+      __$$LearningPathStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {bool loading,
       Option<LearningGoalPath> learningGoalPathOption,
-      Option<Program> selectedProgram,
-      Option<LearningGoal> selectedLearningGoal,
+      Option<StudentLearningGoal> selectedLearningGoal,
       Option<ApiFailure> hasError,
+      Option<List<MockTestItem>> mockTestItemsOption,
       int selectedCat,
       bool isMissing});
 }
 
 /// @nodoc
-class __$$_LearningPathStateCopyWithImpl<$Res>
-    extends _$LearningPathStateCopyWithImpl<$Res, _$_LearningPathState>
-    implements _$$_LearningPathStateCopyWith<$Res> {
-  __$$_LearningPathStateCopyWithImpl(
-      _$_LearningPathState _value, $Res Function(_$_LearningPathState) _then)
+class __$$LearningPathStateImplCopyWithImpl<$Res>
+    extends _$LearningPathStateCopyWithImpl<$Res, _$LearningPathStateImpl>
+    implements _$$LearningPathStateImplCopyWith<$Res> {
+  __$$LearningPathStateImplCopyWithImpl(_$LearningPathStateImpl _value,
+      $Res Function(_$LearningPathStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,13 +133,13 @@ class __$$_LearningPathStateCopyWithImpl<$Res>
   $Res call({
     Object? loading = null,
     Object? learningGoalPathOption = null,
-    Object? selectedProgram = null,
     Object? selectedLearningGoal = null,
     Object? hasError = null,
+    Object? mockTestItemsOption = null,
     Object? selectedCat = null,
     Object? isMissing = null,
   }) {
-    return _then(_$_LearningPathState(
+    return _then(_$LearningPathStateImpl(
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
@@ -147,18 +148,18 @@ class __$$_LearningPathStateCopyWithImpl<$Res>
           ? _value.learningGoalPathOption
           : learningGoalPathOption // ignore: cast_nullable_to_non_nullable
               as Option<LearningGoalPath>,
-      selectedProgram: null == selectedProgram
-          ? _value.selectedProgram
-          : selectedProgram // ignore: cast_nullable_to_non_nullable
-              as Option<Program>,
       selectedLearningGoal: null == selectedLearningGoal
           ? _value.selectedLearningGoal
           : selectedLearningGoal // ignore: cast_nullable_to_non_nullable
-              as Option<LearningGoal>,
+              as Option<StudentLearningGoal>,
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as Option<ApiFailure>,
+      mockTestItemsOption: null == mockTestItemsOption
+          ? _value.mockTestItemsOption
+          : mockTestItemsOption // ignore: cast_nullable_to_non_nullable
+              as Option<List<MockTestItem>>,
       selectedCat: null == selectedCat
           ? _value.selectedCat
           : selectedCat // ignore: cast_nullable_to_non_nullable
@@ -173,13 +174,13 @@ class __$$_LearningPathStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LearningPathState implements _LearningPathState {
-  const _$_LearningPathState(
+class _$LearningPathStateImpl implements _LearningPathState {
+  const _$LearningPathStateImpl(
       {required this.loading,
       required this.learningGoalPathOption,
-      required this.selectedProgram,
       required this.selectedLearningGoal,
       required this.hasError,
+      required this.mockTestItemsOption,
       required this.selectedCat,
       required this.isMissing});
 
@@ -188,11 +189,11 @@ class _$_LearningPathState implements _LearningPathState {
   @override
   final Option<LearningGoalPath> learningGoalPathOption;
   @override
-  final Option<Program> selectedProgram;
-  @override
-  final Option<LearningGoal> selectedLearningGoal;
+  final Option<StudentLearningGoal> selectedLearningGoal;
   @override
   final Option<ApiFailure> hasError;
+  @override
+  final Option<List<MockTestItem>> mockTestItemsOption;
   @override
   final int selectedCat;
   @override
@@ -200,23 +201,23 @@ class _$_LearningPathState implements _LearningPathState {
 
   @override
   String toString() {
-    return 'LearningPathState(loading: $loading, learningGoalPathOption: $learningGoalPathOption, selectedProgram: $selectedProgram, selectedLearningGoal: $selectedLearningGoal, hasError: $hasError, selectedCat: $selectedCat, isMissing: $isMissing)';
+    return 'LearningPathState(loading: $loading, learningGoalPathOption: $learningGoalPathOption, selectedLearningGoal: $selectedLearningGoal, hasError: $hasError, mockTestItemsOption: $mockTestItemsOption, selectedCat: $selectedCat, isMissing: $isMissing)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LearningPathState &&
+            other is _$LearningPathStateImpl &&
             (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.learningGoalPathOption, learningGoalPathOption) ||
                 other.learningGoalPathOption == learningGoalPathOption) &&
-            (identical(other.selectedProgram, selectedProgram) ||
-                other.selectedProgram == selectedProgram) &&
             (identical(other.selectedLearningGoal, selectedLearningGoal) ||
                 other.selectedLearningGoal == selectedLearningGoal) &&
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
+            (identical(other.mockTestItemsOption, mockTestItemsOption) ||
+                other.mockTestItemsOption == mockTestItemsOption) &&
             (identical(other.selectedCat, selectedCat) ||
                 other.selectedCat == selectedCat) &&
             (identical(other.isMissing, isMissing) ||
@@ -224,14 +225,21 @@ class _$_LearningPathState implements _LearningPathState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loading, learningGoalPathOption,
-      selectedProgram, selectedLearningGoal, hasError, selectedCat, isMissing);
+  int get hashCode => Object.hash(
+      runtimeType,
+      loading,
+      learningGoalPathOption,
+      selectedLearningGoal,
+      hasError,
+      mockTestItemsOption,
+      selectedCat,
+      isMissing);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LearningPathStateCopyWith<_$_LearningPathState> get copyWith =>
-      __$$_LearningPathStateCopyWithImpl<_$_LearningPathState>(
+  _$$LearningPathStateImplCopyWith<_$LearningPathStateImpl> get copyWith =>
+      __$$LearningPathStateImplCopyWithImpl<_$LearningPathStateImpl>(
           this, _$identity);
 }
 
@@ -239,28 +247,28 @@ abstract class _LearningPathState implements LearningPathState {
   const factory _LearningPathState(
       {required final bool loading,
       required final Option<LearningGoalPath> learningGoalPathOption,
-      required final Option<Program> selectedProgram,
-      required final Option<LearningGoal> selectedLearningGoal,
+      required final Option<StudentLearningGoal> selectedLearningGoal,
       required final Option<ApiFailure> hasError,
+      required final Option<List<MockTestItem>> mockTestItemsOption,
       required final int selectedCat,
-      required final bool isMissing}) = _$_LearningPathState;
+      required final bool isMissing}) = _$LearningPathStateImpl;
 
   @override
   bool get loading;
   @override
   Option<LearningGoalPath> get learningGoalPathOption;
   @override
-  Option<Program> get selectedProgram;
-  @override
-  Option<LearningGoal> get selectedLearningGoal;
+  Option<StudentLearningGoal> get selectedLearningGoal;
   @override
   Option<ApiFailure> get hasError;
+  @override
+  Option<List<MockTestItem>> get mockTestItemsOption;
   @override
   int get selectedCat;
   @override
   bool get isMissing;
   @override
   @JsonKey(ignore: true)
-  _$$_LearningPathStateCopyWith<_$_LearningPathState> get copyWith =>
+  _$$LearningPathStateImplCopyWith<_$LearningPathStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

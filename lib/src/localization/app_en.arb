@@ -24,7 +24,7 @@
   "signOut": "Sign out",
   "signUp": "Sign up",
   "language": "Language",
-  "invalidThing": "Invalid {thing}",
+  "invalidThing": "Invalid {thing}!",
   "@invalidThing": {
     "placeholders": {
       "thing": {
@@ -356,5 +356,8 @@
         "type": "String"
       }
     }
-  }
+  },
+  "userManual": "User manual",
+  "pleaseTryAgain": "Please try again",
+  "payment": "Payment"
 }

@@ -29,7 +29,7 @@ class Api {
         // if (refreshToken.isNotEmpty) {
         final prefs = await SharedPreferences.getInstance();
         final refreshToken = prefs.getString(kRefreshToken) ?? '';
-        if (refreshToken.isEmpty) {
+        if (refreshToken.isNotEmpty) {
           final newToken = await getRefreshToken();
           if (newToken.isNotEmpty) {
             auth_service.setToken(newToken);
@@ -58,10 +58,14 @@ class Api {
     final prefs = await SharedPreferences.getInstance();
     final refreshToken = prefs.getString(kRefreshToken) ?? '';
     final Dio request = Dio();
-    final response = await request.post('/auth/refresh', data: {kRefreshToken: refreshToken});
+    request.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
+      options.headers['Authorization'] = 'Bearer $refreshToken';
+      return handler.next(options);
+    }));
+    final response = await request.post('$serverApi/auth/refresh');
 
-    if (response.statusCode == 201) {
-      final accessToken = response.data;
+    if (response.statusCode == 200) {
+      final accessToken = response.data['access_token'];
       return accessToken;
     } else {
       // refresh token is wrong

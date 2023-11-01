@@ -6,8 +6,8 @@ part of 'transaction_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TransactionDto _$$_TransactionDtoFromJson(Map<String, dynamic> json) =>
-    _$_TransactionDto(
+_$TransactionDtoImpl _$$TransactionDtoImplFromJson(Map<String, dynamic> json) =>
+    _$TransactionDtoImpl(
       id: json['id'] as String,
       packageName: json['package_name'] as String,
       quantity: json['quantity'] as int,
@@ -15,7 +15,8 @@ _$_TransactionDto _$$_TransactionDtoFromJson(Map<String, dynamic> json) =>
       amount: (json['amount'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$_TransactionDtoToJson(_$_TransactionDto instance) =>
+Map<String, dynamic> _$$TransactionDtoImplToJson(
+        _$TransactionDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'package_name': instance.packageName,

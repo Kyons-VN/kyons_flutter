@@ -230,3 +230,18 @@ class TestTemplateDto with _$TestTemplateDto {
 
   TestTemplate toDomain() => TestTemplate(id: id.toString(), name: name);
 }
+
+@freezed
+class StudentLearningGoalDto with _$StudentLearningGoalDto {
+  const StudentLearningGoalDto._();
+  const factory StudentLearningGoalDto(
+      {required int id,
+      required String name,
+      @JsonKey(name: 'program_name') required String programName,
+      @JsonKey(name: 'complete_percentage') required int completePercentage}) = _StudentLearningGoalDto;
+
+  factory StudentLearningGoalDto.fromJson(Map<String, dynamic> json) => _$StudentLearningGoalDtoFromJson(json);
+
+  StudentLearningGoal toDomain() => StudentLearningGoal(
+      id: id.toString(), name: name, programName: programName, completePercentage: completePercentage);
+}

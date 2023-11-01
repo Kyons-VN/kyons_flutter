@@ -1,4 +1,5 @@
 import '../../test_knowledge/data/test_entities.dart';
+import '../domain/i_learning_goal.dart';
 
 class Subject {
   final String id;
@@ -169,4 +170,34 @@ class LearningPoint {
     required this.id,
     required this.topic,
   });
+}
+
+class StudentLearningGoal implements IStudentLearningGoal {
+  @override
+  final String id;
+  @override
+  final String name;
+  @override
+  final String programName;
+  // @override
+  // final String subjectId;
+  @override
+  final int completePercentage;
+  // @override
+  // final int order;
+
+  StudentLearningGoal({
+    required this.id,
+    required this.name,
+    required this.programName,
+    // required this.subjectId,
+    required this.completePercentage,
+    // required this.order,
+  });
+
+  Map<String, dynamic> toJson() =>
+      {'id': id, 'name': name, 'programName': programName, 'completePercentage': completePercentage};
+  static String emptyJsonString() => LearningGoal.empty().toJson().toString();
+  bool isEmpty() => id == '';
+  factory StudentLearningGoal.empty() => StudentLearningGoal(id: '', name: '', programName: '', completePercentage: 0);
 }

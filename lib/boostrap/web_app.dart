@@ -65,6 +65,11 @@ class _WebAppWidget extends ConsumerState<WebAppWidget> with WidgetsBindingObser
         trackingNotifier.disable();
         lessonNotifier.disableTracking();
         break;
+      case AppLifecycleState.hidden:
+        print("app in hidden");
+        trackingNotifier.disable();
+        lessonNotifier.disableTracking();
+        break;
     }
   }
 

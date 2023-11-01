@@ -90,36 +90,65 @@ class SignInLayout extends StatelessWidget {
                       children: [
                         Positioned.directional(
                           textDirection: Directionality.of(context),
-                          bottom: -constraints.maxHeight * 0.09,
-                          start: -constraints.maxWidth * 0.05,
+                          bottom: -73,
+                          start: -71,
                           child: StudentAssets.planet,
+                        ),
+                        Positioned.directional(
+                          textDirection: Directionality.of(context),
+                          top: -65,
+                          end: constraints.maxWidth / 2 + 23,
+                          child: StudentAssets.planetSmall,
                         ),
                         BoxyRow(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Expanded(
+                              child: SingleChildScrollView(
                                 child: Center(
-                                    child: SizedBox(
-                                        width: 434,
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: AppSizesUnit.medium24, vertical: AppSizesUnit.large48),
-                                          child: body,
-                                        )))),
-                            // ),
-                            Stack(
-                              children: [
-                                StudentAssets.heroImage,
-                                Positioned.fromRelativeRect(
-                                    rect: const RelativeRect.fromLTRB(100, 100, 100, 100),
-                                    child: const Heading(
-                                      1,
+                                  child: SizedBox(
+                                    width: 434,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: AppSizesUnit.medium24, vertical: AppSizesUnit.large48),
+                                      child: body,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Stack(
+                                children: [
+                                  Center(
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(AppSizesUnit.medium16),
+                                          bottomLeft: Radius.circular(AppSizesUnit.medium16),
+                                        ),
+                                      ),
+                                      clipBehavior: Clip.antiAlias,
+                                      width: MediaQuery.of(context).size.width / 2,
+                                      height: MediaQuery.of(context).size.height,
+                                      child: StudentAssets.heroImage,
+                                    ),
+                                  ),
+                                  Positioned.fromRelativeRect(
+                                    rect:
+                                        RelativeRect.fromLTRB(100, MediaQuery.of(context).size.height * 0.3, 100, 100),
+                                    child: Text(
                                       'Tri thức khởi đầu từ\n“Tại sao”?',
-                                      color: AppColors.white,
                                       textAlign: TextAlign.center,
-                                    ))
-                              ],
-                            )
+                                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                            color: AppColors.white,
+                                            fontSize: AppSizesUnit.large36,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ],

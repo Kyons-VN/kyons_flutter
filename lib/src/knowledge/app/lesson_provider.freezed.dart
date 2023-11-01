@@ -86,11 +86,11 @@ class _$LessonStateCopyWithImpl<$Res, $Val extends LessonState>
 }
 
 /// @nodoc
-abstract class _$$_LessonStateCopyWith<$Res>
+abstract class _$$LessonStateImplCopyWith<$Res>
     implements $LessonStateCopyWith<$Res> {
-  factory _$$_LessonStateCopyWith(
-          _$_LessonState value, $Res Function(_$_LessonState) then) =
-      __$$_LessonStateCopyWithImpl<$Res>;
+  factory _$$LessonStateImplCopyWith(
+          _$LessonStateImpl value, $Res Function(_$LessonStateImpl) then) =
+      __$$LessonStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_LessonStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LessonStateCopyWithImpl<$Res>
-    extends _$LessonStateCopyWithImpl<$Res, _$_LessonState>
-    implements _$$_LessonStateCopyWith<$Res> {
-  __$$_LessonStateCopyWithImpl(
-      _$_LessonState _value, $Res Function(_$_LessonState) _then)
+class __$$LessonStateImplCopyWithImpl<$Res>
+    extends _$LessonStateCopyWithImpl<$Res, _$LessonStateImpl>
+    implements _$$LessonStateImplCopyWith<$Res> {
+  __$$LessonStateImplCopyWithImpl(
+      _$LessonStateImpl _value, $Res Function(_$LessonStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_LessonStateCopyWithImpl<$Res>
     Object? apiError = null,
     Object? clientError = null,
   }) {
-    return _then(_$_LessonState(
+    return _then(_$LessonStateImpl(
       lessonGroup: null == lessonGroup
           ? _value.lessonGroup
           : lessonGroup // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_LessonStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LessonState implements _LessonState {
-  const _$_LessonState(
+class _$LessonStateImpl implements _LessonState {
+  const _$LessonStateImpl(
       {required this.lessonGroup,
       required this.isLoading,
       required this.selectedProgram,
@@ -173,7 +173,7 @@ class _$_LessonState implements _LessonState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LessonState &&
+            other is _$LessonStateImpl &&
             (identical(other.lessonGroup, lessonGroup) ||
                 other.lessonGroup == lessonGroup) &&
             (identical(other.isLoading, isLoading) ||
@@ -193,8 +193,8 @@ class _$_LessonState implements _LessonState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LessonStateCopyWith<_$_LessonState> get copyWith =>
-      __$$_LessonStateCopyWithImpl<_$_LessonState>(this, _$identity);
+  _$$LessonStateImplCopyWith<_$LessonStateImpl> get copyWith =>
+      __$$LessonStateImplCopyWithImpl<_$LessonStateImpl>(this, _$identity);
 }
 
 abstract class _LessonState implements LessonState {
@@ -203,7 +203,7 @@ abstract class _LessonState implements LessonState {
       required final bool isLoading,
       required final Option<Program> selectedProgram,
       required final Option<ApiFailure> apiError,
-      required final Option<ClientFailure> clientError}) = _$_LessonState;
+      required final Option<ClientFailure> clientError}) = _$LessonStateImpl;
 
   @override
   Option<LessonGroup> get lessonGroup;
@@ -217,7 +217,7 @@ abstract class _LessonState implements LessonState {
   Option<ClientFailure> get clientError;
   @override
   @JsonKey(ignore: true)
-  _$$_LessonStateCopyWith<_$_LessonState> get copyWith =>
+  _$$LessonStateImplCopyWith<_$LessonStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -264,22 +264,22 @@ class _$LessonStudyStateCopyWithImpl<$Res, $Val extends LessonStudyState>
 }
 
 /// @nodoc
-abstract class _$$_LessonStudyStateCopyWith<$Res>
+abstract class _$$LessonStudyStateImplCopyWith<$Res>
     implements $LessonStudyStateCopyWith<$Res> {
-  factory _$$_LessonStudyStateCopyWith(
-          _$_LessonStudyState value, $Res Function(_$_LessonStudyState) then) =
-      __$$_LessonStudyStateCopyWithImpl<$Res>;
+  factory _$$LessonStudyStateImplCopyWith(_$LessonStudyStateImpl value,
+          $Res Function(_$LessonStudyStateImpl) then) =
+      __$$LessonStudyStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({TabMenu selectedTabIndex});
 }
 
 /// @nodoc
-class __$$_LessonStudyStateCopyWithImpl<$Res>
-    extends _$LessonStudyStateCopyWithImpl<$Res, _$_LessonStudyState>
-    implements _$$_LessonStudyStateCopyWith<$Res> {
-  __$$_LessonStudyStateCopyWithImpl(
-      _$_LessonStudyState _value, $Res Function(_$_LessonStudyState) _then)
+class __$$LessonStudyStateImplCopyWithImpl<$Res>
+    extends _$LessonStudyStateCopyWithImpl<$Res, _$LessonStudyStateImpl>
+    implements _$$LessonStudyStateImplCopyWith<$Res> {
+  __$$LessonStudyStateImplCopyWithImpl(_$LessonStudyStateImpl _value,
+      $Res Function(_$LessonStudyStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -287,7 +287,7 @@ class __$$_LessonStudyStateCopyWithImpl<$Res>
   $Res call({
     Object? selectedTabIndex = null,
   }) {
-    return _then(_$_LessonStudyState(
+    return _then(_$LessonStudyStateImpl(
       selectedTabIndex: null == selectedTabIndex
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
@@ -298,8 +298,8 @@ class __$$_LessonStudyStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LessonStudyState implements _LessonStudyState {
-  const _$_LessonStudyState({required this.selectedTabIndex});
+class _$LessonStudyStateImpl implements _LessonStudyState {
+  const _$LessonStudyStateImpl({required this.selectedTabIndex});
 
   @override
   final TabMenu selectedTabIndex;
@@ -313,7 +313,7 @@ class _$_LessonStudyState implements _LessonStudyState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LessonStudyState &&
+            other is _$LessonStudyStateImpl &&
             (identical(other.selectedTabIndex, selectedTabIndex) ||
                 other.selectedTabIndex == selectedTabIndex));
   }
@@ -324,18 +324,19 @@ class _$_LessonStudyState implements _LessonStudyState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LessonStudyStateCopyWith<_$_LessonStudyState> get copyWith =>
-      __$$_LessonStudyStateCopyWithImpl<_$_LessonStudyState>(this, _$identity);
+  _$$LessonStudyStateImplCopyWith<_$LessonStudyStateImpl> get copyWith =>
+      __$$LessonStudyStateImplCopyWithImpl<_$LessonStudyStateImpl>(
+          this, _$identity);
 }
 
 abstract class _LessonStudyState implements LessonStudyState {
   const factory _LessonStudyState({required final TabMenu selectedTabIndex}) =
-      _$_LessonStudyState;
+      _$LessonStudyStateImpl;
 
   @override
   TabMenu get selectedTabIndex;
   @override
   @JsonKey(ignore: true)
-  _$$_LessonStudyStateCopyWith<_$_LessonStudyState> get copyWith =>
+  _$$LessonStudyStateImplCopyWith<_$LessonStudyStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

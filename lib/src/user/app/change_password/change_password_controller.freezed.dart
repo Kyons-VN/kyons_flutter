@@ -107,11 +107,11 @@ class _$ChangePasswordStateCopyWithImpl<$Res, $Val extends ChangePasswordState>
 }
 
 /// @nodoc
-abstract class _$$_ChangePasswordStateCopyWith<$Res>
+abstract class _$$ChangePasswordStateImplCopyWith<$Res>
     implements $ChangePasswordStateCopyWith<$Res> {
-  factory _$$_ChangePasswordStateCopyWith(_$_ChangePasswordState value,
-          $Res Function(_$_ChangePasswordState) then) =
-      __$$_ChangePasswordStateCopyWithImpl<$Res>;
+  factory _$$ChangePasswordStateImplCopyWith(_$ChangePasswordStateImpl value,
+          $Res Function(_$ChangePasswordStateImpl) then) =
+      __$$ChangePasswordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +126,11 @@ abstract class _$$_ChangePasswordStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChangePasswordStateCopyWithImpl<$Res>
-    extends _$ChangePasswordStateCopyWithImpl<$Res, _$_ChangePasswordState>
-    implements _$$_ChangePasswordStateCopyWith<$Res> {
-  __$$_ChangePasswordStateCopyWithImpl(_$_ChangePasswordState _value,
-      $Res Function(_$_ChangePasswordState) _then)
+class __$$ChangePasswordStateImplCopyWithImpl<$Res>
+    extends _$ChangePasswordStateCopyWithImpl<$Res, _$ChangePasswordStateImpl>
+    implements _$$ChangePasswordStateImplCopyWith<$Res> {
+  __$$ChangePasswordStateImplCopyWithImpl(_$ChangePasswordStateImpl _value,
+      $Res Function(_$ChangePasswordStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,7 +145,7 @@ class __$$_ChangePasswordStateCopyWithImpl<$Res>
     Object? error = null,
     Object? notMatch = null,
   }) {
-    return _then(_$_ChangePasswordState(
+    return _then(_$ChangePasswordStateImpl(
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -184,8 +184,8 @@ class __$$_ChangePasswordStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangePasswordState implements _ChangePasswordState {
-  const _$_ChangePasswordState(
+class _$ChangePasswordStateImpl implements _ChangePasswordState {
+  const _$ChangePasswordStateImpl(
       {required this.isSubmitting,
       required this.oldPassword,
       required this.newPassword,
@@ -221,7 +221,7 @@ class _$_ChangePasswordState implements _ChangePasswordState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChangePasswordState &&
+            other is _$ChangePasswordStateImpl &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.oldPassword, oldPassword) ||
@@ -255,8 +255,8 @@ class _$_ChangePasswordState implements _ChangePasswordState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChangePasswordStateCopyWith<_$_ChangePasswordState> get copyWith =>
-      __$$_ChangePasswordStateCopyWithImpl<_$_ChangePasswordState>(
+  _$$ChangePasswordStateImplCopyWith<_$ChangePasswordStateImpl> get copyWith =>
+      __$$ChangePasswordStateImplCopyWithImpl<_$ChangePasswordStateImpl>(
           this, _$identity);
 }
 
@@ -269,7 +269,7 @@ abstract class _ChangePasswordState implements ChangePasswordState {
       required final String confirmPassword,
       required final bool shouldShowErrorMessages,
       required final Option<ApiFailure> error,
-      required final bool notMatch}) = _$_ChangePasswordState;
+      required final bool notMatch}) = _$ChangePasswordStateImpl;
 
   @override
   bool get isSubmitting;
@@ -289,6 +289,6 @@ abstract class _ChangePasswordState implements ChangePasswordState {
   bool get notMatch;
   @override
   @JsonKey(ignore: true)
-  _$$_ChangePasswordStateCopyWith<_$_ChangePasswordState> get copyWith =>
+  _$$ChangePasswordStateImplCopyWith<_$ChangePasswordStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

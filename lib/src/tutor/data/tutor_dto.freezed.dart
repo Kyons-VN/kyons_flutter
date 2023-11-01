@@ -73,11 +73,12 @@ class _$TutorSessionStatusDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TutorSessionStatusDtoCopyWith<$Res>
+abstract class _$$TutorSessionStatusDtoImplCopyWith<$Res>
     implements $TutorSessionStatusDtoCopyWith<$Res> {
-  factory _$$_TutorSessionStatusDtoCopyWith(_$_TutorSessionStatusDto value,
-          $Res Function(_$_TutorSessionStatusDto) then) =
-      __$$_TutorSessionStatusDtoCopyWithImpl<$Res>;
+  factory _$$TutorSessionStatusDtoImplCopyWith(
+          _$TutorSessionStatusDtoImpl value,
+          $Res Function(_$TutorSessionStatusDtoImpl) then) =
+      __$$TutorSessionStatusDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -86,11 +87,12 @@ abstract class _$$_TutorSessionStatusDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TutorSessionStatusDtoCopyWithImpl<$Res>
-    extends _$TutorSessionStatusDtoCopyWithImpl<$Res, _$_TutorSessionStatusDto>
-    implements _$$_TutorSessionStatusDtoCopyWith<$Res> {
-  __$$_TutorSessionStatusDtoCopyWithImpl(_$_TutorSessionStatusDto _value,
-      $Res Function(_$_TutorSessionStatusDto) _then)
+class __$$TutorSessionStatusDtoImplCopyWithImpl<$Res>
+    extends _$TutorSessionStatusDtoCopyWithImpl<$Res,
+        _$TutorSessionStatusDtoImpl>
+    implements _$$TutorSessionStatusDtoImplCopyWith<$Res> {
+  __$$TutorSessionStatusDtoImplCopyWithImpl(_$TutorSessionStatusDtoImpl _value,
+      $Res Function(_$TutorSessionStatusDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +101,7 @@ class __$$_TutorSessionStatusDtoCopyWithImpl<$Res>
     Object? status = null,
     Object? meetingUrl = null,
   }) {
-    return _then(_$_TutorSessionStatusDto(
+    return _then(_$TutorSessionStatusDtoImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -114,14 +116,14 @@ class __$$_TutorSessionStatusDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TutorSessionStatusDto extends _TutorSessionStatusDto {
-  const _$_TutorSessionStatusDto(
+class _$TutorSessionStatusDtoImpl extends _TutorSessionStatusDto {
+  const _$TutorSessionStatusDtoImpl(
       {required this.status,
       @JsonKey(name: 'meeting_url', defaultValue: '') required this.meetingUrl})
       : super._();
 
-  factory _$_TutorSessionStatusDto.fromJson(Map<String, dynamic> json) =>
-      _$$_TutorSessionStatusDtoFromJson(json);
+  factory _$TutorSessionStatusDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TutorSessionStatusDtoImplFromJson(json);
 
   @override
   final String status;
@@ -138,7 +140,7 @@ class _$_TutorSessionStatusDto extends _TutorSessionStatusDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TutorSessionStatusDto &&
+            other is _$TutorSessionStatusDtoImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.meetingUrl, meetingUrl) ||
                 other.meetingUrl == meetingUrl));
@@ -151,13 +153,13 @@ class _$_TutorSessionStatusDto extends _TutorSessionStatusDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TutorSessionStatusDtoCopyWith<_$_TutorSessionStatusDto> get copyWith =>
-      __$$_TutorSessionStatusDtoCopyWithImpl<_$_TutorSessionStatusDto>(
-          this, _$identity);
+  _$$TutorSessionStatusDtoImplCopyWith<_$TutorSessionStatusDtoImpl>
+      get copyWith => __$$TutorSessionStatusDtoImplCopyWithImpl<
+          _$TutorSessionStatusDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TutorSessionStatusDtoToJson(
+    return _$$TutorSessionStatusDtoImplToJson(
       this,
     );
   }
@@ -167,11 +169,11 @@ abstract class _TutorSessionStatusDto extends TutorSessionStatusDto {
   const factory _TutorSessionStatusDto(
       {required final String status,
       @JsonKey(name: 'meeting_url', defaultValue: '')
-          required final String meetingUrl}) = _$_TutorSessionStatusDto;
+      required final String meetingUrl}) = _$TutorSessionStatusDtoImpl;
   const _TutorSessionStatusDto._() : super._();
 
   factory _TutorSessionStatusDto.fromJson(Map<String, dynamic> json) =
-      _$_TutorSessionStatusDto.fromJson;
+      _$TutorSessionStatusDtoImpl.fromJson;
 
   @override
   String get status;
@@ -180,6 +182,6 @@ abstract class _TutorSessionStatusDto extends TutorSessionStatusDto {
   String get meetingUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_TutorSessionStatusDtoCopyWith<_$_TutorSessionStatusDto> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TutorSessionStatusDtoImplCopyWith<_$TutorSessionStatusDtoImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

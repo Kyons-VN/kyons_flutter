@@ -11,7 +11,6 @@ import '../../../../navigation/domain/app_paths.dart';
 import '../../../../test_knowledge/app/lesson_test_provider.dart';
 import '../../../../test_knowledge/data/test_knowledge.dart';
 import '../../../../test_knowledge/view/widgets/test_content_widget.dart';
-import '../../../../test_knowledge/view/widgets/test_result_widget.dart';
 import '../../../data/knowledge_entities.dart';
 
 class LessonExamWidget extends ConsumerWidget {
@@ -78,20 +77,20 @@ class LessonExamWidget extends ConsumerWidget {
         children: [
           Heading(4, t(context).mockTestPoint),
           AppSizesUnit.sizedBox24,
-          TestResultWidget(
-            testResult: state.testResult.getOrElse(() => TestResult.empty()),
-            lessonGroup: lessonGroup,
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  context.go(AppPaths.learningPath.path);
-                },
-                child: Text(t(context).continueDoingExercise),
-              ).medium(context),
-            ],
-            testContent: state.content.getOrElse(() => TestContent.empty()),
-            learningGoal: controller.learningGoal.getOrElse(() => LearningGoal.empty()),
-          ),
+          // TestResultWidget(
+          //   testResult: state.testResult.getOrElse(() => TestResult.empty()),
+          //   lessonGroup: lessonGroup,
+          //   actions: [
+          //     ElevatedButton(
+          //       onPressed: () {
+          //         context.go(AppPaths.learningPath.path);
+          //       },
+          //       child: Text(t(context).continueDoingExercise),
+          //     ).medium(context),
+          //   ],
+          //   testContent: state.content.getOrElse(() => TestContent.empty()),
+          //   learningGoal: controller.learningGoal.getOrElse(() => StudentLearningGoal.empty()),
+          // ),
           AppSizesUnit.sizedBox8,
           Container(
             padding: const EdgeInsets.all(AppSizesUnit.medium16),

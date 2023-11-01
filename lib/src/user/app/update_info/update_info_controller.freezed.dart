@@ -107,11 +107,11 @@ class _$UpdateInfoStateCopyWithImpl<$Res, $Val extends UpdateInfoState>
 }
 
 /// @nodoc
-abstract class _$$_UpdateInfoStateCopyWith<$Res>
+abstract class _$$UpdateInfoStateImplCopyWith<$Res>
     implements $UpdateInfoStateCopyWith<$Res> {
-  factory _$$_UpdateInfoStateCopyWith(
-          _$_UpdateInfoState value, $Res Function(_$_UpdateInfoState) then) =
-      __$$_UpdateInfoStateCopyWithImpl<$Res>;
+  factory _$$UpdateInfoStateImplCopyWith(_$UpdateInfoStateImpl value,
+          $Res Function(_$UpdateInfoStateImpl) then) =
+      __$$UpdateInfoStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +126,11 @@ abstract class _$$_UpdateInfoStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UpdateInfoStateCopyWithImpl<$Res>
-    extends _$UpdateInfoStateCopyWithImpl<$Res, _$_UpdateInfoState>
-    implements _$$_UpdateInfoStateCopyWith<$Res> {
-  __$$_UpdateInfoStateCopyWithImpl(
-      _$_UpdateInfoState _value, $Res Function(_$_UpdateInfoState) _then)
+class __$$UpdateInfoStateImplCopyWithImpl<$Res>
+    extends _$UpdateInfoStateCopyWithImpl<$Res, _$UpdateInfoStateImpl>
+    implements _$$UpdateInfoStateImplCopyWith<$Res> {
+  __$$UpdateInfoStateImplCopyWithImpl(
+      _$UpdateInfoStateImpl _value, $Res Function(_$UpdateInfoStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,7 +145,7 @@ class __$$_UpdateInfoStateCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? shouldShowErrorMessages = null,
   }) {
-    return _then(_$_UpdateInfoState(
+    return _then(_$UpdateInfoStateImpl(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -184,8 +184,8 @@ class __$$_UpdateInfoStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateInfoState implements _UpdateInfoState {
-  const _$_UpdateInfoState(
+class _$UpdateInfoStateImpl implements _UpdateInfoState {
+  const _$UpdateInfoStateImpl(
       {required this.user,
       required this.isSubmitting,
       required this.firstName,
@@ -221,7 +221,7 @@ class _$_UpdateInfoState implements _UpdateInfoState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateInfoState &&
+            other is _$UpdateInfoStateImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
@@ -246,8 +246,9 @@ class _$_UpdateInfoState implements _UpdateInfoState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateInfoStateCopyWith<_$_UpdateInfoState> get copyWith =>
-      __$$_UpdateInfoStateCopyWithImpl<_$_UpdateInfoState>(this, _$identity);
+  _$$UpdateInfoStateImplCopyWith<_$UpdateInfoStateImpl> get copyWith =>
+      __$$UpdateInfoStateImplCopyWithImpl<_$UpdateInfoStateImpl>(
+          this, _$identity);
 }
 
 abstract class _UpdateInfoState implements UpdateInfoState {
@@ -259,7 +260,7 @@ abstract class _UpdateInfoState implements UpdateInfoState {
       required final EmailAddress email,
       required final XFile profilePicture,
       required final bool isLoading,
-      required final bool shouldShowErrorMessages}) = _$_UpdateInfoState;
+      required final bool shouldShowErrorMessages}) = _$UpdateInfoStateImpl;
 
   @override
   Option<User> get user;
@@ -279,6 +280,6 @@ abstract class _UpdateInfoState implements UpdateInfoState {
   bool get shouldShowErrorMessages;
   @override
   @JsonKey(ignore: true)
-  _$$_UpdateInfoStateCopyWith<_$_UpdateInfoState> get copyWith =>
+  _$$UpdateInfoStateImplCopyWith<_$UpdateInfoStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

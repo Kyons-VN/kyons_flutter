@@ -6,12 +6,12 @@ part of 'order_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_BalanceDto _$$_BalanceDtoFromJson(Map<String, dynamic> json) =>
-    _$_BalanceDto(
+_$BalanceDtoImpl _$$BalanceDtoImplFromJson(Map<String, dynamic> json) =>
+    _$BalanceDtoImpl(
       value: json['balance'] as int,
     );
 
-Map<String, dynamic> _$$_BalanceDtoToJson(_$_BalanceDto instance) =>
+Map<String, dynamic> _$$BalanceDtoImplToJson(_$BalanceDtoImpl instance) =>
     <String, dynamic>{
       'balance': instance.value,
     };

@@ -6,6 +6,6 @@ part 'delete_account_controller.g.dart';
 class DeleteAccountController extends _$DeleteAccountController {
   @override
   build() {
-    return;
+    return false;
   }
 }

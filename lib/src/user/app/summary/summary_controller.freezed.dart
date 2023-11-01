@@ -79,11 +79,11 @@ class _$SummaryStateCopyWithImpl<$Res, $Val extends SummaryState>
 }
 
 /// @nodoc
-abstract class _$$_SummaryStateCopyWith<$Res>
+abstract class _$$SummaryStateImplCopyWith<$Res>
     implements $SummaryStateCopyWith<$Res> {
-  factory _$$_SummaryStateCopyWith(
-          _$_SummaryState value, $Res Function(_$_SummaryState) then) =
-      __$$_SummaryStateCopyWithImpl<$Res>;
+  factory _$$SummaryStateImplCopyWith(
+          _$SummaryStateImpl value, $Res Function(_$SummaryStateImpl) then) =
+      __$$SummaryStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_SummaryStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SummaryStateCopyWithImpl<$Res>
-    extends _$SummaryStateCopyWithImpl<$Res, _$_SummaryState>
-    implements _$$_SummaryStateCopyWith<$Res> {
-  __$$_SummaryStateCopyWithImpl(
-      _$_SummaryState _value, $Res Function(_$_SummaryState) _then)
+class __$$SummaryStateImplCopyWithImpl<$Res>
+    extends _$SummaryStateCopyWithImpl<$Res, _$SummaryStateImpl>
+    implements _$$SummaryStateImplCopyWith<$Res> {
+  __$$SummaryStateImplCopyWithImpl(
+      _$SummaryStateImpl _value, $Res Function(_$SummaryStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_SummaryStateCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? error = null,
   }) {
-    return _then(_$_SummaryState(
+    return _then(_$SummaryStateImpl(
       inventory: null == inventory
           ? _value.inventory
           : inventory // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$_SummaryStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SummaryState implements _SummaryState {
-  const _$_SummaryState(
+class _$SummaryStateImpl implements _SummaryState {
+  const _$SummaryStateImpl(
       {required this.inventory,
       required this.balance,
       required this.isLoading,
@@ -157,7 +157,7 @@ class _$_SummaryState implements _SummaryState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SummaryState &&
+            other is _$SummaryStateImpl &&
             (identical(other.inventory, inventory) ||
                 other.inventory == inventory) &&
             (identical(other.balance, balance) || other.balance == balance) &&
@@ -173,8 +173,8 @@ class _$_SummaryState implements _SummaryState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SummaryStateCopyWith<_$_SummaryState> get copyWith =>
-      __$$_SummaryStateCopyWithImpl<_$_SummaryState>(this, _$identity);
+  _$$SummaryStateImplCopyWith<_$SummaryStateImpl> get copyWith =>
+      __$$SummaryStateImplCopyWithImpl<_$SummaryStateImpl>(this, _$identity);
 }
 
 abstract class _SummaryState implements SummaryState {
@@ -182,7 +182,7 @@ abstract class _SummaryState implements SummaryState {
       {required final Inventory inventory,
       required final Balance balance,
       required final bool isLoading,
-      required final Option<ApiFailure> error}) = _$_SummaryState;
+      required final Option<ApiFailure> error}) = _$SummaryStateImpl;
 
   @override
   Inventory get inventory;
@@ -194,6 +194,6 @@ abstract class _SummaryState implements SummaryState {
   Option<ApiFailure> get error;
   @override
   @JsonKey(ignore: true)
-  _$$_SummaryStateCopyWith<_$_SummaryState> get copyWith =>
+  _$$SummaryStateImplCopyWith<_$SummaryStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

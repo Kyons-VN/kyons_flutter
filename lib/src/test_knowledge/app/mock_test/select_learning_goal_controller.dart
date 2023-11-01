@@ -85,7 +85,7 @@ class SelectLearningGoalController extends _$SelectLearningGoalController {
     await state.selectedProgramOption.fold(() {}, (program) async {
       await state.selectedLearningGoalOption.fold(() {}, (learningGoal) async {
         // final failureOrSuccess1 = await knowledge_service.selectMockProgram(program).run(api);
-        final failureOrSuccess = await knowledge_service.selectMockLearningGoal(learningGoal).run(api);
+        final failureOrSuccess = await knowledge_service.selectLearningGoal(learningGoal).run(api);
         failureOrSuccess.fold((l) {
           state = state.copyWith(
             hasError: true,

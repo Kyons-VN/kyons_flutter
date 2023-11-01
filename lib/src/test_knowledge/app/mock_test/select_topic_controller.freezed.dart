@@ -116,11 +116,11 @@ class _$SelectTopicStateCopyWithImpl<$Res, $Val extends SelectTopicState>
 }
 
 /// @nodoc
-abstract class _$$_SelectTopicStateCopyWith<$Res>
+abstract class _$$SelectTopicStateImplCopyWith<$Res>
     implements $SelectTopicStateCopyWith<$Res> {
-  factory _$$_SelectTopicStateCopyWith(
-          _$_SelectTopicState value, $Res Function(_$_SelectTopicState) then) =
-      __$$_SelectTopicStateCopyWithImpl<$Res>;
+  factory _$$SelectTopicStateImplCopyWith(_$SelectTopicStateImpl value,
+          $Res Function(_$SelectTopicStateImpl) then) =
+      __$$SelectTopicStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -136,11 +136,11 @@ abstract class _$$_SelectTopicStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SelectTopicStateCopyWithImpl<$Res>
-    extends _$SelectTopicStateCopyWithImpl<$Res, _$_SelectTopicState>
-    implements _$$_SelectTopicStateCopyWith<$Res> {
-  __$$_SelectTopicStateCopyWithImpl(
-      _$_SelectTopicState _value, $Res Function(_$_SelectTopicState) _then)
+class __$$SelectTopicStateImplCopyWithImpl<$Res>
+    extends _$SelectTopicStateCopyWithImpl<$Res, _$SelectTopicStateImpl>
+    implements _$$SelectTopicStateImplCopyWith<$Res> {
+  __$$SelectTopicStateImplCopyWithImpl(_$SelectTopicStateImpl _value,
+      $Res Function(_$SelectTopicStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -156,7 +156,7 @@ class __$$_SelectTopicStateCopyWithImpl<$Res>
     Object? clientError = null,
     Object? isCompleted = null,
   }) {
-    return _then(_$_SelectTopicState(
+    return _then(_$SelectTopicStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -199,8 +199,8 @@ class __$$_SelectTopicStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SelectTopicState implements _SelectTopicState {
-  const _$_SelectTopicState(
+class _$SelectTopicStateImpl implements _SelectTopicState {
+  const _$SelectTopicStateImpl(
       {required this.isLoading,
       required this.isTouched,
       required this.isValid,
@@ -246,7 +246,7 @@ class _$_SelectTopicState implements _SelectTopicState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SelectTopicState &&
+            other is _$SelectTopicStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.isTouched, isTouched) ||
@@ -282,8 +282,9 @@ class _$_SelectTopicState implements _SelectTopicState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SelectTopicStateCopyWith<_$_SelectTopicState> get copyWith =>
-      __$$_SelectTopicStateCopyWithImpl<_$_SelectTopicState>(this, _$identity);
+  _$$SelectTopicStateImplCopyWith<_$SelectTopicStateImpl> get copyWith =>
+      __$$SelectTopicStateImplCopyWithImpl<_$SelectTopicStateImpl>(
+          this, _$identity);
 }
 
 abstract class _SelectTopicState implements SelectTopicState {
@@ -296,7 +297,7 @@ abstract class _SelectTopicState implements SelectTopicState {
       required final Option<LearningGoal> newLearningGoal,
       required final Option<ApiFailure> apiError,
       required final Option<ClientFailure> clientError,
-      required final bool isCompleted}) = _$_SelectTopicState;
+      required final bool isCompleted}) = _$SelectTopicStateImpl;
 
   @override
   bool get isLoading;
@@ -318,6 +319,6 @@ abstract class _SelectTopicState implements SelectTopicState {
   bool get isCompleted;
   @override
   @JsonKey(ignore: true)
-  _$$_SelectTopicStateCopyWith<_$_SelectTopicState> get copyWith =>
+  _$$SelectTopicStateImplCopyWith<_$SelectTopicStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

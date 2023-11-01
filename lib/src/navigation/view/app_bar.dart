@@ -14,7 +14,8 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentPath = GoRouter.of(context).location;
+    // final currentPath = GoRouter.of(context).routerDelegate.currentConfiguration.uri.path;
+    final currentPath = GoRouter.of(context).routeInformationProvider.value.uri.path;
     return AppBar(
       leading: currentPath != AppPaths.home.path
           ? IconButton(
@@ -90,13 +91,13 @@ class TopMenuItem extends HookWidget {
     required this.pageName,
     required this.appPath,
     required this.icon,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final onHovered = useState<bool>(false);
-    final currentPath = GoRouter.of(context).location;
+    final currentPath = GoRouter.of(context).routeInformationProvider.value.uri.path;
     void goTo(String path) {
       if (path != currentPath) context.go(path);
     }

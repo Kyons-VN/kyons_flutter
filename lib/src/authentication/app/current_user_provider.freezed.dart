@@ -57,22 +57,22 @@ class _$CurrentUserStateCopyWithImpl<$Res, $Val extends CurrentUserState>
 }
 
 /// @nodoc
-abstract class _$$_CurrentUserStateCopyWith<$Res>
+abstract class _$$CurrentUserStateImplCopyWith<$Res>
     implements $CurrentUserStateCopyWith<$Res> {
-  factory _$$_CurrentUserStateCopyWith(
-          _$_CurrentUserState value, $Res Function(_$_CurrentUserState) then) =
-      __$$_CurrentUserStateCopyWithImpl<$Res>;
+  factory _$$CurrentUserStateImplCopyWith(_$CurrentUserStateImpl value,
+          $Res Function(_$CurrentUserStateImpl) then) =
+      __$$CurrentUserStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Option<User> userOption});
 }
 
 /// @nodoc
-class __$$_CurrentUserStateCopyWithImpl<$Res>
-    extends _$CurrentUserStateCopyWithImpl<$Res, _$_CurrentUserState>
-    implements _$$_CurrentUserStateCopyWith<$Res> {
-  __$$_CurrentUserStateCopyWithImpl(
-      _$_CurrentUserState _value, $Res Function(_$_CurrentUserState) _then)
+class __$$CurrentUserStateImplCopyWithImpl<$Res>
+    extends _$CurrentUserStateCopyWithImpl<$Res, _$CurrentUserStateImpl>
+    implements _$$CurrentUserStateImplCopyWith<$Res> {
+  __$$CurrentUserStateImplCopyWithImpl(_$CurrentUserStateImpl _value,
+      $Res Function(_$CurrentUserStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_CurrentUserStateCopyWithImpl<$Res>
   $Res call({
     Object? userOption = null,
   }) {
-    return _then(_$_CurrentUserState(
+    return _then(_$CurrentUserStateImpl(
       userOption: null == userOption
           ? _value.userOption
           : userOption // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_CurrentUserStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CurrentUserState implements _CurrentUserState {
-  const _$_CurrentUserState({required this.userOption});
+class _$CurrentUserStateImpl implements _CurrentUserState {
+  const _$CurrentUserStateImpl({required this.userOption});
 
   @override
   final Option<User> userOption;
@@ -106,7 +106,7 @@ class _$_CurrentUserState implements _CurrentUserState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CurrentUserState &&
+            other is _$CurrentUserStateImpl &&
             (identical(other.userOption, userOption) ||
                 other.userOption == userOption));
   }
@@ -117,18 +117,19 @@ class _$_CurrentUserState implements _CurrentUserState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CurrentUserStateCopyWith<_$_CurrentUserState> get copyWith =>
-      __$$_CurrentUserStateCopyWithImpl<_$_CurrentUserState>(this, _$identity);
+  _$$CurrentUserStateImplCopyWith<_$CurrentUserStateImpl> get copyWith =>
+      __$$CurrentUserStateImplCopyWithImpl<_$CurrentUserStateImpl>(
+          this, _$identity);
 }
 
 abstract class _CurrentUserState implements CurrentUserState {
   const factory _CurrentUserState({required final Option<User> userOption}) =
-      _$_CurrentUserState;
+      _$CurrentUserStateImpl;
 
   @override
   Option<User> get userOption;
   @override
   @JsonKey(ignore: true)
-  _$$_CurrentUserStateCopyWith<_$_CurrentUserState> get copyWith =>
+  _$$CurrentUserStateImplCopyWith<_$CurrentUserStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

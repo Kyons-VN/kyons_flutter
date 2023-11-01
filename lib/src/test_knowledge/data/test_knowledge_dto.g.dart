@@ -6,8 +6,8 @@ part of 'test_knowledge_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TestContentDto _$$_TestContentDtoFromJson(Map<String, dynamic> json) =>
-    _$_TestContentDto(
+_$TestContentDtoImpl _$$TestContentDtoImplFromJson(Map<String, dynamic> json) =>
+    _$TestContentDtoImpl(
       id: json['test_id'] as int? ?? 0,
       questions: (json['data'] as List<dynamic>?)
               ?.map((e) => e as Map<String, dynamic>)
@@ -16,15 +16,16 @@ _$_TestContentDto _$$_TestContentDtoFromJson(Map<String, dynamic> json) =>
       done: json['done'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_TestContentDtoToJson(_$_TestContentDto instance) =>
+Map<String, dynamic> _$$TestContentDtoImplToJson(
+        _$TestContentDtoImpl instance) =>
     <String, dynamic>{
       'test_id': instance.id,
       'data': instance.questions,
       'done': instance.done,
     };
 
-_$_QuestionDto _$$_QuestionDtoFromJson(Map<String, dynamic> json) =>
-    _$_QuestionDto(
+_$QuestionDtoImpl _$$QuestionDtoImplFromJson(Map<String, dynamic> json) =>
+    _$QuestionDtoImpl(
       id: json['id'] as int,
       content: json['content'] as String,
       answers: (json['answer_keys'] as List<dynamic>)
@@ -40,7 +41,7 @@ _$_QuestionDto _$$_QuestionDtoFromJson(Map<String, dynamic> json) =>
       categoryName: json['category_name'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_QuestionDtoToJson(_$_QuestionDto instance) =>
+Map<String, dynamic> _$$QuestionDtoImplToJson(_$QuestionDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'content': instance.content,
@@ -54,7 +55,8 @@ Map<String, dynamic> _$$_QuestionDtoToJson(_$_QuestionDto instance) =>
       'category_name': instance.categoryName,
     };
 
-_$_AnswerDto _$$_AnswerDtoFromJson(Map<String, dynamic> json) => _$_AnswerDto(
+_$AnswerDtoImpl _$$AnswerDtoImplFromJson(Map<String, dynamic> json) =>
+    _$AnswerDtoImpl(
       id: json['id'] as int,
       value: json['value'] as String,
       order: json['order'] as int? ?? 0,
@@ -62,7 +64,7 @@ _$_AnswerDto _$$_AnswerDtoFromJson(Map<String, dynamic> json) => _$_AnswerDto(
       content: json['content'] as String,
     );
 
-Map<String, dynamic> _$$_AnswerDtoToJson(_$_AnswerDto instance) =>
+Map<String, dynamic> _$$AnswerDtoImplToJson(_$AnswerDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'value': instance.value,
@@ -71,15 +73,17 @@ Map<String, dynamic> _$$_AnswerDtoToJson(_$_AnswerDto instance) =>
       'content': instance.content,
     };
 
-_$_AnswerResultDto _$$_AnswerResultDtoFromJson(Map<String, dynamic> json) =>
-    _$_AnswerResultDto(
+_$AnswerResultDtoImpl _$$AnswerResultDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AnswerResultDtoImpl(
       topicId: json['topic_id'] as int,
       categoryId: json['category_id'] as int,
       questionId: json['question_id'] as int,
       score: json['score'] as int,
     );
 
-Map<String, dynamic> _$$_AnswerResultDtoToJson(_$_AnswerResultDto instance) =>
+Map<String, dynamic> _$$AnswerResultDtoImplToJson(
+        _$AnswerResultDtoImpl instance) =>
     <String, dynamic>{
       'topic_id': instance.topicId,
       'category_id': instance.categoryId,
@@ -87,8 +91,9 @@ Map<String, dynamic> _$$_AnswerResultDtoToJson(_$_AnswerResultDto instance) =>
       'score': instance.score,
     };
 
-_$_AnswerReviewDto _$$_AnswerReviewDtoFromJson(Map<String, dynamic> json) =>
-    _$_AnswerReviewDto(
+_$AnswerReviewDtoImpl _$$AnswerReviewDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AnswerReviewDtoImpl(
       selectedAnswers: (json['selected_answer'] as List<dynamic>)
           .map((e) => e as int)
           .toList(),
@@ -96,14 +101,15 @@ _$_AnswerReviewDto _$$_AnswerReviewDtoFromJson(Map<String, dynamic> json) =>
           (json['right_answer'] as List<dynamic>).map((e) => e as int).toList(),
     );
 
-Map<String, dynamic> _$$_AnswerReviewDtoToJson(_$_AnswerReviewDto instance) =>
+Map<String, dynamic> _$$AnswerReviewDtoImplToJson(
+        _$AnswerReviewDtoImpl instance) =>
     <String, dynamic>{
       'selected_answer': instance.selectedAnswers,
       'right_answer': instance.rightAnswers,
     };
 
-_$_TestResultDto _$$_TestResultDtoFromJson(Map<String, dynamic> json) =>
-    _$_TestResultDto(
+_$TestResultDtoImpl _$$TestResultDtoImplFromJson(Map<String, dynamic> json) =>
+    _$TestResultDtoImpl(
       score: (json['total_score'] as num).toDouble(),
       result: (json['result'] as List<dynamic>)
           .map((e) => AnswerResultDto.fromJson(e as Map<String, dynamic>))
@@ -113,7 +119,7 @@ _$_TestResultDto _$$_TestResultDtoFromJson(Map<String, dynamic> json) =>
       referral: json['mocktest_referral'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_TestResultDtoToJson(_$_TestResultDto instance) =>
+Map<String, dynamic> _$$TestResultDtoImplToJson(_$TestResultDtoImpl instance) =>
     <String, dynamic>{
       'total_score': instance.score,
       'result': instance.result,
@@ -121,3 +127,32 @@ Map<String, dynamic> _$$_TestResultDtoToJson(_$_TestResultDto instance) =>
       'type': const TestTypeConverter().toJson(instance.type),
       'mocktest_referral': instance.referral,
     };
+
+_$MockTestItemDtoImpl _$$MockTestItemDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$MockTestItemDtoImpl(
+      id: json['id'] as int,
+      createdDate: json['created_date'] as String,
+      status: $enumDecode(_$MockTestStatusEnumMap, json['status']),
+      score: (json['score'] as num?)?.toDouble() ?? 0,
+      index: json['index'] as int? ?? 0,
+    );
+
+Map<String, dynamic> _$$MockTestItemDtoImplToJson(
+        _$MockTestItemDtoImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'created_date': instance.createdDate,
+      'status': _$MockTestStatusEnumMap[instance.status]!,
+      'score': instance.score,
+      'index': instance.index,
+    };
+
+const _$MockTestStatusEnumMap = {
+  MockTestStatus.pending: 'pending',
+  MockTestStatus.active: 'active',
+  MockTestStatus.mockTestSubmitted: 'mock_test_submitted',
+  MockTestStatus.learningPathReceived: 'learning_path_received',
+  MockTestStatus.learningPathActivated: 'learning_path_activated',
+  MockTestStatus.learningPathDeactivated: 'learning_path_deactivated',
+};

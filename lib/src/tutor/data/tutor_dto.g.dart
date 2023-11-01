@@ -6,15 +6,15 @@ part of 'tutor_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TutorSessionStatusDto _$$_TutorSessionStatusDtoFromJson(
+_$TutorSessionStatusDtoImpl _$$TutorSessionStatusDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TutorSessionStatusDto(
+    _$TutorSessionStatusDtoImpl(
       status: json['status'] as String,
       meetingUrl: json['meeting_url'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_TutorSessionStatusDtoToJson(
-        _$_TutorSessionStatusDto instance) =>
+Map<String, dynamic> _$$TutorSessionStatusDtoImplToJson(
+        _$TutorSessionStatusDtoImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'meeting_url': instance.meetingUrl,

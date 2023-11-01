@@ -7,6 +7,7 @@ import 'package:shared_package/shared_package.dart';
 
 import '../../authentication/app/reset_password_controller.dart';
 import '../../core/helper/translate.dart';
+import '../../core/view/layouts/sign_in_layout.dart';
 import '../../navigation/domain/app_paths.dart';
 
 class ResetPasswordPage extends ConsumerWidget {
@@ -14,27 +15,30 @@ class ResetPasswordPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: AppColors.primaryBlue,
-        body: SafeArea(
-          child: context.isXsScreen()
-              ? Container(
-                  width: double.infinity,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: AppSizesUnit.medium24, vertical: AppSizesUnit.large48),
-                  child: ResetPasswordFormWrapper(ref: ref),
-                )
-              : Center(
-                  child: SizedBox(
-                    width: 434,
-                    child: ResetPasswordFormWrapper(ref: ref),
-                  ),
-                ),
-        ),
-      ),
+    // return GestureDetector(
+    //   onTap: () => FocusScope.of(context).unfocus(),
+    //   child: Scaffold(
+    //     resizeToAvoidBottomInset: false,
+    //     backgroundColor: AppColors.primaryBlue,
+    //     body: SafeArea(
+    //       child: context.isXsScreen()
+    //           ? Container(
+    //               width: double.infinity,
+    //               padding:
+    //                   const EdgeInsets.symmetric(horizontal: AppSizesUnit.medium24, vertical: AppSizesUnit.large48),
+    //               child: ResetPasswordFormWrapper(ref: ref),
+    //             )
+    //           : Center(
+    //               child: SizedBox(
+    //                 width: 434,
+    //                 child: ResetPasswordFormWrapper(ref: ref),
+    //               ),
+    //             ),
+    //     ),
+    //   ),
+    // );
+    return SignInLayout(
+      body: ResetPasswordFormWrapper(ref: ref),
     );
   }
 }

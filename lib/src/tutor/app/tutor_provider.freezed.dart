@@ -80,11 +80,11 @@ class _$TutorStateCopyWithImpl<$Res, $Val extends TutorState>
 }
 
 /// @nodoc
-abstract class _$$_TutorStateCopyWith<$Res>
+abstract class _$$TutorStateImplCopyWith<$Res>
     implements $TutorStateCopyWith<$Res> {
-  factory _$$_TutorStateCopyWith(
-          _$_TutorState value, $Res Function(_$_TutorState) then) =
-      __$$_TutorStateCopyWithImpl<$Res>;
+  factory _$$TutorStateImplCopyWith(
+          _$TutorStateImpl value, $Res Function(_$TutorStateImpl) then) =
+      __$$TutorStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -95,11 +95,11 @@ abstract class _$$_TutorStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TutorStateCopyWithImpl<$Res>
-    extends _$TutorStateCopyWithImpl<$Res, _$_TutorState>
-    implements _$$_TutorStateCopyWith<$Res> {
-  __$$_TutorStateCopyWithImpl(
-      _$_TutorState _value, $Res Function(_$_TutorState) _then)
+class __$$TutorStateImplCopyWithImpl<$Res>
+    extends _$TutorStateCopyWithImpl<$Res, _$TutorStateImpl>
+    implements _$$TutorStateImplCopyWith<$Res> {
+  __$$TutorStateImplCopyWithImpl(
+      _$TutorStateImpl _value, $Res Function(_$TutorStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,7 +110,7 @@ class __$$_TutorStateCopyWithImpl<$Res>
     Object? loading = null,
     Object? hasError = null,
   }) {
-    return _then(_$_TutorState(
+    return _then(_$TutorStateImpl(
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
@@ -133,8 +133,8 @@ class __$$_TutorStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TutorState implements _TutorState {
-  const _$_TutorState(
+class _$TutorStateImpl implements _TutorState {
+  const _$TutorStateImpl(
       {required this.sessionId,
       required this.sessionStatus,
       required this.loading,
@@ -158,7 +158,7 @@ class _$_TutorState implements _TutorState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TutorState &&
+            other is _$TutorStateImpl &&
             (identical(other.sessionId, sessionId) ||
                 other.sessionId == sessionId) &&
             (identical(other.sessionStatus, sessionStatus) ||
@@ -175,8 +175,8 @@ class _$_TutorState implements _TutorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TutorStateCopyWith<_$_TutorState> get copyWith =>
-      __$$_TutorStateCopyWithImpl<_$_TutorState>(this, _$identity);
+  _$$TutorStateImplCopyWith<_$TutorStateImpl> get copyWith =>
+      __$$TutorStateImplCopyWithImpl<_$TutorStateImpl>(this, _$identity);
 }
 
 abstract class _TutorState implements TutorState {
@@ -184,7 +184,7 @@ abstract class _TutorState implements TutorState {
       {required final Option<String> sessionId,
       required final Option<TutorSessionStatus> sessionStatus,
       required final bool loading,
-      required final bool hasError}) = _$_TutorState;
+      required final bool hasError}) = _$TutorStateImpl;
 
   @override
   Option<String> get sessionId;
@@ -196,6 +196,6 @@ abstract class _TutorState implements TutorState {
   bool get hasError;
   @override
   @JsonKey(ignore: true)
-  _$$_TutorStateCopyWith<_$_TutorState> get copyWith =>
+  _$$TutorStateImplCopyWith<_$TutorStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -64,6 +65,9 @@ class SignInNotifier extends StateNotifier<SignInState> {
           .run(authApi);
       if (failureOrSuccess.isRight()) {
         currentUser = await auth_service.getUser().run(authApi);
+        final deviceToken = await FirebaseMessaging.instance.getToken(
+            vapidKey: 'BP-BjvXQUjaznK89An_nvZWRmP6PCQxIGQ9OexTGstwXGbTgdPy5jkFtr9SIBJpUXZOMzHnQ_1-PTq2_jVP4ylI');
+        print(deviceToken);
       }
     }
 

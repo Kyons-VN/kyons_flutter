@@ -59,6 +59,7 @@ class AppRouter {
         GoRoute(
           path: AppPaths.home.path,
           builder: (BuildContext context, GoRouterState state) => const HomePage(),
+          name: AppPaths.home.name,
           redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
@@ -103,7 +104,7 @@ class AppRouter {
         ),
         GoRoute(
           path: AppPaths.lessonPage.path,
-          builder: (BuildContext context, GoRouterState state) => LessonPage(state.params['id']!),
+          builder: (BuildContext context, GoRouterState state) => LessonPage(state.pathParameters['id']!),
           redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
@@ -189,17 +190,36 @@ class AppRouter {
           routes: [
             GoRoute(
               path: ':lgId/select-topic',
-              builder: (BuildContext context, GoRouterState state) => SelectTopicPage(lgId: state.params['lgId']!),
+              builder: (BuildContext context, GoRouterState state) =>
+                  SelectTopicPage(lgId: state.pathParameters['lgId']!),
               redirect: (_, state) => guard(state, ref),
             ),
             GoRoute(
               path: ':lgId/test',
-              builder: (BuildContext context, GoRouterState state) => TestPage(lgId: state.params['lgId']!),
+              builder: (BuildContext context, GoRouterState state) => TestPage(lgId: state.pathParameters['lgId']!),
               redirect: (_, state) => guard(state, ref),
             ),
           ],
           redirect: (_, state) => guard(state, ref),
         ),
+        GoRoute(
+          path: AppPaths.tutorial.path,
+          redirect: (_, __) => AppPaths.tutorialHome.path,
+          routes: [
+            GoRoute(
+              path: 'home',
+              builder: (BuildContext context, GoRouterState state) => const Text('Tutorial 1'),
+            ),
+            GoRoute(
+              path: '2',
+              builder: (BuildContext context, GoRouterState state) => const Text('Tutorial 2'),
+            ),
+            GoRoute(
+              path: '3',
+              builder: (BuildContext context, GoRouterState state) => const Text('Tutorial 3'),
+            ),
+          ],
+        )
       ],
       refreshListenable: GoRouterRefreshStream(authNotifier.stream),
       debugLogDiagnostics: true,

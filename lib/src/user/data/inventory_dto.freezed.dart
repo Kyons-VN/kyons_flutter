@@ -69,22 +69,22 @@ class _$InventoryDtoCopyWithImpl<$Res, $Val extends InventoryDto>
 }
 
 /// @nodoc
-abstract class _$$_InventoryDtoCopyWith<$Res>
+abstract class _$$InventoryDtoImplCopyWith<$Res>
     implements $InventoryDtoCopyWith<$Res> {
-  factory _$$_InventoryDtoCopyWith(
-          _$_InventoryDto value, $Res Function(_$_InventoryDto) then) =
-      __$$_InventoryDtoCopyWithImpl<$Res>;
+  factory _$$InventoryDtoImplCopyWith(
+          _$InventoryDtoImpl value, $Res Function(_$InventoryDtoImpl) then) =
+      __$$InventoryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'mock_test') int mockTest, double subscription});
 }
 
 /// @nodoc
-class __$$_InventoryDtoCopyWithImpl<$Res>
-    extends _$InventoryDtoCopyWithImpl<$Res, _$_InventoryDto>
-    implements _$$_InventoryDtoCopyWith<$Res> {
-  __$$_InventoryDtoCopyWithImpl(
-      _$_InventoryDto _value, $Res Function(_$_InventoryDto) _then)
+class __$$InventoryDtoImplCopyWithImpl<$Res>
+    extends _$InventoryDtoCopyWithImpl<$Res, _$InventoryDtoImpl>
+    implements _$$InventoryDtoImplCopyWith<$Res> {
+  __$$InventoryDtoImplCopyWithImpl(
+      _$InventoryDtoImpl _value, $Res Function(_$InventoryDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_InventoryDtoCopyWithImpl<$Res>
     Object? mockTest = null,
     Object? subscription = null,
   }) {
-    return _then(_$_InventoryDto(
+    return _then(_$InventoryDtoImpl(
       mockTest: null == mockTest
           ? _value.mockTest
           : mockTest // ignore: cast_nullable_to_non_nullable
@@ -108,14 +108,14 @@ class __$$_InventoryDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_InventoryDto extends _InventoryDto {
-  const _$_InventoryDto(
+class _$InventoryDtoImpl extends _InventoryDto {
+  const _$InventoryDtoImpl(
       {@JsonKey(name: 'mock_test') required this.mockTest,
       required this.subscription})
       : super._();
 
-  factory _$_InventoryDto.fromJson(Map<String, dynamic> json) =>
-      _$$_InventoryDtoFromJson(json);
+  factory _$InventoryDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InventoryDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'mock_test')
@@ -132,7 +132,7 @@ class _$_InventoryDto extends _InventoryDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InventoryDto &&
+            other is _$InventoryDtoImpl &&
             (identical(other.mockTest, mockTest) ||
                 other.mockTest == mockTest) &&
             (identical(other.subscription, subscription) ||
@@ -146,12 +146,12 @@ class _$_InventoryDto extends _InventoryDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InventoryDtoCopyWith<_$_InventoryDto> get copyWith =>
-      __$$_InventoryDtoCopyWithImpl<_$_InventoryDto>(this, _$identity);
+  _$$InventoryDtoImplCopyWith<_$InventoryDtoImpl> get copyWith =>
+      __$$InventoryDtoImplCopyWithImpl<_$InventoryDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InventoryDtoToJson(
+    return _$$InventoryDtoImplToJson(
       this,
     );
   }
@@ -160,11 +160,11 @@ class _$_InventoryDto extends _InventoryDto {
 abstract class _InventoryDto extends InventoryDto {
   const factory _InventoryDto(
       {@JsonKey(name: 'mock_test') required final int mockTest,
-      required final double subscription}) = _$_InventoryDto;
+      required final double subscription}) = _$InventoryDtoImpl;
   const _InventoryDto._() : super._();
 
   factory _InventoryDto.fromJson(Map<String, dynamic> json) =
-      _$_InventoryDto.fromJson;
+      _$InventoryDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'mock_test')
@@ -173,6 +173,6 @@ abstract class _InventoryDto extends InventoryDto {
   double get subscription;
   @override
   @JsonKey(ignore: true)
-  _$$_InventoryDtoCopyWith<_$_InventoryDto> get copyWith =>
+  _$$InventoryDtoImplCopyWith<_$InventoryDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

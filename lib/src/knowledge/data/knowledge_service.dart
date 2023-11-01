@@ -1,4 +1,5 @@
 import 'package:fpdart/fpdart.dart';
+import 'package:kyons_flutter/src/test_knowledge/data/test_entities.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../core/data/api.dart';
@@ -9,6 +10,7 @@ const String mockProgramKey = 'mockProgram';
 const String selectedProgramKey = 'selectedProgram';
 const String mockLearningGoalKey = 'mockLearningGoal';
 const String selectedLearningGoalKey = 'selectedLearningGoal';
+const String selectedStudentLearningGoalKey = 'selectedStudentLearningGoal';
 const String selectedCatIndexKey = 'selectedCatIndex';
 
 Reader<IKnowledgeApi, Future<Either<ApiFailure, List<Subject>>>> getSubjects() => Reader(
@@ -19,31 +21,30 @@ TaskEither<ApiFailure, List<Subject>> _getSubjects(IKnowledgeApi api) => TaskEit
       handleError,
     );
 
-Reader<IKnowledgeApi, Future<Either<ApiFailure, List<Program>>>> getFrogramFromSubject(Subject subject) => Reader(
-      (api) => _getPrograms(subject, api).run(),
-    );
-TaskEither<ApiFailure, List<Program>> _getPrograms(Subject subject, IKnowledgeApi api) => TaskEither.tryCatch(
-      () => api.getStudentProgram(),
-      handleError,
-    );
+// Reader<IKnowledgeApi, Future<Either<ApiFailure, List<Program>>>> getFrogramFromSubject(Subject subject) => Reader(
+//       (api) => _getPrograms(subject, api).run(),
+//     );
+// TaskEither<ApiFailure, List<Program>> _getPrograms(Subject subject, IKnowledgeApi api) => TaskEither.tryCatch(
+//       () => api.getStudentProgram(),
+//       handleError,
+//     );
 
-Reader<IKnowledgeApi, Future<Either<ApiFailure, Unit>>> defaultLearningPath(Program program) => Reader(
-      (api) => _defaultLearningPath(api, program).run(),
-    );
-TaskEither<ApiFailure, Unit> _defaultLearningPath(IKnowledgeApi api, Program program) => TaskEither.tryCatch(
-      () => api.defaultLearningPath(program),
-      handleError,
-    );
+// Reader<IKnowledgeApi, Future<Either<ApiFailure, Unit>>> defaultLearningPath(Program program) => Reader(
+//       (api) => _defaultLearningPath(api, program).run(),
+//     );
+// TaskEither<ApiFailure, Unit> _defaultLearningPath(IKnowledgeApi api, Program program) => TaskEither.tryCatch(
+//       () => api.defaultLearningPath(program),
+//       handleError,
+//     );
 
 Reader<IKnowledgeApi, Future<Either<ApiFailure, LearningGoalPath>>> getLearningGoalPath(
-        Program program, LearningGoal learningGoal) =>
+        StudentLearningGoal learningGoal) =>
     Reader(
-      (api) => _getLearningGoalPath(api, program, learningGoal).run(),
+      (api) => _getLearningGoalPath(api, learningGoal).run(),
     );
-TaskEither<ApiFailure, LearningGoalPath> _getLearningGoalPath(
-        IKnowledgeApi api, Program program, LearningGoal learningGoal) =>
+TaskEither<ApiFailure, LearningGoalPath> _getLearningGoalPath(IKnowledgeApi api, StudentLearningGoal learningGoal) =>
     TaskEither.tryCatch(
-      () => api.getLearningGoalPath(program, learningGoal),
+      () => api.getLearningGoalPath(learningGoal),
       handleError,
     );
 
@@ -55,36 +56,39 @@ TaskEither<ApiFailure, LessonGroup> _getLessonGroup(IKnowledgeApi api, String le
       handleError,
     );
 
-Reader<IKnowledgeApi, Future<Either<ApiFailure, List<Program>>>> getStudentProgram() => Reader(
-      (api) => _getStudentProgram(api).run(),
+Reader<IKnowledgeApi, Future<Either<ApiFailure, List<StudentLearningGoal>>>> getStudentLearningGoals() => Reader(
+      (api) => _getStudentLearningGoals(api).run(),
     );
-TaskEither<ApiFailure, List<Program>> _getStudentProgram(IKnowledgeApi api) => TaskEither.tryCatch(
-      () => api.getStudentProgram(),
+TaskEither<ApiFailure, List<StudentLearningGoal>> _getStudentLearningGoals(IKnowledgeApi api) => TaskEither.tryCatch(
+      () => api.getStudentLearningGoals(),
       handleError,
     );
 
-Reader<IKnowledgeApi, Future<Either<ClientFailure, Unit>>> setProgram(Program program) => Reader(
-      (api) => _setProgram(api, program).run(),
+Reader<IKnowledgeApi, Future<Either<ClientFailure, Unit>>> selectProgram(Program program) => Reader(
+      (api) => _selectProgram(api, program).run(),
     );
-TaskEither<ClientFailure, Unit> _setProgram(IKnowledgeApi api, Program program) => TaskEither.tryCatch(
-      () => api.setProgram(program),
+TaskEither<ClientFailure, Unit> _selectProgram(IKnowledgeApi api, Program program) => TaskEither.tryCatch(
+      () => api.selectProgram(program),
       handleClientError,
     );
 
-Reader<IKnowledgeApi, Future<Either<ClientFailure, Unit>>> setLearningGoal(LearningGoal learningGoal) => Reader(
-      (api) => _setLearningGoal(api, learningGoal).run(),
+Reader<IKnowledgeApi, Future<Either<ClientFailure, Unit>>> selectLearningGoal(LearningGoal learningGoal) => Reader(
+      (api) => _selectLearningGoal(api, learningGoal).run(),
     );
-TaskEither<ClientFailure, Unit> _setLearningGoal(IKnowledgeApi api, LearningGoal learningGoal) => TaskEither.tryCatch(
-      () => api.setLearningGoal(learningGoal),
-      handleClientError,
-    );
-
-Reader<IKnowledgeApi, Future<Either<ClientFailure, Unit>>> selectMockLearningGoal(LearningGoal learningGoal) => Reader(
-      (api) => _selectMockLearningGoal(api, learningGoal).run(),
-    );
-TaskEither<ClientFailure, Unit> _selectMockLearningGoal(IKnowledgeApi api, LearningGoal learningGoal) =>
+TaskEither<ClientFailure, Unit> _selectLearningGoal(IKnowledgeApi api, LearningGoal learningGoal) =>
     TaskEither.tryCatch(
-      () => api.selectMockLearningGoal(learningGoal),
+      () => api.selectLearningGoal(learningGoal),
+      handleClientError,
+    );
+
+Reader<IKnowledgeApi, Future<Either<ClientFailure, Unit>>> selectStudentLearningGoal(
+        StudentLearningGoal learningGoal) =>
+    Reader(
+      (api) => _selectStudentLearningGoal(api, learningGoal).run(),
+    );
+TaskEither<ClientFailure, Unit> _selectStudentLearningGoal(IKnowledgeApi api, StudentLearningGoal learningGoal) =>
+    TaskEither.tryCatch(
+      () => api.selectStudentLearningGoal(learningGoal),
       handleClientError,
     );
 
@@ -132,19 +136,20 @@ TaskEither<ApiFailure, List<LearningGoal>> _getLearningGoals(IKnowledgeApi api, 
       handleError,
     );
 
-Reader<IKnowledgeApi, Future<Either<ClientFailure, LearningGoal>>> getMockLearningGoal() => Reader(
-      (api) => _getMockLearningGoal(api).run(),
-    );
-TaskEither<ClientFailure, LearningGoal> _getMockLearningGoal(IKnowledgeApi api) => TaskEither.tryCatch(
-      () => api.getMockLearningGoal(),
-      handleClientError,
-    );
-
 Reader<IKnowledgeApi, Future<Either<ClientFailure, LearningGoal>>> getSelectedLearningGoal() => Reader(
       (api) => _getSelectedLearningGoal(api).run(),
     );
 TaskEither<ClientFailure, LearningGoal> _getSelectedLearningGoal(IKnowledgeApi api) => TaskEither.tryCatch(
       () => api.getSelectedLearningGoal(),
+      handleClientError,
+    );
+
+Reader<IKnowledgeApi, Future<Either<ClientFailure, StudentLearningGoal>>> getSelectedStudentLearningGoal() => Reader(
+      (api) => _getSelectedStudentLearningGoal(api).run(),
+    );
+TaskEither<ClientFailure, StudentLearningGoal> _getSelectedStudentLearningGoal(IKnowledgeApi api) =>
+    TaskEither.tryCatch(
+      () => api.getSelectedStudentLearningGoal(),
       handleClientError,
     );
 
@@ -171,18 +176,29 @@ TaskEither<ApiFailure, LearningGoal> _createLearningGoal(
       handleError,
     );
 
-Reader<IKnowledgeApi, Future<Either<ClientFailure, int>>> getSelectedCatIndex() => Reader(
-      (api) => _getSelectedCatIndex(api).run(),
-    );
-TaskEither<ClientFailure, int> _getSelectedCatIndex(IKnowledgeApi api) => TaskEither.tryCatch(
-      () => api.getSelectedCatIndex(),
-      handleClientError,
-    );
+// Reader<IKnowledgeApi, Future<Either<ClientFailure, int>>> getSelectedCatIndex() => Reader(
+//       (api) => _getSelectedCatIndex(api).run(),
+//     );
+// TaskEither<ClientFailure, int> _getSelectedCatIndex(IKnowledgeApi api) => TaskEither.tryCatch(
+//       () => api.getSelectedCatIndex(),
+//       handleClientError,
+//     );
 
-Reader<IKnowledgeApi, Future<Either<ClientFailure, Unit>>> setSelectedCatIndex(int index) => Reader(
-      (api) => _setSelectedCatIndex(api, index).run(),
+// Reader<IKnowledgeApi, Future<Either<ClientFailure, Unit>>> setSelectedCatIndex(int index) => Reader(
+//       (api) => _setSelectedCatIndex(api, index).run(),
+//     );
+// TaskEither<ClientFailure, Unit> _setSelectedCatIndex(IKnowledgeApi api, int index) => TaskEither.tryCatch(
+//       () => api.setSelectedCatIndex(index),
+//       handleClientError,
+//     );
+
+Reader<IKnowledgeApi, Future<Either<ApiFailure, List<MockTestItem>>>> getMockTestItems(
+        StudentLearningGoal learningGoal) =>
+    Reader(
+      (api) => _getMockTestItems(api, learningGoal).run(),
     );
-TaskEither<ClientFailure, Unit> _setSelectedCatIndex(IKnowledgeApi api, int index) => TaskEither.tryCatch(
-      () => api.setSelectedCatIndex(index),
-      handleClientError,
+TaskEither<ApiFailure, List<MockTestItem>> _getMockTestItems(IKnowledgeApi api, StudentLearningGoal learningGoal) =>
+    TaskEither.tryCatch(
+      () => api.getMockTestItems(learningGoal),
+      handleError,
     );

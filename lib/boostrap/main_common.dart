@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ import '../src/core/helper/translate.dart';
 import '../src/navigation/app/router.dart';
 import '../src/settings/app/settings_controller.dart';
 import 'config_reader.dart';
+import 'firebase_options.dart';
 
 Future<void> mainCommon(Environment env) async {
   // if (!kIsWeb) runApp(const SplashScreen());
@@ -39,6 +41,11 @@ Future<void> mainCommon(Environment env) async {
   //   guardedMain,
   //   crashlytics: crashlytics,
   // );
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   guardedMain();
 }
 
@@ -134,6 +141,11 @@ class _AppWidgetState extends ConsumerState<AppWidget> with WidgetsBindingObserv
         break;
       case AppLifecycleState.detached:
         print("app in detached");
+        // trackingNotifier.disable();
+        // lessonNotifier.disableTracking();
+        break;
+      case AppLifecycleState.hidden:
+        print("app in hidden");
         // trackingNotifier.disable();
         // lessonNotifier.disableTracking();
         break;

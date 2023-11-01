@@ -41,51 +41,47 @@ class SignInFormWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // GestureDetector(
-        //     onDoubleTap: () => ref.read(signInProvider.notifier).initial(),
-        //     child: SizedBox(height: 100, child: AppAssets.logoSVG)),
-        // const SizedBox(height: 48),
+        GestureDetector(
+            onDoubleTap: () => ref.read(signInProvider.notifier).initial(),
+            child: SizedBox(height: 100, child: AppAssets.logoHorizontalSVG)),
         AppSizesUnit.sizedBox24,
         Text(t(context).welcomeBack, style: Theme.of(context).textTheme.heading6),
         AppSizesUnit.sizedBox24,
         const SignInForm(),
         const SizedBox(height: 12),
-        IntrinsicHeight(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RichText(
-                text: TextSpan(
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 2),
-                  children: [
-                    TextSpan(
-                      text: t(context).forgotPassword,
-                      style: const TextStyle(color: AppColors.orange),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          context.go(AppPaths.resetPassword.path);
-                        },
-                    ),
-                    TextSpan(text: "\n${t(context).doesNotHaveAccount} "),
-                    TextSpan(
-                      text: t(context).registerHere,
-                      style: const TextStyle(color: AppColors.orange),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          context.go(AppPaths.signUp.path);
-                        },
-                    ),
-                  ],
-                ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            RichText(
+              text: TextSpan(
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 2),
+                children: [
+                  TextSpan(
+                    text: t(context).forgotPassword,
+                    style: const TextStyle(color: AppColors.orange),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        context.go(AppPaths.resetPassword.path);
+                      },
+                  ),
+                  TextSpan(text: "\n${t(context).doesNotHaveAccount} "),
+                  TextSpan(
+                    text: t(context).registerHere,
+                    style: const TextStyle(color: AppColors.orange),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        context.go(AppPaths.signUp.path);
+                      },
+                  ),
+                ],
               ),
-              AppSizesUnit.sizedBox24,
-              const LanguageSwitcher(),
-              AppSizesUnit.sizedBox24,
-            ],
-          ),
+            ),
+            AppSizesUnit.sizedBox24,
+            const LanguageSwitcher(),
+            AppSizesUnit.sizedBox24,
+          ],
         ),
       ],
     );
@@ -110,7 +106,8 @@ class SignInForm extends HookConsumerWidget {
           signInEither.fold((l) {
             Flushbar()
                 .error(l.maybeMap(
-                  invalidEmailPassword: (_) => t(context).invalidThing('${t(context).email} ${t(context).password}'),
+                  invalidEmailPassword: (_) =>
+                      '${t(context).invalidThing('${t(context).email} ${t(context).password}')}. ${t(context).pleaseTryAgain}',
                   orElse: () => t(context).thingWithStatus(t(context).signIn, t(context).fail).firstCapital(),
                 ))
                 .show(context);

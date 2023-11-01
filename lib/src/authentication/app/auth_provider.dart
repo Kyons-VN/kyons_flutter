@@ -35,7 +35,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
   }
 
   Future<Unit> signOut() async {
-    state = const AuthState.loading();
+    // state = const AuthState.loading();
     await knowledge_service.removeSelectedProgram().run(knowledgeApi);
     await tracking_service.resetTracking().run(trackingApi);
     await auth_service.signOut().run(authApi);

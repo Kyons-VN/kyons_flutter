@@ -7,7 +7,7 @@ part of 'select_learning_goal_controller.dart';
 // **************************************************************************
 
 String _$selectLearningGoalControllerHash() =>
-    r'dca34c2779e8bc4ef8e4478be104e5c3d69dd3df';
+    r'ee89f8c6aa84779e08e8942d7856d6301a5c74de';
 
 /// See also [SelectLearningGoalController].
 @ProviderFor(SelectLearningGoalController)
@@ -24,4 +24,5 @@ final selectLearningGoalControllerProvider = AutoDisposeNotifierProvider<
 
 typedef _$SelectLearningGoalController
     = AutoDisposeNotifier<SelectLearningGoalState>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

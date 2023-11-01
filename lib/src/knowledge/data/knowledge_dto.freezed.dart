@@ -74,22 +74,22 @@ class _$SubjectDtoCopyWithImpl<$Res, $Val extends SubjectDto>
 }
 
 /// @nodoc
-abstract class _$$_SubjectDtoCopyWith<$Res>
+abstract class _$$SubjectDtoImplCopyWith<$Res>
     implements $SubjectDtoCopyWith<$Res> {
-  factory _$$_SubjectDtoCopyWith(
-          _$_SubjectDto value, $Res Function(_$_SubjectDto) then) =
-      __$$_SubjectDtoCopyWithImpl<$Res>;
+  factory _$$SubjectDtoImplCopyWith(
+          _$SubjectDtoImpl value, $Res Function(_$SubjectDtoImpl) then) =
+      __$$SubjectDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String label, List<ProgramDto> programs});
 }
 
 /// @nodoc
-class __$$_SubjectDtoCopyWithImpl<$Res>
-    extends _$SubjectDtoCopyWithImpl<$Res, _$_SubjectDto>
-    implements _$$_SubjectDtoCopyWith<$Res> {
-  __$$_SubjectDtoCopyWithImpl(
-      _$_SubjectDto _value, $Res Function(_$_SubjectDto) _then)
+class __$$SubjectDtoImplCopyWithImpl<$Res>
+    extends _$SubjectDtoCopyWithImpl<$Res, _$SubjectDtoImpl>
+    implements _$$SubjectDtoImplCopyWith<$Res> {
+  __$$SubjectDtoImplCopyWithImpl(
+      _$SubjectDtoImpl _value, $Res Function(_$SubjectDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_SubjectDtoCopyWithImpl<$Res>
     Object? label = null,
     Object? programs = null,
   }) {
-    return _then(_$_SubjectDto(
+    return _then(_$SubjectDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -118,16 +118,16 @@ class __$$_SubjectDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SubjectDto extends _SubjectDto {
-  const _$_SubjectDto(
+class _$SubjectDtoImpl extends _SubjectDto {
+  const _$SubjectDtoImpl(
       {required this.id,
       required this.label,
       required final List<ProgramDto> programs})
       : _programs = programs,
         super._();
 
-  factory _$_SubjectDto.fromJson(Map<String, dynamic> json) =>
-      _$$_SubjectDtoFromJson(json);
+  factory _$SubjectDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubjectDtoImplFromJson(json);
 
   @override
   final int id;
@@ -150,7 +150,7 @@ class _$_SubjectDto extends _SubjectDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SubjectDto &&
+            other is _$SubjectDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.label, label) || other.label == label) &&
             const DeepCollectionEquality().equals(other._programs, _programs));
@@ -164,12 +164,12 @@ class _$_SubjectDto extends _SubjectDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SubjectDtoCopyWith<_$_SubjectDto> get copyWith =>
-      __$$_SubjectDtoCopyWithImpl<_$_SubjectDto>(this, _$identity);
+  _$$SubjectDtoImplCopyWith<_$SubjectDtoImpl> get copyWith =>
+      __$$SubjectDtoImplCopyWithImpl<_$SubjectDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SubjectDtoToJson(
+    return _$$SubjectDtoImplToJson(
       this,
     );
   }
@@ -179,11 +179,11 @@ abstract class _SubjectDto extends SubjectDto {
   const factory _SubjectDto(
       {required final int id,
       required final String label,
-      required final List<ProgramDto> programs}) = _$_SubjectDto;
+      required final List<ProgramDto> programs}) = _$SubjectDtoImpl;
   const _SubjectDto._() : super._();
 
   factory _SubjectDto.fromJson(Map<String, dynamic> json) =
-      _$_SubjectDto.fromJson;
+      _$SubjectDtoImpl.fromJson;
 
   @override
   int get id;
@@ -193,7 +193,7 @@ abstract class _SubjectDto extends SubjectDto {
   List<ProgramDto> get programs;
   @override
   @JsonKey(ignore: true)
-  _$$_SubjectDtoCopyWith<_$_SubjectDto> get copyWith =>
+  _$$SubjectDtoImplCopyWith<_$SubjectDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -283,11 +283,11 @@ class _$ProgramDtoCopyWithImpl<$Res, $Val extends ProgramDto>
 }
 
 /// @nodoc
-abstract class _$$_ProgramDtoCopyWith<$Res>
+abstract class _$$ProgramDtoImplCopyWith<$Res>
     implements $ProgramDtoCopyWith<$Res> {
-  factory _$$_ProgramDtoCopyWith(
-          _$_ProgramDto value, $Res Function(_$_ProgramDto) then) =
-      __$$_ProgramDtoCopyWithImpl<$Res>;
+  factory _$$ProgramDtoImplCopyWith(
+          _$ProgramDtoImpl value, $Res Function(_$ProgramDtoImpl) then) =
+      __$$ProgramDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -301,11 +301,11 @@ abstract class _$$_ProgramDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProgramDtoCopyWithImpl<$Res>
-    extends _$ProgramDtoCopyWithImpl<$Res, _$_ProgramDto>
-    implements _$$_ProgramDtoCopyWith<$Res> {
-  __$$_ProgramDtoCopyWithImpl(
-      _$_ProgramDto _value, $Res Function(_$_ProgramDto) _then)
+class __$$ProgramDtoImplCopyWithImpl<$Res>
+    extends _$ProgramDtoCopyWithImpl<$Res, _$ProgramDtoImpl>
+    implements _$$ProgramDtoImplCopyWith<$Res> {
+  __$$ProgramDtoImplCopyWithImpl(
+      _$ProgramDtoImpl _value, $Res Function(_$ProgramDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -316,7 +316,7 @@ class __$$_ProgramDtoCopyWithImpl<$Res>
     Object? subjectId = null,
     Object? learningGoal = freezed,
   }) {
-    return _then(_$_ProgramDto(
+    return _then(_$ProgramDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -339,16 +339,16 @@ class __$$_ProgramDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProgramDto extends _ProgramDto {
-  const _$_ProgramDto(
+class _$ProgramDtoImpl extends _ProgramDto {
+  const _$ProgramDtoImpl(
       {required this.id,
       required this.name,
       @JsonKey(name: 'subject_id') required this.subjectId,
       @JsonKey(name: 'learning_goal') required this.learningGoal})
       : super._();
 
-  factory _$_ProgramDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ProgramDtoFromJson(json);
+  factory _$ProgramDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProgramDtoImplFromJson(json);
 
   @override
   final int id;
@@ -370,7 +370,7 @@ class _$_ProgramDto extends _ProgramDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProgramDto &&
+            other is _$ProgramDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.subjectId, subjectId) ||
@@ -387,12 +387,12 @@ class _$_ProgramDto extends _ProgramDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProgramDtoCopyWith<_$_ProgramDto> get copyWith =>
-      __$$_ProgramDtoCopyWithImpl<_$_ProgramDto>(this, _$identity);
+  _$$ProgramDtoImplCopyWith<_$ProgramDtoImpl> get copyWith =>
+      __$$ProgramDtoImplCopyWithImpl<_$ProgramDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProgramDtoToJson(
+    return _$$ProgramDtoImplToJson(
       this,
     );
   }
@@ -402,14 +402,13 @@ abstract class _ProgramDto extends ProgramDto {
   const factory _ProgramDto(
       {required final int id,
       required final String name,
-      @JsonKey(name: 'subject_id')
-          required final int subjectId,
+      @JsonKey(name: 'subject_id') required final int subjectId,
       @JsonKey(name: 'learning_goal')
-          required final LearningGoalDto? learningGoal}) = _$_ProgramDto;
+      required final LearningGoalDto? learningGoal}) = _$ProgramDtoImpl;
   const _ProgramDto._() : super._();
 
   factory _ProgramDto.fromJson(Map<String, dynamic> json) =
-      _$_ProgramDto.fromJson;
+      _$ProgramDtoImpl.fromJson;
 
   @override
   int get id;
@@ -423,7 +422,7 @@ abstract class _ProgramDto extends ProgramDto {
   LearningGoalDto? get learningGoal;
   @override
   @JsonKey(ignore: true)
-  _$$_ProgramDtoCopyWith<_$_ProgramDto> get copyWith =>
+  _$$ProgramDtoImplCopyWith<_$ProgramDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -488,22 +487,22 @@ class _$LessonItemDtoCopyWithImpl<$Res, $Val extends LessonItemDto>
 }
 
 /// @nodoc
-abstract class _$$_LessonItemDtoCopyWith<$Res>
+abstract class _$$LessonItemDtoImplCopyWith<$Res>
     implements $LessonItemDtoCopyWith<$Res> {
-  factory _$$_LessonItemDtoCopyWith(
-          _$_LessonItemDto value, $Res Function(_$_LessonItemDto) then) =
-      __$$_LessonItemDtoCopyWithImpl<$Res>;
+  factory _$$LessonItemDtoImplCopyWith(
+          _$LessonItemDtoImpl value, $Res Function(_$LessonItemDtoImpl) then) =
+      __$$LessonItemDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name, @JsonKey(name: 'new') bool isNew});
 }
 
 /// @nodoc
-class __$$_LessonItemDtoCopyWithImpl<$Res>
-    extends _$LessonItemDtoCopyWithImpl<$Res, _$_LessonItemDto>
-    implements _$$_LessonItemDtoCopyWith<$Res> {
-  __$$_LessonItemDtoCopyWithImpl(
-      _$_LessonItemDto _value, $Res Function(_$_LessonItemDto) _then)
+class __$$LessonItemDtoImplCopyWithImpl<$Res>
+    extends _$LessonItemDtoCopyWithImpl<$Res, _$LessonItemDtoImpl>
+    implements _$$LessonItemDtoImplCopyWith<$Res> {
+  __$$LessonItemDtoImplCopyWithImpl(
+      _$LessonItemDtoImpl _value, $Res Function(_$LessonItemDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -513,7 +512,7 @@ class __$$_LessonItemDtoCopyWithImpl<$Res>
     Object? name = null,
     Object? isNew = null,
   }) {
-    return _then(_$_LessonItemDto(
+    return _then(_$LessonItemDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -532,15 +531,15 @@ class __$$_LessonItemDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LessonItemDto extends _LessonItemDto {
-  const _$_LessonItemDto(
+class _$LessonItemDtoImpl extends _LessonItemDto {
+  const _$LessonItemDtoImpl(
       {required this.id,
       required this.name,
       @JsonKey(name: 'new') required this.isNew})
       : super._();
 
-  factory _$_LessonItemDto.fromJson(Map<String, dynamic> json) =>
-      _$$_LessonItemDtoFromJson(json);
+  factory _$LessonItemDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LessonItemDtoImplFromJson(json);
 
   @override
   final String id;
@@ -559,7 +558,7 @@ class _$_LessonItemDto extends _LessonItemDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LessonItemDto &&
+            other is _$LessonItemDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.isNew, isNew) || other.isNew == isNew));
@@ -572,12 +571,12 @@ class _$_LessonItemDto extends _LessonItemDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LessonItemDtoCopyWith<_$_LessonItemDto> get copyWith =>
-      __$$_LessonItemDtoCopyWithImpl<_$_LessonItemDto>(this, _$identity);
+  _$$LessonItemDtoImplCopyWith<_$LessonItemDtoImpl> get copyWith =>
+      __$$LessonItemDtoImplCopyWithImpl<_$LessonItemDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LessonItemDtoToJson(
+    return _$$LessonItemDtoImplToJson(
       this,
     );
   }
@@ -587,11 +586,11 @@ abstract class _LessonItemDto extends LessonItemDto {
   const factory _LessonItemDto(
       {required final String id,
       required final String name,
-      @JsonKey(name: 'new') required final bool isNew}) = _$_LessonItemDto;
+      @JsonKey(name: 'new') required final bool isNew}) = _$LessonItemDtoImpl;
   const _LessonItemDto._() : super._();
 
   factory _LessonItemDto.fromJson(Map<String, dynamic> json) =
-      _$_LessonItemDto.fromJson;
+      _$LessonItemDtoImpl.fromJson;
 
   @override
   String get id;
@@ -602,7 +601,7 @@ abstract class _LessonItemDto extends LessonItemDto {
   bool get isNew;
   @override
   @JsonKey(ignore: true)
-  _$$_LessonItemDtoCopyWith<_$_LessonItemDto> get copyWith =>
+  _$$LessonItemDtoImplCopyWith<_$LessonItemDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -672,11 +671,11 @@ class _$LearningGoalPathDtoCopyWithImpl<$Res, $Val extends LearningGoalPathDto>
 }
 
 /// @nodoc
-abstract class _$$_LearningGoalPathDtoCopyWith<$Res>
+abstract class _$$LearningGoalPathDtoImplCopyWith<$Res>
     implements $LearningGoalPathDtoCopyWith<$Res> {
-  factory _$$_LearningGoalPathDtoCopyWith(_$_LearningGoalPathDto value,
-          $Res Function(_$_LearningGoalPathDto) then) =
-      __$$_LearningGoalPathDtoCopyWithImpl<$Res>;
+  factory _$$LearningGoalPathDtoImplCopyWith(_$LearningGoalPathDtoImpl value,
+          $Res Function(_$LearningGoalPathDtoImpl) then) =
+      __$$LearningGoalPathDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -686,11 +685,11 @@ abstract class _$$_LearningGoalPathDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LearningGoalPathDtoCopyWithImpl<$Res>
-    extends _$LearningGoalPathDtoCopyWithImpl<$Res, _$_LearningGoalPathDto>
-    implements _$$_LearningGoalPathDtoCopyWith<$Res> {
-  __$$_LearningGoalPathDtoCopyWithImpl(_$_LearningGoalPathDto _value,
-      $Res Function(_$_LearningGoalPathDto) _then)
+class __$$LearningGoalPathDtoImplCopyWithImpl<$Res>
+    extends _$LearningGoalPathDtoCopyWithImpl<$Res, _$LearningGoalPathDtoImpl>
+    implements _$$LearningGoalPathDtoImplCopyWith<$Res> {
+  __$$LearningGoalPathDtoImplCopyWithImpl(_$LearningGoalPathDtoImpl _value,
+      $Res Function(_$LearningGoalPathDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -700,7 +699,7 @@ class __$$_LearningGoalPathDtoCopyWithImpl<$Res>
     Object? progress = null,
     Object? isNewUser = null,
   }) {
-    return _then(_$_LearningGoalPathDto(
+    return _then(_$LearningGoalPathDtoImpl(
       categories: null == categories
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -719,16 +718,16 @@ class __$$_LearningGoalPathDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LearningGoalPathDto extends _LearningGoalPathDto {
-  const _$_LearningGoalPathDto(
+class _$LearningGoalPathDtoImpl extends _LearningGoalPathDto {
+  const _$LearningGoalPathDtoImpl(
       {required final List<LearningGoalCategoryDto> categories,
       @JsonKey(name: 'complete_percentage') required this.progress,
       @JsonKey(name: 'new_user', defaultValue: false) required this.isNewUser})
       : _categories = categories,
         super._();
 
-  factory _$_LearningGoalPathDto.fromJson(Map<String, dynamic> json) =>
-      _$$_LearningGoalPathDtoFromJson(json);
+  factory _$LearningGoalPathDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LearningGoalPathDtoImplFromJson(json);
 
   final List<LearningGoalCategoryDto> _categories;
   @override
@@ -754,7 +753,7 @@ class _$_LearningGoalPathDto extends _LearningGoalPathDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LearningGoalPathDto &&
+            other is _$LearningGoalPathDtoImpl &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
             (identical(other.progress, progress) ||
@@ -771,13 +770,13 @@ class _$_LearningGoalPathDto extends _LearningGoalPathDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LearningGoalPathDtoCopyWith<_$_LearningGoalPathDto> get copyWith =>
-      __$$_LearningGoalPathDtoCopyWithImpl<_$_LearningGoalPathDto>(
+  _$$LearningGoalPathDtoImplCopyWith<_$LearningGoalPathDtoImpl> get copyWith =>
+      __$$LearningGoalPathDtoImplCopyWithImpl<_$LearningGoalPathDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LearningGoalPathDtoToJson(
+    return _$$LearningGoalPathDtoImplToJson(
       this,
     );
   }
@@ -786,14 +785,13 @@ class _$_LearningGoalPathDto extends _LearningGoalPathDto {
 abstract class _LearningGoalPathDto extends LearningGoalPathDto {
   const factory _LearningGoalPathDto(
       {required final List<LearningGoalCategoryDto> categories,
-      @JsonKey(name: 'complete_percentage')
-          required final double progress,
+      @JsonKey(name: 'complete_percentage') required final double progress,
       @JsonKey(name: 'new_user', defaultValue: false)
-          required final bool isNewUser}) = _$_LearningGoalPathDto;
+      required final bool isNewUser}) = _$LearningGoalPathDtoImpl;
   const _LearningGoalPathDto._() : super._();
 
   factory _LearningGoalPathDto.fromJson(Map<String, dynamic> json) =
-      _$_LearningGoalPathDto.fromJson;
+      _$LearningGoalPathDtoImpl.fromJson;
 
   @override
   List<LearningGoalCategoryDto> get categories;
@@ -805,7 +803,7 @@ abstract class _LearningGoalPathDto extends LearningGoalPathDto {
   bool get isNewUser;
   @override
   @JsonKey(ignore: true)
-  _$$_LearningGoalPathDtoCopyWith<_$_LearningGoalPathDto> get copyWith =>
+  _$$LearningGoalPathDtoImplCopyWith<_$LearningGoalPathDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -887,11 +885,12 @@ class _$LearningGoalCategoryDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_LearningGoalCategoryDtoCopyWith<$Res>
+abstract class _$$LearningGoalCategoryDtoImplCopyWith<$Res>
     implements $LearningGoalCategoryDtoCopyWith<$Res> {
-  factory _$$_LearningGoalCategoryDtoCopyWith(_$_LearningGoalCategoryDto value,
-          $Res Function(_$_LearningGoalCategoryDto) then) =
-      __$$_LearningGoalCategoryDtoCopyWithImpl<$Res>;
+  factory _$$LearningGoalCategoryDtoImplCopyWith(
+          _$LearningGoalCategoryDtoImpl value,
+          $Res Function(_$LearningGoalCategoryDtoImpl) then) =
+      __$$LearningGoalCategoryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -904,12 +903,13 @@ abstract class _$$_LearningGoalCategoryDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LearningGoalCategoryDtoCopyWithImpl<$Res>
+class __$$LearningGoalCategoryDtoImplCopyWithImpl<$Res>
     extends _$LearningGoalCategoryDtoCopyWithImpl<$Res,
-        _$_LearningGoalCategoryDto>
-    implements _$$_LearningGoalCategoryDtoCopyWith<$Res> {
-  __$$_LearningGoalCategoryDtoCopyWithImpl(_$_LearningGoalCategoryDto _value,
-      $Res Function(_$_LearningGoalCategoryDto) _then)
+        _$LearningGoalCategoryDtoImpl>
+    implements _$$LearningGoalCategoryDtoImplCopyWith<$Res> {
+  __$$LearningGoalCategoryDtoImplCopyWithImpl(
+      _$LearningGoalCategoryDtoImpl _value,
+      $Res Function(_$LearningGoalCategoryDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -919,7 +919,7 @@ class __$$_LearningGoalCategoryDtoCopyWithImpl<$Res>
     Object? categoryDto = null,
     Object? lessonsDto = null,
   }) {
-    return _then(_$_LearningGoalCategoryDto(
+    return _then(_$LearningGoalCategoryDtoImpl(
       isCompleted: null == isCompleted
           ? _value.isCompleted
           : isCompleted // ignore: cast_nullable_to_non_nullable
@@ -938,19 +938,17 @@ class __$$_LearningGoalCategoryDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LearningGoalCategoryDto extends _LearningGoalCategoryDto {
-  const _$_LearningGoalCategoryDto(
-      {@JsonKey(name: 'completed')
-          required this.isCompleted,
-      @JsonKey(name: 'category')
-          required this.categoryDto,
+class _$LearningGoalCategoryDtoImpl extends _LearningGoalCategoryDto {
+  const _$LearningGoalCategoryDtoImpl(
+      {@JsonKey(name: 'completed') required this.isCompleted,
+      @JsonKey(name: 'category') required this.categoryDto,
       @JsonKey(name: 'lesson_list')
-          required final List<LessonItemDto> lessonsDto})
+      required final List<LessonItemDto> lessonsDto})
       : _lessonsDto = lessonsDto,
         super._();
 
-  factory _$_LearningGoalCategoryDto.fromJson(Map<String, dynamic> json) =>
-      _$$_LearningGoalCategoryDtoFromJson(json);
+  factory _$LearningGoalCategoryDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LearningGoalCategoryDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'completed')
@@ -976,7 +974,7 @@ class _$_LearningGoalCategoryDto extends _LearningGoalCategoryDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LearningGoalCategoryDto &&
+            other is _$LearningGoalCategoryDtoImpl &&
             (identical(other.isCompleted, isCompleted) ||
                 other.isCompleted == isCompleted) &&
             (identical(other.categoryDto, categoryDto) ||
@@ -993,14 +991,13 @@ class _$_LearningGoalCategoryDto extends _LearningGoalCategoryDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LearningGoalCategoryDtoCopyWith<_$_LearningGoalCategoryDto>
-      get copyWith =>
-          __$$_LearningGoalCategoryDtoCopyWithImpl<_$_LearningGoalCategoryDto>(
-              this, _$identity);
+  _$$LearningGoalCategoryDtoImplCopyWith<_$LearningGoalCategoryDtoImpl>
+      get copyWith => __$$LearningGoalCategoryDtoImplCopyWithImpl<
+          _$LearningGoalCategoryDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LearningGoalCategoryDtoToJson(
+    return _$$LearningGoalCategoryDtoImplToJson(
       this,
     );
   }
@@ -1008,17 +1005,15 @@ class _$_LearningGoalCategoryDto extends _LearningGoalCategoryDto {
 
 abstract class _LearningGoalCategoryDto extends LearningGoalCategoryDto {
   const factory _LearningGoalCategoryDto(
-          {@JsonKey(name: 'completed')
-              required final bool isCompleted,
-          @JsonKey(name: 'category')
-              required final CategoryDto categoryDto,
+          {@JsonKey(name: 'completed') required final bool isCompleted,
+          @JsonKey(name: 'category') required final CategoryDto categoryDto,
           @JsonKey(name: 'lesson_list')
-              required final List<LessonItemDto> lessonsDto}) =
-      _$_LearningGoalCategoryDto;
+          required final List<LessonItemDto> lessonsDto}) =
+      _$LearningGoalCategoryDtoImpl;
   const _LearningGoalCategoryDto._() : super._();
 
   factory _LearningGoalCategoryDto.fromJson(Map<String, dynamic> json) =
-      _$_LearningGoalCategoryDto.fromJson;
+      _$LearningGoalCategoryDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'completed')
@@ -1031,7 +1026,7 @@ abstract class _LearningGoalCategoryDto extends LearningGoalCategoryDto {
   List<LessonItemDto> get lessonsDto;
   @override
   @JsonKey(ignore: true)
-  _$$_LearningGoalCategoryDtoCopyWith<_$_LearningGoalCategoryDto>
+  _$$LearningGoalCategoryDtoImplCopyWith<_$LearningGoalCategoryDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1089,22 +1084,22 @@ class _$LessonGroupDtoCopyWithImpl<$Res, $Val extends LessonGroupDto>
 }
 
 /// @nodoc
-abstract class _$$_LessonGroupDtoCopyWith<$Res>
+abstract class _$$LessonGroupDtoImplCopyWith<$Res>
     implements $LessonGroupDtoCopyWith<$Res> {
-  factory _$$_LessonGroupDtoCopyWith(
-          _$_LessonGroupDto value, $Res Function(_$_LessonGroupDto) then) =
-      __$$_LessonGroupDtoCopyWithImpl<$Res>;
+  factory _$$LessonGroupDtoImplCopyWith(_$LessonGroupDtoImpl value,
+          $Res Function(_$LessonGroupDtoImpl) then) =
+      __$$LessonGroupDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, List<LessonInfoDto> lessonInfos});
 }
 
 /// @nodoc
-class __$$_LessonGroupDtoCopyWithImpl<$Res>
-    extends _$LessonGroupDtoCopyWithImpl<$Res, _$_LessonGroupDto>
-    implements _$$_LessonGroupDtoCopyWith<$Res> {
-  __$$_LessonGroupDtoCopyWithImpl(
-      _$_LessonGroupDto _value, $Res Function(_$_LessonGroupDto) _then)
+class __$$LessonGroupDtoImplCopyWithImpl<$Res>
+    extends _$LessonGroupDtoCopyWithImpl<$Res, _$LessonGroupDtoImpl>
+    implements _$$LessonGroupDtoImplCopyWith<$Res> {
+  __$$LessonGroupDtoImplCopyWithImpl(
+      _$LessonGroupDtoImpl _value, $Res Function(_$LessonGroupDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1113,7 +1108,7 @@ class __$$_LessonGroupDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? lessonInfos = null,
   }) {
-    return _then(_$_LessonGroupDto(
+    return _then(_$LessonGroupDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1128,14 +1123,14 @@ class __$$_LessonGroupDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LessonGroupDto extends _LessonGroupDto {
-  const _$_LessonGroupDto(
+class _$LessonGroupDtoImpl extends _LessonGroupDto {
+  const _$LessonGroupDtoImpl(
       {required this.id, required final List<LessonInfoDto> lessonInfos})
       : _lessonInfos = lessonInfos,
         super._();
 
-  factory _$_LessonGroupDto.fromJson(Map<String, dynamic> json) =>
-      _$$_LessonGroupDtoFromJson(json);
+  factory _$LessonGroupDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LessonGroupDtoImplFromJson(json);
 
   @override
   final String id;
@@ -1156,7 +1151,7 @@ class _$_LessonGroupDto extends _LessonGroupDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LessonGroupDto &&
+            other is _$LessonGroupDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality()
                 .equals(other._lessonInfos, _lessonInfos));
@@ -1170,12 +1165,13 @@ class _$_LessonGroupDto extends _LessonGroupDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LessonGroupDtoCopyWith<_$_LessonGroupDto> get copyWith =>
-      __$$_LessonGroupDtoCopyWithImpl<_$_LessonGroupDto>(this, _$identity);
+  _$$LessonGroupDtoImplCopyWith<_$LessonGroupDtoImpl> get copyWith =>
+      __$$LessonGroupDtoImplCopyWithImpl<_$LessonGroupDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LessonGroupDtoToJson(
+    return _$$LessonGroupDtoImplToJson(
       this,
     );
   }
@@ -1184,11 +1180,11 @@ class _$_LessonGroupDto extends _LessonGroupDto {
 abstract class _LessonGroupDto extends LessonGroupDto {
   const factory _LessonGroupDto(
       {required final String id,
-      required final List<LessonInfoDto> lessonInfos}) = _$_LessonGroupDto;
+      required final List<LessonInfoDto> lessonInfos}) = _$LessonGroupDtoImpl;
   const _LessonGroupDto._() : super._();
 
   factory _LessonGroupDto.fromJson(Map<String, dynamic> json) =
-      _$_LessonGroupDto.fromJson;
+      _$LessonGroupDtoImpl.fromJson;
 
   @override
   String get id;
@@ -1196,7 +1192,7 @@ abstract class _LessonGroupDto extends LessonGroupDto {
   List<LessonInfoDto> get lessonInfos;
   @override
   @JsonKey(ignore: true)
-  _$$_LessonGroupDtoCopyWith<_$_LessonGroupDto> get copyWith =>
+  _$$LessonGroupDtoImplCopyWith<_$LessonGroupDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1254,22 +1250,22 @@ class _$CategoryDtoCopyWithImpl<$Res, $Val extends CategoryDto>
 }
 
 /// @nodoc
-abstract class _$$_CategoryDtoCopyWith<$Res>
+abstract class _$$CategoryDtoImplCopyWith<$Res>
     implements $CategoryDtoCopyWith<$Res> {
-  factory _$$_CategoryDtoCopyWith(
-          _$_CategoryDto value, $Res Function(_$_CategoryDto) then) =
-      __$$_CategoryDtoCopyWithImpl<$Res>;
+  factory _$$CategoryDtoImplCopyWith(
+          _$CategoryDtoImpl value, $Res Function(_$CategoryDtoImpl) then) =
+      __$$CategoryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class __$$_CategoryDtoCopyWithImpl<$Res>
-    extends _$CategoryDtoCopyWithImpl<$Res, _$_CategoryDto>
-    implements _$$_CategoryDtoCopyWith<$Res> {
-  __$$_CategoryDtoCopyWithImpl(
-      _$_CategoryDto _value, $Res Function(_$_CategoryDto) _then)
+class __$$CategoryDtoImplCopyWithImpl<$Res>
+    extends _$CategoryDtoCopyWithImpl<$Res, _$CategoryDtoImpl>
+    implements _$$CategoryDtoImplCopyWith<$Res> {
+  __$$CategoryDtoImplCopyWithImpl(
+      _$CategoryDtoImpl _value, $Res Function(_$CategoryDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1278,7 +1274,7 @@ class __$$_CategoryDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$_CategoryDto(
+    return _then(_$CategoryDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1293,11 +1289,11 @@ class __$$_CategoryDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CategoryDto extends _CategoryDto {
-  const _$_CategoryDto({required this.id, required this.name}) : super._();
+class _$CategoryDtoImpl extends _CategoryDto {
+  const _$CategoryDtoImpl({required this.id, required this.name}) : super._();
 
-  factory _$_CategoryDto.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoryDtoFromJson(json);
+  factory _$CategoryDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategoryDtoImplFromJson(json);
 
   @override
   final int id;
@@ -1313,7 +1309,7 @@ class _$_CategoryDto extends _CategoryDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CategoryDto &&
+            other is _$CategoryDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -1325,12 +1321,12 @@ class _$_CategoryDto extends _CategoryDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoryDtoCopyWith<_$_CategoryDto> get copyWith =>
-      __$$_CategoryDtoCopyWithImpl<_$_CategoryDto>(this, _$identity);
+  _$$CategoryDtoImplCopyWith<_$CategoryDtoImpl> get copyWith =>
+      __$$CategoryDtoImplCopyWithImpl<_$CategoryDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryDtoToJson(
+    return _$$CategoryDtoImplToJson(
       this,
     );
   }
@@ -1338,11 +1334,11 @@ class _$_CategoryDto extends _CategoryDto {
 
 abstract class _CategoryDto extends CategoryDto {
   const factory _CategoryDto(
-      {required final int id, required final String name}) = _$_CategoryDto;
+      {required final int id, required final String name}) = _$CategoryDtoImpl;
   const _CategoryDto._() : super._();
 
   factory _CategoryDto.fromJson(Map<String, dynamic> json) =
-      _$_CategoryDto.fromJson;
+      _$CategoryDtoImpl.fromJson;
 
   @override
   int get id;
@@ -1350,7 +1346,7 @@ abstract class _CategoryDto extends CategoryDto {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoryDtoCopyWith<_$_CategoryDto> get copyWith =>
+  _$$CategoryDtoImplCopyWith<_$CategoryDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1411,10 +1407,11 @@ class _$TopicDtoCopyWithImpl<$Res, $Val extends TopicDto>
 }
 
 /// @nodoc
-abstract class _$$_TopicDtoCopyWith<$Res> implements $TopicDtoCopyWith<$Res> {
-  factory _$$_TopicDtoCopyWith(
-          _$_TopicDto value, $Res Function(_$_TopicDto) then) =
-      __$$_TopicDtoCopyWithImpl<$Res>;
+abstract class _$$TopicDtoImplCopyWith<$Res>
+    implements $TopicDtoCopyWith<$Res> {
+  factory _$$TopicDtoImplCopyWith(
+          _$TopicDtoImpl value, $Res Function(_$TopicDtoImpl) then) =
+      __$$TopicDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1423,11 +1420,11 @@ abstract class _$$_TopicDtoCopyWith<$Res> implements $TopicDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TopicDtoCopyWithImpl<$Res>
-    extends _$TopicDtoCopyWithImpl<$Res, _$_TopicDto>
-    implements _$$_TopicDtoCopyWith<$Res> {
-  __$$_TopicDtoCopyWithImpl(
-      _$_TopicDto _value, $Res Function(_$_TopicDto) _then)
+class __$$TopicDtoImplCopyWithImpl<$Res>
+    extends _$TopicDtoCopyWithImpl<$Res, _$TopicDtoImpl>
+    implements _$$TopicDtoImplCopyWith<$Res> {
+  __$$TopicDtoImplCopyWithImpl(
+      _$TopicDtoImpl _value, $Res Function(_$TopicDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1436,7 +1433,7 @@ class __$$_TopicDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$_TopicDto(
+    return _then(_$TopicDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1451,14 +1448,14 @@ class __$$_TopicDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TopicDto extends _TopicDto {
-  const _$_TopicDto(
+class _$TopicDtoImpl extends _TopicDto {
+  const _$TopicDtoImpl(
       {@JsonKey(defaultValue: 0) required this.id,
       @JsonKey(defaultValue: '') required this.name})
       : super._();
 
-  factory _$_TopicDto.fromJson(Map<String, dynamic> json) =>
-      _$$_TopicDtoFromJson(json);
+  factory _$TopicDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TopicDtoImplFromJson(json);
 
   @override
   @JsonKey(defaultValue: 0)
@@ -1476,7 +1473,7 @@ class _$_TopicDto extends _TopicDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TopicDto &&
+            other is _$TopicDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -1488,12 +1485,12 @@ class _$_TopicDto extends _TopicDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TopicDtoCopyWith<_$_TopicDto> get copyWith =>
-      __$$_TopicDtoCopyWithImpl<_$_TopicDto>(this, _$identity);
+  _$$TopicDtoImplCopyWith<_$TopicDtoImpl> get copyWith =>
+      __$$TopicDtoImplCopyWithImpl<_$TopicDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TopicDtoToJson(
+    return _$$TopicDtoImplToJson(
       this,
     );
   }
@@ -1502,10 +1499,11 @@ class _$_TopicDto extends _TopicDto {
 abstract class _TopicDto extends TopicDto {
   const factory _TopicDto(
       {@JsonKey(defaultValue: 0) required final int id,
-      @JsonKey(defaultValue: '') required final String name}) = _$_TopicDto;
+      @JsonKey(defaultValue: '') required final String name}) = _$TopicDtoImpl;
   const _TopicDto._() : super._();
 
-  factory _TopicDto.fromJson(Map<String, dynamic> json) = _$_TopicDto.fromJson;
+  factory _TopicDto.fromJson(Map<String, dynamic> json) =
+      _$TopicDtoImpl.fromJson;
 
   @override
   @JsonKey(defaultValue: 0)
@@ -1515,7 +1513,7 @@ abstract class _TopicDto extends TopicDto {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_TopicDtoCopyWith<_$_TopicDto> get copyWith =>
+  _$$TopicDtoImplCopyWith<_$TopicDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1598,11 +1596,11 @@ class _$LessonInfoDtoCopyWithImpl<$Res, $Val extends LessonInfoDto>
 }
 
 /// @nodoc
-abstract class _$$_LessonInfoDtoCopyWith<$Res>
+abstract class _$$LessonInfoDtoImplCopyWith<$Res>
     implements $LessonInfoDtoCopyWith<$Res> {
-  factory _$$_LessonInfoDtoCopyWith(
-          _$_LessonInfoDto value, $Res Function(_$_LessonInfoDto) then) =
-      __$$_LessonInfoDtoCopyWithImpl<$Res>;
+  factory _$$LessonInfoDtoImplCopyWith(
+          _$LessonInfoDtoImpl value, $Res Function(_$LessonInfoDtoImpl) then) =
+      __$$LessonInfoDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CategoryDto category, TopicDto topic, List<LessonDto> lessons});
@@ -1614,11 +1612,11 @@ abstract class _$$_LessonInfoDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LessonInfoDtoCopyWithImpl<$Res>
-    extends _$LessonInfoDtoCopyWithImpl<$Res, _$_LessonInfoDto>
-    implements _$$_LessonInfoDtoCopyWith<$Res> {
-  __$$_LessonInfoDtoCopyWithImpl(
-      _$_LessonInfoDto _value, $Res Function(_$_LessonInfoDto) _then)
+class __$$LessonInfoDtoImplCopyWithImpl<$Res>
+    extends _$LessonInfoDtoCopyWithImpl<$Res, _$LessonInfoDtoImpl>
+    implements _$$LessonInfoDtoImplCopyWith<$Res> {
+  __$$LessonInfoDtoImplCopyWithImpl(
+      _$LessonInfoDtoImpl _value, $Res Function(_$LessonInfoDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1628,7 +1626,7 @@ class __$$_LessonInfoDtoCopyWithImpl<$Res>
     Object? topic = null,
     Object? lessons = null,
   }) {
-    return _then(_$_LessonInfoDto(
+    return _then(_$LessonInfoDtoImpl(
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -1647,16 +1645,16 @@ class __$$_LessonInfoDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LessonInfoDto extends _LessonInfoDto {
-  const _$_LessonInfoDto(
+class _$LessonInfoDtoImpl extends _LessonInfoDto {
+  const _$LessonInfoDtoImpl(
       {required this.category,
       required this.topic,
       required final List<LessonDto> lessons})
       : _lessons = lessons,
         super._();
 
-  factory _$_LessonInfoDto.fromJson(Map<String, dynamic> json) =>
-      _$$_LessonInfoDtoFromJson(json);
+  factory _$LessonInfoDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LessonInfoDtoImplFromJson(json);
 
   @override
   final CategoryDto category;
@@ -1679,7 +1677,7 @@ class _$_LessonInfoDto extends _LessonInfoDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LessonInfoDto &&
+            other is _$LessonInfoDtoImpl &&
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.topic, topic) || other.topic == topic) &&
@@ -1694,12 +1692,12 @@ class _$_LessonInfoDto extends _LessonInfoDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LessonInfoDtoCopyWith<_$_LessonInfoDto> get copyWith =>
-      __$$_LessonInfoDtoCopyWithImpl<_$_LessonInfoDto>(this, _$identity);
+  _$$LessonInfoDtoImplCopyWith<_$LessonInfoDtoImpl> get copyWith =>
+      __$$LessonInfoDtoImplCopyWithImpl<_$LessonInfoDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LessonInfoDtoToJson(
+    return _$$LessonInfoDtoImplToJson(
       this,
     );
   }
@@ -1709,11 +1707,11 @@ abstract class _LessonInfoDto extends LessonInfoDto {
   const factory _LessonInfoDto(
       {required final CategoryDto category,
       required final TopicDto topic,
-      required final List<LessonDto> lessons}) = _$_LessonInfoDto;
+      required final List<LessonDto> lessons}) = _$LessonInfoDtoImpl;
   const _LessonInfoDto._() : super._();
 
   factory _LessonInfoDto.fromJson(Map<String, dynamic> json) =
-      _$_LessonInfoDto.fromJson;
+      _$LessonInfoDtoImpl.fromJson;
 
   @override
   CategoryDto get category;
@@ -1723,7 +1721,7 @@ abstract class _LessonInfoDto extends LessonInfoDto {
   List<LessonDto> get lessons;
   @override
   @JsonKey(ignore: true)
-  _$$_LessonInfoDtoCopyWith<_$_LessonInfoDto> get copyWith =>
+  _$$LessonInfoDtoImplCopyWith<_$LessonInfoDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1758,14 +1756,11 @@ abstract class $LessonDtoCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
-      @JsonKey(name: 'learning_point_id')
-          int learningPointId,
+      @JsonKey(name: 'learning_point_id') int learningPointId,
       @JsonKey(name: 'learning_point_difficulty_id')
-          int learningPointDifficultyId,
-      @JsonKey(name: 'difficulty_level')
-          int difficultyLevel,
-      @JsonKey(defaultValue: '')
-          String content});
+      int learningPointDifficultyId,
+      @JsonKey(name: 'difficulty_level') int difficultyLevel,
+      @JsonKey(defaultValue: '') String content});
 }
 
 /// @nodoc
@@ -1818,31 +1813,29 @@ class _$LessonDtoCopyWithImpl<$Res, $Val extends LessonDto>
 }
 
 /// @nodoc
-abstract class _$$_LessonDtoCopyWith<$Res> implements $LessonDtoCopyWith<$Res> {
-  factory _$$_LessonDtoCopyWith(
-          _$_LessonDto value, $Res Function(_$_LessonDto) then) =
-      __$$_LessonDtoCopyWithImpl<$Res>;
+abstract class _$$LessonDtoImplCopyWith<$Res>
+    implements $LessonDtoCopyWith<$Res> {
+  factory _$$LessonDtoImplCopyWith(
+          _$LessonDtoImpl value, $Res Function(_$LessonDtoImpl) then) =
+      __$$LessonDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {int id,
       String name,
-      @JsonKey(name: 'learning_point_id')
-          int learningPointId,
+      @JsonKey(name: 'learning_point_id') int learningPointId,
       @JsonKey(name: 'learning_point_difficulty_id')
-          int learningPointDifficultyId,
-      @JsonKey(name: 'difficulty_level')
-          int difficultyLevel,
-      @JsonKey(defaultValue: '')
-          String content});
+      int learningPointDifficultyId,
+      @JsonKey(name: 'difficulty_level') int difficultyLevel,
+      @JsonKey(defaultValue: '') String content});
 }
 
 /// @nodoc
-class __$$_LessonDtoCopyWithImpl<$Res>
-    extends _$LessonDtoCopyWithImpl<$Res, _$_LessonDto>
-    implements _$$_LessonDtoCopyWith<$Res> {
-  __$$_LessonDtoCopyWithImpl(
-      _$_LessonDto _value, $Res Function(_$_LessonDto) _then)
+class __$$LessonDtoImplCopyWithImpl<$Res>
+    extends _$LessonDtoCopyWithImpl<$Res, _$LessonDtoImpl>
+    implements _$$LessonDtoImplCopyWith<$Res> {
+  __$$LessonDtoImplCopyWithImpl(
+      _$LessonDtoImpl _value, $Res Function(_$LessonDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1855,7 +1848,7 @@ class __$$_LessonDtoCopyWithImpl<$Res>
     Object? difficultyLevel = null,
     Object? content = null,
   }) {
-    return _then(_$_LessonDto(
+    return _then(_$LessonDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1886,22 +1879,19 @@ class __$$_LessonDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LessonDto extends _LessonDto {
-  const _$_LessonDto(
+class _$LessonDtoImpl extends _LessonDto {
+  const _$LessonDtoImpl(
       {required this.id,
       required this.name,
-      @JsonKey(name: 'learning_point_id')
-          required this.learningPointId,
+      @JsonKey(name: 'learning_point_id') required this.learningPointId,
       @JsonKey(name: 'learning_point_difficulty_id')
-          required this.learningPointDifficultyId,
-      @JsonKey(name: 'difficulty_level')
-          required this.difficultyLevel,
-      @JsonKey(defaultValue: '')
-          required this.content})
+      required this.learningPointDifficultyId,
+      @JsonKey(name: 'difficulty_level') required this.difficultyLevel,
+      @JsonKey(defaultValue: '') required this.content})
       : super._();
 
-  factory _$_LessonDto.fromJson(Map<String, dynamic> json) =>
-      _$$_LessonDtoFromJson(json);
+  factory _$LessonDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LessonDtoImplFromJson(json);
 
   @override
   final int id;
@@ -1929,7 +1919,7 @@ class _$_LessonDto extends _LessonDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LessonDto &&
+            other is _$LessonDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.learningPointId, learningPointId) ||
@@ -1950,12 +1940,12 @@ class _$_LessonDto extends _LessonDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LessonDtoCopyWith<_$_LessonDto> get copyWith =>
-      __$$_LessonDtoCopyWithImpl<_$_LessonDto>(this, _$identity);
+  _$$LessonDtoImplCopyWith<_$LessonDtoImpl> get copyWith =>
+      __$$LessonDtoImplCopyWithImpl<_$LessonDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LessonDtoToJson(
+    return _$$LessonDtoImplToJson(
       this,
     );
   }
@@ -1965,18 +1955,16 @@ abstract class _LessonDto extends LessonDto {
   const factory _LessonDto(
       {required final int id,
       required final String name,
-      @JsonKey(name: 'learning_point_id')
-          required final int learningPointId,
+      @JsonKey(name: 'learning_point_id') required final int learningPointId,
       @JsonKey(name: 'learning_point_difficulty_id')
-          required final int learningPointDifficultyId,
-      @JsonKey(name: 'difficulty_level')
-          required final int difficultyLevel,
+      required final int learningPointDifficultyId,
+      @JsonKey(name: 'difficulty_level') required final int difficultyLevel,
       @JsonKey(defaultValue: '')
-          required final String content}) = _$_LessonDto;
+      required final String content}) = _$LessonDtoImpl;
   const _LessonDto._() : super._();
 
   factory _LessonDto.fromJson(Map<String, dynamic> json) =
-      _$_LessonDto.fromJson;
+      _$LessonDtoImpl.fromJson;
 
   @override
   int get id;
@@ -1996,7 +1984,7 @@ abstract class _LessonDto extends LessonDto {
   String get content;
   @override
   @JsonKey(ignore: true)
-  _$$_LessonDtoCopyWith<_$_LessonDto> get copyWith =>
+  _$$LessonDtoImplCopyWith<_$LessonDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2081,11 +2069,11 @@ class _$LearningPointDtoCopyWithImpl<$Res, $Val extends LearningPointDto>
 }
 
 /// @nodoc
-abstract class _$$_LearningPointDtoCopyWith<$Res>
+abstract class _$$LearningPointDtoImplCopyWith<$Res>
     implements $LearningPointDtoCopyWith<$Res> {
-  factory _$$_LearningPointDtoCopyWith(
-          _$_LearningPointDto value, $Res Function(_$_LearningPointDto) then) =
-      __$$_LearningPointDtoCopyWithImpl<$Res>;
+  factory _$$LearningPointDtoImplCopyWith(_$LearningPointDtoImpl value,
+          $Res Function(_$LearningPointDtoImpl) then) =
+      __$$LearningPointDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2097,11 +2085,11 @@ abstract class _$$_LearningPointDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LearningPointDtoCopyWithImpl<$Res>
-    extends _$LearningPointDtoCopyWithImpl<$Res, _$_LearningPointDto>
-    implements _$$_LearningPointDtoCopyWith<$Res> {
-  __$$_LearningPointDtoCopyWithImpl(
-      _$_LearningPointDto _value, $Res Function(_$_LearningPointDto) _then)
+class __$$LearningPointDtoImplCopyWithImpl<$Res>
+    extends _$LearningPointDtoCopyWithImpl<$Res, _$LearningPointDtoImpl>
+    implements _$$LearningPointDtoImplCopyWith<$Res> {
+  __$$LearningPointDtoImplCopyWithImpl(_$LearningPointDtoImpl _value,
+      $Res Function(_$LearningPointDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2113,7 +2101,7 @@ class __$$_LearningPointDtoCopyWithImpl<$Res>
     Object? topicId = null,
     Object? topicName = null,
   }) {
-    return _then(_$_LearningPointDto(
+    return _then(_$LearningPointDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -2140,8 +2128,8 @@ class __$$_LearningPointDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LearningPointDto extends _LearningPointDto {
-  const _$_LearningPointDto(
+class _$LearningPointDtoImpl extends _LearningPointDto {
+  const _$LearningPointDtoImpl(
       {required this.id,
       @JsonKey(name: 'learning_point') required this.learningPoint,
       @JsonKey(name: 'difficulty_id') required this.difficultyId,
@@ -2149,8 +2137,8 @@ class _$_LearningPointDto extends _LearningPointDto {
       @JsonKey(name: 'topic_name') required this.topicName})
       : super._();
 
-  factory _$_LearningPointDto.fromJson(Map<String, dynamic> json) =>
-      _$$_LearningPointDtoFromJson(json);
+  factory _$LearningPointDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LearningPointDtoImplFromJson(json);
 
   @override
   final int id;
@@ -2176,7 +2164,7 @@ class _$_LearningPointDto extends _LearningPointDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LearningPointDto &&
+            other is _$LearningPointDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.learningPoint, learningPoint) ||
                 other.learningPoint == learningPoint) &&
@@ -2195,12 +2183,13 @@ class _$_LearningPointDto extends _LearningPointDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LearningPointDtoCopyWith<_$_LearningPointDto> get copyWith =>
-      __$$_LearningPointDtoCopyWithImpl<_$_LearningPointDto>(this, _$identity);
+  _$$LearningPointDtoImplCopyWith<_$LearningPointDtoImpl> get copyWith =>
+      __$$LearningPointDtoImplCopyWithImpl<_$LearningPointDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LearningPointDtoToJson(
+    return _$$LearningPointDtoImplToJson(
       this,
     );
   }
@@ -2213,11 +2202,11 @@ abstract class _LearningPointDto extends LearningPointDto {
           @JsonKey(name: 'difficulty_id') required final int difficultyId,
           @JsonKey(name: 'topic_id') required final int topicId,
           @JsonKey(name: 'topic_name') required final String topicName}) =
-      _$_LearningPointDto;
+      _$LearningPointDtoImpl;
   const _LearningPointDto._() : super._();
 
   factory _LearningPointDto.fromJson(Map<String, dynamic> json) =
-      _$_LearningPointDto.fromJson;
+      _$LearningPointDtoImpl.fromJson;
 
   @override
   int get id;
@@ -2235,7 +2224,7 @@ abstract class _LearningPointDto extends LearningPointDto {
   String get topicName;
   @override
   @JsonKey(ignore: true)
-  _$$_LearningPointDtoCopyWith<_$_LearningPointDto> get copyWith =>
+  _$$LearningPointDtoImplCopyWith<_$LearningPointDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2270,15 +2259,12 @@ abstract class $LearningGoalDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      @JsonKey(defaultValue: 0)
-          double progress,
+      @JsonKey(defaultValue: 0) double progress,
       String name,
-      @JsonKey(name: 'min_topic_numb', defaultValue: 0)
-          int minTopic,
-      @JsonKey(name: 'max_topic_numb', defaultValue: 99)
-          int maxTopic,
+      @JsonKey(name: 'min_topic_numb', defaultValue: 0) int minTopic,
+      @JsonKey(name: 'max_topic_numb', defaultValue: 99) int maxTopic,
       @JsonKey(name: 'mock_test_templates', defaultValue: [])
-          List<TestTemplateDto> templates});
+      List<TestTemplateDto> templates});
 }
 
 /// @nodoc
@@ -2331,32 +2317,29 @@ class _$LearningGoalDtoCopyWithImpl<$Res, $Val extends LearningGoalDto>
 }
 
 /// @nodoc
-abstract class _$$_LearningGoalDtoCopyWith<$Res>
+abstract class _$$LearningGoalDtoImplCopyWith<$Res>
     implements $LearningGoalDtoCopyWith<$Res> {
-  factory _$$_LearningGoalDtoCopyWith(
-          _$_LearningGoalDto value, $Res Function(_$_LearningGoalDto) then) =
-      __$$_LearningGoalDtoCopyWithImpl<$Res>;
+  factory _$$LearningGoalDtoImplCopyWith(_$LearningGoalDtoImpl value,
+          $Res Function(_$LearningGoalDtoImpl) then) =
+      __$$LearningGoalDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {int id,
-      @JsonKey(defaultValue: 0)
-          double progress,
+      @JsonKey(defaultValue: 0) double progress,
       String name,
-      @JsonKey(name: 'min_topic_numb', defaultValue: 0)
-          int minTopic,
-      @JsonKey(name: 'max_topic_numb', defaultValue: 99)
-          int maxTopic,
+      @JsonKey(name: 'min_topic_numb', defaultValue: 0) int minTopic,
+      @JsonKey(name: 'max_topic_numb', defaultValue: 99) int maxTopic,
       @JsonKey(name: 'mock_test_templates', defaultValue: [])
-          List<TestTemplateDto> templates});
+      List<TestTemplateDto> templates});
 }
 
 /// @nodoc
-class __$$_LearningGoalDtoCopyWithImpl<$Res>
-    extends _$LearningGoalDtoCopyWithImpl<$Res, _$_LearningGoalDto>
-    implements _$$_LearningGoalDtoCopyWith<$Res> {
-  __$$_LearningGoalDtoCopyWithImpl(
-      _$_LearningGoalDto _value, $Res Function(_$_LearningGoalDto) _then)
+class __$$LearningGoalDtoImplCopyWithImpl<$Res>
+    extends _$LearningGoalDtoCopyWithImpl<$Res, _$LearningGoalDtoImpl>
+    implements _$$LearningGoalDtoImplCopyWith<$Res> {
+  __$$LearningGoalDtoImplCopyWithImpl(
+      _$LearningGoalDtoImpl _value, $Res Function(_$LearningGoalDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2369,7 +2352,7 @@ class __$$_LearningGoalDtoCopyWithImpl<$Res>
     Object? maxTopic = null,
     Object? templates = null,
   }) {
-    return _then(_$_LearningGoalDto(
+    return _then(_$LearningGoalDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -2400,23 +2383,20 @@ class __$$_LearningGoalDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LearningGoalDto extends _LearningGoalDto {
-  const _$_LearningGoalDto(
+class _$LearningGoalDtoImpl extends _LearningGoalDto {
+  const _$LearningGoalDtoImpl(
       {required this.id,
-      @JsonKey(defaultValue: 0)
-          required this.progress,
+      @JsonKey(defaultValue: 0) required this.progress,
       required this.name,
-      @JsonKey(name: 'min_topic_numb', defaultValue: 0)
-          required this.minTopic,
-      @JsonKey(name: 'max_topic_numb', defaultValue: 99)
-          required this.maxTopic,
+      @JsonKey(name: 'min_topic_numb', defaultValue: 0) required this.minTopic,
+      @JsonKey(name: 'max_topic_numb', defaultValue: 99) required this.maxTopic,
       @JsonKey(name: 'mock_test_templates', defaultValue: [])
-          required final List<TestTemplateDto> templates})
+      required final List<TestTemplateDto> templates})
       : _templates = templates,
         super._();
 
-  factory _$_LearningGoalDto.fromJson(Map<String, dynamic> json) =>
-      _$$_LearningGoalDtoFromJson(json);
+  factory _$LearningGoalDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LearningGoalDtoImplFromJson(json);
 
   @override
   final int id;
@@ -2449,7 +2429,7 @@ class _$_LearningGoalDto extends _LearningGoalDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LearningGoalDto &&
+            other is _$LearningGoalDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.progress, progress) ||
                 other.progress == progress) &&
@@ -2470,12 +2450,13 @@ class _$_LearningGoalDto extends _LearningGoalDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LearningGoalDtoCopyWith<_$_LearningGoalDto> get copyWith =>
-      __$$_LearningGoalDtoCopyWithImpl<_$_LearningGoalDto>(this, _$identity);
+  _$$LearningGoalDtoImplCopyWith<_$LearningGoalDtoImpl> get copyWith =>
+      __$$LearningGoalDtoImplCopyWithImpl<_$LearningGoalDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LearningGoalDtoToJson(
+    return _$$LearningGoalDtoImplToJson(
       this,
     );
   }
@@ -2484,19 +2465,18 @@ class _$_LearningGoalDto extends _LearningGoalDto {
 abstract class _LearningGoalDto extends LearningGoalDto {
   const factory _LearningGoalDto(
       {required final int id,
-      @JsonKey(defaultValue: 0)
-          required final double progress,
+      @JsonKey(defaultValue: 0) required final double progress,
       required final String name,
       @JsonKey(name: 'min_topic_numb', defaultValue: 0)
-          required final int minTopic,
+      required final int minTopic,
       @JsonKey(name: 'max_topic_numb', defaultValue: 99)
-          required final int maxTopic,
+      required final int maxTopic,
       @JsonKey(name: 'mock_test_templates', defaultValue: [])
-          required final List<TestTemplateDto> templates}) = _$_LearningGoalDto;
+      required final List<TestTemplateDto> templates}) = _$LearningGoalDtoImpl;
   const _LearningGoalDto._() : super._();
 
   factory _LearningGoalDto.fromJson(Map<String, dynamic> json) =
-      _$_LearningGoalDto.fromJson;
+      _$LearningGoalDtoImpl.fromJson;
 
   @override
   int get id;
@@ -2516,7 +2496,7 @@ abstract class _LearningGoalDto extends LearningGoalDto {
   List<TestTemplateDto> get templates;
   @override
   @JsonKey(ignore: true)
-  _$$_LearningGoalDtoCopyWith<_$_LearningGoalDto> get copyWith =>
+  _$$LearningGoalDtoImplCopyWith<_$LearningGoalDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2574,22 +2554,22 @@ class _$TestTemplateDtoCopyWithImpl<$Res, $Val extends TestTemplateDto>
 }
 
 /// @nodoc
-abstract class _$$_TestTemplateDtoCopyWith<$Res>
+abstract class _$$TestTemplateDtoImplCopyWith<$Res>
     implements $TestTemplateDtoCopyWith<$Res> {
-  factory _$$_TestTemplateDtoCopyWith(
-          _$_TestTemplateDto value, $Res Function(_$_TestTemplateDto) then) =
-      __$$_TestTemplateDtoCopyWithImpl<$Res>;
+  factory _$$TestTemplateDtoImplCopyWith(_$TestTemplateDtoImpl value,
+          $Res Function(_$TestTemplateDtoImpl) then) =
+      __$$TestTemplateDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class __$$_TestTemplateDtoCopyWithImpl<$Res>
-    extends _$TestTemplateDtoCopyWithImpl<$Res, _$_TestTemplateDto>
-    implements _$$_TestTemplateDtoCopyWith<$Res> {
-  __$$_TestTemplateDtoCopyWithImpl(
-      _$_TestTemplateDto _value, $Res Function(_$_TestTemplateDto) _then)
+class __$$TestTemplateDtoImplCopyWithImpl<$Res>
+    extends _$TestTemplateDtoCopyWithImpl<$Res, _$TestTemplateDtoImpl>
+    implements _$$TestTemplateDtoImplCopyWith<$Res> {
+  __$$TestTemplateDtoImplCopyWithImpl(
+      _$TestTemplateDtoImpl _value, $Res Function(_$TestTemplateDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2598,7 +2578,7 @@ class __$$_TestTemplateDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$_TestTemplateDto(
+    return _then(_$TestTemplateDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -2613,11 +2593,12 @@ class __$$_TestTemplateDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TestTemplateDto extends _TestTemplateDto {
-  const _$_TestTemplateDto({required this.id, required this.name}) : super._();
+class _$TestTemplateDtoImpl extends _TestTemplateDto {
+  const _$TestTemplateDtoImpl({required this.id, required this.name})
+      : super._();
 
-  factory _$_TestTemplateDto.fromJson(Map<String, dynamic> json) =>
-      _$$_TestTemplateDtoFromJson(json);
+  factory _$TestTemplateDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TestTemplateDtoImplFromJson(json);
 
   @override
   final int id;
@@ -2633,7 +2614,7 @@ class _$_TestTemplateDto extends _TestTemplateDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TestTemplateDto &&
+            other is _$TestTemplateDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -2645,12 +2626,13 @@ class _$_TestTemplateDto extends _TestTemplateDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TestTemplateDtoCopyWith<_$_TestTemplateDto> get copyWith =>
-      __$$_TestTemplateDtoCopyWithImpl<_$_TestTemplateDto>(this, _$identity);
+  _$$TestTemplateDtoImplCopyWith<_$TestTemplateDtoImpl> get copyWith =>
+      __$$TestTemplateDtoImplCopyWithImpl<_$TestTemplateDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TestTemplateDtoToJson(
+    return _$$TestTemplateDtoImplToJson(
       this,
     );
   }
@@ -2658,11 +2640,12 @@ class _$_TestTemplateDto extends _TestTemplateDto {
 
 abstract class _TestTemplateDto extends TestTemplateDto {
   const factory _TestTemplateDto(
-      {required final int id, required final String name}) = _$_TestTemplateDto;
+      {required final int id,
+      required final String name}) = _$TestTemplateDtoImpl;
   const _TestTemplateDto._() : super._();
 
   factory _TestTemplateDto.fromJson(Map<String, dynamic> json) =
-      _$_TestTemplateDto.fromJson;
+      _$TestTemplateDtoImpl.fromJson;
 
   @override
   int get id;
@@ -2670,6 +2653,224 @@ abstract class _TestTemplateDto extends TestTemplateDto {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_TestTemplateDtoCopyWith<_$_TestTemplateDto> get copyWith =>
+  _$$TestTemplateDtoImplCopyWith<_$TestTemplateDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+StudentLearningGoalDto _$StudentLearningGoalDtoFromJson(
+    Map<String, dynamic> json) {
+  return _StudentLearningGoalDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$StudentLearningGoalDto {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'program_name')
+  String get programName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'complete_percentage')
+  int get completePercentage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $StudentLearningGoalDtoCopyWith<StudentLearningGoalDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $StudentLearningGoalDtoCopyWith<$Res> {
+  factory $StudentLearningGoalDtoCopyWith(StudentLearningGoalDto value,
+          $Res Function(StudentLearningGoalDto) then) =
+      _$StudentLearningGoalDtoCopyWithImpl<$Res, StudentLearningGoalDto>;
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      @JsonKey(name: 'program_name') String programName,
+      @JsonKey(name: 'complete_percentage') int completePercentage});
+}
+
+/// @nodoc
+class _$StudentLearningGoalDtoCopyWithImpl<$Res,
+        $Val extends StudentLearningGoalDto>
+    implements $StudentLearningGoalDtoCopyWith<$Res> {
+  _$StudentLearningGoalDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? programName = null,
+    Object? completePercentage = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      programName: null == programName
+          ? _value.programName
+          : programName // ignore: cast_nullable_to_non_nullable
+              as String,
+      completePercentage: null == completePercentage
+          ? _value.completePercentage
+          : completePercentage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$StudentLearningGoalDtoImplCopyWith<$Res>
+    implements $StudentLearningGoalDtoCopyWith<$Res> {
+  factory _$$StudentLearningGoalDtoImplCopyWith(
+          _$StudentLearningGoalDtoImpl value,
+          $Res Function(_$StudentLearningGoalDtoImpl) then) =
+      __$$StudentLearningGoalDtoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      @JsonKey(name: 'program_name') String programName,
+      @JsonKey(name: 'complete_percentage') int completePercentage});
+}
+
+/// @nodoc
+class __$$StudentLearningGoalDtoImplCopyWithImpl<$Res>
+    extends _$StudentLearningGoalDtoCopyWithImpl<$Res,
+        _$StudentLearningGoalDtoImpl>
+    implements _$$StudentLearningGoalDtoImplCopyWith<$Res> {
+  __$$StudentLearningGoalDtoImplCopyWithImpl(
+      _$StudentLearningGoalDtoImpl _value,
+      $Res Function(_$StudentLearningGoalDtoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? programName = null,
+    Object? completePercentage = null,
+  }) {
+    return _then(_$StudentLearningGoalDtoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      programName: null == programName
+          ? _value.programName
+          : programName // ignore: cast_nullable_to_non_nullable
+              as String,
+      completePercentage: null == completePercentage
+          ? _value.completePercentage
+          : completePercentage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$StudentLearningGoalDtoImpl extends _StudentLearningGoalDto {
+  const _$StudentLearningGoalDtoImpl(
+      {required this.id,
+      required this.name,
+      @JsonKey(name: 'program_name') required this.programName,
+      @JsonKey(name: 'complete_percentage') required this.completePercentage})
+      : super._();
+
+  factory _$StudentLearningGoalDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StudentLearningGoalDtoImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+  @override
+  @JsonKey(name: 'program_name')
+  final String programName;
+  @override
+  @JsonKey(name: 'complete_percentage')
+  final int completePercentage;
+
+  @override
+  String toString() {
+    return 'StudentLearningGoalDto(id: $id, name: $name, programName: $programName, completePercentage: $completePercentage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StudentLearningGoalDtoImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.programName, programName) ||
+                other.programName == programName) &&
+            (identical(other.completePercentage, completePercentage) ||
+                other.completePercentage == completePercentage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, programName, completePercentage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StudentLearningGoalDtoImplCopyWith<_$StudentLearningGoalDtoImpl>
+      get copyWith => __$$StudentLearningGoalDtoImplCopyWithImpl<
+          _$StudentLearningGoalDtoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$StudentLearningGoalDtoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _StudentLearningGoalDto extends StudentLearningGoalDto {
+  const factory _StudentLearningGoalDto(
+      {required final int id,
+      required final String name,
+      @JsonKey(name: 'program_name') required final String programName,
+      @JsonKey(name: 'complete_percentage')
+      required final int completePercentage}) = _$StudentLearningGoalDtoImpl;
+  const _StudentLearningGoalDto._() : super._();
+
+  factory _StudentLearningGoalDto.fromJson(Map<String, dynamic> json) =
+      _$StudentLearningGoalDtoImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+  @override
+  @JsonKey(name: 'program_name')
+  String get programName;
+  @override
+  @JsonKey(name: 'complete_percentage')
+  int get completePercentage;
+  @override
+  @JsonKey(ignore: true)
+  _$$StudentLearningGoalDtoImplCopyWith<_$StudentLearningGoalDtoImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

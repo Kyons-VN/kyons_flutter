@@ -93,11 +93,11 @@ class _$TransactionDtoCopyWithImpl<$Res, $Val extends TransactionDto>
 }
 
 /// @nodoc
-abstract class _$$_TransactionDtoCopyWith<$Res>
+abstract class _$$TransactionDtoImplCopyWith<$Res>
     implements $TransactionDtoCopyWith<$Res> {
-  factory _$$_TransactionDtoCopyWith(
-          _$_TransactionDto value, $Res Function(_$_TransactionDto) then) =
-      __$$_TransactionDtoCopyWithImpl<$Res>;
+  factory _$$TransactionDtoImplCopyWith(_$TransactionDtoImpl value,
+          $Res Function(_$TransactionDtoImpl) then) =
+      __$$TransactionDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +109,11 @@ abstract class _$$_TransactionDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TransactionDtoCopyWithImpl<$Res>
-    extends _$TransactionDtoCopyWithImpl<$Res, _$_TransactionDto>
-    implements _$$_TransactionDtoCopyWith<$Res> {
-  __$$_TransactionDtoCopyWithImpl(
-      _$_TransactionDto _value, $Res Function(_$_TransactionDto) _then)
+class __$$TransactionDtoImplCopyWithImpl<$Res>
+    extends _$TransactionDtoCopyWithImpl<$Res, _$TransactionDtoImpl>
+    implements _$$TransactionDtoImplCopyWith<$Res> {
+  __$$TransactionDtoImplCopyWithImpl(
+      _$TransactionDtoImpl _value, $Res Function(_$TransactionDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$_TransactionDtoCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? amount = null,
   }) {
-    return _then(_$_TransactionDto(
+    return _then(_$TransactionDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -152,8 +152,8 @@ class __$$_TransactionDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TransactionDto extends _TransactionDto {
-  const _$_TransactionDto(
+class _$TransactionDtoImpl extends _TransactionDto {
+  const _$TransactionDtoImpl(
       {required this.id,
       @JsonKey(name: 'package_name') required this.packageName,
       required this.quantity,
@@ -161,8 +161,8 @@ class _$_TransactionDto extends _TransactionDto {
       required this.amount})
       : super._();
 
-  factory _$_TransactionDto.fromJson(Map<String, dynamic> json) =>
-      _$$_TransactionDtoFromJson(json);
+  factory _$TransactionDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TransactionDtoImplFromJson(json);
 
   @override
   final String id;
@@ -186,7 +186,7 @@ class _$_TransactionDto extends _TransactionDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TransactionDto &&
+            other is _$TransactionDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.packageName, packageName) ||
                 other.packageName == packageName) &&
@@ -205,12 +205,13 @@ class _$_TransactionDto extends _TransactionDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TransactionDtoCopyWith<_$_TransactionDto> get copyWith =>
-      __$$_TransactionDtoCopyWithImpl<_$_TransactionDto>(this, _$identity);
+  _$$TransactionDtoImplCopyWith<_$TransactionDtoImpl> get copyWith =>
+      __$$TransactionDtoImplCopyWithImpl<_$TransactionDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TransactionDtoToJson(
+    return _$$TransactionDtoImplToJson(
       this,
     );
   }
@@ -222,11 +223,11 @@ abstract class _TransactionDto extends TransactionDto {
       @JsonKey(name: 'package_name') required final String packageName,
       required final int quantity,
       @JsonKey(name: 'created_at') required final DateTime createdAt,
-      required final double amount}) = _$_TransactionDto;
+      required final double amount}) = _$TransactionDtoImpl;
   const _TransactionDto._() : super._();
 
   factory _TransactionDto.fromJson(Map<String, dynamic> json) =
-      _$_TransactionDto.fromJson;
+      _$TransactionDtoImpl.fromJson;
 
   @override
   String get id;
@@ -242,6 +243,6 @@ abstract class _TransactionDto extends TransactionDto {
   double get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_TransactionDtoCopyWith<_$_TransactionDto> get copyWith =>
+  _$$TransactionDtoImplCopyWith<_$TransactionDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

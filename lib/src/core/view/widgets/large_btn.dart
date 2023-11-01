@@ -4,11 +4,13 @@ import 'package:shared_package/shared_package.dart';
 
 import '../../helper/translate.dart';
 
-class BlueLargeBtn extends StatelessWidget {
+class LargeBtn extends StatelessWidget {
+  final Color color;
   final Function()? onClick;
 
-  const BlueLargeBtn({
+  const LargeBtn({
     super.key,
+    this.color = AppColors.lightBlue1,
     this.onClick,
   });
 
@@ -22,13 +24,15 @@ class BlueLargeBtn extends StatelessWidget {
           foregroundDecoration: const BoxDecoration(
             image: DecorationImage(image: Svg('assets/images/shortcut.svg'), alignment: Alignment.bottomRight),
           ),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [AppColors.lightBlue1, AppColors.secondaryBlue],
+              colors: color == AppColors.lightBlue1
+                  ? [AppColors.lightBlue1, AppColors.secondaryBlue]
+                  : [AppColors.orange, AppColors.orange],
             ),
-            borderRadius: BorderRadius.all(Radius.circular(AppSizesUnit.medium12)),
+            borderRadius: const BorderRadius.all(Radius.circular(AppSizesUnit.medium12)),
           ),
           padding: const EdgeInsets.all(AppSizesUnit.medium20),
           child: Row(
@@ -37,6 +41,8 @@ class BlueLargeBtn extends StatelessWidget {
               Text(
                 t(context).continueLastSession,
                 style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.white),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
               const Icon(AppIcons.arrowForward, color: AppColors.white, size: AppSizesUnit.medium24)
             ],

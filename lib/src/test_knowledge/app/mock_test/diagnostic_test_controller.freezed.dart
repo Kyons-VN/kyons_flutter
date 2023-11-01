@@ -122,11 +122,11 @@ class _$DiagnosticTestStateCopyWithImpl<$Res, $Val extends DiagnosticTestState>
 }
 
 /// @nodoc
-abstract class _$$_DiagnosticTestStateCopyWith<$Res>
+abstract class _$$DiagnosticTestStateImplCopyWith<$Res>
     implements $DiagnosticTestStateCopyWith<$Res> {
-  factory _$$_DiagnosticTestStateCopyWith(_$_DiagnosticTestState value,
-          $Res Function(_$_DiagnosticTestState) then) =
-      __$$_DiagnosticTestStateCopyWithImpl<$Res>;
+  factory _$$DiagnosticTestStateImplCopyWith(_$DiagnosticTestStateImpl value,
+          $Res Function(_$DiagnosticTestStateImpl) then) =
+      __$$DiagnosticTestStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -143,11 +143,11 @@ abstract class _$$_DiagnosticTestStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DiagnosticTestStateCopyWithImpl<$Res>
-    extends _$DiagnosticTestStateCopyWithImpl<$Res, _$_DiagnosticTestState>
-    implements _$$_DiagnosticTestStateCopyWith<$Res> {
-  __$$_DiagnosticTestStateCopyWithImpl(_$_DiagnosticTestState _value,
-      $Res Function(_$_DiagnosticTestState) _then)
+class __$$DiagnosticTestStateImplCopyWithImpl<$Res>
+    extends _$DiagnosticTestStateCopyWithImpl<$Res, _$DiagnosticTestStateImpl>
+    implements _$$DiagnosticTestStateImplCopyWith<$Res> {
+  __$$DiagnosticTestStateImplCopyWithImpl(_$DiagnosticTestStateImpl _value,
+      $Res Function(_$DiagnosticTestStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -164,7 +164,7 @@ class __$$_DiagnosticTestStateCopyWithImpl<$Res>
     Object? lessonGroup = null,
     Object? missingLearningGoal = null,
   }) {
-    return _then(_$_DiagnosticTestState(
+    return _then(_$DiagnosticTestStateImpl(
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
@@ -211,8 +211,8 @@ class __$$_DiagnosticTestStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DiagnosticTestState implements _DiagnosticTestState {
-  const _$_DiagnosticTestState(
+class _$DiagnosticTestStateImpl implements _DiagnosticTestState {
+  const _$DiagnosticTestStateImpl(
       {required this.loading,
       required this.content,
       required this.answersResult,
@@ -254,7 +254,7 @@ class _$_DiagnosticTestState implements _DiagnosticTestState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DiagnosticTestState &&
+            other is _$DiagnosticTestStateImpl &&
             (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.answersResult, answersResult) ||
@@ -292,8 +292,8 @@ class _$_DiagnosticTestState implements _DiagnosticTestState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DiagnosticTestStateCopyWith<_$_DiagnosticTestState> get copyWith =>
-      __$$_DiagnosticTestStateCopyWithImpl<_$_DiagnosticTestState>(
+  _$$DiagnosticTestStateImplCopyWith<_$DiagnosticTestStateImpl> get copyWith =>
+      __$$DiagnosticTestStateImplCopyWithImpl<_$DiagnosticTestStateImpl>(
           this, _$identity);
 }
 
@@ -309,7 +309,7 @@ abstract class _DiagnosticTestState implements DiagnosticTestState {
           required final Option<TestResult> testResult,
           required final Option<LessonGroup> lessonGroup,
           required final Option<bool> missingLearningGoal}) =
-      _$_DiagnosticTestState;
+      _$DiagnosticTestStateImpl;
 
   @override
   bool get loading;
@@ -333,6 +333,6 @@ abstract class _DiagnosticTestState implements DiagnosticTestState {
   Option<bool> get missingLearningGoal;
   @override
   @JsonKey(ignore: true)
-  _$$_DiagnosticTestStateCopyWith<_$_DiagnosticTestState> get copyWith =>
+  _$$DiagnosticTestStateImplCopyWith<_$DiagnosticTestStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

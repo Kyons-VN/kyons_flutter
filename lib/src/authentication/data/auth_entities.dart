@@ -49,7 +49,7 @@ class User implements IUser {
         grade: '',
         school: '',
         address: '',
-        birthdate: dateNow().run(),
+        birthdate: dateNow.run(),
       );
 
   UserDto toDto() => UserDto(

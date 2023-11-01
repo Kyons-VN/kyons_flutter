@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:fpdart/fpdart.dart';
+import 'package:kyons_flutter/src/test_knowledge/data/test_entities.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,24 +11,22 @@ import '../../knowledge/data/knowledge_dto.dart';
 import '../../knowledge/data/knowledge_entities.dart';
 import '../../knowledge/data/knowledge_service.dart';
 import '../../knowledge/domain/i_knowledge.dart';
-import '../../test_knowledge/data/test_knowledge.dart';
 import '../../test_knowledge/data/test_knowledge_dto.dart';
 
 class KnowledgeApi implements IKnowledgeApi {
   final api = Api.init().api;
 
   @override
-  Future<List<Program>> getStudentProgram() async {
-    // final response = api.get('$serverApi/');
-    final response = api.get('$serverApi/students/programs');
+  Future<List<StudentLearningGoal>> getStudentLearningGoals() async {
+    final response = api.get('$serverApi/students/master_learning_goals');
     return response.then(handleResponseError).then((value) async {
-      final data = value as List<dynamic>;
+      final data = value['data'] as List<dynamic>;
       final result = data.map((json) {
-        json['learning_goal'] = {
-          'id': json['learning_goal_id'],
-          'name': json['learning_goal_name'],
-        };
-        return ProgramDto.fromJson(json).toDomain();
+        // json['learning_goal'] = {
+        //   'id': json['learning_goal_id'],
+        //   'name': json['learning_goal_name'],
+        // };
+        return StudentLearningGoalDto.fromJson(json).toDomain();
       }).toList();
       return result;
     });
@@ -43,36 +42,35 @@ class KnowledgeApi implements IKnowledgeApi {
     });
   }
 
-  @override
-  Future<TestContent> getDiagnosticTest(Program program) {
-    final params = {'program_id': program.id};
-    final response = api.get('$serverApi/test/diagostic_test', queryParameters: params);
-    return response.then(handleResponseError).then((value) async {
-      final data = value as Map<String, dynamic>;
-      final result = TestContentDto.fromJson(data).toDomain();
-      return result;
-    });
-  }
+  // @override
+  // Future<TestContent> getDiagnosticTest(Program program) {
+  //   final params = {'program_id': program.id};
+  //   final response = api.get('$serverApi/test/diagostic_test', queryParameters: params);
+  //   return response.then(handleResponseError).then((value) async {
+  //     final data = value as Map<String, dynamic>;
+  //     final result = TestContentDto.fromJson(data).toDomain();
+  //     return result;
+  //   });
+  // }
+
+  // @override
+  // Future<Unit> defaultLearningPath(Program program) {
+  //   final params = {'program_id': program.id};
+  //   final response = api.get('$serverApi/test/skip_diagnostic_test', queryParameters: params);
+  //   return response.then((res) {
+  //     if (res.statusCode != 200) {
+  //       return Future.error(const ApiFailure.serverError());
+  //     }
+  //     return unit;
+  //   });
+  // }
 
   @override
-  Future<Unit> defaultLearningPath(Program program) {
-    final params = {'program_id': program.id};
-    final response = api.get('$serverApi/test/skip_diagnostic_test', queryParameters: params);
-    return response.then((res) {
-      if (res.statusCode != 200) {
-        return Future.error(const ApiFailure.serverError());
-      }
-      return unit;
-    });
-  }
-
-  @override
-  Future<LearningGoalPath> getLearningGoalPath(Program program, LearningGoal learningGoal) {
-    final params = {'program_id': program.id, 'learning_goal_id': learningGoal.id};
-    final response = api.get('$serverApi/lesson/list', queryParameters: params);
+  Future<LearningGoalPath> getLearningGoalPath(StudentLearningGoal learningGoal) async {
+    final response = api.get('$serverApi/students/learning_goal/${learningGoal.id}/lessons');
     return response.then(handleResponseError).then((value) async {
       final data = value as Map<String, dynamic>;
-      data['complete_percentage'] = double.parse(data['complete_percentage']);
+      // data['complete_percentage'] = double.parse(data['complete_percentage']);
       // data['complete_percentage'] = 10;
       final categories = data['categories'] as List<dynamic>;
       data['categories'] = categories.map((cat) {
@@ -83,6 +81,7 @@ class KnowledgeApi implements IKnowledgeApi {
         // cat['completed'] = true;
         return cat;
       }).toList();
+
       final result = LearningGoalPathDto.fromJson(data).toDomain();
       return result;
     });
@@ -112,7 +111,7 @@ class KnowledgeApi implements IKnowledgeApi {
   }
 
   @override
-  Future<Unit> setProgram(Program program) async {
+  Future<Unit> selectProgram(Program program) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(selectedProgramKey, jsonEncode(program.toJson()));
     return unit;
@@ -170,16 +169,16 @@ class KnowledgeApi implements IKnowledgeApi {
   }
 
   @override
-  Future<Unit> selectMockLearningGoal(LearningGoal learningGoal) async {
+  Future<Unit> selectLearningGoal(LearningGoal learningGoal) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(mockLearningGoalKey, jsonEncode(learningGoal.toJson()));
     return unit;
   }
 
   @override
-  Future<Unit> setLearningGoal(LearningGoal learningGoal) async {
+  Future<Unit> selectStudentLearningGoal(StudentLearningGoal learningGoal) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(selectedLearningGoalKey, jsonEncode(learningGoal.toJson()));
+    await prefs.setString(selectedStudentLearningGoalKey, jsonEncode(learningGoal.toJson()));
     return unit;
   }
 
@@ -194,18 +193,16 @@ class KnowledgeApi implements IKnowledgeApi {
   }
 
   @override
-  Future<LearningGoal> getSelectedLearningGoal() async {
+  Future<StudentLearningGoal> getSelectedStudentLearningGoal() async {
     final prefs = await SharedPreferences.getInstance();
-    final string = prefs.getString(selectedLearningGoalKey);
+    final string = prefs.getString(selectedStudentLearningGoalKey);
     if (string != null) {
       final json = jsonDecode(string);
-      final learningGoal = LearningGoal(
+      final learningGoal = StudentLearningGoal(
         id: json['id'],
         name: json['name'],
-        progress: json['progress'],
-        maxTopics: json['maxTopic'],
-        minTopics: json['minTopic'],
-        templates: json['templates'],
+        programName: json['programName'],
+        completePercentage: json['completePercentage'],
       );
       return learningGoal;
     }
@@ -213,7 +210,7 @@ class KnowledgeApi implements IKnowledgeApi {
   }
 
   @override
-  Future<LearningGoal> getMockLearningGoal() async {
+  Future<LearningGoal> getSelectedLearningGoal() async {
     final prefs = await SharedPreferences.getInstance();
     final string = prefs.getString(mockLearningGoalKey);
     if (string != null) {
@@ -244,16 +241,61 @@ class KnowledgeApi implements IKnowledgeApi {
     });
   }
 
+  // @override
+  // Future<Unit> setSelectedCatIndex(int index) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   await prefs.setInt(selectedCatIndexKey, index);
+  //   return unit;
+  // }
+
+  // @override
+  // Future<int> getSelectedCatIndex() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   return prefs.getInt(selectedCatIndexKey) ?? 0;
+  // }
+
   @override
-  Future<Unit> setSelectedCatIndex(int index) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(selectedCatIndexKey, index);
-    return unit;
+  Future<List<MockTestItem>> getLearningGoalMockTests(StudentLearningGoal learningGoal) {
+    final response = api.post('$serverApi/students/learning_goal/submit${learningGoal.id}/mock_tests');
+    return response.then(handleResponseError).then((value) async {
+      log('getLearningGoalMockTests: $value');
+      final data = value['data'] as List<dynamic>;
+      final result = data.map((json) {
+        return MockTestItemDto.fromJson(json).toDomain();
+      }).toList();
+      return result;
+    });
   }
 
   @override
-  Future<int> getSelectedCatIndex() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getInt(selectedCatIndexKey) ?? 0;
+  Future<List<MockTestItem>> getMockTestItems(StudentLearningGoal learningGoal) {
+    final response = api.get('$serverApi/students/learning_goal/${learningGoal.id}/mock_tests');
+    return response.then(handleResponseError).then((value) async {
+      var data = value['data'] as List<dynamic>;
+      // data = {
+      //   "data": [
+      //     {"id": 1, "created_date": "2023-01-01 15:50:45", "status": "learning_path_deactivated", "score": 8},
+      //     {"id": 6, "created_date": "2023-01-10 10:53:20", "status": "learning_path_deactivated", "score": 8},
+      //     {"id": 12, "created_date": "2023-01-12 10:53:20", "status": "learning_path_activated", "score": 3},
+      //     {"id": 68, "created_date": "2023-03-15 10:53:20", "status": "mock_test_submitted", "score": 6},
+      //     {"id": 100, "created_date": "2023-04-02 10:53:20", "status": "mock_test_submitted", "score": 6},
+      //     {"id": 101, "created_date": "2023-04-02 11:53:20", "status": "new"},
+      //     {"id": 102, "created_date": "2023-04-02 12:53:20", "status": "new"}
+      //   ]
+      // };
+      // data['complete_percentage'] = double.parse(data['complete_percentage']);
+      // // data['complete_percentage'] = 10;
+      // final categories = data['categories'] as List<dynamic>;
+      // data['categories'] = categories.map((cat) {
+      //   cat['category'] = {
+      //     'id': cat['category_id'],
+      //     'name': cat['category_name'],
+      //   };
+      //   // cat['completed'] = true;
+      //   return cat;
+      // }).toList();
+      final result = data.map((json) => MockTestItemDto.fromJson(json).toDomain()).toList();
+      return result;
+    });
   }
 }

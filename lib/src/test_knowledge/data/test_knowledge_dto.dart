@@ -1,6 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kyons_flutter/src/test_knowledge/data/test_entities.dart';
+
 import '../../knowledge/data/knowledge_dto.dart';
 import '../../test_knowledge/data/test_knowledge.dart';
+import '../domain/i_test_knowledge.dart';
 
 part 'test_knowledge_dto.freezed.dart';
 part 'test_knowledge_dto.g.dart';
@@ -27,31 +30,26 @@ class QuestionDto with _$QuestionDto {
   const factory QuestionDto({
     required int id,
     required String content,
-    @JsonKey(name: 'answer_keys')
-        required List<Map<String, dynamic>> answers,
+    @JsonKey(name: 'answer_keys') required List<Map<String, dynamic>> answers,
     @JsonKey(
       name: 'learning_point_difficulty_id',
       defaultValue: 0,
     )
-        required int learningPointDifficultyId,
+    required int learningPointDifficultyId,
     @JsonKey(
       name: 'difficulty_level',
       defaultValue: 0,
     )
-        required int difficultyLevel,
+    required int difficultyLevel,
     @JsonKey(
       name: 'learning_point_id',
       defaultValue: 0,
     )
-        required int learningPointId,
-    @JsonKey(name: 'topic_id', defaultValue: 0)
-        required int topicId,
-    @JsonKey(name: 'topic_name', defaultValue: '')
-        required String topicName,
-    @JsonKey(name: 'category_id', defaultValue: 0)
-        required int categoryId,
-    @JsonKey(name: 'category_name', defaultValue: '')
-        required String categoryName,
+    required int learningPointId,
+    @JsonKey(name: 'topic_id', defaultValue: 0) required int topicId,
+    @JsonKey(name: 'topic_name', defaultValue: '') required String topicName,
+    @JsonKey(name: 'category_id', defaultValue: 0) required int categoryId,
+    @JsonKey(name: 'category_name', defaultValue: '') required String categoryName,
   }) = _QuestionDto;
 
   factory QuestionDto.fromJson(Map<String, dynamic> json) => _$QuestionDtoFromJson(json);
@@ -214,4 +212,21 @@ class TestTypeConverter implements JsonConverter<TestType, String> {
         return 'Undefined';
     }
   }
+}
+
+@freezed
+class MockTestItemDto with _$MockTestItemDto {
+  const MockTestItemDto._();
+  const factory MockTestItemDto({
+    required int id,
+    @JsonKey(name: 'created_date') required String createdDate,
+    required MockTestStatus status,
+    @JsonKey(defaultValue: 0) required double score,
+    @JsonKey(defaultValue: 0) required int index,
+  }) = _MockTestItemDto;
+
+  factory MockTestItemDto.fromJson(Map<String, dynamic> json) => _$MockTestItemDtoFromJson(json);
+
+  MockTestItem toDomain() => MockTestItem(
+      id: id.toString(), createdDate: DateTime.parse(createdDate), status: status, score: score, index: index);
 }

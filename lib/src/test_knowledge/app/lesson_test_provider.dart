@@ -23,7 +23,7 @@ class LessonTestNotifier extends StateNotifier<LessonTestState> {
   }
 
   late List<Question> questions;
-  late Option<LearningGoal> learningGoal = none();
+  late Option<StudentLearningGoal> learningGoal = none();
 
   void initialize() {
     state = LessonTestState.initialize();
@@ -48,8 +48,8 @@ class LessonTestNotifier extends StateNotifier<LessonTestState> {
         }
       }
     }
-    final selectedLearningGoal = await knowledge_service.getSelectedLearningGoal().run(knowledgeApi);
-    learningGoal = selectedLearningGoal.getRight();
+    final selectedLearningGoal = await knowledge_service.getSelectedStudentLearningGoal().run(knowledgeApi);
+    learningGoal = selectedLearningGoal.toOption();
   }
 
   void previous() {

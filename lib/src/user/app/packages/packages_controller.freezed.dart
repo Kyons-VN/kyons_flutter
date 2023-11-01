@@ -107,11 +107,11 @@ class _$PackagesStateCopyWithImpl<$Res, $Val extends PackagesState>
 }
 
 /// @nodoc
-abstract class _$$_PackagesStateCopyWith<$Res>
+abstract class _$$PackagesStateImplCopyWith<$Res>
     implements $PackagesStateCopyWith<$Res> {
-  factory _$$_PackagesStateCopyWith(
-          _$_PackagesState value, $Res Function(_$_PackagesState) then) =
-      __$$_PackagesStateCopyWithImpl<$Res>;
+  factory _$$PackagesStateImplCopyWith(
+          _$PackagesStateImpl value, $Res Function(_$PackagesStateImpl) then) =
+      __$$PackagesStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,11 +126,11 @@ abstract class _$$_PackagesStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PackagesStateCopyWithImpl<$Res>
-    extends _$PackagesStateCopyWithImpl<$Res, _$_PackagesState>
-    implements _$$_PackagesStateCopyWith<$Res> {
-  __$$_PackagesStateCopyWithImpl(
-      _$_PackagesState _value, $Res Function(_$_PackagesState) _then)
+class __$$PackagesStateImplCopyWithImpl<$Res>
+    extends _$PackagesStateCopyWithImpl<$Res, _$PackagesStateImpl>
+    implements _$$PackagesStateImplCopyWith<$Res> {
+  __$$PackagesStateImplCopyWithImpl(
+      _$PackagesStateImpl _value, $Res Function(_$PackagesStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,7 +145,7 @@ class __$$_PackagesStateCopyWithImpl<$Res>
     Object? quantity = null,
     Object? orderedPackage = null,
   }) {
-    return _then(_$_PackagesState(
+    return _then(_$PackagesStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -184,8 +184,8 @@ class __$$_PackagesStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PackagesState implements _PackagesState {
-  const _$_PackagesState(
+class _$PackagesStateImpl implements _PackagesState {
+  const _$PackagesStateImpl(
       {required this.isLoading,
       required this.packages,
       required this.balance,
@@ -221,7 +221,7 @@ class _$_PackagesState implements _PackagesState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PackagesState &&
+            other is _$PackagesStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.packages, packages) ||
@@ -244,8 +244,8 @@ class _$_PackagesState implements _PackagesState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PackagesStateCopyWith<_$_PackagesState> get copyWith =>
-      __$$_PackagesStateCopyWithImpl<_$_PackagesState>(this, _$identity);
+  _$$PackagesStateImplCopyWith<_$PackagesStateImpl> get copyWith =>
+      __$$PackagesStateImplCopyWithImpl<_$PackagesStateImpl>(this, _$identity);
 }
 
 abstract class _PackagesState implements PackagesState {
@@ -257,7 +257,7 @@ abstract class _PackagesState implements PackagesState {
       required final bool isDone,
       required final bool showError,
       required final Option<int> quantity,
-      required final Option<Package> orderedPackage}) = _$_PackagesState;
+      required final Option<Package> orderedPackage}) = _$PackagesStateImpl;
 
   @override
   bool get isLoading;
@@ -277,6 +277,6 @@ abstract class _PackagesState implements PackagesState {
   Option<Package> get orderedPackage;
   @override
   @JsonKey(ignore: true)
-  _$$_PackagesStateCopyWith<_$_PackagesState> get copyWith =>
+  _$$PackagesStateImplCopyWith<_$PackagesStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

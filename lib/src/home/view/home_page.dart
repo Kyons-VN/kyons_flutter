@@ -1,17 +1,20 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/flutter_svg.dart' hide Svg;
+import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kyons_flutter/src/navigation/view/top_menu.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../core/helper/translate.dart';
 import '../../core/view/assets/student_assets.dart';
-import '../../core/view/widgets/large_blue_btn.dart';
+import '../../core/view/widgets/large_btn.dart';
 import '../../knowledge/data/knowledge_entities.dart';
 import '../../navigation/domain/app_paths.dart';
 import '../../navigation/view/app_drawer.dart';
 import '../app/home_provider.dart';
+import 'attributes_widget.dart';
 
 class HomePage extends StatelessWidget {
   final bool isShowHomeOptions;
@@ -33,350 +36,371 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         endDrawer: const AppDrawer(),
         body: SafeArea(
-          child: CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                actions: [
-                  IconButton(
-                    onPressed: () {
-                      print('object');
-                    },
-                    icon: const Icon(
-                      AppIcons.settings,
-                      color: AppColors.white,
+          child: context.isXsScreen()
+              ? CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      actions: const [
+                        SettingsButton(),
+                        AppSizesUnit.sizedBox16,
+                      ],
+                      leadingWidth: MediaQuery.of(context).size.width - AppSizesUnit.medium16 * 2,
+                      toolbarHeight: 100,
+                      leading: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSizesUnit.medium16,
+                          vertical: AppSizesUnit.medium16,
+                        ),
+                        child: Row(
+                          children: [
+                            StudentAssets.avatar,
+                            AppSizesUnit.sizedBox8,
+                            Heading(6, t(context).hello, color: AppColors.white),
+                          ],
+                        ),
+                      ),
+                      expandedHeight: 180.0,
+                      flexibleSpace: FlexibleSpaceBar(
+                        titlePadding: const EdgeInsets.only(left: 16, top: 16, right: 16),
+                        background: Container(
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(AppSizesUnit.medium16),
+                            bottomRight: Radius.circular(AppSizesUnit.medium16),
+                          )),
+                          clipBehavior: Clip.antiAlias,
+                          child: StudentAssets.homeImageXs,
+                        ),
+                        centerTitle: true,
+                      ),
+                      backgroundColor: AppColors.primaryBlue,
                     ),
-                  ),
-                ],
-                leadingWidth: MediaQuery.of(context).size.width - AppSizesUnit.medium16 * 2,
-                toolbarHeight: 100,
-                leading: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSizesUnit.medium16,
-                    vertical: AppSizesUnit.medium16,
-                  ),
-                  child: Row(
-                    children: [
-                      StudentAssets.avatar,
-                      AppSizesUnit.sizedBox8,
-                      Heading(6, t(context).hello, color: AppColors.white),
-                    ],
-                  ),
-                ),
-                expandedHeight: 180.0,
-                flexibleSpace: FlexibleSpaceBar(
-                  titlePadding: const EdgeInsets.only(left: 16, top: 16),
-                  // background: SvgPicture.asset(
-                  //   'assets/images/home.svg',
-                  //   fit: BoxFit.fill,
-                  // ),
-                  background: Container(
+                    SliverToBoxAdapter(
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          // background: var(--bg-gradient, linear-gradient(179deg, #F1F5F9 0%, #98D7FA 100%));
+                          gradient: LinearGradient(
+                            stops: [0, 0.8, 1],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              AppColors.white,
+                              AppColors.white,
+                              AppColors.lightBlue6,
+                            ],
+                          ),
+                          image: DecorationImage(
+                            image: StudentAssets.noLearningGoalXs,
+                            fit: BoxFit.contain,
+                            alignment: Alignment.bottomCenter,
+                          ),
+                        ),
+                        width: double.infinity,
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(
+                            AppSizesUnit.medium16,
+                            AppSizesUnit.medium20,
+                            AppSizesUnit.medium16,
+                            0,
+                          ),
+                          child: HomeWidget(),
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              : SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: Container(
                     decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(AppSizesUnit.medium16),
-                      bottomRight: Radius.circular(AppSizesUnit.medium16),
-                    )),
-                    clipBehavior: Clip.antiAlias,
-                    child: StudentAssets.homeImageXs,
-                  ),
-                  centerTitle: true,
-                ),
-                pinned: true,
-              ),
-              const SliverToBoxAdapter(
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      AppSizesUnit.medium16,
-                      AppSizesUnit.medium20,
-                      AppSizesUnit.medium16,
-                      0,
+                      // background: var(--bg-gradient, linear-gradient(179deg, #F1F5F9 0%, #98D7FA 100%));
+                      gradient: LinearGradient(
+                        stops: [0, 0.8, 1],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          AppColors.white,
+                          AppColors.white,
+                          AppColors.lightBlue6,
+                        ],
+                      ),
                     ),
-                    child: HomeWidget(),
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.all(AppSizesUnit.large32),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: StudentAssets.noLearningGoal,
+                                fit: BoxFit.contain,
+                                alignment: Alignment.bottomCenter,
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      height: AppSizesUnit.large40,
+                                      child: AppAssets.logoHorizontalSVG,
+                                    ),
+                                    AppSizesUnit.sizedBox16,
+                                    const Flexible(
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: TopMenuWidget(0),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                AppSizesUnit.sizedBox16,
+                                const HomeWidget()
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height,
+                        decoration:
+                            BoxDecoration(image: DecorationImage(image: StudentAssets.homeImage, fit: BoxFit.cover)),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: AppSizesUnit.large48, vertical: AppSizesUnit.large56),
+                          width: MediaQuery.of(context).size.width > 480 * 2
+                              ? 440
+                              : MediaQuery.of(context).size.width / 2 - 80,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      StudentAssets.avatar,
+                                      AppSizesUnit.sizedBox8,
+                                      Heading(4, t(context).hello, color: AppColors.white),
+                                    ],
+                                  ),
+                                  const SettingsButton(),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Heading(5, t(context).shortcuts, color: AppColors.white),
+                                  AppSizesUnit.sizedBox16,
+                                  const ContinueButton(),
+                                  AppSizesUnit.sizedBox16,
+                                  LargeBtn(
+                                    color: AppColors.orange,
+                                    onClick: () => context.go(AppPaths.mockTestLearningGoal.path),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ]),
                   ),
                 ),
-              )
-            ],
-          ),
         ),
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () => context.go(AppPaths.mockTestLearningGoal.path),
-        //   child: const Icon(
-        //     AppIcons.Add,
-        //     color: AppColors.white,
-        //   ),
-        // ),
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }
 }
 
-class HomeWidget extends ConsumerWidget {
+class HomeWidget extends ConsumerStatefulWidget {
   const HomeWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(homeNotifierProvider.notifier);
+  ConsumerState<HomeWidget> createState() => _HomeWidgetState();
+}
+
+class _HomeWidgetState extends ConsumerState<HomeWidget> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(homeNotifierProvider.notifier);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Heading(7, t(context).shortcuts),
           AppSizesUnit.sizedBox12,
-          BlueLargeBtn(
-            onClick: () {
-              context.go(AppPaths.learningPath.path);
-            },
-          ),
+          const ContinueButton(),
           AppSizesUnit.sizedBox24,
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Heading(7, t(context).yourAttributes),
-            GestureDetector(
-              onTap: () {},
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Row(children: [
-                  const Icon(
-                    AppIcons.help,
-                    size: AppSizesUnit.medium16,
-                  ),
-                  AppSizesUnit.sizedBox6,
-                  Text(t(context).whatAreThese),
-                ]),
-              ),
-            ),
-          ]),
-          AppSizesUnit.sizedBox16,
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(
-                AppSizesUnit.medium16,
-              ),
-              gradient: const LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  AppColors.primaryBlue,
-                  AppColors.blueGray900,
-                ],
-                stops: [0.0, 0.2],
-                transform: GradientRotation(0.0),
-              ),
-              boxShadow: AppColors.shadow3,
-              color: AppColors.blueGray900,
-            ),
-            padding: const EdgeInsets.all(AppSizesUnit.medium24),
-            child: Column(
-              children: [
-                SvgPicture.asset('assets/images/Spider chart.svg'),
-                SizedBox(
-                  width: 223,
-                  child: Column(
-                    children: [
-                      AppSizesUnit.sizedBox16,
-                      const Divider(),
-                      AppSizesUnit.sizedBox16,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          AnimatedSize(
-                            duration: const Duration(milliseconds: 300),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  AppSizesUnit.large40,
-                                ),
-                                color: AppColors.white,
-                              ),
-                              padding: const EdgeInsets.all(AppSizesUnit.small4),
-                              width: AppSizesUnit.large40,
-                              height: AppSizesUnit.large40,
-                              child: SvgPicture.asset('assets/images/Speed.svg'),
-                            ),
-                          ),
-                        ],
-                      ),
-                      AppSizesUnit.sizedBox24,
-                      Heading(6, t(context).secrectFeature, color: AppColors.white, textAlign: TextAlign.center),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          )
         ]),
-        ProgramsWidget(),
+        const AttributesWidget(),
+        AppSizesUnit.sizedBox24,
+        Consumer(builder: (context, ref, _) {
+          final state = ref.watch(homeNotifierProvider);
+          return state.when(
+              data: (data) => LearningGoalsWidget(data.studentLearningGoalsOption.getOrElse(() => [])),
+              error: (error, _) => Text(t(context).error),
+              loading: () => const CircularProgressIndicator());
+        })
       ],
     );
   }
 }
 
-class LinePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    const p1 = Offset(-30, 0);
-    const p2 = Offset(30, 0);
-    canvas.drawLine(
-        p1,
-        p2,
-        Paint()
-          ..color = AppColors.orange
-          ..strokeWidth = 6.0
-          ..strokeCap = StrokeCap.round);
-  }
+class LearningGoalsWidget extends ConsumerWidget {
+  final List<StudentLearningGoal> learningGoals;
+  const LearningGoalsWidget(
+    this.learningGoals, {
+    super.key,
+  });
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
-
-class ProgramsWidget extends HookConsumerWidget {
-  const ProgramsWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(context, ref) {
-    final homeState = ref.watch(homeNotifierProvider);
-    final homeController = ref.watch(homeNotifierProvider.notifier);
-    final scrollController = useScrollController();
-    ref.listen<AsyncValue<HomeState>>(homeNotifierProvider, (previousCount, newCount) {
-      if (newCount.value!.selectedLearningGoalOption.isSome()) {
-        context.go(AppPaths.learningPath.path);
-      }
-    });
-    return homeState.when(
-        skipError: true,
-        data: (state) {
-          final programs = state.studentProgramsOption.fold(() => [], (either) => either.getOrElse((l) => []));
-          // final programs = [
-          //   Program(subjectId: '1', id: '1', name: 'English 1'),
-          //   Program(subjectId: '1', id: '2', name: 'English 2'),
-          //   Program(subjectId: '1', id: '3', name: 'English 3'),
-          //   Program(subjectId: '1', id: '4', name: 'English 4'),
-          //   Program(subjectId: '1', id: '5', name: 'English 5'),
-          //   Program(subjectId: '1', id: '6', name: 'English 6'),
-          //   Program(subjectId: '1', id: '7', name: 'English 7'),
-          //   Program(subjectId: '1', id: '8', name: 'English 8'),
-          // ];
-          return Column(
-            children: [
-              if (programs.isEmpty) ...[
-                AppSizesUnit.sizedBox24,
-                Text(
-                  t(context).chooseSubjectAndProgram,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.heading6,
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(
+      children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width - AppSizesUnit.medium16 * 2,
+          child: LayoutBuilder(builder: (context, constrains) {
+            final direction = constrains.maxWidth > 500 ? Axis.horizontal : Axis.vertical;
+            return Flex(
+              direction: direction,
+              mainAxisAlignment: direction == Axis.vertical ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [Heading(5, t(context).recentGoal)],
                 ),
-                AppSizesUnit.sizedBox24,
-                LongArrowWidget(height: MediaQuery.of(context).size.height - 532),
-                AppSizesUnit.sizedBox48,
-              ] else
-                Flexible(
-                    // width: double.infinity,
-                    // height: 100,
-                    child: state.display == ProgramsDisplay.grid
-                        ? GridView.count(
-                            crossAxisCount: 2,
-                            controller: scrollController,
-                            crossAxisSpacing: AppSizesUnit.medium24,
-                            mainAxisSpacing: AppSizesUnit.medium24,
-                            children: [
-                              for (var i = 0; i < programs.length; i++) ProgramWidget(program: programs[i], index: i),
-                            ],
-                          )
-                        : Carousel(
-                            items: [
-                              for (var i = 0; i < programs.length; i++)
-                                SizedBox.square(
-                                    dimension: MediaQuery.of(context).size.width - 105,
-                                    child: ProgramWidget(program: programs[i], index: i)),
-                            ],
-                            initialIndex: state.carouselIndex,
-                            defaultPreviousIndex: state.previousIndex,
-                            onIndexChanged: homeController.setCarouselIndex,
-                            // gap: 100,
-                            // placeholderScale: 0.5,
-                            // duration: const Duration(milliseconds: 1000),
-                            // curve: Curves.linear,
-                          )),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      state.display == ProgramsDisplay.carousel ? AppIcons.thumbnail : AppIcons.carousel,
-                      color: programs.isEmpty || programs.length == 1 ? AppColors.blueGray400 : AppColors.orange,
+                AppSizesUnit.sizedBox12,
+                Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => context.go(AppPaths.mockTestLearningGoal.path),
+                      child: Row(
+                        children: [
+                          const Icon(AppIcons.add, size: AppSizesUnit.medium24),
+                          AppSizesUnit.sizedBox8,
+                          Text(
+                            t(context).createNewGoal,
+                            style: const TextStyle(overflow: TextOverflow.ellipsis),
+                          ),
+                        ],
+                      ),
                     ),
-                    onPressed: programs.isEmpty || programs.length == 1 ? null : () => homeController.toggleDisplay(),
+                    AppSizesUnit.sizedBox16,
+                    if (learningGoals.isEmpty) const LongArrowWidget(height: 82),
+                  ],
+                ),
+              ],
+            );
+          }),
+        ),
+        AppSizesUnit.sizedBox16,
+        if (learningGoals.isNotEmpty)
+          LayoutBuilder(builder: (context, constrains) {
+            final col = constrains.maxWidth > 435 * 2 ? 2 : 1;
+            return GridView.count(
+                crossAxisCount: col,
+                shrinkWrap: true,
+                childAspectRatio: constrains.maxWidth / col / AppSizesUnit.large80,
+                mainAxisSpacing: AppSizesUnit.medium24,
+                crossAxisSpacing: AppSizesUnit.medium24,
+                children: List.generate(
+                    learningGoals.length,
+                    (index) => StudentLearningGoalItem(learningGoals[index], () async {
+                          await ref.read(homeNotifierProvider.notifier).selectStudentLearningGoal(learningGoals[index]);
+                          if (context.mounted) {
+                            context.go(AppPaths.learningPath.path);
+                          }
+                        })));
+          }),
+        if (learningGoals.isEmpty) ...[
+          SizedBox(
+            width: context.isLargerThanLgScreen() ? 435 : null,
+            child: Transform.translate(
+              offset: Offset(0, context.isLargerThanLgScreen() ? -50 : 0),
+              child: Column(
+                children: [
+                  Heading(
+                    5,
+                    t(context).noGoal,
+                    color: AppColors.orange,
+                  ),
+                  AppSizesUnit.sizedBox8,
+                  Text(
+                    t(context).kyonsNeedToKnow,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: AppSizesUnit.medium16),
+                    textAlign: TextAlign.center,
                   ),
                 ],
               ),
-            ],
-          );
-        },
-        error: (_, __) {
-          return Container();
-        },
-        loading: () {
-          return const Center(child: CircularProgressIndicator());
-        });
+            ),
+          ),
+        ],
+        AppSizesUnit.sizedBox80,
+      ],
+    );
   }
 }
 
-class ProgramWidget extends HookConsumerWidget {
-  final Program program;
-  final int index;
-  const ProgramWidget({Key? key, required this.program, required this.index}) : super(key: key);
+class StudentLearningGoalItem extends StatelessWidget {
+  final StudentLearningGoal learningGoal;
+  final VoidCallback? onClick;
+  const StudentLearningGoalItem(this.learningGoal, this.onClick, {super.key});
 
   @override
-  Widget build(context, ref) {
-    final homeNotifier = ref.read(homeNotifierProvider.notifier);
-    final onHovered = useState<bool>(false);
-    final mounted = useIsMounted();
+  Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
-        await homeNotifier.selectProgram(program);
-        if (!mounted()) return;
-        // ignore: use_build_context_synchronously
-        context.go(AppPaths.learningPath.path);
-      },
-      child: FocusableActionDetector(
-        onShowHoverHighlight: (value) {
-          onHovered.value = !onHovered.value;
-        },
-        mouseCursor: SystemMouseCursors.click,
+      onTap: onClick,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
         child: Container(
+          height: AppSizesUnit.large80,
           decoration: BoxDecoration(
-            color: AppColors.primaryBlue,
-            boxShadow: onHovered.value
-                ? const [
-                    BoxShadow(
-                      color: AppColors.shadow,
-                      spreadRadius: 0,
-                      offset: Offset(0, 15),
-                      blurRadius: 15,
-                      blurStyle: BlurStyle.normal,
-                    ),
-                  ]
-                : [],
-            borderRadius: BorderRadius.circular(AppSizesUnit.small8),
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(AppSizesUnit.medium16),
+            // box-shadow: 0px 9px 19px 1px rgba(49, 93, 147, 0.10);
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.secondaryBlue.withAlpha(255 ~/ 10),
+                offset: const Offset(0, 9),
+                blurRadius: 19,
+                spreadRadius: 1,
+              )
+            ],
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(AppSizesUnit.medium16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Heading(
-                  6,
-                  program.name,
-                  color: AppColors.white,
-                ),
-                AppSizesUnit.sizedBox8,
-                Text(
-                  t(context).nationalProgram,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.lightBlue3),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSizesUnit.medium16,
+            vertical: AppSizesUnit.medium12,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              StudentAssets.mathImage,
+              AppSizesUnit.sizedBox16,
+              Expanded(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Heading(6, learningGoal.name, maxLines: 1),
+                      AppSizesUnit.sizedBox6,
+                      Text(learningGoal.programName, overflow: TextOverflow.ellipsis),
+                    ]),
+              ),
+              AppSizesUnit.sizedBox16,
+              CircleProgressBar(
+                backgroundColor: AppColors.blueGray300,
+                foregroundColor: AppColors.orange,
+                value: learningGoal.completePercentage / 100,
+                strokeWidth: AppSizesUnit.small8,
+                child: Center(child: Heading(7, '${learningGoal.completePercentage}%')),
+              )
+            ],
           ),
         ),
       ),
@@ -390,24 +414,32 @@ class LongArrowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(height: height, child: CustomPaint(painter: LongArrowPainter(height)));
+    return SizedBox(
+        height: height,
+        child: CustomPaint(painter: LongArrowPainter(height, isCurved: context.isLargerThanLgScreen())));
   }
 }
 
 class LongArrowPainter extends CustomPainter {
+  final bool isCurved;
   final double height;
 
-  LongArrowPainter(this.height);
+  LongArrowPainter(this.height, {this.isCurved = false});
 
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
-      ..color = AppColors.blueGray300
+      ..color = AppColors.orange
+      ..style = PaintingStyle.stroke
       ..strokeWidth = 3;
     double arrow = 12;
-    canvas.drawLine(const Offset(0, 0), Offset(0, height), paint);
-    canvas.drawLine(Offset(0 - arrow, height - arrow), Offset(0, height), paint);
-    canvas.drawLine(Offset(0 + arrow, height - arrow), Offset(0, height), paint);
+    if (isCurved) {
+      canvas.drawArc(Offset(-height * 2, -height) & Size(height * 2, height * 2), 0, pi / 2, false, paint);
+    } else {
+      canvas.drawLine(const Offset(0, 0), Offset(0, height), paint);
+    }
+    canvas.drawLine(Offset(0 - arrow, arrow), const Offset(0, 0), paint);
+    canvas.drawLine(Offset(0 + arrow, arrow), const Offset(0, 0), paint);
 
     // final space = (dashSpace + dashWidth);
     // startY += space;
@@ -417,4 +449,56 @@ class LongArrowPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+class SettingsButton extends StatelessWidget {
+  const SettingsButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton(
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          onTap: () => context.go(AppPaths.userInfo.path),
+          child: Text(t(context).userInfo),
+        ),
+        PopupMenuItem(
+          onTap: () => context.go(AppPaths.account.path),
+          child: Text(t(context).yourAccount),
+        ),
+        PopupMenuItem(
+          onTap: () => context.go(AppPaths.account.path),
+          child: Text(t(context).userManual),
+        ),
+        PopupMenuItem(
+          onTap: () => context.go(AppPaths.signOut.path),
+          child: Text(t(context).signOut),
+        ),
+      ],
+      icon: Icon(
+        AppIcons.settings,
+        color: AppColors.white,
+        size: context.isXsScreen() ? AppSizesUnit.medium24 : AppSizesUnit.large36,
+      ),
+    );
+  }
+}
+
+class ContinueButton extends ConsumerWidget {
+  const ContinueButton({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return LargeBtn(
+      onClick: () async {
+        final homeState = ref.read(homeNotifierProvider);
+        if (homeState.hasValue) {
+          await ref
+              .read(homeNotifierProvider.notifier)
+              .selectStudentLearningGoal(homeState.value!.studentLearningGoalsOption.getOrElse(() => [])[0]);
+          if (context.mounted) context.go(AppPaths.learningPath.path);
+        }
+      },
+    );
+  }
 }

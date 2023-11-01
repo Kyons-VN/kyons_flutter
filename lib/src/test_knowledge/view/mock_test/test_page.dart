@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:share_plus/share_plus.dart';
+// import 'package:share_plus/share_plus.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,7 +16,6 @@ import '../../../navigation/domain/app_paths.dart';
 import '../../../test_knowledge/app/mock_test/diagnostic_test_controller.dart';
 import '../../../test_knowledge/data/test_knowledge.dart';
 import '../widgets/test_content_widget.dart';
-import '../widgets/test_result_widget.dart';
 
 class TestPage extends StatelessWidget {
   final bool isTest;
@@ -110,12 +109,12 @@ class TestPage extends StatelessWidget {
                       children: [
                         Heading(4, t(context).mockTestPoint),
                         AppSizesUnit.sizedBox24,
-                        TestResultWidget(
-                          testResult: testResult,
-                          lessonGroup: state.lessonGroup.getOrElse(() => LessonGroup.empty()),
-                          testContent: state.content.getOrElse(() => TestContent.empty()),
-                          learningGoal: controller.learningGoal.getOrElse(() => LearningGoal.empty()),
-                        ),
+                        // TestResultWidget(
+                        //   testResult: testResult,
+                        //   lessonGroup: state.lessonGroup.getOrElse(() => LessonGroup.empty()),
+                        //   testContent: state.content.getOrElse(() => TestContent.empty()),
+                        //   learningGoal: controller.learningGoal.getOrElse(() => LearningGoal.empty()),
+                        // ),
                         AppSizesUnit.sizedBox8,
                         Container(
                           padding: const EdgeInsets.all(AppSizesUnit.medium16),
@@ -209,8 +208,8 @@ class TestPage extends StatelessWidget {
                                                                 '${ConfigReader.clientApi()}/share-mocktest/${testResult.referral}'));
                                                         Flushbar().success(t(context).copiedToClipboard).show(context);
                                                       }
-                                                      Share.share(
-                                                          '${ConfigReader.clientApi()}/share-mocktest/${testResult.referral}');
+                                                      // Share.share(
+                                                      //     '${ConfigReader.clientApi()}/share-mocktest/${testResult.referral}');
                                                     }),
                                                   ],
                                                 )

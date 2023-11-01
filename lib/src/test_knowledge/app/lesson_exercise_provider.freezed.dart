@@ -108,11 +108,11 @@ class _$LessonExerciseStateCopyWithImpl<$Res, $Val extends LessonExerciseState>
 }
 
 /// @nodoc
-abstract class _$$_LessonExerciseStateCopyWith<$Res>
+abstract class _$$LessonExerciseStateImplCopyWith<$Res>
     implements $LessonExerciseStateCopyWith<$Res> {
-  factory _$$_LessonExerciseStateCopyWith(_$_LessonExerciseState value,
-          $Res Function(_$_LessonExerciseState) then) =
-      __$$_LessonExerciseStateCopyWithImpl<$Res>;
+  factory _$$LessonExerciseStateImplCopyWith(_$LessonExerciseStateImpl value,
+          $Res Function(_$LessonExerciseStateImpl) then) =
+      __$$LessonExerciseStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -127,11 +127,11 @@ abstract class _$$_LessonExerciseStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LessonExerciseStateCopyWithImpl<$Res>
-    extends _$LessonExerciseStateCopyWithImpl<$Res, _$_LessonExerciseState>
-    implements _$$_LessonExerciseStateCopyWith<$Res> {
-  __$$_LessonExerciseStateCopyWithImpl(_$_LessonExerciseState _value,
-      $Res Function(_$_LessonExerciseState) _then)
+class __$$LessonExerciseStateImplCopyWithImpl<$Res>
+    extends _$LessonExerciseStateCopyWithImpl<$Res, _$LessonExerciseStateImpl>
+    implements _$$LessonExerciseStateImplCopyWith<$Res> {
+  __$$LessonExerciseStateImplCopyWithImpl(_$LessonExerciseStateImpl _value,
+      $Res Function(_$LessonExerciseStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -146,7 +146,7 @@ class __$$_LessonExerciseStateCopyWithImpl<$Res>
     Object? hasError = null,
     Object? testResult = null,
   }) {
-    return _then(_$_LessonExerciseState(
+    return _then(_$LessonExerciseStateImpl(
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
@@ -185,8 +185,8 @@ class __$$_LessonExerciseStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LessonExerciseState implements _LessonExerciseState {
-  const _$_LessonExerciseState(
+class _$LessonExerciseStateImpl implements _LessonExerciseState {
+  const _$LessonExerciseStateImpl(
       {required this.loading,
       required this.content,
       required this.answersResult,
@@ -222,7 +222,7 @@ class _$_LessonExerciseState implements _LessonExerciseState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LessonExerciseState &&
+            other is _$LessonExerciseStateImpl &&
             (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.answersResult, answersResult) ||
@@ -246,21 +246,22 @@ class _$_LessonExerciseState implements _LessonExerciseState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LessonExerciseStateCopyWith<_$_LessonExerciseState> get copyWith =>
-      __$$_LessonExerciseStateCopyWithImpl<_$_LessonExerciseState>(
+  _$$LessonExerciseStateImplCopyWith<_$LessonExerciseStateImpl> get copyWith =>
+      __$$LessonExerciseStateImplCopyWithImpl<_$LessonExerciseStateImpl>(
           this, _$identity);
 }
 
 abstract class _LessonExerciseState implements LessonExerciseState {
   const factory _LessonExerciseState(
-      {required final bool loading,
-      required final Option<TestContent> content,
-      required final Option<Map<String, String>> answersResult,
-      required final int progress,
-      required final Option<int> currentQuestionIndex,
-      required final bool isSubmitted,
-      required final bool hasError,
-      required final Option<TestResult> testResult}) = _$_LessonExerciseState;
+          {required final bool loading,
+          required final Option<TestContent> content,
+          required final Option<Map<String, String>> answersResult,
+          required final int progress,
+          required final Option<int> currentQuestionIndex,
+          required final bool isSubmitted,
+          required final bool hasError,
+          required final Option<TestResult> testResult}) =
+      _$LessonExerciseStateImpl;
 
   @override
   bool get loading;
@@ -280,6 +281,6 @@ abstract class _LessonExerciseState implements LessonExerciseState {
   Option<TestResult> get testResult;
   @override
   @JsonKey(ignore: true)
-  _$$_LessonExerciseStateCopyWith<_$_LessonExerciseState> get copyWith =>
+  _$$LessonExerciseStateImplCopyWith<_$LessonExerciseStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

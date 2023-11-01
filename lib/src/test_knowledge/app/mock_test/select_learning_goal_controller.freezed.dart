@@ -121,11 +121,12 @@ class _$SelectLearningGoalStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SelectLearningGoalStateCopyWith<$Res>
+abstract class _$$SelectLearningGoalStateImplCopyWith<$Res>
     implements $SelectLearningGoalStateCopyWith<$Res> {
-  factory _$$_SelectLearningGoalStateCopyWith(_$_SelectLearningGoalState value,
-          $Res Function(_$_SelectLearningGoalState) then) =
-      __$$_SelectLearningGoalStateCopyWithImpl<$Res>;
+  factory _$$SelectLearningGoalStateImplCopyWith(
+          _$SelectLearningGoalStateImpl value,
+          $Res Function(_$SelectLearningGoalStateImpl) then) =
+      __$$SelectLearningGoalStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -141,12 +142,13 @@ abstract class _$$_SelectLearningGoalStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SelectLearningGoalStateCopyWithImpl<$Res>
+class __$$SelectLearningGoalStateImplCopyWithImpl<$Res>
     extends _$SelectLearningGoalStateCopyWithImpl<$Res,
-        _$_SelectLearningGoalState>
-    implements _$$_SelectLearningGoalStateCopyWith<$Res> {
-  __$$_SelectLearningGoalStateCopyWithImpl(_$_SelectLearningGoalState _value,
-      $Res Function(_$_SelectLearningGoalState) _then)
+        _$SelectLearningGoalStateImpl>
+    implements _$$SelectLearningGoalStateImplCopyWith<$Res> {
+  __$$SelectLearningGoalStateImplCopyWithImpl(
+      _$SelectLearningGoalStateImpl _value,
+      $Res Function(_$SelectLearningGoalStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -162,7 +164,7 @@ class __$$_SelectLearningGoalStateCopyWithImpl<$Res>
     Object? selectedProgramOption = null,
     Object? selectedLearningGoalOption = null,
   }) {
-    return _then(_$_SelectLearningGoalState(
+    return _then(_$SelectLearningGoalStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -205,8 +207,8 @@ class __$$_SelectLearningGoalStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SelectLearningGoalState implements _SelectLearningGoalState {
-  const _$_SelectLearningGoalState(
+class _$SelectLearningGoalStateImpl implements _SelectLearningGoalState {
+  const _$SelectLearningGoalStateImpl(
       {required this.isLoading,
       required this.isCompleted,
       required this.hasError,
@@ -245,7 +247,7 @@ class _$_SelectLearningGoalState implements _SelectLearningGoalState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SelectLearningGoalState &&
+            other is _$SelectLearningGoalStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.isCompleted, isCompleted) ||
@@ -284,10 +286,9 @@ class _$_SelectLearningGoalState implements _SelectLearningGoalState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SelectLearningGoalStateCopyWith<_$_SelectLearningGoalState>
-      get copyWith =>
-          __$$_SelectLearningGoalStateCopyWithImpl<_$_SelectLearningGoalState>(
-              this, _$identity);
+  _$$SelectLearningGoalStateImplCopyWith<_$SelectLearningGoalStateImpl>
+      get copyWith => __$$SelectLearningGoalStateImplCopyWithImpl<
+          _$SelectLearningGoalStateImpl>(this, _$identity);
 }
 
 abstract class _SelectLearningGoalState implements SelectLearningGoalState {
@@ -301,7 +302,7 @@ abstract class _SelectLearningGoalState implements SelectLearningGoalState {
           required final Option<Subject> selectedSubjectOption,
           required final Option<Program> selectedProgramOption,
           required final Option<LearningGoal> selectedLearningGoalOption}) =
-      _$_SelectLearningGoalState;
+      _$SelectLearningGoalStateImpl;
 
   @override
   bool get isLoading;
@@ -323,6 +324,6 @@ abstract class _SelectLearningGoalState implements SelectLearningGoalState {
   Option<LearningGoal> get selectedLearningGoalOption;
   @override
   @JsonKey(ignore: true)
-  _$$_SelectLearningGoalStateCopyWith<_$_SelectLearningGoalState>
+  _$$SelectLearningGoalStateImplCopyWith<_$SelectLearningGoalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

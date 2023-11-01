@@ -2,7 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../knowledge/data/knowledge_entities.dart';
-import '../../test_knowledge/data/test_knowledge.dart';
+import '../../test_knowledge/data/test_entities.dart';
 
 enum StudyType {
   @JsonValue("ai")
@@ -57,24 +57,27 @@ abstract class IMockTestTemplate {
 }
 
 abstract class IKnowledgeApi {
+  // MockTest
   Future<List<Subject>> getSubjects();
-  Future<List<Program>> getStudentProgram();
-  Future<Unit> defaultLearningPath(Program program);
-  Future<TestContent> getDiagnosticTest(Program program);
-  Future<LessonGroup> getLessonGroup(String lessonGroupId);
-  Future<Unit> setProgram(Program program);
-  Future<List<LearningGoal>> getLearningGoals(Program program);
-  Future<Unit> selectMockLearningGoal(LearningGoal learningGoal);
-  Future<Unit> setLearningGoal(LearningGoal learningGoal);
+  Future<Unit> selectProgram(Program program);
   Future<Program> getSelectedProgram();
   Future<Unit> removeSelectedProgram();
-  Future<Unit> createLesson(Program program, List<String> difficultyIds);
-  Future<List<LearningPoint>> getLearningPoints(Program program);
-  Future<LearningGoal> getMockLearningGoal();
+  Future<List<LearningGoal>> getLearningGoals(Program program);
+  Future<Unit> selectLearningGoal(LearningGoal learningGoal);
   Future<LearningGoal> getSelectedLearningGoal();
   Future<List<TopicSelection>> getTopicsFromLearningGoal(LearningGoal learningGoal);
   Future<LearningGoal> createLearningGoal(LearningGoal masterLearningGoal, List<Topic> selectedTopics);
-  Future<LearningGoalPath> getLearningGoalPath(Program program, LearningGoal learningGoal);
-  Future<Unit> setSelectedCatIndex(int index);
-  Future<int> getSelectedCatIndex();
+  Future<List<MockTestItem>> getMockTestItems(StudentLearningGoal learningGoal);
+
+  // LearningPath
+  Future<List<StudentLearningGoal>> getStudentLearningGoals();
+  Future<Unit> selectStudentLearningGoal(StudentLearningGoal learningGoal);
+  Future<StudentLearningGoal> getSelectedStudentLearningGoal();
+  Future<List<MockTestItem>> getLearningGoalMockTests(StudentLearningGoal learningGoal);
+  Future<LearningGoalPath> getLearningGoalPath(StudentLearningGoal learningGoal);
+
+  // Lesson
+  Future<List<LearningPoint>> getLearningPoints(Program program);
+  Future<Unit> createLesson(Program program, List<String> difficultyIds);
+  Future<LessonGroup> getLessonGroup(String lessonGroupId);
 }

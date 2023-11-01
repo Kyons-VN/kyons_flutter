@@ -125,11 +125,11 @@ class _$PackageDtoCopyWithImpl<$Res, $Val extends PackageDto>
 }
 
 /// @nodoc
-abstract class _$$_PackageDtoCopyWith<$Res>
+abstract class _$$PackageDtoImplCopyWith<$Res>
     implements $PackageDtoCopyWith<$Res> {
-  factory _$$_PackageDtoCopyWith(
-          _$_PackageDto value, $Res Function(_$_PackageDto) then) =
-      __$$_PackageDtoCopyWithImpl<$Res>;
+  factory _$$PackageDtoImplCopyWith(
+          _$PackageDtoImpl value, $Res Function(_$PackageDtoImpl) then) =
+      __$$PackageDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -147,11 +147,11 @@ abstract class _$$_PackageDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PackageDtoCopyWithImpl<$Res>
-    extends _$PackageDtoCopyWithImpl<$Res, _$_PackageDto>
-    implements _$$_PackageDtoCopyWith<$Res> {
-  __$$_PackageDtoCopyWithImpl(
-      _$_PackageDto _value, $Res Function(_$_PackageDto) _then)
+class __$$PackageDtoImplCopyWithImpl<$Res>
+    extends _$PackageDtoCopyWithImpl<$Res, _$PackageDtoImpl>
+    implements _$$PackageDtoImplCopyWith<$Res> {
+  __$$PackageDtoImplCopyWithImpl(
+      _$PackageDtoImpl _value, $Res Function(_$PackageDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -166,7 +166,7 @@ class __$$_PackageDtoCopyWithImpl<$Res>
     Object? salePrice = null,
     Object? items = null,
   }) {
-    return _then(_$_PackageDto(
+    return _then(_$PackageDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -205,24 +205,22 @@ class __$$_PackageDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PackageDto extends _PackageDto {
-  const _$_PackageDto(
+class _$PackageDtoImpl extends _PackageDto {
+  const _$PackageDtoImpl(
       {required this.id,
       required this.name,
       required this.description,
       required this.discount,
-      @JsonKey(defaultValue: 99)
-          required this.limit,
+      @JsonKey(defaultValue: 99) required this.limit,
       required this.price,
-      @JsonKey(name: 'sale_price')
-          required this.salePrice,
+      @JsonKey(name: 'sale_price') required this.salePrice,
       @JsonKey(name: 'package_items')
-          required final List<PackageItemDto> items})
+      required final List<PackageItemDto> items})
       : _items = items,
         super._();
 
-  factory _$_PackageDto.fromJson(Map<String, dynamic> json) =>
-      _$$_PackageDtoFromJson(json);
+  factory _$PackageDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PackageDtoImplFromJson(json);
 
   @override
   final int id;
@@ -258,7 +256,7 @@ class _$_PackageDto extends _PackageDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PackageDto &&
+            other is _$PackageDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -280,12 +278,12 @@ class _$_PackageDto extends _PackageDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PackageDtoCopyWith<_$_PackageDto> get copyWith =>
-      __$$_PackageDtoCopyWithImpl<_$_PackageDto>(this, _$identity);
+  _$$PackageDtoImplCopyWith<_$PackageDtoImpl> get copyWith =>
+      __$$PackageDtoImplCopyWithImpl<_$PackageDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PackageDtoToJson(
+    return _$$PackageDtoImplToJson(
       this,
     );
   }
@@ -297,17 +295,15 @@ abstract class _PackageDto extends PackageDto {
       required final String name,
       required final String description,
       required final DiscountDto discount,
-      @JsonKey(defaultValue: 99)
-          required final int limit,
+      @JsonKey(defaultValue: 99) required final int limit,
       required final String price,
-      @JsonKey(name: 'sale_price')
-          required final String salePrice,
+      @JsonKey(name: 'sale_price') required final String salePrice,
       @JsonKey(name: 'package_items')
-          required final List<PackageItemDto> items}) = _$_PackageDto;
+      required final List<PackageItemDto> items}) = _$PackageDtoImpl;
   const _PackageDto._() : super._();
 
   factory _PackageDto.fromJson(Map<String, dynamic> json) =
-      _$_PackageDto.fromJson;
+      _$PackageDtoImpl.fromJson;
 
   @override
   int get id;
@@ -330,7 +326,7 @@ abstract class _PackageDto extends PackageDto {
   List<PackageItemDto> get items;
   @override
   @JsonKey(ignore: true)
-  _$$_PackageDtoCopyWith<_$_PackageDto> get copyWith =>
+  _$$PackageDtoImplCopyWith<_$PackageDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -361,9 +357,8 @@ abstract class $DiscountDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'discount_type', unknownEnumValue: DiscountType.amount)
       @JsonEnum(fieldRename: FieldRename.snake)
-          DiscountType type,
-      @JsonKey(name: 'discount_amount', defaultValue: '0.0')
-          String amount});
+      DiscountType type,
+      @JsonKey(name: 'discount_amount', defaultValue: '0.0') String amount});
 }
 
 /// @nodoc
@@ -396,27 +391,26 @@ class _$DiscountDtoCopyWithImpl<$Res, $Val extends DiscountDto>
 }
 
 /// @nodoc
-abstract class _$$_DiscountDtoCopyWith<$Res>
+abstract class _$$DiscountDtoImplCopyWith<$Res>
     implements $DiscountDtoCopyWith<$Res> {
-  factory _$$_DiscountDtoCopyWith(
-          _$_DiscountDto value, $Res Function(_$_DiscountDto) then) =
-      __$$_DiscountDtoCopyWithImpl<$Res>;
+  factory _$$DiscountDtoImplCopyWith(
+          _$DiscountDtoImpl value, $Res Function(_$DiscountDtoImpl) then) =
+      __$$DiscountDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'discount_type', unknownEnumValue: DiscountType.amount)
       @JsonEnum(fieldRename: FieldRename.snake)
-          DiscountType type,
-      @JsonKey(name: 'discount_amount', defaultValue: '0.0')
-          String amount});
+      DiscountType type,
+      @JsonKey(name: 'discount_amount', defaultValue: '0.0') String amount});
 }
 
 /// @nodoc
-class __$$_DiscountDtoCopyWithImpl<$Res>
-    extends _$DiscountDtoCopyWithImpl<$Res, _$_DiscountDto>
-    implements _$$_DiscountDtoCopyWith<$Res> {
-  __$$_DiscountDtoCopyWithImpl(
-      _$_DiscountDto _value, $Res Function(_$_DiscountDto) _then)
+class __$$DiscountDtoImplCopyWithImpl<$Res>
+    extends _$DiscountDtoCopyWithImpl<$Res, _$DiscountDtoImpl>
+    implements _$$DiscountDtoImplCopyWith<$Res> {
+  __$$DiscountDtoImplCopyWithImpl(
+      _$DiscountDtoImpl _value, $Res Function(_$DiscountDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -425,7 +419,7 @@ class __$$_DiscountDtoCopyWithImpl<$Res>
     Object? type = null,
     Object? amount = null,
   }) {
-    return _then(_$_DiscountDto(
+    return _then(_$DiscountDtoImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -440,17 +434,17 @@ class __$$_DiscountDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DiscountDto extends _DiscountDto {
-  const _$_DiscountDto(
+class _$DiscountDtoImpl extends _DiscountDto {
+  const _$DiscountDtoImpl(
       {@JsonKey(name: 'discount_type', unknownEnumValue: DiscountType.amount)
       @JsonEnum(fieldRename: FieldRename.snake)
-          required this.type,
+      required this.type,
       @JsonKey(name: 'discount_amount', defaultValue: '0.0')
-          required this.amount})
+      required this.amount})
       : super._();
 
-  factory _$_DiscountDto.fromJson(Map<String, dynamic> json) =>
-      _$$_DiscountDtoFromJson(json);
+  factory _$DiscountDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DiscountDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'discount_type', unknownEnumValue: DiscountType.amount)
@@ -469,7 +463,7 @@ class _$_DiscountDto extends _DiscountDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DiscountDto &&
+            other is _$DiscountDtoImpl &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.amount, amount) || other.amount == amount));
   }
@@ -481,12 +475,12 @@ class _$_DiscountDto extends _DiscountDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DiscountDtoCopyWith<_$_DiscountDto> get copyWith =>
-      __$$_DiscountDtoCopyWithImpl<_$_DiscountDto>(this, _$identity);
+  _$$DiscountDtoImplCopyWith<_$DiscountDtoImpl> get copyWith =>
+      __$$DiscountDtoImplCopyWithImpl<_$DiscountDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DiscountDtoToJson(
+    return _$$DiscountDtoImplToJson(
       this,
     );
   }
@@ -496,13 +490,13 @@ abstract class _DiscountDto extends DiscountDto {
   const factory _DiscountDto(
       {@JsonKey(name: 'discount_type', unknownEnumValue: DiscountType.amount)
       @JsonEnum(fieldRename: FieldRename.snake)
-          required final DiscountType type,
+      required final DiscountType type,
       @JsonKey(name: 'discount_amount', defaultValue: '0.0')
-          required final String amount}) = _$_DiscountDto;
+      required final String amount}) = _$DiscountDtoImpl;
   const _DiscountDto._() : super._();
 
   factory _DiscountDto.fromJson(Map<String, dynamic> json) =
-      _$_DiscountDto.fromJson;
+      _$DiscountDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'discount_type', unknownEnumValue: DiscountType.amount)
@@ -513,7 +507,7 @@ abstract class _DiscountDto extends DiscountDto {
   String get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_DiscountDtoCopyWith<_$_DiscountDto> get copyWith =>
+  _$$DiscountDtoImplCopyWith<_$DiscountDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -581,11 +575,11 @@ class _$PackageItemDtoCopyWithImpl<$Res, $Val extends PackageItemDto>
 }
 
 /// @nodoc
-abstract class _$$_PackageItemDtoCopyWith<$Res>
+abstract class _$$PackageItemDtoImplCopyWith<$Res>
     implements $PackageItemDtoCopyWith<$Res> {
-  factory _$$_PackageItemDtoCopyWith(
-          _$_PackageItemDto value, $Res Function(_$_PackageItemDto) then) =
-      __$$_PackageItemDtoCopyWithImpl<$Res>;
+  factory _$$PackageItemDtoImplCopyWith(_$PackageItemDtoImpl value,
+          $Res Function(_$PackageItemDtoImpl) then) =
+      __$$PackageItemDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, PackageServiceDto service});
@@ -595,11 +589,11 @@ abstract class _$$_PackageItemDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PackageItemDtoCopyWithImpl<$Res>
-    extends _$PackageItemDtoCopyWithImpl<$Res, _$_PackageItemDto>
-    implements _$$_PackageItemDtoCopyWith<$Res> {
-  __$$_PackageItemDtoCopyWithImpl(
-      _$_PackageItemDto _value, $Res Function(_$_PackageItemDto) _then)
+class __$$PackageItemDtoImplCopyWithImpl<$Res>
+    extends _$PackageItemDtoCopyWithImpl<$Res, _$PackageItemDtoImpl>
+    implements _$$PackageItemDtoImplCopyWith<$Res> {
+  __$$PackageItemDtoImplCopyWithImpl(
+      _$PackageItemDtoImpl _value, $Res Function(_$PackageItemDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -608,7 +602,7 @@ class __$$_PackageItemDtoCopyWithImpl<$Res>
     Object? id = null,
     Object? service = null,
   }) {
-    return _then(_$_PackageItemDto(
+    return _then(_$PackageItemDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -623,12 +617,12 @@ class __$$_PackageItemDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PackageItemDto extends _PackageItemDto {
-  const _$_PackageItemDto({required this.id, required this.service})
+class _$PackageItemDtoImpl extends _PackageItemDto {
+  const _$PackageItemDtoImpl({required this.id, required this.service})
       : super._();
 
-  factory _$_PackageItemDto.fromJson(Map<String, dynamic> json) =>
-      _$$_PackageItemDtoFromJson(json);
+  factory _$PackageItemDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PackageItemDtoImplFromJson(json);
 
   @override
   final int id;
@@ -644,7 +638,7 @@ class _$_PackageItemDto extends _PackageItemDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PackageItemDto &&
+            other is _$PackageItemDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.service, service) || other.service == service));
   }
@@ -656,12 +650,13 @@ class _$_PackageItemDto extends _PackageItemDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PackageItemDtoCopyWith<_$_PackageItemDto> get copyWith =>
-      __$$_PackageItemDtoCopyWithImpl<_$_PackageItemDto>(this, _$identity);
+  _$$PackageItemDtoImplCopyWith<_$PackageItemDtoImpl> get copyWith =>
+      __$$PackageItemDtoImplCopyWithImpl<_$PackageItemDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PackageItemDtoToJson(
+    return _$$PackageItemDtoImplToJson(
       this,
     );
   }
@@ -670,11 +665,11 @@ class _$_PackageItemDto extends _PackageItemDto {
 abstract class _PackageItemDto extends PackageItemDto {
   const factory _PackageItemDto(
       {required final int id,
-      required final PackageServiceDto service}) = _$_PackageItemDto;
+      required final PackageServiceDto service}) = _$PackageItemDtoImpl;
   const _PackageItemDto._() : super._();
 
   factory _PackageItemDto.fromJson(Map<String, dynamic> json) =
-      _$_PackageItemDto.fromJson;
+      _$PackageItemDtoImpl.fromJson;
 
   @override
   int get id;
@@ -682,7 +677,7 @@ abstract class _PackageItemDto extends PackageItemDto {
   PackageServiceDto get service;
   @override
   @JsonKey(ignore: true)
-  _$$_PackageItemDtoCopyWith<_$_PackageItemDto> get copyWith =>
+  _$$PackageItemDtoImplCopyWith<_$PackageItemDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -713,13 +708,11 @@ abstract class $PackageServiceDtoCopyWith<$Res> {
       _$PackageServiceDtoCopyWithImpl<$Res, PackageServiceDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'service_type_text')
-          String name,
+      {@JsonKey(name: 'service_type_text') String name,
       @JsonKey(name: 'service_type')
       @JsonEnum(fieldRename: FieldRename.snake)
-          PackageServiceType type,
-      @JsonKey(name: 'service_amount')
-          int amount});
+      PackageServiceType type,
+      @JsonKey(name: 'service_amount') int amount});
 }
 
 /// @nodoc
@@ -757,29 +750,27 @@ class _$PackageServiceDtoCopyWithImpl<$Res, $Val extends PackageServiceDto>
 }
 
 /// @nodoc
-abstract class _$$_PackageServiceDtoCopyWith<$Res>
+abstract class _$$PackageServiceDtoImplCopyWith<$Res>
     implements $PackageServiceDtoCopyWith<$Res> {
-  factory _$$_PackageServiceDtoCopyWith(_$_PackageServiceDto value,
-          $Res Function(_$_PackageServiceDto) then) =
-      __$$_PackageServiceDtoCopyWithImpl<$Res>;
+  factory _$$PackageServiceDtoImplCopyWith(_$PackageServiceDtoImpl value,
+          $Res Function(_$PackageServiceDtoImpl) then) =
+      __$$PackageServiceDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'service_type_text')
-          String name,
+      {@JsonKey(name: 'service_type_text') String name,
       @JsonKey(name: 'service_type')
       @JsonEnum(fieldRename: FieldRename.snake)
-          PackageServiceType type,
-      @JsonKey(name: 'service_amount')
-          int amount});
+      PackageServiceType type,
+      @JsonKey(name: 'service_amount') int amount});
 }
 
 /// @nodoc
-class __$$_PackageServiceDtoCopyWithImpl<$Res>
-    extends _$PackageServiceDtoCopyWithImpl<$Res, _$_PackageServiceDto>
-    implements _$$_PackageServiceDtoCopyWith<$Res> {
-  __$$_PackageServiceDtoCopyWithImpl(
-      _$_PackageServiceDto _value, $Res Function(_$_PackageServiceDto) _then)
+class __$$PackageServiceDtoImplCopyWithImpl<$Res>
+    extends _$PackageServiceDtoCopyWithImpl<$Res, _$PackageServiceDtoImpl>
+    implements _$$PackageServiceDtoImplCopyWith<$Res> {
+  __$$PackageServiceDtoImplCopyWithImpl(_$PackageServiceDtoImpl _value,
+      $Res Function(_$PackageServiceDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -789,7 +780,7 @@ class __$$_PackageServiceDtoCopyWithImpl<$Res>
     Object? type = null,
     Object? amount = null,
   }) {
-    return _then(_$_PackageServiceDto(
+    return _then(_$PackageServiceDtoImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -808,19 +799,17 @@ class __$$_PackageServiceDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PackageServiceDto extends _PackageServiceDto {
-  const _$_PackageServiceDto(
-      {@JsonKey(name: 'service_type_text')
-          required this.name,
+class _$PackageServiceDtoImpl extends _PackageServiceDto {
+  const _$PackageServiceDtoImpl(
+      {@JsonKey(name: 'service_type_text') required this.name,
       @JsonKey(name: 'service_type')
       @JsonEnum(fieldRename: FieldRename.snake)
-          required this.type,
-      @JsonKey(name: 'service_amount')
-          required this.amount})
+      required this.type,
+      @JsonKey(name: 'service_amount') required this.amount})
       : super._();
 
-  factory _$_PackageServiceDto.fromJson(Map<String, dynamic> json) =>
-      _$$_PackageServiceDtoFromJson(json);
+  factory _$PackageServiceDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PackageServiceDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'service_type_text')
@@ -842,7 +831,7 @@ class _$_PackageServiceDto extends _PackageServiceDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PackageServiceDto &&
+            other is _$PackageServiceDtoImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.amount, amount) || other.amount == amount));
@@ -855,13 +844,13 @@ class _$_PackageServiceDto extends _PackageServiceDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PackageServiceDtoCopyWith<_$_PackageServiceDto> get copyWith =>
-      __$$_PackageServiceDtoCopyWithImpl<_$_PackageServiceDto>(
+  _$$PackageServiceDtoImplCopyWith<_$PackageServiceDtoImpl> get copyWith =>
+      __$$PackageServiceDtoImplCopyWithImpl<_$PackageServiceDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PackageServiceDtoToJson(
+    return _$$PackageServiceDtoImplToJson(
       this,
     );
   }
@@ -869,17 +858,16 @@ class _$_PackageServiceDto extends _PackageServiceDto {
 
 abstract class _PackageServiceDto extends PackageServiceDto {
   const factory _PackageServiceDto(
-      {@JsonKey(name: 'service_type_text')
-          required final String name,
-      @JsonKey(name: 'service_type')
-      @JsonEnum(fieldRename: FieldRename.snake)
+          {@JsonKey(name: 'service_type_text') required final String name,
+          @JsonKey(name: 'service_type')
+          @JsonEnum(fieldRename: FieldRename.snake)
           required final PackageServiceType type,
-      @JsonKey(name: 'service_amount')
-          required final int amount}) = _$_PackageServiceDto;
+          @JsonKey(name: 'service_amount') required final int amount}) =
+      _$PackageServiceDtoImpl;
   const _PackageServiceDto._() : super._();
 
   factory _PackageServiceDto.fromJson(Map<String, dynamic> json) =
-      _$_PackageServiceDto.fromJson;
+      _$PackageServiceDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'service_type_text')
@@ -893,6 +881,6 @@ abstract class _PackageServiceDto extends PackageServiceDto {
   int get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_PackageServiceDtoCopyWith<_$_PackageServiceDto> get copyWith =>
+  _$$PackageServiceDtoImplCopyWith<_$PackageServiceDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,8 +6,8 @@ part of 'package_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PackageDto _$$_PackageDtoFromJson(Map<String, dynamic> json) =>
-    _$_PackageDto(
+_$PackageDtoImpl _$$PackageDtoImplFromJson(Map<String, dynamic> json) =>
+    _$PackageDtoImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       description: json['description'] as String,
@@ -20,7 +20,7 @@ _$_PackageDto _$$_PackageDtoFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_PackageDtoToJson(_$_PackageDto instance) =>
+Map<String, dynamic> _$$PackageDtoImplToJson(_$PackageDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -32,14 +32,14 @@ Map<String, dynamic> _$$_PackageDtoToJson(_$_PackageDto instance) =>
       'package_items': instance.items,
     };
 
-_$_DiscountDto _$$_DiscountDtoFromJson(Map<String, dynamic> json) =>
-    _$_DiscountDto(
+_$DiscountDtoImpl _$$DiscountDtoImplFromJson(Map<String, dynamic> json) =>
+    _$DiscountDtoImpl(
       type: $enumDecode(_$DiscountTypeEnumMap, json['discount_type'],
           unknownValue: DiscountType.amount),
       amount: json['discount_amount'] as String? ?? '0.0',
     );
 
-Map<String, dynamic> _$$_DiscountDtoToJson(_$_DiscountDto instance) =>
+Map<String, dynamic> _$$DiscountDtoImplToJson(_$DiscountDtoImpl instance) =>
     <String, dynamic>{
       'discount_type': _$DiscountTypeEnumMap[instance.type]!,
       'discount_amount': instance.amount,
@@ -50,28 +50,30 @@ const _$DiscountTypeEnumMap = {
   DiscountType.percentage: 'percentage',
 };
 
-_$_PackageItemDto _$$_PackageItemDtoFromJson(Map<String, dynamic> json) =>
-    _$_PackageItemDto(
+_$PackageItemDtoImpl _$$PackageItemDtoImplFromJson(Map<String, dynamic> json) =>
+    _$PackageItemDtoImpl(
       id: json['id'] as int,
       service:
           PackageServiceDto.fromJson(json['service'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_PackageItemDtoToJson(_$_PackageItemDto instance) =>
+Map<String, dynamic> _$$PackageItemDtoImplToJson(
+        _$PackageItemDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'service': instance.service,
     };
 
-_$_PackageServiceDto _$$_PackageServiceDtoFromJson(Map<String, dynamic> json) =>
-    _$_PackageServiceDto(
+_$PackageServiceDtoImpl _$$PackageServiceDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PackageServiceDtoImpl(
       name: json['service_type_text'] as String,
       type: $enumDecode(_$PackageServiceTypeEnumMap, json['service_type']),
       amount: json['service_amount'] as int,
     );
 
-Map<String, dynamic> _$$_PackageServiceDtoToJson(
-        _$_PackageServiceDto instance) =>
+Map<String, dynamic> _$$PackageServiceDtoImplToJson(
+        _$PackageServiceDtoImpl instance) =>
     <String, dynamic>{
       'service_type_text': instance.name,
       'service_type': _$PackageServiceTypeEnumMap[instance.type]!,

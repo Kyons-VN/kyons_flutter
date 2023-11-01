@@ -72,11 +72,11 @@ class _$TransactionsStateCopyWithImpl<$Res, $Val extends TransactionsState>
 }
 
 /// @nodoc
-abstract class _$$_TransactionsStateCopyWith<$Res>
+abstract class _$$TransactionsStateImplCopyWith<$Res>
     implements $TransactionsStateCopyWith<$Res> {
-  factory _$$_TransactionsStateCopyWith(_$_TransactionsState value,
-          $Res Function(_$_TransactionsState) then) =
-      __$$_TransactionsStateCopyWithImpl<$Res>;
+  factory _$$TransactionsStateImplCopyWith(_$TransactionsStateImpl value,
+          $Res Function(_$TransactionsStateImpl) then) =
+      __$$TransactionsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -86,11 +86,11 @@ abstract class _$$_TransactionsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TransactionsStateCopyWithImpl<$Res>
-    extends _$TransactionsStateCopyWithImpl<$Res, _$_TransactionsState>
-    implements _$$_TransactionsStateCopyWith<$Res> {
-  __$$_TransactionsStateCopyWithImpl(
-      _$_TransactionsState _value, $Res Function(_$_TransactionsState) _then)
+class __$$TransactionsStateImplCopyWithImpl<$Res>
+    extends _$TransactionsStateCopyWithImpl<$Res, _$TransactionsStateImpl>
+    implements _$$TransactionsStateImplCopyWith<$Res> {
+  __$$TransactionsStateImplCopyWithImpl(_$TransactionsStateImpl _value,
+      $Res Function(_$TransactionsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_TransactionsStateCopyWithImpl<$Res>
     Object? transactions = null,
     Object? error = null,
   }) {
-    return _then(_$_TransactionsState(
+    return _then(_$TransactionsStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -119,8 +119,8 @@ class __$$_TransactionsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TransactionsState implements _TransactionsState {
-  const _$_TransactionsState(
+class _$TransactionsStateImpl implements _TransactionsState {
+  const _$TransactionsStateImpl(
       {required this.isLoading,
       required final List<Transaction> transactions,
       required this.error})
@@ -148,7 +148,7 @@ class _$_TransactionsState implements _TransactionsState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TransactionsState &&
+            other is _$TransactionsStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality()
@@ -163,8 +163,8 @@ class _$_TransactionsState implements _TransactionsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TransactionsStateCopyWith<_$_TransactionsState> get copyWith =>
-      __$$_TransactionsStateCopyWithImpl<_$_TransactionsState>(
+  _$$TransactionsStateImplCopyWith<_$TransactionsStateImpl> get copyWith =>
+      __$$TransactionsStateImplCopyWithImpl<_$TransactionsStateImpl>(
           this, _$identity);
 }
 
@@ -172,7 +172,7 @@ abstract class _TransactionsState implements TransactionsState {
   const factory _TransactionsState(
       {required final bool isLoading,
       required final List<Transaction> transactions,
-      required final Option<ApiFailure> error}) = _$_TransactionsState;
+      required final Option<ApiFailure> error}) = _$TransactionsStateImpl;
 
   @override
   bool get isLoading;
@@ -182,6 +182,6 @@ abstract class _TransactionsState implements TransactionsState {
   Option<ApiFailure> get error;
   @override
   @JsonKey(ignore: true)
-  _$$_TransactionsStateCopyWith<_$_TransactionsState> get copyWith =>
+  _$$TransactionsStateImplCopyWith<_$TransactionsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

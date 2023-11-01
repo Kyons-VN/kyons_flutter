@@ -87,7 +87,7 @@ class DrawerMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentPath = GoRouter.of(context).location;
+    final currentPath = GoRouter.of(context).routeInformationProvider.value.uri.path;
     final color = appPath.path == currentPath ? AppColors.lightBlue1 : AppColors.white;
     void goTo(String path) {
       Navigator.of(context).pop();

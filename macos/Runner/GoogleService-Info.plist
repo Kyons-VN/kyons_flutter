@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>830127784291-l4u4gmmpsr2k5a1sf95hjli9fboc2bm5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.830127784291-l4u4gmmpsr2k5a1sf95hjli9fboc2bm5</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>830127784291-39ajr6j1nfsdroqh7j6lh0e03eflmtic.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB5vyRaVASjJde4NgVR_UdlUTwo-QN-FaM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>830127784291</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>vn.kyons.student</string>
+	<key>PROJECT_ID</key>
+	<string>kyonsvn</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kyonsvn.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:830127784291:ios:3959ed8265532bb01b5356</string>
+</dict>
+</plist>

@@ -63,22 +63,22 @@ class _$BalanceDtoCopyWithImpl<$Res, $Val extends BalanceDto>
 }
 
 /// @nodoc
-abstract class _$$_BalanceDtoCopyWith<$Res>
+abstract class _$$BalanceDtoImplCopyWith<$Res>
     implements $BalanceDtoCopyWith<$Res> {
-  factory _$$_BalanceDtoCopyWith(
-          _$_BalanceDto value, $Res Function(_$_BalanceDto) then) =
-      __$$_BalanceDtoCopyWithImpl<$Res>;
+  factory _$$BalanceDtoImplCopyWith(
+          _$BalanceDtoImpl value, $Res Function(_$BalanceDtoImpl) then) =
+      __$$BalanceDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'balance') int value});
 }
 
 /// @nodoc
-class __$$_BalanceDtoCopyWithImpl<$Res>
-    extends _$BalanceDtoCopyWithImpl<$Res, _$_BalanceDto>
-    implements _$$_BalanceDtoCopyWith<$Res> {
-  __$$_BalanceDtoCopyWithImpl(
-      _$_BalanceDto _value, $Res Function(_$_BalanceDto) _then)
+class __$$BalanceDtoImplCopyWithImpl<$Res>
+    extends _$BalanceDtoCopyWithImpl<$Res, _$BalanceDtoImpl>
+    implements _$$BalanceDtoImplCopyWith<$Res> {
+  __$$BalanceDtoImplCopyWithImpl(
+      _$BalanceDtoImpl _value, $Res Function(_$BalanceDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +86,7 @@ class __$$_BalanceDtoCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_BalanceDto(
+    return _then(_$BalanceDtoImpl(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -97,12 +97,12 @@ class __$$_BalanceDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BalanceDto extends _BalanceDto {
-  const _$_BalanceDto({@JsonKey(name: 'balance') required this.value})
+class _$BalanceDtoImpl extends _BalanceDto {
+  const _$BalanceDtoImpl({@JsonKey(name: 'balance') required this.value})
       : super._();
 
-  factory _$_BalanceDto.fromJson(Map<String, dynamic> json) =>
-      _$$_BalanceDtoFromJson(json);
+  factory _$BalanceDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BalanceDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'balance')
@@ -117,7 +117,7 @@ class _$_BalanceDto extends _BalanceDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BalanceDto &&
+            other is _$BalanceDtoImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -128,12 +128,12 @@ class _$_BalanceDto extends _BalanceDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BalanceDtoCopyWith<_$_BalanceDto> get copyWith =>
-      __$$_BalanceDtoCopyWithImpl<_$_BalanceDto>(this, _$identity);
+  _$$BalanceDtoImplCopyWith<_$BalanceDtoImpl> get copyWith =>
+      __$$BalanceDtoImplCopyWithImpl<_$BalanceDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BalanceDtoToJson(
+    return _$$BalanceDtoImplToJson(
       this,
     );
   }
@@ -141,17 +141,17 @@ class _$_BalanceDto extends _BalanceDto {
 
 abstract class _BalanceDto extends BalanceDto {
   const factory _BalanceDto(
-      {@JsonKey(name: 'balance') required final int value}) = _$_BalanceDto;
+      {@JsonKey(name: 'balance') required final int value}) = _$BalanceDtoImpl;
   const _BalanceDto._() : super._();
 
   factory _BalanceDto.fromJson(Map<String, dynamic> json) =
-      _$_BalanceDto.fromJson;
+      _$BalanceDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'balance')
   int get value;
   @override
   @JsonKey(ignore: true)
-  _$$_BalanceDtoCopyWith<_$_BalanceDto> get copyWith =>
+  _$$BalanceDtoImplCopyWith<_$BalanceDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

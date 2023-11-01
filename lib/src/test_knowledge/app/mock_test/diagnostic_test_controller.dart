@@ -33,12 +33,12 @@ class DiagnosticTestController extends StateNotifier<DiagnosticTestState> {
 
   Future<void> _init(String learningGoalId) async {
     state = DiagnosticTestState.loading();
-    final mockLearningGoal = await knowledge_service.getMockLearningGoal().run(knowledgeApi);
-    if (mockLearningGoal.isLeft()) {
+    final selectedLearningGoal = await knowledge_service.getSelectedLearningGoal().run(knowledgeApi);
+    if (selectedLearningGoal.isLeft()) {
       state = DiagnosticTestState.missingLearningGoal();
       return;
     } else {
-      learningGoal = mockLearningGoal.toOption();
+      learningGoal = selectedLearningGoal.toOption();
     }
 
     final successOrFailure = await test_service.getDiagnosticTest(learningGoalId).run(testApi);
