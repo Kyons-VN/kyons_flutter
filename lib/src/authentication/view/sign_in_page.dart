@@ -94,7 +94,7 @@ class SignInForm extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final signInState = ref.watch(signInProvider);
-    final authNotifier = ref.watch(authNotifierProvider.notifier);
+    final authNotifier = ref.read(authNotifierProvider.notifier);
     final signInNotifier = ref.read(signInProvider.notifier);
     final currentUserNotifier = ref.read(currentUserProvider.notifier);
     final showPassword = useState(true);

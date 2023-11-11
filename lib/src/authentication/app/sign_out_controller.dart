@@ -9,7 +9,7 @@ class SignOutController extends _$SignOutController {
   @override
   bool build() => false;
   Future<Unit> signOut() async {
-    ref.read(authNotifierProvider.notifier).signOut();
+    await ref.read(authNotifierProvider.notifier).signOut();
     state = true;
     return unit;
   }

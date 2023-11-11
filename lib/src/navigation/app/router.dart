@@ -293,3 +293,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
     super.dispose();
   }
 }
+
+final goRouterProvider = Provider<GoRouter>((ref) {
+  return AppRouter.router;
+});

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,17 +25,21 @@ class Api {
       }
       options.headers['Authorization'] = 'Bearer $accessToken';
       return handler.next(options);
-    }, onError: (DioError error, handler) async {
+    }, onError: (DioException error, handler) async {
       if ((error.response?.statusCode == 401)) {
         // if (refreshToken.isNotEmpty) {
         final prefs = await SharedPreferences.getInstance();
         final refreshToken = prefs.getString(kRefreshToken) ?? '';
         if (refreshToken.isNotEmpty) {
           final newToken = await getRefreshToken();
-          if (newToken.isNotEmpty) {
-            auth_service.setToken(newToken);
+          if (newToken.isSome()) {
+            auth_service.setToken(newToken.getOrElse(() => ''));
             error.requestOptions.headers['Authorization'] = 'Bearer $newToken';
             return handler.resolve(await _retry(error.requestOptions));
+          } else {
+            // refresh token is invalid
+            clear();
+            return handler.next(error);
           }
         }
         // }
@@ -54,24 +59,33 @@ class Api {
         data: requestOptions.data, queryParameters: requestOptions.queryParameters, options: options);
   }
 
-  Future<String> getRefreshToken() async {
+  Future<Option<String>> getRefreshToken() async {
     final prefs = await SharedPreferences.getInstance();
     final refreshToken = prefs.getString(kRefreshToken) ?? '';
     final Dio request = Dio();
-    request.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
-      options.headers['Authorization'] = 'Bearer $refreshToken';
-      return handler.next(options);
-    }));
-    final response = await request.post('$serverApi/auth/refresh');
+    // request.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
+    //   options.headers['Authorization'] = 'Bearer $refreshToken';
+    //   return handler.next(options);
+    // }, onError: (DioException error, handler) {
+    //   return handler.next(error);
+    // }));
+    return await request
+        .post('$serverApi/auth/refresh', options: Options(headers: {'Authorization': 'Bearer $refreshToken'}))
+        .catchError((error, stackTrace) {
+      _log.shout('getRefreshToken', error, stackTrace);
+      // return true;
+    }).then((value) {
+      return some(value.data['access_token'] as String);
+    }).onError((error, stackTrace) => none());
+    // return response;
 
-    if (response.statusCode == 200) {
-      final accessToken = response.data['access_token'];
-      return accessToken;
-    } else {
-      // refresh token is wrong
-      clear();
-      return '';
-    }
+    // _log.info('getRefreshToken');
+    // if (response.statusCode == 200) {
+    //   final accessToken = response.data['access_token'];
+    //   return some(accessToken);
+    // } else {
+    //   return none();
+    // }
   }
 
   clear() {
@@ -83,12 +97,14 @@ ApiFailure handleError(error, StackTrace stackTrace) {
   _log.shout('ApiFailure handleError', error, stackTrace);
   if (error is ApiFailure) {
     return error;
-  } else if (error is DioError) {
+  } else if (error is DioException) {
     if (error.response?.statusCode == 400 && error.response != null) {
       if (error.response!.data['error_code'] == 'SubscriptionExpired') {
         return const ApiFailure.subscriptionExpired();
       } else if (error.response!.data['error_code'] == 'RanOutMockTest') {
         return const ApiFailure.ranOutMockTest();
+      } else if (error.response!.statusCode == 401) {
+        return const ApiFailure.unAuthenticated();
       }
     }
   }

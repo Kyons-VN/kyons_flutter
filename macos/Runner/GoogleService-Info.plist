@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>830127784291-l4u4gmmpsr2k5a1sf95hjli9fboc2bm5.apps.googleusercontent.com</string>
+	<string>830127784291-j53m8l4m0j5nboa39bqvb8ml1t27j76m.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.830127784291-l4u4gmmpsr2k5a1sf95hjli9fboc2bm5</string>
+	<string>com.googleusercontent.apps.830127784291-j53m8l4m0j5nboa39bqvb8ml1t27j76m</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>830127784291-39ajr6j1nfsdroqh7j6lh0e03eflmtic.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>vn.kyons.student</string>
+	<string>vn.kyons.student.RunnerTests</string>
 	<key>PROJECT_ID</key>
 	<string>kyonsvn</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:830127784291:ios:3959ed8265532bb01b5356</string>
+	<string>1:830127784291:ios:2045fc6b6d22212a1b5356</string>
 </dict>
 </plist>

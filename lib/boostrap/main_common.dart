@@ -85,7 +85,9 @@ void guardedMain() {
     SystemUiMode.edgeToEdge,
   );
 
-  final container = ProviderContainer(observers: [LoggerProviderObserver()]);
+  final container = ProviderContainer(observers: [
+    // LoggerProviderObserver(),
+  ]);
 
   runApp(UncontrolledProviderScope(
     container: container,
@@ -169,6 +171,7 @@ class _AppWidgetState extends ConsumerState<AppWidget> with WidgetsBindingObserv
 
 AnimatedBuilder _builder(WidgetRef ref) {
   final settingsProvider = ref.read(settingsNotifierProvider);
+  final goRouter = ref.watch(goRouterProvider);
   return AnimatedBuilder(
     animation: settingsProvider,
     builder: (BuildContext context, Widget? child) {
@@ -208,9 +211,9 @@ AnimatedBuilder _builder(WidgetRef ref) {
         theme: lightTheme(),
         // darkTheme: darkTheme(),
         // themeMode: settingsNotifierProvider.themeMode,
-        routeInformationParser: AppRouter.router.routeInformationParser,
-        routerDelegate: AppRouter.router.routerDelegate,
-        routeInformationProvider: AppRouter.router.routeInformationProvider,
+        routeInformationParser: goRouter.routeInformationParser,
+        routerDelegate: goRouter.routerDelegate,
+        routeInformationProvider: goRouter.routeInformationProvider,
       );
     },
   );
