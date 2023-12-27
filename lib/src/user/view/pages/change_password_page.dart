@@ -112,21 +112,21 @@ class ChangePasswordForm extends HookConsumerWidget {
                 TextSpan(
                   text: '\n - ${t(context).passwordValidateUpper}:',
                   style: bodyTextStyle.copyWith(
-                      color: state.shouldShowErrorMessages && !hasUpperCase(state.newPasswordStr)
+                      color: state.shouldShowErrorMessages && !state.newPasswordStr.hasUpperCase
                           ? state.newPassword.value.fold((_) => AppColors.red, (_) => null)
                           : null),
                 ),
                 TextSpan(
                   text: '\n - ${t(context).passwordValidate_0}:',
                   style: bodyTextStyle.copyWith(
-                      color: state.shouldShowErrorMessages && !hasDigit(state.newPasswordStr)
+                      color: state.shouldShowErrorMessages && !state.newPasswordStr.hasDigit
                           ? state.newPassword.value.fold((_) => AppColors.red, (_) => null)
                           : null),
                 ),
                 TextSpan(
                   text: '\n - ${t(context).passwordValidateSpecial}:',
                   style: bodyTextStyle.copyWith(
-                      color: state.shouldShowErrorMessages && !hasSpecialCharacters(state.newPasswordStr)
+                      color: state.shouldShowErrorMessages && !state.newPasswordStr.hasSpecialCharacters
                           ? state.newPassword.value.fold((_) => AppColors.red, (_) => null)
                           : null),
                 ),

@@ -1,21 +1,26 @@
 import 'dart:convert';
 
 import 'package:fpdart/fpdart.dart';
-import '../../core/data/api.dart';
-import '../../tracking/data/tracking_service.dart' as tracking_service;
-import '../../tracking/domain/i_tracking.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../core/data/api.dart';
+import '../../tracking/data/tracking_service.dart' as tracking_service;
+import '../../tracking/domain/i_tracking.dart';
+
 class TrackingApi extends ITracking {
   late String _deviceId;
-  TrackingApi._();
+  final Api apiService;
+  final String hostName;
+  TrackingApi._({required this.apiService, required this.hostName});
 
-  factory TrackingApi.init() => TrackingApi._();
-  final api = Api.init().api;
+  factory TrackingApi.init({required Api apiService, required String hostName}) =>
+      TrackingApi._(apiService: apiService, hostName: hostName);
 
   @override
   Future<Unit> trackOnApp() async {
+    // TODO: Remove
+    return unit;
     final tracking = await _getTracking();
     final total = tracking['total'];
     if (total == null) {
@@ -89,7 +94,7 @@ class TrackingApi extends ITracking {
     // Obtain shared preferences.
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(ITracking.trackingKey, jsonEncode({'total': params['on_total']}));
-    final response = api.post('$serverApi/students/on_app', data: params);
+    final response = apiService.api.post('$hostName/students/on_app', data: params);
     return response.then(handleResponseError).then((value) {
       return unit;
     });
@@ -106,7 +111,7 @@ class TrackingApi extends ITracking {
     // Obtain shared preferences.
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(ITracking.trackingKey, jsonEncode(tracking));
-    final response = api.post('$serverApi/students/on_app', data: params);
+    final response = apiService.api.post('$hostName/students/on_app', data: params);
     return response.then(handleResponseError).then((value) {
       return unit;
     });
@@ -124,7 +129,7 @@ class TrackingApi extends ITracking {
     await prefs.setString(ITracking.trackingKey, jsonEncode(tracking));
 
     final params = {'lesson_id': lessonId, 'start': true, type.toString(): lessonTracking[type.toString()]};
-    final response = api.post('$serverApi/students/on_lesson', data: params);
+    final response = apiService.api.post('$hostName/students/on_lesson', data: params);
     await response.then(handleResponseError);
     return unit;
   }
@@ -141,7 +146,7 @@ class TrackingApi extends ITracking {
     await prefs.setString(ITracking.trackingKey, jsonEncode(tracking));
 
     final params = {'lesson_id': lessonId, type.toString(): total};
-    final response = api.post('$serverApi/students/on_lesson', data: params);
+    final response = apiService.api.post('$hostName/students/on_lesson', data: params);
     await response.then(handleResponseError);
     return unit;
   }

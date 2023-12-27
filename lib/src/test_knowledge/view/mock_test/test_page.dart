@@ -241,7 +241,7 @@ class TestPage extends StatelessWidget {
                               AppSizesUnit.sizedBox24,
                               AppIcons.iconButton(
                                 AppIcons.arrowRight,
-                                () => context.go(AppPaths.mockTestLearningGoal.path),
+                                () => context.go(AppPaths.mockTest.path),
                               ),
                             ],
                           ),

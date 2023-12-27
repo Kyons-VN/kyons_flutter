@@ -24,7 +24,7 @@ class User implements IUser {
   @override
   final String address;
   @override
-  final DateTime birthdate;
+  final Option<DateTime> birthdate;
 
   const User({
     required this.id,
@@ -49,7 +49,7 @@ class User implements IUser {
         grade: '',
         school: '',
         address: '',
-        birthdate: dateNow.run(),
+        birthdate: none(),
       );
 
   UserDto toDto() => UserDto(
@@ -59,7 +59,7 @@ class User implements IUser {
         lastName: lastName,
         studyType: studyType,
         address: address,
-        birthdate: birthdate,
+        birthdate: birthdate.getOrElse(() => DateTime.now()).toIso8601String(),
         grade: grade,
         phone: phone,
         school: school,

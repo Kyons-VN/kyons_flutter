@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/authentication/data/cities_list.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../authentication/app/auth_provider.dart';
@@ -14,45 +13,49 @@ part 'sign_up_provider.freezed.dart';
 part 'sign_up_state.dart';
 
 class SignUpNotifier extends StateNotifier<SignUpState> {
-  final IAuthApi authApi;
+  final IAuthService authApi;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   SignUpNotifier(this.authApi) : super(SignUpState.initial());
 
-  void lastNameChanged(String lastName) {
-    state = state.copyWith(lastName: lastName);
-  }
+  // void lastNameChanged(String lastName) {
+  //   state = state.copyWith(lastName: lastName);
+  // }
 
-  void firstNameChanged(String firstName) {
-    state = state.copyWith(firstName: firstName);
-  }
+  // void firstNameChanged(String firstName) {
+  //   state = state.copyWith(firstName: firstName);
+  // }
 
   void emailChanged(String emailStr) {
     state = state.copyWith(emailAddress: EmailAddress(emailStr));
   }
 
-  void phoneChanged(String phone) {
-    state = state.copyWith(phone: Phone(phone));
-  }
+  // void phoneChanged(String phone) {
+  //   state = state.copyWith(phone: Phone(phone));
+  // }
 
-  void birthdateChanged(DateTime birthdate) {
-    state = state.copyWith(birthdate: birthdate);
-  }
+  // void birthdateChanged(DateTime birthdate) {
+  //   state = state.copyWith(birthdate: birthdate);
+  // }
 
-  void gradeChanged(String grade) {
-    state = state.copyWith(grade: grade);
-  }
+  // void gradeChanged(String grade) {
+  //   state = state.copyWith(grade: grade);
+  // }
 
-  void schoolChanged(String school) {
-    state = state.copyWith(school: school);
-  }
+  // void schoolChanged(String school) {
+  //   state = state.copyWith(school: school);
+  // }
 
-  void addressChanged(String address) {
-    state = state.copyWith(address: address);
-  }
+  // void addressChanged(String address) {
+  //   state = state.copyWith(address: address);
+  // }
 
   void agreeChanged(bool isAgreed) {
     state = state.copyWith(isAgreedToTerms: isAgreed);
+  }
+
+  void passwordChanged(String password) {
+    state = state.copyWith(password: Password(password), passwordStr: password);
   }
 
   void showValidation() {
@@ -63,23 +66,25 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
     Either<AuthFailure, Unit> failureOrSuccess = left(const AuthFailure.invalidEmailPassword());
 
     final isEmailValid = state.emailAddress.isValid();
-    final isLastNameValid = state.lastName != '';
-    final isFirstNameValid = state.firstName != '';
-    final isPhoneValid = state.phone.isValid();
-    if (isEmailValid && isPhoneValid && isLastNameValid && isFirstNameValid && state.isAgreedToTerms) {
+    // final isLastNameValid = state.lastName != '';
+    // final isFirstNameValid = state.firstName != '';
+    // final isPhoneValid = state.phone.isValid();
+    final isPasswordValid = state.password.isValid();
+    if (isEmailValid && isPasswordValid && state.isAgreedToTerms) {
       state = state.copyWith(
         isSubmitting: true,
       );
       failureOrSuccess = await auth_service
           .signUp(
-            firstName: state.firstName,
-            lastName: state.lastName,
+            // firstName: state.firstName,
+            // lastName: state.lastName,
             emailAddress: state.emailAddress.getValueOrError().trim(),
-            phone: state.phone.getValueOrError().trim(),
-            birthdate: state.birthdate,
-            grade: state.grade,
-            school: state.school,
-            address: state.address,
+            password: state.password.getValueOrError(),
+            // phone: state.phone.getValueOrError().trim(),
+            // birthdate: state.birthdate,
+            // grade: state.grade,
+            // school: state.school,
+            // address: state.address,
           )
           .run(authApi);
     }

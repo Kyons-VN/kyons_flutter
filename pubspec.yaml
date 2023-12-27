@@ -72,6 +72,7 @@ dev_dependencies:
     sdk: flutter
   freezed: 2.4.5
   json_serializable: 6.7.1
+  mockito: ^5.4.4
   riverpod_generator: 2.3.5
 
 # For information on the generic Dart part of this file, see the

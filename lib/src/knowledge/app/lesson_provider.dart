@@ -11,7 +11,6 @@ import '../../knowledge/data/knowledge_service.dart' as knowledge_service;
 import '../../knowledge/domain/i_knowledge.dart';
 import '../../tracking/app/tracking_provider.dart';
 import '../../tracking/data/tracking_api.dart';
-import '../../tracking/data/tracking_service.dart' as tracking_service;
 import '../../tracking/domain/i_tracking.dart';
 
 part 'lesson_provider.freezed.dart';
@@ -110,10 +109,10 @@ class LessonStudyNotifier extends StateNotifier<LessonStudyState> {
     if (lessonGroupId.isEmpty) return;
     final Stream<Either<ApiFailure<dynamic>, Unit>> myStream =
         Stream.periodic(const Duration(seconds: 10), ((e) => e + 1)).asyncExpand((event) {
-      return tracking_service
-          .trackOnLesson(lessonGroupId, TrackingLessonType.values[state.selectedTabIndex.index])
-          .run(trackingApi)
-          .asStream();
+      // return tracking_service
+      //     .trackOnLesson(lessonGroupId, TrackingLessonType.values[state.selectedTabIndex.index])
+      //     .run(trackingApi)
+      //     .asStream();
     });
     _sub = myStream.listen((successOrFailure) {
       successOrFailure.fold(
@@ -138,5 +137,5 @@ class LessonStudyNotifier extends StateNotifier<LessonStudyState> {
   }
 }
 
-final lessonStudyNotifierProvider = StateNotifierProvider.autoDispose<LessonStudyNotifier, LessonStudyState>(
-    (ref) => LessonStudyNotifier(ref.read(tracking)));
+final lessonStudyNotifierProvider =
+    StateNotifierProvider<LessonStudyNotifier, LessonStudyState>((ref) => LessonStudyNotifier(ref.read(tracking)));

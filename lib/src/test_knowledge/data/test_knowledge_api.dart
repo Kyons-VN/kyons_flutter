@@ -4,14 +4,17 @@ import '../../test_knowledge/data/test_knowledge_dto.dart';
 import '../../test_knowledge/domain/i_test_knowledge.dart';
 
 class TestKnowledge implements ITestKnowledge {
-  final api = Api.init().api;
+  final Api apiService;
+  final String hostName;
+
+  TestKnowledge({required this.apiService, required this.hostName});
 
   @override
   Future<TestContent> getDiagnosticTest(String learningGoalId) {
     final params = {
       'learning_goal_id': learningGoalId,
     };
-    final response = api.get('$serverApi/test/learning_goal_test', queryParameters: params);
+    final response = apiService.api.get('$hostName/test/learning_goal_test', queryParameters: params);
 
     return response.then(handleResponseError).then((value) async {
       final data = value as Map<String, dynamic>;
@@ -30,7 +33,7 @@ class TestKnowledge implements ITestKnowledge {
       'end_time': testContent.endedAt.serverRequest,
       'submission': testContent.submission,
     };
-    final response = api.post('$serverApi/submit_answers', data: params);
+    final response = apiService.api.post('$hostName/submit_answers', data: params);
 
     return response.then(handleResponseError).then((value) async {
       final data = value as Map<String, dynamic>;
@@ -40,7 +43,8 @@ class TestKnowledge implements ITestKnowledge {
 
   @override
   Future<TestContent> getExercise(String lessonGroupId) {
-    final response = api.get('$serverApi/test/get_lesson_exercise', queryParameters: {'lesson_id': lessonGroupId});
+    final response =
+        apiService.api.get('$hostName/test/get_lesson_exercise', queryParameters: {'lesson_id': lessonGroupId});
 
     return response
         .then(handleResponseError)
@@ -49,7 +53,8 @@ class TestKnowledge implements ITestKnowledge {
 
   @override
   Future<TestContent> getTest(String lessonGroupId) {
-    final response = api.get('$serverApi/test/get_lesson_test', queryParameters: {'lesson_id': lessonGroupId});
+    final response =
+        apiService.api.get('$hostName/test/get_lesson_test', queryParameters: {'lesson_id': lessonGroupId});
 
     return response
         .then(handleResponseError)
@@ -58,7 +63,7 @@ class TestKnowledge implements ITestKnowledge {
 
   @override
   Future<TestResult> getTestResult(String lessonGroupId) {
-    final response = api.get('$serverApi/test/result', queryParameters: {'lesson_id': lessonGroupId});
+    final response = apiService.api.get('$hostName/test/result', queryParameters: {'lesson_id': lessonGroupId});
 
     return response
         .then(handleResponseError)

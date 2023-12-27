@@ -31,6 +31,9 @@ mixin _$SelectLearningGoalState {
       throw _privateConstructorUsedError;
   Option<LearningGoal> get selectedLearningGoalOption =>
       throw _privateConstructorUsedError;
+  Option<MockTestTemplate> get selectedTemplateOption =>
+      throw _privateConstructorUsedError;
+  bool get showTemplates => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SelectLearningGoalStateCopyWith<SelectLearningGoalState> get copyWith =>
@@ -52,7 +55,9 @@ abstract class $SelectLearningGoalStateCopyWith<$Res> {
       Option<List<LearningGoal>> learningGoalsOption,
       Option<Subject> selectedSubjectOption,
       Option<Program> selectedProgramOption,
-      Option<LearningGoal> selectedLearningGoalOption});
+      Option<LearningGoal> selectedLearningGoalOption,
+      Option<MockTestTemplate> selectedTemplateOption,
+      bool showTemplates});
 }
 
 /// @nodoc
@@ -78,6 +83,8 @@ class _$SelectLearningGoalStateCopyWithImpl<$Res,
     Object? selectedSubjectOption = null,
     Object? selectedProgramOption = null,
     Object? selectedLearningGoalOption = null,
+    Object? selectedTemplateOption = null,
+    Object? showTemplates = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -116,6 +123,14 @@ class _$SelectLearningGoalStateCopyWithImpl<$Res,
           ? _value.selectedLearningGoalOption
           : selectedLearningGoalOption // ignore: cast_nullable_to_non_nullable
               as Option<LearningGoal>,
+      selectedTemplateOption: null == selectedTemplateOption
+          ? _value.selectedTemplateOption
+          : selectedTemplateOption // ignore: cast_nullable_to_non_nullable
+              as Option<MockTestTemplate>,
+      showTemplates: null == showTemplates
+          ? _value.showTemplates
+          : showTemplates // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -138,7 +153,9 @@ abstract class _$$SelectLearningGoalStateImplCopyWith<$Res>
       Option<List<LearningGoal>> learningGoalsOption,
       Option<Subject> selectedSubjectOption,
       Option<Program> selectedProgramOption,
-      Option<LearningGoal> selectedLearningGoalOption});
+      Option<LearningGoal> selectedLearningGoalOption,
+      Option<MockTestTemplate> selectedTemplateOption,
+      bool showTemplates});
 }
 
 /// @nodoc
@@ -163,6 +180,8 @@ class __$$SelectLearningGoalStateImplCopyWithImpl<$Res>
     Object? selectedSubjectOption = null,
     Object? selectedProgramOption = null,
     Object? selectedLearningGoalOption = null,
+    Object? selectedTemplateOption = null,
+    Object? showTemplates = null,
   }) {
     return _then(_$SelectLearningGoalStateImpl(
       isLoading: null == isLoading
@@ -201,6 +220,14 @@ class __$$SelectLearningGoalStateImplCopyWithImpl<$Res>
           ? _value.selectedLearningGoalOption
           : selectedLearningGoalOption // ignore: cast_nullable_to_non_nullable
               as Option<LearningGoal>,
+      selectedTemplateOption: null == selectedTemplateOption
+          ? _value.selectedTemplateOption
+          : selectedTemplateOption // ignore: cast_nullable_to_non_nullable
+              as Option<MockTestTemplate>,
+      showTemplates: null == showTemplates
+          ? _value.showTemplates
+          : showTemplates // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -217,7 +244,9 @@ class _$SelectLearningGoalStateImpl implements _SelectLearningGoalState {
       required this.learningGoalsOption,
       required this.selectedSubjectOption,
       required this.selectedProgramOption,
-      required this.selectedLearningGoalOption});
+      required this.selectedLearningGoalOption,
+      required this.selectedTemplateOption,
+      required this.showTemplates});
 
   @override
   final bool isLoading;
@@ -237,10 +266,14 @@ class _$SelectLearningGoalStateImpl implements _SelectLearningGoalState {
   final Option<Program> selectedProgramOption;
   @override
   final Option<LearningGoal> selectedLearningGoalOption;
+  @override
+  final Option<MockTestTemplate> selectedTemplateOption;
+  @override
+  final bool showTemplates;
 
   @override
   String toString() {
-    return 'SelectLearningGoalState(isLoading: $isLoading, isCompleted: $isCompleted, hasError: $hasError, subjectsOption: $subjectsOption, programsOption: $programsOption, learningGoalsOption: $learningGoalsOption, selectedSubjectOption: $selectedSubjectOption, selectedProgramOption: $selectedProgramOption, selectedLearningGoalOption: $selectedLearningGoalOption)';
+    return 'SelectLearningGoalState(isLoading: $isLoading, isCompleted: $isCompleted, hasError: $hasError, subjectsOption: $subjectsOption, programsOption: $programsOption, learningGoalsOption: $learningGoalsOption, selectedSubjectOption: $selectedSubjectOption, selectedProgramOption: $selectedProgramOption, selectedLearningGoalOption: $selectedLearningGoalOption, selectedTemplateOption: $selectedTemplateOption, showTemplates: $showTemplates)';
   }
 
   @override
@@ -267,7 +300,11 @@ class _$SelectLearningGoalStateImpl implements _SelectLearningGoalState {
             (identical(other.selectedLearningGoalOption,
                     selectedLearningGoalOption) ||
                 other.selectedLearningGoalOption ==
-                    selectedLearningGoalOption));
+                    selectedLearningGoalOption) &&
+            (identical(other.selectedTemplateOption, selectedTemplateOption) ||
+                other.selectedTemplateOption == selectedTemplateOption) &&
+            (identical(other.showTemplates, showTemplates) ||
+                other.showTemplates == showTemplates));
   }
 
   @override
@@ -281,7 +318,9 @@ class _$SelectLearningGoalStateImpl implements _SelectLearningGoalState {
       learningGoalsOption,
       selectedSubjectOption,
       selectedProgramOption,
-      selectedLearningGoalOption);
+      selectedLearningGoalOption,
+      selectedTemplateOption,
+      showTemplates);
 
   @JsonKey(ignore: true)
   @override
@@ -293,16 +332,17 @@ class _$SelectLearningGoalStateImpl implements _SelectLearningGoalState {
 
 abstract class _SelectLearningGoalState implements SelectLearningGoalState {
   const factory _SelectLearningGoalState(
-          {required final bool isLoading,
-          required final bool isCompleted,
-          required final bool hasError,
-          required final Option<List<Subject>> subjectsOption,
-          required final Option<List<Program>> programsOption,
-          required final Option<List<LearningGoal>> learningGoalsOption,
-          required final Option<Subject> selectedSubjectOption,
-          required final Option<Program> selectedProgramOption,
-          required final Option<LearningGoal> selectedLearningGoalOption}) =
-      _$SelectLearningGoalStateImpl;
+      {required final bool isLoading,
+      required final bool isCompleted,
+      required final bool hasError,
+      required final Option<List<Subject>> subjectsOption,
+      required final Option<List<Program>> programsOption,
+      required final Option<List<LearningGoal>> learningGoalsOption,
+      required final Option<Subject> selectedSubjectOption,
+      required final Option<Program> selectedProgramOption,
+      required final Option<LearningGoal> selectedLearningGoalOption,
+      required final Option<MockTestTemplate> selectedTemplateOption,
+      required final bool showTemplates}) = _$SelectLearningGoalStateImpl;
 
   @override
   bool get isLoading;
@@ -322,6 +362,10 @@ abstract class _SelectLearningGoalState implements SelectLearningGoalState {
   Option<Program> get selectedProgramOption;
   @override
   Option<LearningGoal> get selectedLearningGoalOption;
+  @override
+  Option<MockTestTemplate> get selectedTemplateOption;
+  @override
+  bool get showTemplates;
   @override
   @JsonKey(ignore: true)
   _$$SelectLearningGoalStateImplCopyWith<_$SelectLearningGoalStateImpl>

@@ -18,6 +18,7 @@ class _SignOutPageState extends ConsumerState<SignOutPage> {
   void initState() {
     super.initState();
     ref.read(signOutControllerProvider.notifier).signOut();
+    // ref.read(trackingNotifierProvider.notifier).pause();
   }
 
   @override

@@ -1,5 +1,5 @@
-import '../../test_knowledge/data/test_entities.dart';
-import '../domain/i_learning_goal.dart';
+import '../domain/i_knowledge.dart';
+import 'knowledge_dto.dart';
 
 class Subject {
   final String id;
@@ -8,50 +8,99 @@ class Subject {
   final List<Program> programs;
   Subject({required this.label, required this.programs, required this.id, required this.name});
   factory Subject.empty() => Subject(id: '', name: '', programs: [], label: '');
-  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'programs': programs.map((p) => p.toJson())};
+  Map<String, dynamic> toJson() => toDto().toJson();
+  SubjectDto toDto() => SubjectDto(
+        id: int.parse(id),
+        name: name,
+        label: label,
+        programs: programs.map((e) => e.toDto()).toList(),
+      );
 }
 
 class Program {
   final String id;
   final String name;
   final String subjectId;
-  final LearningGoal? learningGoal;
 
-  Program({required this.subjectId, required this.id, required this.name, this.learningGoal});
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'subjectId': subjectId,
-        'learningGoal': learningGoal?.toJson() ?? '',
-      };
+  Program({required this.subjectId, required this.id, required this.name});
+  Map<String, dynamic> toJson() => toDto().toJson();
 
   factory Program.empty() => Program(subjectId: '', id: '', name: '');
   static String emptyJsonString() => Program.empty().toJson().toString();
   bool isEmpty() => id == '';
+  ProgramDto toDto() => ProgramDto(
+        id: int.parse(id),
+        name: name,
+        subjectId: int.parse(subjectId),
+      );
 }
 
-class LearningGoal {
+class LearningGoal implements ILearningGoal {
+  @override
   final String id;
+  @override
   final String name;
-  final double progress;
-  final int maxTopics;
-  final int minTopics;
-  final List<TestTemplate> templates;
+  @override
+  final int? maxTopics;
+  @override
+  final int? minTopics;
+  @override
+  final List<MockTestTemplate> mockTestTemplates;
+  @override
+  final bool canSelectTopic;
+  @override
+  final int testDuration;
+  @override
+  final int totalQuestions;
 
-  const LearningGoal({
-    required this.templates,
-    required this.id,
-    required this.name,
-    required this.progress,
-    this.maxTopics = 99,
-    this.minTopics = 0,
-  });
-  factory LearningGoal.empty() =>
-      const LearningGoal(id: '', name: '', progress: 0.0, maxTopics: 99, minTopics: 0, templates: []);
-  Map<String, dynamic> toJson() =>
-      {'id': id, 'name': name, 'progress': progress, 'maxTopic': maxTopics, 'minTopic': minTopics};
-  static String emptyJsonString() => LearningGoal.empty().toJson().toString();
+  LearningGoal(
+      {required this.id,
+      required this.name,
+      required this.maxTopics,
+      required this.minTopics,
+      required this.mockTestTemplates,
+      required this.canSelectTopic,
+      required this.testDuration,
+      required this.totalQuestions});
+
+  factory LearningGoal.empty() => LearningGoal(
+      id: '',
+      canSelectTopic: false,
+      mockTestTemplates: [],
+      testDuration: 0,
+      totalQuestions: 0,
+      name: '',
+      maxTopics: null,
+      minTopics: null);
+
+  StudentLearningGoal toStudentLearningGoal() =>
+      StudentLearningGoal(id: id, name: name, programName: '', completePercentage: 0);
+  // static String emptyJsonString() => LearningGoal.empty().toJson().toString();
+  Map<String, dynamic> toJson() => toDto().toJson();
   bool isEmpty() => id == '';
+  LearningGoalDto toDto() => LearningGoalDto(
+        id: int.parse(id),
+        name: name,
+        canSelectTopic: canSelectTopic,
+        mockTestTemplates: mockTestTemplates.map((e) => e.toDto()).toList(),
+        testDuration: testDuration,
+        totalQuestions: totalQuestions,
+        maxTopic: maxTopics ?? 0,
+        minTopic: minTopics ?? 0,
+      );
+}
+
+class MockTestTemplate implements IMockTestTemplate {
+  @override
+  final String id;
+  @override
+  final String name;
+
+  const MockTestTemplate({required this.id, required this.name});
+
+  Map<String, dynamic> toJson() => toDto().toJson();
+
+  MockTestTemplateDto toDto() => MockTestTemplateDto(id: int.parse(id), name: name);
 }
 
 class LearningGoalPath {
@@ -116,7 +165,7 @@ class Topic {
 class TopicSelection extends Topic {
   bool isSelected;
 
-  TopicSelection({required String id, required String name, this.isSelected = false}) : super(id: id, name: name);
+  TopicSelection({required super.id, required super.name, this.isSelected = false});
   factory TopicSelection.empty() => TopicSelection(id: '', name: '');
 }
 
@@ -179,20 +228,14 @@ class StudentLearningGoal implements IStudentLearningGoal {
   final String name;
   @override
   final String programName;
-  // @override
-  // final String subjectId;
   @override
   final int completePercentage;
-  // @override
-  // final int order;
 
-  StudentLearningGoal({
+  const StudentLearningGoal({
     required this.id,
     required this.name,
     required this.programName,
-    // required this.subjectId,
     required this.completePercentage,
-    // required this.order,
   });
 
   Map<String, dynamic> toJson() =>

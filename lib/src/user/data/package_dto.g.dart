@@ -25,11 +25,11 @@ Map<String, dynamic> _$$PackageDtoImplToJson(_$PackageDtoImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'discount': instance.discount,
+      'discount': instance.discount.toJson(),
       'limit': instance.limit,
       'price': instance.price,
       'sale_price': instance.salePrice,
-      'package_items': instance.items,
+      'package_items': instance.items.map((e) => e.toJson()).toList(),
     };
 
 _$DiscountDtoImpl _$$DiscountDtoImplFromJson(Map<String, dynamic> json) =>
@@ -61,7 +61,7 @@ Map<String, dynamic> _$$PackageItemDtoImplToJson(
         _$PackageItemDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'service': instance.service,
+      'service': instance.service.toJson(),
     };
 
 _$PackageServiceDtoImpl _$$PackageServiceDtoImplFromJson(

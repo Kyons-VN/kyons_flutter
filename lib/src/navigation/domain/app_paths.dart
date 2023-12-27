@@ -23,7 +23,7 @@ class AppPaths {
   static const lessonPage = AppPath(path: '/lesson/:id');
   static const newLesonPage = AppPath(path: '/new-lesson');
   static const waitingForTutor = AppPath(path: '/waiting-for-tutor');
-  static const mockTestLearningGoal = AppPath(path: '/mock-test', serverRedirectName: 'MockTest');
+  static const mockTest = AppPath(path: '/mock-test', serverRedirectName: 'MockTest');
   static const mockTestTopic = AppPath(path: '/mock-test/:lgId/select-topic');
   static const mockTestTest = AppPath(path: '/mock-test/:id/test');
   static const mockTestShare = AppPath(path: '/share-mocktest/:ref');
@@ -55,8 +55,8 @@ class AppPaths {
       return home;
     } else if (serverRedirectName == learningPath.serverRedirectName) {
       return learningPath;
-    } else if (serverRedirectName == mockTestLearningGoal.serverRedirectName) {
-      return mockTestLearningGoal;
+    } else if (serverRedirectName == mockTest.serverRedirectName) {
+      return mockTest;
     } else {
       return home;
     }

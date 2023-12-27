@@ -1,14 +1,14 @@
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:kyons_flutter/src/core/data/api.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../authentication/app/auth_provider.dart';
+import '../../core/data/shared.dart';
 import '../domain/app_paths.dart';
 
 Future<String?> guard(GoRouterState state, WidgetRef ref) async {
-  final token = (await SharedPreferences.getInstance()).getString(kAccessToken) ?? '';
-  final rToken = (await SharedPreferences.getInstance()).getString(kRefreshToken) ?? '';
+  final sharedService = ref.read(sharedRef);
+  final token = await sharedService.getToken();
+  final rToken = await sharedService.getRefreshToken();
   final signedIn = await ref.read(authNotifierProvider.notifier).isSignedIn();
 
   // Go to sign-in if the user is not signed in

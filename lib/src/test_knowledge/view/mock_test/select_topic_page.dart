@@ -64,15 +64,15 @@ class SelectTopicPage extends ConsumerWidget {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: [AppIcons.closeIcon(() => context.go(AppPaths.mockTestLearningGoal.path))],
+                        children: [AppIcons.closeIcon(() => context.go(AppPaths.mockTest.path))],
                       ),
                       AppSizesUnit.sizedBox8,
                       Text(t(context).selectContent, style: Theme.of(context).textTheme.heading4),
                       AppSizesUnit.sizedBox16,
                       if (state.topicsOption.isSome()) ...[
                         Text(
-                          t(context).selectContentDesc(
-                              controller.selectedLearningGoal.minTopics, controller.selectedLearningGoal.maxTopics),
+                          t(context).selectContentDesc(controller.selectedLearningGoal.minTopics ?? 0,
+                              controller.selectedLearningGoal.maxTopics ?? 0),
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium!

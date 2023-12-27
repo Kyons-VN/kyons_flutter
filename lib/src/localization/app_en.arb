@@ -4,7 +4,7 @@
   "welcomeBack": "Welcome back!",
   "loginSuccess": "Login Success",
   "knowledgeStart": "Knowledge starts from\n“Why”?",
-  "startExploringKnowledge": "Start exploring knowledge",
+  "registerKyonsAccount": "Register KYONS''s account",
   "beforeStart": "Before starting the journey ...",
   "kyonsNeeds": "Kyons needs some basic information to understand you better!",
   "noteYouCanChange": "Note: You can change this information later.",
@@ -23,6 +23,7 @@
   "signIn": "Sign in",
   "signOut": "Sign out",
   "signUp": "Sign up",
+  "registerAccount": "Register account",
   "language": "Language",
   "invalidThing": "Invalid {thing}!",
   "@invalidThing": {
@@ -148,7 +149,6 @@
   "forgotPassword": "Forgot password?",
   "doesNotHaveAccount": "Does not have account?",
   "registerHere": "Register here",
-  "readyToLearn": "Are you ready to learn less but hit with Kyons?",
   "firstName": "First name",
   "lastName": "Last name",
   "enterEmail": "Enter email",
@@ -359,5 +359,27 @@
   },
   "userManual": "User manual",
   "pleaseTryAgain": "Please try again",
-  "payment": "Payment"
+  "payment": "Payment",
+  "youSelected": "<h5>You have chosen learning goals <b class='text-orange'>[[ selectedLearningGoal.name ]]</b> from program <b class='text-orange'>[[ selectedProgram.name ]]</h5>",
+  "@youSelected": {
+    "placeholders": {
+      "selectedLearningGoalName": {
+        "type": "String"
+      },
+      "selectedProgramName": {
+        "type": "String"
+      }
+    }
+  },
+  "ifContinue": "<p>If you continue, you will have to complete the test <b class='text-orange'>{selectedLearningGoalTotalQuestions}</b> questions and testing time should be limited in <b class='text-orange'>{selectedLearningGoalDuration}</b> minutes without interruption.</p><span>You are sure you want to continue?</span>",
+  "@ifContinue": {
+    "placeholders": {
+      "selectedLearningGoalTotalQuestions": {
+        "type": "int"
+      },
+      "selectedLearningGoalDuration": {
+        "type": "int"
+      }
+    }
+  }
 }

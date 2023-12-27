@@ -93,7 +93,9 @@
             });
           },
         });
-        navigator.serviceWorker.register('/firebase-messaging-sw.js');
+        (typeof navigator !== 'undefined' &&
+          navigator.serviceWorker?.register('firebase-messaging-sw.js', { scope: '__' })) ||
+          undefined;
       });
     </script>
   </body>

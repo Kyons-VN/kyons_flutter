@@ -1,5 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fpdart/fpdart.dart' hide State;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -153,10 +154,36 @@ class LearningGoalPickerWrapper extends HookConsumerWidget {
             child: ElevatedButton(
               onPressed: state.selectedLearningGoalOption.isSome()
                   ? () {
-                      // final mockTestTopicPath = AppPaths.mockTestTopic.path.replaceAll(
-                      //     ':lgId', state.selectedLearningGoalOption.getOrElse(() => LearningGoal.empty()).id);
-                      controller.submitBtnPressed();
-                      // .then((unit) => context.go(mockTestTopicPath));
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (_) {
+                          return AppDialog(
+                            title: Center(
+                                child: SvgPicture.asset(
+                              'assets/images/Robot 2.svg',
+                              width: 150,
+                              height: 150,
+                            )),
+                            body: Column(
+                              children: [
+                                AppHtml(
+                                    data: t(context).youSelected(
+                                        state.selectedLearningGoalOption.getOrElse(() => LearningGoal.empty()).name,
+                                        state.selectedProgramOption.getOrElse(() => Program.empty()).name)),
+                                AppSizesUnit.sizedBox24,
+                                AppHtml(data: t(context).ifContinue(0, 0)),
+                              ],
+                            ),
+                            actions: [
+                              ElevatedButton(onPressed: context.pop, child: Text(t(context).continueText)),
+                              OutlinedButton(
+                                  onPressed: () => context.go(AppPaths.home.path), child: Text(t(context).stop)),
+                            ],
+                            actionLayout: Axis.vertical,
+                          );
+                        },
+                      );
                     }
                   : null,
               child: Text(t(context).start),

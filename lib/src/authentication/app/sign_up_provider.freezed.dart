@@ -16,15 +16,17 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignUpState {
-  EmailAddress get emailAddress => throw _privateConstructorUsedError;
-  String get firstName => throw _privateConstructorUsedError;
-  String get lastName => throw _privateConstructorUsedError;
-  Phone get phone => throw _privateConstructorUsedError;
-  bool get isAgreedToTerms => throw _privateConstructorUsedError;
-  DateTime get birthdate => throw _privateConstructorUsedError;
-  String get grade => throw _privateConstructorUsedError;
-  String get school => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
+  EmailAddress get emailAddress =>
+      throw _privateConstructorUsedError; // required String firstName,
+// required String lastName,
+// required Phone phone,
+  bool get isAgreedToTerms =>
+      throw _privateConstructorUsedError; // required DateTime birthdate,
+// required String grade,
+// required String school,
+// required String address,
+  Password get password => throw _privateConstructorUsedError;
+  String get passwordStr => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get shouldShowErrorMessages => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get signUpOption =>
@@ -43,14 +45,9 @@ abstract class $SignUpStateCopyWith<$Res> {
   @useResult
   $Res call(
       {EmailAddress emailAddress,
-      String firstName,
-      String lastName,
-      Phone phone,
       bool isAgreedToTerms,
-      DateTime birthdate,
-      String grade,
-      String school,
-      String address,
+      Password password,
+      String passwordStr,
       bool isSubmitting,
       bool shouldShowErrorMessages,
       Option<Either<AuthFailure, Unit>> signUpOption});
@@ -70,14 +67,9 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
   @override
   $Res call({
     Object? emailAddress = null,
-    Object? firstName = null,
-    Object? lastName = null,
-    Object? phone = null,
     Object? isAgreedToTerms = null,
-    Object? birthdate = null,
-    Object? grade = null,
-    Object? school = null,
-    Object? address = null,
+    Object? password = null,
+    Object? passwordStr = null,
     Object? isSubmitting = null,
     Object? shouldShowErrorMessages = null,
     Object? signUpOption = null,
@@ -87,37 +79,17 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
               as EmailAddress,
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as Phone,
       isAgreedToTerms: null == isAgreedToTerms
           ? _value.isAgreedToTerms
           : isAgreedToTerms // ignore: cast_nullable_to_non_nullable
               as bool,
-      birthdate: null == birthdate
-          ? _value.birthdate
-          : birthdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      grade: null == grade
-          ? _value.grade
-          : grade // ignore: cast_nullable_to_non_nullable
-              as String,
-      school: null == school
-          ? _value.school
-          : school // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as Password,
+      passwordStr: null == passwordStr
+          ? _value.passwordStr
+          : passwordStr // ignore: cast_nullable_to_non_nullable
               as String,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
@@ -145,14 +117,9 @@ abstract class _$$SignUpStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {EmailAddress emailAddress,
-      String firstName,
-      String lastName,
-      Phone phone,
       bool isAgreedToTerms,
-      DateTime birthdate,
-      String grade,
-      String school,
-      String address,
+      Password password,
+      String passwordStr,
       bool isSubmitting,
       bool shouldShowErrorMessages,
       Option<Either<AuthFailure, Unit>> signUpOption});
@@ -170,14 +137,9 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? emailAddress = null,
-    Object? firstName = null,
-    Object? lastName = null,
-    Object? phone = null,
     Object? isAgreedToTerms = null,
-    Object? birthdate = null,
-    Object? grade = null,
-    Object? school = null,
-    Object? address = null,
+    Object? password = null,
+    Object? passwordStr = null,
     Object? isSubmitting = null,
     Object? shouldShowErrorMessages = null,
     Object? signUpOption = null,
@@ -187,37 +149,17 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
               as EmailAddress,
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as Phone,
       isAgreedToTerms: null == isAgreedToTerms
           ? _value.isAgreedToTerms
           : isAgreedToTerms // ignore: cast_nullable_to_non_nullable
               as bool,
-      birthdate: null == birthdate
-          ? _value.birthdate
-          : birthdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      grade: null == grade
-          ? _value.grade
-          : grade // ignore: cast_nullable_to_non_nullable
-              as String,
-      school: null == school
-          ? _value.school
-          : school // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as Password,
+      passwordStr: null == passwordStr
+          ? _value.passwordStr
+          : passwordStr // ignore: cast_nullable_to_non_nullable
               as String,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
@@ -240,36 +182,28 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
 class _$SignUpStateImpl implements _SignUpState {
   const _$SignUpStateImpl(
       {required this.emailAddress,
-      required this.firstName,
-      required this.lastName,
-      required this.phone,
       required this.isAgreedToTerms,
-      required this.birthdate,
-      required this.grade,
-      required this.school,
-      required this.address,
+      required this.password,
+      required this.passwordStr,
       required this.isSubmitting,
       required this.shouldShowErrorMessages,
       required this.signUpOption});
 
   @override
   final EmailAddress emailAddress;
-  @override
-  final String firstName;
-  @override
-  final String lastName;
-  @override
-  final Phone phone;
+// required String firstName,
+// required String lastName,
+// required Phone phone,
   @override
   final bool isAgreedToTerms;
+// required DateTime birthdate,
+// required String grade,
+// required String school,
+// required String address,
   @override
-  final DateTime birthdate;
+  final Password password;
   @override
-  final String grade;
-  @override
-  final String school;
-  @override
-  final String address;
+  final String passwordStr;
   @override
   final bool isSubmitting;
   @override
@@ -279,7 +213,7 @@ class _$SignUpStateImpl implements _SignUpState {
 
   @override
   String toString() {
-    return 'SignUpState(emailAddress: $emailAddress, firstName: $firstName, lastName: $lastName, phone: $phone, isAgreedToTerms: $isAgreedToTerms, birthdate: $birthdate, grade: $grade, school: $school, address: $address, isSubmitting: $isSubmitting, shouldShowErrorMessages: $shouldShowErrorMessages, signUpOption: $signUpOption)';
+    return 'SignUpState(emailAddress: $emailAddress, isAgreedToTerms: $isAgreedToTerms, password: $password, passwordStr: $passwordStr, isSubmitting: $isSubmitting, shouldShowErrorMessages: $shouldShowErrorMessages, signUpOption: $signUpOption)';
   }
 
   @override
@@ -289,18 +223,12 @@ class _$SignUpStateImpl implements _SignUpState {
             other is _$SignUpStateImpl &&
             (identical(other.emailAddress, emailAddress) ||
                 other.emailAddress == emailAddress) &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.isAgreedToTerms, isAgreedToTerms) ||
                 other.isAgreedToTerms == isAgreedToTerms) &&
-            (identical(other.birthdate, birthdate) ||
-                other.birthdate == birthdate) &&
-            (identical(other.grade, grade) || other.grade == grade) &&
-            (identical(other.school, school) || other.school == school) &&
-            (identical(other.address, address) || other.address == address) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.passwordStr, passwordStr) ||
+                other.passwordStr == passwordStr) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(
@@ -314,14 +242,9 @@ class _$SignUpStateImpl implements _SignUpState {
   int get hashCode => Object.hash(
       runtimeType,
       emailAddress,
-      firstName,
-      lastName,
-      phone,
       isAgreedToTerms,
-      birthdate,
-      grade,
-      school,
-      address,
+      password,
+      passwordStr,
       isSubmitting,
       shouldShowErrorMessages,
       signUpOption);
@@ -336,14 +259,9 @@ class _$SignUpStateImpl implements _SignUpState {
 abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
           {required final EmailAddress emailAddress,
-          required final String firstName,
-          required final String lastName,
-          required final Phone phone,
           required final bool isAgreedToTerms,
-          required final DateTime birthdate,
-          required final String grade,
-          required final String school,
-          required final String address,
+          required final Password password,
+          required final String passwordStr,
           required final bool isSubmitting,
           required final bool shouldShowErrorMessages,
           required final Option<Either<AuthFailure, Unit>> signUpOption}) =
@@ -351,22 +269,17 @@ abstract class _SignUpState implements SignUpState {
 
   @override
   EmailAddress get emailAddress;
-  @override
-  String get firstName;
-  @override
-  String get lastName;
-  @override
-  Phone get phone;
-  @override
+  @override // required String firstName,
+// required String lastName,
+// required Phone phone,
   bool get isAgreedToTerms;
+  @override // required DateTime birthdate,
+// required String grade,
+// required String school,
+// required String address,
+  Password get password;
   @override
-  DateTime get birthdate;
-  @override
-  String get grade;
-  @override
-  String get school;
-  @override
-  String get address;
+  String get passwordStr;
   @override
   bool get isSubmitting;
   @override

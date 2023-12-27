@@ -1,8 +1,10 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kyons_flutter/src/sandbox/data/sandbox_api.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../../boostrap/config_reader.dart';
@@ -16,7 +18,7 @@ part 'sign_in_provider.freezed.dart';
 part 'sign_in_state.dart';
 
 class SignInNotifier extends StateNotifier<SignInState> {
-  final IAuthApi authApi;
+  final IAuthService authApi;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   SignInNotifier(this.authApi) : super(SignInState.initial());
@@ -57,13 +59,20 @@ class SignInNotifier extends StateNotifier<SignInState> {
         isSubmitting: true,
       );
 
-      failureOrSuccess = await auth_service
-          .signInEmailPassword(
-            emailAddress: state.emailAddress.getValueOrError(),
-            password: state.password,
-          )
-          .run(authApi);
-      if (failureOrSuccess.isRight()) {
+      if (SandboxApi.accounts.contains(state.emailAddress.getValueOrError())) {
+        await SandboxApi.activate();
+        failureOrSuccess = right(unit);
+      } else {
+        await SandboxApi.deactivate();
+        failureOrSuccess = await auth_service
+            .signInEmailPassword(
+              emailAddress: state.emailAddress.getValueOrError(),
+              password: state.password,
+            )
+            .run(authApi);
+      }
+
+      if (failureOrSuccess.isRight() && defaultTargetPlatform != TargetPlatform.windows) {
         currentUser = await auth_service.getUser().run(authApi);
         final deviceToken = await FirebaseMessaging.instance.getToken(
             vapidKey: 'BP-BjvXQUjaznK89An_nvZWRmP6PCQxIGQ9OexTGstwXGbTgdPy5jkFtr9SIBJpUXZOMzHnQ_1-PTq2_jVP4ylI');

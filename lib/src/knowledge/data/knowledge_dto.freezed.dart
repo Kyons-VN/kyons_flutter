@@ -21,6 +21,7 @@ SubjectDto _$SubjectDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SubjectDto {
   int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
   List<ProgramDto> get programs => throw _privateConstructorUsedError;
 
@@ -36,7 +37,7 @@ abstract class $SubjectDtoCopyWith<$Res> {
           SubjectDto value, $Res Function(SubjectDto) then) =
       _$SubjectDtoCopyWithImpl<$Res, SubjectDto>;
   @useResult
-  $Res call({int id, String label, List<ProgramDto> programs});
+  $Res call({int id, String name, String label, List<ProgramDto> programs});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$SubjectDtoCopyWithImpl<$Res, $Val extends SubjectDto>
   @override
   $Res call({
     Object? id = null,
+    Object? name = null,
     Object? label = null,
     Object? programs = null,
   }) {
@@ -61,6 +63,10 @@ class _$SubjectDtoCopyWithImpl<$Res, $Val extends SubjectDto>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -81,7 +87,7 @@ abstract class _$$SubjectDtoImplCopyWith<$Res>
       __$$SubjectDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String label, List<ProgramDto> programs});
+  $Res call({int id, String name, String label, List<ProgramDto> programs});
 }
 
 /// @nodoc
@@ -96,6 +102,7 @@ class __$$SubjectDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? name = null,
     Object? label = null,
     Object? programs = null,
   }) {
@@ -104,6 +111,10 @@ class __$$SubjectDtoImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -121,6 +132,7 @@ class __$$SubjectDtoImplCopyWithImpl<$Res>
 class _$SubjectDtoImpl extends _SubjectDto {
   const _$SubjectDtoImpl(
       {required this.id,
+      required this.name,
       required this.label,
       required final List<ProgramDto> programs})
       : _programs = programs,
@@ -131,6 +143,8 @@ class _$SubjectDtoImpl extends _SubjectDto {
 
   @override
   final int id;
+  @override
+  final String name;
   @override
   final String label;
   final List<ProgramDto> _programs;
@@ -143,7 +157,7 @@ class _$SubjectDtoImpl extends _SubjectDto {
 
   @override
   String toString() {
-    return 'SubjectDto(id: $id, label: $label, programs: $programs)';
+    return 'SubjectDto(id: $id, name: $name, label: $label, programs: $programs)';
   }
 
   @override
@@ -152,14 +166,15 @@ class _$SubjectDtoImpl extends _SubjectDto {
         (other.runtimeType == runtimeType &&
             other is _$SubjectDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.label, label) || other.label == label) &&
             const DeepCollectionEquality().equals(other._programs, _programs));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, label, const DeepCollectionEquality().hash(_programs));
+  int get hashCode => Object.hash(runtimeType, id, name, label,
+      const DeepCollectionEquality().hash(_programs));
 
   @JsonKey(ignore: true)
   @override
@@ -178,6 +193,7 @@ class _$SubjectDtoImpl extends _SubjectDto {
 abstract class _SubjectDto extends SubjectDto {
   const factory _SubjectDto(
       {required final int id,
+      required final String name,
       required final String label,
       required final List<ProgramDto> programs}) = _$SubjectDtoImpl;
   const _SubjectDto._() : super._();
@@ -187,6 +203,8 @@ abstract class _SubjectDto extends SubjectDto {
 
   @override
   int get id;
+  @override
+  String get name;
   @override
   String get label;
   @override
@@ -207,8 +225,6 @@ mixin _$ProgramDto {
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'subject_id')
   int get subjectId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'learning_goal')
-  LearningGoalDto? get learningGoal => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -222,13 +238,7 @@ abstract class $ProgramDtoCopyWith<$Res> {
           ProgramDto value, $Res Function(ProgramDto) then) =
       _$ProgramDtoCopyWithImpl<$Res, ProgramDto>;
   @useResult
-  $Res call(
-      {int id,
-      String name,
-      @JsonKey(name: 'subject_id') int subjectId,
-      @JsonKey(name: 'learning_goal') LearningGoalDto? learningGoal});
-
-  $LearningGoalDtoCopyWith<$Res>? get learningGoal;
+  $Res call({int id, String name, @JsonKey(name: 'subject_id') int subjectId});
 }
 
 /// @nodoc
@@ -247,7 +257,6 @@ class _$ProgramDtoCopyWithImpl<$Res, $Val extends ProgramDto>
     Object? id = null,
     Object? name = null,
     Object? subjectId = null,
-    Object? learningGoal = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -262,23 +271,7 @@ class _$ProgramDtoCopyWithImpl<$Res, $Val extends ProgramDto>
           ? _value.subjectId
           : subjectId // ignore: cast_nullable_to_non_nullable
               as int,
-      learningGoal: freezed == learningGoal
-          ? _value.learningGoal
-          : learningGoal // ignore: cast_nullable_to_non_nullable
-              as LearningGoalDto?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LearningGoalDtoCopyWith<$Res>? get learningGoal {
-    if (_value.learningGoal == null) {
-      return null;
-    }
-
-    return $LearningGoalDtoCopyWith<$Res>(_value.learningGoal!, (value) {
-      return _then(_value.copyWith(learningGoal: value) as $Val);
-    });
   }
 }
 
@@ -290,14 +283,7 @@ abstract class _$$ProgramDtoImplCopyWith<$Res>
       __$$ProgramDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String name,
-      @JsonKey(name: 'subject_id') int subjectId,
-      @JsonKey(name: 'learning_goal') LearningGoalDto? learningGoal});
-
-  @override
-  $LearningGoalDtoCopyWith<$Res>? get learningGoal;
+  $Res call({int id, String name, @JsonKey(name: 'subject_id') int subjectId});
 }
 
 /// @nodoc
@@ -314,7 +300,6 @@ class __$$ProgramDtoImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? subjectId = null,
-    Object? learningGoal = freezed,
   }) {
     return _then(_$ProgramDtoImpl(
       id: null == id
@@ -329,10 +314,6 @@ class __$$ProgramDtoImplCopyWithImpl<$Res>
           ? _value.subjectId
           : subjectId // ignore: cast_nullable_to_non_nullable
               as int,
-      learningGoal: freezed == learningGoal
-          ? _value.learningGoal
-          : learningGoal // ignore: cast_nullable_to_non_nullable
-              as LearningGoalDto?,
     ));
   }
 }
@@ -343,8 +324,7 @@ class _$ProgramDtoImpl extends _ProgramDto {
   const _$ProgramDtoImpl(
       {required this.id,
       required this.name,
-      @JsonKey(name: 'subject_id') required this.subjectId,
-      @JsonKey(name: 'learning_goal') required this.learningGoal})
+      @JsonKey(name: 'subject_id') required this.subjectId})
       : super._();
 
   factory _$ProgramDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -357,13 +337,10 @@ class _$ProgramDtoImpl extends _ProgramDto {
   @override
   @JsonKey(name: 'subject_id')
   final int subjectId;
-  @override
-  @JsonKey(name: 'learning_goal')
-  final LearningGoalDto? learningGoal;
 
   @override
   String toString() {
-    return 'ProgramDto(id: $id, name: $name, subjectId: $subjectId, learningGoal: $learningGoal)';
+    return 'ProgramDto(id: $id, name: $name, subjectId: $subjectId)';
   }
 
   @override
@@ -374,15 +351,12 @@ class _$ProgramDtoImpl extends _ProgramDto {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.subjectId, subjectId) ||
-                other.subjectId == subjectId) &&
-            (identical(other.learningGoal, learningGoal) ||
-                other.learningGoal == learningGoal));
+                other.subjectId == subjectId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, subjectId, learningGoal);
+  int get hashCode => Object.hash(runtimeType, id, name, subjectId);
 
   @JsonKey(ignore: true)
   @override
@@ -400,11 +374,10 @@ class _$ProgramDtoImpl extends _ProgramDto {
 
 abstract class _ProgramDto extends ProgramDto {
   const factory _ProgramDto(
-      {required final int id,
-      required final String name,
-      @JsonKey(name: 'subject_id') required final int subjectId,
-      @JsonKey(name: 'learning_goal')
-      required final LearningGoalDto? learningGoal}) = _$ProgramDtoImpl;
+          {required final int id,
+          required final String name,
+          @JsonKey(name: 'subject_id') required final int subjectId}) =
+      _$ProgramDtoImpl;
   const _ProgramDto._() : super._();
 
   factory _ProgramDto.fromJson(Map<String, dynamic> json) =
@@ -417,9 +390,6 @@ abstract class _ProgramDto extends ProgramDto {
   @override
   @JsonKey(name: 'subject_id')
   int get subjectId;
-  @override
-  @JsonKey(name: 'learning_goal')
-  LearningGoalDto? get learningGoal;
   @override
   @JsonKey(ignore: true)
   _$$ProgramDtoImplCopyWith<_$ProgramDtoImpl> get copyWith =>
@@ -2235,15 +2205,20 @@ LearningGoalDto _$LearningGoalDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LearningGoalDto {
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: 0)
-  double get progress => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'min_topic_numb', defaultValue: 0)
   int get minTopic => throw _privateConstructorUsedError;
   @JsonKey(name: 'max_topic_numb', defaultValue: 99)
   int get maxTopic => throw _privateConstructorUsedError;
   @JsonKey(name: 'mock_test_templates', defaultValue: [])
-  List<TestTemplateDto> get templates => throw _privateConstructorUsedError;
+  List<MockTestTemplateDto> get mockTestTemplates =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'mock_test_duration', defaultValue: 0)
+  int get testDuration => throw _privateConstructorUsedError;
+  @JsonKey(name: 'numb_questions', defaultValue: 0)
+  int get totalQuestions => throw _privateConstructorUsedError;
+  @JsonKey(name: 'allow_select', defaultValue: false)
+  bool get canSelectTopic => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -2259,12 +2234,14 @@ abstract class $LearningGoalDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      @JsonKey(defaultValue: 0) double progress,
       String name,
       @JsonKey(name: 'min_topic_numb', defaultValue: 0) int minTopic,
       @JsonKey(name: 'max_topic_numb', defaultValue: 99) int maxTopic,
       @JsonKey(name: 'mock_test_templates', defaultValue: [])
-      List<TestTemplateDto> templates});
+      List<MockTestTemplateDto> mockTestTemplates,
+      @JsonKey(name: 'mock_test_duration', defaultValue: 0) int testDuration,
+      @JsonKey(name: 'numb_questions', defaultValue: 0) int totalQuestions,
+      @JsonKey(name: 'allow_select', defaultValue: false) bool canSelectTopic});
 }
 
 /// @nodoc
@@ -2281,21 +2258,19 @@ class _$LearningGoalDtoCopyWithImpl<$Res, $Val extends LearningGoalDto>
   @override
   $Res call({
     Object? id = null,
-    Object? progress = null,
     Object? name = null,
     Object? minTopic = null,
     Object? maxTopic = null,
-    Object? templates = null,
+    Object? mockTestTemplates = null,
+    Object? testDuration = null,
+    Object? totalQuestions = null,
+    Object? canSelectTopic = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      progress: null == progress
-          ? _value.progress
-          : progress // ignore: cast_nullable_to_non_nullable
-              as double,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -2308,10 +2283,22 @@ class _$LearningGoalDtoCopyWithImpl<$Res, $Val extends LearningGoalDto>
           ? _value.maxTopic
           : maxTopic // ignore: cast_nullable_to_non_nullable
               as int,
-      templates: null == templates
-          ? _value.templates
-          : templates // ignore: cast_nullable_to_non_nullable
-              as List<TestTemplateDto>,
+      mockTestTemplates: null == mockTestTemplates
+          ? _value.mockTestTemplates
+          : mockTestTemplates // ignore: cast_nullable_to_non_nullable
+              as List<MockTestTemplateDto>,
+      testDuration: null == testDuration
+          ? _value.testDuration
+          : testDuration // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalQuestions: null == totalQuestions
+          ? _value.totalQuestions
+          : totalQuestions // ignore: cast_nullable_to_non_nullable
+              as int,
+      canSelectTopic: null == canSelectTopic
+          ? _value.canSelectTopic
+          : canSelectTopic // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -2326,12 +2313,14 @@ abstract class _$$LearningGoalDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      @JsonKey(defaultValue: 0) double progress,
       String name,
       @JsonKey(name: 'min_topic_numb', defaultValue: 0) int minTopic,
       @JsonKey(name: 'max_topic_numb', defaultValue: 99) int maxTopic,
       @JsonKey(name: 'mock_test_templates', defaultValue: [])
-      List<TestTemplateDto> templates});
+      List<MockTestTemplateDto> mockTestTemplates,
+      @JsonKey(name: 'mock_test_duration', defaultValue: 0) int testDuration,
+      @JsonKey(name: 'numb_questions', defaultValue: 0) int totalQuestions,
+      @JsonKey(name: 'allow_select', defaultValue: false) bool canSelectTopic});
 }
 
 /// @nodoc
@@ -2346,21 +2335,19 @@ class __$$LearningGoalDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? progress = null,
     Object? name = null,
     Object? minTopic = null,
     Object? maxTopic = null,
-    Object? templates = null,
+    Object? mockTestTemplates = null,
+    Object? testDuration = null,
+    Object? totalQuestions = null,
+    Object? canSelectTopic = null,
   }) {
     return _then(_$LearningGoalDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      progress: null == progress
-          ? _value.progress
-          : progress // ignore: cast_nullable_to_non_nullable
-              as double,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -2373,10 +2360,22 @@ class __$$LearningGoalDtoImplCopyWithImpl<$Res>
           ? _value.maxTopic
           : maxTopic // ignore: cast_nullable_to_non_nullable
               as int,
-      templates: null == templates
-          ? _value._templates
-          : templates // ignore: cast_nullable_to_non_nullable
-              as List<TestTemplateDto>,
+      mockTestTemplates: null == mockTestTemplates
+          ? _value._mockTestTemplates
+          : mockTestTemplates // ignore: cast_nullable_to_non_nullable
+              as List<MockTestTemplateDto>,
+      testDuration: null == testDuration
+          ? _value.testDuration
+          : testDuration // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalQuestions: null == totalQuestions
+          ? _value.totalQuestions
+          : totalQuestions // ignore: cast_nullable_to_non_nullable
+              as int,
+      canSelectTopic: null == canSelectTopic
+          ? _value.canSelectTopic
+          : canSelectTopic // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -2386,13 +2385,18 @@ class __$$LearningGoalDtoImplCopyWithImpl<$Res>
 class _$LearningGoalDtoImpl extends _LearningGoalDto {
   const _$LearningGoalDtoImpl(
       {required this.id,
-      @JsonKey(defaultValue: 0) required this.progress,
       required this.name,
       @JsonKey(name: 'min_topic_numb', defaultValue: 0) required this.minTopic,
       @JsonKey(name: 'max_topic_numb', defaultValue: 99) required this.maxTopic,
       @JsonKey(name: 'mock_test_templates', defaultValue: [])
-      required final List<TestTemplateDto> templates})
-      : _templates = templates,
+      required final List<MockTestTemplateDto> mockTestTemplates,
+      @JsonKey(name: 'mock_test_duration', defaultValue: 0)
+      required this.testDuration,
+      @JsonKey(name: 'numb_questions', defaultValue: 0)
+      required this.totalQuestions,
+      @JsonKey(name: 'allow_select', defaultValue: false)
+      required this.canSelectTopic})
+      : _mockTestTemplates = mockTestTemplates,
         super._();
 
   factory _$LearningGoalDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -2401,9 +2405,6 @@ class _$LearningGoalDtoImpl extends _LearningGoalDto {
   @override
   final int id;
   @override
-  @JsonKey(defaultValue: 0)
-  final double progress;
-  @override
   final String name;
   @override
   @JsonKey(name: 'min_topic_numb', defaultValue: 0)
@@ -2411,18 +2412,29 @@ class _$LearningGoalDtoImpl extends _LearningGoalDto {
   @override
   @JsonKey(name: 'max_topic_numb', defaultValue: 99)
   final int maxTopic;
-  final List<TestTemplateDto> _templates;
+  final List<MockTestTemplateDto> _mockTestTemplates;
   @override
   @JsonKey(name: 'mock_test_templates', defaultValue: [])
-  List<TestTemplateDto> get templates {
-    if (_templates is EqualUnmodifiableListView) return _templates;
+  List<MockTestTemplateDto> get mockTestTemplates {
+    if (_mockTestTemplates is EqualUnmodifiableListView)
+      return _mockTestTemplates;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_templates);
+    return EqualUnmodifiableListView(_mockTestTemplates);
   }
 
   @override
+  @JsonKey(name: 'mock_test_duration', defaultValue: 0)
+  final int testDuration;
+  @override
+  @JsonKey(name: 'numb_questions', defaultValue: 0)
+  final int totalQuestions;
+  @override
+  @JsonKey(name: 'allow_select', defaultValue: false)
+  final bool canSelectTopic;
+
+  @override
   String toString() {
-    return 'LearningGoalDto(id: $id, progress: $progress, name: $name, minTopic: $minTopic, maxTopic: $maxTopic, templates: $templates)';
+    return 'LearningGoalDto(id: $id, name: $name, minTopic: $minTopic, maxTopic: $maxTopic, mockTestTemplates: $mockTestTemplates, testDuration: $testDuration, totalQuestions: $totalQuestions, canSelectTopic: $canSelectTopic)';
   }
 
   @override
@@ -2431,21 +2443,33 @@ class _$LearningGoalDtoImpl extends _LearningGoalDto {
         (other.runtimeType == runtimeType &&
             other is _$LearningGoalDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.progress, progress) ||
-                other.progress == progress) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.minTopic, minTopic) ||
                 other.minTopic == minTopic) &&
             (identical(other.maxTopic, maxTopic) ||
                 other.maxTopic == maxTopic) &&
             const DeepCollectionEquality()
-                .equals(other._templates, _templates));
+                .equals(other._mockTestTemplates, _mockTestTemplates) &&
+            (identical(other.testDuration, testDuration) ||
+                other.testDuration == testDuration) &&
+            (identical(other.totalQuestions, totalQuestions) ||
+                other.totalQuestions == totalQuestions) &&
+            (identical(other.canSelectTopic, canSelectTopic) ||
+                other.canSelectTopic == canSelectTopic));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, progress, name, minTopic,
-      maxTopic, const DeepCollectionEquality().hash(_templates));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      minTopic,
+      maxTopic,
+      const DeepCollectionEquality().hash(_mockTestTemplates),
+      testDuration,
+      totalQuestions,
+      canSelectTopic);
 
   @JsonKey(ignore: true)
   @override
@@ -2465,14 +2489,19 @@ class _$LearningGoalDtoImpl extends _LearningGoalDto {
 abstract class _LearningGoalDto extends LearningGoalDto {
   const factory _LearningGoalDto(
       {required final int id,
-      @JsonKey(defaultValue: 0) required final double progress,
       required final String name,
       @JsonKey(name: 'min_topic_numb', defaultValue: 0)
       required final int minTopic,
       @JsonKey(name: 'max_topic_numb', defaultValue: 99)
       required final int maxTopic,
       @JsonKey(name: 'mock_test_templates', defaultValue: [])
-      required final List<TestTemplateDto> templates}) = _$LearningGoalDtoImpl;
+      required final List<MockTestTemplateDto> mockTestTemplates,
+      @JsonKey(name: 'mock_test_duration', defaultValue: 0)
+      required final int testDuration,
+      @JsonKey(name: 'numb_questions', defaultValue: 0)
+      required final int totalQuestions,
+      @JsonKey(name: 'allow_select', defaultValue: false)
+      required final bool canSelectTopic}) = _$LearningGoalDtoImpl;
   const _LearningGoalDto._() : super._();
 
   factory _LearningGoalDto.fromJson(Map<String, dynamic> json) =
@@ -2480,9 +2509,6 @@ abstract class _LearningGoalDto extends LearningGoalDto {
 
   @override
   int get id;
-  @override
-  @JsonKey(defaultValue: 0)
-  double get progress;
   @override
   String get name;
   @override
@@ -2493,41 +2519,50 @@ abstract class _LearningGoalDto extends LearningGoalDto {
   int get maxTopic;
   @override
   @JsonKey(name: 'mock_test_templates', defaultValue: [])
-  List<TestTemplateDto> get templates;
+  List<MockTestTemplateDto> get mockTestTemplates;
+  @override
+  @JsonKey(name: 'mock_test_duration', defaultValue: 0)
+  int get testDuration;
+  @override
+  @JsonKey(name: 'numb_questions', defaultValue: 0)
+  int get totalQuestions;
+  @override
+  @JsonKey(name: 'allow_select', defaultValue: false)
+  bool get canSelectTopic;
   @override
   @JsonKey(ignore: true)
   _$$LearningGoalDtoImplCopyWith<_$LearningGoalDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-TestTemplateDto _$TestTemplateDtoFromJson(Map<String, dynamic> json) {
-  return _TestTemplateDto.fromJson(json);
+MockTestTemplateDto _$MockTestTemplateDtoFromJson(Map<String, dynamic> json) {
+  return _MockTestTemplateDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TestTemplateDto {
+mixin _$MockTestTemplateDto {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TestTemplateDtoCopyWith<TestTemplateDto> get copyWith =>
+  $MockTestTemplateDtoCopyWith<MockTestTemplateDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TestTemplateDtoCopyWith<$Res> {
-  factory $TestTemplateDtoCopyWith(
-          TestTemplateDto value, $Res Function(TestTemplateDto) then) =
-      _$TestTemplateDtoCopyWithImpl<$Res, TestTemplateDto>;
+abstract class $MockTestTemplateDtoCopyWith<$Res> {
+  factory $MockTestTemplateDtoCopyWith(
+          MockTestTemplateDto value, $Res Function(MockTestTemplateDto) then) =
+      _$MockTestTemplateDtoCopyWithImpl<$Res, MockTestTemplateDto>;
   @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class _$TestTemplateDtoCopyWithImpl<$Res, $Val extends TestTemplateDto>
-    implements $TestTemplateDtoCopyWith<$Res> {
-  _$TestTemplateDtoCopyWithImpl(this._value, this._then);
+class _$MockTestTemplateDtoCopyWithImpl<$Res, $Val extends MockTestTemplateDto>
+    implements $MockTestTemplateDtoCopyWith<$Res> {
+  _$MockTestTemplateDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -2554,22 +2589,22 @@ class _$TestTemplateDtoCopyWithImpl<$Res, $Val extends TestTemplateDto>
 }
 
 /// @nodoc
-abstract class _$$TestTemplateDtoImplCopyWith<$Res>
-    implements $TestTemplateDtoCopyWith<$Res> {
-  factory _$$TestTemplateDtoImplCopyWith(_$TestTemplateDtoImpl value,
-          $Res Function(_$TestTemplateDtoImpl) then) =
-      __$$TestTemplateDtoImplCopyWithImpl<$Res>;
+abstract class _$$MockTestTemplateDtoImplCopyWith<$Res>
+    implements $MockTestTemplateDtoCopyWith<$Res> {
+  factory _$$MockTestTemplateDtoImplCopyWith(_$MockTestTemplateDtoImpl value,
+          $Res Function(_$MockTestTemplateDtoImpl) then) =
+      __$$MockTestTemplateDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class __$$TestTemplateDtoImplCopyWithImpl<$Res>
-    extends _$TestTemplateDtoCopyWithImpl<$Res, _$TestTemplateDtoImpl>
-    implements _$$TestTemplateDtoImplCopyWith<$Res> {
-  __$$TestTemplateDtoImplCopyWithImpl(
-      _$TestTemplateDtoImpl _value, $Res Function(_$TestTemplateDtoImpl) _then)
+class __$$MockTestTemplateDtoImplCopyWithImpl<$Res>
+    extends _$MockTestTemplateDtoCopyWithImpl<$Res, _$MockTestTemplateDtoImpl>
+    implements _$$MockTestTemplateDtoImplCopyWith<$Res> {
+  __$$MockTestTemplateDtoImplCopyWithImpl(_$MockTestTemplateDtoImpl _value,
+      $Res Function(_$MockTestTemplateDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2578,7 +2613,7 @@ class __$$TestTemplateDtoImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$TestTemplateDtoImpl(
+    return _then(_$MockTestTemplateDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -2593,12 +2628,12 @@ class __$$TestTemplateDtoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TestTemplateDtoImpl extends _TestTemplateDto {
-  const _$TestTemplateDtoImpl({required this.id, required this.name})
+class _$MockTestTemplateDtoImpl extends _MockTestTemplateDto {
+  const _$MockTestTemplateDtoImpl({required this.id, required this.name})
       : super._();
 
-  factory _$TestTemplateDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TestTemplateDtoImplFromJson(json);
+  factory _$MockTestTemplateDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MockTestTemplateDtoImplFromJson(json);
 
   @override
   final int id;
@@ -2607,14 +2642,14 @@ class _$TestTemplateDtoImpl extends _TestTemplateDto {
 
   @override
   String toString() {
-    return 'TestTemplateDto(id: $id, name: $name)';
+    return 'MockTestTemplateDto(id: $id, name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TestTemplateDtoImpl &&
+            other is _$MockTestTemplateDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -2626,26 +2661,26 @@ class _$TestTemplateDtoImpl extends _TestTemplateDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TestTemplateDtoImplCopyWith<_$TestTemplateDtoImpl> get copyWith =>
-      __$$TestTemplateDtoImplCopyWithImpl<_$TestTemplateDtoImpl>(
+  _$$MockTestTemplateDtoImplCopyWith<_$MockTestTemplateDtoImpl> get copyWith =>
+      __$$MockTestTemplateDtoImplCopyWithImpl<_$MockTestTemplateDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TestTemplateDtoImplToJson(
+    return _$$MockTestTemplateDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _TestTemplateDto extends TestTemplateDto {
-  const factory _TestTemplateDto(
+abstract class _MockTestTemplateDto extends MockTestTemplateDto {
+  const factory _MockTestTemplateDto(
       {required final int id,
-      required final String name}) = _$TestTemplateDtoImpl;
-  const _TestTemplateDto._() : super._();
+      required final String name}) = _$MockTestTemplateDtoImpl;
+  const _MockTestTemplateDto._() : super._();
 
-  factory _TestTemplateDto.fromJson(Map<String, dynamic> json) =
-      _$TestTemplateDtoImpl.fromJson;
+  factory _MockTestTemplateDto.fromJson(Map<String, dynamic> json) =
+      _$MockTestTemplateDtoImpl.fromJson;
 
   @override
   int get id;
@@ -2653,7 +2688,7 @@ abstract class _TestTemplateDto extends TestTemplateDto {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$TestTemplateDtoImplCopyWith<_$TestTemplateDtoImpl> get copyWith =>
+  _$$MockTestTemplateDtoImplCopyWith<_$MockTestTemplateDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

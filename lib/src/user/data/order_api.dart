@@ -6,17 +6,22 @@ import 'package:kyons_flutter/src/user/domain/package.dart';
 import 'package:kyons_flutter/src/user/domain/transaction.dart';
 
 import '../../core/data/api.dart';
+// import '../../core/data/apiService.api.dart';
 import '../domain/balance.dart';
+// import '../domain/i_order_apiService.api.dart';
 import '../domain/i_order_api.dart';
 import 'inventory_dto.dart';
 import 'order_dto.dart';
 
 class OrderApi implements IOrderApi {
-  final api = Api.init().api;
+  final Api apiService;
+  final String hostName;
+
+  OrderApi({required this.apiService, required this.hostName});
 
   @override
   Future<Unit> getFreeTrial() async {
-    final response = api.get('$serverApi/students/gifts/request_free_subscription');
+    final response = apiService.api.get('$hostName/students/gifts/request_free_subscription');
     return response.then(handleResponseError).then((value) async {
       return unit;
     });
@@ -24,7 +29,7 @@ class OrderApi implements IOrderApi {
 
   @override
   Future<Balance> getBalance() async {
-    final response = api.get('$serverApi/students/balance');
+    final response = apiService.api.get('$hostName/students/balance');
     return response.then(handleResponseError).then((value) async {
       final data = value as Map<String, dynamic>;
       if (data['data'] == null) return Balance(0);
@@ -34,7 +39,7 @@ class OrderApi implements IOrderApi {
 
   @override
   Future<Inventory> getInventory() {
-    final response = api.get('$serverApi/students/inventories');
+    final response = apiService.api.get('$hostName/students/inventories');
     return response.then(handleResponseError).then((value) async {
       final data = value as Map<String, dynamic>;
       if (data['data'] == null) return Inventory.empty();
@@ -44,7 +49,7 @@ class OrderApi implements IOrderApi {
 
   @override
   Future<List<Package>> getPackages() {
-    final response = api.get('$serverApi/students/packages');
+    final response = apiService.api.get('$hostName/students/packages');
     return response.then(handleResponseError).then((value) async {
       final map = Map<String, dynamic>.from(value);
       final data = map['data'] as List<dynamic>;
@@ -77,7 +82,7 @@ class OrderApi implements IOrderApi {
       'id': package.id,
       'quantity': quantity,
     };
-    final response = api.post('$serverApi/students/packages/order', data: params);
+    final response = apiService.api.post('$hostName/students/packages/order', data: params);
     return response.then(handleResponseError).then((value) async {
       return unit;
     });
@@ -85,7 +90,7 @@ class OrderApi implements IOrderApi {
 
   @override
   Future<List<Transaction>> getTransactions() async {
-    final response = api.get('$serverApi/students/transactions');
+    final response = apiService.api.get('$hostName/students/transactions');
     return response.then(handleResponseError).then((value) async {
       if (value['data'] == null) return [];
       final data = value['data'] as List<dynamic>;

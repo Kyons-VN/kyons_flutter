@@ -11,7 +11,7 @@ import '../../core/view/layouts/sign_in_layout.dart';
 import '../../navigation/domain/app_paths.dart';
 
 class ResetPasswordPage extends ConsumerWidget {
-  const ResetPasswordPage({Key? key}) : super(key: key);
+  const ResetPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -68,7 +68,7 @@ class ResetPasswordFormWrapper extends StatelessWidget {
 }
 
 class ResetPasswordForm extends ConsumerWidget {
-  const ResetPasswordForm({Key? key}) : super(key: key);
+  const ResetPasswordForm({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -256,21 +256,21 @@ class Step2 extends HookWidget {
                 TextSpan(
                   text: '\n - ${t(context).passwordValidateUpper}:',
                   style: bodyTextStyle.copyWith(
-                      color: isTouched.value && !hasUpperCase(state.passwordStr)
+                      color: isTouched.value && !state.passwordStr.hasUpperCase
                           ? state.password.value.fold((_) => AppColors.red, (_) => null)
                           : null),
                 ),
                 TextSpan(
                   text: '\n - ${t(context).passwordValidate_0}:',
                   style: bodyTextStyle.copyWith(
-                      color: isTouched.value && !hasDigit(state.passwordStr)
+                      color: isTouched.value && !state.passwordStr.hasDigit
                           ? state.password.value.fold((_) => AppColors.red, (_) => null)
                           : null),
                 ),
                 TextSpan(
                   text: '\n - ${t(context).passwordValidateSpecial}:',
                   style: bodyTextStyle.copyWith(
-                      color: isTouched.value && !hasSpecialCharacters(state.passwordStr)
+                      color: isTouched.value && !state.passwordStr.hasSpecialCharacters
                           ? state.password.value.fold((_) => AppColors.red, (_) => null)
                           : null),
                 ),

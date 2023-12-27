@@ -1,3 +1,4 @@
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../knowledge/domain/i_knowledge.dart';
@@ -13,9 +14,9 @@ class UserDto with _$UserDto {
     required String id,
     required String address,
     required String email,
-    required DateTime birthdate,
+    required String birthdate,
     required String grade,
-    required String phone,
+    @JsonKey(name: 'mobile_number') required String phone,
     required String school,
     @JsonKey(name: 'first_name') required String firstName,
     @JsonKey(name: 'last_name') required String lastName,
@@ -30,7 +31,7 @@ class UserDto with _$UserDto {
       lastName: lastName,
       studyType: studyType,
       address: address,
-      birthdate: birthdate,
+      birthdate: optionOf(birthdate.isEmpty ? null : DateTime.parse(birthdate)),
       grade: grade,
       phone: phone,
       school: school);

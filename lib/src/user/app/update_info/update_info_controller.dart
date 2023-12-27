@@ -16,7 +16,7 @@ part 'update_info_state.dart';
 
 @riverpod
 class UpdateInfoController extends _$UpdateInfoController {
-  late IAuthApi authApi;
+  late IAuthService authApi;
   @override
   UpdateInfoState build() {
     _init();

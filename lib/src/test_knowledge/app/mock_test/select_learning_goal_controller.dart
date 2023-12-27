@@ -80,26 +80,40 @@ class SelectLearningGoalController extends _$SelectLearningGoalController {
     return unit;
   }
 
+  Unit setTestTemplateOption(Option<MockTestTemplate> template) {
+    state = state.copyWith(
+      selectedTemplateOption: template,
+    );
+    return unit;
+  }
+
+  Unit startButtonPressed() {
+    state = state.copyWith(
+      showTemplates: true,
+    );
+    return unit;
+  }
+
   Future<Unit> submitBtnPressed() async {
-    state = state.copyWith(isLoading: true);
-    await state.selectedProgramOption.fold(() {}, (program) async {
-      await state.selectedLearningGoalOption.fold(() {}, (learningGoal) async {
-        // final failureOrSuccess1 = await knowledge_service.selectMockProgram(program).run(api);
-        final failureOrSuccess = await knowledge_service.selectLearningGoal(learningGoal).run(api);
-        failureOrSuccess.fold((l) {
-          state = state.copyWith(
-            hasError: true,
-            isLoading: false,
-          );
-        }, (r) {
-          state = state.copyWith(
-            hasError: false,
-            isLoading: false,
-            isCompleted: true,
-          );
-        });
-      });
-    });
+    // state = state.copyWith(isLoading: true);
+    // await state.selectedProgramOption.fold(() {}, (program) async {
+    //   await state.selectedLearningGoalOption.fold(() {}, (learningGoal) async {
+    //     // final failureOrSuccess1 = await knowledge_service.selectMockProgram(program).run(api);
+    //     final failureOrSuccess = await knowledge_service.selectLearningGoal(learningGoal).run(api);
+    //     failureOrSuccess.fold((l) {
+    //       state = state.copyWith(
+    //         hasError: true,
+    //         isLoading: false,
+    //       );
+    //     }, (r) {
+    //       state = state.copyWith(
+    //         hasError: false,
+    //         isLoading: false,
+    //         isCompleted: true,
+    //       );
+    //     });
+    //   });
+    // });
     // failureOrSuccess = await
     return unit;
   }

@@ -4,7 +4,7 @@
   "welcomeBack": "Mừng bạn quay trở lại!",
   "knowledgeStart": "Tri thức khởi đầu từ\n“Tại sao”?",
   "loginSuccess": "Đăng nhập thành công",
-  "startExploringKnowledge": "Bắt đầu khám phá tri thức",
+  "registerKyonsAccount": "Đăng ký tài khoản Kyons",
   "beforeStart": "Trước khi bắt đầu hành trình...",
   "kyonsNeeds": "Kyons cần một vài thông tin cơ bản để hiểu bạn hơn nhé!",
   "noteYouCanChange": "Lưu ý: Bạn có thể thay đổi thông tin này sau.",
@@ -23,6 +23,7 @@
   "signIn": "Đăng nhập",
   "signOut": "Thoát",
   "signUp": "Đăng ký",
+  "registerAccount": "Đăng ký tài khoản",
   "language": "Ngôn ngữ",
   "invalidThing": "{thing} chưa đúng!",
   "@invalidThing": {
@@ -148,7 +149,6 @@
   "forgotPassword": "Quên mật khẩu?",
   "doesNotHaveAccount": "Bạn chưa có tài khoản?",
   "registerHere": "Đăng ký tại đây",
-  "readyToLearn": "Bạn đã sẵn sàng học ít nhưng trúng đích cùng Kyons chưa?",
   "firstName": "Tên",
   "lastName": "Họ",
   "enterEmail": "Nhập email của bạn",
@@ -157,7 +157,7 @@
   "linkHere": "đây",
   "createAccount": "Tạo tài khoản",
   "alreadyHaveAccount": "Đã có tài khoản?",
-  "passwordMustHave": "Mật khẩu phải có:",
+  "passwordMustHave": "Mật khẩu phải có",
   "passwordValidateMin": "Từ 8 ký tự trở lên",
   "passwordValidateUpper": "Ký tự viết hoa (A-Z)",
   "passwordValidate_0": "Ký tự số (0-9)",
@@ -359,5 +359,27 @@
   },
   "userManual": "Hướng dẫn sử dụng",
   "pleaseTryAgain": "Bạn thử lại nhé",
-  "payment": "Thanh toán"
+  "payment": "Thanh toán",
+  "youSelected": "<h5>Bạn đã chọn mục tiêu <b class='text-orange'>{selectedLearningGoalName}</b> trong chương trình <b class='text-orange'>{selectedProgramName}</h5>",
+  "@youSelected": {
+    "placeholders": {
+      "selectedLearningGoalName": {
+        "type": "String"
+      },
+      "selectedProgramName": {
+        "type": "String"
+      }
+    }
+  },
+  "ifContinue": "<p>Nếu tiếp tục, bạn sẽ phải hoàn thành bài kiểm tra có <b class='text-orange'>{selectedLearningGoalTotalQuestions}</b> câu hỏi và thời gian làm bài nên được giới hạn trong <b class='text-orange'>{selectedLearningGoalDuration}</b> phút mà không bị gián đoạn.</p><span>Bạn có chắc chắn muốn đi tiếp?</span>",
+  "@ifContinue": {
+    "placeholders": {
+      "selectedLearningGoalTotalQuestions": {
+        "type": "int"
+      },
+      "selectedLearningGoalDuration": {
+        "type": "int"
+      }
+    }
+  }
 }

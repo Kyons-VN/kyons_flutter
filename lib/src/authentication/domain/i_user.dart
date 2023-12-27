@@ -1,3 +1,5 @@
+import 'package:fpdart/fpdart.dart';
+
 import '../../knowledge/domain/i_knowledge.dart';
 
 abstract class IUser {
@@ -10,7 +12,7 @@ abstract class IUser {
   final String grade;
   final String school;
   final String address;
-  final DateTime birthdate;
+  final Option<DateTime> birthdate;
 
   IUser(
       {required this.id,

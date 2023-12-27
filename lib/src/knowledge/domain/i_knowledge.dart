@@ -26,26 +26,30 @@ abstract class IProgram {
   final String id;
   final String name;
   final String subjectId;
-  final List<ILearningGoalSelection> learningGoals;
+  final List<ILearningGoal> learningGoals;
 
   IProgram({required this.id, required this.name, required this.subjectId, required this.learningGoals});
 }
 
-abstract class ILearningGoalSelection {
+abstract class ILearningGoal {
   final String id;
   final String name;
   final int? maxTopics;
   final int? minTopics;
   final bool canSelectTopic;
-  final IMockTestTemplate mockTestTemplates;
+  final List<IMockTestTemplate> mockTestTemplates;
+  final int testDuration;
+  final int totalQuestions;
 
-  ILearningGoalSelection({
+  const ILearningGoal({
     required this.id,
     required this.name,
     this.maxTopics,
     this.minTopics,
     required this.canSelectTopic,
     required this.mockTestTemplates,
+    required this.testDuration,
+    required this.totalQuestions,
   });
 }
 
@@ -53,7 +57,7 @@ abstract class IMockTestTemplate {
   final String id;
   final String name;
 
-  IMockTestTemplate({required this.id, required this.name});
+  const IMockTestTemplate({required this.id, required this.name});
 }
 
 abstract class IKnowledgeApi {
@@ -80,4 +84,24 @@ abstract class IKnowledgeApi {
   Future<List<LearningPoint>> getLearningPoints(Program program);
   Future<Unit> createLesson(Program program, List<String> difficultyIds);
   Future<LessonGroup> getLessonGroup(String lessonGroupId);
+}
+
+abstract class IStudentLearningGoal {
+  /// id: string;
+  // name: string;
+  // programName: string;
+  // subjectId: string;
+  // completePercentage: number;
+  // order: number;
+  final String id;
+  final String name;
+  final String programName;
+  final int completePercentage;
+
+  const IStudentLearningGoal({
+    required this.id,
+    required this.name,
+    required this.programName,
+    required this.completePercentage,
+  });
 }

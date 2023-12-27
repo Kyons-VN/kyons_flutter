@@ -135,7 +135,7 @@ class LessonExamWidget extends ConsumerWidget {
                             body: AppHtml(data: t(context).toCreateLearningGoal),
                             actions: [
                               ElevatedButton(
-                                  onPressed: () => context.go(AppPaths.mockTestLearningGoal.path),
+                                  onPressed: () => context.go(AppPaths.mockTest.path),
                                   child: Text(t(context).changeTarget)),
                               OutlinedButton(onPressed: () => context.pop(), child: Text(t(context).notChangeTarget)),
                             ],

@@ -41,10 +41,11 @@ Future<void> mainCommon(Environment env) async {
   //   guardedMain,
   //   crashlytics: crashlytics,
   // );
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  if (defaultTargetPlatform != TargetPlatform.windows) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }
 
   guardedMain();
 }
@@ -98,8 +99,8 @@ void guardedMain() {
 
 class AppWidget extends ConsumerStatefulWidget {
   const AppWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _AppWidgetState();
@@ -165,6 +166,7 @@ class _AppWidgetState extends ConsumerState<AppWidget> with WidgetsBindingObserv
       }
     });
     AppRouter.init(ref);
+
     return _builder(ref);
   }
 }

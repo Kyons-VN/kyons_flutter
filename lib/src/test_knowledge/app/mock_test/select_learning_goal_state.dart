@@ -12,6 +12,8 @@ class SelectLearningGoalState with _$SelectLearningGoalState {
     required Option<Subject> selectedSubjectOption,
     required Option<Program> selectedProgramOption,
     required Option<LearningGoal> selectedLearningGoalOption,
+    required Option<MockTestTemplate> selectedTemplateOption,
+    required bool showTemplates,
   }) = _SelectLearningGoalState;
   factory SelectLearningGoalState.initial() => SelectLearningGoalState(
         isLoading: false,
@@ -23,5 +25,7 @@ class SelectLearningGoalState with _$SelectLearningGoalState {
         selectedSubjectOption: none(),
         selectedProgramOption: none(),
         selectedLearningGoalOption: none(),
+        selectedTemplateOption: none(),
+        showTemplates: false,
       );
 }

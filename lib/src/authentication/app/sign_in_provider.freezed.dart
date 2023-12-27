@@ -173,7 +173,7 @@ class __$$SignInStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SignInStateImpl implements _SignInState {
+class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
   const _$SignInStateImpl(
       {required this.emailAddress,
       required this.password,
@@ -199,8 +199,23 @@ class _$SignInStateImpl implements _SignInState {
   final Option<String> redirectPath;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInState(emailAddress: $emailAddress, password: $password, isSubmitting: $isSubmitting, shouldShowErrorMessages: $shouldShowErrorMessages, signInOption: $signInOption, currentUser: $currentUser, redirectPath: $redirectPath)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignInState'))
+      ..add(DiagnosticsProperty('emailAddress', emailAddress))
+      ..add(DiagnosticsProperty('password', password))
+      ..add(DiagnosticsProperty('isSubmitting', isSubmitting))
+      ..add(DiagnosticsProperty(
+          'shouldShowErrorMessages', shouldShowErrorMessages))
+      ..add(DiagnosticsProperty('signInOption', signInOption))
+      ..add(DiagnosticsProperty('currentUser', currentUser))
+      ..add(DiagnosticsProperty('redirectPath', redirectPath));
   }
 
   @override

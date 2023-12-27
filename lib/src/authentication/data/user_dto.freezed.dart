@@ -23,8 +23,9 @@ mixin _$UserDto {
   String get id => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  DateTime get birthdate => throw _privateConstructorUsedError;
+  String get birthdate => throw _privateConstructorUsedError;
   String get grade => throw _privateConstructorUsedError;
+  @JsonKey(name: 'mobile_number')
   String get phone => throw _privateConstructorUsedError;
   String get school => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
@@ -49,9 +50,9 @@ abstract class $UserDtoCopyWith<$Res> {
       {String id,
       String address,
       String email,
-      DateTime birthdate,
+      String birthdate,
       String grade,
-      String phone,
+      @JsonKey(name: 'mobile_number') String phone,
       String school,
       @JsonKey(name: 'first_name') String firstName,
       @JsonKey(name: 'last_name') String lastName,
@@ -100,7 +101,7 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
       birthdate: null == birthdate
           ? _value.birthdate
           : birthdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       grade: null == grade
           ? _value.grade
           : grade // ignore: cast_nullable_to_non_nullable
@@ -140,9 +141,9 @@ abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       {String id,
       String address,
       String email,
-      DateTime birthdate,
+      String birthdate,
       String grade,
-      String phone,
+      @JsonKey(name: 'mobile_number') String phone,
       String school,
       @JsonKey(name: 'first_name') String firstName,
       @JsonKey(name: 'last_name') String lastName,
@@ -189,7 +190,7 @@ class __$$UserDtoImplCopyWithImpl<$Res>
       birthdate: null == birthdate
           ? _value.birthdate
           : birthdate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       grade: null == grade
           ? _value.grade
           : grade // ignore: cast_nullable_to_non_nullable
@@ -227,7 +228,7 @@ class _$UserDtoImpl extends _UserDto {
       required this.email,
       required this.birthdate,
       required this.grade,
-      required this.phone,
+      @JsonKey(name: 'mobile_number') required this.phone,
       required this.school,
       @JsonKey(name: 'first_name') required this.firstName,
       @JsonKey(name: 'last_name') required this.lastName,
@@ -246,10 +247,11 @@ class _$UserDtoImpl extends _UserDto {
   @override
   final String email;
   @override
-  final DateTime birthdate;
+  final String birthdate;
   @override
   final String grade;
   @override
+  @JsonKey(name: 'mobile_number')
   final String phone;
   @override
   final String school;
@@ -314,9 +316,9 @@ abstract class _UserDto extends UserDto {
       {required final String id,
       required final String address,
       required final String email,
-      required final DateTime birthdate,
+      required final String birthdate,
       required final String grade,
-      required final String phone,
+      @JsonKey(name: 'mobile_number') required final String phone,
       required final String school,
       @JsonKey(name: 'first_name') required final String firstName,
       @JsonKey(name: 'last_name') required final String lastName,
@@ -334,10 +336,11 @@ abstract class _UserDto extends UserDto {
   @override
   String get email;
   @override
-  DateTime get birthdate;
+  String get birthdate;
   @override
   String get grade;
   @override
+  @JsonKey(name: 'mobile_number')
   String get phone;
   @override
   String get school;

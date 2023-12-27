@@ -1,22 +1,23 @@
-importScripts('https://www.gstatic.com/firebasejs/10.5.2/firebase-app-compat.js');
-importScripts('https://www.gstatic.com/firebasejs/10.5.2/firebase-messaging-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.0.1/firebase-messaging-compat.js');
+
 firebase.initializeApp({
-  apiKey: 'AIzaSyD1kg_RXC6PACtLW0GbHnECUtsfQd2gMt0',
-  appId: '1:830127784291:web:0bc7e49b17cc5b981b5356',
-  messagingSenderId: '830127784291',
-  projectId: 'kyonsvn',
-  authDomain: 'kyonsvn.firebaseapp.com',
-  storageBucket: 'kyonsvn.appspot.com',
-  measurementId: 'G-9LET8HS9P1',
+  apiKey: 'AIzaSyA7CNE9aHbcSEbt9y03QReJ-Xr0nwKg7Yg',
+  authDomain: 'aftest-94085.firebaseapp.com',
+  databaseURL: 'https://aftest-94085.firebaseio.com',
+  projectId: 'aftest-94085',
+  storageBucket: 'aftest-94085.appspot.com',
+  messagingSenderId: '480362569154',
+  appId: '1:480362569154:web:2fe6f75104cdfb82f50a5b',
+  measurementId: 'G-CBRYER9PJR',
 });
-const messaging = firebase.messaging();
-messaging.setBackgroundMessageHandler(function (payload) {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // Customize notification here
-  const notificationTitle = 'Background Message Title';
-  const notificationOptions = {
-    body: 'Background Message body.',
-    icon: '/icons/Icon-512.png',
-  };
-  return self.registration.showNotification(notificationTitle, notificationOptions);
-});
+
+const isSupported = firebase.messaging.isSupported();
+if (isSupported) {
+  const messaging = firebase.messaging();
+  messaging.onBackgroundMessage(({ notification: { title, body, image } }) => {
+    self.registration.showNotification(title, { body, icon: image || '/icons/Icon-512.png' });
+  });
+}
+
+// icon: '/icons/Icon-512.png',

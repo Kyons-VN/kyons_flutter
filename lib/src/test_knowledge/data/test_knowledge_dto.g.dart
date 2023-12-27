@@ -122,8 +122,8 @@ _$TestResultDtoImpl _$$TestResultDtoImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$TestResultDtoImplToJson(_$TestResultDtoImpl instance) =>
     <String, dynamic>{
       'total_score': instance.score,
-      'result': instance.result,
-      'review': instance.review,
+      'result': instance.result.map((e) => e.toJson()).toList(),
+      'review': instance.review.toJson(),
       'type': const TestTypeConverter().toJson(instance.type),
       'mocktest_referral': instance.referral,
     };

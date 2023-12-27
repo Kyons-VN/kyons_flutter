@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../knowledge/data/knowledge_entities.dart';
-import '../../test_knowledge/data/test_entities.dart';
 
 part 'knowledge_dto.freezed.dart';
 part 'knowledge_dto.g.dart';
@@ -11,13 +10,14 @@ class SubjectDto with _$SubjectDto {
   const SubjectDto._();
   const factory SubjectDto({
     required int id,
+    required String name,
     required String label,
     required List<ProgramDto> programs,
   }) = _SubjectDto;
 
   factory SubjectDto.fromJson(Map<String, dynamic> json) => _$SubjectDtoFromJson(json);
   Subject toDomain() =>
-      Subject(id: id.toString(), name: label, programs: programs.map((e) => e.toDomain()).toList(), label: '');
+      Subject(id: id.toString(), name: name, programs: programs.map((e) => e.toDomain()).toList(), label: label);
 }
 
 @freezed
@@ -27,12 +27,10 @@ class ProgramDto with _$ProgramDto {
     required int id,
     required String name,
     @JsonKey(name: 'subject_id') required int subjectId,
-    @JsonKey(name: 'learning_goal') required LearningGoalDto? learningGoal,
   }) = _ProgramDto;
 
   factory ProgramDto.fromJson(Map<String, dynamic> json) => _$ProgramDtoFromJson(json);
-  Program toDomain() =>
-      Program(id: id.toString(), name: name, subjectId: subjectId.toString(), learningGoal: learningGoal?.toDomain());
+  Program toDomain() => Program(id: id.toString(), name: name, subjectId: subjectId.toString());
 }
 
 @freezed
@@ -202,33 +200,38 @@ class LearningGoalDto with _$LearningGoalDto {
   const LearningGoalDto._();
   const factory LearningGoalDto({
     required int id,
-    @JsonKey(defaultValue: 0) required double progress,
     required String name,
     @JsonKey(name: 'min_topic_numb', defaultValue: 0) required int minTopic,
     @JsonKey(name: 'max_topic_numb', defaultValue: 99) required int maxTopic,
-    @JsonKey(name: 'mock_test_templates', defaultValue: []) required List<TestTemplateDto> templates,
+    @JsonKey(name: 'mock_test_templates', defaultValue: []) required List<MockTestTemplateDto> mockTestTemplates,
+    @JsonKey(name: 'mock_test_duration', defaultValue: 0) required int testDuration,
+    @JsonKey(name: 'numb_questions', defaultValue: 0) required int totalQuestions,
+    @JsonKey(name: 'allow_select', defaultValue: false) required bool canSelectTopic,
   }) = _LearningGoalDto;
   factory LearningGoalDto.fromJson(Map<String, dynamic> json) => _$LearningGoalDtoFromJson(json);
   LearningGoal toDomain() => LearningGoal(
-      id: id.toString(),
-      name: name,
-      progress: progress,
-      minTopics: minTopic,
-      maxTopics: maxTopic,
-      templates: templates.map((template) => template.toDomain()).toList());
+        id: id.toString(),
+        name: name,
+        minTopics: minTopic,
+        maxTopics: maxTopic,
+        mockTestTemplates: mockTestTemplates.map((template) => template.toDomain()).toList(),
+        canSelectTopic: canSelectTopic,
+        testDuration: testDuration,
+        totalQuestions: totalQuestions,
+      );
 }
 
 @freezed
-class TestTemplateDto with _$TestTemplateDto {
-  const TestTemplateDto._();
-  const factory TestTemplateDto({
+class MockTestTemplateDto with _$MockTestTemplateDto {
+  const MockTestTemplateDto._();
+  const factory MockTestTemplateDto({
     required int id,
     required String name,
-  }) = _TestTemplateDto;
+  }) = _MockTestTemplateDto;
 
-  factory TestTemplateDto.fromJson(Map<String, dynamic> json) => _$TestTemplateDtoFromJson(json);
+  factory MockTestTemplateDto.fromJson(Map<String, dynamic> json) => _$MockTestTemplateDtoFromJson(json);
 
-  TestTemplate toDomain() => TestTemplate(id: id.toString(), name: name);
+  MockTestTemplate toDomain() => MockTestTemplate(id: id.toString(), name: name);
 }
 
 @freezed

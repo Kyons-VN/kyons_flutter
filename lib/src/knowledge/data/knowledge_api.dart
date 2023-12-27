@@ -14,13 +14,34 @@ import '../../knowledge/domain/i_knowledge.dart';
 import '../../test_knowledge/data/test_knowledge_dto.dart';
 
 class KnowledgeApi implements IKnowledgeApi {
-  final api = Api.init().api;
+  final Api apiService;
+  final String hostName;
+
+  KnowledgeApi({required this.hostName, required this.apiService});
 
   @override
   Future<List<StudentLearningGoal>> getStudentLearningGoals() async {
-    final response = api.get('$serverApi/students/master_learning_goals');
+    final response = apiService.api.get('$hostName/students/master_learning_goals');
     return response.then(handleResponseError).then((value) async {
       final data = value['data'] as List<dynamic>;
+      // final data = [
+      //   {
+      //     "id": 100,
+      //     "name": 'Kiểm tra 15 phút',
+      //     "program_name": 'English 11',
+      //     "complete_percentage": 100,
+      //     "ordinal_number": 1,
+      //     "subject_id": 1,
+      //   },
+      //   {
+      //     "id": 97,
+      //     "name": 'Kiểm tra 1 tiết',
+      //     "program_name": 'English 12',
+      //     "complete_percentage": 70,
+      //     "ordinal_number": 2,
+      //     "subject_id": 2,
+      //   },
+      // ];
       final result = data.map((json) {
         // json['learning_goal'] = {
         //   'id': json['learning_goal_id'],
@@ -34,7 +55,7 @@ class KnowledgeApi implements IKnowledgeApi {
 
   @override
   Future<List<Subject>> getSubjects() {
-    final response = api.get('$serverApi/subjects');
+    final response = apiService.api.get('$hostName/subjects');
     return response.then(handleResponseError).then((value) async {
       final data = value as List<dynamic>;
       final result = data.map((json) => SubjectDto.fromJson(json).toDomain()).toList();
@@ -45,7 +66,7 @@ class KnowledgeApi implements IKnowledgeApi {
   // @override
   // Future<TestContent> getDiagnosticTest(Program program) {
   //   final params = {'program_id': program.id};
-  //   final response = api.get('$serverApi/test/diagostic_test', queryParameters: params);
+  //   final response = api.get('$hostName/test/diagostic_test', queryParameters: params);
   //   return response.then(handleResponseError).then((value) async {
   //     final data = value as Map<String, dynamic>;
   //     final result = TestContentDto.fromJson(data).toDomain();
@@ -56,7 +77,7 @@ class KnowledgeApi implements IKnowledgeApi {
   // @override
   // Future<Unit> defaultLearningPath(Program program) {
   //   final params = {'program_id': program.id};
-  //   final response = api.get('$serverApi/test/skip_diagnostic_test', queryParameters: params);
+  //   final response = api.get('$hostName/test/skip_diagnostic_test', queryParameters: params);
   //   return response.then((res) {
   //     if (res.statusCode != 200) {
   //       return Future.error(const ApiFailure.serverError());
@@ -67,7 +88,7 @@ class KnowledgeApi implements IKnowledgeApi {
 
   @override
   Future<LearningGoalPath> getLearningGoalPath(StudentLearningGoal learningGoal) async {
-    final response = api.get('$serverApi/students/learning_goal/${learningGoal.id}/lessons');
+    final response = apiService.api.get('$hostName/students/learning_goal/${learningGoal.id}/lessons');
     return response.then(handleResponseError).then((value) async {
       final data = value as Map<String, dynamic>;
       // data['complete_percentage'] = double.parse(data['complete_percentage']);
@@ -89,7 +110,7 @@ class KnowledgeApi implements IKnowledgeApi {
 
   @override
   Future<LessonGroup> getLessonGroup(String lessonGroupId) {
-    final response = api.get('$serverApi/lesson/$lessonGroupId');
+    final response = apiService.api.get('$hostName/lesson/$lessonGroupId');
     return response.then(handleResponseError).then((value) async {
       final data = {
         'id': lessonGroupId,
@@ -139,7 +160,7 @@ class KnowledgeApi implements IKnowledgeApi {
   @override
   Future<List<LearningPoint>> getLearningPoints(Program program) {
     final params = {'program_id': program.id};
-    final response = api.get('$serverApi/students/self_study_path', queryParameters: params);
+    final response = apiService.api.get('$hostName/students/self_study_path', queryParameters: params);
     return response.then(handleResponseError).then((value) async {
       final result = (value as List<dynamic>).map((json) => LearningPointDto.fromJson(json).toDomain()).toList();
       return result;
@@ -152,7 +173,7 @@ class KnowledgeApi implements IKnowledgeApi {
       'learning_point_difficulty_ids': difficultyIds,
       'program_id': program.id,
     };
-    final response = api.post('$serverApi/students/update_learning_path', data: params);
+    final response = apiService.api.post('$hostName/students/update_learning_path', data: params);
     return response.then(handleResponseError).then((value) async {
       return unit;
     });
@@ -161,7 +182,7 @@ class KnowledgeApi implements IKnowledgeApi {
   @override
   Future<List<LearningGoal>> getLearningGoals(Program program) {
     final params = {'program_id': program.id};
-    final response = api.get('$serverApi/students/learning_goal/list', queryParameters: params);
+    final response = apiService.api.get('$hostName/students/learning_goal/list', queryParameters: params);
     return response.then(handleResponseError).then((value) async {
       final result = (value as List<dynamic>).map((json) => LearningGoalDto.fromJson(json).toDomain()).toList();
       return result;
@@ -171,7 +192,7 @@ class KnowledgeApi implements IKnowledgeApi {
   @override
   Future<Unit> selectLearningGoal(LearningGoal learningGoal) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(mockLearningGoalKey, jsonEncode(learningGoal.toJson()));
+    await prefs.setString(mockLearningGoalKey, jsonEncode(learningGoal.toStudentLearningGoal().toJson()));
     return unit;
   }
 
@@ -185,7 +206,7 @@ class KnowledgeApi implements IKnowledgeApi {
   @override
   Future<List<TopicSelection>> getTopicsFromLearningGoal(LearningGoal learningGoal) {
     final params = {'learning_goal_id': learningGoal.id};
-    final response = api.get('$serverApi/students/learning_goal/details', queryParameters: params);
+    final response = apiService.api.get('$hostName/students/learning_goal/details', queryParameters: params);
     return response.then(handleResponseError).then((value) async {
       final result = (value as List<dynamic>).map((json) => TopicDto.fromJson(json).toTopicSelection()).toList();
       return result;
@@ -215,14 +236,7 @@ class KnowledgeApi implements IKnowledgeApi {
     final string = prefs.getString(mockLearningGoalKey);
     if (string != null) {
       final json = jsonDecode(string);
-      final learningGoal = LearningGoal(
-        id: json['id'],
-        name: json['name'],
-        progress: json['progress'],
-        maxTopics: json['maxTopic'],
-        minTopics: json['minTopic'],
-        templates: json['templates'],
-      );
+      final learningGoal = LearningGoalDto.fromJson(json).toDomain();
       return learningGoal;
     }
     throw const ClientFailure.storage();
@@ -234,7 +248,7 @@ class KnowledgeApi implements IKnowledgeApi {
       'master_id': learningGoal.id,
       'topic_list': selectedTopics.map((e) => int.parse(e.id)).toList(),
     };
-    final response = api.post('$serverApi/students/learning_goal/submit', data: params);
+    final response = apiService.api.post('$hostName/students/learning_goal/submit', data: params);
     return response.then(handleResponseError).then((value) async {
       log('createLearningGoal: $value');
       return LearningGoalDto.fromJson(value).toDomain();
@@ -256,7 +270,7 @@ class KnowledgeApi implements IKnowledgeApi {
 
   @override
   Future<List<MockTestItem>> getLearningGoalMockTests(StudentLearningGoal learningGoal) {
-    final response = api.post('$serverApi/students/learning_goal/submit${learningGoal.id}/mock_tests');
+    final response = apiService.api.post('$hostName/students/learning_goal/submit${learningGoal.id}/mock_tests');
     return response.then(handleResponseError).then((value) async {
       log('getLearningGoalMockTests: $value');
       final data = value['data'] as List<dynamic>;
@@ -269,7 +283,7 @@ class KnowledgeApi implements IKnowledgeApi {
 
   @override
   Future<List<MockTestItem>> getMockTestItems(StudentLearningGoal learningGoal) {
-    final response = api.get('$serverApi/students/learning_goal/${learningGoal.id}/mock_tests');
+    final response = apiService.api.get('$hostName/students/learning_goal/${learningGoal.id}/mock_tests');
     return response.then(handleResponseError).then((value) async {
       var data = value['data'] as List<dynamic>;
       // data = {

@@ -1,0 +1,12 @@
+camelCase: sandbox
+constantCase: SANDBOX
+dotCase: sandbox
+headerCase: Sandbox
+lowerCase: sandbox
+pascalCase: Sandbox
+paramCase: sandbox
+pathCase: sandbox
+sentenceCase: Sandbox
+snakeCase: sandbox
+titleCase: Sandbox
+upperCase: SANDBOX

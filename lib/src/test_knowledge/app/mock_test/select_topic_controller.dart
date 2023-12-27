@@ -51,8 +51,8 @@ class SelectTopicController extends _$SelectTopicController {
     final selectedTopics = state.selectedTopics.contains(topicsOption[index])
         ? state.selectedTopics.where((element) => element != topicsOption[index]).toList()
         : [...state.selectedTopics, topicsOption[index]];
-    final isValid = (selectedTopics.length >= selectedLearningGoal.minTopics &&
-        selectedTopics.length <= selectedLearningGoal.maxTopics);
+    final isValid = (selectedTopics.length >= (selectedLearningGoal.minTopics ?? 0) &&
+        selectedTopics.length <= (selectedLearningGoal.maxTopics ?? 0));
 
     state = state.copyWith(
       topicsOption: some(topicsOption),
@@ -65,7 +65,7 @@ class SelectTopicController extends _$SelectTopicController {
     final selected = state.topicsOption.getOrElse(() => []).filter((t) => t.isSelected).length;
     state = state.copyWith(
       isTouched: true,
-      isValid: (selected >= selectedLearningGoal.minTopics && selected <= selectedLearningGoal.maxTopics),
+      isValid: (selected >= (selectedLearningGoal.minTopics ?? 0) && selected <= (selectedLearningGoal.maxTopics ?? 0)),
       newLearningGoal: none(),
     );
     if (!state.isValid) {

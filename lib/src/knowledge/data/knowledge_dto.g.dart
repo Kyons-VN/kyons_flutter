@@ -9,6 +9,7 @@ part of 'knowledge_dto.dart';
 _$SubjectDtoImpl _$$SubjectDtoImplFromJson(Map<String, dynamic> json) =>
     _$SubjectDtoImpl(
       id: json['id'] as int,
+      name: json['name'] as String,
       label: json['label'] as String,
       programs: (json['programs'] as List<dynamic>)
           .map((e) => ProgramDto.fromJson(e as Map<String, dynamic>))
@@ -18,8 +19,9 @@ _$SubjectDtoImpl _$$SubjectDtoImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$SubjectDtoImplToJson(_$SubjectDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'name': instance.name,
       'label': instance.label,
-      'programs': instance.programs,
+      'programs': instance.programs.map((e) => e.toJson()).toList(),
     };
 
 _$ProgramDtoImpl _$$ProgramDtoImplFromJson(Map<String, dynamic> json) =>
@@ -27,10 +29,6 @@ _$ProgramDtoImpl _$$ProgramDtoImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       name: json['name'] as String,
       subjectId: json['subject_id'] as int,
-      learningGoal: json['learning_goal'] == null
-          ? null
-          : LearningGoalDto.fromJson(
-              json['learning_goal'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ProgramDtoImplToJson(_$ProgramDtoImpl instance) =>
@@ -38,7 +36,6 @@ Map<String, dynamic> _$$ProgramDtoImplToJson(_$ProgramDtoImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'subject_id': instance.subjectId,
-      'learning_goal': instance.learningGoal,
     };
 
 _$LessonItemDtoImpl _$$LessonItemDtoImplFromJson(Map<String, dynamic> json) =>
@@ -69,7 +66,7 @@ _$LearningGoalPathDtoImpl _$$LearningGoalPathDtoImplFromJson(
 Map<String, dynamic> _$$LearningGoalPathDtoImplToJson(
         _$LearningGoalPathDtoImpl instance) =>
     <String, dynamic>{
-      'categories': instance.categories,
+      'categories': instance.categories.map((e) => e.toJson()).toList(),
       'complete_percentage': instance.progress,
       'new_user': instance.isNewUser,
     };
@@ -89,8 +86,8 @@ Map<String, dynamic> _$$LearningGoalCategoryDtoImplToJson(
         _$LearningGoalCategoryDtoImpl instance) =>
     <String, dynamic>{
       'completed': instance.isCompleted,
-      'category': instance.categoryDto,
-      'lesson_list': instance.lessonsDto,
+      'category': instance.categoryDto.toJson(),
+      'lesson_list': instance.lessonsDto.map((e) => e.toJson()).toList(),
     };
 
 _$LessonGroupDtoImpl _$$LessonGroupDtoImplFromJson(Map<String, dynamic> json) =>
@@ -105,7 +102,7 @@ Map<String, dynamic> _$$LessonGroupDtoImplToJson(
         _$LessonGroupDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'lessonInfos': instance.lessonInfos,
+      'lessonInfos': instance.lessonInfos.map((e) => e.toJson()).toList(),
     };
 
 _$CategoryDtoImpl _$$CategoryDtoImplFromJson(Map<String, dynamic> json) =>
@@ -143,9 +140,9 @@ _$LessonInfoDtoImpl _$$LessonInfoDtoImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$LessonInfoDtoImplToJson(_$LessonInfoDtoImpl instance) =>
     <String, dynamic>{
-      'category': instance.category,
-      'topic': instance.topic,
-      'lessons': instance.lessons,
+      'category': instance.category.toJson(),
+      'topic': instance.topic.toJson(),
+      'lessons': instance.lessons.map((e) => e.toJson()).toList(),
     };
 
 _$LessonDtoImpl _$$LessonDtoImplFromJson(Map<String, dynamic> json) =>
@@ -192,36 +189,42 @@ _$LearningGoalDtoImpl _$$LearningGoalDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$LearningGoalDtoImpl(
       id: json['id'] as int,
-      progress: (json['progress'] as num?)?.toDouble() ?? 0,
       name: json['name'] as String,
       minTopic: json['min_topic_numb'] as int? ?? 0,
       maxTopic: json['max_topic_numb'] as int? ?? 99,
-      templates: (json['mock_test_templates'] as List<dynamic>?)
-              ?.map((e) => TestTemplateDto.fromJson(e as Map<String, dynamic>))
+      mockTestTemplates: (json['mock_test_templates'] as List<dynamic>?)
+              ?.map((e) =>
+                  MockTestTemplateDto.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      testDuration: json['mock_test_duration'] as int? ?? 0,
+      totalQuestions: json['numb_questions'] as int? ?? 0,
+      canSelectTopic: json['allow_select'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$LearningGoalDtoImplToJson(
         _$LearningGoalDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'progress': instance.progress,
       'name': instance.name,
       'min_topic_numb': instance.minTopic,
       'max_topic_numb': instance.maxTopic,
-      'mock_test_templates': instance.templates,
+      'mock_test_templates':
+          instance.mockTestTemplates.map((e) => e.toJson()).toList(),
+      'mock_test_duration': instance.testDuration,
+      'numb_questions': instance.totalQuestions,
+      'allow_select': instance.canSelectTopic,
     };
 
-_$TestTemplateDtoImpl _$$TestTemplateDtoImplFromJson(
+_$MockTestTemplateDtoImpl _$$MockTestTemplateDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$TestTemplateDtoImpl(
+    _$MockTestTemplateDtoImpl(
       id: json['id'] as int,
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$TestTemplateDtoImplToJson(
-        _$TestTemplateDtoImpl instance) =>
+Map<String, dynamic> _$$MockTestTemplateDtoImplToJson(
+        _$MockTestTemplateDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

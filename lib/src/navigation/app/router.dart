@@ -185,7 +185,7 @@ class AppRouter {
           redirect: (_, state) => guard(state, ref),
         ),
         GoRoute(
-          path: AppPaths.mockTestLearningGoal.path,
+          path: AppPaths.mockTest.path,
           builder: (BuildContext context, GoRouterState state) => const SelectLearningGoalPage(),
           routes: [
             GoRoute(

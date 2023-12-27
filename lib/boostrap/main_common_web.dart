@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,6 +17,7 @@ import '../src/navigation/app/router.dart';
 import '../src/settings/app/settings_controller.dart';
 import '../src/settings/data/settings_service.dart';
 import 'config_reader.dart';
+import 'firebase_options.dart';
 import 'web_app.dart';
 
 Future<void> mainCommon(Environment env) async {
@@ -33,7 +35,6 @@ Future<void> mainCommon(Environment env) async {
   await Future.wait([
     ConfigReader.initialize(env),
     settingsProvider.loadSettings(),
-    if (!kIsWeb) Future.delayed(const Duration(seconds: 1)),
   ]);
 
   // Game section
@@ -42,6 +43,11 @@ Future<void> mainCommon(Environment env) async {
   //   guardedMain,
   //   crashlytics: crashlytics,
   // );
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   guardedMain();
 }
 
@@ -67,6 +73,8 @@ void guardedMain() {
   if (kReleaseMode) {
     // Don't log anything below warnings in production.
     Logger.root.level = Level.WARNING;
+  } else {
+    Logger.root.level = Level.ALL;
   }
   Logger.root.onRecord.listen((record) {
     // debugPrint('${record.level.name}: ${record.time}: '
@@ -85,7 +93,6 @@ void guardedMain() {
 
   runApp(UncontrolledProviderScope(
     container: container,
-    // child: kIsWeb ? const WebAppWidget(builder: _builder) : const AppWidget(),
     child: const WebAppWidget(
       builder: _builder,
     ),

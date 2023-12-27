@@ -18,7 +18,7 @@ import 'attributes_widget.dart';
 
 class HomePage extends StatelessWidget {
   final bool isShowHomeOptions;
-  const HomePage({Key? key, this.isShowHomeOptions = false}) : super(key: key);
+  const HomePage({super.key, this.isShowHomeOptions = false});
 
   @override
   Widget build(BuildContext context) {
@@ -197,7 +197,7 @@ class HomePage extends StatelessWidget {
                                   AppSizesUnit.sizedBox16,
                                   LargeBtn(
                                     color: AppColors.orange,
-                                    onClick: () => context.go(AppPaths.mockTestLearningGoal.path),
+                                    onClick: () => context.go(AppPaths.mockTest.path),
                                   )
                                 ],
                               )
@@ -232,12 +232,13 @@ class _HomeWidgetState extends ConsumerState<HomeWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-          Heading(7, t(context).shortcuts),
-          AppSizesUnit.sizedBox12,
-          const ContinueButton(),
-          AppSizesUnit.sizedBox24,
-        ]),
+        if (context.isXsScreen())
+          Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Heading(7, t(context).shortcuts),
+            AppSizesUnit.sizedBox12,
+            const ContinueButton(),
+            AppSizesUnit.sizedBox24,
+          ]),
         const AttributesWidget(),
         AppSizesUnit.sizedBox24,
         Consumer(builder: (context, ref, _) {
@@ -279,7 +280,7 @@ class LearningGoalsWidget extends ConsumerWidget {
                 Column(
                   children: [
                     ElevatedButton(
-                      onPressed: () => context.go(AppPaths.mockTestLearningGoal.path),
+                      onPressed: () => context.go(AppPaths.mockTest.path),
                       child: Row(
                         children: [
                           const Icon(AppIcons.add, size: AppSizesUnit.medium24),
@@ -489,9 +490,9 @@ class ContinueButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final homeState = ref.watch(homeNotifierProvider);
     return LargeBtn(
       onClick: () async {
-        final homeState = ref.read(homeNotifierProvider);
         if (homeState.hasValue) {
           await ref
               .read(homeNotifierProvider.notifier)
@@ -499,6 +500,13 @@ class ContinueButton extends ConsumerWidget {
           if (context.mounted) context.go(AppPaths.learningPath.path);
         }
       },
+      disabled: homeState.value == null
+          ? true
+          : homeState.value!.studentLearningGoalsOption.isNone()
+              ? true
+              : homeState.value!.studentLearningGoalsOption.getOrElse(() => []).isEmpty
+                  ? true
+                  : false,
     );
   }
 }
