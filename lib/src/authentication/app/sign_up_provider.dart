@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_package/shared_package.dart';
 
 import '../../authentication/app/auth_provider.dart';
-import '../../authentication/data/auth_service.dart' as auth_service;
 import '../../authentication/domain/i_auth.dart';
 import '../../authentication/domain/value_objects.dart';
 
@@ -13,7 +12,7 @@ part 'sign_up_provider.freezed.dart';
 part 'sign_up_state.dart';
 
 class SignUpNotifier extends StateNotifier<SignUpState> {
-  final IAuthService authApi;
+  final IAuthApi authApi;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   SignUpNotifier(this.authApi) : super(SignUpState.initial());
@@ -74,19 +73,19 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
       state = state.copyWith(
         isSubmitting: true,
       );
-      failureOrSuccess = await auth_service
-          .signUp(
-            // firstName: state.firstName,
-            // lastName: state.lastName,
-            emailAddress: state.emailAddress.getValueOrError().trim(),
-            password: state.password.getValueOrError(),
-            // phone: state.phone.getValueOrError().trim(),
-            // birthdate: state.birthdate,
-            // grade: state.grade,
-            // school: state.school,
-            // address: state.address,
-          )
-          .run(authApi);
+      // failureOrSuccess = await auth_service
+      //     .signUp(
+      //       // firstName: state.firstName,
+      //       // lastName: state.lastName,
+      //       email: state.emailAddress.getValueOrError().trim(),
+      //       password: state.password.getValueOrError(),
+      //       // phone: state.phone.getValueOrError().trim(),
+      //       // birthdate: state.birthdate,
+      //       // grade: state.grade,
+      //       // school: state.school,
+      //       // address: state.address,
+      //     )
+      //     .run(authApi);
     }
     state = state.copyWith(
       isSubmitting: false,

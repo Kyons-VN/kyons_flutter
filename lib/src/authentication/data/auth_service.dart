@@ -11,7 +11,6 @@ import '../../authentication/domain/value_objects.dart';
 import '../../core/data/api.dart';
 import '../../core/data/shared.dart';
 import '../../knowledge/domain/i_knowledge.dart';
-import '../../navigation/data/navigation_service.dart' as navigation_service;
 import 'auth_entities.dart';
 // import 'dart' as auth_service;
 import 'user_dto.dart';
@@ -20,20 +19,27 @@ part 'auth_service.fp.dart';
 
 Logger _log = Logger('auth_api.dart');
 
-class AuthService implements IAuthService {
+class AuthApi implements IAuthApi {
   final Dio api;
   final String hostName;
   final Api apiService;
   final SharedRefService sharedService;
-  AuthService({required this.api, required this.apiService, required this.hostName, required this.sharedService});
+  // define a final function to save redirect path
+  final Unit Function(String) saveRedirecPath;
+  AuthApi(
+      {required this.saveRedirecPath,
+      required this.api,
+      required this.apiService,
+      required this.hostName,
+      required this.sharedService});
 
   @override
   Future<Unit> signInEmailPassword({
-    required EmailAddress emailAddress,
+    required EmailAddress email,
     required String password,
   }) async {
-    final response = api.post('$hostName/auth/sign_in', data: {
-      'username': emailAddress.getValueOrError(),
+    final response = api.post('/auth/sign_in', data: {
+      'username': email.getValueOrError(),
       'password': password,
     });
     return response.then((res) {
@@ -46,14 +52,15 @@ class AuthService implements IAuthService {
       if (data['error'] != null) {
         return Future.error(const AuthFailure.invalidEmailPassword());
       }
-      final token = data['access_token'] as String;
-      final refreshToken = data['refresh_token'] as String;
-      final uuid = data['sub'] as String;
-      await setToken(token);
-      await setRefreshToken(refreshToken);
-      await saveId(uuid);
-      final redirectAfterLogin = data['redirect_after_auth'] as String;
-      await navigation_service.saveRedirecPath(redirectAfterLogin);
+
+      final token = data['access_token'];
+      if (token != null) await setToken(token);
+      final refreshToken = data['refresh_token'];
+      if (refreshToken != null) await setRefreshToken(refreshToken);
+      final uuid = data['sub'];
+      if (uuid != null) await saveId(uuid);
+      final redirectAfterLogin = data['redirect_after_auth'];
+      if (redirectAfterLogin != null) saveRedirecPath(redirectAfterLogin);
       return unit;
     });
   }
@@ -63,7 +70,7 @@ class AuthService implements IAuthService {
     final token = await getToken();
     final id = await getId();
     // final intercepter = Api();
-    final response = api.get('$hostName/auth/get_user',
+    final response = apiService.api.get('/auth/get_user',
         queryParameters: {'id': id},
         options: Options(headers: {
           'Authorization': 'Bearer $token',
@@ -122,7 +129,7 @@ class AuthService implements IAuthService {
     // required String address,
     required Password password,
   }) async {
-    await api.post('$hostName/auth/sign_up', data: {
+    final res = await api.post('/auth/sign_up', data: {
       'given_name': email.getValueOrError(),
       'family_name': '_',
       'email': email.getValueOrError(),
@@ -133,27 +140,15 @@ class AuthService implements IAuthService {
       // 'address': address,
       'password': password.getValueOrError(),
     });
+    if (res.statusCode != 200) {
+      throw DioException.badResponse(statusCode: res.statusCode!, requestOptions: res.requestOptions, response: res);
+    }
     return unit;
-    // return response //
-    //     .then((res) {
-    //   print('1');
-    //   if (res.statusCode != 200) {
-    //     return Future.error(const AuthFailure.serverError());
-    //   }
-    //   return res.data;
-    // }).then((value) async {
-    //   print('2');
-    //   final data = value as Map<String, dynamic>;
-    //   if (data['success'] == false) {
-    //     return Future.error(const AuthFailure.emailAlreadyUsed());
-    //   }
-    //   return unit;
-    // });
   }
 
   @override
   Future<Unit> requestResetPassword(EmailAddress email) async {
-    final response = api.post('$hostName/forgot_password', data: {
+    final response = api.post('/forgot_password', data: {
       'email': email.getValueOrError(),
     });
     return response.then((res) {
@@ -172,7 +167,7 @@ class AuthService implements IAuthService {
 
   @override
   Future<Unit> newPassword({required EmailAddress email, required Password password, required String code}) {
-    final response = api.post('$hostName/forgot_password', data: {
+    final response = api.post('/forgot_password', data: {
       'email': email.getValueOrError(),
       'password': password.getValueOrError(),
       'code': code,

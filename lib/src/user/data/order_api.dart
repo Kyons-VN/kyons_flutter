@@ -82,7 +82,7 @@ class OrderApi implements IOrderApi {
       'id': package.id,
       'quantity': quantity,
     };
-    final response = apiService.api.post('$hostName/students/packages/order', data: params);
+    final response = apiService.api.post('/students/packages/order', data: params);
     return response.then(handleResponseError).then((value) async {
       return unit;
     });

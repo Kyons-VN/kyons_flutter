@@ -4,9 +4,9 @@ import '../../authentication/domain/value_objects.dart';
 import '../../knowledge/domain/i_knowledge.dart';
 import '../data/auth_entities.dart';
 
-abstract class IAuthService {
+abstract class IAuthApi {
   Future<Unit> signInEmailPassword({
-    required EmailAddress emailAddress,
+    required EmailAddress email,
     required String password,
   });
   Future<User> getUser();

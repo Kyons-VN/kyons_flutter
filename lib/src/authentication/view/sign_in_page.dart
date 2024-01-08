@@ -159,7 +159,7 @@ class SignInForm extends HookConsumerWidget {
     final currentUserController = ref.read(currentUserProvider.notifier);
     final showPassword = useState(true);
     final isFocusPassword = useState<bool>(false);
-    final focusNodePassword = FocusNode();
+    final focusNodePassword = useFocusNode();
 
     ref.listen<SignInState>(signInProvider, (previous, next) {
       if (!(previous!.isSubmitting && !next.isSubmitting)) return;

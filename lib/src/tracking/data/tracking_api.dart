@@ -94,7 +94,7 @@ class TrackingApi extends ITracking {
     // Obtain shared preferences.
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(ITracking.trackingKey, jsonEncode({'total': params['on_total']}));
-    final response = apiService.api.post('$hostName/students/on_app', data: params);
+    final response = apiService.api.post('/students/on_app', data: params);
     return response.then(handleResponseError).then((value) {
       return unit;
     });
@@ -111,7 +111,7 @@ class TrackingApi extends ITracking {
     // Obtain shared preferences.
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(ITracking.trackingKey, jsonEncode(tracking));
-    final response = apiService.api.post('$hostName/students/on_app', data: params);
+    final response = apiService.api.post('/students/on_app', data: params);
     return response.then(handleResponseError).then((value) {
       return unit;
     });
@@ -129,7 +129,7 @@ class TrackingApi extends ITracking {
     await prefs.setString(ITracking.trackingKey, jsonEncode(tracking));
 
     final params = {'lesson_id': lessonId, 'start': true, type.toString(): lessonTracking[type.toString()]};
-    final response = apiService.api.post('$hostName/students/on_lesson', data: params);
+    final response = apiService.api.post('/students/on_lesson', data: params);
     await response.then(handleResponseError);
     return unit;
   }
@@ -146,7 +146,7 @@ class TrackingApi extends ITracking {
     await prefs.setString(ITracking.trackingKey, jsonEncode(tracking));
 
     final params = {'lesson_id': lessonId, type.toString(): total};
-    final response = apiService.api.post('$hostName/students/on_lesson', data: params);
+    final response = apiService.api.post('/students/on_lesson', data: params);
     await response.then(handleResponseError);
     return unit;
   }

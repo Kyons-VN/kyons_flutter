@@ -2,23 +2,21 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/boostrap/config_reader.dart';
 import 'package:kyons_flutter/src/core/data/shared.dart';
+import 'package:kyons_flutter/src/sandbox/data/sandbox_api.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_package/shared_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Api {
   final SharedRefService sharedService;
-  final Dio api = Dio();
-  final String hostName;
+  final Dio api;
 
-  Api._({required this.sharedService, required this.hostName}) {
-    final serverApi = ConfigReader.serverApi();
+  Api._({required this.sharedService, required this.api}) {
     api.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) async {
-      // final prefs = await SharedPreferences.getInstance();
       final accessToken = await sharedService.getToken();
+      final serverApi = await (SandboxApi.isActivated()) ? ConfigReader.serverSandbox() : ConfigReader.serverApi();
       if (!options.path.contains('http')) {
         options.path = '$serverApi${options.path}';
       }
@@ -47,7 +45,7 @@ class Api {
     }));
   }
 
-  factory Api.init(WidgetRef ref) => Api._(sharedService: ref.read(sharedRef), hostName: ConfigReader.serverApi());
+  factory Api.init(SharedRefService ref, Dio api) => Api._(sharedService: ref, api: api);
 
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
     final options = Options(
@@ -69,7 +67,8 @@ class Api {
     //   return handler.next(error);
     // }));
     return await request
-        .post('$hostName/auth/refresh', options: Options(headers: {'Authorization': 'Bearer $refreshToken'}))
+        .post('${ConfigReader.serverApi()}/auth/refresh',
+            options: Options(headers: {'Authorization': 'Bearer $refreshToken'}))
         .catchError((error, stackTrace) {
       _log.shout('getRefreshToken', error, stackTrace);
       // return true;
@@ -90,17 +89,12 @@ class Api {
   clear() {
     sharedService.removeRefreshToken();
   }
+
+  getServerApi() async {
+    final isSandbox = await SandboxApi.isActivated();
+    return isSandbox ? ConfigReader.serverSandbox() : ConfigReader.serverApi();
+  }
 }
-
-// class ApiFailure {
-//   final String message;
-//   const ApiFailure._(this.message);
-
-//   factory ApiFailure.serverError() => const ApiFailure._('Server error');
-//   factory ApiFailure.unAuthenticated() => const ApiFailure._('Unauthenticated');
-//   factory ApiFailure.subscriptionExpired() => const ApiFailure._('SubscriptionExpired');
-//   factory ApiFailure.ranOutMockTest() => const ApiFailure._('RanOutMockTest');
-// }
 
 ApiFailure handleError(error, StackTrace stackTrace) {
   _log.shout('ApiFailure handleError', error, stackTrace);
@@ -109,15 +103,17 @@ ApiFailure handleError(error, StackTrace stackTrace) {
   } else if (error is DioException) {
     if (error.response?.statusCode == 400 && error.response != null) {
       if (error.response!.data['error_code'] == 'SubscriptionExpired') {
-        return ApiFailure.subscriptionExpired();
+        return const ApiFailure.subscriptionExpired();
       } else if (error.response!.data['error_code'] == 'RanOutMockTest') {
-        return ApiFailure.ranOutMockTest();
+        return const ApiFailure.ranOutMockTest();
       } else if (error.response!.statusCode == 401) {
-        return ApiFailure.unAuthenticated();
+        return const ApiFailure.unAuthenticated();
       }
     }
+  } else if (error is UnsupportedError) {
+    return const ApiFailure.clientError();
   }
-  return ApiFailure.serverError();
+  return const ApiFailure.serverError();
 }
 
 ClientFailure handleClientError(error, StackTrace stackTrace) {
@@ -130,7 +126,10 @@ ClientFailure handleClientError(error, StackTrace stackTrace) {
 dynamic handleResponseError(Response<dynamic> res) {
   if (res.statusCode != 200) {
     _log.info('handleResponseError');
-    return Future.error(ApiFailure.serverError());
+    if (res.statusCode == 401) {
+      return Future.error(const ApiFailure.unAuthenticated());
+    }
+    return Future.error(const ApiFailure.serverError());
   }
   return res.data;
 }

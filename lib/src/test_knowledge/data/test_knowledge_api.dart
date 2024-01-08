@@ -33,7 +33,7 @@ class TestKnowledge implements ITestKnowledge {
       'end_time': testContent.endedAt.serverRequest,
       'submission': testContent.submission,
     };
-    final response = apiService.api.post('$hostName/submit_answers', data: params);
+    final response = apiService.api.post('/submit_answers', data: params);
 
     return response.then(handleResponseError).then((value) async {
       final data = value as Map<String, dynamic>;

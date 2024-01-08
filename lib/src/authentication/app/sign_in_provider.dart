@@ -10,15 +10,15 @@ import 'package:shared_package/shared_package.dart';
 import '../../../boostrap/config_reader.dart';
 import '../../authentication/app/auth_provider.dart';
 import '../../authentication/data/auth_service.dart' as auth_service;
-import '../../authentication/domain/i_auth.dart';
 import '../../authentication/domain/value_objects.dart';
 import '../data/auth_entities.dart';
+import '../data/auth_service.dart';
 
 part 'sign_in_provider.freezed.dart';
 part 'sign_in_state.dart';
 
 class SignInNotifier extends StateNotifier<SignInState> {
-  final IAuthService authApi;
+  final AuthApi authApi;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   SignInNotifier(this.authApi) : super(SignInState.initial());
@@ -72,7 +72,7 @@ class SignInNotifier extends StateNotifier<SignInState> {
             .run(authApi);
       }
 
-      if (failureOrSuccess.isRight() && defaultTargetPlatform != TargetPlatform.windows) {
+      if (failureOrSuccess.isRight() && kIsWeb) {
         currentUser = await auth_service.getUser().run(authApi);
         final deviceToken = await FirebaseMessaging.instance.getToken(
             vapidKey: 'BP-BjvXQUjaznK89An_nvZWRmP6PCQxIGQ9OexTGstwXGbTgdPy5jkFtr9SIBJpUXZOMzHnQ_1-PTq2_jVP4ylI');

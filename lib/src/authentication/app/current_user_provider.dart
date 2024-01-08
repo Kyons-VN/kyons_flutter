@@ -11,7 +11,7 @@ part 'current_user_provider.freezed.dart';
 part 'current_user_state.dart';
 
 class CurrentUserNotifier extends StateNotifier<CurrentUserState> {
-  final IAuthService authApi;
+  final IAuthApi authApi;
   CurrentUserNotifier._(this.authApi) : super(CurrentUserState.initialize());
   Future<Unit> logedIn() async {
     state = CurrentUserState.initialize();

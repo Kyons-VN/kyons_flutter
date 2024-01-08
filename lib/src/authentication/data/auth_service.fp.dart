@@ -1,6 +1,6 @@
 part of 'auth_service.dart';
 
-Reader<IAuthService, Future<Either<AuthFailure, Unit>>> signInEmailPassword(
+Reader<IAuthApi, Future<Either<AuthFailure, Unit>>> signInEmailPassword(
     {required String emailAddress, required String password}) {
   return Reader(
     (api) => _isValidEmail(emailAddress)
@@ -31,7 +31,7 @@ IOEither<AuthFailure, String> _isValidCode(String code) => IOEither.fromPredicat
 IOEither<AuthFailure, String> _isValidPassword(String password) => IOEither.fromPredicate(
       password,
       (a) => Password(a).isValid(),
-      (_) => const AuthFailure.invalidEmailPassword(),
+      (_) => const AuthFailure.invalidPassword(),
     );
 
 // IOEither<AuthFailure, String> _isValidPhone(String phone) => IOEither.fromPredicate(
@@ -43,24 +43,24 @@ IOEither<AuthFailure, String> _isValidPassword(String password) => IOEither.from
 TaskEither<AuthFailure, Unit> _signInEmailPassword(
   EmailAddress email,
   String password,
-  IAuthService api,
+  IAuthApi api,
 ) =>
     TaskEither.tryCatch(
-      () => api.signInEmailPassword(emailAddress: email, password: password),
+      () => api.signInEmailPassword(email: email, password: password),
       (error, __) {
         if (error is AuthFailure) return error;
         return const AuthFailure.serverError();
       },
     );
 
-Reader<IAuthService, Future<Either<AuthFailure, User>>> getUser() {
+Reader<IAuthApi, Future<Either<AuthFailure, User>>> getUser() {
   return Reader(
     (api) => _getUser(api).run(),
   );
 }
 
 TaskEither<AuthFailure, User> _getUser(
-  IAuthService api,
+  IAuthApi api,
 ) =>
     TaskEither.tryCatch(
       () => api.getUser(),
@@ -69,43 +69,43 @@ TaskEither<AuthFailure, User> _getUser(
       },
     );
 
-Reader<IAuthService, Future<Either<ClientFailure, Unit>>> signOut() {
+Reader<IAuthApi, Future<Either<ClientFailure, Unit>>> signOut() {
   return Reader(
     (api) => _signOut(api).run(),
   );
 }
 
-TaskEither<ClientFailure, Unit> _signOut(IAuthService api) => TaskEither.tryCatch(
+TaskEither<ClientFailure, Unit> _signOut(IAuthApi api) => TaskEither.tryCatch(
       () => api.signOut(),
       handleClientError,
     );
 
-Reader<IAuthService, Future<Either<ClientFailure, User>>> getCurrentUser() {
+Reader<IAuthApi, Future<Either<ClientFailure, User>>> getCurrentUser() {
   return Reader(
     (api) => _getCurrentUser(api).run(),
   );
 }
 
-TaskEither<ClientFailure, User> _getCurrentUser(IAuthService api) => TaskEither.tryCatch(
+TaskEither<ClientFailure, User> _getCurrentUser(IAuthApi api) => TaskEither.tryCatch(
       () => api.getCurrentUser(),
       handleClientError,
     );
 
-Reader<IAuthService, Future<Either<ClientFailure, Unit>>> setCurrentUser(User user) {
+Reader<IAuthApi, Future<Either<ClientFailure, Unit>>> setCurrentUser(User user) {
   return Reader(
     (api) => _setCurrentUser(api, user).run(),
   );
 }
 
-TaskEither<ClientFailure, Unit> _setCurrentUser(IAuthService api, User user) => TaskEither.tryCatch(
+TaskEither<ClientFailure, Unit> _setCurrentUser(IAuthApi api, User user) => TaskEither.tryCatch(
       () => api.setCurrentUser(user),
       handleClientError,
     );
 
-Reader<IAuthService, Future<Either<AuthFailure, Unit>>> signUp({
+Reader<IAuthApi, Future<Either<AuthFailure, Unit>>> signUp({
   // required String firstName,
   // required String lastName,
-  required String emailAddress,
+  required String email,
   // required String phone,
   // required DateTime birthdate,
   // required String grade,
@@ -114,14 +114,14 @@ Reader<IAuthService, Future<Either<AuthFailure, Unit>>> signUp({
   required String password,
 }) {
   return Reader(
-    (api) => _isValidEmail(emailAddress)
+    (api) => _isValidEmail(email)
         .flatMap((_) => _isValidPassword(password))
         // .flatMap((_) => _isNotEmpty(firstName))
         // .flatMap((_) => _isNotEmpty(lastName))
         .flatMapTask((_) => _signUp(
               // firstName: firstName,
               // lastName: lastName,
-              email: EmailAddress(emailAddress),
+              email: EmailAddress(email),
               // phone: Phone(phone),
               // birthdate: birthdate,
               // school: school,
@@ -144,7 +144,7 @@ TaskEither<AuthFailure, Unit> _signUp({
   // required String school,
   // required String address,
   required Password password,
-  required IAuthService api,
+  required IAuthApi api,
 }) =>
     TaskEither.tryCatch(
       () => api.signUp(
@@ -162,6 +162,9 @@ TaskEither<AuthFailure, Unit> _signUp({
         if (error is AuthFailure) return error;
         if (error is DioException) {
           if (error.response!.statusCode == 400) {
+            if (error.response!.data == null || error.response!.data['error_code'] == null) {
+              return const AuthFailure.serverError();
+            }
             if (error.response!.data['error_code'] == 'UsernameExistsException') {
               return const AuthFailure.emailAlreadyUsed();
             } else if (error.response!.data['error_code'] == 'InvalidParam' ||
@@ -176,7 +179,7 @@ TaskEither<AuthFailure, Unit> _signUp({
       },
     );
 
-Reader<IAuthService, Future<Either<AuthFailure, Unit>>> requestResetPassword(String emailAddress) {
+Reader<IAuthApi, Future<Either<AuthFailure, Unit>>> requestResetPassword(String emailAddress) {
   return Reader(
     (api) =>
         _isValidEmail(emailAddress).flatMapTask((_) => _requestResetPassword(EmailAddress(emailAddress), api)).run(),
@@ -185,7 +188,7 @@ Reader<IAuthService, Future<Either<AuthFailure, Unit>>> requestResetPassword(Str
 
 TaskEither<AuthFailure, Unit> _requestResetPassword(
   EmailAddress email,
-  IAuthService api,
+  IAuthApi api,
 ) =>
     TaskEither.tryCatch(
       () => api.requestResetPassword(email),
@@ -204,7 +207,7 @@ TaskEither<AuthFailure, Unit> _requestResetPassword(
       },
     );
 
-Reader<IAuthService, Future<Either<AuthFailure, Unit>>> newPassword(
+Reader<IAuthApi, Future<Either<AuthFailure, Unit>>> newPassword(
     {required String emailAddress, required String password, required String code}) {
   return Reader(
     (api) => _isValidEmail(emailAddress)
@@ -219,7 +222,7 @@ TaskEither<AuthFailure, Unit> _newPassword(
   EmailAddress email,
   Password password,
   String code,
-  IAuthService api,
+  IAuthApi api,
 ) =>
     TaskEither.tryCatch(
       () => api.newPassword(email: email, password: password, code: code),

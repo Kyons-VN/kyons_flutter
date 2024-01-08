@@ -8,8 +8,8 @@ import 'package:shared_package/shared_package.dart';
 
 import '../../knowledge/app/knowledge_provider.dart';
 import '../../knowledge/data/knowledge_entities.dart';
-import '../../knowledge/data/knowledge_service.dart' as knowledge_service;
 import '../../knowledge/domain/i_knowledge.dart';
+import '../data/knowledge_service.dart' as knowledge_service;
 
 part 'learning_path_provider.freezed.dart';
 part 'learning_path_state.dart';

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kyons_flutter/src/user/view/pages/services_history_page.dart';
@@ -231,11 +232,12 @@ class AppRouter {
     return AppRouter._();
   }
 
-  static pushRedirect(String serverRedirectName) {
+  static Unit pushRedirect(String serverRedirectName) {
     _redirects.add(AppPaths.getByRedirectName(serverRedirectName));
+    return unit;
   }
 
-  static void redirect() {
+  static Unit redirect() {
     final redirect = _redirects.isNotEmpty ? _redirects.first : null;
     if (redirect != null) {
       router.go(redirect.path);
@@ -243,6 +245,7 @@ class AppRouter {
       router.go(AppPaths.home.path);
     }
     _redirects.clear();
+    return unit;
   }
 }
 

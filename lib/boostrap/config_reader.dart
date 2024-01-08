@@ -30,6 +30,10 @@ class ConfigReader {
     return _config['serverApi'];
   }
 
+  static String serverSandbox() {
+    return _config['serverSandbox'];
+  }
+
   static String clientApi() {
     return _config['clientApi'];
   }

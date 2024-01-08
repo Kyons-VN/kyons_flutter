@@ -13,6 +13,7 @@ import '../../authentication/domain/i_auth.dart';
 import '../../knowledge/app/knowledge_provider.dart';
 import '../../knowledge/data/knowledge_service.dart' as knowledge_service;
 import '../../knowledge/domain/i_knowledge.dart';
+import '../../navigation/data/navigation_service.dart' as navigation_service;
 import '../data/auth_service.dart';
 
 part 'auth_provider.freezed.dart';
@@ -21,7 +22,7 @@ part 'auth_state.dart';
 Logger _log = Logger('auth_provider.dart');
 
 class AuthNotifier extends StateNotifier<AuthState> {
-  final IAuthService authApi;
+  final IAuthApi authApi;
   final IKnowledgeApi knowledgeApi;
   // final AlwaysAliveRefreshable<TrackingNotifier> trackingProvider;
   AuthNotifier._(this.authApi, this.knowledgeApi) : super(const AuthState.initial());
@@ -57,11 +58,12 @@ class AuthNotifier extends StateNotifier<AuthState> {
   }
 }
 
-final authApiProvider = Provider<AuthService>((ref) => AuthService(
+final authApiProvider = Provider<AuthApi>((ref) => AuthApi(
       api: Dio(),
-      apiService: Api.init(ref as WidgetRef),
+      apiService: Api.init(ref.read(sharedRef), Dio()),
       hostName: ConfigReader.serverApi(),
       sharedService: ref.read(sharedRef),
+      saveRedirecPath: navigation_service.saveRedirecPath,
     ));
 
 final authNotifierProvider = StateNotifierProvider<AuthNotifier, AuthState>(

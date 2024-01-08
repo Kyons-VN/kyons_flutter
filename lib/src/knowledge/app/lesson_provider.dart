@@ -7,11 +7,11 @@ import 'package:shared_package/shared_package.dart';
 
 import '../../knowledge/app/knowledge_provider.dart';
 import '../../knowledge/data/knowledge_entities.dart';
-import '../../knowledge/data/knowledge_service.dart' as knowledge_service;
 import '../../knowledge/domain/i_knowledge.dart';
 import '../../tracking/app/tracking_provider.dart';
 import '../../tracking/data/tracking_api.dart';
 import '../../tracking/domain/i_tracking.dart';
+import '../data/knowledge_service.dart' as knowledge_service;
 
 part 'lesson_provider.freezed.dart';
 part 'lesson_state.dart';
@@ -105,7 +105,6 @@ class LessonStudyNotifier extends StateNotifier<LessonStudyState> {
 
   StreamSubscription? _sub;
   void enableTracking() {
-    print(lessonGroupId);
     if (lessonGroupId.isEmpty) return;
     final Stream<Either<ApiFailure<dynamic>, Unit>> myStream =
         Stream.periodic(const Duration(seconds: 10), ((e) => e + 1)).asyncExpand((event) {
@@ -117,7 +116,6 @@ class LessonStudyNotifier extends StateNotifier<LessonStudyState> {
     _sub = myStream.listen((successOrFailure) {
       successOrFailure.fold(
         (l) async {
-          print('Cancel');
           if (_sub != null) await _sub!.cancel();
         },
         (data) {},

@@ -18,13 +18,10 @@ import 'auth_service_test.mocks.dart';
   MockSpec<SharedPreferences>(),
   MockSpec<Api>(),
   MockSpec<SharedRefService>(),
-  MockSpec<auth_service.AuthService>()
 ])
-// class MockAuthService extends Mock implements auth_service.AuthService {}
-
 @GenerateMocks([NavigationService])
 abstract class NavigationService {
-  Future<void> saveRedirecPath(path);
+  Unit saveRedirecPath(String path);
 }
 
 ProviderContainer createContainer({
@@ -42,37 +39,118 @@ ProviderContainer createContainer({
 }
 
 void main() {
-  // late auth_service.AuthService authApi;
   late MockDio mockDio;
-  late MockAuthService mockAuthService;
-  late Future<void> Function(String?) saveRedirecPath;
-  late auth_service.AuthService authApi;
-
-  setUpAll(() {
+  // late MockAuthApi mockAuthApi;
+  late auth_service.AuthApi authApi;
+  late MockSharedRefService mockSharedRefService;
+  late MockNavigationService navigationService;
+  setUpAll(() async {
     provideDummy<Option<Unit>>(some(unit));
     provideDummy<Unit>(unit);
     // Ignore storage part
-    mockAuthService = MockAuthService();
-    when(mockAuthService.setToken(any)).thenAnswer((_) async => some(unit));
-    when(mockAuthService.setRefreshToken(any)).thenAnswer((_) async => some(unit));
-    when(mockAuthService.saveId(any)).thenAnswer((_) async => some(unit));
-  });
-
-  setUp(() async {
+    // mockAuthApi = MockAuthApi();
     TestWidgetsFlutterBinding.ensureInitialized();
     mockDio = MockDio();
-    mockAuthService = MockAuthService();
-    saveRedirecPath = MockNavigationService().saveRedirecPath;
-    // authApi = auth_service.AuthService(
-    //   mockDio,
-    // );
+    // mockAuthApi = MockAuthApi();
+    mockSharedRefService = MockSharedRefService();
 
-    // authApi = Provider<auth_service.AuthService>(
-    //   (ref) => auth_service.AuthService(Dio()),
-    // );
     await ConfigReader.initialize(Environment.dev);
-    authApi = auth_service.AuthService(
-        api: mockDio, apiService: MockApi(), hostName: ConfigReader.serverApi(), sharedService: MockSharedRefService());
+    navigationService = MockNavigationService();
+
+    authApi = auth_service.AuthApi(
+        api: mockDio,
+        apiService: MockApi(),
+        hostName: ConfigReader.serverApi(),
+        sharedService: MockSharedRefService(),
+        saveRedirecPath: navigationService.saveRedirecPath);
+    when(authApi.setToken('any')).thenAnswer((_) async => some(unit));
+    when(authApi.setRefreshToken('any')).thenAnswer((_) async => some(unit));
+    when(authApi.saveId('any')).thenAnswer((_) async => some(unit));
+    when(mockSharedRefService.setToken('')).thenAnswer((_) async => some(unit));
+  });
+  group('sign up', () {
+    test('should return Success when called with valid parameters', () async {
+      // arrange
+      const mockEmail = 'test@gmail.com';
+      const mockPassword = 'Test@123';
+      when(mockDio.post(any, data: anyNamed('data'))).thenAnswer((_) async => Response(
+            // data: {
+            //   'error_code': 'UsernameExistsException',
+            // },
+            statusCode: 200,
+            requestOptions: RequestOptions(),
+          ));
+
+      // act
+      final result = await auth_service.signUp(email: mockEmail, password: mockPassword).run(authApi);
+
+      // assert
+      expect(result, right(unit));
+      verify(mockDio.post(any, data: anyNamed('data'))).called(1);
+    });
+
+    test('should return invalidEmail when called with valid email', () async {
+      // arrange
+      const mockEmail = 'testgmail.com';
+      const mockPassword = 'Test@123';
+
+      // act
+      final result = await auth_service.signUp(email: mockEmail, password: mockPassword).run(authApi);
+
+      // assert
+      expect(result, left(const AuthFailure.invalidEmail()));
+      verifyNever(mockDio.post(any, data: anyNamed('data')));
+    });
+
+    test('should return invalidPassword when called with invalid password', () async {
+      // arrange
+      const mockEmail = 'test@gmail.com';
+      const mockPassword = 'test@123';
+
+      // act
+      final result = await auth_service.signUp(email: mockEmail, password: mockPassword).run(authApi);
+
+      // assert
+      expect(result, left(const AuthFailure.invalidPassword()));
+      verifyNever(mockDio.post(any, data: anyNamed('data')));
+    });
+
+    test('should return serverError when called 400 without error_code ', () async {
+      // arrange
+      const mockEmail = 'test@gmail.com';
+      const mockPassword = 'Test@123';
+      when(mockDio.post(any, data: anyNamed('data'))).thenAnswer((_) async => Response(
+            // data: {
+            //   'error_code': 'UsernameExistsException',
+            // },
+            statusCode: 400,
+            requestOptions: RequestOptions(),
+          ));
+
+      // act
+      final result = await auth_service.signUp(email: mockEmail, password: mockPassword).run(authApi);
+
+      // assert
+      expect(result, left(const AuthFailure.serverError()));
+      verify(mockDio.post(any, data: anyNamed('data'))).called(1);
+    });
+
+    test('should return serverError when called error but not 400 ', () async {
+      // arrange
+      const mockEmail = 'test@gmail.com';
+      const mockPassword = 'Test@123';
+      when(mockDio.post(any, data: anyNamed('data'))).thenAnswer((_) async => Response(
+            statusCode: 401,
+            requestOptions: RequestOptions(),
+          ));
+
+      // act
+      final result = await auth_service.signUp(email: mockEmail, password: mockPassword).run(authApi);
+
+      // assert
+      expect(result, left(const AuthFailure.serverError()));
+      verify(mockDio.post(any, data: anyNamed('data'))).called(1);
+    });
   });
 
   group('sign in email password', () {
@@ -90,42 +168,53 @@ void main() {
             requestOptions: RequestOptions(),
           ));
 
-      // when(saveRedirecPath(any)).thenAnswer((_) async => unit);
+      when(mockSharedRefService.setToken(any)).thenAnswer((_) async => some(unit));
+      when(mockSharedRefService.setRefreshToken(any)).thenAnswer((_) async => some(unit));
+      when(mockSharedRefService.saveId(any)).thenAnswer((_) async => some(unit));
+      when(navigationService.saveRedirecPath(any)).thenAnswer((_) => unit);
+
       // act
       final result = await auth_service
           .signInEmailPassword(
-            emailAddress: 'abc@gmail.com',
-            password: 'Zaq1@wsx',
+            emailAddress: 'test@gmail.com',
+            password: 'Test@123',
           )
           .run(authApi);
       // assert
       expect(result, right((unit)));
-      // verify(mockDio.post(any, data: anyNamed('data'))).called(1);
-      // verify(mockAuthService.setToken(any)).called(1);
-      // verify(mockAuthService.setRefreshToken(any)).called(1);
-      // verify(mockAuthService.saveId(any)).called(1);
-      // verify(saveRedirecPath(any)).called(1);
+      verify(mockDio.post(any, data: anyNamed('data'))).called(1);
+      verify(authApi.setToken(data['access_token']!)).called(1);
+      verify(authApi.setRefreshToken(data['refresh_token']!)).called(1);
+      verify(authApi.saveId(data['sub']!)).called(1);
+      verify(navigationService.saveRedirecPath(any)).called(1);
     });
 
     test('should return invalidEmailPassword when sign in fail', () async {
       // arrange
+      const data = {
+        'error': 'error',
+      };
       when(mockDio.post(any, data: anyNamed('data'))).thenAnswer((_) async => Response(
-            data: {
-              'error': 'error',
-            },
+            data: data,
             statusCode: 200,
             requestOptions: RequestOptions(path: ''),
           ));
+
       // act
       final result = await auth_service
           .signInEmailPassword(
-            emailAddress: 'abc@gmail.com',
-            password: 'Zaq1@wsx',
+            emailAddress: 'test@gmail.com',
+            password: 'Test@123',
           )
           .run(authApi);
       // assert
-      verify(mockDio.post(any, data: anyNamed('data'))).called(1);
+      // verify(mockDio.post(any, data: anyNamed('data'))).called(1);
       expect(result, left(const AuthFailure.invalidEmailPassword()));
+      verify(mockDio.post(any, data: anyNamed('data'))).called(1);
+      verifyNever(authApi.setToken('token'));
+      verifyNever(authApi.setRefreshToken('refresh_token'));
+      verifyNever(authApi.saveId('sub'));
+      verifyNever(navigationService.saveRedirecPath(any));
     });
 
     test('should return serverError when sign in fail', () async {
@@ -140,13 +229,17 @@ void main() {
       // act
       final result = await auth_service
           .signInEmailPassword(
-            emailAddress: 'abc@gmail.com',
-            password: 'Zaq1@wsx',
+            emailAddress: 'test@gmail.com',
+            password: 'Test@123',
           )
           .run(authApi);
       // assert
-      verify(mockDio.post(any, data: anyNamed('data'))).called(1);
       expect(result, left(const AuthFailure.serverError()));
+      verify(mockDio.post(any, data: anyNamed('data'))).called(1);
+      verifyNever(authApi.setToken('token'));
+      verifyNever(authApi.setRefreshToken('refresh_token'));
+      verifyNever(authApi.saveId('sub'));
+      verifyNever(navigationService.saveRedirecPath(any));
     });
   });
 }

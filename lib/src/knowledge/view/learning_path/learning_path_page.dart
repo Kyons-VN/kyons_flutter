@@ -61,7 +61,6 @@ class _LearningPathWidgetState extends ConsumerState<LearningPathWidget> {
       final tabIndex = useState(0);
       final state = ref.watch(learningPathNotifierProvider);
       final learningGoal = state.selectedLearningGoal.getOrElse(() => StudentLearningGoal.empty());
-      final learningGoalPath = state.learningGoalPathOption.getOrElse(() => LearningGoalPath.empty());
       return Column(
         children: [
           Padding(
